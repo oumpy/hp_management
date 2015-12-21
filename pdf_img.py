@@ -21,6 +21,10 @@ from pelican import signals
 from pelican.utils import mkdir_p, get_relative_path, path_to_url
 from pelican.generators import ArticlesGenerator, PagesGenerator
 
+import sys
+if (sys.version_info[0]>2):
+    unicode = str
+
 __version__ = '0.0.1'
 
 logger = logging.getLogger(__name__)
