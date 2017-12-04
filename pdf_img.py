@@ -15,6 +15,7 @@ import os.path
 
 from bs4 import BeautifulSoup, FeatureNotFound
 from wand.image import Image
+from wand.color import Color
 from wand.exceptions import BlobError
 
 from pelican import signals
@@ -30,7 +31,7 @@ __version__ = '0.0.1'
 logger = logging.getLogger(__name__)
 
 preview_dir = '__pdf_previews__'
-FORMAT_RE = re.compile(r'\.pdf|\.ps|\.eps\s*$',re.IGNORECASE)
+FORMAT_RE = re.compile(r'(?:\.pdf|\.ps|\.eps)\s*$',re.IGNORECASE)
 pdf_imgs = {}
 
 def process_content(article):
@@ -89,16 +90,19 @@ def convert_pdfs(pelican):
     Create the PNGs from the original PDF, PS, and EPS files, placing them
     in the approriate location in the output directory.
     """
-    for path in pdf_imgs:
-        outpath = os.path.join(pelican.output_path, pdf_imgs[path])
-        mkdir_p(os.path.dirname(outpath))
-        try:
-            with Image(filename=os.path.join(pelican.path, path)+'[0]', resolution=200) as img:
-                img.format = 'png'
-                img.save(filename=outpath)
-                logger.info('Creating PNG preview of %s as %s', path, pdf_imgs[path])
-        except BlobError:
-            logger.warn('Could create PNG preview of `{}`'.format(src))
+    with Color('white') as white:
+        for path in pdf_imgs:
+            outpath = os.path.join(pelican.output_path, pdf_imgs[path])
+            mkdir_p(os.path.dirname(outpath))
+            try:
+                with Image(filename=os.path.join(pelican.path, path)+'[0]',
+                           resolution=100, background=white) as img:
+                    img.format = 'png'
+                    img.save(filename=outpath)
+                    logger.info('Creating PNG preview of %s as %s', path,
+                                pdf_imgs[path])
+            except BlobError:
+                logger.warn('Could create PNG preview of `{}`'.format(src))
 
 
 def register():
