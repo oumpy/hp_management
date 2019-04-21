@@ -38,3 +38,5 @@ bash blog_push.sh
 ・Home,Member,Calender,Contact, Activityのページを作る。
 ・写真ファイルのパス指定や内部リンク調整
 ・手打ちをした部分（Author, Category, Tagsなど）のチェック
+
+---平岡悠---
