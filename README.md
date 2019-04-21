@@ -35,6 +35,7 @@ bash blog_push.sh
 
 ## 課題
 まずは、wordpressと同じ状況に近づける。4月中に完成させて、5月に完全移行するのが目標。
+
 ・Home,Member,Calender,Contact, Activityのページを作る。
 
 ・写真ファイルのパス指定や内部リンク調整
