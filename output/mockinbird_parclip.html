@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Mockinbirdを用いたPAR-CLIP解析 &ndash; 大阪大学医学部Python会</title>
+
+    <!-- Meta -->
+    <meta name="description" content="大阪大学医学部Python会 &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="平岡" />
+    <meta property="article:section" content="bioinformatics" />
+    <meta property="article:published_time" content="2019-04-14" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Mockinbirdを用いたPAR-CLIP解析"/>
+    <meta property="og:description" content="Mockinbirdを用いたPAR-CLIP解析"/>
+    <meta property="og:site_name" content="大阪大学医学部Python会" />
+    <meta property="og:url" content="/mockinbird_parclip.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mockinbirdを用いたPAR-CLIP解析">
+    <meta name="twitter:description" content="Mockinbirdを用いたPAR-CLIP解析">
+    <meta name="twitter:url" content="/mockinbird_parclip.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/rss+xml" href="http://johndoe.disqus.com/latest.rss" title="大阪大学医学部Python会 Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="" id="header-logo" title="Home">P</a>
+        <nav id="header-menu">
+          <ul>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/atcoder.html">atcoder</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="/category/bioinformatics.html">bioinformatics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/deeplearning.html">deeplearning</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/github.html">github</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/kaggle.html">kaggle</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/paper.html">paper</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/python.html">python</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/shell.html">shell</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/statistics.html">statistics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/tong-ji.html">統計</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Mockinbirdを用いたPAR-CLIP解析</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2019-04-14T00:00:00+09:00">Sun 14 April 2019</time> in <a href="/category/bioinformatics.html" title="All articles in category bioinformatics">bioinformatics</a></span>
+          </div>
+          <div>
+            <span class="w3-tag w3-light-grey w3-text-green w3-hover-green">
+              <a href="/tag/bioinformatics.html" title="All articles with Bioinformatics tag">#bioinformatics</a>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p><strong><em>Mockinbirdを用いたPAR-CLIP解析</em></strong>
+５年　平岡　悠</p>
+<p>今回はPAR-CLIP解析のAll-in-oneパイプラインソフトウェアである、<a href="//wwwuser.gwdg.de/~compbiol/mockinbird/doc/intro.html)”">Mockinbird</a>を紹介します。日本語での情報がほぼなく、説明が長くなってしまいそうなので、２回に分けて書きます。</p>
+<p><strong>PAR-CLIP</strong>って何？
+PAR-CLIPは photoactivatable ribonucleoside-enhanced crosslinking and immunoprecipitationの略でRNAやmicroRNA結合タンパクやの結合サイトを特定するために使います。</p>
+<p>実験法としては、まず4SU（4-チオウリジン）を細胞培地中に添加し、4SUによるラベル標識を行います。次にUVの照射を行い、RNA結合タンパクとRNAの間で架橋反応を起こします。その後、RBPと結合したリードの抽出を行い、サンプルとして用います。</p>
+<p>サンプルRNAを逆転写するときに、4SUがシトシン( C )に置換されます(misread)。そのため、リードがピークを形成し、かつT -&gt; C置換が入っていた場合、RBPと結合していた可能性が高いということになります。これによりあるタンパクが、RNAのどの領域に結合するのか？結合領域間でどのような相互作用があるのかを知ることができます。特に一塩基という高い解像度での解析ができることが特徴です。</p>
+<p><img alt="" src="https://lh6.googleusercontent.com/554iMVEXLP3Hq6U6C8FeveBV1FeMT19zXQuj-728Db4UxDU7JDSnzpF-RvezYq0DW3z2kQjDiOlZkeQLJRZhwNm4SqkaeJnBYyOV7yUbmuV0peAaJ4TcKazkJaqvRMF65Rgldk2l"></p>
+<p><strong>Mockinbird</strong>とは？</p>
+<p><a href="//wwwuser.gwdg.de/~compbiol/mockinbird/doc/intro.html”">公式ドキュメント</a>、<a href="//github.com/soedinglab/mockinbird)”">GitHub</a>に詳細は記載されていますが、日本語での情報が少ない、というか全くない。のでまとめていきたいと思います。</p>
+<p>PAR-CLIPの解析は生のFASTQデータから、Quality Check -&gt; Trimming -&gt; Mapping -&gt; Downstream Analysisという流れで行いますが、それらすべての解析をMockinbirdでは一気に行ってくれます。また、MockinbirdModule（詳細は後述）を使うことでmock PAR-CLIP experimentを考慮に入れた解析を行うことができるのも大きな特徴です。</p>
+<p>このソフトでは、２つにパイプラインが分かれており、preprocessing phaseとpostprocessing phaseと呼ばれています。タンパク結合サイトの情報が書かれたテーブルを出力するまでが、preprocessing phaseでそれ以降のDownstream解析をpostprocessing phaseと呼んでいます。それぞれにYAMLファイルが用意されており、ユーザーはYAMLファイルで解析したいサンプルデータ、使いたいリファレンスデータ、使いたいモジュール（Mappingの時にSTARやBowtieを選べたりする。）閾値などのパラメータを指定します。最後にコマンドを一行実行するだけで、解析がすべて自動で流れていきます。あるモジュールで出力されたファイルのパスが次のモジュールに自動で設定されていくシステムになっているので、慣れると非常に便利です。</p>
+<p>ただ、ドキュメントでも、既存の解析手法に完全に取って代わるものではなく、PAR-CLIP実験のコンディションのトラブルシューティングを再現可能性が高い状態で行なったり、研究の最初の仮説づくりを短時間で行うために使ってもらうことが目的と書かれていました。<img alt="" src="https://lh6.googleusercontent.com/rd3A2Nm8czl8cdPu_47SuddQXr-i-ac0ThA-ZupDlDIa67geEayilGTo2Bp3VnJXt6UXNe9b7Rq6EckkNigvg68OCJ9Wk2XrKfQ-FwJu5I_HjkwXXrpMUR7x-0pBojlg6E1EtlH2"></p>
+<p>環境構築</p>
+<p>前置きが長くなりましたが、実際に環境構築から進めていきます。</p>
+<p><code>conda create -n mockinbird -c bioconda -c conda-forge python=3.6 mockinbird</code></p>
+<p>Anacondaでmockinbirdという名前の仮想環境を作ります。mockinbirdが仮想環境にインストールされることになり、これにより、下記のライブラリとツールが環境内で使えるようになります。</p>
+<p><code>source activate mockinbird</code></p>
+<p>でmockinbirdの仮想環境を立ち上げ、</p>
+<p><code>source deactivate mockinbird</code></p>
+<p>で仮想環境を閉じます。</p>
+<p><code>conda remove --all -n mockinbird</code></p>
+<p>で環境を削除します。</p>
+<p><code>git clone [https://github.com/soedinglab/mockinbird.git](https://github.com/soedinglab/mockinbird.git)</code></p>
+<p>でgithubからクローンします。</p>
+<p><code>cd mockinbird/mockinbird/data</code></p>
+<p>とディレクトリを進めていくと、<code>preprocess.yaml</code>, <code>postprocess.yaml</code>というファイルがあります。基本はこの二つのYAMLファイルを調整していくことになります。terminalでコマンドを出すときも <code>mockinbird/mockinbird/data</code>ディレクトリで実行するのが個人的にはおすすめです（ファイルの構成が綺麗になる。パスの調整も楽）。</p>
+<p><a href="//wwwuser.gwdg.de/~compbiol/mockinbird/mockinbird_tutorial_nomock.tar.gz”">Tutorialデータ</a>がドキュメントの方に書かれていましたが、私が見たときはリンクがNotFoundになっていました。ので、私は<a href="//wwwuser.gwdg.de/~compbiol/mockinbird/doc/intro.html”">公式ドキュメント</a>、<a href="//github.com/soedinglab/mockinbird)”">GitHub</a>を参考にYAMLファイルの調整などを行いました。</p>
+<p><code>preprocess</code>, <code>postprocess</code>の実行のコードは以下のようになっています。</p>
+<div class="highlight"><pre><span></span><span class="x"># mockinbird preprocess [parclip_fastq] [output_dir] [prefix] [config_file]</span>
+<span class="x">$ mockinbird preprocess nrd1.fastq nrd1 nrd1 preprocess.yaml</span>
+
+<span class="x"># mockinbird postprocess </span><span class="cp">{{</span><span class="nv">genomefasta</span><span class="cp">}}</span><span class="x"> </span><span class="cp">{{</span><span class="nv">output_dir</span><span class="cp">}}</span><span class="x"> </span><span class="cp">{{</span><span class="nv">output_dir</span><span class="cp">}}</span><span class="x"> </span><span class="cp">{{</span><span class="nv">script_dir</span><span class="cp">}}</span><span class="x"></span>
+<span class="x">$ mockinbird postprocess nrd1 nrd1_pp postprocess.yaml</span>
+</pre></div>
+
+
+<p>ですが、コードの実行はYAMLの設定ができてからになります。ということでYAMLの中身について説明していきます。</p>
+<p><strong><em>preprocess.yaml</em></strong></p>
+<p>preprocess.yamlの４つの区画から構成されています。</p>
+<p>① 変数設定。
+② general. 必須情報の設定。
+③ reads. リードについての情報。
+④ pipeline. 使うモジュールと各引数の設定。</p>
+<p>① 変数設定
+下記のスクショはドキュメントから引用していますが、モジュールで使う、ディレクトリの変数化と、mock_processing をFalseに設定しています。（ここ重要！）</p>
+<p><img alt="" src="https://lh5.googleusercontent.com/axBM--SAveLQ5WpApwgiK3VmRPCEywGRY1ap3jXUNrp1ejgabu7k_3yMrnFT5dEA6xO5j2wBdjLh4UFNdJ5zbtwjq4nndYXoBVOBQyRRT7VskRhZUiruBhH8CK-AeFxu4Fv3bX3i"></p>
+<p>② general. 必須情報の設定
+アダプター配列の指定、リファレンスデータの指定、UMI(Unique molecular identifiers)の有無、スレッド数の指定。</p>
+<p>③ reads. リードについての情報
+リードの最短長、T -&gt; C mutationの指定</p>
+<p><img alt="" src="https://lh3.googleusercontent.com/STLDXYeF8NC-rqiRjaW4rArxJNHYNNcpDkrpj-OkX6W0Ltr7eo0FkqMd6VXWM6asWlMQMDhkg0l0pViKfzpFpXKFhN_KN1tyJkLDYeNt2fRqyNMVNQvp6rhwyF0LOZN7W_mJaSxy"></p>
+<p>④ pipeline. 使うモジュールと各引数の設定
+クオリティチェック -&gt; トリミング -&gt; マッピング
+<img alt="" src="https://lh5.googleusercontent.com/KASBpB_VhdJ80ZHeIyOucHGZShtPan6lgSWzCcrKl6qGoQahRudn5Gq9n5gu--xl2o3bWuOh7u8y4huuc6adxcis-BLRJhW9iczYI2tREs8MRWkpzoWsx_WtQXIvtlxskNRaZK2h"></p>
+<p><img alt="" src="https://lh4.googleusercontent.com/7vAyDIsxenmYiwISI6p1k6mjbbw1HESriPeyla17MOvM8dPjJxYxD5cLF8OWPXtO7AHCt4AvDjXPZmndQ7p6sNUkME4BIdM-CsmRfKyf0L7ni1nQY3LXoHXDdv6cNY9Xg_EGQyWb">
+MockinbirdModuleを使うことでmock PAR-CLIP experimentを考慮に入れた解析ができますと、すでに書きましたが、Mock Experimentの結果をバックグラウンドとして処理して、PAR-CLIP Experimentの結果を出すことができます。</p>
+<p>具体的な方法としては、まず
+<code>mock_processing = True</code>とし、
+<code>mockinbird preprocess nrd1_mock.fastq nrd1_mock nrd1_mock preprocess.yaml</code>を実行します。これで<code>{% if not mock_processing %}</code>までで解析がストップします。</p>
+<p>PileupModule, BamStatisticsModuleによって、Mock Experimentの.mpileupファイルと_stat.jsonファイルがそれぞれ生成されます。（この二つのファイルを次に使うことになります。）</p>
+<p>次に<code>mock_processing = False</code>に戻し、
+<code>$ mockinbird preprocess nrd1.fastq nrd1 nrd1 preprocess.yaml</code>を実行します。すると下記のコードも一緒に実行されます。</p>
+<p><img alt="" src="https://lh4.googleusercontent.com/hKqjVPmLLGnF0bhn637a_19_gZZ6KJBDceofpi8TVC_NfnhM1rZiZVb8MiBz-TmVv0FtStVpck_3IdL_CmYS52kpQqm0uzGbDWK5xyw1InCRVyLE8ne99FQIuAFm4VkuvpEkEtC-"></p>
+<p>これによって、Mock Experimentの<code>.mpileupファイル</code>と<code>_stat.jsonファイル</code>を受け取りつつ、最終的なCLIP-seqのテーブルを作ることができ、preprocessは終了となります。下記のようなテーブルが出力され、これをもとにpostprocessに進んでいくことになります。
+<img alt="" src="https://lh3.googleusercontent.com/yb1p70EaelwH-dEGIRhTLnjUoDLgKHSNzqD6dpG9IT9y5fM0LApdvtHKNgmKA73G6HgfflmWkEnoFvm_HEjpIxf4T6Uk15uG4ovIJsG2ILHRGGpXELLQ381BWMkFU6k8AxtSgocl"><img alt="" src="https://lh4.googleusercontent.com/3bwU07uRrmxRkOJxVPU8N-S11uYBRU3NrRFFrkoDyz_RlXjHgClXH2aDfJ2IU10yV-kURjSGBOR5nsdyaUBrh6C2lkMW3u8C128ktZXIWXniOzjGyIoD68ArK3awsfazmT4bRr2Z"></p>
+<p>長くなってしまったので、モジュールとpostprocessの説明は次回に回したいと思います。長い間お付き合いいただきありがとうございました。</p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="https://twitter.com/oumed_python"><img style="width: 60px; height: 60px;" src="../images/" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="https://twitter.com/oumed_python"><span id="author-name" class="w3-hover-text-dark-grey">平岡</span></a>
+                  <p id="author-story"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=/mockinbird_parclip.html&amp;t=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Mockinbird%E3%82%92%E7%94%A8%E3%81%84%E3%81%9FPAR-CLIP%E8%A7%A3%E6%9E%90" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=/mockinbird_parclip.html&amp;text=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Mockinbird%E3%82%92%E7%94%A8%E3%81%84%E3%81%9FPAR-CLIP%E8%A7%A3%E6%9E%90" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=/mockinbird_parclip.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'mockinbird_parclip'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://johndoe.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>
+          &copy;
+          2018&dash;2019          Python会
+        </span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

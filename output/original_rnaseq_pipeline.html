@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>阪医Python会特製 RNA-seq pipeline ver. 1.0 リリース &ndash; 大阪大学医学部Python会</title>
+
+    <!-- Meta -->
+    <meta name="description" content="大阪大学医学部Python会 &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="菅波 西田 大森 安水 小川 山田 川島 川崎 平岡 廣瀬 柳澤 淡田 中村 依藤" />
+    <meta property="article:section" content="bioinformatics" />
+    <meta property="article:published_time" content="2019-04-14" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="阪医Python会特製 RNA-seq pipeline ver. 1.0 リリース"/>
+    <meta property="og:description" content="阪医Python会特製 RNA-seq pipeline ver. 1.0 リリース"/>
+    <meta property="og:site_name" content="大阪大学医学部Python会" />
+    <meta property="og:url" content="/original_rnaseq_pipeline.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="阪医Python会特製 RNA-seq pipeline ver. 1.0 リリース">
+    <meta name="twitter:description" content="阪医Python会特製 RNA-seq pipeline ver. 1.0 リリース">
+    <meta name="twitter:url" content="/original_rnaseq_pipeline.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/rss+xml" href="http://johndoe.disqus.com/latest.rss" title="大阪大学医学部Python会 Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="" id="header-logo" title="Home">P</a>
+        <nav id="header-menu">
+          <ul>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/atcoder.html">atcoder</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="/category/bioinformatics.html">bioinformatics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/deeplearning.html">deeplearning</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/github.html">github</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/kaggle.html">kaggle</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/paper.html">paper</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/python.html">python</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/shell.html">shell</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/statistics.html">statistics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/tong-ji.html">統計</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>阪医Python会特製 RNA-seq pipeline ver. 1.0 リリース</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2019-04-14T00:00:00+09:00">Sun 14 April 2019</time> in <a href="/category/bioinformatics.html" title="All articles in category bioinformatics">bioinformatics</a></span>
+          </div>
+          <div>
+            <span class="w3-tag w3-light-grey w3-text-green w3-hover-green">
+              <a href="/tag/bioinformatics.html" title="All articles with Bioinformatics tag">#bioinformatics</a>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p>阪医Python会のbioinformaticsチームの一つの成果として、RNA-seqのパイプラインのv1.0がリリースとなったので記事とさせていただきます。SRR idから遺伝子✕サンプルのテーブルにするまでには意外に大変ですが、それをすべて自動化しました。ダウンロード、詳細等は以下にあります。</p>
+<p><strong><a href="https://github.com/yyoshiaki/auto_counttable_maker">https://github.com/yyoshiaki/auto_counttable_maker</a></strong></p>
+<h2>特徴</h2>
+<p>今回、自分たちの使いやすさを考えてツールの設計を行いました。他サンプルのファイル名の管理など、煩わしいところをすべて自動化することで、ミスも減らせると思います。</p>
+<ol>
+<li>準備するのは簡単なCSVファイル（テーブルだけ）で、極力パラメーターを減らした。</li>
+<li>すべてdocker上で動くため、ツールを各々インストールする必要がないし、バージョンに苦しむこともない。</li>
+<li>udockerにも対応しているため、ユーザー権限しかないサーバー上でも実行可能。</li>
+<li>outputは<a href="http://bioinformatics.sdstate.edu/idep/">idep</a>に対応。</li>
+<li>もちろんマルチスレッド対応。</li>
+</ol>
+<h2>使い方</h2>
+<p>必要なテーブルは</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>SRR or fastq</th>
+<th>Layout</th>
+<th>condition1</th>
+<th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Treg_LN_1</td>
+<td>SRR5385247</td>
+<td>SE</td>
+<td>Treg</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Treg_LN_2</td>
+<td>SRR5385248</td>
+<td>SE</td>
+<td>Treg</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>のような形式で、前3列が必須です。簡単ですね！データの集め方は、論文についているaccession number等をたどるのでもいいし、新しくなって爆速になった<a href="http://sra.dbcls.jp/">DDBJ Search</a>もおすすめ。</p>
+<p>コマンドはオプションが指定でき、リード数を100000に絞ったテストモードやマルチプロセスにも対応。</p>
+<div class="highlight"><pre><span></span><span class="n">Usage</span><span class="o">:</span> <span class="n">bash</span> <span class="n">MakeCountTable_Illumina_trimgalore_SRR</span><span class="o">.</span><span class="na">sh</span> <span class="n">experiment_table</span><span class="o">.</span><span class="na">csv</span> <span class="n">spiece</span> <span class="o">[--</span><span class="n">test</span><span class="o">,</span> <span class="o">--</span><span class="n">help</span><span class="o">,</span> <span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">docker</span><span class="o">,</span> <span class="o">--</span><span class="n">udocker</span><span class="o">]</span> <span class="o">[--</span><span class="n">threads</span> <span class="o">[</span><span class="n">VALUE</span><span class="o">]]</span>
+<span class="n">args</span>
+<span class="mi">1</span><span class="o">.</span><span class="na">experiment</span> <span class="n">matrix</span><span class="o">(</span><span class="n">csv</span><span class="o">)</span>
+<span class="mi">2</span><span class="o">.</span><span class="na">reference</span><span class="o">(</span><span class="n">human</span> <span class="n">or</span> <span class="n">mouse</span><span class="o">)</span>
+
+<span class="n">Options</span><span class="o">:</span>
+<span class="o">--</span><span class="n">test</span> <span class="n">test</span> <span class="n">mode</span><span class="o">(</span><span class="n">MAX_SPOT_ID</span><span class="o">=</span><span class="mi">100000</span><span class="o">).(</span><span class="n">dafault</span> <span class="o">:</span> <span class="n">False</span><span class="o">)</span>
+<span class="o">-</span><span class="n">u</span><span class="o">,</span> <span class="o">--</span><span class="n">udocker</span>
+<span class="o">-</span><span class="n">w</span><span class="o">,</span> <span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">docker</span>
+<span class="o">-</span><span class="n">t</span><span class="o">,</span> <span class="o">--</span><span class="n">threads</span>
+<span class="o">-</span><span class="n">h</span><span class="o">,</span> <span class="o">--</span><span class="n">help</span> <span class="n">Show</span> <span class="n">usage</span><span class="o">.</span>
+</pre></div>
+
+
+<p>なお、自前のfastq filesからの実行はv1.1で載せようと思っています。また、出力はscaled TPMを採用。(Soneson, C., Love, M. I. &amp; Robinson, M. D. Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences. F1000Research 4, 1521 (2015).)。</p>
+<h2>pipelineの構成</h2>
+<ol>
+<li>fasterq-dump : シーケンスデータの取得</li>
+<li>fastqc : QC</li>
+<li>trim-galore : トリミング</li>
+<li>salmon : RNA定量</li>
+<li>multiqc : QCログの回収、可視化</li>
+<li>tximport : 遺伝子テーブルの生成</li>
+</ol>
+<p>となっています。各ツールの説明は省きますが、今時のツールの選定になっていると思います。</p>
+<h2>idep</h2>
+<p>本ツールは<a href="http://bioinformatics.sdstate.edu/idep/">idep</a>を意識した設計になっています。idepはRNA-seqの解析をinteractiveに行えるプラットフォームで、Differential expressed genes(DEGs)の検出だけではなく、遺伝子、サンプルのクラスタリング、パスウェイ解析、可視化などが行えます。idepについては以下がとても参考になります。</p>
+<p><a href="http://kazumaxneo.hatenablog.com/entry/2018/12/29/153838" target="_blank" rel="noopener noreferrer">macでインフォマティクス : インタラクティブなRNA seq解析webアプリケーション iDEP</a></p>
+<p><img src="https://pythonoum.files.wordpress.com/2019/03/screenshot-from-2019-03-19-23-14-31.png" class="alignnone size-full wp-image-493" alt="Screenshot from 2019-03-19 23-14-31.png" width="820" height="805"></p>
+<h2>githubを用いたチーム開発</h2>
+<p>今回、githubを用いてチーム開発を行いました。githubはエンジニアの間では当たり前のツールで、チームでのソフト開発によく用いられます。bioinformatics界隈でチーム開発を経験できることは意外に少なく、非常にいい経験になりました。<img src="https://pythonoum.files.wordpress.com/2019/03/e382b9e382afe383aae383bce383b3e382b7e383a7e38383e38388-2019-03-16-17.53.58.png" class="alignnone size-full wp-image-490" alt="スクリーンショット 2019-03-16 17.53.58.png" width="1436" height="874"></p>
+<p>雑多にはなりましたが、阪医Python会bioinformaticsチームの成果をアナウンスさせていただきました。完成までには3ヶ月ほどを要し、各人のアイデアや努力が詰まっております。今後もどんどん開発を進めていこうと思います。また、皆様のissue, Pull Requestもお待ちしております。
+Enjoy bioinformatics life!</p>
+<p><img src="https://pythonoum.files.wordpress.com/2019/03/ios-e381aee794bbe5838f.jpg" class="alignnone size-full wp-image-492" alt="iOS の画像.jpg" width="3088" height="2316"></p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="https://twitter.com/oumed_python"><img style="width: 60px; height: 60px;" src="../images/" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="https://twitter.com/oumed_python"><span id="author-name" class="w3-hover-text-dark-grey">菅波 西田 大森 安水 小川 山田 川島 川崎 平岡 廣瀬 柳澤 淡田 中村 依藤</span></a>
+                  <p id="author-story"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=/original_rnaseq_pipeline.html&amp;t=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20%E9%98%AA%E5%8C%BBPython%E4%BC%9A%E7%89%B9%E8%A3%BD%20RNA-seq%20pipeline%20ver.%201.0%20%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=/original_rnaseq_pipeline.html&amp;text=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20%E9%98%AA%E5%8C%BBPython%E4%BC%9A%E7%89%B9%E8%A3%BD%20RNA-seq%20pipeline%20ver.%201.0%20%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=/original_rnaseq_pipeline.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'original_rnaseq_pipeline'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://johndoe.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>
+          &copy;
+          2018&dash;2019          Python会
+        </span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

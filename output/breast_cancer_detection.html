@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Improving Breast Cancer Detection using Symmetry Information with Deep Learning &ndash; 大阪大学医学部Python会</title>
+
+    <!-- Meta -->
+    <meta name="description" content="大阪大学医学部Python会 &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="秋山" />
+    <meta property="article:section" content="deeplearning" />
+    <meta property="article:published_time" content="2019-04-14" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Improving Breast Cancer Detection using Symmetry Information with Deep Learning"/>
+    <meta property="og:description" content="Improving Breast Cancer Detection using Symmetry Information with Deep Learning"/>
+    <meta property="og:site_name" content="大阪大学医学部Python会" />
+    <meta property="og:url" content="/breast_cancer_detection.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Improving Breast Cancer Detection using Symmetry Information with Deep Learning">
+    <meta name="twitter:description" content="Improving Breast Cancer Detection using Symmetry Information with Deep Learning">
+    <meta name="twitter:url" content="/breast_cancer_detection.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/rss+xml" href="http://johndoe.disqus.com/latest.rss" title="大阪大学医学部Python会 Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="" id="header-logo" title="Home">P</a>
+        <nav id="header-menu">
+          <ul>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/atcoder.html">atcoder</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/bioinformatics.html">bioinformatics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="/category/deeplearning.html">deeplearning</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/github.html">github</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/kaggle.html">kaggle</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/paper.html">paper</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/python.html">python</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/shell.html">shell</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/statistics.html">statistics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/tong-ji.html">統計</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Improving Breast Cancer Detection using Symmetry Information with Deep Learning</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2019-04-14T00:00:00+09:00">Sun 14 April 2019</time> in <a href="/category/deeplearning.html" title="All articles in category deeplearning">deeplearning</a></span>
+          </div>
+          <div>
+            <span class="w3-tag w3-light-grey w3-text-green w3-hover-green">
+              <a href="/tag/deeplearning.html" title="All articles with Deeplearning tag">#deeplearning</a>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p><a href="http://arxiv.org/abs/1808.08273">Improving Breast Cancer Detection using Symmetry Information with Deep Learning</a>
+放射線専門医がするようにマンモグラムの左右差を見て乳がんの判定をするCNNモデルを提案
+arxiv 2018.08
+MICCAI (医療画像解析のトップ会議) 2018 採択
+1st authorは放射線科医</p>
+<p>データセット
+マンモグラフィー7k症例, 正常4k, 悪性腫瘍3k
+放射線専門医により腫瘍領域マスクをアノテーションした
+正常乳房は2年フォローして乳がん発症が無かったことを確認
+乳がん乳房は腫瘍領域を生検し悪性腫瘍であるとすべて診断されている
+非公開データ</p>
+<p>前処理
+従来法の画像特徴量を用いた手法で腫瘍候補点を計算 (Fig.1, 赤点)
+候補点を中心に300x300 pixels (6cm x 6cm) を切り出し (Fig.1, 緑枠)
+左右差を比較するために反対側の領域を切り出し (Fig.1, 青枠)
+切り出した領域に腫瘍のマスク領域が含まれていれば悪性腫瘍のラベルを割り当てる</p>
+<p><img class="alignnone size-full wp-image-153" src="https://pythonoum.files.wordpress.com/2018/09/2352f582-60c8-486b-a9ec-c247787510f7.png" alt="2352f582-60c8-486b-a9ec-c247787510f7" width="857" height="567" /></p>
+<p>Fig. 1</p>
+<p>モデル
+baseline model: 標準的なCNN (VGG like)
+symmetry model: 候補領域とその左右対称となる領域の2画像を入力とするCNN</p>
+<p><img class="alignnone size-full wp-image-152" src="https://pythonoum.files.wordpress.com/2018/09/67ac70b1-0afe-478b-b046-a2bacb1450f8.png" alt="67ac70b1-0afe-478b-b046-a2bacb1450f8" width="1487" height="470" /></p>
+<p>結果</p>
+<p><img class="alignnone size-full wp-image-155" src="https://pythonoum.files.wordpress.com/2018/09/e382b9e382afe383aae383bce383b3e382b7e383a7e38383e38388-2018-09-25-17-28-58.png" alt="スクリーンショット 2018-09-25 17.28.58" width="1516" height="296" />
+AUCがわずかに改善 (有意差なし)</p>
+<p><img class="alignnone size-full wp-image-151" src="https://pythonoum.files.wordpress.com/2018/09/6aaac880-7ac2-4425-8be3-4d78367088e2.png" alt="6aaac880-7ac2-4425-8be3-4d78367088e2" width="671" height="484" /></p>
+<p>Fig.3a
+FROC曲線(偽陽性率を横軸, 感受性を縦軸) で比較すると有意に提案手法がよかった</p>
+<p>考察</p>
+<p><img class="alignnone size-full wp-image-154" src="https://pythonoum.files.wordpress.com/2018/09/ef07a0c8-ed1e-4127-b747-f9103aa6095e.png" alt="ef07a0c8-ed1e-4127-b747-f9103aa6095e" width="960" height="360" /></p>
+<p>Fig. 4
+a) baseline modelが正常と誤判定し, symmetry modelが正しく悪性腫瘍と判定した画像の例 (上下の画像が同じ患者の左右の乳房)
+b) baseline modelが悪性腫瘍と誤判定し, symmetry modelが正しく正常と判定した画像の例 (上下の画像が同じ患者の左右の乳房)
+暗めの悪性腫瘍, 明るい正常像は誤判定しやすいがsymmetry modelは左右の比較によって正しく判定していることが読み取れる</p>
+<p>読んだ感想
+性能差がちょっと微妙だけど考察の納得感はある</p>
+<p>&nbsp;</p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="https://twitter.com/oumed_python"><img style="width: 60px; height: 60px;" src="../images/" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="https://twitter.com/oumed_python"><span id="author-name" class="w3-hover-text-dark-grey">秋山</span></a>
+                  <p id="author-story"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=/breast_cancer_detection.html&amp;t=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Improving%20Breast%20Cancer%20Detection%20using%20Symmetry%20Information%20with%20Deep%20Learning" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=/breast_cancer_detection.html&amp;text=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Improving%20Breast%20Cancer%20Detection%20using%20Symmetry%20Information%20with%20Deep%20Learning" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=/breast_cancer_detection.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'breast_cancer_detection'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://johndoe.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>
+          &copy;
+          2018&dash;2019          Python会
+        </span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Pythonの変数と代入について &ndash; 大阪大学医学部Python会</title>
+
+    <!-- Meta -->
+    <meta name="description" content="大阪大学医学部Python会 &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="小川" />
+    <meta property="article:section" content="python" />
+    <meta property="article:published_time" content="2019-04-14" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Pythonの変数と代入について"/>
+    <meta property="og:description" content="Pythonの変数と代入について"/>
+    <meta property="og:site_name" content="大阪大学医学部Python会" />
+    <meta property="og:url" content="/python_value.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Pythonの変数と代入について">
+    <meta name="twitter:description" content="Pythonの変数と代入について">
+    <meta name="twitter:url" content="/python_value.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/rss+xml" href="http://johndoe.disqus.com/latest.rss" title="大阪大学医学部Python会 Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="" id="header-logo" title="Home">P</a>
+        <nav id="header-menu">
+          <ul>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/atcoder.html">atcoder</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/bioinformatics.html">bioinformatics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/deeplearning.html">deeplearning</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/github.html">github</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/kaggle.html">kaggle</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/paper.html">paper</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="/category/python.html">python</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/shell.html">shell</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/statistics.html">statistics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/tong-ji.html">統計</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Pythonの変数と代入について</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2019-04-14T00:00:00+09:00">Sun 14 April 2019</time> in <a href="/category/python.html" title="All articles in category python">python</a></span>
+          </div>
+          <div>
+            <span class="w3-tag w3-light-grey w3-text-green w3-hover-green">
+              <a href="/tag/python.html" title="All articles with Python tag">#python</a>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p>Pythonの変数、ふだん何気なく使っていますが、やっていることは実は結構複雑です。主にC/C++と対比しつつ簡単にまとめてみます。</p>
+<p>実際のところ、よく知らなくてもあまり影響がない場合が殆どです。が、複雑な操作を行ったり何か変数の挙動が不審な場合などは、思い出してみるのもよさそうです。</p>
+<h2>変数は参照である</h2>
+<p>一言でいえば表題の通り。
+Pythonでの<strong>変数への代入とは、変数の参照するメモリ（インスタンス）を切り替えること</strong>であり、<strong>メモリの内容を書き換えることではない</strong>。これが多くの言語（C/C++など）と大きく違うところです。</p>
+<h2>変数の代入(1)</h2>
+<p>例えばこんなコード。</p>
+<div class="highlight"><pre><span></span><span class="c1"># Python3</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 1を出力</span>
+</pre></div>
+
+
+<p>C++で書き換えると、</p>
+<div class="highlight"><pre><span></span><span class="c1">// C++</span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// 1を出力</span>
+</pre></div>
+
+
+<p>なのか？？
+（#include\とかint main(void){...}とかは全部省略。）  </p>
+<p><strong>実は違う</strong>のです。<br>
+C++の方では<code>a</code>で表されるメモリ領域を一つ確保し、そこにまず<code>0</code>をセット、次に<code>1</code>を、<strong>同じメモリ領域を書き換えて</strong>セットしています。  </p>
+<p>Pythonの方はそうではありません。まず<code>0</code>の値を持つメモリ領域を確保し、<strong>変数<code>a</code>がそこを指すように</strong>します。次に<code>1</code>の値を持つ<strong>別のメモリ領域を確保</strong>し、変数<code>a</code>がそこを指すように切り替えます。</p>
+<p>C++で無理矢理それっぽいものを書くと、</p>
+<div class="highlight"><pre><span></span><span class="c1">// C++</span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// 1を出力</span>
+</pre></div>
+
+
+<p>のようになります。<br>
+（C++に参照定数はあるが参照変数がないため、ポインタで書いた。）</p>
+<p>実はこのC++コード、2行目で確保した<code>int(0)</code>メモリを3行目の<code>int(1)</code>代入時に<strong>放棄</strong>していて、<strong>メモリリーク</strong>が起こっています。C++では、これを処理（メモリ解放）するためのコードを本当は書き加えないといけません。<br>
+しかし、Pythonではそれを<strong>ガベージコレクタ</strong>という仕組みが<strong>勝手に代行</strong>してくれます。逆にこれがないと、Pythonではメモリリークが頻繁に起こって大変なことになります。</p>
+<h2>変数の代入(2)</h2>
+<p>問題です。次のコードは何を出力するでしょうか。</p>
+<div class="highlight"><pre><span></span><span class="c1"># Python3</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># 何が出る？</span>
+</pre></div>
+
+
+<p><strong>答えは「<code>0</code>」</strong>です。<br>
+C++で書いた似たようなコード、</p>
+<div class="highlight"><pre><span></span><span class="c1">// C++</span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// 出力は「0」</span>
+</pre></div>
+
+
+<p>も結果は同じなのですが、内部動作は全く異なります。<strong>Pythonでの変数代入は参照の切り替え</strong>であることがやはりポイントです。</p>
+<p>一方で、過程は違えどPythonもC++も結果は変わりません。<strong>気にしなくても大抵はうまくいく</strong>、というのも大事なところです(笑)。</p>
+<h2>関数引数はすべて参照渡し</h2>
+<p>「変数が全て参照」であることから、関数引数もまた<strong>参照渡し</strong>となります。C/C++のデフォルトである<strong>値渡し</strong>と異なり、メモリのコピーなどは行われません。</p>
+<p>では再び問題。次のコードは何を出力するでしょう？</p>
+<div class="highlight"><pre><span></span><span class="c1"># Python3</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1"># ここまで。このprint()は何を出力するか？0？1？</span>
+</pre></div>
+
+
+<p>「参照渡し」を知っている人ほど、「1」と答えたくなりそうですが、、  </p>
+<p><strong>答えは「0」</strong>です。何故か？<br>
+<code>func(a)</code>を呼び出した時点では、<strong><code>a</code>と<code>x</code>の指すメモリは同じ<code>0</code></strong>ですが、<code>x = 1</code>で<code>x</code>の指すメモリは<strong>別に確保された<code>1</code></strong>に切り替わります。<strong><code>a</code>および、<code>a</code>の指す<code>0</code>には何の変化も無い</strong>のです。このあたりは前項の問題とほとんど同じです。</p>
+<h2>「変数への代入」ではない場合</h2>
+<p>例えばこんなとき。</p>
+<div class="highlight"><pre><span></span><span class="c1"># Python3</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># 出力は[2,1]</span>
+</pre></div>
+
+
+<p>3行目で<code>b</code>と<code>a</code>は同じリストを参照するようになります。4行目では、そのリスト（これも参照の列みたいなもの）の最初の成分を、<code>0</code>でなく<code>2</code>のメモリを参照するように切り替えます。全体として見れば<code>a</code>と<code>b</code>が同じリストを参照していることに変わりはないので、この変更は<code>b</code>にも反映されています。</p>
+<p>これは、前項の関数引数で若干の問題を引き起こします。<br>
+次のコード、前項で見たものにそっくりですが、、、</p>
+<div class="highlight"><pre><span></span><span class="c1"># Python3</span>
+<span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">func2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+
+<p><strong>前項とは違い、この出力は「<code>1</code>」</strong>です。<br>
+関数が呼び出されると<strong><code>a</code>と<code>x</code>の指すリストは一貫して同じ</strong>で、その一部が書き換えられるからです。これは<strong>リストでなくnumpy配列の場合もほぼ同じ</strong>です。</p>
+<h2>まとめ</h2>
+<p>以上見てきたように、Pythonの変数は全て参照、関数引数は全て参照渡しです。これらが組み合わさると、結果的に全てを値渡しにした場合（C/C++）と殆ど違いが見えなくなり、あまり意識することなくプログラムを書けるようになっています。</p>
+<p>しかし、リストや配列（や、もっと複雑なクラスオブジェクトなど）のように部分的に書き換え可能なものを扱う場合などには、この違いはかなり重要になってきます。怪しいと思ったら、各変数が何を参照しているか、互いに同じか違うかなどを、その都度考えてみてください。</p>
+<p>ひとまず今回はここまで。おしまい。
+※画像は<a href="https://www.python.org/">公式</a>のものです。</p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="https://twitter.com/oumed_python"><img style="width: 60px; height: 60px;" src="../images/" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="https://twitter.com/oumed_python"><span id="author-name" class="w3-hover-text-dark-grey">小川</span></a>
+                  <p id="author-story"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=/python_value.html&amp;t=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Python%E3%81%AE%E5%A4%89%E6%95%B0%E3%81%A8%E4%BB%A3%E5%85%A5%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=/python_value.html&amp;text=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Python%E3%81%AE%E5%A4%89%E6%95%B0%E3%81%A8%E4%BB%A3%E5%85%A5%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=/python_value.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'python_value'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://johndoe.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>
+          &copy;
+          2018&dash;2019          Python会
+        </span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

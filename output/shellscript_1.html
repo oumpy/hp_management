@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>シェルスクリプト入門(1) &ndash; 大阪大学医学部Python会</title>
+
+    <!-- Meta -->
+    <meta name="description" content="大阪大学医学部Python会 &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="水野" />
+    <meta property="article:section" content="shell" />
+    <meta property="article:published_time" content="2019-04-14" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="シェルスクリプト入門(1)"/>
+    <meta property="og:description" content="シェルスクリプト入門(1)"/>
+    <meta property="og:site_name" content="大阪大学医学部Python会" />
+    <meta property="og:url" content="/shellscript_1.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="シェルスクリプト入門(1)">
+    <meta name="twitter:description" content="シェルスクリプト入門(1)">
+    <meta name="twitter:url" content="/shellscript_1.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/rss+xml" href="http://johndoe.disqus.com/latest.rss" title="大阪大学医学部Python会 Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="" id="header-logo" title="Home">P</a>
+        <nav id="header-menu">
+          <ul>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/atcoder.html">atcoder</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/bioinformatics.html">bioinformatics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/deeplearning.html">deeplearning</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/github.html">github</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/kaggle.html">kaggle</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/paper.html">paper</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/python.html">python</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="/category/shell.html">shell</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/statistics.html">statistics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/tong-ji.html">統計</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>シェルスクリプト入門(1)</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2019-04-14T00:00:00+09:00">Sun 14 April 2019</time> in <a href="/category/shell.html" title="All articles in category shell">shell</a></span>
+          </div>
+          <div>
+            <span class="w3-tag w3-light-grey w3-text-green w3-hover-green">
+              <a href="/tag/shell.html" title="All articles with Shell tag">#shell</a>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p>python会なのにpythonまだ触ったことありません。勉強せねば。</p>
+<p>データ整形の流れって、教わる機会なくないですか？
+つまらないものですが、僕のやり方を紹介してみます。
+始めたばかりの人は参考にしてください。
+経験者の方、変なとこあったらどしどし突っ込みください！
+そして皆さんの自己流も教えてもらえると嬉しいです。</p>
+<h2>1) scriptに起こす前</h2>
+<p>shell scriptに書き起こす前に、プロンプト画面（Mac,Ubuntuならterminal）でテストします。
+僕はいつもcatでファイルにつないで、パイプの後に試したいコマンドを打ちます。
+その後にパイプでheadにつないで、頭だけ出力してみます。たいていファイル重いので。
+圧縮ファイルの時は、解凍する前にzcatでつないで試します。</p>
+<div class="highlight"><pre><span></span>cat hogehoge.txt | sed 1d（試したいコマンド）| head
+zcat hoge.gz | cut –f1（試したいコマンド）| head
+</pre></div>
+
+
+<p>一行が長くて確認しづらい！と思ったら、headからless –Sにつなぎます。
+別画面で折り返しなしで見ることができます。</p>
+<div class="highlight"><pre><span></span>cat hogehoge | sed 1d（試したいコマンド）| head | less -S
+</pre></div>
+
+
+<h2>2) scriptを書く</h2>
+<p>うまくいきそうで、だいたい流れが思い描けたらshell scriptに書き起こします。
+結局他のファイルも同じ処理をするはめになり、scriptに残しておけば・・と後悔することが多いからです。</p>
+<div class="highlight"><pre><span></span>touch test.sh # ファイルつくって、
+emacs test.sh # emacsで開く。
+</pre></div>
+
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>#!/bin/bash # おまじない。
+$1=filename # ファイルはいつも外から入れれるようにしてます。
+rm –r ./folder # 一発で上手くいくことはないので、やり直しやすいように消去コマンド。
+mkdir ./folder # 散らからないように専用フォルダを作成。
+dir1=&quot;./folder&quot; # フォルダ名をいつでも変えやすいようにパスを変数にいれる。
+cat &quot;$filename&quot; | sed 1d &gt; &quot;$dir1&quot;/hogehoge2.txt #目的のコマンドで処理して保存。
+</pre></div>
+</td></tr></table>
+
+<h2>3) 実行</h2>
+<p>書けたら、処理したいファイルを渡して実行してみます。
+&amp;はバックグラウンド実行です。</p>
+<div class="highlight"><pre><span></span>bash ./test.sh ./hogehoge.txt &amp;
+</pre></div>
+
+
+<p>時間がかかりそうで家に帰りたいときは、nohupでサーバーと切れても大丈夫なように。
+screenを使うこともあります。</p>
+<div class="highlight"><pre><span></span>nohup bash ./test.sh ./hogehoge.txt &amp;
+</pre></div>
+
+
+<p>4)　修正</p>
+<p>scriptを修正するときは、元の文は#をつけてコメントアウトしときます。
+そうすれば、後でやり直しやすいです。</p>
+<div class="highlight"><pre><span></span># cat &quot;$filename&quot; | sed 1d &gt; &quot;$dir1&quot;/hogehoge2.txt # コメントアウトして置いておく。
+cat &quot;$filename&quot; | grep &quot;blahblah&quot; &gt; &quot;$dir1&quot;/hogehoge2.txt # 新しい文。
+</pre></div>
+
+
+<p>どこでバグってるか分からない時は、とりあえずechoで変数を出してみたりしてチェックしてます。</p>
+<h2>5) 応用編</h2>
+<p>あとはひたすらコマンドを駆使して書き上げていきます。
+以下の基本コマンドでだいたいのことはできるかと。
+特にawkはたくさんのことができます。joinも重宝します。</p>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cat</td>
+<td>ファイルを縦につなぐ</td>
+</tr>
+<tr>
+<td>paste</td>
+<td>ファイルを横につなぐ</td>
+</tr>
+<tr>
+<td>sed</td>
+<td>指定行抜き出すor削除or文字置換</td>
+</tr>
+<tr>
+<td>cut</td>
+<td>指定列抜き出すor削除</td>
+</tr>
+<tr>
+<td>awk</td>
+<td>抜き出し方をいろいろカスタマイズ</td>
+</tr>
+<tr>
+<td>tr</td>
+<td>文字置換</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>整列</td>
+</tr>
+<tr>
+<td>uniq</td>
+<td>重複行を削除or抜き出す</td>
+</tr>
+<tr>
+<td>join</td>
+<td>2つのファイルを同じ項目で合わせる</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>特定の文字が入った行を出す</td>
+</tr>
+</tbody>
+</table>
+<p>各コマンドのオプションの使い方が重要ですが、長くなってきたので詳細はまたの機会に。</p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="https://twitter.com/oumed_python"><img style="width: 60px; height: 60px;" src="../images/" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="https://twitter.com/oumed_python"><span id="author-name" class="w3-hover-text-dark-grey">水野</span></a>
+                  <p id="author-story"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=/shellscript_1.html&amp;t=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%85%A5%E9%96%80%281%29" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=/shellscript_1.html&amp;text=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%85%A5%E9%96%80%281%29" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=/shellscript_1.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'shellscript_1'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://johndoe.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>
+          &copy;
+          2018&dash;2019          Python会
+        </span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

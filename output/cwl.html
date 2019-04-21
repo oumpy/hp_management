@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Common Workflow Language入門 &ndash; 大阪大学医学部Python会</title>
+
+    <!-- Meta -->
+    <meta name="description" content="大阪大学医学部Python会 &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="安水" />
+    <meta property="article:section" content="bioinformatics" />
+    <meta property="article:published_time" content="2019-04-14" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Common Workflow Language入門"/>
+    <meta property="og:description" content="Common Workflow Language入門"/>
+    <meta property="og:site_name" content="大阪大学医学部Python会" />
+    <meta property="og:url" content="/cwl.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Common Workflow Language入門">
+    <meta name="twitter:description" content="Common Workflow Language入門">
+    <meta name="twitter:url" content="/cwl.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/rss+xml" href="http://johndoe.disqus.com/latest.rss" title="大阪大学医学部Python会 Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="" id="header-logo" title="Home">P</a>
+        <nav id="header-menu">
+          <ul>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/atcoder.html">atcoder</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="/category/bioinformatics.html">bioinformatics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/deeplearning.html">deeplearning</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/github.html">github</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/kaggle.html">kaggle</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/paper.html">paper</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/python.html">python</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/shell.html">shell</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/statistics.html">statistics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/tong-ji.html">統計</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Common Workflow Language入門</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2019-04-14T00:00:00+09:00">Sun 14 April 2019</time> in <a href="/category/bioinformatics.html" title="All articles in category bioinformatics">bioinformatics</a></span>
+          </div>
+          <div>
+            <span class="w3-tag w3-light-grey w3-text-green w3-hover-green">
+              <a href="/tag/bioinformatics.html" title="All articles with Bioinformatics tag">#bioinformatics</a>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p>先日<a href="https://github.com/manabuishii/workflow-meetup/wiki/20181126">workflow-meetup</a>にお誘いを頂いて参加してきました。そこでThe Common Workflow Language(CWL)というものを習ったので忘れないうちに<strong>医学部生にもわかりやすく</strong>まとめます。</p>
+<h2>CWLって？</h2>
+<p><img alt="cwl" src="https://github.com/common-workflow-language/cwl-website/blob/master/site/CWL-Logo-Header.png?raw=true"></p>
+<p>一言で言うと、bioinformatics処理の自動化です。どういうことかもうちょっと詳しく見てみましょう。</p>
+<p>&gt;ソフトウェアを組み合わせて構成される一連の作業手順 (ワークフロー) を記述するための仕組みや言語、GUI ソフトウェアは既に多く存在します。しかし、それらは特定の実行環境 (ハードウェア、ソフトウェア) に依存したものであり、異なる環境の間でワークフローを共有、再実行することは困難です。この問題を解決するために、異なるワークフロー実行ソフトウェア (実行エンジン) の間で共通してインポート/エクスポートできるフォーマットを目指して、Common Workflow Language (CWL) の開発が始まりました。</p>
+<p><a href="https://github.com/pitagora-galaxy/cwl/wiki/CWL-Start-Guide-JP">素晴らしい日本語ドキュメント</a>から取ってきました。要はbioinformaticsなど、複数のソフトの連携が必要な処理を自動化、共有がスムーズになるような仕組みです。ローカルでテストして、サーバーやクラウドに持っていくのも簡単です。最近はSangerやBroad Institute(ハーバードとMITの共同研究施設)などでも使われているとのことです。</p>
+<p>まずは<strong><a href="https://www.youtube.com/embed/86eY8xs-Vo8?cc_load_policy=1&amp;cc_lang_pref=ja&amp;autoplay=1">60秒でわかるCWL - youtube</a></strong>をみてください。</p>
+<p><code>.cwl</code>で記述できるのはtoolとworkflowの二種類です。toolは例えばSTARやkallistoなど一つのツールを一つのcwlファイルに記述します。workflowはそれらのtoolをbindして実際のworkflowにします。更に、workflowをnestして新しいworkflowを作ったりも出来ます。</p>
+<h2>始め方</h2>
+<ol>
+<li><a href="https://github.com/pitagora-galaxy/cwl/wiki/CWL-Start-Guide-JP">素晴らしい日本語ドキュメント</a>を読みましょう。10分もあれば読めると思います。</li>
+<li><a href="https://docs.google.com/presentation/d/13K6BKQoimiaOIFSnComw8in3HlCxEm820OASP8_jnDI/edit?usp=sharing">cwl-intro-gui-workshop スライド</a>をやってみましょう。1時間ほどです。</li>
+<li><a href="http://www.commonwl.org/user_guide/">user guide</a>をやりましょう。3時間ほどで終わるように設計されています。(理論値)</li>
+</ol>
+<h2>CWLのここがすごい</h2>
+<p>入門は各サイトにお任せするとして、今回は私がCWLをさわってみてすごいと思ったところをまとめてみます。素人目線です。</p>
+<h3>rabix composerのGUIがきれいすぎる</h3>
+<p><img alt="rabix gif" src="https://github.com/rabix/composer/raw/master/doc/images/workflows.gif"></p>
+<p>画像はbioinformaticsでお馴染みのSTARをrabix composerで操っているところです。<a href="http://rabix.io/">rabix composer</a>を使えば、GUIで直感的にCWLが触れます。更に出来たworkflowをクラウドやサーバーにそのまま持っていってCLI越しに使うことが出来ます。</p>
+<h3>dockerをベースにして完全にreproducibleにできる</h3>
+<p>いかにも今どきなのですが、toolの記述はすべてdockerのコンテナを使って記述することが出来ます。つまり、環境が変わってインストールし直す手間がまったく無いということです。すばらしいですね。さらに<code>--user-space-docker-cmd=udocker</code>というオプション一つで、udockerというUser権限しか無い環境でも使えるdockerを使って動かすことができるようです。</p>
+<h3>すでにいろいろなソフトのcwlが出来ている</h3>
+<p>Communityで管理されている<a href="https://github.com/common-workflow-language/workflows">CWL Tools &amp; Workflows</a>があります。ほかにもDBCLS太田さんの管理されている<a href="https://github.com/pitagora-galaxy/cwl">Pitagora Workflows in CWL</a>もいろいろ揃っています。</p>
+<h3>cwltoolの安定感がすごい</h3>
+<p>出来たcwlファイルをCLI環境で使うにはcwltoolを使います。感動したのはヘルプが自動で生成されるところ。しかも、pythonで書かれていてpythonに組み込むことも出来ます。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cwltool.factory</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="n">cwltool</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">Factory</span><span class="p">()</span>
+
+<span class="n">echo</span> <span class="o">=</span> <span class="n">fac</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;echo.cwl&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">echo</span><span class="p">(</span><span class="n">inp</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+
+<span class="c1"># result[&quot;out&quot;] == &quot;foo&quot;</span>
+</pre></div>
+
+
+<h3>日本人contributerが多い</h3>
+<p>困ったときに助けてくれるやさしいcontributerの方々が日本に何人かいます。また、日本語ドキュメントも多くてとても助かります。更に、開発者の<a href="https://twitter.com/biocrusoe">Michael R. Crusoe</a>は来日しており、<a href="https://twitter.com/hashtag/CommonWLjp?src=hash">#CommonWLjp</a>などでCWLの輪を広げています。</p>
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">On my way to the 11th <a href="https://twitter.com/NBDC_info?ref_src=twsrc%5Etfw">@NBDC_info</a> / <a href="https://twitter.com/dbcls?ref_src=twsrc%5Etfw">@dbcls</a> <a href="https://twitter.com/hashtag/biohack18?src=hash&amp;ref_src=twsrc%5Etfw">#biohack18</a> (with a week long stop in Tokyo for <a href="https://twitter.com/hashtag/usegalaxyjp?src=hash&amp;ref_src=twsrc%5Etfw">#usegalaxyjp</a> meeting and other <a href="https://twitter.com/hashtag/CommonWL?src=hash&amp;ref_src=twsrc%5Etfw">#CommonWL</a> presentations and a bilingual workshop) <a href="https://t.co/W4gsO9bnA1">pic.twitter.com/W4gsO9bnA1</a></p>&mdash; Michael R. Crusoe (@biocrusoe) <a href="https://twitter.com/biocrusoe/status/1069104245100748801?ref_src=twsrc%5Etfw">2018年12月2日</a></blockquote>
+
+<p><a href="https://platform.twitter.com/widgets.js">https://platform.twitter.com/widgets.js</a></p>
+<h2>kallistoをCWL + Rabix Composerで試してみる</h2>
+<p>まずは実際の作業工程を見てみましょう。</p>
+<p><img alt="gif" src="https://github.com/yyoshiaki/cwl_user_guide/blob/master/kallisto/kallisto.gif?raw=true"></p>
+<p>ちゃんとkallistoのoutputが生成されていますね！データは<a href="https://github.com/yyoshiaki/cwl_user_guide/tree/master/kallisto">github</a>にまとめておきました。テスト用のシーケンスデータも付けてあるので、クローンして遊んでみてください。<code>kallisto-index.cwl</code>と<code>kallisto-quant.cwl</code>は公式の<a href="https://github.com/common-workflow-language/workflows">CWL Tools &amp; Workflows</a>から取ってきました。もちろんこれらはdocker imageを使っています。新しいworkflowを作ってみましょう。動画のように直感的にできると思います。</p>
+<p>今回、errorが出て進まなかった場所があったのですが、石井さん、西田さんの応援や、cwlの作者のMichaelやRabixの作者のKaushikがerrorに対処してくれました。<a href="https://github.com/rabix/composer/issues/418#issuecomment-444257454">issue : kallisto workflow is incompatible with Rabix composer #418</a>この対応のフレンドリーさはbioinformaticsならではですね。</p>
+<h2>workflow業界のあれこれ</h2>
+<p>ここで一旦workflowについて広く見てみましょう。ハーバードを始めとする海外の研究所ではサーバーを研究所ごとに管理するのに変えて、クラウドの利用が盛んになってきています。そういう時代感もあり、workflowやコンテナなど、reproducibleな環境の整備というのはますます重要視されてきています。workflow業界ではcwlの他に古き良き<a href="http://wiki.pitagora-galaxy.org/wiki/index.php/Workflows">Galaxy</a>、Broad Instituteが開発している<a href="https://software.broadinstitute.org/wdl/">WDL</a>や<a href="https://www.nextflow.io/">nextflow</a>、Pythonで書かれている<a href="https://snakemake.readthedocs.io/en/stable/">Snakemake</a>など、さまざまな選択肢があります。どのworkflowが好きか、Cambridgeの<a href="https://twitter.com/@AlbertVilella">@AlbertVilella</a>が世界中のbioinformaticianにアンケートをとっていました。</p>
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">90 responses in <a href="https://t.co/hbaY7ShocR">https://t.co/hbaY7ShocR</a> <a href="https://twitter.com/nextflowio?ref_src=twsrc%5Etfw">@nextflowio</a> <a href="https://twitter.com/SBGenomics?ref_src=twsrc%5Etfw">@SBGenomics</a> <a href="https://twitter.com/commonwl?ref_src=twsrc%5Etfw">@commonwl</a> Snamemake <a href="https://t.co/1kc1DaXdBa">pic.twitter.com/1kc1DaXdBa</a></p>&mdash; Albert Vilella (@AlbertVilella) <a href="https://twitter.com/AlbertVilella/status/1070219898306084865?ref_src=twsrc%5Etfw">2018年12月5日</a></blockquote>
+
+<p><a href="https://platform.twitter.com/widgets.js">https://platform.twitter.com/widgets.js</a></p>
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">No votes so far for <a href="https://twitter.com/ensembl?ref_src=twsrc%5Etfw">@ensembl</a> Hive, Apache Taverna or <a href="https://twitter.com/arvados?ref_src=twsrc%5Etfw">@arvados</a> , even though we know they have plenty of users <a href="https://t.co/Db2el8vPDt">https://t.co/Db2el8vPDt</a> <a href="https://twitter.com/hashtag/Bioinformatics?src=hash&amp;ref_src=twsrc%5Etfw">#Bioinformatics</a> <a href="https://twitter.com/hashtag/Workflows?src=hash&amp;ref_src=twsrc%5Etfw">#Workflows</a> <a href="https://t.co/hbaY7ShocR">https://t.co/hbaY7ShocR</a></p>&mdash; Albert Vilella (@AlbertVilella) <a href="https://twitter.com/AlbertVilella/status/1070579264192462849?ref_src=twsrc%5Etfw">2018年12月6日</a></blockquote>
+
+<p><a href="https://platform.twitter.com/widgets.js">https://platform.twitter.com/widgets.js</a></p>
+<p>どうやら一番twitter界隈のbioinformaticianはnextflowが好きなようです。ただ、下のspreadsheetを見ると、githubではGalaxy,bcbioについで三番目に盛んなようです。</p>
+<p>他にも、cwlやnextflowを取り上げたgenome解析の論文も出ていたりします。</p>
+<p>&gt;<a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2446-1">Baichoo, S. et al. Developing reproducible bioinformatics analysis workflows for heterogeneous computing environments to support African genomics. BMC Bioinformatics 19, 457 (2018).</a></p>
+<h2>結論　みんなでCWLを使おう！</h2>
+<p>医学部生にできるだけわかりやすく書いてみました。みんなでcwlを使ってどんどん解析を楽にしましょう！</p>
+<p>国試も自動化できたらなあ。。。</p>
+<h2>参考資料</h2>
+<ul>
+<li><a href="https://www.commonwl.org/">CWL公式ページ</a> : リンク集がついている。</li>
+<li><a href="https://docs.google.com/presentation/d/13K6BKQoimiaOIFSnComw8in3HlCxEm820OASP8_jnDI/edit?usp=sharing">cwl-intro-gui-workshop スライド</a> : 二階堂研石井さんのスライド。わかりやすいです。</li>
+</ul>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="https://twitter.com/oumed_python"><img style="width: 60px; height: 60px;" src="../images/" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="https://twitter.com/oumed_python"><span id="author-name" class="w3-hover-text-dark-grey">安水</span></a>
+                  <p id="author-story"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=/cwl.html&amp;t=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Common%20Workflow%20Language%E5%85%A5%E9%96%80" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=/cwl.html&amp;text=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Common%20Workflow%20Language%E5%85%A5%E9%96%80" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=/cwl.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'cwl'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://johndoe.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>
+          &copy;
+          2018&dash;2019          Python会
+        </span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

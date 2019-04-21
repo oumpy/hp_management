@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>LinuxでのBioinformatics環境構築_01 &ndash; 大阪大学医学部Python会</title>
+
+    <!-- Meta -->
+    <meta name="description" content="大阪大学医学部Python会 &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="平岡" />
+    <meta property="article:section" content="bioinformatics" />
+    <meta property="article:published_time" content="2019-04-14" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="LinuxでのBioinformatics環境構築_01"/>
+    <meta property="og:description" content="LinuxでのBioinformatics環境構築_01"/>
+    <meta property="og:site_name" content="大阪大学医学部Python会" />
+    <meta property="og:url" content="/environment_bioinformatics.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="LinuxでのBioinformatics環境構築_01">
+    <meta name="twitter:description" content="LinuxでのBioinformatics環境構築_01">
+    <meta name="twitter:url" content="/environment_bioinformatics.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/rss+xml" href="http://johndoe.disqus.com/latest.rss" title="大阪大学医学部Python会 Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="" id="header-logo" title="Home">P</a>
+        <nav id="header-menu">
+          <ul>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/atcoder.html">atcoder</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="/category/bioinformatics.html">bioinformatics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/deeplearning.html">deeplearning</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/github.html">github</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/kaggle.html">kaggle</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/paper.html">paper</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/python.html">python</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/shell.html">shell</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/statistics.html">statistics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/tong-ji.html">統計</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>LinuxでのBioinformatics環境構築_01</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2019-04-14T00:00:00+09:00">Sun 14 April 2019</time> in <a href="/category/bioinformatics.html" title="All articles in category bioinformatics">bioinformatics</a></span>
+          </div>
+          <div>
+            <span class="w3-tag w3-light-grey w3-text-green w3-hover-green">
+              <a href="/tag/bioinformatics.html" title="All articles with Bioinformatics tag">#bioinformatics</a>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p>お疲れ様です。ただいま、私のMacbook Proが入院しておりまして、古いWindows10をUbuntuとデュアルブートして作業しております。下級生でもWindowsしか持っていない、でもBioinformaticsに関心があるという人が、スムーズに環境構築できるようにと今回の記事を書きます。なお、前提として、Ubuntuのインストールが完了しているものとします。なお、筆者のインストールしたUbuntuは18.04.1 LTSです。</p>
+<p>今回は<strong>＜<em>Kallisto</em>を用いた<em>RNA-seq</em>解析パイプライン＞</strong>で使う、RNA-seq系のツールのインストールを行っていきますが、順次別の解析目的のツールインストールも紹介したいと考えております。今回の環境構築で、<a href="https://pythonoum.wordpress.com/2018/10/16/kallisto%E3%82%92%E7%94%A8%E3%81%84%E3%81%9Frna-seq%E8%A7%A3%E6%9E%90%E3%83%91%E3%82%A4%E3%83%97%E3%83%A9%E3%82%A4%E3%83%B3/">Kallistoを用いたRNA-seq解析パイプライン</a>に進むことができます。</p>
+<p><strong>Ubuntuではpython2.7がデフォルト</strong>となっているので、python3をダウンロードし、デフォルトに設定しよう。</p>
+<p>[code lang="text"]</p>
+<h1>check the version of python.</h1>
+<p>$ python --version</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Python 2.7.15rc1
+[/code]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><a href="https://www.anaconda.com/download/#macos">Anaconda</a>のインストーラーをダウンロードします。</p>
+<div class="highlight"><pre><span></span>$ bash ~/Downloads/Anaconda3-4.1.0-Linux-x86_64.sh
+$ <span class="nb">echo</span> <span class="s1">&#39;export PATH=/home/user/anaconda3/bin:$PATH&#39;</span> <span class="p">&amp;</span>gt<span class="p">;&amp;</span>gt<span class="p">;</span> ~/.bashrc
+$ conda -V
+</pre></div>
+
+
+<p>[code lang="text"]
+$ python --version</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Python 3.6.6+
+[/code]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>バイオインフォマティクスの分野では解析のために様々なツールを利用しますが、インストールのたびにパスを通すなどの作業をしていると大変煩雑ですし、バージョン管理もしにくくなります。パッケージマネージャーを使ってツールを一元管理するのが賢明です。
+Homebrewなどのパッケージ管理システムは有名ですが、対応していないツールの多く、現状はBiocondaというパッケージマネージャーがおすすめです。</p>
+<p>[code lang="text"]</p>
+<h1>Download a Miniconda package for linux python3</h1>
+<p>$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ bash Miniconda3-latest-Linux-x86_64.sh
+[/code]</p>
+<p>EnterやYesを入力していくとインストールが終了し、パスも通った状態になります。</p>
+<p>[code lang="text"]</p>
+<h1>condaコマンドが正常に動作していれば成功です。（terminalを開き直しましょう。）</h1>
+<p>$ conda -h
+[/code]</p>
+<p>biocondaのチャンネルを追加。biocondaチャンネルが最上位に来るように設定。</p>
+<p>[code lang="text"]
+$ conda config --add channels conda-forge
+$ conda config --add channels defaults
+$ conda config --add channels r
+$ conda config --add channels bioconda
+[/code]</p>
+<p>それでは早速ツールをインストールしていきましょう。基本 conda install ???でインストールが完了し正常に動作していきます。非常に便利ですね。</p>
+<p>[code lang="text"]
+$ conda install parallel-fastq-dump
+$ conda install fastqc
+$ conda install multiqc
+$ conda install trimmomatic
+$ conda install kallisto
+[/code]</p>
+<p>参照：http://imamachi-n.hatenablog.com/entry/2017/01/14/212719</p>
+<p><strong><em>R</em>ツールのインストール</strong>
+Rのコンソールを開いて、Rのツールをインストールしていきます。
+Tximportのインストール</p>
+<p>[code lang="text"]</p>
+<blockquote>
+<p>source("https://bioconductor.org/biocLite.R")
+biocLite("tximport")
+[/code]</p>
+</blockquote>
+<p>DESeq2のインストール</p>
+<p>[code lang="text"]</p>
+<blockquote>
+<p>source("https://bioconductor.org/biocLite.R")
+biocLite("DESeq2")
+[/code]</p>
+</blockquote>
+<p>参照：
+https://bioconductor.org/packages/release/bioc/html/tximport.html
+https://bioconductor.org/packages/release/bioc/html/DESeq2.html</p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="https://twitter.com/oumed_python"><img style="width: 60px; height: 60px;" src="../images/" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="https://twitter.com/oumed_python"><span id="author-name" class="w3-hover-text-dark-grey">平岡</span></a>
+                  <p id="author-story"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=/environment_bioinformatics.html&amp;t=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Linux%E3%81%A7%E3%81%AEBioinformatics%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89_01" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=/environment_bioinformatics.html&amp;text=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Linux%E3%81%A7%E3%81%AEBioinformatics%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89_01" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=/environment_bioinformatics.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'environment_bioinformatics'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://johndoe.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>
+          &copy;
+          2018&dash;2019          Python会
+        </span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

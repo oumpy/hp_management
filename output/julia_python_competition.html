@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>JuliaとPythonと競技プログラミング &ndash; 大阪大学医学部Python会</title>
+
+    <!-- Meta -->
+    <meta name="description" content="大阪大学医学部Python会 &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="小川" />
+    <meta property="article:section" content="python" />
+    <meta property="article:published_time" content="2019-04-14" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="JuliaとPythonと競技プログラミング"/>
+    <meta property="og:description" content="JuliaとPythonと競技プログラミング"/>
+    <meta property="og:site_name" content="大阪大学医学部Python会" />
+    <meta property="og:url" content="/julia_python_competition.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JuliaとPythonと競技プログラミング">
+    <meta name="twitter:description" content="JuliaとPythonと競技プログラミング">
+    <meta name="twitter:url" content="/julia_python_competition.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/rss+xml" href="http://johndoe.disqus.com/latest.rss" title="大阪大学医学部Python会 Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="" id="header-logo" title="Home">P</a>
+        <nav id="header-menu">
+          <ul>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/atcoder.html">atcoder</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/bioinformatics.html">bioinformatics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/deeplearning.html">deeplearning</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/github.html">github</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/kaggle.html">kaggle</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/paper.html">paper</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="/category/python.html">python</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/shell.html">shell</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/statistics.html">statistics</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/tong-ji.html">統計</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>JuliaとPythonと競技プログラミング</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2019-04-14T00:00:00+09:00">Sun 14 April 2019</time> in <a href="/category/python.html" title="All articles in category python">python</a></span>
+          </div>
+          <div>
+            <span class="w3-tag w3-light-grey w3-text-green w3-hover-green">
+              <a href="/tag/python.html" title="All articles with Python tag">#python</a>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p>最近友人と話していて<a href="https://julialang.org">julia</a>が話題になったことがあったので、少しだけ調べて試して
+みた話。</p>
+<p><strong>Juliaってなに?</strong></p>
+<p>Pythonのような動的型付けのスクリプト言語です。実行時にコンパイルを行いC言語にも迫る実行速度、科学技術系の数値計算もどんと来い、という触れ込みで、人気上昇中らしいです。Pythonを含む他言語のライブラリを読み込む仕組みを備えているのもすごいところ。
+<del>ただ、コードの見た目が激しくMatlab風味で思わず目を背けたくなります。</del></p>
+<p><strong>AtCoderでのJulia</strong></p>
+<p>ご多分に漏れず、実行速度に惹かれました。半年ほど前から参加している競技プログラミングサイト<a href="https://atcoder.jp" target="_blank" rel="noopener noreferrer">AtCoder</a> で、常用しているPython(← Python会だからね!)で実行時間切れ、C/C++に
+書き換えると正答、という経験を何度かしてきたので。
+そういうわけで、ここでは最近の第121回 <a href="https://atcoder.jp/contests/abc121/" target="_blank" rel="noopener noreferrer">AtCoder Beginner Contest (ABC121)</a>
+の問題で、Juliaのパフォーマンスを実際に見てみます。
+(言語知識0から数十分調べて書いたコードのため、動きはするが思わぬところで非効率、ということはあるかもしれません。)</p>
+<p><strong>AtCoder Beginner Contest 121 問題A "White Cells"</strong></p>
+<p>(問題は<a href="https://atcoder.jp/contests/abc121/tasks/abc121_a" target="_blank" rel="noopener noreferrer">こちら</a>)
+入力値4個を読み込んで簡単な演算結果を返すだけの問題です。</p>
+<pre><code># ABC121-A "White Cells" in Julia
+inpl() = map(parse,split(readline()))
+(H,W) = inpl()
+(h,w) = inpl()
+println((H-h)*(W-w))</code></pre>
+
+<p>所要時間が入力にほぼ依存しない問題ですが、、各言語でのAtCoder上実行結果。</p>
+<table>
+<tbody>
+<tr>
+<td>言語</td>
+<td>実行時間</td>
+<td>消費メモリ</td>
+</tr>
+<tr>
+<td><strong>Julia</strong></td>
+<td><strong>360ms</strong></td>
+<td><strong>110MB</strong></td>
+</tr>
+<tr>
+<td>PyPy3</td>
+<td>180ms</td>
+<td>40MB</td>
+</tr>
+<tr>
+<td>Python3</td>
+<td>17ms</td>
+<td>3MB</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>1ms</td>
+<td>256kB</td>
+</tr>
+</tbody>
+</table>
+
+<p>C++にもPythonにも、実行時間と消費メモリ双方で惨敗。
+おそらくですが、<strong>実行ごとにまずコンパイルを行う</strong>ので、簡単な問題だとそれが相対的に巨大なオーバーヘッドになってしまうようです。
+Pythonの半コンパイラ型実装であるPyPyはJuliaの半分程度でした。</p>
+<p><strong>AtCoder Beginner Contest 121 問題C "Energy Drink Collector"</strong></p>
+<p>(問題は<a href="https://atcoder.jp/contests/abc121/tasks/abc121_c" target="_blank" rel="noopener noreferrer">こちら</a>)</p>
+<p>読み込んだ値の列をソートして、条件判定をしながら順番に足し上げていく問題。</p>
+<pre><code># ABC121-C "Energy Drink Collector" in Julia
+inpl() = map(parse,split(readline()))
+(N,M) = inpl()
+A = Array{Int}(N,2)
+for i in 1:N
+  A[i,:] = inpl()
+end
+A = sortrows(A, by=x-&gt;x[1])
+ans = 0
+for i in 1:N
+  if A[i,2] &gt;= M
+    ans += M*A[i,1]
+    break
+  else
+    M -= A[i,2]
+    ans += A[i,1]*A[i,2]
+  end
+end
+println(ans) </code></pre>
+
+<p>なんと、テスト16個中15個でタイムアウト(2000ms以上)。。。
+Pythonのコードはこちら:</p>
+<pre><code> # ABC121-C "Energy Drink Collector" in Python3
+inpl = lambda: list(map(int,input().split()))
+N,M = inpl()
+A = []
+for i in range(N):
+  A.append(inpl())
+A.sort(key=lambda x: x[0])
+ans = 0
+for i in range(N):
+  if A[i][1] &gt;= M:
+    ans += A[i][0]*M
+    break
+  else:
+    M -= A[i][1]
+    ans += A[i][0]*A[i][1]
+print(ans) </code></pre>
+
+<p>こちらは最大466msでクリア(同一コードのPyPy3では733ms)。ここで134msのテストもJuliaではタイムアウト。悲しい。
+今回Juliaでタイムアウトになったのは、言語の特性や正しいコーディングの仕方を知らないから、という可能性は高いです。ただ実際にこの問題でJuliaを使って提出されている答案は、最速クリアのものでも1724ms(そもそもJuliaでの提出数自体が少ないですが)。やはり上の安直なPythonコードが圧勝しています。</p>
+<p><strong>Juliaは競技プログラミングに向かない?</strong></p>
+<p>Juliaの実行速度が速いこと自体は(今回検証していませんが、きっと)本当なんだと思います。しかしそれは時間のかかる複雑・大規模な処理の場合であって、競技プログラミングのような高々2-3秒の計算にはコンパイルのオーバーヘッドがやはり大きいのかな、という印象です。
+AtCoderなどでは、C++などのあからさまなコンパイル型言語はコンパイル時間が実行時間に算入されず、一方でJuliaに対しては算入されます。やや理不尽な感じはしなくもないけれど、このルール下でJuliaの高速性能を生かすことは(あくまでAtCoderのような短時間型競技プログラミングの話ですが)なかなか難しそう。残念ながら、普通にやるとPythonよりもずっと遅い。
+なので、当面の競技プログラミング用言語はやっぱりPython(とC/C++)、と個人的には結論づけたところです。おしまい。</p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="https://twitter.com/oumed_python"><img style="width: 60px; height: 60px;" src="../images/" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="https://twitter.com/oumed_python"><span id="author-name" class="w3-hover-text-dark-grey">小川</span></a>
+                  <p id="author-story"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=/julia_python_competition.html&amp;t=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Julia%E3%81%A8Python%E3%81%A8%E7%AB%B6%E6%8A%80%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=/julia_python_competition.html&amp;text=%E5%A4%A7%E9%98%AA%E5%A4%A7%E5%AD%A6%E5%8C%BB%E5%AD%A6%E9%83%A8Python%E4%BC%9A%3A%20Julia%E3%81%A8Python%E3%81%A8%E7%AB%B6%E6%8A%80%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=/julia_python_competition.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'julia_python_competition'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://johndoe.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>
+          &copy;
+          2018&dash;2019          Python会
+        </span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

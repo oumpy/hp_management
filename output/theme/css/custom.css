@@ -1,0 +1,28 @@
+h3 {
+    font-size: 24px;
+    padding-left: 11px;
+    border-left: solid 10px #2795b6;
+    margin-left: 3px;
+    color: #2d2d2d;
+}
+
+.box11{
+    padding: 0.5em 1em;
+    margin: 4em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+.box11 p {
+    margin: 0;
+    padding: 0;
+}
+
+/*
+<div class="box11">
+    <p></p>
+</div> */
+
+/* Ids */
