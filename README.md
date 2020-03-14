@@ -34,7 +34,7 @@ $ git clone https://github.com/oumpy/hp_management.git
 $ git clone https://github.com/oumpy/oumpy.github.io.git ./output/
 ```
 
-### 新しいページの作り方
+### 新しい記事の作り方（停止中）
 
 独自スクリプトを使っていくので、我流でも大丈夫です。
 ```bash
@@ -50,7 +50,7 @@ jupyter notebookに関しては`./content/notebook/`に入れて、メタデー�
 
 ### 更新のアップ（簡易・非推奨）
 
-更新を強制的に一括pushするスクリプトを用意しています。Gitの使い方としては乱暴・危険で、非推奨です。少しのミスで容易に事故が起きるので、**何をしているか理解**していて、**一人で管理**していて、かつ**とにかく何でもいいからpushしたい**、とき用。できるだけgitを通常の手順でちゃんと使いましょう。
+更新を強制的に一括pushするスクリプトを用意しています。Gitの使い方としては乱暴ですが、サイト本体は真面目に履歴管理する対象ではない（ソースの方を管理すればOK）という思想に基づきます。以下には書いていませんがGitHubの認証に関する設定も必要です。
 
 #### [ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)へのpush
 
