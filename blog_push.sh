@@ -1,4 +1,4 @@
-#! bin/bash
+#!/bin/sh
 
 # https://qiita.com/driller/items/49a990cbdfb51afed620
 
