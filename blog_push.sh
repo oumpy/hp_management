@@ -9,6 +9,6 @@
 pelican content -o output -s pelicanconf.py
 make html
 # make publish
-ghp-import output
+#ghp-import output
 # git push origin gh-pages
-git push https://github.com/oumpy/oumpy.github.io.git gh-pages:master
+git push https://github.com/oumpy/oumpy.github.io.git master
