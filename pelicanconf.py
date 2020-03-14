@@ -8,10 +8,30 @@ SITENAME = '大阪大学医学部Python会'
 SITEURL = ''
 
 PATH = 'content'
+STATIC_PATHS = ['images', 'extra', 'icon', 'data']
+FAVICON = 'favicon.ico'
+FAVICON_TYPE = 'image/vnd.microsoft.icon'
+EXTRA_PATH_METADATA = {
+    'icon/' + FAVICON: {'path': FAVICON},
+}
 
 TIMEZONE = 'Asia/Tokyo'
 
 DEFAULT_LANG = 'ja'
+DATE_FORMATS = {
+    'en': '%a, %d %b %Y',
+    'ja': '%Y-%m-%d(%a)',
+}
+
+PAGE_ORDER_BY = 'page_order'
+
+ARTICLE_PATHS = ['articles']
+ARTICLE_SAVE_AS = 'articles/{date:%Y}/{date:%m}/{slug}.html'
+ARTICLE_URL = 'articles/{date:%Y}/{date:%m}/{slug}.html'
+PAGE_SAVE_AS = '{slug}.html'
+PAGE_URL = '{slug}.html'
+
+INDEX_SAVE_AS = 'articles.html'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -21,17 +41,25 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+LINKS = (
+        # ('Python会ブログ','https://oumedpython.hatenablog.com/'),
+        #('大阪大学医学部', 'http://www.med.osaka-u.ac.jp/'),
+        #('Python.org', 'http://python.org/'),
+        #('Pelican（本サイトで使用）', 'http://getpelican.com/'),
+        # ('Jinja2', 'http://jinja.pocoo.org/'),
+        # ('You can modify those links in your config file', '#'),
+        )
 
-# Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+FEED_ALL_RSS = 'feeds/all.rss.xml'
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+SITEURL = 'http://oumpy.github.io'
+RELATIVE_URLS = True
 
-DEFAULT_PAGINATION = 10
-
+DEFAULT_PAGINATION = 5
+PAGINATION_PATTERNS = (
+    (1, '{url}', '{save_as}',),
+    (2, '{base_name}/latests/{number}/', '{base_name}/latests/{number}/index.html'),
+)
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 MARKUP = ('md', 'ipynb')
@@ -44,30 +72,73 @@ PLUGINS = ['ipynb.markup']
 IGNORE_FILES = [".ipynb_checkpoints", '._*']
 
 IPYNB_USE_METACELL = True
+DISPLAY_PAGES_ON_MENU = True
+
+USE_FOLDER_AS_CATEGORY = False
 
 # Theme
-THEME = './themes/MinimalXY'
+# THEME = './themes/MinimalXY'
+THEME = './themes/voidy-bootstrap'
 
 # Theme customizations
-MINIMALXY_CUSTOM_CSS = 'theme/css/custom.css'
-MINIMALXY_FAVICON = 'favicon.ico'
-MINIMALXY_START_YEAR = 2018
-MINIMALXY_CURRENT_YEAR = datetime.date.today().year
+# MINIMALXY_CUSTOM_CSS = 'theme/css/custom.css'
+# MINIMALXY_FAVICON = 'favicon.ico'
+# MINIMALXY_START_YEAR = 2018
+# MINIMALXY_CURRENT_YEAR = datetime.date.today().year
 
 # Author
 AUTHOR_INTRO = u'大阪大学医学部所属のPython職人集団です'
 AUTHOR_DESCRIPTION = u'Now is better than never'
-AUTHOR_AVATAR = '../images/'
-AUTHOR_WEB = 'https://twitter.com/oumed_python'
+# AUTHOR_AVATAR = '../images/'
+# AUTHOR_WEB = 'https://twitter.com/oumed_python'
 
 # Services
 GOOGLE_ANALYTICS = 'UA-12345678-9'
-DISQUS_SITENAME = 'johndoe'
+#DISQUS_SITENAME = 'johndoe'
 
 # Social
 SOCIAL = (
-    ('facebook', ''),
-    ('twitter', 'https://twitter.com/oumed_python'),
-    ('github', 'https://github.com/oumpy'),
-    ('linkedin', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ'),
+    # ('facebook', ''),
+    ('技術Blog (はてな)','https://oumedpython.hatenablog.com/'),
+    ('Twitter', 'https://twitter.com/oumed_python'),
+    ('E-mail', 'mailto:handai.python@gmail.com'),
+    ('GitHub', 'https://github.com/oumpy'),
+    ('YouTube', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ'),
 )
+
+###
+### theme-specific settings
+###
+
+SITESUBTITLE ='Now is better than never.'
+SITETAG = SITENAME
+
+FONT_AWESOME_CDN_LINK = {
+    'href': 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+    'integrity': 'sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp',
+    'crossorigin': 'anonymous'
+}
+
+# Extra stylesheets, for bootstrap overrides or additional styling.
+STYLESHEET_FILES = ("pygment.css", "voidybootstrap.css",)
+
+# Put taglist at end of articles, and use the default sharing button implementation.
+CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", )
+CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
+# SIDEBAR_HIDE_CATEGORIES = True
+
+# Default sidebar template. Omit this setting for single column mode without sidebar.
+SIDEBAR = "sidebar.html"
+CUSTOM_SIDEBAR_MIDDLES = ("sb_links.html", "sb_taglist.html", )
+SIDEBAR_SIZE = 3
+SOCIAL_SHARE_BUTTONS = (
+    'hatebu',
+    'twitter',
+    'facebook',
+    'line',
+    'pocket',
+    'googleplus',
+    )
+TWITTER_USERNAME = 'oumed_python'
+
+DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
