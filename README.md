@@ -9,7 +9,43 @@
 
 - 基本は管理用レポジトリをプルして、設定を変更したり、content内の新しいブログを追加したりする。完成したら、管理用レポジトリにプッシュするとともに、出力用レポジトリにもoutputの中身をpushする。この繰り返し。
 
+- 会員は本レポジトリ（hp_management）を自分のGitHubアカウントにfork、`content/`下のMarkdownファイルを編集・追加してプルリクエストを送ることを推奨。
+
+- 技術的説明は下に色々あるが、管理に携わる人以外は**「新しいページの作り方」以外は知らなくてもよい**。（「導入」等もやらなくてよい。）
+
+  Markdownとgitの使い方は本HP関係なく必須科目です。勉強しましょう。
+
 - ブログ記事は（少なくとも当面）はてなブログに掲載（当HPからリンク）。
+
+## 新しいページの作り方
+
+独自スクリプト`create.sh`で雛形を作ります。
+
+あるいは、（その方が楽であれば）`template.md` を手動でコピーして編集してもかまいません。
+
+### Pageを作成する場合
+
+```bash
+$ cd hp_management
+$ bash create.sh (filename)
+```
+
+`(filename)` に生成するファイル名を指定します（内容に応じて適切に）。`./content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
+
+これに内容を追記します。htmlも認識されます。画像も `![]({attach}images/filename)` のように指定すると、 `./content/pages/images/filename` を読み込めます。
+
+### Articleを作成する場合
+
+``` bash
+$ cd hp_management
+$ bash create.sh (filename) (category) (tags)
+```
+
+Pageの場合と同じ。(category)を指定するとarticleになり、`content/articles/(year)/(category)/(filename).md`として作成されます。(category)はnewsかtechを推奨。(tags)は省略可能。なお(category)にpageまたはpagesを指定するとpageになります。
+
+#### Jupyter Notebookの扱い
+
+jupyter notebookに関してはmdファイルと同じ場所に入れて、メタデータのファイル作って、notebookの最初のセルにメタデータの内容と同じものを書けば大丈夫です。テストファイルがあるので参考にしてください。
 
 ## 導入した機能など
 
@@ -37,7 +73,7 @@ Slug: index
 
 と設定すると、このページがトップになる。この方法で `about.md` をトップに設定した。
 
-## 使い方
+## 使い方（管理者向け）
 
 ### 導入
 
@@ -61,33 +97,6 @@ $ cd themes && git submodule update voidy-bootstrap
 ```
 
 2行目以降は  `./init.sh` で一括実行できる。
-
-### 新しいページの作り方
-
-独自スクリプト`create.sh`で雛形を作ります。
-
-#### Pageを作成する場合
-
-```bash
-$ cd hp_management
-$ bash create.sh (filename)
-```
-`(filename)` に生成するファイル名を指定します（内容に応じて適切に）。`./content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
-
-これに内容を追記します。htmlも認識されます。画像も `![]({attach}images/filename)` のように指定すると、 `./content/pages/images/filename` を読み込めます。
-
-#### Articleを作成する場合
-
-``` bash
-$ cd hp_management
-$ bash create.sh (filename) (category) (tags)
-```
-
-Pageの場合と同じ。(category)を指定するとarticleになります。(category)はnewsかtechを推奨。(tags)は省略可能。なお(category)にpageまたはpagesを指定するとpageになります。
-
-#### Jupyter Notebookの扱い
-
-jupyter notebookに関しては`./content/notebook/`に入れて、メタデータのファイル作って、notebookの最初のセルにメタデータの内容と同じものを書けば大丈夫です。テストファイルがあるので参考にしてください。
 
 ### 更新のアップ
 
@@ -117,7 +126,7 @@ $ bash blog_push.sh
 ## 課題
 ### 管理システム
 
-- 管理者以外も手を出しやすいよう、ディレクトリ構造やスクリプト類の整理。
+- 管理者以外も手を出しやすいよう、ディレクトリ構造やスクリプト類の整理。（かなり進展した。ひとまずOK？）
 
 ### サイト内容
 
