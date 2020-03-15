@@ -66,15 +66,24 @@ $ cd themes && git submodule update voidy-bootstrap
 
 独自スクリプト`create.sh`で雛形を作ります。
 
+#### Pageを作成する場合
+
 ```bash
 $ cd hp_management
-$ bash create.sh arg
+$ bash create.sh (filename)
 ```
-`arg` に生成するファイル名を指定します（内容に応じて適切に）。`./content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
+`(filename)` に生成するファイル名を指定します（内容に応じて適切に）。`./content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
 
 これに内容を追記します。htmlも認識されます。画像も `![]({attach}images/filename)` のように指定すると、 `./content/pages/images/filename` を読み込めます。
 
-（articleの生成もできますが、調整中につき一時停止。）
+#### Articleを作成する場合
+
+``` bash
+$ cd hp_management
+$ bash create.sh (filename) (category) (tags)
+```
+
+Pageの場合と同じ。(category)を指定するとarticleになります。(category)はnewsかtechを推奨。(tags)は省略可能。なお(category)にpageまたはpagesを指定するとpageになります。
 
 #### Jupyter Notebookの扱い
 
