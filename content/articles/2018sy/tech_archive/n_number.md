@@ -4,7 +4,7 @@ Category:
 Tags: statistics
 Slug: n_number
 Author: 依藤
-Summary:必要n数の決定～研究計画～
+Summary:
 
 <span style="font-weight:400;">実験計画(シングルセル解析)を考えるときに、臨床研究だとどうだったかなと思うことがあります。</span>
 

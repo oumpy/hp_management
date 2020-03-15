@@ -4,7 +4,7 @@ Category:
 Tags: kaggle
 Slug: pandas_pivot_table
 Author: 金子
-Summary:pandasのpivot_tableを用いた高速データ処理
+Summary:
 
 <h1>pandasのpivot_tableを用いた高速データ処理</h1>
 <h2>概要</h2>

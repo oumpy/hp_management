@@ -4,7 +4,7 @@ Category:
 Tags: paper
 Slug: study_abroad
 Author: 宮崎　佐藤
-Summary:5年次海外実習
+Summary:
 
 <span style="font-weight:400;">1月末から3月中旬までオーストラリアのメルボルンに海外実習に行ってました、５年生の佐藤です。基礎系の研究室に行ったのですが、僕がまだまだ勉強不足なところも多くこれからの勉強のモチベーションにもなりました。</span>
 

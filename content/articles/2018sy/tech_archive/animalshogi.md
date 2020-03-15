@@ -4,7 +4,7 @@ Category:
 Tags: deeplearning
 Slug: animalshogi
 Author: 小川
-Summary:PythonとKerasでどうぶつしょうぎ
+Summary:
 
 <h2 id="toc_1">はじめに</h2>
 <strong>「どうぶつしょうぎ」</strong>というゲームをご存知でしょうか。（<a href="https://ja.wikipedia.org/wiki/%E3%81%A9%E3%81%86%E3%81%B6%E3%81%A4%E3%81%97%E3%82%87%E3%81%86%E3%81%8E">wikipediaの解説</a>）

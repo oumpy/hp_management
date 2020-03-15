@@ -4,7 +4,7 @@ Category:
 Tags: python
 Slug: julia_python_competition
 Author: 小川
-Summary:JuliaとPythonと競技プログラミング
+Summary:
 
 最近友人と話していて<a href="https://julialang.org">julia</a>が話題になったことがあったので、少しだけ調べて試して
 みた話。

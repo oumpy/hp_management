@@ -4,7 +4,7 @@ Category:
 Tags: deeplearning
 Slug: hardware_for_deeplearning
 Author: 安水
-Summary:組み込みでDeep Learningにつかえるハードについて
+Summary:
 
 <h1>組み込みでDeep Learningにつかえるハードについて</h1>
 2018/08/01　リレー投稿再掲　安水良明

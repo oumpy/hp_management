@@ -4,7 +4,7 @@ Category:
 Tags: deeplearning
 Slug: hamiltonian_descent_method
 Author: 山本
-Summary:Hamiltonian Descent Methodの要点
+Summary:
 
 解説自体は<a href="https://omedstu.jimdo.com/2018/09/26/hamiltonian-descent-methods%E3%81%AE%E5%AE%9F%E8%A3%85%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%A7%A3%E8%AA%AC/" target="_blank" rel="noopener">Hamiltonian Descent Methodsの実装についての解説</a>に書いたのですが、こちらには要点だけまとめておきます。
 

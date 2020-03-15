@@ -4,7 +4,7 @@ Category:
 Tags: deeplearning
 Slug: parametaer_tuning
 Author: 佐藤
-Summary: Parameter Tuning
+Summary:
 
 機械学習を行う際に大事なのがパラメーターの調整です。
 今まで適当にデフォルトの値でそのままやったりGridearchで探したりしていましたが、結構時間かかるので他の有効な方法を探して、手元で実際に動かして見ました。<a href="http://neupy.com/2016/12/17/hyperparameter_optimization_for_neural_networks.html">こちら</a>の資料がわかりやすかったです。(図もこちらのものを引用しました)

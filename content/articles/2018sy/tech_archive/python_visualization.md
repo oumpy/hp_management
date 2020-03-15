@@ -4,7 +4,7 @@ Category:
 Tags: python
 Slug: python_visualization
 Author: 宮崎
-Summary:Pythonで可視化入門
+Summary:
 
 Pythonでいい感じのグラフを書いてみたい！でも面倒！よくわからない！
 

@@ -4,7 +4,7 @@ Category:
 Tags: shell
 Slug: shellscript_1
 Author: 水野
-Summary:シェルスクリプト入門(1)
+Summary:
 
 python会なのにpythonまだ触ったことありません。勉強せねば。
 

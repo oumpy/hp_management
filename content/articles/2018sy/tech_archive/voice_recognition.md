@@ -4,7 +4,7 @@ Category:
 Tags: deeplearning
 Slug: voice_recognition
 Author: 佐藤
-Summary:NTT corevoチャレンジ: 話者の性別・年代識別
+Summary:
 
 <a href="https://signate.jp" target="_blank" rel="noopener noreferrer">signate</a>内で開催されていた上記のコンペティションに参加してきました。以下試してみたこと、感想のまとめです。
 

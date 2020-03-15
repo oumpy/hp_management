@@ -4,7 +4,7 @@ Category:
 Tags: python
 Slug: twitter_automation
 Author: 川崎
-Summary:Twitter自動投稿あれこれ
+Summary:
 
 突如TwitterのBotを作ってみたくなり試行錯誤した結果をまとめてみました。
 

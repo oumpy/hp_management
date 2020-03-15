@@ -4,7 +4,7 @@ Category:
 Tags: paper
 Slug: article_reading
 Author: 柳澤
-Summary: 論文抄読で便利なサイト
+Summary:
 
 
 # 論文抄読で便利なサイト

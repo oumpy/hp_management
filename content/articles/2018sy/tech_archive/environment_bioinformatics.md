@@ -4,7 +4,7 @@ Category:
 Tags: bioinformatics
 Slug: environment_bioinformatics
 Author: 平岡
-Summary:LinuxでのBioinformatics環境構築_01
+Summary:
 
 お疲れ様です。ただいま、私のMacbook Proが入院しておりまして、古いWindows10をUbuntuとデュアルブートして作業しております。下級生でもWindowsしか持っていない、でもBioinformaticsに関心があるという人が、スムーズに環境構築できるようにと今回の記事を書きます。なお、前提として、Ubuntuのインストールが完了しているものとします。なお、筆者のインストールしたUbuntuは18.04.1 LTSです。
 

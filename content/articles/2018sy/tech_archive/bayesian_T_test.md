@@ -4,7 +4,7 @@ Category:
 Tags: statistics
 Slug: bayesian_T_test
 Author: 安水
-Summary:ベイズ流T検定 BEST
+Summary:
 
 ここ最近pymcを使ったベイズ推論のことをずっと考えています。
 pymc3を扱った本(http://amzn.asia/1TWcfTI)が先週発売されて買ってしまったのですが、

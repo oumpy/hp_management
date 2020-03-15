@@ -4,7 +4,7 @@ Category:
 Tags: deeplearning
 Slug: doctor_exam_ai
 Author: 秋山
-Summary:(論文まとめ)医師国家試験問題自動生成AI
+Summary:
 
 On the Generation of Medical Question-Answer Pairs.
 Shen S, Li Y, Du N, Wu X, Xie Y, Ge S, et al. arXiv. 2018.

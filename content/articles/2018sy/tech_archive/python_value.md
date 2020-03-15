@@ -4,7 +4,7 @@ Category:
 Tags: python
 Slug: python_value
 Author:小川
-Summary:Pythonの変数と代入について
+Summary:
 
 Pythonの変数、ふだん何気なく使っていますが、やっていることは実は結構複雑です。主にC/C++と対比しつつ簡単にまとめてみます。
 

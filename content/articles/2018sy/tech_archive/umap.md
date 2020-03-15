@@ -4,7 +4,7 @@ Category:
 Tags: deeplearning
 Slug: umap
 Author: 安水
-Summary:超高速次元圧縮アルゴリズムUMAP
+Summary:
 
 <h1>超高速次元圧縮アルゴリズムUMAP</h1>
 

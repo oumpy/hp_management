@@ -4,7 +4,7 @@ Category:
 Tags: bioinformatics
 Slug: velocyto
 Author: 廣瀬
-Summary:VELOCYTO
+Summary:
 
 Velocyto は、RNAseq の結果に含まれるイントロンの割合からその細胞の分化指向性を
 算出するという解析手法です。

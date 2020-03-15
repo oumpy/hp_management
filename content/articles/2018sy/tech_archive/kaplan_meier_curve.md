@@ -4,7 +4,7 @@ Category:
 Tags: statistics
 Slug: kaplan_meier_curve
 Author: 佐藤
-Summary:カプランマイヤー曲線について
+Summary:
 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt"></div>

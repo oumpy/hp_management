@@ -4,7 +4,7 @@ Category:
 Tags: deeplearning
 Slug: breast_cancer_detection
 Author: 秋山
-Summary:Improving Breast Cancer Detection using Symmetry Information with Deep Learning
+Summary:
 
 <a href="http://arxiv.org/abs/1808.08273">Improving Breast Cancer Detection using Symmetry Information with Deep Learning</a>
 放射線専門医がするようにマンモグラムの左右差を見て乳がんの判定をするCNNモデルを提案

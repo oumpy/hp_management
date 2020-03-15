@@ -4,7 +4,7 @@ Category:
 Tags: bioinformatics
 Slug: cwl
 Author: 安水
-Summary:Common Workflow Language入門
+Summary:
 
 先日[workflow-meetup](https://github.com/manabuishii/workflow-meetup/wiki/20181126)にお誘いを頂いて参加してきました。そこでThe Common Workflow Language(CWL)というものを習ったので忘れないうちに**医学部生にもわかりやすく**まとめます。
 

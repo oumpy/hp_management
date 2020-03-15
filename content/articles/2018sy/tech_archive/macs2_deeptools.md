@@ -4,7 +4,7 @@ Category:
 Tags: bioinformatics
 Slug: macs2_deeptools
 Author: 安水
-Summary:MACS2とdeepToolsのbigwigファイルの比較
+Summary:
 
 ### ChIP-seqとは
 

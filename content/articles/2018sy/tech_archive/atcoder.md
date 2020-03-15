@@ -4,7 +4,7 @@ Category:
 Tags: atcoder
 Slug: atcoder
 Author:
-Summary:AtCoder Beginners Selection 雑感
+Summary:
 
 <section class="pdf_page" aria-label="Page 1">
 <div class="textlayer">

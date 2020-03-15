@@ -4,7 +4,7 @@ Category:
 Tags: shell
 Slug: shellscript_2
 Author: 水野
-Summary:シェルスクリプト入門(2)
+Summary:
 
 ※　編集注：前作[シェルスクリプト入門（1）](https://pythonoum.wordpress.com/2018/11/01/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%85%A5%E9%96%801/)の続編です。まだ読み終わってない方はそちらを先にどうぞ。
 

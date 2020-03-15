@@ -4,7 +4,7 @@ Category:
 Tags: python
 Slug: regular_expression
 Author: 西垣
-Summary:pythonで使える正規表現まとめ
+Summary:
 
 O'REILLYの著書で「正規表現」について記載されているところをまとめたノートです。
 正規表現はCtrl-Fのテキスト検索でも気軽に使えて大変便利なので、以下のまとめはpython3での正規表現の初歩的な使い方をまとめたものですが、知らなかった人は見てみてもいいかもです。

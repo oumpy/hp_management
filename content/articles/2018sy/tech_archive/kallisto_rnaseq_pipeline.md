@@ -4,7 +4,7 @@ Category:
 Tags: bioinformatics
 Slug: kallisto_rnaseq_pipeline
 Author: 平岡
-Summary:Kallistoを用いたRNA-seq解析パイプライン
+Summary:
 
 !!!!!!!!!!! 
 今回はKallistoを用いたRNA-seq解析パイプラインを紹介しま

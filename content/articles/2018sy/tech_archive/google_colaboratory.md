@@ -4,7 +4,7 @@ Category:
 Tags: python
 Slug: google_colaboratory
 Author: 宮崎
-Summary:いまさらGoogle Colaboratory入門
+Summary:
 
 いまさらGoogle Colaboratory触ってみた感じ、かなり便利なのでまとめておきます。
 

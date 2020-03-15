@@ -4,7 +4,7 @@ Category:
 Tags: python
 Slug: sushi_typing
 Author: 安水
-Summary:寿司打タイピング自動化
+Summary:
 
 [youtube https://www.youtube.com/watch?v=SqOO9I1tFjk&amp;w=560&amp;h=315]
 

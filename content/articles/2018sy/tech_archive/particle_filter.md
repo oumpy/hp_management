@@ -4,7 +4,7 @@ Category:
 Tags: deeplearning
 Slug: particle_filter
 Author: 柳澤
-Summary:particle filter
+Summary:
 
 こんばんは。
 今回はパーティクルフィルターの紹介をしたいと思います。

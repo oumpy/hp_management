@@ -4,7 +4,7 @@ Category:
 Tags: bioinformatics
 Slug: mockinbird_parclip
 Author: 平岡
-Summary:Mockinbirdを用いたPAR-CLIP解析
+Summary:
 
 ***Mockinbirdを用いたPAR-CLIP解析***
 ５年　平岡　悠

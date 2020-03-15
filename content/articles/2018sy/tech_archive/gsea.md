@@ -4,7 +4,7 @@ Category:
 Tags: bioinformatics
 Slug: gsea
 Author: 西田
-Summary:Gene Set Enrichment Analysis (GSEA)入門
+Summary:
 
 <h1>GSEAとは</h1>
 GSEAは発現差異解析の結果などで得られる遺伝子群がどういった機能のものかを明らかにするために用いられる解析手法です。機能表現として用いられる主なものとしてはKEGGのパスウェイ分類やGene Ontology(GO)があります。
