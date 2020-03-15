@@ -6,6 +6,9 @@
 # git clone https://github.com/yuna06/chinese.git
 # cd english
 # pelican-quickstart
+cd output
+git pull origin master
+cd -
 pelican content -o output -s pelicanconf.py
 make html
 # make publish
