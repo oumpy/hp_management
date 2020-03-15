@@ -82,9 +82,11 @@ jupyter notebookに関しては`./content/notebook/`に入れて、メタデー�
 
 ### 更新のアップ
 
-更新を強制的に一括pushするスクリプトを用意しています。Gitの使い方としては乱暴ですが、サイト本体は真面目に履歴管理する対象ではない（ソースの方を管理すればOK）という思想に基づきます。以下には書いていませんがGitHubの認証に関する設定も必要です。
+更新を強制的に一括pushするスクリプトを用意しています。以下には書いていませんがGitHubの認証に関する設定も必要です。
 
 #### [ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)へのpush
+
+（スクリプト調整中。現在は非推奨です。）
 
 ```bash
 $ cd hp_management
@@ -93,6 +95,8 @@ $ bash manage_push.sh
 で、`./output/`以外の全てのファイルを[ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)へpushします。
 
 #### [出力用レポジトリ](https://github.com/oumpy/oumpy.github.io)へのpush
+
+こちらもGitの使い方としては乱暴ですが、サイト本体は真面目に履歴管理する対象ではない（ソースの方を管理すればOK）という思想に基づきます。
 
 ```bash
 $ cd hp_management
