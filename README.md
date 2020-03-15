@@ -108,6 +108,7 @@ $ bash blog_push.sh
 
 ### サイト内容
 
+- CSSの調整など。
 - Home,Member,Calender,Contact, Activityのページを作る。
 
 ### 記事(article)類
