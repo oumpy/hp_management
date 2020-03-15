@@ -43,6 +43,8 @@ $ bash create.sh (filename) (category) (tags)
 
 Pageの場合と同じ。(category)を指定するとarticleになり、`content/articles/(schoolyear)/(category)/(filename).md`として作成されます。(category)はnewsかtechを推奨。(tags)は省略可能。なお(category)にpageまたはpagesを指定するとpageになります。
 
+なおcategoryは各ファイルのメタデータには記載されません。mdファイルを入れるディレクトリの名前がカテゴリとして認識されます。（記載した場合はそちらが優先されますが、記載しないでください。）
+
 #### Jupyter Notebookの扱い
 
 jupyter notebookに関してはmdファイルと同じ場所に入れて、メタデータのファイル作って、notebookの最初のセルにメタデータの内容と同じものを書けば大丈夫です。テストファイルがあるので参考にしてください。
