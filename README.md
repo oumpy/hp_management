@@ -41,7 +41,7 @@ $ cd hp_management
 $ bash create.sh (filename) (category) (tags)
 ```
 
-Pageの場合と同じ。(category)を指定するとarticleになり、`content/articles/(year)/(category)/(filename).md`として作成されます。(category)はnewsかtechを推奨。(tags)は省略可能。なお(category)にpageまたはpagesを指定するとpageになります。
+Pageの場合と同じ。(category)を指定するとarticleになり、`content/articles/(schoolyear)/(category)/(filename).md`として作成されます。(category)はnewsかtechを推奨。(tags)は省略可能。なお(category)にpageまたはpagesを指定するとpageになります。
 
 #### Jupyter Notebookの扱い
 
