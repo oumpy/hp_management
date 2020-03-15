@@ -25,7 +25,11 @@ DATE_FORMATS = {
 
 PAGE_ORDER_BY = 'page_order'
 
-ARTICLE_PATHS = ['articles']
+start_year = 2017
+this_year = datetime.date.today().year
+
+# ARTICLE_PATHS = ['articles']
+ARTICLE_PATHS = [ 'articles/%d/' % y for y in range(start_year, this_year+2) ]
 ARTICLE_SAVE_AS = 'articles/{date:%Y}/{date:%m}/{slug}.html'
 ARTICLE_URL = 'articles/{date:%Y}/{date:%m}/{slug}.html'
 PAGE_SAVE_AS = '{slug}.html'
@@ -74,7 +78,7 @@ IGNORE_FILES = [".ipynb_checkpoints", '._*']
 IPYNB_USE_METACELL = True
 DISPLAY_PAGES_ON_MENU = True
 
-USE_FOLDER_AS_CATEGORY = False
+USE_FOLDER_AS_CATEGORY = True
 
 # Theme
 # THEME = './themes/MinimalXY'
