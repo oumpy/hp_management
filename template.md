@@ -1,7 +1,7 @@
 Title:
 Date: $date
 Category: $category
-Tags: $category
+Tags: $tags
 Slug: $filename
 Author: 
 Summary:
