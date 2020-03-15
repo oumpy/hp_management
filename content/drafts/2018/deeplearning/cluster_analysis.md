@@ -1,6 +1,6 @@
 Title:クラスター分析
 Date: 2019.04.14
-Category: deeplearning
+Category:
 Tags: deeplearning
 Slug: cluster_analysis
 Author: 柳澤

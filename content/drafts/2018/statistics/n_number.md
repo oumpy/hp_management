@@ -1,6 +1,6 @@
 Title:必要n数の決定～研究計画～
 Date: 2019.04.14
-Category: statistics
+Category:
 Tags: statistics
 Slug: n_number
 Author: 依藤

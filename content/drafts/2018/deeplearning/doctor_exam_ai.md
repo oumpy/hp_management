@@ -1,6 +1,6 @@
 Title:(論文まとめ)医師国家試験問題自動生成AI
 Date: 2019.04.14
-Category: deeplearning
+Category:
 Tags: deeplearning
 Slug: doctor_exam_ai
 Author: 秋山

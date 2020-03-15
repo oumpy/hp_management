@@ -1,6 +1,6 @@
 Title:Kallistoを用いたRNA-seq解析パイプライン
 Date: 2019.04.14
-Category: bioinformatics
+Category:
 Tags: bioinformatics
 Slug: kallisto_rnaseq_pipeline
 Author: 平岡

@@ -1,6 +1,6 @@
 Title:Twitter自動投稿あれこれ
 Date: 2019.04.14
-Category: python
+Category:
 Tags: python
 Slug: twitter_automation
 Author: 川崎

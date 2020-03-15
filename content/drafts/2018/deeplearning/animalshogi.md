@@ -1,6 +1,6 @@
 Title:PythonとKerasでどうぶつしょうぎ
 Date: 2019.04.14
-Category: deeplearning
+Category:
 Tags: deeplearning
 Slug: animalshogi
 Author: 小川

@@ -1,6 +1,6 @@
 Title:Pythonで可視化入門
 Date: 2019.04.14
-Category: python
+Category:
 Tags: python
 Slug: python_visualization
 Author: 宮崎

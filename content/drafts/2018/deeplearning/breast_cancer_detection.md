@@ -1,6 +1,6 @@
 Title:Improving Breast Cancer Detection using Symmetry Information with Deep Learning
 Date: 2019.04.14
-Category: deeplearning
+Category:
 Tags: deeplearning
 Slug: breast_cancer_detection
 Author: 秋山

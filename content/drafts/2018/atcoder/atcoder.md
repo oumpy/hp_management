@@ -1,6 +1,6 @@
 Title:AtCoder Beginners Selection 雑感
 Date: 2019.04.14
-Category: atcoder
+Category:
 Tags: atcoder
 Slug: atcoder
 Author:

@@ -1,6 +1,6 @@
 Title:シェルスクリプト入門(2)
 Date: 2019.04.14
-Category: shell
+Category:
 Tags: shell
 Slug: shellscript_2
 Author: 水野

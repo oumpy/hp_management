@@ -1,6 +1,6 @@
 Title:Common Workflow Language入門
 Date: 2019.04.14
-Category: bioinformatics
+Category:
 Tags: bioinformatics
 Slug: cwl
 Author: 安水

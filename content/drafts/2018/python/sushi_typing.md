@@ -1,6 +1,6 @@
 Title:寿司打タイピング自動化
 Date: 2019.04.14
-Category: python
+Category:
 Tags: python
 Slug: sushi_typing
 Author: 安水

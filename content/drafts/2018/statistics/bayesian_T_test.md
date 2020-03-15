@@ -1,6 +1,6 @@
 Title:ベイズ流T検定 BEST
 Date: 2019.04.14
-Category: statistics
+Category:
 Tags: statistics
 Slug: bayesian_T_test
 Author: 安水

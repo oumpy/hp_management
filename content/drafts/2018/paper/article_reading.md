@@ -1,6 +1,6 @@
 Title: 論文抄読で便利なサイト
 Date: 2019-03-25 23:00
-Category:   paper
+Category:
 Tags: paper
 Slug: article_reading
 Author: 柳澤

@@ -1,6 +1,6 @@
 Title:阪医Python会特製 RNA-seq pipeline ver. 1.0 リリース
 Date: 2019.04.14
-Category: bioinformatics
+Category:
 Tags: bioinformatics
 Slug: original_rnaseq_pipeline
 Author: 菅波 西田 大森 安水 小川 山田 川島 川崎 平岡 廣瀬 柳澤 淡田 中村 依藤
