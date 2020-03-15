@@ -1,7 +1,7 @@
 Title: Webサイトをリニューアルしました！
 Date: 2020.03.21
 Modified: 2020.03.21
-Category: news
+Category: 
 Tags: news
 Slug: website_renewal
 Author: Python会
