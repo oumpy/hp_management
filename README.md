@@ -41,13 +41,16 @@ $ cd hp_management
 $ bash create.sh (filename) (category) (tags)
 ```
 
-Pageの場合と同じ。(category)を指定するとarticleになり、`content/articles/(schoolyear)/(category)/(filename).md`として作成されます。(category)はnewsかtechを推奨。(tags)は省略可能。なお(category)にpageまたはpagesを指定するとpageになります。
+Pageの場合と同じコマンド。(category)を指定するとarticleになり、`content/articles/(schoolyear)/(category)/(filename).md`として作成されます。
 
-なおcategoryは各ファイルのメタデータには記載されません。mdファイルを入れるディレクトリの名前がカテゴリとして認識されます。（記載した場合はそちらが優先されますが、記載しないでください。）
+- (category)はnewsかtech。(category)にpageまたはpagesを指定するとpageになる。
+- (tags)は省略可能、ただしarticleの場合は編集の際に必ず入れること。（この仕様は変更するかも。）
+- (category)は各ファイルのメタデータには記載されない。mdファイルを入れるディレクトリの名前がカテゴリとして認識される。
+  （記載した場合はそちらが優先されるが、記載しないでください。）
 
 #### Jupyter Notebookの扱い
 
-jupyter notebookに関してはmdファイルと同じ場所に入れて、メタデータのファイル作って、notebookの最初のセルにメタデータの内容と同じものを書けば大丈夫です。テストファイルがあるので参考にしてください。
+jupyter notebookに関してはmdファイルと同じ場所に入れて、メタデータのファイル作って、notebookの最初のセルにメタデータの内容と同じものを書けば大丈夫です。`article/2018sy/tech_archive`の`lorentz.ipynb`を参考にしてください。
 
 ## 導入した機能など
 
