@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Python会" />
+    <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
+
+    <title>Mockinbirdを用いたPAR-CLIP解析 - 大阪大学医学部 Python会</title>
+
+   
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous" />
+      <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+            crossorigin="anonymous">
+
+
+      <link rel="stylesheet" href="../../../theme/css/pygment.css" />
+      <link rel="stylesheet" href="../../../theme/css/voidybootstrap.css" />
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" integrity="sha384-FFgGfda92tXC8nCNOxrCQ3R8x1TNkMFqDZVQdDaaJiiVbjkPBXIJBx0o7ETjy8Bh" crossorigin="anonymous"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="../../../favicon.ico" />
+        <link href="http://oumpy.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="大阪大学医学部 Python会 Atom Feed" />
+        <link href="http://oumpy.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="大阪大学医学部 Python会 RSS Feed" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12345678-9', '');
+  ga('send', 'pageview');
+
+</script>
+  </head>
+
+  <body>
+   
+    <nav class="navbar navbar-default">
+      <div class="container">
+	   <div class="navbar-header">
+		<button type="button" class="navbar-toggle" 
+				data-toggle="collapse" data-target="#main-navbar-collapse">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="../../../" rel="home">
+          <i class="fa fa-home fa-fw fa-lg"> </i> </a>
+       </div>
+
+      <div class="collapse navbar-collapse" id="main-navbar-collapse">
+        <ul class="nav navbar-nav">
+              <li>
+                <a href="../../../index.html">Python会について</a>
+              </li>
+              <li>
+                <a href="../../../activities.html">活動内容</a>
+              </li>
+              <li>
+                <a href="../../../achievements.html">実績</a>
+              </li>
+              <li>
+                <a href="../../../recruit.html">会員募集</a>
+              </li>
+              <li>
+                <a href="../../../blog.html">技術Blog</a>
+              </li>
+              <li>
+                <a href="../../../contact.html">Contact</a>
+              </li>
+            <li class="divider"></li>
+            <li class="">
+              <a href="../../../archives.html">Archives</a>
+            </li>
+          <li class="divider"></li>
+            <li><a href="http://oumpy.github.io/feeds/all.atom.xml" 
+                   type="application/atom+xml" rel="alternate">
+                <i class="fa fa-rss fa-fw fa-lg"></i> </a></li>
+        </ul> <!-- /nav -->
+      </div> <!-- /navbar-collapse -->
+	  </div> <!-- /container -->
+    </nav> <!-- /navbar -->
+
+	<div class="jumbotron" id="overview">
+	  <div class="container">
+		<h1><a href="../../../">大阪大学医学部 Python会</a></h1>
+		<p class="lead">Now is better than never.</p>
+	  </div>
+	</div>
+
+    <div class="container" id="main-container">
+      <div class="row">
+        <div class="col-md-9" id="content">
+<article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="article-header">
+<abbr class="article-header-date">
+  2019-04-14(日)
+</abbr> <h1>
+  <a href="../../../articles/2019/04/mockinbird_parclip.html" rel="bookmark"
+     title="Permalink to Mockinbirdを用いたPAR-CLIP解析">
+    Mockinbirdを用いたPAR-CLIP解析
+  </a>
+</h1><div class="article-header-info">
+  <p>
+      Posted by <a href="../../../author/ping-gang.html">平岡</a>
+    in 
+    <a href="../../../category/tech_archive.html">
+      tech_archive</a>
+    &nbsp;&nbsp;
+  </p>
+</div> <!-- /.article-header-info -->  </header>
+  <div class="content-body" itemprop="text articleBody">
+	<p><strong><em>Mockinbirdを用いたPAR-CLIP解析</em></strong>
+５年　平岡　悠</p>
+<p>今回はPAR-CLIP解析のAll-in-oneパイプラインソフトウェアである、<a href="//wwwuser.gwdg.de/~compbiol/mockinbird/doc/intro.html)”">Mockinbird</a>を紹介します。日本語での情報がほぼなく、説明が長くなってしまいそうなので、２回に分けて書きます。</p>
+<p><strong>PAR-CLIP</strong>って何？
+PAR-CLIPは photoactivatable ribonucleoside-enhanced crosslinking and immunoprecipitationの略でRNAやmicroRNA結合タンパクやの結合サイトを特定するために使います。</p>
+<p>実験法としては、まず4SU（4-チオウリジン）を細胞培地中に添加し、4SUによるラベル標識を行います。次にUVの照射を行い、RNA結合タンパクとRNAの間で架橋反応を起こします。その後、RBPと結合したリードの抽出を行い、サンプルとして用います。</p>
+<p>サンプルRNAを逆転写するときに、4SUがシトシン( C )に置換されます(misread)。そのため、リードがピークを形成し、かつT -&gt; C置換が入っていた場合、RBPと結合していた可能性が高いということになります。これによりあるタンパクが、RNAのどの領域に結合するのか？結合領域間でどのような相互作用があるのかを知ることができます。特に一塩基という高い解像度での解析ができることが特徴です。</p>
+<p><img alt="" src="https://lh6.googleusercontent.com/554iMVEXLP3Hq6U6C8FeveBV1FeMT19zXQuj-728Db4UxDU7JDSnzpF-RvezYq0DW3z2kQjDiOlZkeQLJRZhwNm4SqkaeJnBYyOV7yUbmuV0peAaJ4TcKazkJaqvRMF65Rgldk2l"></p>
+<p><strong>Mockinbird</strong>とは？</p>
+<p><a href="//wwwuser.gwdg.de/~compbiol/mockinbird/doc/intro.html”">公式ドキュメント</a>、<a href="//github.com/soedinglab/mockinbird)”">GitHub</a>に詳細は記載されていますが、日本語での情報が少ない、というか全くない。のでまとめていきたいと思います。</p>
+<p>PAR-CLIPの解析は生のFASTQデータから、Quality Check -&gt; Trimming -&gt; Mapping -&gt; Downstream Analysisという流れで行いますが、それらすべての解析をMockinbirdでは一気に行ってくれます。また、MockinbirdModule（詳細は後述）を使うことでmock PAR-CLIP experimentを考慮に入れた解析を行うことができるのも大きな特徴です。</p>
+<p>このソフトでは、２つにパイプラインが分かれており、preprocessing phaseとpostprocessing phaseと呼ばれています。タンパク結合サイトの情報が書かれたテーブルを出力するまでが、preprocessing phaseでそれ以降のDownstream解析をpostprocessing phaseと呼んでいます。それぞれにYAMLファイルが用意されており、ユーザーはYAMLファイルで解析したいサンプルデータ、使いたいリファレンスデータ、使いたいモジュール（Mappingの時にSTARやBowtieを選べたりする。）閾値などのパラメータを指定します。最後にコマンドを一行実行するだけで、解析がすべて自動で流れていきます。あるモジュールで出力されたファイルのパスが次のモジュールに自動で設定されていくシステムになっているので、慣れると非常に便利です。</p>
+<p>ただ、ドキュメントでも、既存の解析手法に完全に取って代わるものではなく、PAR-CLIP実験のコンディションのトラブルシューティングを再現可能性が高い状態で行なったり、研究の最初の仮説づくりを短時間で行うために使ってもらうことが目的と書かれていました。<img alt="" src="https://lh6.googleusercontent.com/rd3A2Nm8czl8cdPu_47SuddQXr-i-ac0ThA-ZupDlDIa67geEayilGTo2Bp3VnJXt6UXNe9b7Rq6EckkNigvg68OCJ9Wk2XrKfQ-FwJu5I_HjkwXXrpMUR7x-0pBojlg6E1EtlH2"></p>
+<p>環境構築</p>
+<p>前置きが長くなりましたが、実際に環境構築から進めていきます。</p>
+<p><code>conda create -n mockinbird -c bioconda -c conda-forge python=3.6 mockinbird</code></p>
+<p>Anacondaでmockinbirdという名前の仮想環境を作ります。mockinbirdが仮想環境にインストールされることになり、これにより、下記のライブラリとツールが環境内で使えるようになります。</p>
+<p><code>source activate mockinbird</code></p>
+<p>でmockinbirdの仮想環境を立ち上げ、</p>
+<p><code>source deactivate mockinbird</code></p>
+<p>で仮想環境を閉じます。</p>
+<p><code>conda remove --all -n mockinbird</code></p>
+<p>で環境を削除します。</p>
+<p><code>git clone [https://github.com/soedinglab/mockinbird.git](https://github.com/soedinglab/mockinbird.git)</code></p>
+<p>でgithubからクローンします。</p>
+<p><code>cd mockinbird/mockinbird/data</code></p>
+<p>とディレクトリを進めていくと、<code>preprocess.yaml</code>, <code>postprocess.yaml</code>というファイルがあります。基本はこの二つのYAMLファイルを調整していくことになります。terminalでコマンドを出すときも <code>mockinbird/mockinbird/data</code>ディレクトリで実行するのが個人的にはおすすめです（ファイルの構成が綺麗になる。パスの調整も楽）。</p>
+<p><a href="//wwwuser.gwdg.de/~compbiol/mockinbird/mockinbird_tutorial_nomock.tar.gz”">Tutorialデータ</a>がドキュメントの方に書かれていましたが、私が見たときはリンクがNotFoundになっていました。ので、私は<a href="//wwwuser.gwdg.de/~compbiol/mockinbird/doc/intro.html”">公式ドキュメント</a>、<a href="//github.com/soedinglab/mockinbird)”">GitHub</a>を参考にYAMLファイルの調整などを行いました。</p>
+<p><code>preprocess</code>, <code>postprocess</code>の実行のコードは以下のようになっています。</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">mockinbird</span><span class="w"> </span><span class="n">preprocess</span><span class="w"> </span><span class="o">[</span><span class="n">parclip_fastq</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">output_dir</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">prefix</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">config_file</span><span class="o">]</span><span class="w"></span>
+<span class="err">$</span><span class="w"> </span><span class="n">mockinbird</span><span class="w"> </span><span class="n">preprocess</span><span class="w"> </span><span class="n">nrd1</span><span class="p">.</span><span class="n">fastq</span><span class="w"> </span><span class="n">nrd1</span><span class="w"> </span><span class="n">nrd1</span><span class="w"> </span><span class="n">preprocess</span><span class="p">.</span><span class="n">yaml</span><span class="w"></span>
+
+<span class="err">#</span><span class="w"> </span><span class="n">mockinbird</span><span class="w"> </span><span class="n">postprocess</span><span class="w"> </span><span class="err">{{</span><span class="n">genomefasta</span><span class="err">}}</span><span class="w"> </span><span class="err">{{</span><span class="n">output_dir</span><span class="err">}}</span><span class="w"> </span><span class="err">{{</span><span class="n">output_dir</span><span class="err">}}</span><span class="w"> </span><span class="err">{{</span><span class="n">script_dir</span><span class="err">}}</span><span class="w"></span>
+<span class="err">$</span><span class="w"> </span><span class="n">mockinbird</span><span class="w"> </span><span class="n">postprocess</span><span class="w"> </span><span class="n">nrd1</span><span class="w"> </span><span class="n">nrd1_pp</span><span class="w"> </span><span class="n">postprocess</span><span class="p">.</span><span class="n">yaml</span><span class="w"></span>
+</code></pre></div>
+
+
+<p>ですが、コードの実行はYAMLの設定ができてからになります。ということでYAMLの中身について説明していきます。</p>
+<p><strong><em>preprocess.yaml</em></strong></p>
+<p>preprocess.yamlの４つの区画から構成されています。</p>
+<p>① 変数設定。
+② general. 必須情報の設定。
+③ reads. リードについての情報。
+④ pipeline. 使うモジュールと各引数の設定。</p>
+<p>① 変数設定
+下記のスクショはドキュメントから引用していますが、モジュールで使う、ディレクトリの変数化と、mock_processing をFalseに設定しています。（ここ重要！）</p>
+<p><img alt="" src="https://lh5.googleusercontent.com/axBM--SAveLQ5WpApwgiK3VmRPCEywGRY1ap3jXUNrp1ejgabu7k_3yMrnFT5dEA6xO5j2wBdjLh4UFNdJ5zbtwjq4nndYXoBVOBQyRRT7VskRhZUiruBhH8CK-AeFxu4Fv3bX3i"></p>
+<p>② general. 必須情報の設定
+アダプター配列の指定、リファレンスデータの指定、UMI(Unique molecular identifiers)の有無、スレッド数の指定。</p>
+<p>③ reads. リードについての情報
+リードの最短長、T -&gt; C mutationの指定</p>
+<p><img alt="" src="https://lh3.googleusercontent.com/STLDXYeF8NC-rqiRjaW4rArxJNHYNNcpDkrpj-OkX6W0Ltr7eo0FkqMd6VXWM6asWlMQMDhkg0l0pViKfzpFpXKFhN_KN1tyJkLDYeNt2fRqyNMVNQvp6rhwyF0LOZN7W_mJaSxy"></p>
+<p>④ pipeline. 使うモジュールと各引数の設定
+クオリティチェック -&gt; トリミング -&gt; マッピング
+<img alt="" src="https://lh5.googleusercontent.com/KASBpB_VhdJ80ZHeIyOucHGZShtPan6lgSWzCcrKl6qGoQahRudn5Gq9n5gu--xl2o3bWuOh7u8y4huuc6adxcis-BLRJhW9iczYI2tREs8MRWkpzoWsx_WtQXIvtlxskNRaZK2h"></p>
+<p><img alt="" src="https://lh4.googleusercontent.com/7vAyDIsxenmYiwISI6p1k6mjbbw1HESriPeyla17MOvM8dPjJxYxD5cLF8OWPXtO7AHCt4AvDjXPZmndQ7p6sNUkME4BIdM-CsmRfKyf0L7ni1nQY3LXoHXDdv6cNY9Xg_EGQyWb">
+MockinbirdModuleを使うことでmock PAR-CLIP experimentを考慮に入れた解析ができますと、すでに書きましたが、Mock Experimentの結果をバックグラウンドとして処理して、PAR-CLIP Experimentの結果を出すことができます。</p>
+<p>具体的な方法としては、まず
+<code>mock_processing = True</code>とし、
+<code>mockinbird preprocess nrd1_mock.fastq nrd1_mock nrd1_mock preprocess.yaml</code>を実行します。これで<code>{% if not mock_processing %}</code>までで解析がストップします。</p>
+<p>PileupModule, BamStatisticsModuleによって、Mock Experimentの.mpileupファイルと_stat.jsonファイルがそれぞれ生成されます。（この二つのファイルを次に使うことになります。）</p>
+<p>次に<code>mock_processing = False</code>に戻し、
+<code>$ mockinbird preprocess nrd1.fastq nrd1 nrd1 preprocess.yaml</code>を実行します。すると下記のコードも一緒に実行されます。</p>
+<p><img alt="" src="https://lh4.googleusercontent.com/hKqjVPmLLGnF0bhn637a_19_gZZ6KJBDceofpi8TVC_NfnhM1rZiZVb8MiBz-TmVv0FtStVpck_3IdL_CmYS52kpQqm0uzGbDWK5xyw1InCRVyLE8ne99FQIuAFm4VkuvpEkEtC-"></p>
+<p>これによって、Mock Experimentの<code>.mpileupファイル</code>と<code>_stat.jsonファイル</code>を受け取りつつ、最終的なCLIP-seqのテーブルを作ることができ、preprocessは終了となります。下記のようなテーブルが出力され、これをもとにpostprocessに進んでいくことになります。
+<img alt="" src="https://lh3.googleusercontent.com/yb1p70EaelwH-dEGIRhTLnjUoDLgKHSNzqD6dpG9IT9y5fM0LApdvtHKNgmKA73G6HgfflmWkEnoFvm_HEjpIxf4T6Uk15uG4ovIJsG2ILHRGGpXELLQ381BWMkFU6k8AxtSgocl"><img alt="" src="https://lh4.googleusercontent.com/3bwU07uRrmxRkOJxVPU8N-S11uYBRU3NrRFFrkoDyz_RlXjHgClXH2aDfJ2IU10yV-kURjSGBOR5nsdyaUBrh6C2lkMW3u8C128ktZXIWXniOzjGyIoD68ArK3awsfazmT4bRr2Z"></p>
+<p>長くなってしまったので、モジュールとpostprocessの説明は次回に回したいと思います。長い間お付き合いいただきありがとうございました。</p>
+  </div>
+  
+<div class="article-tag-list">
+<span class="label label-default">Tags</span>
+	<a href="../../../tag/bioinformatics.html"><i class="fa fa-tag"></i>bioinformatics</a>&nbsp;
+</div>  <hr />
+  <div class="well well-sm">  <!-- Social media sharing buttons -->
+    <!-- Twitter -->
+    <a href="https://twitter.com/share" class="twitter-share-button" 
+       data-via="oumed_python" >Tweet</a>&nbsp;
+
+    <!-- Google+ -->
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="g-plusone" data-size="medium"></div>&nbsp;
+
+    <!-- Facebook -->
+    <div class="fb-like" 
+        data-href="../../../articles/2019/04/mockinbird_parclip.html" 
+        data-layout="button_count" 
+        data-action="like" data-show-faces="true" 
+        data-share="true">
+    </div>
+    &nbsp;
+  </div> <!-- /Social media sharing buttons -->
+</article>
+        </div><!-- /content -->
+
+        <div class="col-md-3 sidebar-nav" id="sidebar">
+
+<div class="row">
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-comment fa-fw fa-lg"></i> Social</h4>
+<ul class="list-unstyled social-links">
+    <li><a href="https://oumedpython.hatenablog.com/" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="技術Blog (はてな)"></i>
+		技術Blog (はてな)
+	</a></li>
+    <li><a href="https://twitter.com/oumed_python" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="Twitter"></i>
+		Twitter
+	</a></li>
+    <li><a href="mailto:handai.python@gmail.com" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="E-mail"></i>
+		E-mail
+	</a></li>
+    <li><a href="https://github.com/oumpy" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="GitHub"></i>
+		GitHub
+	</a></li>
+    <li><a href="https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="YouTube"></i>
+		YouTube
+	</a></li>
+</ul>
+</div>
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-folder fa-fw fa-lg"></i> Categories</h4>
+<ul class="list-unstyled category-links">
+  <li><a href="../../../category/news.html" >
+    <i class="fa fa-folder-open fa-fw fa-lg"></i> news</a></li>
+  <li><a href="../../../category/tech_archive.html" >
+    <i class="fa fa-folder-open fa-fw fa-lg"></i> tech_archive</a></li>
+</ul>
+</div>
+
+</div> <!-- /row -->
+
+<h4><i class="fa fa-tags fa-fw fa-lg"></i> Tags</h4>
+<p class="tag-cloud">
+      <a href="../../../tag/news.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>news
+      </a>
+      <a href="../../../tag/deeplearning.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>deeplearning
+      </a>
+      <a href="../../../tag/atcoder.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>atcoder
+      </a>
+      <a href="../../../tag/statistics.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>statistics
+      </a>
+      <a href="../../../tag/bioinformatics.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>bioinformatics
+      </a>
+      <a href="../../../tag/github.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>github
+      </a>
+      <a href="../../../tag/python.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>python
+      </a>
+      <a href="../../../tag/kaggle.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>kaggle
+      </a>
+      <a href="../../../tag/shell.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>shell
+      </a>
+      <a href="../../../tag/paper.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>paper
+      </a>
+</p>
+<h4><i class="fa fa-rss fa-fw fa-lg"></i> Feeds</h4>
+<ul class="list-unstyled">
+    <li><a href="http://oumpy.github.io/feeds/all.atom.xml" 
+		   type="application/atom+xml" rel="alternate">
+		<i class="fa fa-rss-square fa-fw fa-lg"></i> Atom Feed</a></li>
+    <li><a href="http://oumpy.github.io/feeds/all.rss.xml" 
+		   type="application/rss+xml" rel="alternate">
+		<i class="fa fa-rss-square fa-fw fa-lg"></i> RSS feed</a></li>
+</ul>
+
+<hr />
+
+        </div><!--/sidebar -->
+      </div><!--/row-->
+    </div><!--/.container /#main-container -->
+
+    <footer id="site-footer">
+ 
+      <address id="site-colophon">
+        <p class="text-center text-muted">
+        Site built using <a href="http://getpelican.com/" target="_blank">Pelican</a>
+        &nbsp;&bull;&nbsp; Theme based on
+        <a href="http://www.voidynullness.net/page/voidy-bootstrap-pelican-theme/"
+           target="_blank">VoidyBootstrap</a> by 
+        <a href="http://www.robertiwancz.com/"
+           target="_blank">RKI</a>  
+        </p>
+      </address><!-- /colophon  -->
+    </footer>
+
+
+    <!-- javascript -->
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+<!-- Facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Twitter -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google+ -->
+<!-- Synchronous 
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+-->
+<!-- Asynchronous -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>  </body>
+</html>
