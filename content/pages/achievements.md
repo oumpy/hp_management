@@ -31,7 +31,7 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 - signate NTT (佐藤) 3位
 - bioinformatics contest 2018(安水、秋山) 18位, 20位
 ### 競技プログラミング
-- AtCoder全日本学生最強プログラミングコンテスト決勝出場 (小川)
+- AtCoder日本最強プログラマー学生選手権決勝出場 (小川)
 - AtCoderレート青3名、水色2名など。
 
 ## 研究開発活動
