@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Python会" />
+    <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
+
+    <title>シェルスクリプト入門(2) - 大阪大学医学部 Python会</title>
+
+   
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous" />
+      <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+            crossorigin="anonymous">
+
+
+      <link rel="stylesheet" href="../../../theme/css/pygment.css" />
+      <link rel="stylesheet" href="../../../theme/css/voidybootstrap.css" />
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" integrity="sha384-FFgGfda92tXC8nCNOxrCQ3R8x1TNkMFqDZVQdDaaJiiVbjkPBXIJBx0o7ETjy8Bh" crossorigin="anonymous"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="../../../favicon.ico" />
+        <link href="http://oumpy.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="大阪大学医学部 Python会 Atom Feed" />
+        <link href="http://oumpy.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="大阪大学医学部 Python会 RSS Feed" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12345678-9', '');
+  ga('send', 'pageview');
+
+</script>
+  </head>
+
+  <body>
+   
+    <nav class="navbar navbar-default">
+      <div class="container">
+	   <div class="navbar-header">
+		<button type="button" class="navbar-toggle" 
+				data-toggle="collapse" data-target="#main-navbar-collapse">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="../../../" rel="home">
+          <i class="fa fa-home fa-fw fa-lg"> </i> </a>
+       </div>
+
+      <div class="collapse navbar-collapse" id="main-navbar-collapse">
+        <ul class="nav navbar-nav">
+              <li>
+                <a href="../../../index.html">Python会について</a>
+              </li>
+              <li>
+                <a href="../../../activities.html">活動内容</a>
+              </li>
+              <li>
+                <a href="../../../achievements.html">実績</a>
+              </li>
+              <li>
+                <a href="../../../recruit.html">会員募集</a>
+              </li>
+              <li>
+                <a href="../../../blog.html">技術ブログ</a>
+              </li>
+              <li>
+                <a href="../../../contact.html">Contact</a>
+              </li>
+            <li class="divider"></li>
+            <li class="">
+              <a href="../../../archives.html">Archives</a>
+            </li>
+          <li class="divider"></li>
+            <li><a href="http://oumpy.github.io/feeds/all.atom.xml" 
+                   type="application/atom+xml" rel="alternate">
+                <i class="fa fa-rss fa-fw fa-lg"></i> </a></li>
+        </ul> <!-- /nav -->
+      </div> <!-- /navbar-collapse -->
+	  </div> <!-- /container -->
+    </nav> <!-- /navbar -->
+
+	<div class="jumbotron" id="overview">
+	  <div class="container">
+		<h1><a href="../../../">大阪大学医学部 Python会</a></h1>
+		<p class="lead">Now is better than never.</p>
+	  </div>
+	</div>
+
+    <div class="container" id="main-container">
+      <div class="row">
+        <div class="col-md-9" id="content">
+<article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="article-header">
+<abbr class="article-header-date">
+  2019-04-14(日)
+</abbr> <h1>
+  <a href="../../../articles/2019/04/shellscript_2.html" rel="bookmark"
+     title="Permalink to シェルスクリプト入門(2)">
+    シェルスクリプト入門(2)
+  </a>
+</h1><div class="article-header-info">
+  <p>
+      Posted by <a href="../../../author/shui-ye.html">水野</a>
+    in 
+    <a href="../../../category/tech_archive.html">
+      tech_archive</a>
+    &nbsp;&nbsp;
+  </p>
+</div> <!-- /.article-header-info -->  </header>
+  <div class="content-body" itemprop="text articleBody">
+	<p>※　編集注：前作<a href="https://pythonoum.wordpress.com/2018/11/01/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%85%A5%E9%96%801/">シェルスクリプト入門（1）</a>の続編です。まだ読み終わってない方はそちらを先にどうぞ。</p>
+<p>テーブルファイルの操作と言えばRです。 (※　編集注：Pythonでもできます。)
+が、そこまでbashで書いてきたのに、R呼び出して変数再設定して…面倒くさいから嫌だ！！
+ってことないでしょうか。</p>
+<p>Rの機能を代替するのは無理ですが、せめてほんの少し、
+例えば、テーブル中の値をそれぞれbashの変数に入れれたら、
+Rを呼び出さずに完結できたりします。</p>
+<p>要は、<code>$ mat_i_j=i行j列目の要素</code>で変数を格納していきます。</p>
+<p>対象ファイル名を、table.txtで、タブ区切り、中身は以下みたいの。</p>
+<div class="highlight"><pre><span></span><code><span class="err">a    b    c</span>
+<span class="err">1    2    3</span>
+<span class="err">d    e    f</span>
+</code></pre></div>
+
+
+<p>これの各要素を、<code>$mat_i_j</code> に格納していきます。
+一例として、以下のスクリプトでできます。
+配列つかったりしてもっといいスクリプトもきっとあります。</p>
+<p>bashは汚いスクリプトでもたいてい速く動いてくれるので成長しないですね。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nv">row</span><span class="o">=</span><span class="m">0</span> <span class="c1">## 行番号に使う変数の設定。</span>
+<span class="k">while</span> <span class="nb">read</span> x1 x2 x3 <span class="c1">## 解説①</span>
+<span class="k">do</span>
+    <span class="nv">row</span><span class="o">=</span><span class="sb">`</span>expr <span class="nv">$row</span> + <span class="m">1</span><span class="sb">`</span> <span class="c1">## 1行ずつ読んでくので、1ずつ足していく。</span>
+    <span class="k">for</span> col in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">3</span><span class="sb">`</span> <span class="c1">## 今読んでる行での列番号をfor文で回す。</span>
+    <span class="k">do</span>
+        <span class="nb">eval</span> mat_<span class="si">${</span><span class="nv">row</span><span class="si">}</span>_<span class="si">${</span><span class="nv">col</span><span class="si">}</span><span class="o">=</span><span class="sb">`</span><span class="nb">eval</span> <span class="nb">echo</span> <span class="se">\\</span><span class="nv">$x</span><span class="si">${</span><span class="nv">col</span><span class="si">}</span><span class="sb">`</span> <span class="c1">## 解説②</span>
+    <span class="k">done</span>
+<span class="k">done</span><span class="p">&amp;</span>lt<span class="p">;</span>table.txt
+
+<span class="c1">### 変数mat_$i_$j を使った処理が続く。</span>
+</code></pre></div>
+
+
+<p>時間のある人用に解説です。
+少し小技があります。</p>
+<h3>1) while readの使い方</h3>
+<p>よく見かけるのは、<code>cat</code>からパイプで<code>while read</code>につなぐやつです。</p>
+<div class="highlight"><pre><span></span><code>cat table.txt <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> x1 x2 x3
+</code></pre></div>
+
+
+<p>ファイルを一行ずつ読んで、各列の要素を<code>read</code>の後ろに置いた変数名<code>（x1,x2,x3）</code>に格納していきます。変数名の個数は任意です。ここでは列の数に合わせてます。
+各行ごとに、<code>do</code>～<code>done</code>の間で、<code>$x1</code>,<code>$x2</code>,<code>$x3</code>が使えるようになります。</p>
+<p>が、しかし、パイプで<code>while</code>に入ってしまうと、パイプ内はパイプ内で完結するため、
+<code>do</code>~<code>done</code>の中で変数操作をしても、<code>done</code>の後では、その中身が空っぽになっちゃいます。</p>
+<p>これを回避するためには、パイプを使わないということで、リダイレクトで、
+<code>done</code>の後ろに</p>
+<div class="highlight"><pre><span></span><code><span class="k">done</span>&lt;table.txt
+</code></pre></div>
+
+
+<p>を書きます。
+読みにくいですよねー。</p>
+<h3>2) evalの使い方</h3>
+<p>今回の<code>mat_$i_$j</code>のように、変数名に変数<code>($i,$j)</code>を使って値を格納する時には、<code>eval</code>を使います。
+<code>eval</code>は、その後に書いた文をもってきて、bashスクリプトとして評価（evaluate）します。</p>
+<p>なので、<code>i=2, j=3</code> として、</p>
+<p><code>eval mat_${i}_${j}=aaa</code></p>
+<p>は、
+<code>mat_2_3=aaa</code> をスクリプトとして評価しろ、ということになり、
+<code>mat_2_3</code>という変数名に、<code>aaa</code>が入ります。
+（ちなみに、どこまでが変数名か分からなくなる状況では、変数名を{}でくくります。ここではiとj。）</p>
+<p>変数を使った変数名の中身を出力させる場合には、echoとevalを組み合わせます。
+<code>col=1</code>として、</p>
+<div class="highlight"><pre><span></span><code><span class="nb">eval</span> <span class="nb">echo</span> <span class="se">\$</span>x<span class="si">${</span><span class="nv">col</span><span class="si">}</span>
+</code></pre></div>
+
+
+<p>と書けば、まず、<code>eval</code>が<code>$col</code>の中身を出してからスクリプトとして評価するので、
+（xの$には\がかかってるので無視されます）
+<code>echo $x1</code>
+と書いていることになり、通常の<code>echo</code>で書いたように、<code>$x1</code>の中身が出力されます。
+xの$にかかってた\は、<code>eval</code>での評価で消費されて、<code>echo</code>内にはなくなります。ここ重要。</p>
+<p>やりたいことは、<code>eval echo</code>で出してきた値を、変数を使った変数名に格納することです。</p>
+<p><code>eval mat_${i}_${j}=aaa</code></p>
+<p>の<code>aaa</code>部分に<code>eval echo</code>を直接もってきても、機能しません。
+<code>eval echo</code>のままでは、まだ値ではなくスクリプトだからです。</p>
+<p>なので、そのスクリプトを実行させて値を出力させたものを、<code>aaa</code>の部分に書きます。
+そういう時は、アクサングラーブ（` シフト押しながら＠）でくくります。</p>
+<p>アクサングラーブは、その中にあるスクリプトの実行結果を出力します。
+なので、</p>
+<div class="highlight"><pre><span></span><code><span class="nv">test</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$k</span><span class="sb">`</span>
+</code></pre></div>
+
+
+<p>とすれば、<code>$k</code>の中身が出力されて、<code>test</code>に格納されます。
+<code>row</code>に1ずつ足していくとこでも使ってます。よく見る方法です。
+<code>for</code>文使わなくていいので、見た目がすっきりします。</p>
+<p>では、</p>
+<div class="highlight"><pre><span></span><code>eval mat_<span class="cp">${</span><span class="n">i</span><span class="cp">}</span>_<span class="cp">${</span><span class="n">j</span><span class="cp">}</span>=`eval echo \<span class="nv">$x</span><span class="cp">${</span><span class="n">col</span><span class="cp">}</span>`
+</code></pre></div>
+
+
+<p>と書けば、<code>mat_2_3</code>に<code>$x1</code>の中身が代入されるはず！
+となるのですが、不完全です。</p>
+<p>アクサングラーブでの評価で、<code>\</code>が一個消費されてしまうので、実行する<code>eval echo</code>の文が、</p>
+<div class="highlight"><pre><span></span><code><span class="nb">eval</span> <span class="nb">echo</span> <span class="nv">$x</span><span class="si">${</span><span class="nv">col</span><span class="si">}</span>
+</code></pre></div>
+
+
+<p>となるので、<code>eval</code>での評価時に<code>$x</code>の中身（設定してないので空っぽ）と<code>$col</code>が出されてしまって、
+<code>echo (空)1</code>
+となって、最終的に、<code>mat_2_3</code>には<code>$x1</code>ではなく、<code>$col</code>の中身である1が代入されてしまいます。</p>
+<p>なので、</p>
+<div class="highlight"><pre><span></span><code>eval mat_<span class="cp">${</span><span class="n">i</span><span class="cp">}</span>_<span class="cp">${</span><span class="n">j</span><span class="cp">}</span>=`eval echo \\<span class="nv">$x</span><span class="cp">${</span><span class="n">col</span><span class="cp">}</span>`
+</code></pre></div>
+
+
+<p>と、\を一個増やして書けば、目的達成です。
+めでたしめでたし。</p>
+<p>※ 編集注 : 記事はめでたく終わりましたが、アクサングラーブがマークダウンと干渉してしまいました。試行錯誤の結果、ところどころテキストが混じって読みにくくなってしまいました。すみません。</p>
+  </div>
+  
+<div class="article-tag-list">
+<span class="label label-default">Tags</span>
+	<a href="../../../tag/shell.html"><i class="fa fa-tag"></i>shell</a>&nbsp;
+</div>  <hr />
+  <div class="well well-sm">  <!-- Social media sharing buttons -->
+    <!-- Twitter -->
+    <a href="https://twitter.com/share" class="twitter-share-button" 
+       data-via="oumed_python" >Tweet</a>&nbsp;
+
+    <!-- Google+ -->
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="g-plusone" data-size="medium"></div>&nbsp;
+
+    <!-- Facebook -->
+    <div class="fb-like" 
+        data-href="../../../articles/2019/04/shellscript_2.html" 
+        data-layout="button_count" 
+        data-action="like" data-show-faces="true" 
+        data-share="true">
+    </div>
+    &nbsp;
+  </div> <!-- /Social media sharing buttons -->
+</article>
+        </div><!-- /content -->
+
+        <div class="col-md-3 sidebar-nav" id="sidebar">
+
+<div class="row">
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-comment fa-fw fa-lg"></i> Social</h4>
+<ul class="list-unstyled social-links">
+    <li><a href="https://oumedpython.hatenablog.com/" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="技術Blog (はてな)"></i>
+		技術Blog (はてな)
+	</a></li>
+    <li><a href="https://twitter.com/oumed_python" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="Twitter"></i>
+		Twitter
+	</a></li>
+    <li><a href="mailto:handai.python@gmail.com" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="E-mail"></i>
+		E-mail
+	</a></li>
+    <li><a href="https://github.com/oumpy" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="GitHub"></i>
+		GitHub
+	</a></li>
+    <li><a href="https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="YouTube"></i>
+		YouTube
+	</a></li>
+</ul>
+</div>
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-folder fa-fw fa-lg"></i> Categories</h4>
+<ul class="list-unstyled category-links">
+  <li><a href="../../../category/news.html" >
+    <i class="fa fa-folder-open fa-fw fa-lg"></i> news</a></li>
+  <li><a href="../../../category/tech_archive.html" >
+    <i class="fa fa-folder-open fa-fw fa-lg"></i> tech_archive</a></li>
+</ul>
+</div>
+
+</div> <!-- /row -->
+
+<h4><i class="fa fa-tags fa-fw fa-lg"></i> Tags</h4>
+<p class="tag-cloud">
+      <a href="../../../tag/news.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>news
+      </a>
+      <a href="../../../tag/deeplearning.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>deeplearning
+      </a>
+      <a href="../../../tag/atcoder.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>atcoder
+      </a>
+      <a href="../../../tag/statistics.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>statistics
+      </a>
+      <a href="../../../tag/bioinformatics.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>bioinformatics
+      </a>
+      <a href="../../../tag/github.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>github
+      </a>
+      <a href="../../../tag/python.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>python
+      </a>
+      <a href="../../../tag/kaggle.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>kaggle
+      </a>
+      <a href="../../../tag/shell.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>shell
+      </a>
+      <a href="../../../tag/paper.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>paper
+      </a>
+</p>
+<h4><i class="fa fa-rss fa-fw fa-lg"></i> Feeds</h4>
+<ul class="list-unstyled">
+    <li><a href="http://oumpy.github.io/feeds/all.atom.xml" 
+		   type="application/atom+xml" rel="alternate">
+		<i class="fa fa-rss-square fa-fw fa-lg"></i> Atom Feed</a></li>
+    <li><a href="http://oumpy.github.io/feeds/all.rss.xml" 
+		   type="application/rss+xml" rel="alternate">
+		<i class="fa fa-rss-square fa-fw fa-lg"></i> RSS feed</a></li>
+</ul>
+
+<hr />
+
+        </div><!--/sidebar -->
+      </div><!--/row-->
+    </div><!--/.container /#main-container -->
+
+    <footer id="site-footer">
+ 
+      <address id="site-colophon">
+        <p class="text-center text-muted">
+        Site built using <a href="http://getpelican.com/" target="_blank">Pelican</a>
+        &nbsp;&bull;&nbsp; Theme based on
+        <a href="http://www.voidynullness.net/page/voidy-bootstrap-pelican-theme/"
+           target="_blank">VoidyBootstrap</a> by 
+        <a href="http://www.robertiwancz.com/"
+           target="_blank">RKI</a>  
+        </p>
+      </address><!-- /colophon  -->
+    </footer>
+
+
+    <!-- javascript -->
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+<!-- Facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Twitter -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google+ -->
+<!-- Synchronous 
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+-->
+<!-- Asynchronous -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>  </body>
+</html>

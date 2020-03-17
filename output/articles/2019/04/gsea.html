@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Python会" />
+    <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
+
+    <title>Gene Set Enrichment Analysis (GSEA)入門 - 大阪大学医学部 Python会</title>
+
+   
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous" />
+      <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+            crossorigin="anonymous">
+
+
+      <link rel="stylesheet" href="../../../theme/css/pygment.css" />
+      <link rel="stylesheet" href="../../../theme/css/voidybootstrap.css" />
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" integrity="sha384-FFgGfda92tXC8nCNOxrCQ3R8x1TNkMFqDZVQdDaaJiiVbjkPBXIJBx0o7ETjy8Bh" crossorigin="anonymous"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="../../../favicon.ico" />
+        <link href="http://oumpy.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="大阪大学医学部 Python会 Atom Feed" />
+        <link href="http://oumpy.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="大阪大学医学部 Python会 RSS Feed" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12345678-9', '');
+  ga('send', 'pageview');
+
+</script>
+  </head>
+
+  <body>
+   
+    <nav class="navbar navbar-default">
+      <div class="container">
+	   <div class="navbar-header">
+		<button type="button" class="navbar-toggle" 
+				data-toggle="collapse" data-target="#main-navbar-collapse">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="../../../" rel="home">
+          <i class="fa fa-home fa-fw fa-lg"> </i> </a>
+       </div>
+
+      <div class="collapse navbar-collapse" id="main-navbar-collapse">
+        <ul class="nav navbar-nav">
+              <li>
+                <a href="../../../index.html">Python会について</a>
+              </li>
+              <li>
+                <a href="../../../activities.html">活動内容</a>
+              </li>
+              <li>
+                <a href="../../../achievements.html">実績</a>
+              </li>
+              <li>
+                <a href="../../../recruit.html">会員募集</a>
+              </li>
+              <li>
+                <a href="../../../blog.html">技術ブログ</a>
+              </li>
+              <li>
+                <a href="../../../contact.html">Contact</a>
+              </li>
+            <li class="divider"></li>
+            <li class="">
+              <a href="../../../archives.html">Archives</a>
+            </li>
+          <li class="divider"></li>
+            <li><a href="http://oumpy.github.io/feeds/all.atom.xml" 
+                   type="application/atom+xml" rel="alternate">
+                <i class="fa fa-rss fa-fw fa-lg"></i> </a></li>
+        </ul> <!-- /nav -->
+      </div> <!-- /navbar-collapse -->
+	  </div> <!-- /container -->
+    </nav> <!-- /navbar -->
+
+	<div class="jumbotron" id="overview">
+	  <div class="container">
+		<h1><a href="../../../">大阪大学医学部 Python会</a></h1>
+		<p class="lead">Now is better than never.</p>
+	  </div>
+	</div>
+
+    <div class="container" id="main-container">
+      <div class="row">
+        <div class="col-md-9" id="content">
+<article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="article-header">
+<abbr class="article-header-date">
+  2019-04-14(日)
+</abbr> <h1>
+  <a href="../../../articles/2019/04/gsea.html" rel="bookmark"
+     title="Permalink to Gene Set Enrichment Analysis (GSEA)入門">
+    Gene Set Enrichment Analysis (GSEA)入門
+  </a>
+</h1><div class="article-header-info">
+  <p>
+      Posted by <a href="../../../author/xi-tian.html">西田</a>
+    in 
+    <a href="../../../category/tech_archive.html">
+      tech_archive</a>
+    &nbsp;&nbsp;
+  </p>
+</div> <!-- /.article-header-info -->  </header>
+  <div class="content-body" itemprop="text articleBody">
+	<h1>GSEAとは</h1>
+
+<p>GSEAは発現差異解析の結果などで得られる遺伝子群がどういった機能のものかを明らかにするために用いられる解析手法です。機能表現として用いられる主なものとしてはKEGGのパスウェイ分類やGene Ontology(GO)があります。
+<h1>clusterProfilerでGSEA入門</h1>
+GSEA には様々なGSEAがあります。単に注目する遺伝子のリストをGSEAへの入力とするもの、発現プロファイルを入力とするもの、機能のデータベースやGSEA手法を複数組み合わせたりするもの (EGSEA) など様々です。[余談ですがGeneを代謝物(Metabolite)に置き換えたMSEAもあります。]</p>
+<p>ここでは前述したものの内、最初の「単に注目する遺伝子のリストをGSEAへの入力とするもの」をbioconductorのパッケージ clusterProfiler を用いて体験してみましょう。</p>
+<p>(clusterProfilerのインストールについては省略します。)</p>
+<p>まず注目する遺伝子のリストを下記で用意します。</p>
+<p>※編集注 : 以下はすべてRでの実行になります。</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="nf">data</span><span class="p">(</span><span class="n">geneList</span><span class="p">,</span> <span class="n">package</span><span class="o">=</span><span class="s">&quot;DOSE&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">gene</span> <span class="o">&lt;-</span> <span class="nf">names</span><span class="p">(</span><span class="n">geneList</span><span class="p">)[</span><span class="nf">abs</span><span class="p">(</span><span class="n">geneList</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">2</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">gene</span>
+  <span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;4312&quot;</span>   <span class="s">&quot;8318&quot;</span>   <span class="s">&quot;10874&quot;</span>  <span class="s">&quot;55143&quot;</span>  <span class="s">&quot;55388&quot;</span>  <span class="s">&quot;991&quot;</span>    <span class="s">&quot;6280&quot;</span>   <span class="s">&quot;2305&quot;</span>   <span class="s">&quot;9493&quot;</span>   <span class="s">&quot;1062&quot;</span>   <span class="s">&quot;3868&quot;</span>  
+ <span class="p">[</span><span class="m">12</span><span class="p">]</span> <span class="s">&quot;4605&quot;</span>   <span class="s">&quot;9833&quot;</span>   <span class="s">&quot;9133&quot;</span>   <span class="s">&quot;6279&quot;</span>   <span class="s">&quot;10403&quot;</span>  <span class="s">&quot;8685&quot;</span>   <span class="s">&quot;597&quot;</span>    <span class="s">&quot;7153&quot;</span>   <span class="s">&quot;23397&quot;</span>  <span class="s">&quot;6278&quot;</span>   <span class="s">&quot;79733&quot;</span>
+ <span class="p">[</span><span class="m">23</span><span class="p">]</span> <span class="s">&quot;259266&quot;</span> <span class="s">&quot;1381&quot;</span>   <span class="s">&quot;3627&quot;</span>   <span class="s">&quot;27074&quot;</span>  <span class="s">&quot;6241&quot;</span>   <span class="s">&quot;55165&quot;</span>  <span class="s">&quot;9787&quot;</span>   <span class="s">&quot;7368&quot;</span>   <span class="s">&quot;11065&quot;</span>  <span class="s">&quot;55355&quot;</span>  <span class="s">&quot;9582&quot;</span>  
+ <span class="p">[</span><span class="m">34</span><span class="p">]</span> <span class="s">&quot;220134&quot;</span> <span class="s">&quot;55872&quot;</span>  <span class="s">&quot;51203&quot;</span>  <span class="s">&quot;3669&quot;</span>   <span class="s">&quot;83461&quot;</span>  <span class="s">&quot;22974&quot;</span>  <span class="s">&quot;10460&quot;</span>  <span class="s">&quot;10563&quot;</span>  <span class="s">&quot;4751&quot;</span>   <span class="s">&quot;6373&quot;</span>   <span class="s">&quot;8140&quot;</span>  
+ <span class="p">[</span><span class="m">45</span><span class="p">]</span> <span class="s">&quot;79019&quot;</span>  <span class="s">&quot;820&quot;</span>    <span class="s">&quot;10635&quot;</span>  <span class="s">&quot;1844&quot;</span>   <span class="s">&quot;4283&quot;</span>   <span class="s">&quot;27299&quot;</span>  <span class="s">&quot;55839&quot;</span>  <span class="s">&quot;27338&quot;</span>  <span class="s">&quot;890&quot;</span>    <span class="s">&quot;9415&quot;</span>   <span class="s">&quot;983&quot;</span>   
+ <span class="p">[</span><span class="m">56</span><span class="p">]</span> <span class="s">&quot;54821&quot;</span>  <span class="s">&quot;10232&quot;</span>  <span class="s">&quot;4085&quot;</span>   <span class="s">&quot;6362&quot;</span>   <span class="s">&quot;9837&quot;</span>   <span class="s">&quot;5080&quot;</span>   <span class="s">&quot;7850&quot;</span>   <span class="s">&quot;81930&quot;</span>  <span class="s">&quot;5918&quot;</span>   <span class="s">&quot;81620&quot;</span>  <span class="s">&quot;332&quot;</span>   
+ <span class="p">[</span><span class="m">67</span><span class="p">]</span> <span class="s">&quot;55765&quot;</span>  <span class="s">&quot;79605&quot;</span>  <span class="s">&quot;3832&quot;</span>   <span class="s">&quot;6286&quot;</span>   <span class="s">&quot;5163&quot;</span>   <span class="s">&quot;2146&quot;</span>   <span class="s">&quot;3002&quot;</span>   <span class="s">&quot;50852&quot;</span>  <span class="s">&quot;7272&quot;</span>   <span class="s">&quot;2568&quot;</span>   <span class="s">&quot;64151&quot;</span>
+ <span class="p">[</span><span class="m">78</span><span class="p">]</span> <span class="s">&quot;51806&quot;</span>  <span class="s">&quot;366&quot;</span>    <span class="s">&quot;2842&quot;</span>   <span class="s">&quot;9212&quot;</span>   <span class="s">&quot;140578&quot;</span> <span class="s">&quot;51659&quot;</span>  <span class="s">&quot;8715&quot;</span>   <span class="s">&quot;4902&quot;</span>   <span class="s">&quot;8208&quot;</span>   <span class="s">&quot;1111&quot;</span>   <span class="s">&quot;9319&quot;</span>  
+ <span class="p">[</span><span class="m">89</span><span class="p">]</span> <span class="s">&quot;9055&quot;</span>   <span class="s">&quot;3833&quot;</span>   <span class="s">&quot;146909&quot;</span> <span class="s">&quot;23475&quot;</span>  <span class="s">&quot;4321&quot;</span>   <span class="s">&quot;11182&quot;</span>  <span class="s">&quot;10112&quot;</span>  <span class="s">&quot;3902&quot;</span>   <span class="s">&quot;3620&quot;</span>   <span class="s">&quot;3887&quot;</span>   <span class="s">&quot;51514&quot;</span>
+<span class="p">[</span><span class="m">100</span><span class="p">]</span> <span class="s">&quot;6790&quot;</span>   <span class="s">&quot;4521&quot;</span>   <span class="s">&quot;891&quot;</span>    <span class="s">&quot;57110&quot;</span>  <span class="s">&quot;8544&quot;</span>   <span class="s">&quot;1448&quot;</span>   <span class="s">&quot;24137&quot;</span>  <span class="s">&quot;6355&quot;</span>   <span class="s">&quot;10578&quot;</span>  <span class="s">&quot;4174&quot;</span>   <span class="s">&quot;9232&quot;</span>  
+<span class="p">[</span><span class="m">111</span><span class="p">]</span> <span class="s">&quot;643314&quot;</span> <span class="s">&quot;1307&quot;</span>   <span class="s">&quot;776&quot;</span>    <span class="s">&quot;4129&quot;</span>   <span class="s">&quot;9370&quot;</span>   <span class="s">&quot;196740&quot;</span> <span class="s">&quot;25924&quot;</span>  <span class="s">&quot;8857&quot;</span>   <span class="s">&quot;1602&quot;</span>   <span class="s">&quot;51161&quot;</span>  <span class="s">&quot;3708&quot;</span>  
+<span class="p">[</span><span class="m">122</span><span class="p">]</span> <span class="s">&quot;23090&quot;</span>  <span class="s">&quot;10742&quot;</span>  <span class="s">&quot;51760&quot;</span>  <span class="s">&quot;9122&quot;</span>   <span class="s">&quot;10699&quot;</span>  <span class="s">&quot;8416&quot;</span>   <span class="s">&quot;60598&quot;</span>  <span class="s">&quot;79148&quot;</span>  <span class="s">&quot;64799&quot;</span>  <span class="s">&quot;4629&quot;</span>   <span class="s">&quot;1556&quot;</span>  
+<span class="p">[</span><span class="m">133</span><span class="p">]</span> <span class="s">&quot;55096&quot;</span>  <span class="s">&quot;26289&quot;</span>  <span class="s">&quot;6038&quot;</span>   <span class="s">&quot;771&quot;</span>    <span class="s">&quot;51313&quot;</span>  <span class="s">&quot;23704&quot;</span>  <span class="s">&quot;3117&quot;</span>   <span class="s">&quot;80129&quot;</span>  <span class="s">&quot;23158&quot;</span>  <span class="s">&quot;125&quot;</span>    <span class="s">&quot;4958&quot;</span>  
+<span class="p">[</span><span class="m">144</span><span class="p">]</span> <span class="s">&quot;4857&quot;</span>   <span class="s">&quot;1311&quot;</span>   <span class="s">&quot;5105&quot;</span>   <span class="s">&quot;5174&quot;</span>   <span class="s">&quot;730&quot;</span>    <span class="s">&quot;2018&quot;</span>   <span class="s">&quot;81563&quot;</span>  <span class="s">&quot;2532&quot;</span>   <span class="s">&quot;1308&quot;</span>   <span class="s">&quot;4250&quot;</span>   <span class="s">&quot;23362&quot;</span>
+<span class="p">[</span><span class="m">155</span><span class="p">]</span> <span class="s">&quot;2167&quot;</span>   <span class="s">&quot;51705&quot;</span>  <span class="s">&quot;2593&quot;</span>   <span class="s">&quot;652&quot;</span>    <span class="s">&quot;80736&quot;</span>  <span class="s">&quot;4036&quot;</span>   <span class="s">&quot;57502&quot;</span>  <span class="s">&quot;5507&quot;</span>   <span class="s">&quot;56521&quot;</span>  <span class="s">&quot;22885&quot;</span>  <span class="s">&quot;4137&quot;</span>  
+<span class="p">[</span><span class="m">166</span><span class="p">]</span> <span class="s">&quot;8483&quot;</span>   <span class="s">&quot;8839&quot;</span>   <span class="s">&quot;2066&quot;</span>   <span class="s">&quot;4693&quot;</span>   <span class="s">&quot;4148&quot;</span>   <span class="s">&quot;79083&quot;</span>  <span class="s">&quot;1101&quot;</span>   <span class="s">&quot;3158&quot;</span>   <span class="s">&quot;3169&quot;</span>   <span class="s">&quot;5346&quot;</span>   <span class="s">&quot;1408&quot;</span>  
+<span class="p">[</span><span class="m">177</span><span class="p">]</span> <span class="s">&quot;9547&quot;</span>   <span class="s">&quot;2922&quot;</span>   <span class="s">&quot;11283&quot;</span>  <span class="s">&quot;64499&quot;</span>  <span class="s">&quot;54829&quot;</span>  <span class="s">&quot;1524&quot;</span>   <span class="s">&quot;10234&quot;</span>  <span class="s">&quot;1580&quot;</span>   <span class="s">&quot;10647&quot;</span>  <span class="s">&quot;25893&quot;</span>  <span class="s">&quot;24141&quot;</span>
+<span class="p">[</span><span class="m">188</span><span class="p">]</span> <span class="s">&quot;10351&quot;</span>  <span class="s">&quot;2330&quot;</span>   <span class="s">&quot;5304&quot;</span>   <span class="s">&quot;79846&quot;</span>  <span class="s">&quot;8614&quot;</span>   <span class="s">&quot;2625&quot;</span>   <span class="s">&quot;7021&quot;</span>   <span class="s">&quot;7802&quot;</span>   <span class="s">&quot;79689&quot;</span>  <span class="s">&quot;11122&quot;</span>  <span class="s">&quot;55351&quot;</span>
+<span class="p">[</span><span class="m">199</span><span class="p">]</span> <span class="s">&quot;9&quot;</span>      <span class="s">&quot;4239&quot;</span>   <span class="s">&quot;5241&quot;</span>   <span class="s">&quot;10551&quot;</span>  <span class="s">&quot;10974&quot;</span>  <span class="s">&quot;79838&quot;</span>  <span class="s">&quot;79901&quot;</span>  <span class="s">&quot;57758&quot;</span>  <span class="s">&quot;4969&quot;</span>  
+</code></pre></div>
+
+
+<p><code>gene</code>はヒト遺伝子のENTREZのIDです。</p>
+<p>この遺伝子リストを入力としてKEGGを対象としたGSEAを行ってみましょう。</p>
+<div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">clusterProfiler</span><span class="p">)</span>
+
+<span class="o">&gt;</span> <span class="n">kk</span> <span class="o">&lt;-</span> <span class="nf">enrichKEGG</span><span class="p">(</span><span class="n">gene</span>         <span class="o">=</span> <span class="n">gene</span><span class="p">,</span>
+<span class="o">+</span>                  <span class="n">organism</span>     <span class="o">=</span> <span class="s">&#39;hsa&#39;</span><span class="p">,</span>
+<span class="o">+</span>                  <span class="n">pvalueCutoff</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nf">head</span><span class="p">(</span><span class="n">kk</span><span class="p">)</span>
+               <span class="n">ID</span>                             <span class="n">Description</span> <span class="n">GeneRatio</span>  <span class="n">BgRatio</span>       <span class="n">pvalue</span>     <span class="n">p.adjust</span>       <span class="n">qvalue</span>                                             <span class="n">geneID</span> <span class="n">Count</span>
+<span class="n">hsa04110</span> <span class="n">hsa04110</span>                              <span class="n">Cell</span> <span class="n">cycle</span>     <span class="m">11</span><span class="o">/</span><span class="m">90</span> <span class="m">123</span><span class="o">/</span><span class="m">7469</span> <span class="m">2.135411e-07</span> <span class="m">0.0000409999</span> <span class="m">4.023565e-05</span> <span class="m">8318</span><span class="o">/</span><span class="m">991</span><span class="o">/</span><span class="m">9133</span><span class="o">/</span><span class="m">890</span><span class="o">/</span><span class="m">983</span><span class="o">/</span><span class="m">4085</span><span class="o">/</span><span class="m">7272</span><span class="o">/</span><span class="m">1111</span><span class="o">/</span><span class="m">891</span><span class="o">/</span><span class="m">4174</span><span class="o">/</span><span class="m">9232</span>    <span class="m">11</span>
+<span class="n">hsa04114</span> <span class="n">hsa04114</span>                          <span class="n">Oocyte</span> <span class="n">meiosis</span>     <span class="m">10</span><span class="o">/</span><span class="m">90</span> <span class="m">125</span><span class="o">/</span><span class="m">7469</span> <span class="m">2.216832e-06</span> <span class="m">0.0002128158</span> <span class="m">2.088489e-04</span>    <span class="m">991</span><span class="o">/</span><span class="m">9133</span><span class="o">/</span><span class="m">983</span><span class="o">/</span><span class="m">4085</span><span class="o">/</span><span class="m">51806</span><span class="o">/</span><span class="m">6790</span><span class="o">/</span><span class="m">891</span><span class="o">/</span><span class="m">9232</span><span class="o">/</span><span class="m">3708</span><span class="o">/</span><span class="m">5241</span>    <span class="m">10</span>
+<span class="n">hsa04218</span> <span class="n">hsa04218</span>                     <span class="n">Cellular</span> <span class="n">senescence</span>     <span class="m">10</span><span class="o">/</span><span class="m">90</span> <span class="m">160</span><span class="o">/</span><span class="m">7469</span> <span class="m">2.014286e-05</span> <span class="m">0.0012891427</span> <span class="m">1.265113e-03</span>     <span class="m">2305</span><span class="o">/</span><span class="m">4605</span><span class="o">/</span><span class="m">9133</span><span class="o">/</span><span class="m">890</span><span class="o">/</span><span class="m">983</span><span class="o">/</span><span class="m">51806</span><span class="o">/</span><span class="m">1111</span><span class="o">/</span><span class="m">891</span><span class="o">/</span><span class="m">776</span><span class="o">/</span><span class="m">3708</span>    <span class="m">10</span>
+<span class="n">hsa03320</span> <span class="n">hsa03320</span>                  <span class="n">PPAR</span> <span class="n">signaling</span> <span class="n">pathway</span>      <span class="m">7</span><span class="o">/</span><span class="m">90</span>  <span class="m">74</span><span class="o">/</span><span class="m">7469</span> <span class="m">2.724093e-05</span> <span class="m">0.0013075646</span> <span class="m">1.283191e-03</span>                 <span class="m">4312</span><span class="o">/</span><span class="m">9415</span><span class="o">/</span><span class="m">9370</span><span class="o">/</span><span class="m">5105</span><span class="o">/</span><span class="m">2167</span><span class="o">/</span><span class="m">3158</span><span class="o">/</span><span class="m">5346</span>     <span class="m">7</span>
+<span class="n">hsa04914</span> <span class="n">hsa04914</span> <span class="n">Progesterone</span><span class="o">-</span><span class="n">mediated</span> <span class="n">oocyte</span> <span class="n">maturation</span>      <span class="m">7</span><span class="o">/</span><span class="m">90</span>  <span class="m">98</span><span class="o">/</span><span class="m">7469</span> <span class="m">1.657604e-04</span> <span class="m">0.0063651988</span> <span class="m">6.246549e-03</span>                    <span class="m">9133</span><span class="o">/</span><span class="m">890</span><span class="o">/</span><span class="m">983</span><span class="o">/</span><span class="m">4085</span><span class="o">/</span><span class="m">6790</span><span class="o">/</span><span class="m">891</span><span class="o">/</span><span class="m">5241</span>     <span class="m">7</span>
+</code></pre></div>
+
+
+<p><code>kk</code> がGSEAの結果になります。</p>
+<p><code>head(kk)</code> でGSEAの結果を上から確からしいもの順にトップ5を出力しています。</p>
+<p>もし遺伝子リスト<code>gene</code>が発現差異解析の結果であるなら、コントロールとターゲット間で<code>Cell cycle</code>等に異変が起きているだろう、とこの結果から推測できるということになります。</p>
+<p>次に<code>kk</code>の各列名の意味ですが</p>
+<p>IDはKEGG pathwayのID</p>
+<p>DescriptionはKEGG pathwayの名前</p>
+<p>GeneRatioは入力<code>gene</code>の遺伝子の内、何個の遺伝子がそのKEGG pathwayにマップされるか</p>
+<p>BgRatioは全KEGG pathwayにマップされる遺伝子の内、何個の遺伝子がそのKEGG pathwayにマップされるか</p>
+<p>p.adjust, qvalueは多重検定に伴う補正後のpvalueになり小さいほど確からしいことを示します。</p>
+<p>入力<code>gene</code>に含まれる遺伝子がKEGG pathway上のどのgene productにmapされるかを可視化するには下記を実行します。</p>
+<div class="highlight"><pre><span></span><code><span class="err">browseKEGG(kk, &#39;hsa04110&#39;)</span>
+</code></pre></div>
+
+
+<p><img title="" src="https://pythonoum.files.wordpress.com/2018/11/null9.png" alt="" width="624" height="481" />
+<h1>終わりに</h1>
+最も簡単なGSEAを体験していただく例を示しました。</p>
+<p>追ってより進んだアンサンブル手法なども紹介できればと思っています。</p>
+  </div>
+  
+<div class="article-tag-list">
+<span class="label label-default">Tags</span>
+	<a href="../../../tag/bioinformatics.html"><i class="fa fa-tag"></i>bioinformatics</a>&nbsp;
+</div>  <hr />
+  <div class="well well-sm">  <!-- Social media sharing buttons -->
+    <!-- Twitter -->
+    <a href="https://twitter.com/share" class="twitter-share-button" 
+       data-via="oumed_python" >Tweet</a>&nbsp;
+
+    <!-- Google+ -->
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="g-plusone" data-size="medium"></div>&nbsp;
+
+    <!-- Facebook -->
+    <div class="fb-like" 
+        data-href="../../../articles/2019/04/gsea.html" 
+        data-layout="button_count" 
+        data-action="like" data-show-faces="true" 
+        data-share="true">
+    </div>
+    &nbsp;
+  </div> <!-- /Social media sharing buttons -->
+</article>
+        </div><!-- /content -->
+
+        <div class="col-md-3 sidebar-nav" id="sidebar">
+
+<div class="row">
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-comment fa-fw fa-lg"></i> Social</h4>
+<ul class="list-unstyled social-links">
+    <li><a href="https://oumedpython.hatenablog.com/" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="技術Blog (はてな)"></i>
+		技術Blog (はてな)
+	</a></li>
+    <li><a href="https://twitter.com/oumed_python" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="Twitter"></i>
+		Twitter
+	</a></li>
+    <li><a href="mailto:handai.python@gmail.com" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="E-mail"></i>
+		E-mail
+	</a></li>
+    <li><a href="https://github.com/oumpy" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="GitHub"></i>
+		GitHub
+	</a></li>
+    <li><a href="https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ" target="_blank">
+	  <i class="fa fa-comments fa-fw fa-lg" title="YouTube"></i>
+		YouTube
+	</a></li>
+</ul>
+</div>
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-folder fa-fw fa-lg"></i> Categories</h4>
+<ul class="list-unstyled category-links">
+  <li><a href="../../../category/news.html" >
+    <i class="fa fa-folder-open fa-fw fa-lg"></i> news</a></li>
+  <li><a href="../../../category/tech_archive.html" >
+    <i class="fa fa-folder-open fa-fw fa-lg"></i> tech_archive</a></li>
+</ul>
+</div>
+
+</div> <!-- /row -->
+
+<h4><i class="fa fa-tags fa-fw fa-lg"></i> Tags</h4>
+<p class="tag-cloud">
+      <a href="../../../tag/news.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>news
+      </a>
+      <a href="../../../tag/deeplearning.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>deeplearning
+      </a>
+      <a href="../../../tag/atcoder.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>atcoder
+      </a>
+      <a href="../../../tag/statistics.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>statistics
+      </a>
+      <a href="../../../tag/bioinformatics.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>bioinformatics
+      </a>
+      <a href="../../../tag/github.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>github
+      </a>
+      <a href="../../../tag/python.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>python
+      </a>
+      <a href="../../../tag/kaggle.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>kaggle
+      </a>
+      <a href="../../../tag/shell.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>shell
+      </a>
+      <a href="../../../tag/paper.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>paper
+      </a>
+</p>
+<h4><i class="fa fa-rss fa-fw fa-lg"></i> Feeds</h4>
+<ul class="list-unstyled">
+    <li><a href="http://oumpy.github.io/feeds/all.atom.xml" 
+		   type="application/atom+xml" rel="alternate">
+		<i class="fa fa-rss-square fa-fw fa-lg"></i> Atom Feed</a></li>
+    <li><a href="http://oumpy.github.io/feeds/all.rss.xml" 
+		   type="application/rss+xml" rel="alternate">
+		<i class="fa fa-rss-square fa-fw fa-lg"></i> RSS feed</a></li>
+</ul>
+
+<hr />
+
+        </div><!--/sidebar -->
+      </div><!--/row-->
+    </div><!--/.container /#main-container -->
+
+    <footer id="site-footer">
+ 
+      <address id="site-colophon">
+        <p class="text-center text-muted">
+        Site built using <a href="http://getpelican.com/" target="_blank">Pelican</a>
+        &nbsp;&bull;&nbsp; Theme based on
+        <a href="http://www.voidynullness.net/page/voidy-bootstrap-pelican-theme/"
+           target="_blank">VoidyBootstrap</a> by 
+        <a href="http://www.robertiwancz.com/"
+           target="_blank">RKI</a>  
+        </p>
+      </address><!-- /colophon  -->
+    </footer>
+
+
+    <!-- javascript -->
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+<!-- Facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Twitter -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google+ -->
+<!-- Synchronous 
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+-->
+<!-- Asynchronous -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>  </body>
+</html>
