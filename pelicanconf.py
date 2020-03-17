@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 import datetime
 
 AUTHOR = 'Python会'
-SITENAME = '大阪大学医学部Python会'
+SITENAME = '大阪大学医学部 Python会'
 SITEURL = ''
 
 PATH = 'content'
