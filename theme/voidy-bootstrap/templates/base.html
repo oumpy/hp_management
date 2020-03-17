@@ -132,6 +132,7 @@
     <div class="container" id="main-container">
       {% block container_header %}
 	  {% endblock %}
+		
 {% if SIDEBAR %}
         {% if SIDEBAR_SIZE is defined and SIDEBAR_SIZE < 12 %}
           {% set CONTENT_COLS = 12 - SIDEBAR_SIZE %}
@@ -160,6 +161,7 @@
     </div><!--/.container /#main-container -->
 
     <footer id="site-footer">
+
 			<!--Topに戻るボタン-->
 			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

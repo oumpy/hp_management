@@ -6,8 +6,8 @@
 {% for tag in tag_cloud %}
 <li class="tag-{{ tag.1 }}">
   <a href="{{ SITEURL }}/{{ tag.0.url }}">
-	<i class="fa fa-tag fa-fw fa-lg"></i>{{ tag.0 }}
-  </a>
+	&#x2022;{{ tag.0 }}
+  </a><br>
 </li>
 {% endfor %}
 </ul>
