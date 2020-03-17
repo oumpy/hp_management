@@ -63,25 +63,3 @@ KaggleやSignateなどのデータサイエンスコンペティションへの�
 大阪大学医学部研究棟にて、秋の研究交流会が行われました。お酒も交えながら、それぞれの先進的な研究発表と活発な議論が行われました。
 
 ![]({attach}images/activities/180907.jpg)
-
-<footer>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<p class="pagetop"><a href="#wrap"></a></p>
-<script>
-$(document).ready(function() {
-  var pagetop = $('.pagetop');
-    $(window).scroll(function () {
-       if ($(this).scrollTop() > 600) {
-            pagetop.fadeIn();
-       } else {
-            pagetop.fadeOut();
-            }
-       });
-       pagetop.click(function () {
-           $('body, html').animate({ scrollTop: 0 }, 500);
-              return false;
-   });
-});
-</script>
-</footer>

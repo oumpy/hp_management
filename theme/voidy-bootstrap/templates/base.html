@@ -28,8 +28,8 @@
 
     <title>{% block title %}{{ SITENAME }}{% if SITETAG %} - {{ SITETAG|escape }}{% endif %}{% endblock %}</title>
 
-    {% if not SKIP_DEFAULT_CSS %}   
-      {% if BOOTSTRAP_STYLESHEET %} 
+    {% if not SKIP_DEFAULT_CSS %}
+      {% if BOOTSTRAP_STYLESHEET %}
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/{{ BOOTSTRAP_STYLESHEET }}" />
       {% else %}
         <link rel="stylesheet"
@@ -47,7 +47,7 @@
       <link rel="stylesheet" href="{{ url }}" />
     {% endfor %}
 
-    {% if not STYLESHEET_FILES and STYLESHEETS %}   
+    {% if not STYLESHEET_FILES and STYLESHEETS %}
       {% set STYLESHEET_FILES = STYLESHEETS %}
     {% endif %}
     {% for css in STYLESHEET_FILES %}
@@ -73,11 +73,11 @@
   </head>
 
   <body>
-{% if not SKIP_DEFAULT_NAVIGATION %}   
+{% if not SKIP_DEFAULT_NAVIGATION %}
     <nav class="navbar navbar-default">
       <div class="container">
 	   <div class="navbar-header">
-		<button type="button" class="navbar-toggle" 
+		<button type="button" class="navbar-toggle"
 				data-toggle="collapse" data-target="#main-navbar-collapse">
 		  <span class="sr-only">Toggle navigation</span>
 		  <span class="icon-bar"></span>
@@ -110,7 +110,7 @@
             </li>
           <li class="divider"></li>
           {% if FEED_ALL_ATOM %}
-            <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" 
+            <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}"
                    type="application/atom+xml" rel="alternate">
                 <i class="fa fa-rss fa-fw fa-lg"></i> </a></li>
           {% endif %}
@@ -160,18 +160,40 @@
     </div><!--/.container /#main-container -->
 
     <footer id="site-footer">
-      {% include 'includes/' + CUSTOM_FOOTER|default('footer.html') ignore missing %} 
+			<!--Topに戻るボタン-->
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			<p class="pagetop"><a href="#wrap"></a></p>
+			<script>
+			$(document).ready(function() {
+			  var pagetop = $('.pagetop');
+			    $(window).scroll(function () {
+			       if ($(this).scrollTop() > 600) {
+			            pagetop.fadeIn();
+			       } else {
+			            pagetop.fadeOut();
+			            }
+			       });
+			       pagetop.click(function () {
+			           $('body, html').animate({ scrollTop: 0 }, 500);
+			              return false;
+			   });
+			});
+			</script>
+
+      {% include 'includes/' + CUSTOM_FOOTER|default('footer.html') ignore missing %}
       {% if SKIP_COLOPHON %}
       <!-- Site built using Pelican.  Theme based on VoidyBootstrap. -->
       {% else %}
       <address id="site-colophon">
         <p class="text-center text-muted">
+				© 2020 大阪大学医学部 Python会 <br>
         Site built using <a href="http://getpelican.com/" target="_blank">Pelican</a>
         &nbsp;&bull;&nbsp; Theme based on
         <a href="http://www.voidynullness.net/page/voidy-bootstrap-pelican-theme/"
-           target="_blank">VoidyBootstrap</a> by 
+           target="_blank">VoidyBootstrap</a> by
         <a href="http://www.robertiwancz.com/"
-           target="_blank">RKI</a>  
+           target="_blank">RKI</a>
         </p>
       </address><!-- /colophon  -->
       {% endif %}
@@ -181,7 +203,7 @@
     {% include 'includes/disqus_script.html' %}
 
     <!-- javascript -->
-    {% if not SKIP_DEFAULT_JS %}   
+    {% if not SKIP_DEFAULT_JS %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
