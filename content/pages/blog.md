@@ -3,7 +3,7 @@ Date: 2020.03.15
 Tags:
 Slug: blog
 Author: Python会
-Page_order: 350
+Page_order: 300
 Summary: Python会のブログ
 
 [大阪大学医学部 Python会 ブログ](https://oumedpython.hatenablog.com/)
