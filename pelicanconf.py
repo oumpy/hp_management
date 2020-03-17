@@ -81,8 +81,8 @@ DISPLAY_PAGES_ON_MENU = True
 USE_FOLDER_AS_CATEGORY = True
 
 # Theme
-# THEME = './themes/MinimalXY'
-THEME = './themes/voidy-bootstrap'
+# THEME = './themes/voidy-bootstrap'
+THEME = './theme/voidy-bootstrap'
 
 # Theme customizations
 # MINIMALXY_CUSTOM_CSS = 'theme/css/custom.css'
