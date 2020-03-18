@@ -97,6 +97,7 @@ $ cd anywhere_you_like
 $ sh init.sh
 ```
 
+テーマのファイルのみコピーし直したい場合は`sh init.sh -c`でOK。
 
 ### 更新のアップ
 
