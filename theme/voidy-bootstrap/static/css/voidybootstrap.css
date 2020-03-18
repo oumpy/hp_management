@@ -210,6 +210,7 @@ header h1{
   height: 50px;
   text-decoration: none;
 }
+
 .pagetop a::before{
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
@@ -229,4 +230,42 @@ header h1{
 
 .pagetop:hover{
   background-color:#969696;
+}
+
+.sidebar_box {
+    margin: 1em 0;
+    background: #fff;
+    border: 3px solid #126ca7;
+
+}
+.sidebar_box .box-title {
+    font-size: 1.2em;
+    background: #126ca7;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.sidebar_box .box-contents {
+    padding: 15px 5px 5px 15px;
+    margin: 0;
+}
+
+.sidebar_box p {
+    padding: 15px 20px;
+    margin: 0;
+}
+
+.sidebar_box a {
+	color: #333333;
+}
+
+.social-links {
+    font-size: 16px;
+}
+
+.category-links {
+    font-size: 16px;
 }
