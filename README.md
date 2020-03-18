@@ -48,6 +48,18 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 - (category)は各ファイルのメタデータには記載されない。mdファイルを入れるディレクトリの名前がカテゴリとして認識される。
   （記載した場合はそちらが優先されるが、記載しないでください。）
 
+#### 画像の設置と読み込み
+
+画像については、`content/articles/(schoolyear)/(category)/images/(filename)_figs/(imagefile)`として保存し、`{attach}images/(filename)_figs/(imagefile)`で読み込むのを標準とします。
+
+例えば、`sugoikiji.md`に画像ファイル `sugoigazou.png` を読み込みたい場合は `content/articles/2020sc/tech/images/sugoikiji_figs/sugoigazou.png` のように設置し、
+
+```markdown
+![Sugoi Gazou]({attach}images/sugoikiji_figs/sugoigazou.png)
+```
+
+と書けば読み込まれます。
+
 #### Jupyter Notebookの扱い
 
 jupyter notebookに関してはmdファイルと同じ場所に入れて、メタデータのファイル作って、notebookの最初のセルにメタデータの内容と同じものを書けば大丈夫です。`article/2018sy/tech_archive`の`lorentz.ipynb`を参考にしてください。
