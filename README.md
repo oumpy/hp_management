@@ -90,18 +90,13 @@ Slug: index
 $ pip install pelican Markdown
 ```
 
-#### レポジトリのクローン
+#### レポジトリのクローンとテーマファイル(voidy-bootstrap)のコピー
 
 ```bash
 $ cd anywhere_you_like
-$ git clone https://github.com/oumpy/hp_management.git
-$ cd hp_management
-$ git clone https://github.com/oumpy/oumpy.github.io.git ./output
-$ git submodule update -i
-$ cd themes && git submodule update voidy-bootstrap
+$ sh init.sh
 ```
 
-2行目以降は  `./init.sh` で一括実行できる。
 
 ### 更新のアップ
 
