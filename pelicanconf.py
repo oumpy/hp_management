@@ -126,6 +126,7 @@ FONT_AWESOME_CDN_LINK = {
 # Extra stylesheets, for bootstrap overrides or additional styling.
 STYLESHEET_FILES = ("pygment.css", "voidybootstrap.css",)
 CUSTOM_FOOTER = "custom/footer.html"
+SKIP_COLOPHON = True
 
 # Put taglist at end of articles, and use the default sharing button implementation.
 CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", )
