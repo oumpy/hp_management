@@ -6,9 +6,9 @@ Slug: voice_recognition
 Author: 佐藤
 Summary:
 
-<a href="https://signate.jp" target="_blank" rel="noopener noreferrer">signate</a>内で開催されていた上記のコンペティションに参加してきました。以下試してみたこと、感想のまとめです。
+[signate](https://signate.jp)内で開催されていた上記のコンペティションに参加してきました。以下試してみたこと、感想のまとめです。
 
-[slideshare id=138387330&amp;doc=nttsignate-190327050047]
+<div class="jetpack-video-wrapper"><iframe src='https://www.slideshare.net/slideshow/embed_code/138387330' width='616' height='505' allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div>
 
 思っていたよりも良い成績を残すことができて満足です。医学とはあまり関係なさそうですが、音声は脳波や心電図等と同じく時系列データなので、その扱いに慣れたことは良かったです。コンペなどに定期的に参加することで、機械学習を学ぶモチベーションになっているので、この調子で色々なコンペに参加していきたいと思います。
 
