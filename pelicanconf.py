@@ -119,7 +119,7 @@ FONT_AWESOME_CDN_LINK = {
 }
 
 # Extra stylesheets, for bootstrap overrides or additional styling.
-STYLESHEET_FILES = ("pygment.css", "voidybootstrap.css",)
+STYLESHEET_FILES = ("custom/pygment.css", "custom/voidybootstrap.css",)
 CUSTOM_FOOTER = "custom/footer.html"
 
 # Put taglist at end of articles, and use the default sharing button implementation.
@@ -128,8 +128,8 @@ CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # SIDEBAR_HIDE_CATEGORIES = True
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
-SIDEBAR = "sidebar.html"
-CUSTOM_SIDEBAR_MIDDLES = ("sb_links.html", "sb_taglist.html", )
+SIDEBAR = "custom/sidebar.html"
+CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_taglist.html", )
 SIDEBAR_SIZE = 3
 SOCIAL_SHARE_BUTTONS = (
     'hatebu',
@@ -142,3 +142,8 @@ SOCIAL_SHARE_BUTTONS = (
 TWITTER_USERNAME = 'oumed_python'
 
 DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
+
+CUSTOM_SOCIAL_TITLE = "ソーシャル"
+CUSTOM_CATEGORIES_TITLE = "記事カテゴリ"
+CUSTOM_TAGS_TITLE = "タグ"
+CUSTOM_LINKS_TITLE = "リンク"
