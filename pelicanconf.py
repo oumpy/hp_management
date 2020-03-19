@@ -133,8 +133,8 @@ CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # SIDEBAR_HIDE_CATEGORIES = True
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
-SIDEBAR = "sidebar.html"
-CUSTOM_SIDEBAR_MIDDLES = ("sb_links.html", "sb_taglist.html", )
+SIDEBAR = "custom/sidebar.html"
+CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_taglist.html", )
 SIDEBAR_SIZE = 3
 SOCIAL_SHARE_BUTTONS = (
     'hatebu',
