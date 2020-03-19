@@ -68,7 +68,7 @@ PAGINATION_PATTERNS = (
 MARKUP = ('md', 'ipynb')
 
 PLUGIN_PATHS = ['./plugins']
-PLUGINS = ['ipynb.markup']
+PLUGINS = ['pelican-ipynb.markup', 'render_math']
 
 # if you create jupyter files in the content dir, snapshots are saved with the same
 # metadata. These need to be ignored.

@@ -66,17 +66,21 @@ jupyter notebookに関しては他の記事（mdファイル）と同じ場所�
 
 ## 導入した機能など
 
-### Jupyter notebookをHTML出力できるようにする。
+### 初期設定
 
-プラグイン[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。pelicanconf.pyには以下の記述を追加。
+初期導入時の参考記事：<https://qiita.com/driller/items/49a990cbdfb51afed620>
+
+### Pluginの導入
+
+プラグイン[pelican-plugins](https://github.com/getpelican/pelican-plugins)および[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。pelicanconf.pyには以下の記述を追加。
 
 ```python
 MARKUP = ('md', 'ipynb')
-PLUGIN_PATH = './plugins'
-PLUGINS = ['ipynb']
+PLUGIN_PATHS = ['./plugins']
+PLUGINS = ['pelican-ipynb.markup', 'render_math']
 ```
 
-（初期導入時の参考記事：<https://qiita.com/driller/items/49a990cbdfb51afed620>）
+これでjupyter notebookファイル(.ipynb)とLaTeX数式の使用がそれぞれ可能になる。
 
 ### Themeの導入
 
