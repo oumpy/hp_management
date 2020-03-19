@@ -6,9 +6,9 @@ Slug: gsea
 Author: 西田
 Summary:
 
-<h1>GSEAとは</h1>
+## GSEAとは
 GSEAは発現差異解析の結果などで得られる遺伝子群がどういった機能のものかを明らかにするために用いられる解析手法です。機能表現として用いられる主なものとしてはKEGGのパスウェイ分類やGene Ontology(GO)があります。
-<h1>clusterProfilerでGSEA入門</h1>
+## clusterProfilerでGSEA入門
 GSEA には様々なGSEAがあります。単に注目する遺伝子のリストをGSEAへの入力とするもの、発現プロファイルを入力とするもの、機能のデータベースやGSEA手法を複数組み合わせたりするもの (EGSEA) など様々です。[余談ですがGeneを代謝物(Metabolite)に置き換えたMSEAもあります。]
 
 ここでは前述したものの内、最初の「単に注目する遺伝子のリストをGSEAへの入力とするもの」をbioconductorのパッケージ clusterProfiler を用いて体験してみましょう。
@@ -72,24 +72,19 @@ hsa04914 hsa04914 Progesterone-mediated oocyte maturation      7/90  98/7469 1.6
 
 次に`kk`の各列名の意味ですが
 
-IDはKEGG pathwayのID
-
-DescriptionはKEGG pathwayの名前
-
-GeneRatioは入力`gene`の遺伝子の内、何個の遺伝子がそのKEGG pathwayにマップされるか
-
-BgRatioは全KEGG pathwayにマップされる遺伝子の内、何個の遺伝子がそのKEGG pathwayにマップされるか
-
-p.adjust, qvalueは多重検定に伴う補正後のpvalueになり小さいほど確からしいことを示します。
+- IDはKEGG pathwayのID
+- DescriptionはKEGG pathwayの名前
+- GeneRatioは入力`gene`の遺伝子の内、何個の遺伝子がそのKEGG pathwayにマップされるか
+- BgRatioは全KEGG pathwayにマップされる遺伝子の内、何個の遺伝子がそのKEGG pathwayにマップされるか
+- p.adjust, qvalueは多重検定に伴う補正後のpvalueになり小さいほど確からしいことを示します。
 
 入力`gene`に含まれる遺伝子がKEGG pathway上のどのgene productにmapされるかを可視化するには下記を実行します。
-
 ```
 browseKEGG(kk, 'hsa04110')
 ```
 
-<img title="" src="https://pythonoum.files.wordpress.com/2018/11/null9.png" alt="" width="624" height="481" />
-<h1>終わりに</h1>
+![]({attach}images/gsea_figs/null9.png)
+## 終わりに
 最も簡単なGSEAを体験していただく例を示しました。
 
 追ってより進んだアンサンブル手法なども紹介できればと思っています。
