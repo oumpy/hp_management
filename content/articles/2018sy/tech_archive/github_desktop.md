@@ -10,11 +10,11 @@ githubとはなにかの説明は省略しています。githubについて知�
 
 ### レポジトリの読み込み（プロジェクト開始時の一回のみ。）
 
-<img class="alignnone size-full wp-image-284" src="https://pythonoum.files.wordpress.com/2018/10/1.png" alt="1" width="550" height="202" />
+![1]({attach}images/github_desktop_figs/2018_10_1.png)
 
 - github上のレポジトリとLocal pathを指定。
 
-<img class="alignnone size-full wp-image-285" src="https://pythonoum.files.wordpress.com/2018/10/2.png" alt="2" width="900" height="968" />
+![2]({attach}images/github_desktop_figs/2018_10_2.png)
 
 これでうまくcloneされていたらOK
 
@@ -25,18 +25,18 @@ githubとはなにかの説明は省略しています。githubについて知�
 
 - 一日の作業の初めにFetchしてきて、最新の状態に同期する。
 
-<img class="alignnone size-full wp-image-286" src="https://pythonoum.files.wordpress.com/2018/10/3.png" alt="3" width="928" height="398" />
+![3]({attach}images/github_desktop_figs/2018_10_3.png)
 
 ファイルを変更、加筆すると自動的にアプリに反映される
 
-<img class="alignnone size-full wp-image-287" src="https://pythonoum.files.wordpress.com/2018/10/4.png" alt="4" width="2144" height="1544" />
+![4]({attach}images/github_desktop_figs/2018_10_4.png)
 
 - 作業の区切りがついたら左下のSummeryに適当にコメントを付け、commit to master。
 コメントはもうちょっと丁寧に付けましょう。。。
 
-<img class="alignnone size-full wp-image-288" src="https://pythonoum.files.wordpress.com/2018/10/5.png" alt="5" width="620" height="518" />
+![5]({attach}images/github_desktop_figs/2018_10_5.png)
 
-<img class="alignnone size-full wp-image-289" src="https://pythonoum.files.wordpress.com/2018/10/6.png" alt="6" width="2144" height="1544" />
+![6]({attach}images/github_desktop_figs/2018_10_6.png)
 
 - pushして変更を反映させる。
 
