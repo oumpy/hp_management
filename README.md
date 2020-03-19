@@ -123,21 +123,16 @@ $ sh init.sh
 
 ### 更新のアップ
 
-更新を強制的に一括pushするスクリプトを用意しています。以下には書いていませんがGitHubの認証に関する設定も必要です。
+#### [ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)
 
-#### [ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)へのpush
+通常のレポジトリ管理を行います。
 
-（スクリプト調整中。現在は非推奨です。）
-
-```bash
-$ cd hp_management
-$ bash manage_push.sh
-```
-で、`./output/`以外の全てのファイルを[ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)へpushします。
+- サイト内容(`content`ディレクトリ内)：`content`ブランチへのプルリクエストを受け付けます。
+- それ以外：開発参加者間で適切に管理します。
 
 #### [出力用レポジトリ](https://github.com/oumpy/oumpy.github.io)へのpush
 
-こちらもGitの使い方としては乱暴ですが、サイト本体は真面目に履歴管理する対象ではない（ソースの方を管理すればOK）という思想に基づきます。
+このレポジトリは出力にすぎないので、真面目な履歴管理は行いません。更新を強制的に上書きしてOKです。そのために一括pushするスクリプト`blog_push.sh`を用意しています。以下には書いていませんがGitHubの認証に関する設定も必要です。
 
 ```bash
 $ cd hp_management
