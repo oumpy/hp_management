@@ -127,6 +127,7 @@ FONT_AWESOME_CDN_LINK = {
 STYLESHEET_FILES = ("custom/pygment.css", "custom/voidybootstrap.css",)
 CUSTOM_FOOTER = "custom/footer.html"
 
+
 # Put taglist at end of articles, and use the default sharing button implementation.
 CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", )
 CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
@@ -148,7 +149,7 @@ TWITTER_USERNAME = 'oumed_python'
 
 DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
 
-CUSTOM_SOCIAL_TITLE = "リンク"
-CUSTOM_CATEGORIES_TITLE = "カテゴリー"
+CUSTOM_SOCIAL_TITLE = "ソーシャル"
+CUSTOM_CATEGORIES_TITLE = "記事カテゴリ"
 CUSTOM_TAGS_TITLE = "タグ"
-CUSTOM_LINKS_TITLE = "Links"
+CUSTOM_LINKS_TITLE = "リンク"
