@@ -1,7 +1,6 @@
 Title: 実績
 Date: 2020.03.13
 Modified: 2020.03.16
-Category: pages
 Tags: pages
 Slug: achievements
 Author:

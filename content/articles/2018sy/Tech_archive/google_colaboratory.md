@@ -1,6 +1,5 @@
 Title:いまさらGoogle Colaboratory入門
 Date: 2019.04.14
-Category:
 Tags: python
 Slug: google_colaboratory
 Author: 宮崎

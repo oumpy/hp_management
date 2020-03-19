@@ -1,6 +1,5 @@
 Title:JuliaとPythonと競技プログラミング
 Date: 2019.04.14
-Category:
 Tags: python
 Slug: julia_python_competition
 Author: 小川

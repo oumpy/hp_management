@@ -1,6 +1,5 @@
 Title:Hamiltonian Descent Methodの要点
 Date: 2019.04.14
-Category:
 Tags: deeplearning
 Slug: hamiltonian_descent_method
 Author: 山本

@@ -1,6 +1,5 @@
 Title:Bioinformatics春合宿@三島
 Date: 2019.04.14
-Category:
 Tags: bioinformatics
 Slug: mishima
 Author: 安水　平岡

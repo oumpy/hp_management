@@ -1,6 +1,5 @@
 Title:カプランマイヤー曲線について
 Date: 2019.04.14
-Category:
 Tags: statistics
 Slug: kaplan_meier_curve
 Author: 佐藤

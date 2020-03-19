@@ -1,6 +1,5 @@
 Title:LinuxでのBioinformatics環境構築_01
 Date: 2019.04.14
-Category:
 Tags: bioinformatics
 Slug: environment_bioinformatics
 Author: 平岡

@@ -1,6 +1,5 @@
 Title:github desktopアプリの使い方
 Date: 2019.04.14
-Category:
 Tags: github
 Slug: github_desktop
 Author: 安水

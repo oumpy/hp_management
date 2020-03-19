@@ -1,6 +1,5 @@
 Title:5年次海外実習
 Date: 2019.04.14
-Category:
 Tags: paper
 Slug: study_abroad
 Author: 宮崎　佐藤

@@ -1,6 +1,5 @@
 Title: Parameter Tuning
 Date: 2019.04.14
-Category:
 Tags: deeplearning
 Slug: parametaer_tuning
 Author: 佐藤

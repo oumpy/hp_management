@@ -1,6 +1,5 @@
 Title:NTT corevoチャレンジ: 話者の性別・年代識別
 Date: 2019.04.14
-Category:
 Tags: deeplearning
 Slug: voice_recognition
 Author: 佐藤

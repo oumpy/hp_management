@@ -1,6 +1,5 @@
 Title:超高速次元圧縮アルゴリズムUMAP
 Date: 2019.04.14
-Category:
 Tags: deeplearning
 Slug: umap
 Author: 安水

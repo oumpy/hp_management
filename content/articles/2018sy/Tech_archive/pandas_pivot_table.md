@@ -1,6 +1,5 @@
 Title:pandasのpivot_tableを用いた高速データ処理
 Date: 2019.04.14
-Category:
 Tags: kaggle
 Slug: pandas_pivot_table
 Author: 金子
