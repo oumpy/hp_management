@@ -62,13 +62,21 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 
 #### Jupyter Notebookの扱い
 
-jupyter notebookに関してはmdファイルと同じ場所に入れて、メタデータのファイル作って、notebookの最初のセルにメタデータの内容と同じものを書けば大丈夫です。`article/2018sy/tech_archive`の`lorentz.ipynb`を参考にしてください。
+jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb`の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。 `article/2018sy/tech_archive`の`lorentz.ipynb`および`lorentz.nbdata`を参考にしてください。
 
 ## 導入した機能など
 
 ### Jupyter notebookをHTML出力できるようにする。
 
-[この記事](https://qiita.com/driller/items/49a990cbdfb51afed620)に従って、インストール、pluginの導入、pelicanconf.pyの書き換えを行った。
+プラグイン[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。pelicanconf.pyには以下の記述を追加。
+
+```python
+MARKUP = ('md', 'ipynb')
+PLUGIN_PATH = './plugins'
+PLUGINS = ['ipynb']
+```
+
+（初期導入時の参考記事：<https://qiita.com/driller/items/49a990cbdfb51afed620>）
 
 ### Themeの導入
 
