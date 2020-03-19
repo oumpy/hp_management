@@ -56,7 +56,6 @@ LINKS = (
 
 FEED_ALL_RSS = 'feeds/all.rss.xml'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
-SITEURL = 'http://oumpy.github.io'
 RELATIVE_URLS = True
 
 DEFAULT_PAGINATION = 5
@@ -95,10 +94,6 @@ AUTHOR_INTRO = u'大阪大学医学部所属のPython職人集団です'
 AUTHOR_DESCRIPTION = u'Now is better than never'
 # AUTHOR_AVATAR = '../images/'
 # AUTHOR_WEB = 'https://twitter.com/oumed_python'
-
-# Services
-GOOGLE_ANALYTICS = 'UA-12345678-9'
-#DISQUS_SITENAME = 'johndoe'
 
 # Social
 SOCIAL = (

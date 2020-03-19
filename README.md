@@ -48,19 +48,41 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 - (category)は各ファイルのメタデータには記載されない。mdファイルを入れるディレクトリの名前がカテゴリとして認識される。
   （記載した場合はそちらが優先されるが、記載しないでください。）
 
+#### 画像の設置と読み込み
+
+画像については、`content/articles/(schoolyear)/(category)/images/(filename)_figs/(imagefile)`として保存し、`{attach}images/(filename)_figs/(imagefile)`で読み込むのを標準とします。
+
+例えば、`sugoikiji.md`に画像ファイル `sugoigazou.png` を読み込みたい場合は `content/articles/2020sc/tech/images/sugoikiji_figs/sugoigazou.png` のように設置し、
+
+```markdown
+![Sugoi Gazou]({attach}images/sugoikiji_figs/sugoigazou.png)
+```
+
+と書けば読み込まれます。
+
 #### Jupyter Notebookの扱い
 
-jupyter notebookに関してはmdファイルと同じ場所に入れて、メタデータのファイル作って、notebookの最初のセルにメタデータの内容と同じものを書けば大丈夫です。`article/2018sy/tech_archive`の`lorentz.ipynb`を参考にしてください。
+jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb`の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。 `article/2018sy/tech_archive`の`lorentz.ipynb`および`lorentz.nbdata`を参考にしてください。
 
 ## 導入した機能など
 
 ### Jupyter notebookをHTML出力できるようにする。
 
-[この記事](https://qiita.com/driller/items/49a990cbdfb51afed620)に従って、インストール、pluginの導入、pelicanconf.pyの書き換えを行った。
+プラグイン[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。pelicanconf.pyには以下の記述を追加。
+
+```python
+MARKUP = ('md', 'ipynb')
+PLUGIN_PATH = './plugins'
+PLUGINS = ['ipynb']
+```
+
+（初期導入時の参考記事：<https://qiita.com/driller/items/49a990cbdfb51afed620>）
 
 ### Themeの導入
 
 [voidy-bootstrap](https://github.com/robulouski/voidy-bootstrap)というテーマを導入した。pelicanconf.pyの書き換えを行った。Twitterアカウントへのリンク設定などもpelicanconf.pyからできる。
+
+さらにテーマ改変・ファイル追加によりLook & Feelの変更と機能追加を行っている。
 
 ### トップページの変更
 
@@ -90,36 +112,27 @@ Slug: index
 $ pip install pelican Markdown
 ```
 
-#### レポジトリのクローン
+#### レポジトリのクローンとテーマファイル(voidy-bootstrap)のコピー
 
 ```bash
 $ cd anywhere_you_like
-$ git clone https://github.com/oumpy/hp_management.git
-$ cd hp_management
-$ git clone https://github.com/oumpy/oumpy.github.io.git ./output
-$ git submodule update -i
-$ cd themes && git submodule update voidy-bootstrap
+$ sh init.sh
 ```
 
-2行目以降は  `./init.sh` で一括実行できる。
+テーマのファイルのみコピーし直したい場合は`sh init.sh -c`でOK。
 
 ### 更新のアップ
 
-更新を強制的に一括pushするスクリプトを用意しています。以下には書いていませんがGitHubの認証に関する設定も必要です。
+#### [ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)
 
-#### [ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)へのpush
+通常のレポジトリ管理を行います。
 
-（スクリプト調整中。現在は非推奨です。）
-
-```bash
-$ cd hp_management
-$ bash manage_push.sh
-```
-で、`./output/`以外の全てのファイルを[ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)へpushします。
+- サイト内容(`content`ディレクトリ内)：`content`ブランチへのプルリクエストを受け付けます。
+- それ以外：開発参加者間で適切に管理します。
 
 #### [出力用レポジトリ](https://github.com/oumpy/oumpy.github.io)へのpush
 
-こちらもGitの使い方としては乱暴ですが、サイト本体は真面目に履歴管理する対象ではない（ソースの方を管理すればOK）という思想に基づきます。
+このレポジトリは出力にすぎないので、真面目な履歴管理は行いません。更新を強制的に上書きしてOKです。そのために一括pushするスクリプト`blog_push.sh`を用意しています。以下には書いていませんがGitHubの認証に関する設定も必要です。
 
 ```bash
 $ cd hp_management
