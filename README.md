@@ -82,6 +82,8 @@ PLUGINS = ['ipynb']
 
 [voidy-bootstrap](https://github.com/robulouski/voidy-bootstrap)というテーマを導入した。pelicanconf.pyの書き換えを行った。Twitterアカウントへのリンク設定などもpelicanconf.pyからできる。
 
+さらにテーマ改変・ファイル追加によりLook & Feelの変更と機能追加を行っている。
+
 ### トップページの変更
 
 デフォルトではarticlesのインデックスがトップページになる。これを変更する正式な方法が何かはよくわからないが、ひとまず `pelicanconf.py`中で
