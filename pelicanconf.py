@@ -121,11 +121,17 @@ FONT_AWESOME_CDN_LINK = {
 # Extra stylesheets, for bootstrap overrides or additional styling.
 STYLESHEET_FILES = ("custom/pygment.css", "custom/voidybootstrap.css",)
 CUSTOM_FOOTER = "custom/footer.html"
+SKIP_COLOPHON = True
 
 # Put taglist at end of articles, and use the default sharing button implementation.
 CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", )
 CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # SIDEBAR_HIDE_CATEGORIES = True
+
+# Settings for Twitter Timeline
+CUSTOM_SIDEBAR_BOTTOM = "custom/sidebar_twittertimeline.html"
+TWITTER_TIMELINE_URL = "https://twitter.com/oumed_python?ref_src=twsrc%5Etfw"
+TWITTER_TIMELINE_HEIGHT = 720
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
