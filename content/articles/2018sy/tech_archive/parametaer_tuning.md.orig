@@ -1,4 +1,4 @@
-Title: Parameter Tuning
+itle: Parameter Tuning
 Date: 2019.04.14
 Category:
 Tags: deeplearning
@@ -13,13 +13,13 @@ Summary:
 
 <strong>Bayesian Optimization</strong>はパラメーターを<strong>x</strong>、評価値(精度とか)をyとして
 
-![suushiki0](https://github.com/jun-sato/parameter_tuning/blob/master/suushiki0.png?raw=true)
+[suushiki0](https://github.com/jun-sato/parameter_tuning/blob/master/suushiki0.png?raw=true)
 
 という関数を指定します(ブラックボックス関数)。中身は良くわかりませんが、この関数を最適化するパラメーターを見つけたいと思います。そこでBaysian Optimizationはこの関数が[ガウス過程](http://www.yasuhisay.info/entry/20091011/1255189429)に従うと仮定します。
 
 下の図ではパラメーターの組み合わせをそれぞれ2,3個とって来て、その評価値を計算して結果をプロットしたグラフです。青い曲線はこの二点から導かれる関数の事後分布で、青い部分はこの分布の95%信頼区間です。
 
-![Baysian Optimization](http://neupy.com/_images/gaussian-process-example.png)
+[Baysian Optimization](http://neupy.com/_images/gaussian-process-example.png)
 
 このグラフを見ると、観測点から離れた部分は信頼区間の幅が広い(=σが大きい)ことがわかります。
 
@@ -61,57 +61,56 @@ from bayes_opt import BayesianOptimization
 調整したいパラメーターを引数にとる評価関数の指定、クロスバリデーション。bayesian-optimizationには評価関数の最大化のライブラリしかないので、小さい値ほどいいloglossは返り値に-1をかけます。
 
 ```python
-def xgb_evaluate(
-    min_child_weight,
-    colsample_bytree,
-    max_depth,
-    subsample,
-    gamma,
-    alpha):
-    params[min_child_weight] = int(min_child_weight)
-    params[cosample_bytree] = max(min(colsample_bytree, 1), 0)
-    params[max_depth] = int(max_depth)
-    params[subsample] = max(min(subsample, 1), 0)
-    params[gamma] = max(gamma, 0)
-    params[alpha] = max(alpha, 0)
+def xgb_evaluate(min_child_weight,
+colsample_bytree,
+max_depth,
+subsample,
+gamma,
+alpha):
 
-    cv_result = xgb.cv(params, xgtrain, num_boost_round=num_rounds, nfold=5,
-        seed=random_state,
-        callbacks=[xgb.callback.early_stop(50)])
+params[min_child_weight] = int(min_child_weight)
+params[cosample_bytree&#039;] = max(min(colsample_bytree, 1), 0)
+params[max_depth&#039;] = int(max_depth)
+params[subsample&#039;] = max(min(subsample, 1), 0)
+params[gamma&#039;] = max(gamma, 0)
+params[alpha&#039;] = max(alpha, 0)
 
-    return -cv_result[test-mlogloss-mean].values[-1]
+cv_result = xgb.cv(params, xgtrain, num_boost_round=num_rounds, nfold=5,
+seed=random_state,
+callbacks=[xgb.callback.early_stop(50)])
+
+return -cv_result[&#039;test-mlogloss-mean&#039;].values[-1]
 ```
 
 いよいよ最適化！
 
-```python
-if __name__ == __main__:
-    xgtrain = prepare_data()
+[code lang="text"]
+if __name__ == &#039;__main__&#039;:
+xgtrain = prepare_data()
 
-    num_rounds = 3000
-    random_state = 2016
-    num_iter = 25
-    init_points = 5
-    params = {
-        eta: 0.1,
-        silent: 1,
-        eval_metric: mlogloss,
-        verbose_eval: True,
-        seed: random_state,
-        num_class:9
-    }
+num_rounds = 3000
+random_state = 2016
+num_iter = 25
+init_points = 5
+params = {
+&#039;eta&#039;: 0.1,
+&#039;silent&#039;: 1,
+&#039;eval_metric&#039;: &#039;mlogloss&#039;,
+&#039;verbose_eval&#039;: True,
+&#039;seed&#039;: random_state,
+&#039;num_class&#039;:9
+}
 
-    xgbBO = BayesianOptimization(xgb_evaluate, {
-        min_child_weight: (1, 20),
-        colsample_bytree: (0.1, 1),
-        max_depth: (5, 15),
-        subsample: (0.5, 1),
-        gamma: (0, 10),
-        alpha: (0, 10),
-    })
+xgbBO = BayesianOptimization(xgb_evaluate, {&#039;min_child_weight&#039;: (1, 20),
+&#039;colsample_bytree&#039;: (0.1, 1),
+&#039;max_depth&#039;: (5, 15),
+&#039;subsample&#039;: (0.5, 1),
+&#039;gamma&#039;: (0, 10),
+&#039;alpha&#039;: (0, 10),
+})
 
-    xgbBO.maximize(init_points=init_points, n_iter=num_iter)
-```
+xgbBO.maximize(init_points=init_points, n_iter=num_iter)
+[/code]
 
 結果です
 
@@ -146,55 +145,49 @@ TPEでもExpected Improvement関数の下のように定義します。精度良
 
 こっちも実装してみます。Pythonではhyperoptというライブラリがあってpipで入ります。
 
-```
-pip install hyperopt
-```
+<code>pip install hyperopt</code>
 
-```python
+[code lang="text"]
 import hyperopt
 from hyperopt import hp, tpe, Trials, fmin
-```
+[/code]
 
 最適化するパラメータはbayesian optimizationと同じやつにしてみました。
 
-```python
-hyperopt_parameters = {
-    min_child_weight: hp.uniform(min_child_weight,1,20),
-    colsample_bytree: hp.uniform(colsample_bytree,0.1, 1),
-    max_depth: hp.choice(max_depth,np.arange(5, 15)),
-    subsample: hp.uniform(subsample,0.5, 1),
-    gamma: hp.uniform(gamma,0, 10),
-    alpha: hp.uniform(alpha,0, 10),
+[code lang="text"]
+hyperopt_parameters = {&#039;min_child_weight&#039;: hp.uniform(&#039;min_child_weight&#039;,1,20),
+&#039;colsample_bytree&#039;: hp.uniform(&#039;colsample_bytree&#039;,0.1, 1),
+&#039;max_depth&#039;: hp.choice(&#039;max_depth&#039;,np.arange(5, 15)),
+&#039;subsample&#039;: hp.uniform(&#039;subsample&#039;,0.5, 1),
+&#039;gamma&#039;: hp.uniform(&#039;gamma&#039;,0, 10),
+&#039;alpha&#039;: hp.uniform(&#039;alpha&#039;,0, 10),
 }
-```
+[/code]
 
 最適化する関数の指定
 
-```python
+[code lang="text"]
 def objective(args):
-    classifier = xgb.XGBClassifier(**args)
-    stratifiedkfold = StratifiedKFold(n_splits=5)
-    result = cross_val_score(
-        classifier, train.drop([id,target],axis = 1),
-        train.target, 
-        cv=stratifiedkfold,scoring=neg_log_loss)
-    return -result.mean()
-```
+classifier = xgb.XGBClassifier(**args)
+stratifiedkfold = StratifiedKFold(n_splits=5)
+result = cross_val_score(classifier, train.drop([&#039;id&#039;,&#039;target&#039;],axis = 1), train.target, cv=stratifiedkfold,scoring=&#039;neg_log_loss&#039;)
+return -result.mean()
+[/code]
 
 実行！
 
-```python
+[code lang="text"]
 max_evals = 50
 trials = Trials() # 実行結果を格納するインスタンス
 
 best = fmin(
-    objective,
-    hyperopt_parameters,
-    algo = tpe.suggest,
-    max_evals =max_evals,
-    trials = trials,
-    verbose = 1)
-```
+objective,
+hyperopt_parameters,
+algo = tpe.suggest,
+max_evals =max_evals,
+trials = trials,
+verbose = 1)
+[/code]
 
 ### 結果
 
