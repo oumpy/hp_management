@@ -43,7 +43,7 @@ $ bash create.sh (filename) (category) (tags)
 
 Pageの場合と同じコマンド。(category)を指定するとarticleになり、`content/articles/(schoolyear)/(category)/(filename).md`として作成されます。
 
-- (category)はnewsかtech。(category)にpageまたはpagesを指定するとpageになる。
+- (category)はNewsかTech。(category)にpageまたはpagesを指定するとpageになる。
 - (tags)は省略可能、ただしarticleの場合は編集の際に必ず入れること。（この仕様は変更するかも。）
 - (category)は各ファイルのメタデータには記載されない。mdファイルを入れるディレクトリの名前がカテゴリとして認識される。
   （記載した場合はそちらが優先されるが、記載しないでください。）
@@ -52,7 +52,7 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 
 画像については、`content/articles/(schoolyear)/(category)/images/(filename)_figs/(imagefile)`として保存し、`{attach}images/(filename)_figs/(imagefile)`で読み込むのを標準とします。
 
-例えば、`sugoikiji.md`に画像ファイル `sugoigazou.png` を読み込みたい場合は `content/articles/2020sc/tech/images/sugoikiji_figs/sugoigazou.png` のように設置し、
+例えば、`sugoikiji.md`に画像ファイル `sugoigazou.png` を読み込みたい場合は `content/articles/2020sc/Tech/images/sugoikiji_figs/sugoigazou.png` のように設置し、
 
 ```markdown
 ![Sugoi Gazou]({attach}images/sugoikiji_figs/sugoigazou.png)
@@ -62,7 +62,7 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 
 #### Jupyter Notebookの扱い
 
-jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb`の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。 `article/2018sy/tech_archive`の`lorentz.ipynb`および`lorentz.nbdata`を参考にしてください。
+jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb`の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。 `article/2018sy/Tech_archive`の`lorentz.ipynb`および`lorentz.nbdata`を参考にしてください。
 
 ## 導入した機能など
 
