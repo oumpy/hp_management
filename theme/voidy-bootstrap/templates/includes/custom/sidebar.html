@@ -1,0 +1,54 @@
+{% include "includes/" + CUSTOM_SIDEBAR_TOP|default("sidebar_top.html") ignore missing %}
+
+{% if CUSTOM_SOCIAL %}
+{% set socialinc = "includes/" + CUSTOM_SOCIAL %}
+{% include socialinc %}
+{% elif SOCIAL %}
+<div class="sidebar_box">
+<div class="box-title"><i class="fa fa-comment fa-fw fa-lg"></i> {{ CUSTOM_SOCIAL_TITLE }}</div>
+<div class="box-contents">
+<ul class="list-unstyled social-links">
+{#  {% for name, link, icon in SOCIAL %} #}
+  {% for item in SOCIAL %}
+    <li><a href="{{ item[1] }}" target="_blank">&#x2022; {{ item[0] }}</a></li>
+  {% endfor %}
+</ul>
+</div>
+</div>
+{% endif %}
+
+{% if not SIDEBAR_HIDE_CATEGORIES %}
+<div class="sidebar_box">
+<div class="box-title"><i class="fa fa-folder fa-fw fa-lg"></i> {{ CUSTOM_CATEGORIES_TITLE }}</div>
+<div class="box-contents">
+	<ul class="list-unstyled category-links">
+{% for cat, null in categories %}
+  <li><a href="{{ SITEURL }}/{{ cat.url }}" >&#x2022; {{ cat }}</a></li>
+{% endfor %}
+</ul>
+</div>
+</div>
+{% endif %}
+
+{% for mid in CUSTOM_SIDEBAR_MIDDLES %}
+{% include "includes/" + mid %}
+{% endfor %}
+
+<div class="sidebar_box">
+{% if FEED_ALL_ATOM or FEED_ALL_RSS %}
+<div class="box-title"><i class="fa fa-rss fa-fw fa-lg"></i> Feeds</div>
+<div class="box-contents">
+<ul class="list-unstyled">
+  {% if FEED_ALL_ATOM %}
+    <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}"
+		   type="application/atom+xml" rel="alternate">&#x2022; Atom Feed</a></li>
+  {% endif %}
+  {% if FEED_ALL_RSS %}
+    <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}"
+		   type="application/rss+xml" rel="alternate">&#x2022; RSS feed</a></li>
+  {% endif %}
+</ul>
+</div>
+{% endif %}
+{% include "includes/" + CUSTOM_SIDEBAR_BOTTOM|default("sidebar_bottom.html") ignore missing %}
+</div>

@@ -1,5 +1,6 @@
 Title: 活動内容
 Date: 2020.03.15
+Modified: 2020.03.15
 Tags:
 Slug: activities
 Author: Python会

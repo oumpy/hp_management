@@ -9,9 +9,9 @@
 cd output
 git pull origin master
 cd -
-pelican content -o output -s pelicanconf.py
-make html
-# make publish
+# pelican content -o output -s pelicanconf.py
+make clean
+make publish
 #ghp-import output
 # git push origin gh-pages
 git push https://github.com/oumpy/oumpy.github.io.git master
