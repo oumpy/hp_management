@@ -116,6 +116,8 @@ $ pip install pelican Markdown
 
 ```bash
 $ cd anywhere_you_like
+$ git clone https://github.com/oumpy/hp_management.git
+$ cd hp_management
 $ sh init.sh
 ```
 
