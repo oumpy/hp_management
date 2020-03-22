@@ -49,7 +49,7 @@ Python会は内部に限った勉強会だけではなく、外部の方々も�
 ### 2019/12/22 奈良県立医科大学ハンズオン
 奈良県立医科大学にて機械学習、bioinformatics、競技プログラミングなどのハンズオンを行いました。
 
-![]({attach}images/activities/191222.jpg)
+![奈良県立医科大ハンズオン写真]({attach}images/activities/191222.jpg)
 
 ### 2019/12/15 2019忘年会
 忘年会兼1年間の成果発表会を行いました。
@@ -60,50 +60,50 @@ Python会は内部に限った勉強会だけではなく、外部の方々も�
 ### 2019/10/20 「生命科学者のためのDr.Bonoデータ解析実践道場」読書会
 北梅田ビルにて [「生命科学者のためのDr.Bonoデータ解析実践道場」読書会](https://oum-python.connpass.com/event/149085/)が行われました。
 
-![]({attach}images/activities/191020.jpg)
+![Bono読書会写真]({attach}images/activities/191020.jpg)
 
 ### 2019/09/22 技術書典7
 池袋サンシャインシティにて行われた[技術書典7](https://techbookfest.org/event/tbf07)にAIMSと合同でサークル参加しました。6年の秋山が『病気から観る映画評』、3年の山本が『ゼロから作るSpiking Neural Networks』をそれぞれ執筆し、頒布しました。
 
-![]({attach}images/activities/190922.jpg)
+![技術書展7写真]({attach}images/activities/190922.jpg)
 
 ### 2019/02/25
 実験医学3月号にPython会について触れたエッセイが掲載されました。羊土社ホームページでも読むことができます。
 [Opinion 第105回　Pythonで医学に貢献を](https://www.yodosha.co.jp/jikkenigaku/opinion/vol37n4.html)
 
-<img src="{attach}images/activities/190225.jpg" width="400px">
+![実験医学2019年3月号表紙]({attach}images/activities/190225.jpg)
 
 ### 2018/12/26 第1回バイオインフォマティクス可視化セミナー
 東京理研AIPで開かれた[第1回バイオインフォマティクス可視化セミナー](https://bioinfo.connpass.com/event/113579/)にて6年の安水がpython 会の活動報告報告を行いました。
 
-![]({attach}images/activities/181226.jpg)
+![バイオインフォ可視化セミナー写真]({attach}images/activities/181226.jpg)
 
 ### 2018/12/19 signate&マイナビstudentcupアフターイベント
 東京の新宿ミライナタワーでマイナビコンペのアフターイベントが行われました。その中で、メンバーの金子さんが1位となり解法の発表を行いました。他のメンバーも数人参加しており、とても勉強になりました。
 
-![]({attach}images/activities/181219.jpg)
+![signate studentcup写真]({attach}images/activities/181219.jpg)
 
 ### 2018/12/14 忘年会＆冬の研究交流会
 大阪大学医学系研究棟にて研究発表会も兼ねた忘年会が行われました。基礎配属期間の３年生の研究発表が聞けてとても楽しい会でした。
 
-![]({attach}images/activities/181214.jpg)
+![2018忘年会写真]({attach}images/activities/181214.jpg)
 
 ### 2018/10/23 RNA-seq会②
 pseudo-alignment法を用いたRNA定量ツールであるKallistoを使ったパイプラインの解説をしました。
 
-![]({attach}images/activities/181023.jpg)
+![RNA-seq会(2)写真]({attach}images/activities/181023.jpg)
 
 ### 2018/10/03 RNA-seq入門①
 近年の医学研究では欠かすことのできない技術である、RNA-seq解析の基礎を勉強しました。カツ丼でかつをいれました。
 
-![]({attach}images/activities/181003.jpg)
+![RNA-seq会(1)写真]({attach}images/activities/181003.jpg)
 
 ### 2018/09/20 低学年会
 低学年会向けの勉強会が行われました。題材はkaggleで有名なtitanic号生存者データで、pythonを用いたテーブルデータ解析の基礎を学びました。
 
-![]({attach}images/activities/180920.jpg)
+![2018低学年会写真]({attach}images/activities/180920.jpg)
 
 ### 2018/09/07 秋の研究交流会
 大阪大学医学部研究棟にて、秋の研究交流会が行われました。お酒も交えながら、それぞれの先進的な研究発表と活発な議論が行われました。
 
-![]({attach}images/activities/180907.jpg)
+![2018秋の研究交流会写真]({attach}images/activities/180907.jpg)
