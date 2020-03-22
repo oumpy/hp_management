@@ -6,7 +6,7 @@ fi
 
 themename="voidy-bootstrap"
 cd themes
-git submodule update "$themename"
+git submodule update --init "$themename"
 cd ..
 mkdir -p "theme/$themename"
 cp -an "themes/$themename"/* "theme/$themename/"
