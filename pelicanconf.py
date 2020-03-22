@@ -136,7 +136,7 @@ CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # Settings for Twitter Timeline
 CUSTOM_SIDEBAR_BOTTOM = "custom/sidebar_twittertimeline.html"
 TWITTER_TIMELINE_URL = "https://twitter.com/oumed_python?ref_src=twsrc%5Etfw"
-TWITTER_TIMELINE_HEIGHT = 720
+TWITTER_TIMELINE_HEIGHT = 600
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
