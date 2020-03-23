@@ -31,18 +31,22 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 
 ## コンペティション実績
 個人またはPython会内のチームで各種コンペティションに参加、数々の入賞実績。
-### 機械学習コンペ
-- Kaggle Freesound Audio Tagging 2019 (佐藤淳哉、秋山理) 4 / 880位
-  xxxxxx
-- Kaggle RSNA Pneumonia Detection Challenge 18/1499位
- 胸部X線画像の肺炎病変識別
-- signate 糖尿病（秋山）2位
-- signate NTT (佐藤) 3位
-- 文字認識コンペティション（富士フィルム主催、佐藤） 3位
-- bioinformatics contest 2018(安水、秋山) 18位, 20位
+### 機械学習コンペティション
+- Kaggle Master：
+[秋山理 (OsciiArt)](https://www.kaggle.com/osciiart), [佐藤淳哉 (Jsato)](https://www.kaggle.com/junyasato)
 
-- kaggle master
-秋山理, 佐藤淳哉
+#### 2019
+- [Kaggle Freesound Audio Tagging 2019](https://www.kaggle.com/c/freesound-audio-tagging-2019) (佐藤、秋山) 4/880位：
+  xxxxxx
+- [Signate 糖尿病患者の検査項目データにおける臨床検査項目分類コード推定](https://signate.jp/competitions/158)（秋山）2位
+- [Signate NTT corevoチャレンジ: 話者の性別・年代識別](https://signate.jp/competitions/156) (佐藤) 3位
+- [Data Science Challenge by FUJIFILM AI Academy Brain(s)](https://athletix.run/events/8baK3V8eu) (佐藤） 3位：文字認識コンペティション（富士フィルム主催)
+
+#### 2018
+- [Kaggle RSNA Pneumonia Detection Challenge](https://www.kaggle.com/c/rsna-pneumonia-detection-challenge/overview) (秋山) 18/1499位：
+ 胸部X線画像の肺炎病変識別
+- [Bioinformatics contest 2018](https://bioinf.me/en/contest/2018) (安水、秋山) 18位, 20位
+
 
 ### 競技プログラミング
 - AtCoder日本最強プログラマー学生選手権決勝出場 (小川)
