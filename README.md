@@ -32,7 +32,7 @@ $ bash create.sh (filename)
 
 `(filename)` に生成するファイル名を指定します（内容に応じて適切に）。`./content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
 
-これに内容を追記します。htmlも認識されます。画像も `![すごい画像]({attach}images/filename)` のように指定すると、 `./content/pages/images/filename` を読み込めます。
+これに内容を追記します。htmlも認識されます。画像も `![]({attach}images/filename)` のように指定すると、 `./content/pages/images/filename` を読み込めます。
 
 ### Articleを作成する場合
 
@@ -138,7 +138,10 @@ $ sh init.sh
 
 #### [出力用レポジトリ](https://github.com/oumpy/oumpy.github.io)へのpush
 
-このレポジトリは出力にすぎないので、真面目な履歴管理は行いません。更新を強制的に上書きしてOKです。そのために一括pushするスクリプト`blog_push.sh`を用意しています。以下には書いていませんがGitHubの認証に関する設定も必要です。
+このレポジトリは出力にすぎないので、あまり真面目な変更履歴管理は行いません。
+masterブランチに全て上書きしていく形でOKです。
+そのために一括commit & pushするスクリプト`blog_push.sh`を用意しています。
+なおGitHubの認証に関する設定が事前に必要です。
 
 ```bash
 $ cd hp_management
