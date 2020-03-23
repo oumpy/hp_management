@@ -145,12 +145,21 @@ masterブランチに全て上書きしていく形でOKです。
 
 ```bash
 $ cd hp_management
-$ bash blog_push.sh "Sugoi Kiji added."
+$ sh blog_push.sh "Sugoi Kiji added."
 ```
 を実行すれば、全てのファイルをhtmlにコンパイルして、`./output/`へ、そして[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)にプッシュします。
 `blog_push.sh` に引数として与えた文字列がコミットのコメントになります。
 省略すると単に "Update" になります。
 
+##### リモートブランチ（ソース）のpullと出力のpush
+
+```bash
+$ sh blog_update.sh "Yabai update"
+```
+
+で、masterブランチをpull & checkout、コンパイルして出力用レポジトリに指定したコメント付きでcommit & pushします。第2引数としてmaster以外のソースブランチ、第3引数としてmaster以外のターゲットブランチを指定することも可能。
+
+このスクリプト `blog_update.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
 
 ## 課題
 ### 管理システム
