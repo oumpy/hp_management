@@ -1,17 +1,6 @@
 #!/bin/sh
-
-# https://qiita.com/driller/items/49a990cbdfb51afed620
-
-
-# git clone https://github.com/yuna06/chinese.git
-# cd english
-# pelican-quickstart
-cd output
-git pull origin master
-cd -
-# pelican content -o output -s pelicanconf.py
+comment="$1"
+cd output && git pull origin master && cd -
 make clean
 make publish
-#ghp-import output
-# git push origin gh-pages
-git push https://github.com/oumpy/oumpy.github.io.git master
+cd output && git commit -a -m ${comment:-"Update"} && git push origin master

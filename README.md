@@ -142,9 +142,11 @@ $ sh init.sh
 
 ```bash
 $ cd hp_management
-$ bash blog_push.sh
+$ bash blog_push.sh "Sugoi Kiji added."
 ```
 を実行すれば、全てのファイルをhtmlにコンパイルして、`./output/`へ、そして[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)にプッシュします。
+`blog_push.sh` に引数として与えた文字列がコミットのコメントになります。
+省略すると単に "Update" になります。
 
 
 ## 課題
