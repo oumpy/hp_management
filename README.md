@@ -145,7 +145,7 @@ masterブランチに全て上書きしていく形でOKです。
 
 ```bash
 $ cd hp_management
-$ bash blog_push.sh "Sugoi Kiji added."
+$ sh blog_push.sh "Sugoi Kiji added."
 ```
 を実行すれば、全てのファイルをhtmlにコンパイルして、`./output/`へ、そして[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)にプッシュします。
 `blog_push.sh` に引数として与えた文字列がコミットのコメントになります。
