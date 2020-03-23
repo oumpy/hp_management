@@ -14,4 +14,5 @@ make clean
 make publish
 #ghp-import output
 # git push origin gh-pages
-git push https://github.com/oumpy/oumpy.github.io.git master
+# git push https://github.com/oumpy/oumpy.github.io.git master
+cd output && git commit -a -m "Update" && git push origin master
