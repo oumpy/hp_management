@@ -54,8 +54,10 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 - 大阪府立急性期センター救急科 南健介先生、吉村旬平先生と画像解析を用いたグラム陽性菌分類
 
 ## 所属メンバー論文
-
+### 2020
 - **Yasumizu, Y.**, Sakaue, S., Konuma, T., Suzuki, K., Matsuda, K., Murakami, Y., … Okada, Y. Genome-Wide Natural Selection Signatures Are Linked to Genetic Risk of Modern Phenotypes in the Japanese Population. Molecular Biology and Evolution. *Mol Biol Evol*. 2020;msaa005. [doi:10.1093/molbev/msaa005](https://doi.org/10.1093/molbev/msaa005). [(プレスリリース)](http://www.med.osaka-u.ac.jp/activities/results/2020year/okada2020-01)
+
+### 2019
 - Matsumoto, T., Niioka, H., Kumamoto, Y., **Sato, J.**, et al. Deep-UV excitation fluorescence microscopy for detection of lymph node metastasis using deep neural network. *Sci Rep*. 2019;9(1):16912. [doi:10.1038/s41598-019-53405-w](https://www.nature.com/articles/s41598-019-53405-w).
 - **Takeuchi, T.**, Kitamura, Y., Sado, J., et al. Mortality of Japanese Olympic athletes: 1952–2017 cohort study. *BMJ Open SEM*. 2019;5:e000653. [doi: 10.1136/bmjsem-2019-000653](https://bmjopensem.bmj.com/content/5/1/e000653).
 
