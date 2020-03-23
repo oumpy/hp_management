@@ -1,13 +1,11 @@
 Title: Python会について
 Date: 2020.03.13
-Category: pages
+Modified: 2020.03.13
 Tags: pages
 Slug: index
 Author:
 Page_order: 100
 Summary: Python会の紹介ページです。
-
-*＜本サイトはテスト中です。まだ正式オープンしていません。＞*
 
 Python会とは、大阪大学医学部の学生が中心となり、プログラミング言語Pythonを軸に、医療分野と絡めて個人の研究・趣味に取り組む会です。
 

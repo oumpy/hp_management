@@ -13,12 +13,19 @@ else
 fi
 
 if [ "$category" = "" ] || [ "$category" = "page" ] || [ "$category" = "pages" ]; then
-  directory="content/pages"
+  directory="./content/pages"
 else
-  directory="content/articles/${schoolyear}sy/$category"
-  mkdir -p $directory
+  directory="./content/articles/${schoolyear}sy/$category"
 fi
-while read line
-do
-  echo $(eval echo $line)
-done < $template > "$directory/$filename.md"
+filepath="$directory/$filename.md"
+
+if [ -e "$filepath" ]; then
+  echo "$0 error: $filepath already exists."
+else
+  mkdir -p "$directory"
+  while read line
+  do
+    echo $(eval echo $line)
+  done < $template > "$filepath"
+  echo "$0: $filepath created."
+fi

@@ -43,7 +43,7 @@ $ bash create.sh (filename) (category) (tags)
 
 Pageの場合と同じコマンド。(category)を指定するとarticleになり、`content/articles/(schoolyear)/(category)/(filename).md`として作成されます。
 
-- (category)はnewsかtech。(category)にpageまたはpagesを指定するとpageになる。
+- (category)はNewsかTech。(category)にpageまたはpagesを指定するとpageになる。
 - (tags)は省略可能、ただしarticleの場合は編集の際に必ず入れること。（この仕様は変更するかも。）
 - (category)は各ファイルのメタデータには記載されない。mdファイルを入れるディレクトリの名前がカテゴリとして認識される。
   （記載した場合はそちらが優先されるが、記載しないでください。）
@@ -52,7 +52,7 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 
 画像については、`content/articles/(schoolyear)/(category)/images/(filename)_figs/(imagefile)`として保存し、`{attach}images/(filename)_figs/(imagefile)`で読み込むのを標準とします。
 
-例えば、`sugoikiji.md`に画像ファイル `sugoigazou.png` を読み込みたい場合は `content/articles/2020sc/tech/images/sugoikiji_figs/sugoigazou.png` のように設置し、
+例えば、`sugoikiji.md`に画像ファイル `sugoigazou.png` を読み込みたい場合は `content/articles/2020sc/Tech/images/sugoikiji_figs/sugoigazou.png` のように設置し、
 
 ```markdown
 ![Sugoi Gazou]({attach}images/sugoikiji_figs/sugoigazou.png)
@@ -62,21 +62,25 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 
 #### Jupyter Notebookの扱い
 
-jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb`の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。 `article/2018sy/tech_archive`の`lorentz.ipynb`および`lorentz.nbdata`を参考にしてください。
+jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb`の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。 `article/2018sy/Tech_archive`の`lorentz.ipynb`および`lorentz.nbdata`を参考にしてください。
 
 ## 導入した機能など
 
-### Jupyter notebookをHTML出力できるようにする。
+### 初期設定
 
-プラグイン[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。pelicanconf.pyには以下の記述を追加。
+初期導入時の参考記事：<https://qiita.com/driller/items/49a990cbdfb51afed620>
+
+### Pluginの導入
+
+プラグイン[pelican-plugins](https://github.com/getpelican/pelican-plugins)および[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。pelicanconf.pyには以下の記述を追加。
 
 ```python
 MARKUP = ('md', 'ipynb')
-PLUGIN_PATH = './plugins'
-PLUGINS = ['ipynb']
+PLUGIN_PATHS = ['./plugins']
+PLUGINS = ['pelican-ipynb.markup', 'render_math']
 ```
 
-（初期導入時の参考記事：<https://qiita.com/driller/items/49a990cbdfb51afed620>）
+これでjupyter notebookファイル(.ipynb)とLaTeX数式の使用がそれぞれ可能になる。
 
 ### Themeの導入
 
@@ -116,6 +120,8 @@ $ pip install pelican Markdown
 
 ```bash
 $ cd anywhere_you_like
+$ git clone https://github.com/oumpy/hp_management.git
+$ cd hp_management
 $ sh init.sh
 ```
 
@@ -132,14 +138,28 @@ $ sh init.sh
 
 #### [出力用レポジトリ](https://github.com/oumpy/oumpy.github.io)へのpush
 
-このレポジトリは出力にすぎないので、真面目な履歴管理は行いません。更新を強制的に上書きしてOKです。そのために一括pushするスクリプト`blog_push.sh`を用意しています。以下には書いていませんがGitHubの認証に関する設定も必要です。
+このレポジトリは出力にすぎないので、あまり真面目な変更履歴管理は行いません。
+masterブランチに全て上書きしていく形でOKです。
+そのために一括commit & pushするスクリプト`blog_push.sh`を用意しています。
+なおGitHubの認証に関する設定が事前に必要です。
 
 ```bash
 $ cd hp_management
-$ bash blog_push.sh
+$ sh blog_push.sh "Sugoi Kiji added."
 ```
 を実行すれば、全てのファイルをhtmlにコンパイルして、`./output/`へ、そして[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)にプッシュします。
+`blog_push.sh` に引数として与えた文字列がコミットのコメントになります。
+省略すると単に "Update" になります。
 
+##### リモートブランチ（ソース）のpullと出力のpush
+
+```bash
+$ sh blog_update.sh "Yabai update"
+```
+
+で、masterブランチをpull & checkout、コンパイルして出力用レポジトリに指定したコメント付きでcommit & pushします。第2引数としてmaster以外のソースブランチ、第3引数としてmaster以外のターゲットブランチを指定することも可能。
+
+このスクリプト `blog_update.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
 
 ## 課題
 ### 管理システム
