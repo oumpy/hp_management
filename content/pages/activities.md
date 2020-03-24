@@ -68,7 +68,8 @@ Python会は内部に限った勉強会だけではなく、外部の方々も�
 ![技術書展7写真]({attach}images/activities/190922.jpg)
 
 ### 2019/06/14 大阪大学微生物病研究所 × 阪医Python会 合同ワークショップ
-大阪大学銀杏会館にて大阪大学微生物病研究所との合同ワークショップを行いました([Conpass](https://connpass.com/event/124354/))。
+大阪大学銀杏会館にて大阪大学微生物病研究所との合同ワークショップを行いました ([Conpass](https://connpass.com/event/124354/))。
+
 ![微研合同ワークショップ]({attach}images/activities/190614.jpg)
 
 ### 2019/02/25
