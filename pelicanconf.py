@@ -14,6 +14,7 @@ FAVICON_TYPE = 'image/vnd.microsoft.icon'
 EXTRA_PATH_METADATA = {
     'icon/' + FAVICON: {'path': FAVICON},
 }
+OPEN_GRAPH_IMAGE = 'logo.jpg'
 
 TIMEZONE = 'Asia/Tokyo'
 
