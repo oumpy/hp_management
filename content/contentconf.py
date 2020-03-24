@@ -3,7 +3,7 @@
 # Author
 AUTHOR = 'Python会'
 SITENAME = '大阪大学医学部 Python会'
-SITEURL = ''
+SITEURL = 'https://oumpy.github.io/'
 AUTHOR_INTRO = u'大阪大学医学部所属のPython職人集団です'
 AUTHOR_DESCRIPTION = u'Now is better than never'
 # AUTHOR_AVATAR = '../images/'
