@@ -1,6 +1,6 @@
 #!/bin/sh
 comment="$1"
-branch=${2:-"master"}
+branch=${2:-master}
 makecommand=`which gmake`
 makecommand=${makecommand:-`which make`}
 cd output &&\
