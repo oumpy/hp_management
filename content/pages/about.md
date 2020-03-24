@@ -1,9 +1,9 @@
 Title: Python会について
 Date: 2020.03.13
-Modified: 2020.03.13
+Modified: 2020.03.24
 Tags: pages
 Slug: index
-Author:
+Author: Python会
 Page_order: 100
 Summary: Python会の紹介ページです。
 
