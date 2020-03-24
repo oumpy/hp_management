@@ -34,15 +34,10 @@ LINKS = (
 # Settings for Twitter Timeline
 TWITTER_TIMELINE_URL = "https://twitter.com/oumed_python?ref_src=twsrc%5Etfw"
 TWITTER_USERNAME = 'oumed_python'
-TWITTER_CARD = True
 
 CUSTOM_SOCIAL_TITLE = "ソーシャル"
 CUSTOM_CATEGORIES_TITLE = "記事カテゴリ"
 CUSTOM_TAGS_TITLE = "タグ"
 CUSTOM_LINKS_TITLE = "リンク"
 
-# Settings for Open Graph Properties
-OPEN_GRAPH = True
-OPEN_GRAPH_ARTICLE_AUTHOR = AUTHOR
 OPEN_GRAPH_IMAGE = 'logo.jpg'
-DEFAULT_SOCIAL_IMAGE = OPEN_GRAPH_IMAGE
