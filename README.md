@@ -30,9 +30,9 @@ $ cd hp_management/content
 $ sh create.sh (filename)
 ```
 
-`(filename)` に生成するファイル名を指定します（内容に応じて適切に）。`./content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
+`(filename)` に生成するファイル名を指定します（内容に応じて適切に）。`content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
 
-これに内容を追記します。htmlも認識されます。画像も `![]({attach}images/filename)` のように指定すると、 `./content/pages/images/filename` を読み込めます。
+これに内容を追記します。htmlも認識されます。画像も `![]({attach}images/filename)` のように指定すると、 `content/pages/images/filename` を読み込めます。
 
 ### Articleを作成する場合
 
@@ -62,7 +62,7 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 
 #### Jupyter Notebookの扱い
 
-jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb`の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。 `article/2018sy/Tech_archive`の`lorentz.ipynb`および`lorentz.nbdata`を参考にしてください。
+jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb`の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。 `./2018sy/Tech_archive`の`lorentz.ipynb`および`lorentz.nbdata`を参考にしてください。
 
 ## 導入した機能など
 
@@ -122,7 +122,7 @@ $ pip install pelican Markdown
 $ cd anywhere_you_like
 $ git clone https://github.com/oumpy/hp_management.git
 $ cd hp_management
-$ sh init.sh
+$ sh tools/init.sh
 ```
 
 テーマのファイルのみコピーし直したい場合は`sh init.sh -c`でOK。
@@ -140,26 +140,26 @@ $ sh init.sh
 
 このレポジトリは出力にすぎないので、あまり真面目な変更履歴管理は行いません。
 masterブランチに全て上書きしていく形でOKです。
-そのために一括commit & pushするスクリプト`blog_push.sh`を用意しています。
+そのために一括commit & pushするスクリプト`tools/blog_push.sh`を用意しています。
 なおGitHubの認証に関する設定が事前に必要です。
 
 ```bash
 $ cd hp_management
-$ sh blog_push.sh "Sugoi Kiji added."
+$ sh tools/blog_push.sh "Sugoi Kiji added."
 ```
 を実行すれば、全てのファイルをhtmlにコンパイルして、`./output/`へ、そして[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)にプッシュします。
-`blog_push.sh` に引数として与えた文字列がコミットのコメントになります。
+`tools/blog_push.sh` に引数として与えた文字列がコミットのコメントになります。
 省略すると単に "Update" になります。
 
 ##### リモートブランチ（ソース）のpullと出力のpush
 
 ```bash
-$ sh blog_update.sh "Yabai update"
+$ sh tools/blog_update.sh "Yabai update"
 ```
 
 で、masterブランチをpull & checkout、コンパイルして出力用レポジトリに指定したコメント付きでcommit & pushします。第2引数としてmaster以外のソースブランチ、第3引数としてmaster以外のターゲットブランチを指定することも可能。
 
-このスクリプト `blog_update.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
+このスクリプト `tools/blog_update.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
 
 ## 課題
 ### 管理システム
