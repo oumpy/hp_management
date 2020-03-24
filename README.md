@@ -19,15 +19,15 @@
 
 ## 新しいページの作り方
 
-独自スクリプト`create.sh`で雛形を作ります。
+`content` ディレクトリに移動し、独自スクリプト`create.sh`で雛形を作ります。
 
-あるいは、（その方が楽であれば）`template.md` を手動でコピーして編集してもかまいません。
+あるいは、（その方が楽であれば）`content/template.md` を手動でコピーして編集してもかまいません。
 
 ### Pageを作成する場合
 
 ```bash
-$ cd hp_management
-$ bash create.sh (filename)
+$ cd hp_management/content
+$ sh create.sh (filename)
 ```
 
 `(filename)` に生成するファイル名を指定します（内容に応じて適切に）。`./content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
@@ -37,8 +37,8 @@ $ bash create.sh (filename)
 ### Articleを作成する場合
 
 ``` bash
-$ cd hp_management
-$ bash create.sh (filename) (category) (tags)
+$ cd hp_management/content
+$ sh create.sh (filename) (category) (tags)
 ```
 
 Pageの場合と同じコマンド。(category)を指定するとarticleになり、`content/articles/(schoolyear)/(category)/(filename).md`として作成されます。

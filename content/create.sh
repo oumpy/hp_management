@@ -1,4 +1,9 @@
 #!/bin/sh
+here=$(basename `pwd`)
+if [ "$pwd" != "content" ]; then
+  echo "Run this script in the 'content' directory."
+  exit
+fi
 template="./template.md"
 filename=$1
 category=$2
@@ -13,9 +18,9 @@ else
 fi
 
 if [ "$category" = "" ] || [ "$category" = "page" ] || [ "$category" = "pages" ]; then
-  directory="./content/pages"
+  directory="./pages"
 else
-  directory="./content/articles/${schoolyear}sy/$category"
+  directory="./articles/${schoolyear}sy/$category"
 fi
 filepath="$directory/$filename.md"
 
