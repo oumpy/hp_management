@@ -119,5 +119,7 @@ OPEN_GRAPH = True
 from content.contentconf import *
 
 # Settings for Open Graph Properties
-OPEN_GRAPH_ARTICLE_AUTHOR = AUTHOR
-DEFAULT_SOCIAL_IMAGE = OPEN_GRAPH_IMAGE
+if not 'OPEN_GRAPH_ARTICLE_AUTHOR' in globals() and 'AUTHOR' in globals():
+    OPEN_GRAPH_ARTICLE_AUTHOR = AUTHOR
+if not 'DEFAULT_SOCIAL_IMAGE' in globals() and 'OPEN_GRAPH_IMAGE' in globals():
+    DEFAULT_SOCIAL_IMAGE = OPEN_GRAPH_IMAGE
