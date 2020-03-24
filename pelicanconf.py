@@ -3,6 +3,8 @@
 from __future__ import unicode_literals
 import datetime
 
+LOAD_CONTENT_CACHE = False
+
 AUTHOR = 'Python会'
 SITENAME = '大阪大学医学部 Python会'
 SITEURL = ''
