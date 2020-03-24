@@ -34,6 +34,7 @@ LINKS = (
 # Settings for Twitter Timeline
 TWITTER_TIMELINE_URL = "https://twitter.com/oumed_python?ref_src=twsrc%5Etfw"
 TWITTER_USERNAME = 'oumed_python'
+TWITTER_CARD = True
 
 CUSTOM_SOCIAL_TITLE = "ソーシャル"
 CUSTOM_CATEGORIES_TITLE = "記事カテゴリ"
