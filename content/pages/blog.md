@@ -1,5 +1,6 @@
 Title: 技術ブログ
 Date: 2020.03.15
+Modified: 2020.03.15
 Tags:
 Slug: blog
 Author: Python会

@@ -17,50 +17,84 @@
 
 - ブログ記事は（少なくとも当面）はてなブログに掲載（当HPからリンク）。
 
-## 新しいページの作り方
+## サイト内容の更新
 
-独自スクリプト`create.sh`で雛形を作ります。
+`content` ディレクトリに入っている。
 
-あるいは、（その方が楽であれば）`template.md` を手動でコピーして編集してもかまいません。
+### 新しいページの作り方
 
-### Pageを作成する場合
+`content` ディレクトリに移動し、独自スクリプト`create.sh`で雛形を作ります。
+
+あるいは、（その方が楽であれば）`content/template.md` を手動でコピーして編集してもかまいません。
+
+####  Pageを作成する場合
 
 ```bash
-$ cd hp_management
-$ bash create.sh (filename)
+$ cd hp_management/content
+$ sh create.sh (filename)
 ```
 
-`(filename)` に生成するファイル名を指定します（内容に応じて適切に）。`./content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
+`(filename)` に生成するファイル名を指定します（内容に応じて適切に）。`content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
 
-これに内容を追記します。htmlも認識されます。画像も `![]({attach}images/filename)` のように指定すると、 `./content/pages/images/filename` を読み込めます。
+これに内容を追記します。htmlも認識されます。画像も `![]({attach}images/filename)` のように指定すると、 `content/pages/images/filename` を読み込めます。
 
-### Articleを作成する場合
+#### Articleを作成する場合
 
 ``` bash
-$ cd hp_management
-$ bash create.sh (filename) (category) (tags)
+$ cd hp_management/content
+$ sh create.sh (filename) (category) (tags)
 ```
 
 Pageの場合と同じコマンド。(category)を指定するとarticleになり、`content/articles/(schoolyear)/(category)/(filename).md`として作成されます。
 
-- (category)はnewsかtech。(category)にpageまたはpagesを指定するとpageになる。
+- (category)はNewsかTech。(category)にpageまたはpagesを指定するとpageになる。
 - (tags)は省略可能、ただしarticleの場合は編集の際に必ず入れること。（この仕様は変更するかも。）
 - (category)は各ファイルのメタデータには記載されない。mdファイルを入れるディレクトリの名前がカテゴリとして認識される。
   （記載した場合はそちらが優先されるが、記載しないでください。）
 
-#### Jupyter Notebookの扱い
+##### 画像の設置と読み込み
 
-jupyter notebookに関してはmdファイルと同じ場所に入れて、メタデータのファイル作って、notebookの最初のセルにメタデータの内容と同じものを書けば大丈夫です。`article/2018sy/tech_archive`の`lorentz.ipynb`を参考にしてください。
+画像については、`content/articles/(schoolyear)/(category)/images/(filename)_figs/(imagefile)`として保存し、`{attach}images/(filename)_figs/(imagefile)`で読み込むのを標準とします。
+
+例えば、`sugoikiji.md`に画像ファイル `sugoigazou.png` を読み込みたい場合は `content/articles/2020sc/Tech/images/sugoikiji_figs/sugoigazou.png` のように設置し、
+
+```markdown
+![Sugoi Gazou]({attach}images/sugoikiji_figs/sugoigazou.png)
+```
+
+と書けば読み込まれます。
+
+##### Jupyter Notebookの扱い
+
+jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb`の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。 `./2018sy/Tech_archive`の`lorentz.ipynb`および`lorentz.nbdata`を参考にしてください。
+
+### サイト全体の情報設定
+
+`content/contentconf.py` に、サイト表題・副題やリンク先などの情報が書かれている。**この設定は `pelicanconf.py` の一部であり、また `pelicanconf.py` 本体の記述よりも優先される。**
 
 ## 導入した機能など
 
-### Jupyter notebookをHTML出力できるようにする。
+### 初期設定
 
-[この記事](https://qiita.com/driller/items/49a990cbdfb51afed620)に従って、インストール、pluginの導入、pelicanconf.pyの書き換えを行った。
+初期導入時の参考記事：<https://qiita.com/driller/items/49a990cbdfb51afed620>
+
+### Pluginの導入
+
+プラグイン[pelican-plugins](https://github.com/getpelican/pelican-plugins)および[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。pelicanconf.pyには以下の記述を追加。
+
+```python
+MARKUP = ('md', 'ipynb')
+PLUGIN_PATHS = ['./plugins']
+PLUGINS = ['pelican-ipynb.markup', 'render_math']
+```
+
+これでjupyter notebookファイル(.ipynb)とLaTeX数式の使用がそれぞれ可能になる。
 
 ### Themeの導入
 
 [voidy-bootstrap](https://github.com/robulouski/voidy-bootstrap)というテーマを導入した。pelicanconf.pyの書き換えを行った。Twitterアカウントへのリンク設定などもpelicanconf.pyからできる。
+
+さらにテーマ改変・ファイル追加によりLook & Feelの変更と機能追加を行っている。
 
 ### トップページの変更
 
@@ -94,35 +128,46 @@ $ pip install pelican Markdown
 
 ```bash
 $ cd anywhere_you_like
-$ sh init.sh
+$ git clone https://github.com/oumpy/hp_management.git
+$ cd hp_management
+$ sh tools/init.sh
 ```
 
 テーマのファイルのみコピーし直したい場合は`sh init.sh -c`でOK。
 
 ### 更新のアップ
 
-更新を強制的に一括pushするスクリプトを用意しています。以下には書いていませんがGitHubの認証に関する設定も必要です。
+#### [ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)
 
-#### [ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)へのpush
+通常のレポジトリ管理を行います。
 
-（スクリプト調整中。現在は非推奨です。）
-
-```bash
-$ cd hp_management
-$ bash manage_push.sh
-```
-で、`./output/`以外の全てのファイルを[ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)へpushします。
+- サイト内容(`content`ディレクトリ内)：`content`ブランチへのプルリクエストを受け付けます。
+- それ以外：開発参加者間で適切に管理します。
 
 #### [出力用レポジトリ](https://github.com/oumpy/oumpy.github.io)へのpush
 
-こちらもGitの使い方としては乱暴ですが、サイト本体は真面目に履歴管理する対象ではない（ソースの方を管理すればOK）という思想に基づきます。
+このレポジトリは出力にすぎないので、あまり真面目な変更履歴管理は行いません。
+masterブランチに全て上書きしていく形でOKです。
+そのために一括commit & pushするスクリプト`tools/blog_push.sh`を用意しています。
+なおGitHubの認証に関する設定が事前に必要です。
 
 ```bash
 $ cd hp_management
-$ bash blog_push.sh
+$ sh tools/blog_push.sh "Sugoi Kiji added."
 ```
 を実行すれば、全てのファイルをhtmlにコンパイルして、`./output/`へ、そして[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)にプッシュします。
+`tools/blog_push.sh` に引数として与えた文字列がコミットのコメントになります。
+省略すると単に "Update" になります。
 
+##### リモートブランチ（ソース）のpullと出力のpush
+
+```bash
+$ sh tools/blog_update.sh "Yabai update"
+```
+
+で、masterブランチをpull & checkout、コンパイルして出力用レポジトリに指定したコメント付きでcommit & pushします。第2引数としてmaster以外のソースブランチ、第3引数としてmaster以外のターゲットブランチを指定することも可能。
+
+このスクリプト `tools/blog_update.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
 
 ## 課題
 ### 管理システム
