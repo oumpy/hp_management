@@ -22,5 +22,5 @@ SITEURL = 'oumpy.github.io'
 # Following items are often useful when publishing
 
 # Services
-GOOGLE_ANALYTICS = 'UA-12345678-9'
-#DISQUS_SITENAME = 'johndoe'
+# GOOGLE_ANALYTICS = 'UA-12345678-9'
+# DISQUS_SITENAME = 'johndoe'
