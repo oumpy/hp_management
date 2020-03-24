@@ -112,5 +112,12 @@ SOCIAL_SHARE_BUTTONS = (
 
 DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
 
+TWITTER_CARD = True
+OPEN_GRAPH = True
+
 # Read user's custom settings.
 from content.contentconf import *
+
+# Settings for Open Graph Properties
+OPEN_GRAPH_ARTICLE_AUTHOR = AUTHOR
+DEFAULT_SOCIAL_IMAGE = OPEN_GRAPH_IMAGE
