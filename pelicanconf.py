@@ -97,7 +97,7 @@ CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
 CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_taglist.html", )
-CUSTOM_SIDEBAR_BOTTOM = "custom/sidebar_twittertimeline.html"
+CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
 
 TWITTER_TIMELINE_HEIGHT = 600
 SIDEBAR_SIZE = 3
