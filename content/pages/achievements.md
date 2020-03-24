@@ -70,6 +70,10 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 - MDアンダーソン病院(ヒューストン) 佐々木宏治先生と血液疾患の生存予測解析
 - 大阪府立急性期センター救急科 南健介先生、吉村旬平先生と画像解析を用いたグラム陽性菌分類
 
+### 企業インターンシップ参加
+- [(株) Preferred Networks](https://preferred.jp) 夏季インターン  
+機械学習の医療応用に関する研究開発。 (2018 秋山、2019 小川)
+
 ## 所属メンバー論文
 ### 2020
 - **Yasumizu, Y.**, Sakaue, S., Konuma, T., Suzuki, K., Matsuda, K., Murakami, Y., … Okada, Y. Genome-Wide Natural Selection Signatures Are Linked to Genetic Risk of Modern Phenotypes in the Japanese Population. Molecular Biology and Evolution. *Mol Biol Evol*. 2020;msaa005. [doi:10.1093/molbev/msaa005](https://doi.org/10.1093/molbev/msaa005). [(プレスリリース)](http://www.med.osaka-u.ac.jp/activities/results/2020year/okada2020-01)
