@@ -10,8 +10,6 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-# If your site is available via HTTPS, make sure SITEURL begins with https://
-SITEURL = 'oumpy.github.io'
 # RELATIVE_URLS = False
 
 # FEED_ALL_ATOM = 'feeds/all.atom.xml'
@@ -19,8 +17,4 @@ SITEURL = 'oumpy.github.io'
 
 # DELETE_OUTPUT_DIRECTORY = True
 
-# Following items are often useful when publishing
-
-# Services
-# GOOGLE_ANALYTICS = 'UA-12345678-9'
-# DISQUS_SITENAME = 'johndoe'
+from content.contentpublishconf import *
