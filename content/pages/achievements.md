@@ -45,7 +45,7 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 - [Signate 糖尿病患者の検査項目データにおける臨床検査項目分類コード推定](https://signate.jp/competitions/158)（秋山）2位
 - [Signate NTT corevoチャレンジ: 話者の性別・年代識別](https://signate.jp/competitions/156) (佐藤) 3位
 - [Data Science Challenge by FUJIFILM AI Academy Brain(s)](https://athletix.run/events/8baK3V8eu) (佐藤） 3位：文字認識コンペティション（富士フィルム主催)
-- [atmaCup オンサイトデータコンペ #1](https://atma.connpass.com/event/138332/) (宮崎) President’s Award 
+- [atmaCup オンサイトデータコンペ #1](https://atma.connpass.com/event/138332/) (宮崎) President’s Award
 
 #### 2018
 - [Kaggle RSNA Pneumonia Detection Challenge](https://www.kaggle.com/c/rsna-pneumonia-detection-challenge/overview) (秋山) 18/1499位：
@@ -79,5 +79,8 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 - **Miyazaki, Y.**, Tabuchi, T. Educational gradients in the use of electronic cigarettes and heat-not-burn tobacco products in Japan. *PLoS One*. 2018;13(1):e0191008. [doi:10.1371/journal.pone.0191008](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0191008)
 
 ## 出版記事等
+### 2019
 - **安水 良明** 「Pythonで医学に貢献を」 実験医学 Vol. 37 No. 4 (2019).  ([実験医学online](https://www.yodosha.co.jp/jikkenigaku/opinion/vol37n4.html))
-- (Python会メンバーの**宮崎 友希**が寄稿). 荘子 万能, 小泉 俊三, Choosing Wisely Japan Student Committee. 「私にとっての“Choosing Wisely” 医学生・研修医・若手医師の“モヤモヤ”から」, 金芳堂, (2019).
+- (Python会メンバーの**宮崎 友希**が寄稿). 荘子 万能, 小泉 俊三, Choosing Wisely Japan Student Committee. 『私にとっての“Choosing Wisely” 医学生・研修医・若手医師の“モヤモヤ”から』 金芳堂, (2019).
+- **秋山 理 (OsciiArt)**. 『病気から観る映画評』　技術書典7 (AIMS/阪医Python会), (2019).
+- **山本 拓都**. 『ゼロから作る Spiking Neural Networks』 技術書典7 (AIMS/阪医Python会), (2019).
