@@ -17,3 +17,5 @@ bioinformatics、脳科学、医療情報学や画像解析など様々な分野
 Python会に興味のある方はぜひ、[Contact](https://oumpy.github.io/contact.html)のページからご連絡ください。お待ちしております。
 
 ―Pythonで医学に貢献を―
+
+<img src="{attach}images/logo.jpg" width="300px">
