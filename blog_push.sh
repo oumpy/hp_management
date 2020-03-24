@@ -10,5 +10,5 @@ cd ../ &&\
 $makecommand clean &&\
 $makecommand publish &&\
 cd output &&\
-git commit -a -m "${comment:-'Update'}" &&\
+git commit -a -m "${comment:-Update}" &&\
 git push origin $branch
