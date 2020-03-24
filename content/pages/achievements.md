@@ -1,7 +1,6 @@
 Title: 実績
 Date: 2020.03.13
-Modified: 2020.03.16
-Category: pages
+Modified: 2020.03.19
 Tags: pages
 Slug: achievements
 Author:
@@ -20,16 +19,25 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 ### ワークショップ等の企画
 - 2019.06.14 微生物研究所 病原体同定研究グループ（中村研）と共同ワークショップを開催。 (<https://connpass.com/event/124354/>)
 - 2019.07.26 もくもく会
-- 2019.10.20 bono会
+- 2019.08.25 AIメディカル夏の学校（AIMSとの共催）
+- 2019.09.28 全国医療AIコンテスト（AIMSとの共催）
+- 2019.10.20 「生命科学者のためのDr.Bonoデータ解析実践道場」読書会
 - 2019.12.20-21 奈良県立医科大学
 
 ## コンペティション実績
 個人またはPython会内のチームで各種コンペティションに参加、数々の入賞実績。
 ### 機械学習コンペ
-- Kaggle 肺炎コンペティション 18位
+- Kaggle Freesound Audio Tagging 2019 (佐藤淳哉、秋山理) 4 / 880位
+  xxxxxx
+- Kaggle RSNA Pneumonia Detection Challenge 18/1499位
+ 胸部X線画像の肺炎病変識別
 - signate 糖尿病（秋山）2位
 - signate NTT (佐藤) 3位
+- 文字認識コンペティション（富士フィルム主催、佐藤） 3位
 - bioinformatics contest 2018(安水、秋山) 18位, 20位
+
+- kaggle master 
+秋山理, 佐藤淳哉
 
 ### 競技プログラミング
 - AtCoder日本最強プログラマー学生選手権決勝出場 (小川)
@@ -37,14 +45,19 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 
 ## 研究開発活動
 ### RNA-seq pipeline ikra ver1.0をリリース
-bioinformatics勉強会の成果として、RNA-seqのパイプラインである、ikra　(<https://github.com/yyoshiaki/ikra>)をリリースしました。RNAseqに係る様々なツールを検証し、その中で最良のツールをパイプラインとして自動化することに成功。専門学術論文xxx報に引用されている(2020年3月現在)。
+bioinformatics勉強会の成果として、RNA-seqのパイプラインである、ikra　(<https://github.com/yyoshiaki/ikra>)をリリースしました。RNAseqに係る様々なツールを検証し、その中で最良のツールをパイプラインとして自動化することに成功。専門学術論文に引用されている(2020年3月現在)。
 
 ### 外部との共同研究
 Twitterや実験医学誌面の反響から、様々な共同研究が始まっています。
  
 - MDアンダーソン病院(ヒューストン) 佐々木宏治先生と血液疾患の生存予測解析
 - 大阪府立急性期センター救急科 南健介先生、吉村旬平先生と画像解析を用いたグラム陽性菌分類
-- 慶応大学 伊藤光平くん（GoSWAB代表）と病院微生物のプロファイリング（計画中）
+
+## 所属メンバー論文
+
+- Yasumizu, Y., Sakaue, S., Konuma, T., Suzuki, K., Matsuda, K., Murakami, Y., … Okada, Y. (2020). Genome-Wide Natural Selection Signatures Are Linked to Genetic Risk of Modern Phenotypes in the Japanese Population. Molecular Biology and Evolution. [https://doi.org/10.1093/molbev/msaa005](https://doi.org/10.1093/molbev/msaa005)  [(プレスリリース)](http://www.med.osaka-u.ac.jp/activities/results/2020year/okada2020-01) 
+- jsatoのscientific reports
+- 竹内くんのオリンピック選手のやつ
 
 ## 出版記事等
 - 安水良明 「Pythonで医学に貢献を」 実験医学 Vol. 37 No. 4 (2019) (<https://www.yodosha.co.jp/jikkenigaku/opinion/vol37n4.html>)
