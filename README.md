@@ -66,17 +66,21 @@ jupyter notebookに関しては他の記事（mdファイル）と同じ場所�
 
 ## 導入した機能など
 
-### Jupyter notebookをHTML出力できるようにする。
+### 初期設定
 
-プラグイン[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。pelicanconf.pyには以下の記述を追加。
+初期導入時の参考記事：<https://qiita.com/driller/items/49a990cbdfb51afed620>
+
+### Pluginの導入
+
+プラグイン[pelican-plugins](https://github.com/getpelican/pelican-plugins)および[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。pelicanconf.pyには以下の記述を追加。
 
 ```python
 MARKUP = ('md', 'ipynb')
-PLUGIN_PATH = './plugins'
-PLUGINS = ['ipynb']
+PLUGIN_PATHS = ['./plugins']
+PLUGINS = ['pelican-ipynb.markup', 'render_math']
 ```
 
-（初期導入時の参考記事：<https://qiita.com/driller/items/49a990cbdfb51afed620>）
+これでjupyter notebookファイル(.ipynb)とLaTeX数式の使用がそれぞれ可能になる。
 
 ### Themeの導入
 
@@ -116,6 +120,8 @@ $ pip install pelican Markdown
 
 ```bash
 $ cd anywhere_you_like
+$ git clone https://github.com/oumpy/hp_management.git
+$ cd hp_management
 $ sh init.sh
 ```
 
@@ -132,14 +138,28 @@ $ sh init.sh
 
 #### [出力用レポジトリ](https://github.com/oumpy/oumpy.github.io)へのpush
 
-このレポジトリは出力にすぎないので、真面目な履歴管理は行いません。更新を強制的に上書きしてOKです。そのために一括pushするスクリプト`blog_push.sh`を用意しています。以下には書いていませんがGitHubの認証に関する設定も必要です。
+このレポジトリは出力にすぎないので、あまり真面目な変更履歴管理は行いません。
+masterブランチに全て上書きしていく形でOKです。
+そのために一括commit & pushするスクリプト`blog_push.sh`を用意しています。
+なおGitHubの認証に関する設定が事前に必要です。
 
 ```bash
 $ cd hp_management
-$ bash blog_push.sh
+$ sh blog_push.sh "Sugoi Kiji added."
 ```
 を実行すれば、全てのファイルをhtmlにコンパイルして、`./output/`へ、そして[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)にプッシュします。
+`blog_push.sh` に引数として与えた文字列がコミットのコメントになります。
+省略すると単に "Update" になります。
 
+##### リモートブランチ（ソース）のpullと出力のpush
+
+```bash
+$ sh blog_update.sh "Yabai update"
+```
+
+で、masterブランチをpull & checkout、コンパイルして出力用レポジトリに指定したコメント付きでcommit & pushします。第2引数としてmaster以外のソースブランチ、第3引数としてmaster以外のターゲットブランチを指定することも可能。
+
+このスクリプト `blog_update.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
 
 ## 課題
 ### 管理システム
