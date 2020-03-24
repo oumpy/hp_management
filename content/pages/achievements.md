@@ -57,6 +57,9 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 - AtCoder日本最強プログラマー学生選手権決勝出場 (小川)
 - AtCoderレート青3名、水色2名など。
 
+### 企業インターンシップ参加
+- [(株) Preferred Networks](https://preferred.jp) 夏季インターン (2018 秋山、2019 小川)
+
 ## 研究開発活動
 ### RNA-seq pipeline ikra ver1.0をリリース
 bioinformatics勉強会の成果として、RNA-seqのパイプラインである、ikra　(<https://github.com/yyoshiaki/ikra>)をリリースしました。RNAseqに係る様々なツールを検証し、その中で最良のツールをパイプラインとして自動化することに成功。専門学術論文に引用されている(2020年3月現在)。
