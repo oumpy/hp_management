@@ -20,10 +20,11 @@ Summary:
 
 ## 会外部との連携によるイベント開催
 ### 勉強合宿
-1. 国立遺伝学研究所にて2019/3/4〜3/9の1週間のbioinformatics合宿
-DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方々とも交流しました。(平岡、安水)また、本年度以降も数人で一週間の遺伝研合宿を行う予定。
-2. 国立遺伝学研究所にてbioinformatics合宿 第2弾
-同じくDBCLS坊農先生のもとで一週間bioinformaticsを学び、[Mishima.syk #14 - connpass](https://connpass.com/event/137642/)にて発表も行いました。(2019/9/15〜2019/9/21)
+- 2019/3/4-9 国立遺伝学研究所にて1週間のbioinformatics合宿  
+DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方々とも交流しました(平岡・安水)。
+次年度も数人で一週間の遺伝研合宿を行う予定です。
+- 2019/9/15-21 国立遺伝学研究所にてbioinformatics合宿 第2弾  
+同じくDBCLS坊農先生のもとで一週間bioinformaticsを学び、[Mishima.syk #14 - connpass](https://connpass.com/event/137642/)にて発表も行いました。
 ### ワークショップ等の企画
 - 2019.06.14 微生物研究所 病原体同定研究グループ（中村研）と共同ワークショップを開催。 (<https://connpass.com/event/124354/>)
 - 2019.07.26 もくもく会
