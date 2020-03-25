@@ -1,9 +1,4 @@
 #!/bin/sh
-here=$(basename `pwd`)
-if [ "$pwd" != "content" ]; then
-  echo "Run this script in the 'content' directory."
-  exit
-fi
 template="./template.md"
 filename=$1
 category=$2
@@ -19,8 +14,16 @@ fi
 
 if [ "$category" = "" ] || [ "$category" = "page" ] || [ "$category" = "pages" ]; then
   directory="./pages"
+  if [ ! -d "./pages" ]; then
+      echo "Directory 'pages' does not exist."
+      exit
+  fi
 else
   directory="./articles/${schoolyear}sy/$category"
+  if [ ! -d "./articles" ]; then
+      echo "Directory 'articles' does not exist."
+      exit
+  fi
 fi
 filepath="$directory/$filename.md"
 
