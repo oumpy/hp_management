@@ -114,10 +114,39 @@ $ sh tools/updateblog.sh "Yabai update"
 
 このスクリプト `tools/updateblog.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
 
+## Webhookによる自動更新機構
+
+webサーバ上にローカルレポジトリを設置することで、GitHubのwebhook機能を用いてサイトを自動更新する機能を搭載しています。
+
+### 本機能を使用する方法
+
+1. webサーバ上の適当なディレクトリ（webからアクセスできないところ）にhp_managementを正しく設置。
+
+2. webhookを受け取るcgiの場所とファイル名を好きなように決める。
+   （ローカルパスを以下仮に`/home/hoge/www/deploy.cgi`、対応するURLを http://www.example.io/deploy.cgi とする。）
+
+3. hp_management/webhookconf.py`を以下のような内容で作成する。
+
+```python
+# webhookconf.py
+# cgipath, secret の2つの変数を以下のように設定する。
+# 上で決めたcgiのフルパスを記述
+cgipath = '/home/hoge/www/deploy.cgi'
+# githubとの間でのパスワードとなるバイト列を設定
+secret = b'xyzabc....'
+```
+
+4. `sh tools/init.sh -c` を実行。
+
+5. GitHubの本レポジトリでwebhookを設定する。
+   cgiのURL (http://www.example.io/deploy.cgi) とsecretを設定し、`content type` に `application/json`、また "Just the push event." を選択。
+
+以上により、本レポジトリ (hp_management) のmasterブランチ更新を自動検出して`tools/updateblog.sh` が実行されます。
+
 ## 課題
 ### 管理システム
 
-- blogの自動pushシステムなどの整備
+- ほぼ完成した？
 
 ### HPシステム・テーマ
 
