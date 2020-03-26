@@ -119,6 +119,10 @@ $ sh tools/updateblog.sh "Yabai update"
 
 - blogの自動pushシステムなどの整備
 
+- `content` を将来レポジトリ分離すべきか。  
+
+  （当初はいずれ分離を想定していた。ただCODEOWNERS管理でも十分、かもしれない。）
+
 ### HPシステム・テーマ
 
 - article一覧ページの改善
