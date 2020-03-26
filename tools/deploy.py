@@ -6,7 +6,7 @@ import json
 import hashlib, hmac
 from datetime import datetime
 
-hpmanagement_path = "$hpmanagement_path".rstrip('/')
+hpmanagement_path = "$hpmanagement_path"
 sys.path.append(hpmanagement_path)
 from webhookconf import secret
 logfilepath = hpmanagement_path + '/webhook.log'
