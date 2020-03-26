@@ -17,7 +17,7 @@ cgitemplate=tools/deploy.py
 if [ -e "webhookconf.py" ]; then
     cgipath=`python3 -c "import os,sys; sys.path.append(os.curdir); import webhookconf; print(webhookconf.cgipath)"`
     if [ -n "$cgipath" ]; then
-        if [ ${cgipath: -1} == "/" ]; then
+        if [ `echo "$cgipath" | rev | cut -c 1` == "/" ]; then
             cgipath="$cgipath`basename "$cgitemplate"`"
         fi
         pythonpath=`which python3`
