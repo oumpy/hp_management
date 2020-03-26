@@ -57,9 +57,11 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 
 jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb`の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。 `./2018sy/Tech_archive`の`lorentz.ipynb`および`lorentz.nbdata`を参考にしてください。
 
-### サイト全体の情報設定
+## サイト全体の情報設定
 
 `content/contentconf.py` に、サイト表題・副題やリンク先などの情報が書かれている。**この設定は `pelicanconf.py` の一部であり、また `pelicanconf.py` 本体の記述よりも優先される。**
+
+同様に  `content/contentpublishconf.py` もあり、テスト時にはない方がよい設定を記述する。
 
 ## ToDo
 
