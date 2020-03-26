@@ -26,5 +26,6 @@ if [ -e "webhook.py" ]; then
         sed -e "s|\$pythonpath|$pythonpath|g; s|\$hpmanagement_path|$hpmanagement_path|g" \
             < $cgitemplate \
             > "$cgipath"
+        chmod +x "$cgipath"
     fi
 fi
