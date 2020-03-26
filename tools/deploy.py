@@ -9,7 +9,8 @@ from datetime import datetime
 hpmanagement_path = "$hpmanagement_path"
 sys.path.append(hpmanagement_path)
 from webhookconf import secret
-logfilepath = hpmanagement_path + '/webhook.log'
+webhooklogfilepath = hpmanagement_path + '/webhook.log'
+updatelogfilepath = hpmanagement_path + '/update.log' 
 
 target_branch = ['refs/heads/master']
 
@@ -35,12 +36,15 @@ if secret:
 
 branch = payload['ref']
 
-f = open(logfilepath, 'a')
+f = open(webhooklogfilepath, 'a')
 print('{0:%Y-%m-%d %H:%M:%S}'.format(datetime.now()), 'Branch', branch, 'pushed: ', end='', file=f)
 
 if branch in target_branch:
     os.chdir(hpmanagement_path)
-    subprocess.call(['sh', 'tools/updateblog.sh', 'Auto-push by hp_management/master update.'])
+    with open(updatelogfilepath, 'a') as uf:
+        print('{0:%Y-%m-%d %H:%M:%S}'.format(datetime.now()), file=uf)
+        subprocess.call(['sh', 'tools/updateblog.sh', 'Auto-push by hp_management/master update.'],
+                        stdout=uf, stderr=uf)
     print('website compiled and (possibly) pushed.', file=f)
 else:
     print('nothing done.', file=f)
