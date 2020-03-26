@@ -35,7 +35,7 @@ if secret:
 
 branch = payload['ref']
 
-f = open('logfilepath', 'a')
+f = open(logfilepath, 'a')
 print('{0:%Y-%m-%d %H:%M:%S}'.format(datetime.now()), 'Branch', branch, 'pushed: ', end='', file=f)
 
 if branch in target_branch:
