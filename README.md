@@ -7,13 +7,15 @@
 
 - ファイルが全て入った、[ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)とoutputディレクトリのHTMLファイルのみが入った、[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)がある。
 
-- 基本は管理用レポジトリをプルして、設定を変更したり、content内の新しいブログを追加したりする。完成したら、管理用レポジトリにプッシュするとともに、出力用レポジトリにもoutputの中身をpushする。この繰り返し。
+- 基本は管理用レポジトリをプルして、設定を変更したり、content内の新しいブログを追加したりする。
+完成したら、管理用レポジトリにプッシュするとともに、出力用レポジトリにもoutputの中身をpushする。この繰り返し。
 
 - 会員は本レポジトリ（hp_management）を自分のGitHubアカウントにfork、`content/`下のMarkdownファイルを編集・追加してプルリクエストを送ることを推奨。
 
 - ブログ記事は（少なくとも当面）はてなブログに掲載（当HPからリンク）。
 
-- 以下は主に管理者・開発者向けの技術的内容です。**記事更新の方法などは`content/README.md`を参照** のこと。以下の内容をやる必要はありません。
+- 以下は主に管理者・開発者向けの技術的内容です。**記事更新の方法などは`content/README.md`を参照** のこと。
+以下の内容をやる必要はありません。
 
   Markdownとgitの使い方は本HP関係なく必須科目です。勉強しましょう。
 
@@ -25,7 +27,8 @@
 
 ### Pluginの導入
 
-プラグイン[pelican-plugins](https://github.com/getpelican/pelican-plugins)および[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。pelicanconf.pyには以下の記述を追加。
+プラグイン[pelican-plugins](https://github.com/getpelican/pelican-plugins)および[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。
+pelicanconf.pyには以下の記述を追加。
 
 ```python
 MARKUP = ('md', 'ipynb')
@@ -37,13 +40,16 @@ PLUGINS = ['pelican-ipynb.markup', 'render_math']
 
 ### Themeの導入
 
-[voidy-bootstrap](https://github.com/robulouski/voidy-bootstrap)というテーマを導入した。pelicanconf.pyの書き換えを行った。Twitterアカウントへのリンク設定などもpelicanconf.pyからできる。
+[voidy-bootstrap](https://github.com/robulouski/voidy-bootstrap)というテーマを導入した。
+pelicanconf.pyの書き換えを行った。
+Twitterアカウントへのリンク設定などもpelicanconf.pyからできる。
 
 さらにテーマ改変・ファイル追加によりLook & Feelの変更と機能追加を行っている。
 
 ### トップページの変更
 
-デフォルトではarticlesのインデックスがトップページになる。これを変更する正式な方法が何かはよくわからないが、ひとまず `pelicanconf.py`中で
+デフォルトではarticlesのインデックスがトップページになる。
+これを変更する正式な方法が何かはよくわからないが、ひとまず `pelicanconf.py`中で
 
 ```python
 INDEX_SAVE_AS = 'articles.html'
@@ -55,7 +61,8 @@ INDEX_SAVE_AS = 'articles.html'
 Slug: index
 ```
 
-と設定すると、このページがトップになる。この方法で `about.md` をトップに設定した。
+と設定すると、このページがトップになる。
+この方法で `about.md` をトップに設定した。
 
 ## 使い方（管理者向け）
 
@@ -110,7 +117,8 @@ $ sh tools/pushblog.sh "Sugoi Kiji added."
 $ sh tools/updateblog.sh "Yabai update"
 ```
 
-で、masterブランチをpull & checkout、コンパイルして出力用レポジトリに指定したコメント付きでcommit & pushします。第2引数としてmaster以外のソースブランチ、第3引数としてmaster以外のターゲットブランチを指定することも可能。
+で、masterブランチをpull & checkout、コンパイルして出力用レポジトリに指定したコメント付きでcommit & pushします。
+第2引数としてmaster以外のソースブランチ、第3引数としてmaster以外のターゲットブランチを指定することも可能。
 
 このスクリプト `tools/updateblog.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
 
