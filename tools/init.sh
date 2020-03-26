@@ -14,7 +14,7 @@ cp -an "themes/$themename"/* "theme/$themename/"
 
 # put webhook-cgi.
 cgitemplate=tools/deploy.py
-if [ -e "webhook.py" ]; then
+if [ -e "webhookconf.py" ]; then
     cgipath=`python3 -c "import os,sys; sys.path.append(os.curdir); import webhookconf; print(webhookconf.cgipath)"`
     if [ -n "$cgipath" ]; then
         if [ ${cgipath: -1} == "/" ]; then
