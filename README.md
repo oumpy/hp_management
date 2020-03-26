@@ -117,12 +117,11 @@ $ sh tools/updateblog.sh "Yabai update"
 ## 課題
 ### 管理システム
 
-- 管理者以外も手を出しやすいよう、ディレクトリ構造やスクリプト類の整理。（かなり進展した。ひとまずOK？）
+- blogの自動pushシステムなどの整備
 
-### サイト内容
+### HPシステム・テーマ
 
-- CSSの調整など。
-- Member,Calenderなどは必要か？
+- article一覧ページの改善
 
 ### 記事(article)類
 

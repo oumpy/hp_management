@@ -60,4 +60,5 @@ jupyter notebookに関しては他の記事（mdファイル）と同じ場所�
 - 写真ファイルのパス指定や内部リンク調整
 - 手打ちをした部分（Author, Tagsなど）のチェック
 - 古い記事のいくつかはhtmlのコピペでMarkdownとしては酷い。
+- Member,Calenderなどは必要か？
 
