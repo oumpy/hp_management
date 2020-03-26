@@ -55,3 +55,9 @@ jupyter notebookに関しては他の記事（mdファイル）と同じ場所�
 
 `content/contentconf.py` に、サイト表題・副題やリンク先などの情報が書かれている。**この設定は `pelicanconf.py` の一部であり、また `pelicanconf.py` 本体の記述よりも優先される。**
 
+## ToDo
+
+- 写真ファイルのパス指定や内部リンク調整
+- 手打ちをした部分（Author, Tagsなど）のチェック
+- 古い記事のいくつかはhtmlのコピペでMarkdownとしては酷い。
+

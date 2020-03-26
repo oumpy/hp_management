@@ -122,13 +122,8 @@ $ sh tools/updateblog.sh "Yabai update"
 ### サイト内容
 
 - CSSの調整など。
-- Recruit, Activity, Achievementsなどの内容作成。
 - Member,Calenderなどは必要か？
 
 ### 記事(article)類
 
 - 本サイトで完結できるかの検討研究
-- 写真ファイルのパス指定や内部リンク調整
-- 手打ちをした部分（Author, Tagsなど）のチェック
-- 古い記事のいくつかはhtmlのコピペでMarkdownとしては酷い。
-
