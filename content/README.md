@@ -1,8 +1,14 @@
 # サイト内容（contentディレクトリ）の内容と書き方
 
-## サイト内容の更新
+サイトのソースはこのディレクトリ (`content` ) に入っている。
 
-`content` ディレクトリに入っている。
+```bash
+$ cd anywhere_you_like
+$ git clone https://github.com/oumpy/hp_management.git
+$ cd hp_management/content
+```
+
+## サイト内容の更新
 
 ### 新しいページの作り方
 
