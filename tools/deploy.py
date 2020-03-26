@@ -41,7 +41,7 @@ print('{0:%Y-%m-%d %H:%M:%S}'.format(datetime.now()), 'Branch', branch, 'pushed:
 if branch in target_branch:
     os.chdir(hpmanagement_path)
     subprocess.call(['sh', 'tools/updateblog.sh', 'Auto-push by hp_management/master update.'])
-    print('website compiled and pushed.', file=f)
+    print('website compiled and (possibly) pushed.', file=f)
 else:
     print('nothing done.', file=f)
 
