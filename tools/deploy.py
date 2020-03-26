@@ -24,7 +24,7 @@ else:
     signature = ''
 
 if secret:
-    hasher = 'sha1=' + hmac.new(secret, payload, hashlib.sha1).hexdigest()
+    hasher = 'sha1=' + hmac.new(secret, data, hashlib.sha1).hexdigest()
     # print('Signature : {}'.format(signature))
     # print('Calculated: {}'.format(hasher))
     if signature != hasher:
