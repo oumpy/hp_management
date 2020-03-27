@@ -1,6 +1,6 @@
 Title:Common Workflow Language入門
-Date: 2019.04.14
-Tags: bioinformatics
+Date: 2018.12.07
+Tags: Bioinformatics
 Slug: cwl
 Author: 安水
 Summary:
@@ -64,7 +64,6 @@ result = echo(inp="foo")
 困ったときに助けてくれるやさしいcontributerの方々が日本に何人かいます。また、日本語ドキュメントも多くてとても助かります。更に、開発者の[Michael R. Crusoe](https://twitter.com/biocrusoe)は来日しており、[#CommonWLjp](https://twitter.com/hashtag/CommonWLjp?src=hash)などでCWLの輪を広げています。
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">On my way to the 11th <a href="https://twitter.com/NBDC_info?ref_src=twsrc%5Etfw">@NBDC_info</a> / <a href="https://twitter.com/dbcls?ref_src=twsrc%5Etfw">@dbcls</a> <a href="https://twitter.com/hashtag/biohack18?src=hash&amp;ref_src=twsrc%5Etfw">#biohack18</a> (with a week long stop in Tokyo for <a href="https://twitter.com/hashtag/usegalaxyjp?src=hash&amp;ref_src=twsrc%5Etfw">#usegalaxyjp</a> meeting and other <a href="https://twitter.com/hashtag/CommonWL?src=hash&amp;ref_src=twsrc%5Etfw">#CommonWL</a> presentations and a bilingual workshop) <a href="https://t.co/W4gsO9bnA1">pic.twitter.com/W4gsO9bnA1</a></p>&mdash; Michael R. Crusoe (@biocrusoe) <a href="https://twitter.com/biocrusoe/status/1069104245100748801?ref_src=twsrc%5Etfw">2018年12月2日</a></blockquote>
-<a href="https://platform.twitter.com/widgets.js">https://platform.twitter.com/widgets.js</a>
 
 
 ## kallistoをCWL + Rabix Composerで試してみる
@@ -75,24 +74,25 @@ result = echo(inp="foo")
 
 ちゃんとkallistoのoutputが生成されていますね！データは[github](https://github.com/yyoshiaki/cwl_user_guide/tree/master/kallisto)にまとめておきました。テスト用のシーケンスデータも付けてあるので、クローンして遊んでみてください。`kallisto-index.cwl`と`kallisto-quant.cwl`は公式の[CWL Tools &amp; Workflows](https://github.com/common-workflow-language/workflows)から取ってきました。もちろんこれらはdocker imageを使っています。新しいworkflowを作ってみましょう。動画のように直感的にできると思います。
 
-今回、errorが出て進まなかった場所があったのですが、石井さん、西田さんの応援や、cwlの作者のMichaelやRabixの作者のKaushikがerrorに対処してくれました。[issue : kallisto workflow is incompatible with Rabix composer #418](https://github.com/rabix/composer/issues/418#issuecomment-444257454)この対応のフレンドリーさはbioinformaticsならではですね。
+今回、errorが出て進まなかった場所があったのですが、石井さん、西田さんの応援や、cwlの作者のMichaelやRabixの作者のKaushikがerrorに対処してくれました。
+> [issue : kallisto workflow is incompatible with Rabix composer #418](https://github.com/rabix/composer/issues/418#issuecomment-444257454)
+
+この対応のフレンドリーさはbioinformaticsならではですね。
 
 ## workflow業界のあれこれ
 
 ここで一旦workflowについて広く見てみましょう。ハーバードを始めとする海外の研究所ではサーバーを研究所ごとに管理するのに変えて、クラウドの利用が盛んになってきています。そういう時代感もあり、workflowやコンテナなど、reproducibleな環境の整備というのはますます重要視されてきています。workflow業界ではcwlの他に古き良き[Galaxy](http://wiki.pitagora-galaxy.org/wiki/index.php/Workflows)、Broad Instituteが開発している[WDL](https://software.broadinstitute.org/wdl/)や[nextflow](https://www.nextflow.io/)、Pythonで書かれている[Snakemake](https://snakemake.readthedocs.io/en/stable/)など、さまざまな選択肢があります。どのworkflowが好きか、Cambridgeの[@AlbertVilella](https://twitter.com/@AlbertVilella)が世界中のbioinformaticianにアンケートをとっていました。
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">90 responses in <a href="https://t.co/hbaY7ShocR">https://t.co/hbaY7ShocR</a> <a href="https://twitter.com/nextflowio?ref_src=twsrc%5Etfw">@nextflowio</a> <a href="https://twitter.com/SBGenomics?ref_src=twsrc%5Etfw">@SBGenomics</a> <a href="https://twitter.com/commonwl?ref_src=twsrc%5Etfw">@commonwl</a> Snamemake <a href="https://t.co/1kc1DaXdBa">pic.twitter.com/1kc1DaXdBa</a></p>&mdash; Albert Vilella (@AlbertVilella) <a href="https://twitter.com/AlbertVilella/status/1070219898306084865?ref_src=twsrc%5Etfw">2018年12月5日</a></blockquote>
-<a href="https://platform.twitter.com/widgets.js">https://platform.twitter.com/widgets.js</a>
 
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">No votes so far for <a href="https://twitter.com/ensembl?ref_src=twsrc%5Etfw">@ensembl</a> Hive, Apache Taverna or <a href="https://twitter.com/arvados?ref_src=twsrc%5Etfw">@arvados</a> , even though we know they have plenty of users <a href="https://t.co/Db2el8vPDt">https://t.co/Db2el8vPDt</a> <a href="https://twitter.com/hashtag/Bioinformatics?src=hash&amp;ref_src=twsrc%5Etfw">#Bioinformatics</a> <a href="https://twitter.com/hashtag/Workflows?src=hash&amp;ref_src=twsrc%5Etfw">#Workflows</a> <a href="https://t.co/hbaY7ShocR">https://t.co/hbaY7ShocR</a></p>&mdash; Albert Vilella (@AlbertVilella) <a href="https://twitter.com/AlbertVilella/status/1070579264192462849?ref_src=twsrc%5Etfw">2018年12月6日</a></blockquote>
-<a href="https://platform.twitter.com/widgets.js">https://platform.twitter.com/widgets.js</a>
 
 どうやら一番twitter界隈のbioinformaticianはnextflowが好きなようです。ただ、下のspreadsheetを見ると、githubではGalaxy,bcbioについで三番目に盛んなようです。
 
 他にも、cwlやnextflowを取り上げたgenome解析の論文も出ていたりします。
 
-&gt;[Baichoo, S. et al. Developing reproducible bioinformatics analysis workflows for heterogeneous computing environments to support African genomics. BMC Bioinformatics 19, 457 (2018).](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2446-1)
+> [Baichoo, S. et al. Developing reproducible bioinformatics analysis workflows for heterogeneous computing environments to support African genomics. BMC Bioinformatics 19, 457 (2018).](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2446-1)
 
 ## 結論　みんなでCWLを使おう！
 
