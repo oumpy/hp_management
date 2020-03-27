@@ -66,7 +66,7 @@ Slug: index
 環境：Python 3.6以降
 
 ```bash
-$ pip install pelican Markdown
+$ pip install pelican Markdown nbconvert
 ```
 
 #### レポジトリのクローンとテーマファイル(voidy-bootstrap)のコピー
