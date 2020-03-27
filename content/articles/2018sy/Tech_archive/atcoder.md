@@ -1,6 +1,6 @@
 Title:AtCoder Beginners Selection 雑感
 Date: 2019.04.14
-Tags: atcoder
+Tags: 競技プログラミング, Atcoder, Python
 Slug: atcoder
 Author: 加藤
 Summary:
@@ -21,7 +21,7 @@ Summary:
 ### 問題０：はじめてのあっとこーだー
 わざわざ平仮名で表記しちゃってまあどんな接待をしてくれるのやら...。問題文を読みます。
 
-```text
+```txt
 問題文
 高橋君はデータの加工が行いたいです。
 整数 a,b,cと、文字列 s が与えられます。
