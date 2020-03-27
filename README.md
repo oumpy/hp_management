@@ -93,26 +93,26 @@ $ sh tools/init.sh
 
 このレポジトリは出力にすぎないので、あまり真面目な変更履歴管理は行いません。
 masterブランチに全て上書きしていく形でOKです。
-そのために一括commit & pushするスクリプト`tools/pushblog.sh`を用意しています。
+そのために一括commit & pushするスクリプト`tools/pushsite.sh`を用意しています。
 なおGitHubの認証に関する設定が事前に必要です。
 
 ```bash
 $ cd hp_management
-$ sh tools/pushblog.sh "Sugoi Kiji added."
+$ sh tools/pushsite.sh "Sugoi Kiji added."
 ```
 を実行すれば、全てのファイルをhtmlにコンパイルして、`./output/`へ、そして[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)にプッシュします。
-`tools/pushblog.sh` に引数として与えた文字列がコミットのコメントになります。
+`tools/pushsite.sh` に引数として与えた文字列がコミットのコメントになります。
 省略すると単に "Update" になります。
 
 ##### リモートブランチ（ソース）のpullと出力のpush
 
 ```bash
-$ sh tools/updateblog.sh "Yabai update"
+$ sh tools/updatesite.sh "Yabai update"
 ```
 
 で、masterブランチをpull & checkout、コンパイルして出力用レポジトリに指定したコメント付きでcommit & pushします。第2引数としてmaster以外のソースブランチ、第3引数としてmaster以外のターゲットブランチを指定することも可能。
 
-このスクリプト `tools/updateblog.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
+このスクリプト `tools/updatesite.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
 
 ## Webhookによる自動更新機構
 
@@ -141,7 +141,7 @@ secret = b'xyzabc....'
 5. GitHubの本レポジトリでwebhookを設定する。
    cgiのURL (http://www.example.io/deploy.cgi) とsecretを設定し、`content type` に `application/json`、また "Just the push event." を選択。
 
-以上により、本レポジトリ (hp_management) のmasterブランチ更新を自動検出して`tools/updateblog.sh` が実行されます。
+以上により、本レポジトリ (hp_management) のmasterブランチ更新を自動検出して`tools/updatesite.sh` が実行されます。
 
 ## 課題
 ### 管理システム
