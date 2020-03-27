@@ -1,11 +1,13 @@
 #!/bin/sh
-if [ "$1" != "-c" ]; then
+if [ ! -e "./output/.git" ]; then
+    rm -rf ./output
     git clone https://github.com/oumpy/oumpy.github.io.git ./output
-    git submodule update -i
-    cd plugins
-    git submodule update --init pelican-ipynb
-    cd ..
 fi
+
+git submodule update -i
+cd plugins
+git submodule update --init pelican-ipynb
+cd ..
 
 themename="voidy-bootstrap"
 cd themes

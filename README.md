@@ -78,7 +78,7 @@ $ cd hp_management
 $ sh tools/init.sh
 ```
 
-テーマのファイルのみコピーし直したい場合は`sh init.sh -c`でOK。
+テーマのファイルのみコピーし直したい場合は`sh init.sh`でOK。
 
 ### 更新のアップ
 
@@ -136,7 +136,7 @@ cgipath = '/home/hoge/www/cgi-bin/deploy.cgi'
 secret = b'xyzabc....'
 ```
 
-4. `sh tools/init.sh -c` を実行。設定したパスにcgiが設置される。
+4. `sh tools/init.sh` を実行。設定したパスにcgiが設置される。
 
 5. GitHubの本レポジトリでwebhookを設定する。
    cgiのURL (http://www.example.io/cgi-bin/deploy.cgi) とsecretを設定し、`content type` に `application/json`、また "Just the push event." を選択。
