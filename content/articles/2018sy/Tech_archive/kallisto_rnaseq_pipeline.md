@@ -1,11 +1,11 @@
 Title:Kallistoを用いたRNA-seq解析パイプライン
 Date: 2019.04.14
-Tags: bioinformatics
+Tags: Bioinformatics
 Slug: kallisto_rnaseq_pipeline
 Author: 平岡
 Summary:
 
-!!!!!!!!!!! 
+!!!!!!!!!!!
 今回はKallistoを用いたRNA-seq解析パイプラインを紹介しま
 す。<a href="https://pythonoum.wordpress.com/2018/10/16/linux%E3%81%A7%E3%81%AEbioinformatics%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89_01/">LinuxでのBioinformatics環境構築_01</a>でこの記事への準備はすべて終了している流れになります。<a href="https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%AA%E3%82%B9%E3%83%88_(%E5%B0%8F%E6%83%91%E6%98%9F)">Kallisto</a>は小惑星の名前のようです。つっこみどころありましたら、コメントいただけると嬉しいです！それではいきましょう！
 
