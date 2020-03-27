@@ -24,7 +24,6 @@ if [ -e "webhookconf.py" ]; then
         fi
         pythonpath=`which python3`
         hpmanagement_path=`pwd`
-        path=`python3 -c "import os,sys; sys.path.append(os.curdir); import webhookconf; print(webhookconf.path)"`
         mkdir -p `dirname "$cgipath"`
         cat "$cgitemplate" | \
         sed -e "s|\$pythonpath|$pythonpath|g" | \
