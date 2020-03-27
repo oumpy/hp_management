@@ -1,6 +1,6 @@
 Title:シェルスクリプト入門(1)
-Date: 2019.04.14
-Tags: shell
+Date: 2018.11.01
+Tags: Shell script
 Slug: shellscript_1
 Author: 水野
 Summary:
@@ -20,7 +20,7 @@ shell scriptに書き起こす前に、プロンプト画面（Mac,Ubuntuならt
 その後にパイプでheadにつないで、頭だけ出力してみます。たいていファイル重いので。
 圧縮ファイルの時は、解凍する前にzcatでつないで試します。
 
-```
+```bash
 cat hogehoge.txt | sed 1d（試したいコマンド）| head
 zcat hoge.gz | cut –f1（試したいコマンド）| head
 ```
@@ -28,7 +28,7 @@ zcat hoge.gz | cut –f1（試したいコマンド）| head
 一行が長くて確認しづらい！と思ったら、headからless –Sにつなぎます。
 別画面で折り返しなしで見ることができます。
 
-```
+```bash
 cat hogehoge | sed 1d（試したいコマンド）| head | less -S
 ```
 
@@ -38,12 +38,12 @@ cat hogehoge | sed 1d（試したいコマンド）| head | less -S
 うまくいきそうで、だいたい流れが思い描けたらshell scriptに書き起こします。
 結局他のファイルも同じ処理をするはめになり、scriptに残しておけば・・と後悔することが多いからです。
 
-```
+```bash
 touch test.sh # ファイルつくって、
 emacs test.sh # emacsで開く。
 ```
 
-```
+```bash
 #!/bin/bash # おまじない。
 $1=filename # ファイルはいつも外から入れれるようにしてます。
 rm –r ./folder # 一発で上手くいくことはないので、やり直しやすいように消去コマンド。
@@ -55,16 +55,16 @@ cat "$filename" | sed 1d > "$dir1"/hogehoge2.txt #目的のコマンドで処理
 ## 3) 実行
 
 書けたら、処理したいファイルを渡して実行してみます。
-&amp;はバックグラウンド実行です。
+`&`はバックグラウンド実行です。
 
-```
+```bash
 bash ./test.sh ./hogehoge.txt &
 ```
 
 時間がかかりそうで家に帰りたいときは、nohupでサーバーと切れても大丈夫なように。
 screenを使うこともあります。
 
-```
+```bash
 nohup bash ./test.sh ./hogehoge.txt &
 ```
 
@@ -74,7 +74,7 @@ nohup bash ./test.sh ./hogehoge.txt &
 scriptを修正するときは、元の文は#をつけてコメントアウトしときます。
 そうすれば、後でやり直しやすいです。
 
-```
+```bash
 # cat "$filename" | sed 1d > "$dir1"/hogehoge2.txt # コメントアウトして置いておく。
 cat "$filename" | grep "blahblah" > "$dir1"/hogehoge2.txt # 新しい文。
 ```
