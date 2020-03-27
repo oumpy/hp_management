@@ -1,6 +1,6 @@
 Title:シェルスクリプト入門(2)
-Date: 2019.04.14
-Tags: shell
+Date: 2018.11.16
+Tags: Shell script
 Slug: shellscript_2
 Author: 水野
 Summary:
@@ -19,7 +19,7 @@ Rを呼び出さずに完結できたりします。
 
 対象ファイル名を、table.txtで、タブ区切り、中身は以下みたいの。
 
-```
+```txt
 a    b    c
 1    2    3
 d    e    f
@@ -50,7 +50,7 @@ done&lt;table.txt
 時間のある人用に解説です。
 少し小技があります。
 
-### 1) while readの使い方
+## 1) while readの使い方
 
 よく見かけるのは、`cat`からパイプで`while read`につなぐやつです。
 
@@ -74,8 +74,7 @@ done<table.txt
 を書きます。
 読みにくいですよねー。
 
-
-### 2) evalの使い方
+## 2) evalの使い方
 
 今回の`mat_$i_$j`のように、変数名に変数`($i,$j)`を使って値を格納する時には、`eval`を使います。
 `eval`は、その後に書いた文をもってきて、bashスクリプトとして評価（evaluate）します。
@@ -103,7 +102,7 @@ eval echo \$x${col}
 xの$にかかってた\は、`eval`での評価で消費されて、`echo`内にはなくなります。ここ重要。
 
 
-やりたいことは、`eval echo `で出してきた値を、変数を使った変数名に格納することです。
+やりたいことは、`eval echo` で出してきた値を、変数を使った変数名に格納することです。
 
 `eval mat_${i}_${j}=aaa`
 
