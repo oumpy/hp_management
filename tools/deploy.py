@@ -12,9 +12,7 @@ from webhookconf import secret
 webhooklogfilepath = hpmanagement_path + '/webhook.log'
 updatelogfilepath = hpmanagement_path + '/update.log' 
 
-path = "$path"
-if path:
-    os.environ['PATH'] = path
+os.environ['PATH'] = '$path'
 
 target_branch = ['refs/heads/master']
 
