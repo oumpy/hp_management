@@ -306,9 +306,7 @@ code {
 
 div.input_area {
     border: 1px solid #cfcfcf;
-    border-radius: 2px;
-    background: #364549;
-    line-height: 1.21429em;
+    background: #364549!important;
 }
 
 #content pre {
