@@ -34,6 +34,6 @@ else
   while read line
   do
     echo $(eval echo $line)
-  done < $template > "$filepath"
+  done < $template > "$filepath" && \
   echo "$0: $filepath created."
 fi
