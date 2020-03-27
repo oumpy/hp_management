@@ -45,7 +45,7 @@ if branch in target_branch:
     os.chdir(hpmanagement_path)
     with open(updatelogfilepath, 'a') as uf:
         print('{0:%Y-%m-%d %H:%M:%S}'.format(datetime.now()), file=uf)
-        subprocess.call(['sh', 'tools/updateblog.sh', 'Auto-push by hp_management/master update.'],
+        subprocess.call(['sh', 'tools/updatesite.sh', 'Auto-push by hp_management/master update.'],
                         stdout=uf, stderr=uf)
     print('website compiled and (possibly) pushed.', file=f)
 else:
