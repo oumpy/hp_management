@@ -74,7 +74,7 @@ Slug: index
 環境：Python 3.6以降
 
 ```bash
-$ pip install pelican Markdown
+$ pip install pelican Markdown nbconvert
 ```
 
 #### レポジトリのクローンとテーマファイル(voidy-bootstrap)のコピー
@@ -86,7 +86,7 @@ $ cd hp_management
 $ sh tools/init.sh
 ```
 
-テーマのファイルのみコピーし直したい場合は`sh init.sh -c`でOK。
+テーマのファイルのみコピーし直したい場合は`sh init.sh`でOK。
 
 ### 更新のアップ
 
@@ -101,32 +101,61 @@ $ sh tools/init.sh
 
 このレポジトリは出力にすぎないので、あまり真面目な変更履歴管理は行いません。
 masterブランチに全て上書きしていく形でOKです。
-そのために一括commit & pushするスクリプト`tools/pushblog.sh`を用意しています。
+そのために一括commit & pushするスクリプト`tools/pushsite.sh`を用意しています。
 なおGitHubの認証に関する設定が事前に必要です。
 
 ```bash
 $ cd hp_management
-$ sh tools/pushblog.sh "Sugoi Kiji added."
+$ sh tools/pushsite.sh "Sugoi Kiji added."
 ```
 を実行すれば、全てのファイルをhtmlにコンパイルして、`./output/`へ、そして[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)にプッシュします。
-`tools/pushblog.sh` に引数として与えた文字列がコミットのコメントになります。
+`tools/pushsite.sh` に引数として与えた文字列がコミットのコメントになります。
 省略すると単に "Update" になります。
 
 ##### リモートブランチ（ソース）のpullと出力のpush
 
 ```bash
-$ sh tools/updateblog.sh "Yabai update"
+$ sh tools/updatesite.sh "Yabai update"
 ```
 
 で、masterブランチをpull & checkout、コンパイルして出力用レポジトリに指定したコメント付きでcommit & pushします。
 第2引数としてmaster以外のソースブランチ、第3引数としてmaster以外のターゲットブランチを指定することも可能。
 
-このスクリプト `tools/updateblog.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
+このスクリプト `tools/updatesite.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
+
+## Webhookによる自動更新機構
+
+webサーバ上にローカルレポジトリを設置することで、GitHubのwebhook機能を用いてサイトを自動更新する機能を搭載しています。
+
+### 本機能を使用する方法
+
+1. webサーバ上の適当なディレクトリ（webからアクセスできないところ）にhp_managementを正しく設置。
+
+2. webhookを受け取るcgiの場所とファイル名を好きなように決める。
+   （ローカルパスを以下仮に`/home/hoge/www/deploy.cgi`、対応するURLを http://www.example.io/deploy.cgi とする。）
+
+3. hp_management/webhookconf.py`を以下のような内容で作成する。
+
+```python
+# webhookconf.py
+# cgipath, secret の2つの変数を以下のように設定する。
+# 上で決めたcgiのフルパスを記述 (webサーバの設定に依存)
+cgipath = '/home/hoge/www/cgi-bin/deploy.cgi'
+# githubとの間でのパスワードとなるバイト列を設定
+secret = b'xyzabc....'
+```
+
+4. `sh tools/init.sh` を実行。設定したパスにcgiが設置される。
+
+5. GitHubの本レポジトリでwebhookを設定する。
+   cgiのURL (http://www.example.io/cgi-bin/deploy.cgi) とsecretを設定し、`content type` に `application/json`、また "Just the push event." を選択。
+
+以上により、本レポジトリ (hp_management) のmasterブランチ更新を自動検出して`tools/updatesite.sh` が実行されます。
 
 ## 課題
 ### 管理システム
 
-- blogの自動pushシステムなどの整備
+- ほぼ完成した？
 
 - `content` を将来レポジトリ分離すべきか。  
 
