@@ -2,7 +2,9 @@
 if [ "$1" != "-c" ]; then
     git clone https://github.com/oumpy/oumpy.github.io.git ./output
     git submodule update -i
+    cd plugins
     git submodule update --init pelican-ipynb
+    cd ..
 fi
 
 themename="voidy-bootstrap"
