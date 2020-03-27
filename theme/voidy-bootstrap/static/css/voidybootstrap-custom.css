@@ -165,6 +165,19 @@ header h1{
   border-bottom: 2px solid #ccc;
 }
 
+article h1{
+	color: #333333;
+  font-size: 2.5rem;
+}
+
+article h1 a{
+  color: #333333;
+}
+
+#content p {
+    margin-bottom: 10px;
+}
+
 .content-body h2{
 	font-weight:bold;
 	font-size: 2.3rem;
