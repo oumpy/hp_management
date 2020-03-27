@@ -130,18 +130,18 @@ webサーバ上にローカルレポジトリを設置することで、GitHub�
 ```python
 # webhookconf.py
 # cgipath, secret, path の3変数を以下のように設定する。
-# 上で決めたcgiのフルパスを記述
-cgipath = '/home/hoge/www/deploy.cgi'
+# 上で決めたcgiのフルパスを記述 (webサーバの設定に依存)
+cgipath = '/home/hoge/www/cgi-bin/deploy.cgi'
 # githubとの間でのパスワードとなるバイト列を設定
 secret = b'xyzabc....'
 # ユーザーレベルのパス設定。pelicanの認識などに必要
 path = '/home/hoge/bin:/home/hoge/usr/bin'
 ```
 
-4. `sh tools/init.sh -c` を実行。
+4. `sh tools/init.sh -c` を実行。設定したパスにcgiが設置される。
 
 5. GitHubの本レポジトリでwebhookを設定する。
-   cgiのURL (http://www.example.io/deploy.cgi) とsecretを設定し、`content type` に `application/json`、また "Just the push event." を選択。
+   cgiのURL (http://www.example.io/cgi-bin/deploy.cgi) とsecretを設定し、`content type` に `application/json`、また "Just the push event." を選択。
 
 以上により、本レポジトリ (hp_management) のmasterブランチ更新を自動検出して`tools/updateblog.sh` が実行されます。
 
