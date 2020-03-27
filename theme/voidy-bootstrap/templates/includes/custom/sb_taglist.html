@@ -1,8 +1,10 @@
 <div class="sidebar_box">
 <div class="box-title"><i class="fa fa-tags fa-fw fa-lg"></i> {{ CUSTOM_TAGS_TITLE }}</div>
+<div class="box-contents">
 <ul class="tag-cloud">
   {% for tag in tags %}
       <li><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 }}</a></li>
   {% endfor %}
 </ul>
+</div>
 </div>
