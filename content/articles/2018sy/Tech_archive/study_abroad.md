@@ -7,7 +7,7 @@ Summary:
 
 1月末から3月中旬までオーストラリアのメルボルンに海外実習に行ってました、５年生の佐藤です。基礎系の研究室に行ったのですが、僕がまだまだ勉強不足なところも多くこれからの勉強のモチベーションにもなりました。
 
-![1]({attach}images/study_abroad/img_01.jpg)
+![1]({attach}images/study_abroad_figs/img_01.jpg)
 
 僕の実習内容についてはまだまとまっていないので、去年行った宮崎先輩の資料をもらいました。
 
@@ -31,8 +31,8 @@ Summary:
 
 寮というものに住んだことがなかったので、とても新鮮でした。
 
-![2]({attach}images/study_abroad/img_02.jpg)
-![3]({attach}images/study_abroad/img_03.jpg)
+![2]({attach}images/study_abroad_figs/img_02.jpg)
+![3]({attach}images/study_abroad_figs/img_03.jpg)
 
 ## メルボルンという町について
 
@@ -44,8 +44,8 @@ Summary:
 
 オーストラリアは移民の国で、色々な人種の人たちがいます。だいたい３割がアジア系(中国が最多)、アフリカ系の人も結構います。
 
-![4]({attach}images/study_abroad/img_04.jpg)
-![5]({attach}images/study_abroad/img_05.jpg)
+![4]({attach}images/study_abroad_figs/img_04.jpg)
+![5]({attach}images/study_abroad_figs/img_05.jpg)
 
 ## 海外の留学生について
 
@@ -59,5 +59,5 @@ Summary:
 
 海外に行ってみたい、というミーハーな理由で海外実習を選びましたが、行って本当によかったです。皆さんも是非！！
 
-![6]({attach}images/study_abroad/img_06.jpg)
-![7]({attach}images/study_abroad/img_07.jpg)
+![6]({attach}images/study_abroad_figs/img_06.jpg)
+![7]({attach}images/study_abroad_figs/img_07.jpg)
