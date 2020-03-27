@@ -129,11 +129,13 @@ webサーバ上にローカルレポジトリを設置することで、GitHub�
 
 ```python
 # webhookconf.py
-# cgipath, secret の2つの変数を以下のように設定する。
+# cgipath, secret, path の3変数を以下のように設定する。
 # 上で決めたcgiのフルパスを記述
 cgipath = '/home/hoge/www/deploy.cgi'
 # githubとの間でのパスワードとなるバイト列を設定
 secret = b'xyzabc....'
+# ユーザーレベルのパス設定。pelicanの認識などに必要
+path = '/home/hoge/bin:/home/hoge/usr/bin'
 ```
 
 4. `sh tools/init.sh -c` を実行。
