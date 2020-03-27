@@ -275,3 +275,50 @@ header h1{
 .category-links {
     font-size: 16px;
 }
+
+/*syntax highlight*/
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #252525;
+    background-color: rgba(0,0,0,.03);
+    border: 0px;
+    border-radius: 0px;
+}
+
+div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #364549;
+    line-height: 1.21429em;
+}
+
+#content pre {
+	background-color: #364549;
+	color: #dddddd;
+    border-left: none;
+    overflow-x: auto;
+    padding-left: 20px;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: pre;
+}
+
+.highlight .n {color: #dddddd!important;}
+.highlight .nn {color: #dddddd!important;}
+.highlight .nb {color: #ebd247!important;}
+.highlight .o {color: #e18095!important;}
+.highlight .ow {color: #e18095!important;}
+.highlight .p {color: #dddddd!important;}
+.highlight .mf {color: #dddddd!important;}
+.highlight .k {color: #ebd247!important;}
+.highlight .kn {color: #e18095!important;}
+.highlight .kt {color: #ebd247!important;}
+.highlight .kp {color: #ebd247!important;}
+.highlight .mi {color: #a980f5!important;}
+.highlight .si {color: #41b7d7!important;}
+.highlight .se {color: #a980f5!important;}
+.highlight .s1 {color: #41b7d7!important;}
+.highlight .s2 {color: #41b7d7!important;}
+.highlight .c {color: #9dabae!important;}
+.highlight .c1 {color: #9dabae!important;}
