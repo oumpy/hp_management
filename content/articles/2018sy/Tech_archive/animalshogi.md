@@ -1,6 +1,6 @@
 Title:PythonとKerasでどうぶつしょうぎ
-Date: 2019.04.14
-Tags: deeplearning
+Date: 2018.12.6
+Tags: Machine Learning, Python, 強化学習
 Slug: animalshogi
 Author: 小川
 Summary:
