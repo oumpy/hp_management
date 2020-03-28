@@ -1,5 +1,5 @@
 Title:Mockinbirdを用いたPAR-CLIP解析
-Date: 2019.04.14
+Date: 2019.01.18
 Tags: Bioinformatics
 Slug: mockinbird_parclip
 Author: 平岡
@@ -82,7 +82,7 @@ $ mockinbird postprocess nrd1 nrd1_pp postprocess.yaml
 
 ですが、コードの実行はYAMLの設定ができてからになります。ということでYAMLの中身について説明していきます。
 
-#### preprocess.yaml
+### preprocess.yaml
 
 preprocess.yamlの４つの区画から構成されています。
 
