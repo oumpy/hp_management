@@ -1,6 +1,6 @@
 Title:VELOCYTO
 Date: 2019.04.14
-Tags: bioinformatics
+Tags: Bioinformatics
 Slug: velocyto
 Author: 廣瀬
 Summary:

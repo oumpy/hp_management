@@ -12,16 +12,16 @@ Summary:
 簡単に言うと、クラスター分析とは異なる性質のものが混ざり合った集団から互いに似た性質を持つものを集める方法のことです。
 あらかじめ分類の基準が決まっておらず分類のための外的基準や評価が与えられていない「教師無しの分類法」です。
 
-#### グループ分けの対象
+### グループ分けの対象
 サンプルを分類するのか、変数を分類するのか
 
-#### 分類の形式（種類、生成）
+### 分類の形式（種類、生成）
 階層的方法か非階層的方法か
 
-#### 分類に用いる対象間の距離（類似度）
+### 分類に用いる対象間の距離（類似度）
 ユークリッド距離、マハラノビス距離、コサイン距離 ・・・
 
-#### クラスターの合併方法（クラスター間の距離の測定方法）
+### クラスターの合併方法（クラスター間の距離の測定方法）
 ウォード法、群平均法、最短距離法、最長距離法・・・
 
 クラスター分類するにはここら辺を決めなくてはいけません。
@@ -77,7 +77,7 @@ setosaは綺麗に分かれますが、versicolorとvirginicaはうまく分け�
 何かいいサイトや参考資料があったら教えてください。
 
 ## 参考資料
-- [http://www.kamishima.net/jp/clustering/]
-- [http://datanongrata.com/2019/04/27/67/]
-- [https://stackoverflow.com/questions/14802048/scipy-dendrogram-leaf-label-colours]
+- <http://www.kamishima.net/jp/clustering/>
+- <http://datanongrata.com/2019/04/27/67/>
+- <https://stackoverflow.com/questions/14802048/scipy-dendrogram-leaf-label-colours>
 - Pythonではじめる機械学習 オライリー社

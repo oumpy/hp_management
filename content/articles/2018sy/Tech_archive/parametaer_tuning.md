@@ -1,6 +1,6 @@
 Title: Parameter Tuning
 Date: 2019.04.14
-Tags: deeplearning
+Tags: Machine Learning
 Slug: parametaer_tuning
 Author: 佐藤
 Summary:
@@ -175,7 +175,7 @@ def objective(args):
     stratifiedkfold = StratifiedKFold(n_splits=5)
     result = cross_val_score(
         classifier, train.drop([id,target],axis = 1),
-        train.target, 
+        train.target,
         cv=stratifiedkfold,scoring=neg_log_loss)
     return -result.mean()
 ```
