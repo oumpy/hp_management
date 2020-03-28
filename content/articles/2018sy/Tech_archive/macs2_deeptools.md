@@ -61,7 +61,7 @@ $ fastqc -t 22 -o data data/*.trimmed.fastq
 $ multiqc -n multiqc_report_trimmed.html ./data
 ```
 
-pdf.shは
+### pdf.sh
 
 ```bash
 #!/bin/bash
@@ -73,7 +73,7 @@ pfastq-dump --threads 22 --outdir data ~/ncbi/public/sra/${s}.sra
 done
 ```
 
-make_bam.sh
+### make_bam.sh
 
 ```bash
 #!/bin/bash
@@ -129,10 +129,10 @@ igvで表示してみるとこんな感じ。
 
 #### 2)
 ```bash
-echo ‘/repository/user/main/public/root = “/outputDir”‘ &gt; ~/.ncbi/user-settings.mkfg
+echo ‘/repository/user/main/public/root = “/outputDir”‘ > ~/.ncbi/user-settings.mkfg
 ```
 こっちのほうが簡単。outputDirに指定してやって下さい。
-この例だとpfastq-dumpでは~/ncbi/public/sra/${s}.sraが/outputDir/sra/${s}.sraになりますね。
+この例だとpfastq-dumpでは`~/ncbi/public/sra/${s}.sra` が `/outputDir/sra/${s}.sra`になりますね。
 
 ## MACS2によるピークコール
 
@@ -148,7 +148,7 @@ $ chmod 755 ~/Programs/bdg2bw
 $ wget http://hgdownload.cse.ucsc.edu/goldenPath/mm10/database/chromInfo.txt.gz
 ```
 
-bdg2bwの中身は以下。
+`bdg2bw`の中身は以下。
 
 ```bash
 #!/bin/bash
