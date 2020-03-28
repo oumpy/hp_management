@@ -96,7 +96,7 @@ CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
 CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_taglist.html", )
-CUSTOM_SIDEBAR_BOTTOM = "custom/sidebar_twittertimeline.html"
+CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
 
 TWITTER_TIMELINE_HEIGHT = 600
 SIDEBAR_SIZE = 3
@@ -119,5 +119,7 @@ OPEN_GRAPH = True
 from content.contentconf import *
 
 # Settings for Open Graph Properties
-OPEN_GRAPH_ARTICLE_AUTHOR = AUTHOR
-DEFAULT_SOCIAL_IMAGE = OPEN_GRAPH_IMAGE
+if not 'OPEN_GRAPH_ARTICLE_AUTHOR' in globals() and 'AUTHOR' in globals():
+    OPEN_GRAPH_ARTICLE_AUTHOR = AUTHOR
+if not 'DEFAULT_SOCIAL_IMAGE' in globals() and 'OPEN_GRAPH_IMAGE' in globals():
+    DEFAULT_SOCIAL_IMAGE = OPEN_GRAPH_IMAGE
