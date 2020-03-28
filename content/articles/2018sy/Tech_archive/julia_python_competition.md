@@ -1,6 +1,6 @@
 Title:JuliaとPythonと競技プログラミング
-Date: 2019.04.14
-Tags: python
+Date: 2019.03.29
+Tags: 競技プログラミング
 Slug: julia_python_competition
 Author: 小川
 Summary:
@@ -111,7 +111,7 @@ inpl = lambda: list(map(int,input().split()))
 N,M = inpl()
 A = []
 for i in range(N):
-  A.append(inpl()) 
+  A.append(inpl())
 A.sort(key=lambda x: x[0])
 ans = 0
 for i in range(N):

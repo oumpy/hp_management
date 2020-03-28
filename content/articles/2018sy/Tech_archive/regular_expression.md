@@ -1,6 +1,6 @@
 Title:pythonで使える正規表現まとめ
 Date: 2019.04.14
-Tags: python
+Tags: Python
 Slug: regular_expression
 Author: 西垣
 Summary:

@@ -4,4 +4,4 @@ rm -rf content/*
 rm -rf theme/*
 git checkout -f $branch
 git pull origin $branch
-sh ./tools/init.sh -c
+sh ./tools/init.sh

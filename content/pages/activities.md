@@ -67,6 +67,11 @@ Python会は内部に限った勉強会だけではなく、外部の方々も�
 
 ![技術書展7写真]({attach}images/activities/190922.jpg)
 
+### 2019/06/14 大阪大学微生物病研究所 × 阪医Python会 合同ワークショップ
+大阪大学銀杏会館にて大阪大学微生物病研究所との合同ワークショップを行いました ([Conpass](https://connpass.com/event/124354/))。
+
+![微研合同ワークショップ]({attach}images/activities/190614.png)
+
 ### 2019/02/25
 実験医学3月号にPython会について触れたエッセイが掲載されました。羊土社ホームページでも読むことができます。
 [Opinion 第105回　Pythonで医学に貢献を](https://www.yodosha.co.jp/jikkenigaku/opinion/vol37n4.html)
