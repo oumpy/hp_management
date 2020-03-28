@@ -330,6 +330,7 @@ div.input_area {
 .highlight .p {color: #dddddd!important;}
 .highlight .mf {color: #dddddd!important;}
 .highlight .k {color: #ebd247!important;}
+.highlight .kc {color: #ebd247!important;}
 .highlight .kn {color: #e18095!important;}
 .highlight .kt {color: #ebd247!important;}
 .highlight .kp {color: #ebd247!important;}
@@ -345,3 +346,9 @@ div.input_area {
 .highlight .cp {color: #ebd247!important;}
 .highlight .c1 {color: #9dabae!important;}
 .highlight .err {color: #dddddd!important;background:none!important}
+
+/*blog tag一覧のstyle*/
+.blog_box p a{
+	font-weight: bold;
+    margin-left: 10px;
+}
