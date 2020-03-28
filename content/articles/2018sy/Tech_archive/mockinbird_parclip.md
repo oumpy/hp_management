@@ -1,6 +1,6 @@
 Title:Mockinbirdを用いたPAR-CLIP解析
 Date: 2019.04.14
-Tags: bioinformatics
+Tags: Bioinformatics
 Slug: mockinbird_parclip
 Author: 平岡
 Summary:
