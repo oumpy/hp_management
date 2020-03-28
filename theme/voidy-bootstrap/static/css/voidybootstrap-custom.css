@@ -290,9 +290,7 @@ article h1 a{
 }
 
 .tag-cloud a {
-  position: relative;
   display: inline-block;
-  font-weight: bold;
   padding: 5px;
   margin: 3px 1px 3px 1px;
   text-decoration: none;
@@ -300,7 +298,6 @@ article h1 a{
   border: 1px solid #c8c8c8;
   border-radius: 5px;
   background: #ECECEC;
-  line-height:15px;
   transition: .4s;
 }
 
