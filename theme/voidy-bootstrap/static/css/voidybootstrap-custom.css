@@ -289,9 +289,21 @@ article h1 a{
     font-size: 16px;
 }
 
-.tag-cloud li{
-	padding: 3px 0px;
-  font-size: 16px;
+.tag-cloud a {
+  display: inline-block;
+  padding: 5px;
+  margin: 3px 1px 3px 1px;
+  text-decoration: none;
+  color: #00BCD4;
+  border: 1px solid #c8c8c8;
+  border-radius: 5px;
+  background: #ECECEC;
+  transition: .4s;
+}
+
+.tag-cloud a:hover {
+  background: #00bcd4;
+  color: white;
 }
 
 /*syntax highlight*/
@@ -348,7 +360,7 @@ div.input_area {
 .highlight .err {color: #dddddd!important;background:none!important}
 
 /*blog tag一覧のstyle*/
-.blog_box p a{
+.blog_box p{
 	font-weight: bold;
-    margin-left: 10px;
+  margin-left: 10px;
 }
