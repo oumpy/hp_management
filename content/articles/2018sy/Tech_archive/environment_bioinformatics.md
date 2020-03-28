@@ -87,5 +87,5 @@ DESeq2のインストール
 ```
 
 ### 参照
-- https://bioconductor.org/packages/release/bioc/html/tximport.html
-- https://bioconductor.org/packages/release/bioc/html/DESeq2.html
+- <https://bioconductor.org/packages/release/bioc/html/tximport.html>
+- <https://bioconductor.org/packages/release/bioc/html/DESeq2.html>
