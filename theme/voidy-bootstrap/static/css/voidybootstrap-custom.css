@@ -294,7 +294,7 @@ article h1 a{
   padding: 5px;
   margin: 3px 1px 3px 1px;
   text-decoration: none;
-  color: #00BCD4;
+  color: #333333;
   border: 1px solid #c8c8c8;
   border-radius: 5px;
   background: #ECECEC;
@@ -302,7 +302,7 @@ article h1 a{
 }
 
 .tag-cloud a:hover {
-  background: #00bcd4;
+  background: #787878;
   color: white;
 }
 
