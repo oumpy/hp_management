@@ -1,6 +1,6 @@
 Title:Gene Set Enrichment Analysis (GSEA)入門
 Date: 2019.04.14
-Tags: bioinformatics
+Tags: Bioinformatics
 Slug: gsea
 Author: 西田
 Summary:
