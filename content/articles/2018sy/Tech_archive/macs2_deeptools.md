@@ -1,6 +1,6 @@
 Title:MACS2とdeepToolsのbigwigファイルの比較
 Date: 2019.04.14
-Tags: bioinformatics
+Tags: Bioinformatics
 Slug: macs2_deeptools
 Author: 安水
 Summary:
