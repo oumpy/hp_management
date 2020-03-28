@@ -294,7 +294,7 @@ article h1 a{
   padding: 5px;
   margin: 3px 1px 3px 1px;
   text-decoration: none;
-  color: #00BCD4;
+  color: #333333;
   border: 1px solid #c8c8c8;
   border-radius: 5px;
   background: #ECECEC;
@@ -302,7 +302,7 @@ article h1 a{
 }
 
 .tag-cloud a:hover {
-  background: #00bcd4;
+  background: #787878;
   color: white;
 }
 
@@ -334,6 +334,7 @@ div.input_area {
 
 .highlight .n {color: #dddddd!important;}
 .highlight .nf {color: #8bdf4c!important;}
+.highlight .nt {color: #8bdf4c!important;}
 .highlight .m {color: #dddddd!important;}
 .highlight .nn {color: #dddddd!important;}
 .highlight .nb {color: #ebd247!important;}
@@ -363,4 +364,39 @@ div.input_area {
 .blog_box p{
 	font-weight: bold;
   margin-left: 10px;
+}
+
+/* Tables : copied from github theme of Typora. */
+table {
+  padding: 0;
+  word-break: initial;
+}
+table tr {
+  border-top: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+  background-color: #f8f8f8;
+}
+table tr th {
+  font-weight: bold;
+  border: 1px solid #dfe2e5;
+  border-bottom: 0;
+  margin: 0;
+  padding: 6px 13px;
+}
+table tr td {
+  border: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+  margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+  margin-bottom: 0;
 }
