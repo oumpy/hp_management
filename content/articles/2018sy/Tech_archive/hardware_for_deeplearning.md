@@ -1,5 +1,5 @@
 Title:組み込みでDeep Learningにつかえるハードについて
-Date: 2019.04.14
+Date: 2018.09.09
 Tags: Machine Learning
 Slug: hardware_for_deeplearning
 Author: 安水
