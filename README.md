@@ -65,6 +65,11 @@ Slug: index
 と設定すると、このページがトップになる。
 この方法で `about.md` をトップに設定した。
 
+### その他
+
+- page/articleに関するファイル場所・URL等の基本設定。
+- サイト固有文字列等の設定を `content/contentconf.py`, `content/contentpublishconf.py` に分離。
+
 ## 使い方（管理者向け）
 
 ### 導入
