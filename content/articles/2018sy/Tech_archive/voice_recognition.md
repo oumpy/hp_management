@@ -1,11 +1,11 @@
 Title:NTT corevoチャレンジ: 話者の性別・年代識別
-Date: 2019.04.14
-Tags: deeplearning
+Date: 2019.03.29
+Tags: Data Science Competition
 Slug: voice_recognition
 Author: 佐藤
 Summary:
 
-[signate](https://signate.jp)内で開催されていた上記のコンペティションに参加してきました。以下試してみたこと、感想のまとめです。
+[Signate](https://signate.jp)内で開催されていた上記のコンペティションに参加してきました。以下試してみたこと、感想のまとめです。
 
 <div class="jetpack-video-wrapper"><iframe src='https://www.slideshare.net/slideshow/embed_code/138387330' width='616' height='505' allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div>
 

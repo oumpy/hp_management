@@ -1,6 +1,6 @@
 Title:Gene Set Enrichment Analysis (GSEA)入門
-Date: 2019.04.14
-Tags: bioinformatics
+Date: 2019.10.08
+Tags: Bioinformatics
 Slug: gsea
 Author: 西田
 Summary:
@@ -18,7 +18,7 @@ GSEA には様々なGSEAがあります。単に注目する遺伝子のリス�
 
 ※編集注 : 以下はすべてRでの実行になります。
 
-```
+```r
 > data(geneList, package="DOSE")
 > gene <- names(geneList)[abs(geneList) > 2]
 > gene
@@ -48,7 +48,7 @@ GSEA には様々なGSEAがあります。単に注目する遺伝子のリス�
 この遺伝子リストを入力としてKEGGを対象としたGSEAを行ってみましょう。
 
 
-```
+```r
 library(clusterProfiler)
 
 > kk <- enrichKEGG(gene         = gene,
@@ -82,7 +82,8 @@ hsa04914 hsa04914 Progesterone-mediated oocyte maturation      7/90  98/7469 1.6
 browseKEGG(kk, 'hsa04110')
 ```
 
-![]({attach}images/gsea_figs/null9.png)
+![KEGG map]({attach}images/gsea_figs/null9.png)
+
 ## 終わりに
 最も簡単なGSEAを体験していただく例を示しました。
 

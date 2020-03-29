@@ -1,13 +1,17 @@
 Title:阪医Python会特製 RNA-seq pipeline ver. 1.0 リリース
-Date: 2019.04.14
-Tags: bioinformatics
+Date: 2019.03.19
+Tags: Bioinformatics
 Slug: original_rnaseq_pipeline
-Author: 菅波 西田 大森 安水 小川 山田 川島 川崎 平岡 廣瀬 柳澤 淡田 中村 依藤
+Author: 菅波, 西田, 大森, 安水, 小川, 山田, 川島, 川崎, 平岡, 廣瀬, 柳澤, 淡田, 中村, 依藤
 Summary:
 
 阪医Python会のbioinformaticsチームの一つの成果として、RNA-seqのパイプラインのv1.0がリリースとなったので記事とさせていただきます。SRR idから遺伝子✕サンプルのテーブルにするまでには意外に大変ですが、それをすべて自動化しました。ダウンロード、詳細等は以下にあります。
 
 **[https://github.com/yyoshiaki/auto_counttable_maker](https://github.com/yyoshiaki/auto_counttable_maker)**
+
+なお、以下のイラストはikraのアイコンとなっています。
+
+<img src="{attach}images/original_rnaseq_pipeline_figs/ikra.png" width="250px"> 
 
 ## 特徴
 
@@ -32,7 +36,7 @@ Summary:
 
 コマンドはオプションが指定でき、リード数を100000に絞ったテストモードやマルチプロセスにも対応。
 
-```
+```txt
 Usage: bash MakeCountTable_Illumina_trimgalore_SRR.sh experiment_table.csv spiece [--test, --help, --without-docker, --udocker] [--threads [VALUE]]
 args
 1.experiment matrix(csv)
@@ -63,15 +67,19 @@ Options:
 
 本ツールは[idep](http://bioinformatics.sdstate.edu/idep/)を意識した設計になっています。idepはRNA-seqの解析をinteractiveに行えるプラットフォームで、Differential expressed genes(DEGs)の検出だけではなく、遺伝子、サンプルのクラスタリング、パスウェイ解析、可視化などが行えます。idepについては以下がとても参考になります。
 
-<a href="http://kazumaxneo.hatenablog.com/entry/2018/12/29/153838" target="_blank" rel="noopener noreferrer">macでインフォマティクス : インタラクティブなRNA seq解析webアプリケーション iDEP</a>
+[macでインフォマティクス : インタラクティブなRNA seq解析webアプリケーション iDEP](http://kazumaxneo.hatenablog.com/entry/2018/12/29/153838)
 
-<img src="https://pythonoum.files.wordpress.com/2019/03/screenshot-from-2019-03-19-23-14-31.png" class="alignnone size-full wp-image-493" alt="Screenshot from 2019-03-19 23-14-31.png" width="820" height="805">
+
+![2]({attach}images/original_rnaseq_pipeline_figs/screenshot-from-2019-03-19-23-14-31.png)
 
 ## githubを用いたチーム開発
 
-今回、githubを用いてチーム開発を行いました。githubはエンジニアの間では当たり前のツールで、チームでのソフト開発によく用いられます。bioinformatics界隈でチーム開発を経験できることは意外に少なく、非常にいい経験になりました。<img src="https://pythonoum.files.wordpress.com/2019/03/e382b9e382afe383aae383bce383b3e382b7e383a7e38383e38388-2019-03-16-17.53.58.png" class="alignnone size-full wp-image-490" alt="スクリーンショット 2019-03-16 17.53.58.png" width="1436" height="874">
+今回、githubを用いてチーム開発を行いました。githubはエンジニアの間では当たり前のツールで、チームでのソフト開発によく用いられます。bioinformatics界隈でチーム開発を経験できることは意外に少なく、非常にいい経験になりました。
+
+![3]({attach}images/original_rnaseq_pipeline_figs/ikra_git.png)
 
 雑多にはなりましたが、阪医Python会bioinformaticsチームの成果をアナウンスさせていただきました。完成までには3ヶ月ほどを要し、各人のアイデアや努力が詰まっております。今後もどんどん開発を進めていこうと思います。また、皆様のissue, Pull Requestもお待ちしております。
-Enjoy bioinformatics life!
 
-<img src="https://pythonoum.files.wordpress.com/2019/03/ios-e381aee794bbe5838f.jpg" class="alignnone size-full wp-image-492" alt="iOS の画像.jpg" width="3088" height="2316">
+*Enjoy bioinformatics life!*
+
+![4]({attach}images/original_rnaseq_pipeline_figs/ios-e381aee794bbe5838f.jpg)

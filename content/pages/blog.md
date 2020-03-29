@@ -7,11 +7,38 @@ Author: Python会
 Page_order: 300
 Summary: Python会のブログ
 
-[大阪大学医学部 Python会 ブログ](https://oumedpython.hatenablog.com/)
-## 最新記事
-<!-- 単眼RSS https://tanganrss.com/ を利用-->
-<script type="text/javascript" src="https://tanganrss.com/rsstxt/rsstxt.php?key=a149261721657ea11bad2623959bb04f"></script>
+## Research tools & techniques
+<div class="blog_box">
+  <p>[Bioinformatics](https://oumpy.github.io/tag/bioinformatics.html)</p>
+</div>
+<div class="blog_box">
+  <p>[Machine Learning](https://oumpy.github.io/tag/machine-learning.html)</p>
+</div>
+<div class="blog_box">
+  <p>[Statistics](https://oumpy.github.io/tag/statistics.html)</p>
+</div>
+<div class="blog_box">
+  <p>[Data Science Competition](https://oumpy.github.io/tag/data-science-competition.html)</p>
+</div>
 
-<!-- 登録内容の復元URL
-https://tanganrss.com/rsstxt/regist.php?key=a149261721657ea11bad2623959bb04f
--->
+## Programming
+<div class="blog_box">
+  <p>[Python](https://oumpy.github.io/tag/python.html)</p>
+</div>
+<div class="blog_box">
+  <p>[Shell script](https://oumpy.github.io/tag/shell-script.html)</p>
+</div>
+<div class="blog_box">
+  <p>[GitHub](https://oumpy.github.io/tag/github.html)</p>
+</div>
+<div class="blog_box">
+  <p>[競技プログラミング](https://oumpy.github.io/tag/jing-ji-puroguramingu.html)</p>
+</div>
+
+## その他
+<div class="blog_box">
+  <p>[論文関連](https://oumpy.github.io/tag/lun-wen-guan-lian.html)</p>
+</div>
+<div class="blog_box">
+  <p>[海外留学](https://oumpy.github.io/tag/hai-wai-liu-xue.html)</p>
+</div>

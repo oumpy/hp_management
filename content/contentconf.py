@@ -14,7 +14,7 @@ SITETAG = SITENAME
 # Social
 SOCIAL = (
     # ('facebook', ''),
-    ('技術Blog (はてな)','https://oumedpython.hatenablog.com/'),
+    # ('技術Blog (はてな)','https://oumedpython.hatenablog.com/'),
     ('Twitter', 'https://twitter.com/oumed_python'),
     ('E-mail', 'mailto:handai.python@gmail.com'),
     ('GitHub', 'https://github.com/oumpy'),
