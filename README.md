@@ -138,7 +138,7 @@ webサーバ上にローカルレポジトリを設置することで、GitHub�
 1. webサーバ上の適当なディレクトリ（webからアクセスできないところ）にhp_managementを正しく設置。
 
 2. webhookを受け取るcgiの場所とファイル名を好きなように決める。
-   （ローカルパスを以下仮に`/home/hoge/www/deploy.cgi`、対応するURLを http://www.example.io/deploy.cgi とする。）
+   （ローカルパスを以下仮に`/home/hoge/www/cgi-bin/deploy.cgi`、対応するURLを http://www.example.io/cgi-bin/deploy.cgi とする。）
 
 3. hp_management/webhookconf.py`を以下のような内容で作成する。
 
