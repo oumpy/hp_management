@@ -82,7 +82,7 @@ hsa04914 hsa04914 Progesterone-mediated oocyte maturation      7/90  98/7469 1.6
 browseKEGG(kk, 'hsa04110')
 ```
 
-![]({attach}images/gsea_figs/null9.png)
+![KEGG map]({attach}images/gsea_figs/null9.png)
 
 ## 終わりに
 最も簡単なGSEAを体験していただく例を示しました。
