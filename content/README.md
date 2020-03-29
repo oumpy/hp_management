@@ -25,7 +25,7 @@ $ sh create.sh (filename)
 
 `(filename)` に生成するファイル名を指定します（内容に応じて適切に）。`content/pages/`の下にメタデータ入りのMarkdownファイルが生成されます。
 
-これに内容を追記します。htmlも認識されます。画像も `![]({attach}images/filename)` のように指定すると、 `content/pages/images/filename` を読み込めます。
+これに内容を追記します。htmlも認識されます。画像も `![画像の説明]({attach}images/filename)` のように指定すると、 `content/pages/images/filename` を読み込めます。
 
 #### Articleを作成する場合
 
