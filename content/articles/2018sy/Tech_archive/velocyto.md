@@ -17,7 +17,7 @@ RNAseq においては totalRNA のうち 99%ともいわれる rRNA を除き m
 また、未分化細胞からの分化の方向性を見積もることも可能と報告されています。マウスのオリゴデンドロサイト前駆体細胞がオリゴデンドロサイトへ分化する方向に Velocityを持っていることが示されました。
 
 ## 実践編
-Developer の WEB([http://velocyto.org/])の tutorial を参考に手持ちの BAM で挑戦します。R 用と Python 用とあるようですが、もちろん Python です。二部構成となっており、前半はCommand lineでBAMファイルから.loomファイルを作成、後半では作成した.loomファイルから解析を行うとのことです。
+Developer の WEB(<http://velocyto.org/>)の tutorial を参考に手持ちの BAM で挑戦します。R 用と Python 用とあるようですが、もちろん Python です。二部構成となっており、前半はCommand lineでBAMファイルから.loomファイルを作成、後半では作成した.loomファイルから解析を行うとのことです。
 
 ### 準備
 
@@ -28,7 +28,8 @@ $ pip install scanpy
 $ pip install -U scvelo
 ```
 
-※pysam は Windows 環境下では仮想環境下であってもインストールできないそうです ([https://qiita.com/chaoi/items/6d7702cd70430610f844])。
+※pysam は Windows 環境下では仮想環境下であってもインストールできないそうです。
+- <https://qiita.com/chaoi/items/6d7702cd70430610f844>
 
 これに気付かず数日はまりました。。
 
@@ -97,7 +98,7 @@ scv.pl.velocity_embedding(adata)
 ![3]({attach}images/velocyte_figs/picture3.png)
 
 ## 参考文献
-- https://www.nature.com/articles/s41586-018-0414-6
-- http://velocyto.org/velocyto.py/index.html
-- http://catway.jp/bioinformatics/qc/rmrepeat.html
-- https://github.com/theislab/scvelo
+- <https://www.nature.com/articles/s41586-018-0414-6>
+- <http://velocyto.org/velocyto.py/index.html>
+- <http://catway.jp/bioinformatics/qc/rmrepeat.html>
+- <https://github.com/theislab/scvelo>

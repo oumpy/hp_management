@@ -1,5 +1,5 @@
 Title:Pythonの変数と代入について
-Date: 2019.04.14
+Date: 2018.12.20
 Tags: Python
 Slug: python_value
 Author:小川

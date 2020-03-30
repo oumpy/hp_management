@@ -1,8 +1,8 @@
 Title:阪医Python会特製 RNA-seq pipeline ver. 1.0 リリース
-Date: 2019.04.14
+Date: 2019.03.19
 Tags: Bioinformatics
 Slug: original_rnaseq_pipeline
-Author: 菅波 西田 大森 安水 小川 山田 川島 川崎 平岡 廣瀬 柳澤 淡田 中村 依藤
+Author: 菅波, 西田, 大森, 安水, 小川, 山田, 川島, 川崎, 平岡, 廣瀬, 柳澤, 淡田, 中村, 依藤
 Summary:
 
 阪医Python会のbioinformaticsチームの一つの成果として、RNA-seqのパイプラインのv1.0がリリースとなったので記事とさせていただきます。SRR idから遺伝子✕サンプルのテーブルにするまでには意外に大変ですが、それをすべて自動化しました。ダウンロード、詳細等は以下にあります。
@@ -11,7 +11,7 @@ Summary:
 
 なお、以下のイラストはikraのアイコンとなっています。
 
-![1]({attach}images/original_rnaseq_pipeline_figs/ikra.png)
+<img src="{attach}images/original_rnaseq_pipeline_figs/ikra.png" width="250px"> 
 
 ## 特徴
 
