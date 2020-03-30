@@ -1,4 +1,4 @@
-Title: 技術ブログをサイトに統合しました
+Title: 技術ブログをWebサイトに統合しました
 Date: 2020.03.29
 Modified: 2020.03.29
 Tags: News
