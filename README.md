@@ -65,6 +65,11 @@ Slug: index
 と設定すると、このページがトップになる。
 この方法で `about.md` をトップに設定した。
 
+### その他
+
+- page/articleに関するファイル場所・URL等の基本設定。
+- サイト固有文字列等の設定を `content/contentconf.py`, `content/contentpublishconf.py` に分離。
+
 ## 使い方（管理者向け）
 
 ### 導入
@@ -138,7 +143,7 @@ webサーバ上にローカルレポジトリを設置することで、GitHub�
 1. webサーバ上の適当なディレクトリ（webからアクセスできないところ）にhp_managementを正しく設置。
 
 2. webhookを受け取るcgiの場所とファイル名を好きなように決める。
-   （ローカルパスを以下仮に`/home/hoge/www/deploy.cgi`、対応するURLを http://www.example.io/deploy.cgi とする。）
+   （ローカルパスを以下仮に`/home/hoge/www/cgi-bin/deploy.cgi`、対応するURLを http://www.example.io/cgi-bin/deploy.cgi とする。）
 
 3. hp_management/webhookconf.py`を以下のような内容で作成する。
 

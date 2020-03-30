@@ -44,13 +44,13 @@ iris_dabest.mean_diff.plot(fig_size=(5,7))
 plt.savefig("quick_start.png")
 ```
 以下のようなグラフが出力されれば成功です。  
-![]({attach}images/DABEST_tutorial_figs/quick_start.png)
+![quick_start]({attach}images/DABEST_tutorial_figs/quick_start.png)
 
 このグラフは **Cumming plot** という可視化の方法です。Estimation statisticsにおける可視化の方法としてはもう1つ **Gardner-Altman plot** というものがあります。以下ではこの2つの可視化方法の見方とコードについて紹介します。
 
 ### Gardner-Altman plot
 **Gardner-Altman plot** はM. GardnerとD. Altmanによって提案された描画法です。以下はGardner-Altman plotの例です。図の左側では両方の群のすべての観測値をJitter plotにより表示しています。右側にあるのは効果量の軸で、効果量の点推定(黒丸)と信頼区間(縦の黒棒)を表示しています。この効果量の信頼区間ですが、これは **Bootstrap法** を用いて算出しています。なお、Bootstrap法に関しては後で詳しく述べます。  
-![]({attach}images/DABEST_tutorial_figs/ga1.png)
+![ga1]({attach}images/DABEST_tutorial_figs/ga1.png)
 
 コードは次のようになっています。
 ```python
@@ -75,7 +75,7 @@ plt.savefig("ga1.png", bbox_inches="tight")
 ```
 
 Gardner-Altman plotには **対応のある2群(paired)** のためのバージョンもあります。  
-![]({attach}images/DABEST_tutorial_figs/ga2.png)
+![ga2]({attach}images/DABEST_tutorial_figs/ga2.png)
 
 ここでは効果量として **Cohen's d** を用いています。コードは次のようになります(ライブラリのインポートは省略)。
 ```python
@@ -98,7 +98,7 @@ plt.savefig("ga2.png", bbox_inches="tight")
 
 ### Cumming plot
 **Cumming plot** はG. Cummingによって提案された描画法です。複数の群に対して2つ以上の効果量およびそれらの信頼区間を、今度は観測データの下に描画しています。  
-![]({attach}images/DABEST_tutorial_figs/cumming.png)
+![cumming]({attach}images/DABEST_tutorial_figs/cumming.png)
 
 ここでは効果量として **hedges' g** を用いています。コードは次のようになります(ライブラリのインポートは省略)。  
 ```python
@@ -176,7 +176,7 @@ plt.ylabel("Density")
 plt.savefig("bootstrap_ci.png")
 ```
 結果は次のようになります。  
-![]({attach}images/DABEST_tutorial_figs/bootstrap_ci.png)
+![bootstrap_ci]({attach}images/DABEST_tutorial_figs/bootstrap_ci.png)
 
 横軸が平均の差、縦軸が密度です。黒破線は0, 赤破線は真の分布の平均の差(今回であれば10)、緑実線は効果量の点推定(要は平均値)です。黒実線は第1, 3四分位数で、この間を95%信頼区間と近似しています(この信頼区間の算出手法を **パーセンタイル法** といいます)。これは簡易な手法ですが、他にも算出方法はあります。
 
