@@ -1,0 +1,13 @@
+<script>
+var check_ipynb = document.getElementsByClassName('highlight hl-ipython3');
+if (check_ipynb.length > 0) {
+    var doc0 = document.getElementById("colablink");
+    var url = location.href ;
+    var article_year = url.slice(33, 37);
+    var article_name = url.slice(41, -5) ;
+    var colab_url1 = "https://colab.research.google.com/github/oumpy/hp_management/blob/master/content/articles/"
+    var colab_url2 = "sy/Tech_archive/"
+    var colab_url = colab_url1 + article_year + colab_url2 + article_name + ".ipynb"
+    doc0.innerHTML= "<a href="+colab_url+"> Google Colabで開く</a>";
+}
+</script>
