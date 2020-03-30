@@ -400,3 +400,12 @@ table tr th:last-child,
 table tr td:last-child {
   margin-bottom: 0;
 }
+
+/* for open in colab or github*/
+div#colablink{
+	margin: 10px 0px 0px 10px;
+}
+
+img.notebook-badge-image{
+	padding: 2px;
+}
