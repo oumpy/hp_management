@@ -89,7 +89,7 @@ CUSTOM_FOOTER = "custom/footer.html"
 SKIP_COLOPHON = True
 
 # Put taglist at end of articles, and use the default sharing button implementation.
-CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", )
+CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", "custom/utterances.html", )
 CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # SIDEBAR_HIDE_CATEGORIES = True
 
