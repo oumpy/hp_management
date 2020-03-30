@@ -8,7 +8,8 @@ if (check_ipynb.length > 0) {
     var colab_url1 = "https://colab.research.google.com/github/oumpy/hp_management/blob/master/content/articles/";
     var colab_url2 = "sy/Tech_archive/";
     var colab_url = colab_url1 + article_year + colab_url2 + article_name + ".ipynb";
-    var button = "<a href="+colab_url+"><img class="notebook-badge-image" src="./assets/colab.svg" alt="Open In Colab"/></a>";
+    var colab_img_url = '<img class="notebook-badge-image" src="https://raw.githubusercontent.com/oumpy/hp_management/master/theme/voidy-bootstrap/templates/includes/custom/assets/colab.png" alt="Open In Colab" width="120px"></img>';
+    var button = '<a href="+colab_url+">'+colab_img_url+'</a>';
     doc0.innerHTML= button;
 }
 </script>
