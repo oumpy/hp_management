@@ -1,4 +1,4 @@
-Title:医師国家試験問題自動生成AI
+Title:【論文まとめ】医師国家試験問題自動生成AI
 Date: 2018.12.20
 Tags: Machine Learning
 Slug: doctor_exam_ai
