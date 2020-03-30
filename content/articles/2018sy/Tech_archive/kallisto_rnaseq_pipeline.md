@@ -44,6 +44,7 @@ done
 ```
 
 pfastq-dumpのオプション
+
 - `-s` : SRAファイルのID
 - `-t` : スレッド数
 - `-O` : 出力ファイル
@@ -79,8 +80,9 @@ fastqc -t 8 -o fastqc/fastqc_${item} sra-fastq/${item}.fastq -f fastq
 done
 ```
 
-sra-fastq/${item}.fastqがインプットファイル。
+`sra-fastq/${item}.fastq`がインプットファイル。
 fastqcのオプションについて
+
 - `-t` : スレッド数。
 - `-O` : 解析結果の保存先のディレクトリを指定する。今回はfastqcというディレクトリを作ってそこに入れている。
 - `-f` : インプットファイルのフォーマット。bam, samにも対応。.fastq.gzもfastqで指定する。
@@ -89,7 +91,7 @@ fastqcのオプションについて
 
 ![2]({attach}images/kallisto_rnaseq_pipeline_figs/screen-shot-2018-10-31-at-19-58-17.png)
 
-fastqcディレクトリをのぞいてみる。fastqcのなかにfastqc_${item}というディレクトリが自動生成されている。
+fastqcディレクトリをのぞいてみる。fastqcのなかに`fastqc_${item}`というディレクトリが自動生成されている。
 
 ![3]({attach}images/kallisto_rnaseq_pipeline_figs/screen-shot-2018-10-31-at-20-05-02.png)
 
@@ -136,9 +138,9 @@ Java で書かれているアダプタートリミングツールである。 Tr
 $ trimmomatic SE -phred33 ERR266335.fastq output_ERR266335.fastq ILLUMINACLIP:adapters.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 ```
 
-SEオプションでsingle-end readを指定している。pair-end readでは、オプションでPEとかき、paired outputとunpaired outputの出力先２つを指定する必要がある。
+`SE`オプションでsingle-end readを指定している。pair-end readでは、オプションでPEとかき、paired outputとunpaired outputの出力先２つを指定する必要がある。
 
-ILLUMINACLIP: 除去するアダプター配列をFASTA形式で与える。そのあとにミスマッチ許容数、palindrome clip threshold、simple clip thresholdの順に指定していく。
+- ILLUMINACLIP : 除去するアダプター配列をFASTA形式で与える。そのあとにミスマッチ許容数、palindrome clip threshold、simple clip thresholdの順に指定していく。
 
 ### 参照
 - <https://bi.biopapyrus.jp/rnaseq/qc/trimmomatic.html>
@@ -162,10 +164,12 @@ $ time kallisto/kallisto quant -i hsGRCh38_kallisto sra_fastqc/ERR266335.fastq -
 ```
 
 kallisto quantにおいて、**-iと-oのオプションは強制** である。
+
 - `-i` :作成したインデックスの指定
 - `-o` :出力結果の保存先
 
 **デフォルトではペアエンドを読もうとする** ので、シングルリードの場合は`--single`オプションをつける。シングルの時は
+
 - `-s` : Estimated standard deviation of fragment lengthシーケンシング用のライブラリー中のフラグメントの長さの偏差
 - `-l` : Estimated average fragment lengthシーケンシング用のライブラリー中のフラグメントの長さの平均
 
