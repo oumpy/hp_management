@@ -1,6 +1,8 @@
+<div id="div0"></div>
 <script>
-if($('.highlight hl-ipython3').length;){
-    $('p').text('ipynb test');
+var check_ipynb = document.getElementsByClassName('highlight hl-ipython3');
+if (check_ipynb.length > 0) {
+    var doc0= document.getElementById("div0");
+    doc0.innerHTML= "Google Colabで開く";
 }
 </script>
-<p>テストです</p>
