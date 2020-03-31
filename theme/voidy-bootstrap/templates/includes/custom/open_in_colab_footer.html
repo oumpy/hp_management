@@ -4,6 +4,10 @@ if (check_ipynb.length > 0) {
     var doc0 = document.getElementById("colablink");
     var url = location.href ;
     var article_year = url.slice(33, 37);
+    var article_month = url.slice(38, 40);
+    if (parseInt(article_month) <= 3) {
+      article_year = article_year - 1;
+    }
     var article_name = url.slice(41, -5) ;
     var url1_colab = "https://colab.research.google.com/github/oumpy/hp_management/blob/master/content/articles/";
     var url1_github = "https://github.com/oumpy/hp_management/blob/master/content/articles/";
