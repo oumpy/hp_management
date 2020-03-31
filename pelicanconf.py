@@ -88,10 +88,14 @@ STYLESHEET_FILES = ("pygment.css", "voidybootstrap.css", "voidybootstrap-custom.
 CUSTOM_FOOTER = "custom/footer.html"
 SKIP_COLOPHON = True
 
-CUSTOM_ARTICLE_HEADERS = ("article_header.html", "custom/open_in_colab_header.html", )
+CUSTOM_ARTICLE_HEADERS = ("article_header.html", "custom/open_in_colab_header.html",
+                          "custom/toc_header.html", )
 
 # Put taglist at end of articles, and use the default sharing button implementation.
-CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", "custom/utterances.html", "custom/open_in_colab_footer.html",)
+CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", "custom/utterances.html",
+                          "custom/open_in_colab_footer.html",
+                          "custom/toc_footer.html",)
+
 CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # SIDEBAR_HIDE_CATEGORIES = True
 

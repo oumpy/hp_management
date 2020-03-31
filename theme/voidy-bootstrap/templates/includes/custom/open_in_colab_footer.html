@@ -10,8 +10,8 @@ if (check_ipynb.length > 0) {
     var url2 = "sy/Tech_archive/";
     var colab_url = url1_colab + article_year + url2 + article_name + ".ipynb";
     var github_url = url1_github + article_year + url2 + article_name + ".ipynb";
-    var colab_img = '<img class="notebook-badge-image" src="https://raw.githubusercontent.com/oumpy/hp_management/master/theme/voidy-bootstrap/templates/includes/custom/assets/colab.png" alt="Open In Colab" width="119px"></img>';
-    var github_img = '<img class="notebook-badge-image" src="https://raw.githubusercontent.com/oumpy/hp_management/master/theme/voidy-bootstrap/templates/includes/custom/assets/github.png" alt="Open In GitHub" width="124px"></img>';
+    var colab_img = '<img class="notebook-badge-image" src="https://raw.githubusercontent.com/oumpy/hp_management/master/theme/voidy-bootstrap/templates/includes/custom/assets/badges/colab.png" alt="Open In Colab" width="119px"></img>';
+    var github_img = '<img class="notebook-badge-image" src="https://raw.githubusercontent.com/oumpy/hp_management/master/theme/voidy-bootstrap/templates/includes/custom/assets/badges/github.png" alt="View On GitHub" width="124px"></img>';
     var button = '<a href='+github_url+'>'+github_img+'</a>'
                +'<a href='+colab_url+'>'+colab_img+'</a>';
     doc0.innerHTML= button;
