@@ -88,6 +88,7 @@ STYLESHEET_FILES = ("pygment.css", "voidybootstrap.css", "voidybootstrap-custom.
 CUSTOM_FOOTER = "custom/footer.html"
 SKIP_COLOPHON = True
 
+CUSTOM_HEADER_ARTICLE = "custom/header_article.html"
 CUSTOM_ARTICLE_HEADERS = ("article_header.html", "custom/open_in_colab_header.html",
                           "custom/toc_header.html", )
 
