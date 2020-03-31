@@ -2,18 +2,18 @@
 var check_ipynb = document.getElementsByClassName('highlight hl-ipython3');
 if (check_ipynb.length > 0) {
     var doc0 = document.getElementById("colablink");
-    var url = location.href ;
-    var article_year = url.slice(33, 37);
-    var article_month = url.slice(38, 40);
+    var article_date = document.getElementsByName('article:date')[0].content;
+    var article_year = article_date.slice(0, 4);
+    var article_month = article_date.slice(5, 7);
+    var article_category = document.getElementsByName('article:category')[0].content; 
     if (parseInt(article_month) <= 3) {
       article_year = article_year - 1;
     }
-    var article_name = url.slice(41, -5) ;
-    var url1_colab = "https://colab.research.google.com/github/oumpy/hp_management/blob/master/content/articles/";
-    var url1_github = "https://github.com/oumpy/hp_management/blob/master/content/articles/";
-    var url2 = "sy/Tech_archive/";
-    var colab_url = url1_colab + article_year + url2 + article_name + ".ipynb";
-    var github_url = url1_github + article_year + url2 + article_name + ".ipynb";
+    var article_name = document.getElementsByName('article:slug')[0].content;
+    var urlroot_colab = "https://colab.research.google.com/github/oumpy/hp_management/blob/master/content/articles/";
+    var urlroot_github = "https://github.com/oumpy/hp_management/blob/master/content/articles/";
+    var colab_url = urlroot_colab + article_year + "sy/" + article_category + "/" + article_name + ".ipynb";
+    var github_url = urlroot_github + article_year + "sy/" + article_category + "/" + article_name + ".ipynb";
     var colab_img = '<img class="notebook-badge-image" src="https://raw.githubusercontent.com/oumpy/hp_management/master/theme/voidy-bootstrap/templates/includes/custom/assets/badges/colab.png" alt="Open In Colab" width="119px"></img>';
     var github_img = '<img class="notebook-badge-image" src="https://raw.githubusercontent.com/oumpy/hp_management/master/theme/voidy-bootstrap/templates/includes/custom/assets/badges/github.png" alt="View On GitHub" width="124px"></img>';
     var button = '<a href='+github_url+'>'+github_img+'</a>'
