@@ -88,6 +88,7 @@ STYLESHEET_FILES = ("pygment.css", "voidybootstrap.css", "voidybootstrap-custom.
 CUSTOM_FOOTER = "custom/footer.html"
 SKIP_COLOPHON = True
 
+CUSTOM_HTML_HEAD = "custom/html_head.html"
 CUSTOM_HEADER_ARTICLE = "custom/header_article.html"
 CUSTOM_ARTICLE_HEADERS = ("article_header.html", "custom/open_in_colab_header.html",
                           "custom/toc_header.html", )
@@ -126,3 +127,5 @@ if not 'OPEN_GRAPH_ARTICLE_AUTHOR' in globals() and 'AUTHOR' in globals():
     OPEN_GRAPH_ARTICLE_AUTHOR = AUTHOR
 if not 'DEFAULT_SOCIAL_IMAGE' in globals() and 'OPEN_GRAPH_IMAGE' in globals():
     DEFAULT_SOCIAL_IMAGE = OPEN_GRAPH_IMAGE
+if not 'SOURCEREPOSITORY_URL' in globals():
+    SOURCEREPOSITORY_URL = 'https://github.com/' + GITHUB_ACCOUNT + '/' + SOURCEREPOSITORY_NAME + '.git'
