@@ -411,36 +411,9 @@ img.notebook-badge-image{
 }
 
 /* for toc*/
-.toc ul {
-    list-style: none;
-    padding: 10px 0px 0px 0px;
-    margin: 5px 0px 5px 5px;
-    font-weight:bold;
-}
-
-.toc li {
-  margin-bottom: .4em;
-}
-.toc li.toc-h3 {
-  padding-left: 1em;
-}
-.toc a {
-  text-decoration: none;
-  font-size: .95em;
-  font-weight: bold;
-  color: #333333;
-}
-.toc li.toc-h2 a::before {
-  content: "\2022";
-  margin-right: .5em;
-}
-.toc li.toc-h3 a {
-  font-size: .9em;
-  color: #333333;
-}
-.toc li.toc-h3 a::before {
-  content: "\26AC";
-  margin-right: .2em;
+ul#toc {
+    padding: 5px 0px 0px 0px;
+    margin: 5px 0px 5px 20px;
 }
 
 .toc_box {
