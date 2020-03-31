@@ -2,13 +2,11 @@
 # Each line is a file pattern followed by one or more owners.
 
 # These owners will be the default owners for everything in the repo.
-*                    @atamaokac     # as the chief-maintainer
-/content/pages/      @takyamamoto   # as the Leader
-/theme/              @takyamamoto   # as the theme-maintainer
-/pelicanconf.py      @atamaokac @takyamamoto    # as maintainers
-/content/            @atamaokac @takyamamoto    # as maintainers
+*                    @oumpy/hp_maintainers
+/content/            @oumpy/leaders @oumpy/hp_maintainers
 /content/articles/   @oumpy/executives
-CODEOWNERS           @atamaokac
+/content/articles/*/News/   @oumpy/leaders
+/content/pages/      @oumpy/leaders
 
 # Order is important. The last matching pattern has the most precedence.
 # So if a pull request only touches javascript files, only these owners
