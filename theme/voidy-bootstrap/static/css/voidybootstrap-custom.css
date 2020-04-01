@@ -314,6 +314,7 @@ code {
     background-color: rgba(0,0,0,.03);
     border: 0px;
     border-radius: 0px;
+		white-space: unset!important;
 }
 
 div.input_area {
@@ -420,7 +421,7 @@ ul#toc {
 	position: relative;
 	margin: 2em 2em 2em 2em;
 	padding: 0.5em 1em;
-	border: solid 3px #0f5889;
+	border: solid 3px #126ca7;
 	border-radius: 10px;
 }
 
@@ -436,4 +437,9 @@ ul#toc {
   background: #FFF;
   color: #333333;
   font-weight: bold;
+}
+
+/* for */
+div.output_subarea {
+    max-width: 100%!important;
 }
