@@ -24,7 +24,8 @@ if (check_ipynb.length > 0) {
     var filepath = article_year+"sy/"+article_category+"/"+article_name+".ipynb"
     var colab_url = urlroot_colab + filepath;
     var github_url = urlroot_github + filepath;
-    var imagedir_url = 'https://raw.githubusercontent.com/'+account+'/'+repname+'/master/theme/voidy-bootstrap/templates/includes/custom/assets/badges'
+    var site_url = document.getElementsByName('siteurl')[0].content;
+    var imagedir_url = site_url + '/theme/images'
     var colab_img = '<img class="notebook-badge-image" src="'+imagedir_url+'/colab.png" alt="Open In Colab" width="119px"></img>';
     var github_img = '<img class="notebook-badge-image" src="'+imagedir_url+'/github.png" alt="View On GitHub" width="124px"></img>';
     var button = '<a href='+github_url+'>'+github_img+'</a>'
