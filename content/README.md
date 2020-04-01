@@ -37,7 +37,7 @@ $ sh create.sh (filename) (category) (tags)
 
 Pageの場合と同じコマンド。(category)を指定するとarticleになり、`content/articles/(schoolyear)/(category)/(filename).md`として作成されます。
 
-- (category) はNewsかTech。
+- (category) はNewsかBlog。
   (category) にpageまたはpagesを指定するとpageになる。
 - (tags) は省略可能、ただしarticleの場合は編集の際に必ず入れること。
   (この仕様は変更するかも。)
@@ -49,7 +49,7 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 
 画像については、`content/articles/(schoolyear)/(category)/images/(filename)_figs/(imagefile)` として保存し、 `{attach}images/(filename)_figs/(imagefile)` で読み込むのを標準とします。
 
-例えば、`sugoikiji.md` に画像ファイル `sugoigazou.png` を読み込みたい場合は `content/articles/2020sc/Tech/images/sugoikiji_figs/sugoigazou.png` のように設置し、
+例えば、`sugoikiji.md` に画像ファイル `sugoigazou.png` を読み込みたい場合は `content/articles/2020sc/Blog/images/sugoikiji_figs/sugoigazou.png` のように設置し、
 
 ```markdown
 ![Sugoi Gazou]({attach}images/sugoikiji_figs/sugoigazou.png)
@@ -60,7 +60,7 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 ##### Jupyter Notebookの扱い
 
 jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb` の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。
-`./2018sy/Tech_archive` の `lorentz.ipynb` および `lorentz.nbdata` を参考にしてください。
+`./2018sy/Blog` の `lorentz.ipynb` および `lorentz.nbdata` を参考にしてください。
 
 ## サイト全体の情報設定
 
