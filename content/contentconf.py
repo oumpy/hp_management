@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*- #
 # site-specific settings
+GITHUB_ACCOUNT = 'oumpy'
+SOURCEREPOSITORY_NAME = 'hp_management'
+
 # Author
 AUTHOR = 'Python会'
 SITENAME = '大阪大学医学部 Python会'
