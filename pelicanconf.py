@@ -88,8 +88,16 @@ STYLESHEET_FILES = ("pygment.css", "voidybootstrap.css", "voidybootstrap-custom.
 CUSTOM_FOOTER = "custom/footer.html"
 SKIP_COLOPHON = True
 
+CUSTOM_HTML_HEAD = "custom/html_head.html"
+CUSTOM_HEADER_ARTICLE = "custom/header_article.html"
+CUSTOM_ARTICLE_HEADERS = ("article_header.html", "custom/open_in_colab_header.html",
+                          "custom/toc_header.html", )
+
 # Put taglist at end of articles, and use the default sharing button implementation.
-CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", "custom/utterances.html", )
+CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", "custom/utterances.html",
+                          "custom/open_in_colab_footer.html",
+                          "custom/toc_footer.html",)
+
 CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # SIDEBAR_HIDE_CATEGORIES = True
 
@@ -102,12 +110,8 @@ TWITTER_TIMELINE_HEIGHT = 600
 SIDEBAR_SIZE = 3
 
 SOCIAL_SHARE_BUTTONS = (
-    'hatebu',
     'twitter',
     'facebook',
-    'line',
-    'pocket',
-    'googleplus',
     )
 
 DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
@@ -123,3 +127,5 @@ if not 'OPEN_GRAPH_ARTICLE_AUTHOR' in globals() and 'AUTHOR' in globals():
     OPEN_GRAPH_ARTICLE_AUTHOR = AUTHOR
 if not 'DEFAULT_SOCIAL_IMAGE' in globals() and 'OPEN_GRAPH_IMAGE' in globals():
     DEFAULT_SOCIAL_IMAGE = OPEN_GRAPH_IMAGE
+if not 'SOURCEREPOSITORY_URL' in globals():
+    SOURCEREPOSITORY_URL = 'https://github.com/' + GITHUB_ACCOUNT + '/' + SOURCEREPOSITORY_NAME + '.git'

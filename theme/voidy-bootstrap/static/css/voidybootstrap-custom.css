@@ -314,11 +314,16 @@ code {
     background-color: rgba(0,0,0,.03);
     border: 0px;
     border-radius: 0px;
+		white-space: unset!important;
 }
 
 div.input_area {
     border: 1px solid #cfcfcf;
     background: #364549!important;
+}
+
+div.output_subarea {
+    max-width: 100%!important;
 }
 
 #content pre {
@@ -399,4 +404,41 @@ table tr td:first-child {
 table tr th:last-child,
 table tr td:last-child {
   margin-bottom: 0;
+}
+
+/* for open in colab or github*/
+div#colablink{
+	margin: 10px 0px 0px 10px;
+}
+
+img.notebook-badge-image{
+	padding: 2px;
+}
+
+/* for toc*/
+ul#toc {
+    padding: 5px 0px 0px 0px;
+    margin: 5px 0px 5px 20px;
+}
+
+.toc_box {
+	position: relative;
+	margin: 2em 2em 2em 2em;
+	padding: 0.5em 1em;
+	border: solid 3px #126ca7;
+	border-radius: 10px;
+}
+
+.toc_box .box-title {
+  font-family: "Ludica Sans";
+  position: absolute;
+  display: inline-block;
+  top: -10px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 16px;
+  background: #FFF;
+  color: #333333;
+  font-weight: bold;
 }
