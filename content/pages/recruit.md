@@ -10,7 +10,7 @@ Python会は現在、学年学部問わず会員を募集しております。
 Pythonが全てわかる方も、なにもわからない方も、ちょっとできる方も大歓迎です！お気軽にDM等でご連絡ください。
 
 ## 新歓2020年度
-4月中は 本サイトと [YouTue](https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ) によるオンライン新歓イベントを行う予定です。
+4月中は 本サイトと [YouTube](https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ) によるオンライン新歓イベントを行う予定です。
 詳細は本サイトと [Twitter](https://twitter.com/oumed_python) にて、追ってお知らせします。
 
 ### 新歓チラシ
