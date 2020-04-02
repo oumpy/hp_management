@@ -130,15 +130,22 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
 
 #### 事前に必要な設定
 
-- GitHubの `oumpy/hp_management` で、右上にある「fork」から自分のアカウントにフォーク (コピー) を作成する
+##### Git/GitHub一般の設定
 
-- 作成したフォークをGitクライアントに2つ目のリモートレポジトリとして設定。
-  リモートレポジトリは適当な名前で区別する。
+（すでにGitHubを使っている人は飛ばして次へ）
 
-  - oumpyの方を `upstream` 、forkの方を `origin`
-  - oumpyの方を `oumpy` 、forkの方をアカウント名
+- GitHub アカウント ( `hoge` とする。以下自分のものに読み替え) と Gitクライアント (Source Treeなど) を設定する。
+- 自分でGitHub上に作ったレポジトリにプッシュできることを確認する。
+  認証関係はハマりどころなので資料を確認しながら慎重に。
 
-  どちらでも。ここでは仮に前者とする。
+##### 本レポジトリに関する設定
+
+- GitHubの `oumpy/hp_management` で、右上にある「fork」から自分のアカウントにフォーク (コピー) を作成する。
+- `hoge/hp_management` をクローンしてローカルレポジトリを作成。
+  リモートレポジトリ (`hoge/hp_management`) の名前はデフォルトで `origin` となる。
+- `oumpy/hp_management` を2つ目のリモートレポジトリとして設定。名前は `upstream` とする。
+  - 名前は `upstream` / `origin` の代わりに、oumpyの方を `oumpy` 、自分のものを `hoge` として区別してもよい。
+    こちらはGitHub上での呼称と整合する。お好みで。
 
 #### 記事投稿ごとにやること
 
@@ -146,7 +153,7 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
   ここでは `sugoikiji` とする。
 - 書いた記事ファイルをブランチ `sugoikiji` にコミットする。
   記事タイトルなどをコミットコメントとして書く。
-- ブランチ `sugoikiji` を自分のレポジトリにプッシュする ( `origin/sugoikiji` ) 。
+- ブランチ `sugoikiji` を自分のレポジトリにプッシュする ( ブランチ `origin/sugoikiji` ができる ) 。
 - webブラウザで自分のレポジトリまたはoumpyの元レポジトリに行き、自分の `sugoikiji` から`oumpy/master` へのプルリクエストを作成。必要な説明などを同時にコメントとして書く。
 
 通常は以上でやることは終わりです。
