@@ -20,7 +20,7 @@ mkdir -p "theme/$themename"
 cp -an "themes/$themename"/* "theme/$themename/"
 
 # put webhook-cgi.
-cgitemplate="tools/deploy.py"
+cgitemplate="tools/lib/deploy.py"
 if [ -e "webhookconf.py" ]; then
     cgipath=`python3 -c "import os,sys; sys.path.append(os.curdir); import webhookconf; print(webhookconf.cgipath)"`
     if [ -n "$cgipath" ]; then
