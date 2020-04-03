@@ -1,0 +1,12 @@
+{% if page.show_modified %}
+<script type="text/javascript">
+    (function() {
+        var modified = document.getElementsByName('page:modified')[0].content;
+        //document.querySelector('[itemprop="name headline"]').
+        $('header').after(
+//            '<p class="modified-date", style="text-align: right">( ' + modified + ' 最終更新 )</p>'
+            '<p class="modified-date">( ' + modified + ' 最終更新 )</p>'
+        );
+    })();
+</script>
+{% endif %}

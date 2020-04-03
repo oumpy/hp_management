@@ -1,6 +1,7 @@
 Title: 会員募集
 Date: 2020.03.13
 Modified: 2020.03.25
+Show_modified: True
 Tags: pages
 Slug: recruit
 Author: Python会
