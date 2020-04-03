@@ -31,10 +31,8 @@ this_year = datetime.date.today().year
 
 # ARTICLE_PATHS = ['articles']
 ARTICLE_PATHS = [ 'articles/%dsy/' % y for y in range(start_year, this_year+2) ]
-ARTICLE_SAVE_AS = 'articles/{date:%Y}/{date:%m}/{slug}.html'
-ARTICLE_URL = 'articles/{date:%Y}/{date:%m}/{slug}.html'
-PAGE_SAVE_AS = '{slug}.html'
-PAGE_URL = '{slug}.html'
+ARTICLE_SAVE_AS = ARTICLE_URL ='{category}/{date:%Y}/{date:%m}/{slug}.html'
+PAGE_SAVE_AS = PAGE_URL ='{slug}.html'
 
 INDEX_SAVE_AS = 'articles.html'
 
@@ -89,6 +87,7 @@ CUSTOM_FOOTER = "custom/footer.html"
 SKIP_COLOPHON = True
 
 CUSTOM_HTML_HEAD = "custom/html_head.html"
+CUSTOM_HEADER_PAGE = "custom/header_page.html"
 CUSTOM_HEADER_ARTICLE = "custom/header_article.html"
 CUSTOM_ARTICLE_HEADERS = ("article_header.html", "custom/open_in_colab_header.html",
                           "custom/toc_header.html", )
@@ -98,6 +97,7 @@ CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", "custom/utterances.htm
                           "custom/open_in_colab_footer.html",
                           "custom/toc_footer.html",)
 
+CUSTOM_SCRIPTS_PAGE = "custom/page_showmodified_scripts.html"
 CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # SIDEBAR_HIDE_CATEGORIES = True
 
