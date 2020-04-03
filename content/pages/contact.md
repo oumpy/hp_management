@@ -1,11 +1,10 @@
 Title: Contact
 Date: 2020.03.13
-Modified: 2020.03.13
-Tags: pages
+Modified: 2020.03.17
 Slug: contact
-Author:
+Author: Python会
 Page_order: 400
-Summary:
+Summary: Python会への連絡用メールフォーム
 
 <!-- ![]({attach}images/computer-1209641_960_7201.jpg) -->
 

@@ -1,7 +1,6 @@
 Title: 技術ブログ
 Date: 2020.03.15
-Modified: 2020.03.15
-Tags:
+Modified: 2020.03.29
 Slug: blog
 Author: Python会
 Page_order: 300
