@@ -89,6 +89,7 @@ CUSTOM_FOOTER = "custom/footer.html"
 SKIP_COLOPHON = True
 
 CUSTOM_HTML_HEAD = "custom/html_head.html"
+CUSTOM_HEADER_PAGE = "custom/header_page.html"
 CUSTOM_HEADER_ARTICLE = "custom/header_article.html"
 CUSTOM_ARTICLE_HEADERS = ("article_header.html", "custom/open_in_colab_header.html",
                           "custom/toc_header.html", )
@@ -98,6 +99,7 @@ CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", "custom/utterances.htm
                           "custom/open_in_colab_footer.html",
                           "custom/toc_footer.html",)
 
+CUSTOM_SCRIPTS_PAGE = "custom/page_showmodified_scripts.html"
 CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 # SIDEBAR_HIDE_CATEGORIES = True
 

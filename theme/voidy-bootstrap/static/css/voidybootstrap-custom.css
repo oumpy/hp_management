@@ -88,6 +88,11 @@ p.standfirst {
 	color: #999;
 }
 
+.modified-date, .page-header-info {
+  text-align: right;
+  color: #999;
+}
+
 .social-links {
 	font-size: 18px;
 }
