@@ -10,13 +10,13 @@ $ cd hp_management/content
 
 ## サイト内容の更新
 
-### 新しいページの作り方
+### 新しいページ・記事の作り方
 
 `content` ディレクトリに移動し、独自スクリプト `create.sh` で雛形を作ります。
 
 あるいは、 (その方が楽であれば) `content/template.md` を手動でコピーして編集してもかまいません。
 
-####  Pageを作成する場合
+#### page (固定ページ) を作成する場合
 
 ```bash
 $ cd hp_management/content
@@ -28,7 +28,7 @@ $ sh create.sh (filename)
 
 これに内容を追記します。htmlも認識されます。
 
-#### Articleを作成する場合
+#### article (ニュースやブログ記事) を作成する場合
 
 ``` bash
 $ cd hp_management/content
@@ -44,6 +44,9 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 - (category) は各ファイルのメタデータには記載されない。
   mdファイルを入れるディレクトリの名前がカテゴリとして認識される。
   (記載した場合はそちらが優先されるが、記載しないでください。)
+- 自動作成されたファイルは `Title` と `Author` が空欄なので、埋める。
+- `Author` の下を1行空け、その後にMarkdown原稿を貼り付ける。
+  タイトル (`#` タグ) は自動生成されるので削り、分節タグは原則全て `##` 以下を使う。
 
 ##### Jupyter Notebookの扱い
 
@@ -154,7 +157,9 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
 - 書いた記事ファイルをブランチ `sugoikiji` にコミットする。
   記事タイトルなどをコミットコメントとして書く。
 - ブランチ `sugoikiji` を自分のレポジトリにプッシュする ( ブランチ `origin/sugoikiji` ができる ) 。
-- webブラウザで自分のレポジトリまたはoumpyの元レポジトリに行き、自分の `sugoikiji` から`oumpy/master` へのプルリクエストを作成。必要な説明などを同時にコメントとして書く。
+- webブラウザで自分のレポジトリまたはoumpyの元レポジトリに行き、自分の `sugoikiji` から`oumpy/master` へのプルリクエストを作成。
+必要な説明などを同時にコメントとして書く。
+記事の投稿・修正の場合、`article` ラベルをつける。
 
 通常は以上でやることは終わりです。
 
@@ -170,7 +175,4 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
 
 ## ToDo
 
-- 写真ファイルのパス指定や内部リンク調整
-- 手打ちをした部分（Author, Tagsなど）のチェック
-- 古い記事のいくつかはhtmlのコピペでMarkdownとしては酷い。
 - Member,Calenderなどは必要か？
