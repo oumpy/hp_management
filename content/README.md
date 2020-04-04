@@ -53,6 +53,19 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb` の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。
 `articles/2018sy/Blog` の `lorentz.ipynb` および `lorentz.nbdata` を参考にしてください。
 
+#### タグの付け方
+現在は10タグ設定している。基本的にはこの中から最も当てはまるタグを1つ選ぶ。ただし、新しい分野も歓迎します（相談してください）。また、大文字・小文字等の違いに注意。
+- `Bioinformatics`：バイオインフォマティクス関連
+- `Machine Learning`：機械学習関連 (Deep Learningなど)
+- `Statistics`：統計学（機械学習との違いは若干曖昧）
+- `Data Science Competition`：KaggleやSignateなど
+- `Python`：Pythonに関すること（上記に当てはまらない場合）
+- `Shell script`：シェルスクリプトの使い方など
+- `GitHub`：Githubの使い方など
+- `競技プログラミング`：Atcoderなど
+- `論文関連`：論文の探し方、書き方、管理の仕方などのtips
+- `海外留学`：海外留学の報告など
+
 #### リンクなど
 
 ソース内のmarkdownファイルなどへのリンクが自動的にhtmlへのリンクに変換される機能があります（画像などはそのまま）。
