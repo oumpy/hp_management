@@ -1,11 +1,11 @@
 Title: 実績
 Date: 2020.03.13
 Modified: 2020.03.24
-Tags: pages
+Show_modified: True
 Slug: achievements
-Author:
+Author: Python会
 Page_order: 200
-Summary:
+Summary: Python会の実績紹介
 
 ## 勉強会・成果発表活動
 ### 会内勉強会

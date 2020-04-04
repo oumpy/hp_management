@@ -1,5 +1,5 @@
-Title:JuliaとPythonと競技プログラミング
-Date: 2019.03.29
+Title: JuliaとPythonと競技プログラミング
+Date: 2019.03.16
 Tags: 競技プログラミング
 Slug: julia_python_competition
 Author: 小川
@@ -10,7 +10,7 @@ Summary:
 ## Juliaってなに？
 
 Pythonのような動的型付けのスクリプト言語です。実行時にコンパイルを行いC言語にも迫る実行速度、科学技術系の数値計算もどんと来い、という触れ込みで、人気上昇中らしいです。Pythonを含む他言語のライブラリを読み込む仕組みを備えているのもすごいところ。  
-~~ただ、コードの見た目が激しくMatlab風味で思わず目を背けたくなります。~~
+<s>ただ、コードの見た目が激しくMatlab風味で思わず目を背けたくなります。</s>
 
 ## AtCoderでのJulia
 
