@@ -1,6 +1,11 @@
 <div class="article-header-info">
   <p>
-    {% if article.author %}
+    {% if article.authors %}
+      Posted by 
+      {% for author in article.authors -%}
+        <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %}, {% endif %}
+      {% endfor %}
+    {% elif article.author %}
       Posted by <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
     {% endif %}
     in 

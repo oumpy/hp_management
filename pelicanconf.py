@@ -89,7 +89,7 @@ SKIP_COLOPHON = True
 CUSTOM_HTML_HEAD = "custom/html_head.html"
 CUSTOM_HEADER_PAGE = "custom/header_page.html"
 CUSTOM_HEADER_ARTICLE = "custom/header_article.html"
-CUSTOM_ARTICLE_HEADERS = ("article_header.html", "custom/open_in_colab_header.html",
+CUSTOM_ARTICLE_HEADERS = ("custom/article_header.html", "custom/open_in_colab_header.html",
                           "custom/toc_header.html", )
 
 # Put taglist at end of articles, and use the default sharing button implementation.
