@@ -1,6 +1,6 @@
 Title: 会員募集
 Date: 2020.03.13
-Modified: 2020.04.03
+Modified: 2020.04.05
 Show_modified: True
 Slug: recruit
 Author: Python会
@@ -13,6 +13,9 @@ Pythonが全てわかる方も、なにもわからない方も、ちょっと�
 ## 新歓2020年度
 4月中は 本サイトと [YouTube](https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ) によるオンライン新歓イベントを行う予定です。
 詳細は本サイトと [Twitter](https://twitter.com/oumed_python) にて、追ってお知らせします。
+
+### 紹介動画
+{% youtube 0u43x51nn-o %}
 
 ### 新歓チラシ
 新歓のチラシです。
