@@ -2,7 +2,7 @@ Title:Bioinformatics春合宿@三島
 Date: 2019.03.10
 Tags: Bioinformatics
 Slug: mishima
-Author: 安水, 平岡
+Authors: 安水, 平岡
 Summary:
 
 平岡と安水は2019/03/04-09の一週間、静岡県三島市の国立遺伝学研究所にある<a href="https://dbcls.rois.ac.jp/">DBCLS</a>にてbioinformatics合宿をしていました。定量、アセンブリを始めとするトランスクリプトーム解析やjuliaの入門、データベースのコツなど、たくさんのことを学びました。bioinformatics意外にも、坊農さんのグルメツアーや温泉、富士山など、季節ならではの三島を堪能することができました。詳しくは以下の日誌をご覧ください。
