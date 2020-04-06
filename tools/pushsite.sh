@@ -19,12 +19,15 @@ if [ "$sourcebranch" = "master" ]; then
     $makecommand clean &&\
     mv $previewdir output/ &&\
     $makecommand publish
-elif [ `git branch -a | grep "remotes/origin/$sourcebranch"` ]; then
-    $makecommand clean "OUTPUTDIR=./$outputdir/$previewdir/$sourcebranch" &&\
-    echo "\nSITEURL += \'/$previewdir/$sourcebranch\'\n" >> ./content/contentpublishconf.py &&\
-    $makecommand publish "OUTPUTDIR=./$outputdir/$previewdir/$sourcebranch"
-else # branch deleted
-    rm -rf "./$outputdir/$previewdir/$sourcebranch" 
+else
+    git fetch
+    if [ `git branch -a | sed 's/^[ \t]*//' | grep "^remotes/origin/$sourcebranch$"` ]; then
+        $makecommand clean "OUTPUTDIR=./$outputdir/$previewdir/$sourcebranch" &&\
+        echo "\nSITEURL += \'/$previewdir/$sourcebranch\'\n" >> ./content/contentpublishconf.py &&\
+        $makecommand publish "OUTPUTDIR=./$outputdir/$previewdir/$sourcebranch"
+    else # branch deleted
+        rm -rf "./$outputdir/$previewdir/$sourcebranch" 
+    fi
 fi &&\
 cd $outputdir &&\
 git add . &&\

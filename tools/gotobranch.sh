@@ -1,6 +1,7 @@
 #!/bin/sh
 branch=${1:-"master"}
-if [ ! `git branch -a | grep "remotes/origin/$branch"` ]; then
+git fetch
+if [ ! `git branch -a | sed 's/^[ \t]*//' | grep "^remotes/origin/$branch$"` ]; then
     echo "No branch $branch."
     exit
 fi
