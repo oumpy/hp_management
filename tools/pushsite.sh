@@ -22,6 +22,7 @@ if [ "$sourcebranch" = "master" ]; then
 else
     git fetch
     if [ `git branch -a | sed 's/^[ \t]*//' | grep "^remotes/origin/$sourcebranch$"` ]; then
+        git branch -D $sourcebranch
         $makecommand clean "OUTPUTDIR=./$outputdir/$previewdir/$sourcebranch" &&\
         echo "\nSITEURL += \'/$previewdir/$sourcebranch\'\n" >> ./content/contentpublishconf.py &&\
         $makecommand publish "OUTPUTDIR=./$outputdir/$previewdir/$sourcebranch"
