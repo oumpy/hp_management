@@ -455,4 +455,6 @@ ul#toc {
   right: 0;
   max-width: 90vw;
   max-height: calc(90vw * 0.75);
+  display: block;
+  margin: auto;
 }
