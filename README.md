@@ -72,14 +72,6 @@ Slug: index
 
 ### 導入
 
-#### ツールのインストール
-
-環境：Python 3.6以降
-
-```bash
-$ pip install pelican Markdown nbconvert
-```
-
 #### レポジトリのクローンとテーマファイル(voidy-bootstrap)のコピー
 
 ```bash
@@ -96,6 +88,22 @@ SITEREPOSITORY = 'https://github.com/oumpy/oumpy.github.io.git'
 `init.sh` の中で自動的に読み込まれる。）
 
 テーマのファイルのみコピーし直したい場合も `sh init.sh` でOK。
+
+#### Pythonパッケージのインストール
+
+環境：Python 3.6以降
+
+```bash
+$ pip install pelican Markdown nbconvert
+```
+
+または `hp_management/` 直下で
+
+```bash
+$ pip install -r requirements.txt
+```
+
+でインストールできる。
 
 ### 更新のアップ
 
