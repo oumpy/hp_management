@@ -91,6 +91,7 @@ CUSTOM_HEADER_PAGE = "custom/header_page.html"
 CUSTOM_HEADER_ARTICLE = "custom/header_article.html"
 CUSTOM_ARTICLE_HEADERS = ("custom/article_header.html", "custom/open_in_colab_header.html",
                           "custom/toc_header.html", )
+CUSTOM_INDEX_ARTICLE_HEADERS = ("custom/article_header.html",)
 
 # Put taglist at end of articles, and use the default sharing button implementation.
 CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", "custom/utterances.html",
