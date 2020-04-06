@@ -1,3 +1,4 @@
 pelican
 Markdown
 nbconvert
+fasteners

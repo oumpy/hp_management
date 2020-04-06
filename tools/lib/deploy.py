@@ -5,12 +5,14 @@ import subprocess
 import json
 import hashlib, hmac
 from datetime import datetime
+import fasteners
 
 hpmanagement_path = "$hpmanagement_path"
 sys.path.append(hpmanagement_path)
 from webhookconf import secret
 webhooklogfilepath = hpmanagement_path + '/webhook.log'
 updatelogfilepath = hpmanagement_path + '/update.log' 
+lockfilepath = hpmanagement_path + '/deploycgi.lock'
 
 os.environ['PATH'] = '$path'
 
@@ -43,6 +45,8 @@ if secret:
 
 branch = payload['ref']
 
+lock = fasteners.InterProcessLock(lockfilepath)
+lock.acquire()
 f = open(webhooklogfilepath, 'a')
 uf = open(updatelogfilepath, 'a')
 
@@ -72,3 +76,4 @@ else:
 
 f.close()
 uf.close()
+lock.release()
