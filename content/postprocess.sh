@@ -1,4 +1,5 @@
 #!/bin/sh
-cd output/articles/
+outputdir=${1:-output} 
+cd $outputdir/articles/
 ln -s ../blog/* ./
 cd ../../

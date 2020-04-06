@@ -43,7 +43,7 @@ help:
 
 html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS) &&\
-	[ -e $(POSTPROCESS) ] && sh $(POSTPROCESS)
+	[ -e $(POSTPROCESS) ] && sh $(POSTPROCESS) $(OUTPUTDIR)
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)/*
@@ -75,7 +75,7 @@ endif
 
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS) &&\
-	[ -e $(POSTPROCESS) ] && sh $(POSTPROCESS)
+	[ -e $(POSTPROCESS) ] && sh $(POSTPROCESS) $(OUTPUTDIR)
 
 github: publish
 	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
