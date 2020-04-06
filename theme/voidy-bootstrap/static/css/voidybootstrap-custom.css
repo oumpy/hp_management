@@ -451,10 +451,8 @@ ul#toc {
 /* responsive youtube iframe */
 .videobox iframe {
   position: relative;
-  top: 0;
-  right: 0;
-  max-width: 90vw;
-  max-height: calc(90vw * 0.75);
+  max-width: 90vw!important;
+  max-height: calc(90vw * 0.75)!important;
   display: block;
   margin: auto;
 }
