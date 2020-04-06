@@ -27,6 +27,9 @@ else
         {
             echo
             echo "SITEURL += '/$previewdir/$sourcebranch'"
+            echo "if 'PREVIEW_SITENAME_APPEND' in globals():"
+            echo "    SITENAME += PREVIEW_SITENAME_APPEND"
+            echo "    SITETAG += PREVIEW_SITENAME_APPEND"
             echo
         }  >> ./content/contentconf.py &&\
         $makecommand html "OUTPUTDIR=./$outputdir/$previewdir/$sourcebranch"
