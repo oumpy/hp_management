@@ -28,8 +28,8 @@ else
             echo
             echo "SITEURL += '/$previewdir/$sourcebranch'"
             echo
-        }  >> ./content/contentpublishconf.py &&\
-        $makecommand publish "OUTPUTDIR=./$outputdir/$previewdir/$sourcebranch"
+        }  >> ./content/contentconf.py &&\
+        $makecommand html "OUTPUTDIR=./$outputdir/$previewdir/$sourcebranch"
     else # branch deleted
         rm -rf "./$outputdir/$previewdir/$sourcebranch" 
     fi
