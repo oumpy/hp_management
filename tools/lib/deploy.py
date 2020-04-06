@@ -14,8 +14,6 @@ updatelogfilepath = hpmanagement_path + '/update.log'
 
 os.environ['PATH'] = '$path'
 
-target_branch = ['refs/heads/master']
-
 print('Content-Type:text/html\n\n')
 
 data = sys.stdin.read()
@@ -26,7 +24,7 @@ if signature_header in os.environ.keys():
 else:
     signature = ''
 
-event_header = 'X-GitHub-Event'
+event_header = 'HTTP_X_GITHUB_EVENT'
 if event_header in os.environ.keys():
     event = os.environ[event_header]
 else:
