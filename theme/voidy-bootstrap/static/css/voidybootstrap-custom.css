@@ -55,9 +55,9 @@ p.lead{
 
 img{
 	padding: 10px 5px 20px;
-	max-width: 90%!important;
-	display: block!important;
-	margin: auto!important;
+	max-width: 90%;
+	display: block;
+	margin: auto;
 }
 
 body{
