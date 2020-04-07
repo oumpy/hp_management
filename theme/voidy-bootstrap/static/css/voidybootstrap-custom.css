@@ -54,8 +54,10 @@ p.lead{
 */
 
 img {
-    padding: 10px 5px 26px;
-		max-width: 90%
+    padding: 10px 5px 20px;
+		max-width: 90%;
+		display: block;
+		margin: auto;
 }
 
 body{
