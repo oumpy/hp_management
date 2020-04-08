@@ -1,7 +1,7 @@
 Title:AtCoder Beginners Selection 雑感
 Date: 2019.06.24
 Tags: 競技プログラミング
-Slug: atcoder
+Slug: atcoder_beginners_selection
 Author: 加藤
 Summary:
 
