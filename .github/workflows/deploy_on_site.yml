@@ -1,0 +1,55 @@
+# This is a workflow to deploy master branch
+
+name: Deploy_on_site
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: python:3.8-alpine
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Checkout master
+      uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.bot_id_ecdsa }}
+        name: id_ecdsa
+        known_hosts: ${{ secrets.known_hosts }}
+        config: |
+          Host github github.com
+            HostName github.com
+            User ${{ secrets.bot_id_account }}
+            PreferredAuthentications publickey
+            IdentityFile ~/.ssh/id_ecdsa
+            UseKeychain yes
+            AddKeysToAgent yes
+
+    - name: Initialize Repository
+      run: |
+        pip install --user -r requirements.txt
+        sh tools/init.sh
+        git config --global user.name $GITHUB_ACTOR
+        cd output/
+        git config --local --add url.github:.pushInsteadOf https://github.com/
+        git config --local --add url.github:.pushInsteadOf git@github.com:
+
+    - name: Deploy on Site
+      run: |
+        make clean && make publish
+        cd output/
+        git add .
+        git commit -m 'master branch updated.' && git push
