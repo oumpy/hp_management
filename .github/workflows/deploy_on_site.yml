@@ -32,16 +32,14 @@ jobs:
       uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.bot_id_ecdsa }}
-        name: id_ecdsa
+        name: identity
         known_hosts: ${{ secrets.known_hosts }}
         config: |
           Host github github.com
             HostName github.com
             User ${{ secrets.bot_id_account }}
             PreferredAuthentications publickey
-            IdentityFile ~/.ssh/id_ecdsa
-            UseKeychain yes
-            AddKeysToAgent yes
+            IdentityFile ~/.ssh/identity
 
     - name: Initialize Repository
       run: |
