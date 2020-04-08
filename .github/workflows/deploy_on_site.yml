@@ -53,7 +53,7 @@ jobs:
 
     - name: Deploy on Site
       run: |
-        make publish
+        make clean && make publish
         cd output/
         git add .
         git commit -m 'master branch updated.' && git push
