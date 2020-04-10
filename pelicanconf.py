@@ -57,7 +57,12 @@ PAGINATION_PATTERNS = (
 MARKUP = ('md', 'ipynb')
 
 PLUGIN_PATHS = ['./plugins']
-PLUGINS = ['pelican-ipynb.markup', 'render_math', 'liquid_tags.youtube']
+PLUGINS = [
+    'pelican-ipynb.markup',
+    'render_math',
+    'liquid_tags.youtube',
+    'tag_cloud',
+]
 
 # if you create jupyter files in the content dir, snapshots are saved with the same
 # metadata. These need to be ignored.
@@ -104,7 +109,7 @@ CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
-CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_taglist.html", )
+CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_tagcloud.html", )
 CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
 
 TWITTER_TIMELINE_HEIGHT = 600
