@@ -57,7 +57,14 @@ PAGINATION_PATTERNS = (
 MARKUP = ('md', 'ipynb')
 
 PLUGIN_PATHS = ['./plugins']
-PLUGINS = ['pelican-ipynb.markup', 'render_math', 'liquid_tags.youtube']
+PLUGINS = [
+    'pelican-ipynb.markup',
+    'render_math',
+    'liquid_tags.youtube',
+    'related_posts',
+]
+
+RELATED_POSTS_MAX = 3
 
 # if you create jupyter files in the content dir, snapshots are saved with the same
 # metadata. These need to be ignored.
