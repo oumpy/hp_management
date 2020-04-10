@@ -94,12 +94,13 @@ CUSTOM_ARTICLE_HEADERS = ("custom/article_header.html", "custom/open_in_colab_he
 CUSTOM_INDEX_ARTICLE_HEADERS = ("custom/article_header.html",)
 
 # Put taglist at end of articles, and use the default sharing button implementation.
-CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", "custom/utterances.html",
-                          "custom/open_in_colab_footer.html",
-                          "custom/toc_footer.html",)
+CUSTOM_ARTICLE_FOOTERS = (
+    "taglist.html", "sharing.html",
+    "custom/utterances.html",
+)
 
 CUSTOM_SCRIPTS_PAGE = "custom/page_showmodified_scripts.html"
-CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
+CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 # SIDEBAR_HIDE_CATEGORIES = True
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
