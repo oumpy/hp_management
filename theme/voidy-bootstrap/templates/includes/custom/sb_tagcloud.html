@@ -1,4 +1,5 @@
-<h4><i class="fa fa-tags fa-fw fa-lg"></i> Tags</h4>
+<div class="sidebar_box">
+<div class="box-title"><i class="fa fa-tags fa-fw fa-lg"></i> {{ CUSTOM_TAGS_TITLE }}</div>
 <p class="tag-cloud">
   {% for tag in tag_cloud %}
     <span class="tag-{{ tag.1 }}">
@@ -13,3 +14,4 @@
     </span>
   {% endfor %}
 </p>
+</div>
