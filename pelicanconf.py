@@ -104,6 +104,7 @@ CUSTOM_INDEX_ARTICLE_HEADERS = ("custom/article_header.html",)
 CUSTOM_ARTICLE_FOOTERS = (
     "taglist.html", "sharing.html",
     "custom/utterances.html",
+    "custom/related_posts.html",
 )
 
 CUSTOM_SCRIPTS_BASE = "custom/scripts_base.html"
