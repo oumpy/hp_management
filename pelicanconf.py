@@ -99,6 +99,7 @@ CUSTOM_ARTICLE_FOOTERS = (
     "custom/utterances.html",
 )
 
+CUSTOM_SCRIPTS_BASE = "custom/scripts_base.html"
 CUSTOM_SCRIPTS_PAGE = "custom/page_showmodified_scripts.html"
 CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 # SIDEBAR_HIDE_CATEGORIES = True
