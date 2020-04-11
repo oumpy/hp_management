@@ -57,7 +57,14 @@ PAGINATION_PATTERNS = (
 MARKUP = ('md', 'ipynb')
 
 PLUGIN_PATHS = ['./plugins']
-PLUGINS = ['pelican-ipynb.markup', 'render_math', 'liquid_tags.youtube']
+PLUGINS = [
+    'pelican-ipynb.markup',
+    'render_math',
+    'liquid_tags.youtube',
+    'related_posts',
+]
+
+RELATED_POSTS_MAX = 3
 
 # if you create jupyter files in the content dir, snapshots are saved with the same
 # metadata. These need to be ignored.
@@ -94,12 +101,15 @@ CUSTOM_ARTICLE_HEADERS = ("custom/article_header.html", "custom/open_in_colab_he
 CUSTOM_INDEX_ARTICLE_HEADERS = ("custom/article_header.html",)
 
 # Put taglist at end of articles, and use the default sharing button implementation.
-CUSTOM_ARTICLE_FOOTERS = ("taglist.html", "sharing.html", "custom/utterances.html",
-                          "custom/open_in_colab_footer.html",
-                          "custom/toc_footer.html",)
+CUSTOM_ARTICLE_FOOTERS = (
+    "taglist.html", "sharing.html",
+    "custom/utterances.html",
+    "custom/related_posts.html",
+)
 
+CUSTOM_SCRIPTS_BASE = "custom/scripts_base.html"
 CUSTOM_SCRIPTS_PAGE = "custom/page_showmodified_scripts.html"
-CUSTOM_SCRIPTS_ARTICLE = "sharing_scripts.html"
+CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 # SIDEBAR_HIDE_CATEGORIES = True
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
