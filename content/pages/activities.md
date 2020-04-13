@@ -2,7 +2,6 @@ Title: 活動内容
 Date: 2020.03.15
 Modified: 2020.03.22
 Show_modified: True
-Tags:
 Slug: activities
 Author: Python会
 Page_order: 150

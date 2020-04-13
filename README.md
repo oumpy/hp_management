@@ -1,19 +1,17 @@
 # [阪医Python会HP](https://oumpy.github.io/)
 
 原作：平岡悠  
-現メンテナ：AtamaokaC  
-テーマメンテナ：takyamamoto
+メンテナ (HP係)：AtamaokaC、takyamamoto
 
 ## 全体の仕組み
 
-- ファイルが全て入った、[ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)とoutputディレクトリのHTMLファイルのみが入った、[HTMLをユーザーに出力するレポジトリ](https://github.com/oumpy/oumpy.github.io)がある。
+- 管理ツールおよびサイト原稿 (主にMarkdownファイル) が入った [ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)と、`output/`ディレクトリ (主にHTMLファイル) が入った、[webサイト本体のレポジトリ (出力用レポジトリ)](https://github.com/oumpy/oumpy.github.io) がある。
 
-- 基本は管理用レポジトリをプルして、設定を変更したり、content内の新しいブログを追加したりする。
-完成したら、管理用レポジトリにプッシュするとともに、出力用レポジトリにもoutputの中身をpushする。この繰り返し。
+- 基本は管理用レポジトリをプルして、設定を変更したり、`content/article/`内に新しい記事を追加したりする。
+  完成したら、管理用レポジトリにプッシュするとともに、出力用レポジトリにもoutputの中身をpushする。この繰り返し。
+   (後述の自動更新システムを使えば、日常更新作業で出力用レポジトリを手動で扱う必要はない。)
 
-- 会員は本レポジトリ（hp_management）を自分のGitHubアカウントにfork、`content/`下のMarkdownファイルを編集・追加してプルリクエストを送ることを推奨。
-
-- ブログ記事は（少なくとも当面）はてなブログに掲載（当HPからリンク）。
+- 会員は本レポジトリ (hp_management) を自分のGitHubアカウントにfork、`content/`下のMarkdownファイルを編集・追加してプルリクエストを送ることを推奨。
 
 - 以下は主に管理者・開発者向けの技術的内容です。**記事更新の方法などは`content/README.md`を参照** のこと。
 以下の内容をやる必要はありません。
@@ -74,14 +72,6 @@ Slug: index
 
 ### 導入
 
-#### ツールのインストール
-
-環境：Python 3.6以降
-
-```bash
-$ pip install pelican Markdown nbconvert
-```
-
 #### レポジトリのクローンとテーマファイル(voidy-bootstrap)のコピー
 
 ```bash
@@ -98,6 +88,22 @@ SITEREPOSITORY = 'https://github.com/oumpy/oumpy.github.io.git'
 `init.sh` の中で自動的に読み込まれる。）
 
 テーマのファイルのみコピーし直したい場合も `sh init.sh` でOK。
+
+#### Pythonパッケージのインストール
+
+環境：Python 3.6以降
+
+```bash
+$ pip install pelican Markdown nbconvert
+```
+
+または `hp_management/` 直下で
+
+```bash
+$ pip install -r requirements.txt
+```
+
+でインストールできる。
 
 ### 更新のアップ
 

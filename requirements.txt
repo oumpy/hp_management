@@ -1,0 +1,4 @@
+pelican
+Markdown
+nbconvert
+IPython

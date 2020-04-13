@@ -1,23 +1,3 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<p class="pagetop"><a href="#wrap"></a></p>
-<script>
-$(document).ready(function() {
-    var pagetop = $('.pagetop');
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 600) {
-            pagetop.fadeIn();
-        } else {
-            pagetop.fadeOut();
-            }
-        });
-        pagetop.click(function () {
-            $('body, html').animate({ scrollTop: 0 }, 500);
-                return false;
-    });
-});
-</script>
-
 <!-- colophon  -->
 <!-- Site built using Pelican.  Theme based on VoidyBootstrap. -->
 <address id="site-colophon" style="margin:0px;padding:5px">
