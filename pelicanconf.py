@@ -61,6 +61,7 @@ PLUGINS = [
     'pelican-ipynb.markup',
     'render_math',
     'liquid_tags.youtube',
+    'tag_cloud',
     'related_posts',
 ]
 
@@ -114,7 +115,7 @@ CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
-CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_taglist.html", )
+CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_tagcloud.html", )
 CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
 
 TWITTER_TIMELINE_HEIGHT = 600
