@@ -10,7 +10,7 @@ on:
       - 'master'
 
 jobs:
-  push_to_master:
+  push_to_site:
     # The type of runner that the job will run on
     needs: [build_preview, empty_preview]
     runs-on: ubuntu-latest
