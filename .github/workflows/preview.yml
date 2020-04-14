@@ -83,7 +83,7 @@ jobs:
       run: |
         rm -rf ./output/previews/$GITHUB_REF
         mkdir -p ./output/previews/$GITHUB_REF
-        cp -a preview ./output/previews/$GITHUB_REF
+        cp -a preview/ ./output/previews/$GITHUB_REF
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
@@ -104,4 +104,4 @@ jobs:
         git config --add url.github:.pushInsteadOf https://github.com/
         git config --add url.github:.pushInsteadOf git@github.com:
         git add .
-        git commit -m '$GITHUB_REF branch updated.' && git push
+        git commit -m "$GITHUB_REF branch updated." && git push
