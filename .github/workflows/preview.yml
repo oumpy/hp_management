@@ -83,7 +83,7 @@ jobs:
       run: |
         rm -rf ./output/previews/$GITHUB_REF
         mkdir -p ./output/previews/$GITHUB_REF
-        cp -a preview/ ./output/previews/$GITHUB_REF
+        cp -a preview/* ./output/previews/$GITHUB_REF/
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
