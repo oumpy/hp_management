@@ -50,7 +50,7 @@ jobs:
         config: |
           Host github github.com
             HostName github.com
-            User ${{ secrets.bot_id_account }}
+            User git
             PreferredAuthentications publickey
             IdentityFile ~/.ssh/identity
 
