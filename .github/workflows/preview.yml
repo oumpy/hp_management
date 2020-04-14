@@ -8,9 +8,6 @@ on:
   push:
     branches-igranore:
       - 'master'
-  delete:
-    branches-igranore:
-      - 'master'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -55,24 +52,9 @@ jobs:
         name: preview
         path: output
 
-  empty_preview:
-    if: github.event_name == 'delete'
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Make Empty Preview
-      run: |
-        mkdir preview
-
-    - name: Save Empty Preview
-      uses: actions/upload-artifact@v1
-      with:
-        name: preview
-        path: output
-
   push_to_master:
     # The type of runner that the job will run on
-    needs: [build_preview, empty_preview]
+    needs: build_preview
     runs-on: ubuntu-latest
 
     steps:
