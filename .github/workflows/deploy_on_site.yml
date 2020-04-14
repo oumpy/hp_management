@@ -48,10 +48,9 @@ jobs:
         name: identity
         known_hosts: ${{ secrets.known_hosts }}
         config: |
-          Host github github.com
+          Host github
             HostName github.com
             User git
-            PreferredAuthentications publickey
             IdentityFile ~/.ssh/identity
 
     - name: Deploy on Site
