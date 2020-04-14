@@ -9,6 +9,7 @@ on:
     branches-igranore:
       - 'master'
 
+jobs:
   push_to_master:
     # The type of runner that the job will run on
     needs: [build_preview, empty_preview]
