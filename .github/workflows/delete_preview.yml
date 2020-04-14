@@ -55,4 +55,4 @@ jobs:
         git config --add url.github:.pushInsteadOf https://github.com/
         git config --add url.github:.pushInsteadOf git@github.com:
         git add .
-        git commit -m '$GITHUB_REF branch deleted.' && git push
+        git commit -m '$GITHUB_REF branch deleted.' && git push || true
