@@ -31,7 +31,7 @@ jobs:
       run: |
         sh tools/init_output.sh
 
-    - name: Set Preview in the output directory
+    - name: Delete Preview in the output directory
       run: |
         rm -rf ./output/previews/$GITHUB_REF
 
