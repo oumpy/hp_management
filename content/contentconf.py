@@ -45,3 +45,5 @@ CUSTOM_LINKS_TITLE = "リンク"
 CUSTOM_TWITTERTL_TITLE = "Timeline"
 
 OPEN_GRAPH_IMAGE = 'logo.jpg'
+
+PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
