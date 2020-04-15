@@ -103,9 +103,20 @@
                 <a href="{{ SITEURL }}/{{ item.url }}">{{ item.title }}</a>
               </li>
             {% endfor %}
-            <li class="divider"></li>
+          {% endif %}
+          {% if ADD_ON_MENU %}
+            {% for item in ADD_ON_MENU %}
+              {% if ( page_name is defined and page_name+'.html' == item.1 ) or ( page is defined and page.url == item.1 ) %}
+              <li class="active">
+              {% else %}
+              <li>
+              {% endif %}
+                <a href="{{ SITEURL }}/{{ item.1 }}">{{ item.0 }}</a>
+              </li>
+            {% endfor %}
           {% endif %}
           {% if not HIDE_ARCHIVES_ON_MENU %}
+            <li class="divider"></li>
             <li class="{% block archive_active %}{% endblock %}">
               <a href="{{ SITEURL }}/{{ ARCHIVES_URL|default('archives.html') }}">Archives</a>
             </li>
