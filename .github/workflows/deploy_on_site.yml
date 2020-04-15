@@ -11,7 +11,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build_and_push:
+  build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -52,9 +52,10 @@ jobs:
         name: identity
         known_hosts: ${{ secrets.known_hosts }}
         config: |
-          Host github
+          Host github github.com
             HostName github.com
             User git
+            PreferredAuthentications publickey
             IdentityFile ~/.ssh/identity
 
     - name: Deploy on Site
@@ -64,4 +65,4 @@ jobs:
         git config --add url.github:.pushInsteadOf https://github.com/
         git config --add url.github:.pushInsteadOf git@github.com:
         git add .
-        git commit -m 'master branch updated.' && git push
+        git commit -m 'master branch updated.' && git push || true
