@@ -1,0 +1,17 @@
+<div class="sidebar_box">
+<div class="box-title"><i class="fa fa-tags fa-fw fa-lg"></i> {{ CUSTOM_TAGS_TITLE }}</div>
+<p class="tag-cloud">
+  {% for tag in tag_cloud %}
+    <span class="tag-{{ tag.1 }}">
+      <a href="{{ SITEURL }}/{{ tag.0.url }}">
+        {% if TAG_CLOUD_BADGE %}
+          <span class="label label-primary">{{ tag.2 }}</span>
+        {% else %}
+          <i class="fa fa-tag"></i>
+        {% endif %}
+        {{ tag.0 }}
+      </a>
+    </span>
+  {% endfor %}
+</p>
+</div>

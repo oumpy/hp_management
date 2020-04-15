@@ -140,39 +140,52 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
 
 ### 記事を投稿する方法
 
+投稿はGitHubのプルリクエストによりますが、方法は2つあります。
+
+方法2の方が若干ですが初心者向けで、プレビューも使えるので推奨ですが、github/oumpy のメンバーに登録される必要があります。
+未登録でも方法1は可能です。
+
+#### 方法その1 (レポジトリのフォークを使う方法)
+
 「フォークからのプルリクエスト」によって行います。
 
 以下簡単に。各段階での詳しいことはネット上にもたくさんありますが、わからなければSlackで質問してください。
 
-#### 事前に必要な設定
+##### 事前に必要な設定
 
-##### Git/GitHub一般の設定
+###### Git/GitHub一般の設定
 
 （すでにGitHubを使っている人は飛ばして次へ）
 
-- GitHub アカウント ( `hoge` とする。以下自分のものに読み替え) と Gitクライアント (Source Treeなど) を設定する。
+- GitHub アカウント ( `hoge` とする。以下自分のものに読み替え) と Gitクライアント (SourceTreeなど) を設定する。
 - 自分でGitHub上に作ったレポジトリにプッシュできることを確認する。
   認証関係はハマりどころなので資料を確認しながら慎重に。
 
-##### 本レポジトリに関する設定
+###### 本レポジトリに関する設定
+
+- `oumpy/hp_management` をクローンしてローカルレポジトリを作成。
+  リモートレポジトリ (`oumpy/hp_management`) の名前はデフォルトで `origin` となる。
+
+  （本README冒頭のコマンド。実行済みの場合はそのままでOK。）
 
 - GitHubの `oumpy/hp_management` で、右上にある「fork」から自分のアカウントにフォーク (コピー) を作成する。
-- `hoge/hp_management` をクローンしてローカルレポジトリを作成。
-  リモートレポジトリ (`hoge/hp_management`) の名前はデフォルトで `origin` となる。
-- `oumpy/hp_management` を2つ目のリモートレポジトリとして設定。名前は `upstream` とする。
-  - 名前は `upstream` / `origin` の代わりに、oumpyの方を `oumpy` 、自分のものを `hoge` として区別してもよい。
-    こちらはGitHub上での呼称と整合する。お好みで。
 
-#### 記事投稿ごとにやること
+- `hoge/hp_management` を2つ目のリモートレポジトリとして設定。2つのリモートレポジトリには適切な名前をつけて区別する。
+  
+  - `hoge/ph_mangement` を `origin`、`oumpy/hp_management` を  `upstream` 。
+  - `hoge/ph_mangement` を `hoge`、`oumpy/hp_management` を  `oumpy` 。こちらはGitHub上での呼称と整合する。
+  
+  どちらでもOK。以下では後者で説明する。
 
-- masterブランチを `upstream/master` からプルして `master` と `upstream/master` を一致させた後、この点に新しいブランチを作成。
+##### 記事投稿ごとにやること
+
+- masterブランチを `oumpy/master` からプルして `master` と `oumpy/master` を一致させた後、この点に新しいブランチを作成。
   ここでは `sugoikiji` とする。
 - 書いた記事ファイルをブランチ `sugoikiji` にコミットする。
   記事タイトルなどをコミットコメントとして書く。
-- ブランチ `sugoikiji` を自分のレポジトリにプッシュする ( ブランチ `origin/sugoikiji` ができる ) 。
+- ブランチ `sugoikiji` を自分のレポジトリにプッシュする ( ブランチ `hoge/sugoikiji` ができる ) 。
 - webブラウザで自分のレポジトリまたはoumpyの元レポジトリに行き、自分の `sugoikiji` から`oumpy/master` へのプルリクエストを作成。
-必要な説明などを同時にコメントとして書く。
-記事の投稿・修正の場合、`article` ラベルをつける。
+必要な説明などを同時にコメントとして書き、`article` ラベルをつける。
 
 通常は以上でやることは終わりです。
 
@@ -180,12 +193,57 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
   また「マージされました」というお知らせがアカウントに紐付けられたメールアドレスにGitHubから送られます。
 - エラーその他で修正が必要で、本人に依頼する必要がある場合は修正リクエストが発行されます。その場合もメールでお知らせが送られます。
 
+#### 方法2 (oumpy上に直接プッシュする方法)
+
+##### 事前に必要な設定
+
+###### Git/GitHub一般の設定
+
+方法1と同じです。すでにGitHubを使っている場合は必要ありません。
+
+###### アカウント登録依頼
+
+`github/oumpy` へのメンバー登録を管理者に依頼する。招待メールが送られてくるので受諾の手続きをする。
+
+###### 本レポジトリに関する設定
+
+`oumpy/hp_management` をクローンしてローカルレポジトリを作成する。
+(本README冒頭のコマンドを実行していればそれでOK。)
+
+リモートの名前は `origin` のままでも良いが、何かの時に方法1を使ったりHP開発に参加したりしたい場合は、方法1と同じように `oumpy` や `upstream` に改称。
+
+以下では方法1と同様に `oumpy` と名づけたものとする。
+
+##### 記事投稿ごとにやること
+
+- masterブランチを `oumpy/master` からプルして `master` と `oumpy/master` を一致させた後、この点に新しいブランチを作成。
+  **この時、名前の先頭に `article/` をつける。**
+  ここでは `article/sugoikiji` とする。
+- 書いた記事ファイルをブランチ `article/sugoikiji` にコミットする。
+  記事タイトルなどをコミットコメントとして書く。
+- ブランチ `article/sugoikiji` をリモートレポジトリ `oumpy` にプッシュする ( ブランチ `oumpy/article/sugoikiji` ができる ) 。
+  (ここでブランチ名が正しくないと、権限がないと言われてプッシュに失敗します。)
+
+- webブラウザで`https://github.com/oumpy/hp_management/`に行き、 `article/sugoikiji` から`master` へのプルリクエストを作成。
+  必要な説明などを同時にコメントとして書き、`article` ラベルをつける。
+
+通常は以上でやることは終わりです。
+
+その後の承認・マージや修正依頼については方法1の場合と同じです。
+
+##### 記事のプレビュー
+
+この方法2では、プルリクエストの前、ブランチをリモートにプッシュした時点で、そのブランチの内容から、サイトのプレビューが自動的に生成される。
+今の場合であれば、 `https://oumpy.github.io/previews/refs/heads/article/sugoikiji/` にブラウザでアクセスすると、プレビューを見ることができる。
+
+ブランチをプッシュしてからプレビューがアップされるまでは通常1分程度 (場合によっては10分かかることなどもある)。
+同じブランチを更新してプッシュするたびにプレビューも更新される。
+またリモートブランチを削除するとプレビューも削除される。
+
 ## サイト全体の情報設定
 
-`content/contentconf.py` に、サイト表題・副題やリンク先などの情報が書かれている。**この設定は `pelicanconf.py` の一部であり、また `pelicanconf.py` 本体の記述よりも優先される。**
+`content/contentconf.py` に、サイト表題・副題やリンク先などの情報が書かれている。
+**この設定は `pelicanconf.py` の一部であり、また `pelicanconf.py` 本体の記述よりも優先される。**
 
 同様に `content/contentpublishconf.py` もあり、テスト時にはない方がよい設定を記述する。
 
-## ToDo
-
-- Member,Calenderなどは必要か？
