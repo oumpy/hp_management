@@ -127,6 +127,11 @@
                    type="application/atom+xml" rel="alternate">
                 <i class="fa fa-rss fa-fw fa-lg"></i> </a></li>
           {% endif %}
+          {% if FEED_ALL_RSS %}
+            <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" 
+                   type="application/rss+xml" rel="alternate">
+                <i class="fas fa-rss-square fa-fw fa-lg"></i> </a></li>
+          {% endif %}
         </ul> <!-- /nav -->
       </div> <!-- /navbar-collapse -->
 	  </div> <!-- /container -->
