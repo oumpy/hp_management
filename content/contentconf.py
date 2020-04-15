@@ -51,4 +51,4 @@ PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
 
 HIDE_ARCHIVES_ON_MENU = True
 ADD_ON_MENU = (('News', 'category/news.html'),)
-# SIDEBAR_HIDE_CATEGORIES = True
+SIDEBAR_HIDE_CATEGORIES = True
