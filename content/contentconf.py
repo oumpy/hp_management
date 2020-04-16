@@ -67,6 +67,7 @@ CATEGORY_CONTENTS = {
     'Blog' : readfile('content/pages/includes/blog_content.html'),
     'News' : readfile('content/pages/includes/news_content.html'),
 }
+DEFAULT_PAGINATION = 10
 
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
