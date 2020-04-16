@@ -47,8 +47,26 @@ CUSTOM_RELATED_ARTICLES_TITLE = "関連記事"
 
 OPEN_GRAPH_IMAGE = 'logo.jpg'
 
-PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
-
+blog_title = '技術ブログ'
+news_title = 'News'
+ADD_ON_MENU = (
+    (blog_title, 'category/blog.html'),
+    (news_title, 'category/news.html'),
+)
 HIDE_ARCHIVES_ON_MENU = True
-ADD_ON_MENU = (('News', 'category/news.html'),)
 SIDEBAR_HIDE_CATEGORIES = True
+
+SHOW_CATEGORY_TITLE = True
+CUSTOM_CATEGORY_TITLES = {'Blog': blog_title, 'News': news_title}
+def readfile(filename):
+    with open(filename, 'r') as f:
+        content = f.readlines()
+    return ''.join(content)
+PAGE_EXCLUDES = ['pages/includes']
+CATEGORY_CONTENTS = {
+    'Blog' : readfile('content/pages/includes/blog_content.html'),
+    'News' : readfile('content/pages/includes/news_content.html'),
+}
+
+
+PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
