@@ -2,8 +2,12 @@
         {% if article.standfirst %}
           <p class="standfirst">{{ article.standfirst|e }}</p>
         {% endif %}
-		{{ article.summary }}
-		<p class="content-emphasis"><a href="{{ SITEURL }}/{{ article.url }}">
-			Read more... <i class="fa fa-arrow-circle-right fa-fw fa-lg"></i> 
-		</a></p>
+        {% if article.summary is defined and article.summary|length >= SUMMARY_MIN_LENGTH|default(1) %}
+          {{ article.summary }}
+        {% else %}
+          <p>{{ article.content|makesummary(SUMMARY_MAX_LENGTH) }}</p>
+          {% endif %}
+        <p class="content-emphasis"><a href="{{ SITEURL }}/{{ article.url }}">
+          Read more... <i class="fa fa-arrow-circle-right fa-fw fa-lg"></i> 
+        </a></p>
       </div>
