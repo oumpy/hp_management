@@ -1,0 +1,4 @@
+{% set cat = category|string %}
+{% if CATEGORY_CONTENTS is defined and cat in CATEGORY_CONTENTS and output_file == page_name+'.html' %}
+{{ CATEGORY_CONTENTS[cat] }}
+{% endif %}

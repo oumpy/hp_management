@@ -52,6 +52,8 @@ PAGINATION_PATTERNS = (
     (1, '{url}', '{save_as}',),
     (2, '{base_name}/latests/{number}/', '{base_name}/latests/{number}/index.html'),
 )
+CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 MARKUP = ('md', 'ipynb')
