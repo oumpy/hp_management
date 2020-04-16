@@ -1,0 +1,57 @@
+# This is a workflow to preview branches
+
+name: Delete_Preview
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  delete:
+    branches-ignore:
+      - 'master'
+
+jobs:
+  push_to_site:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.8' # Semantic version range syntax or exact version of a Python version
+        architecture: 'x64' # Optional - x64 or x86, defaults to x64
+
+    - name: Checkout master branch
+      uses: actions/checkout@v2
+      with:
+        ref: master
+        submodules: false
+
+    - name: Initialize Output Repository
+      run: |
+        sh tools/init_output.sh
+
+    - name: Delete Preview in the output directory
+      run: |
+        rm -rf ./output/previews/$GITHUB_REF
+
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.bot_identity }}
+        name: identity
+        known_hosts: ${{ secrets.known_hosts }}
+        config: |
+          Host github
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/identity
+
+    - name: Deploy on Site
+      run: |
+        cd output/
+        git config user.name $GITHUB_ACTOR
+        git config --add url.github:.pushInsteadOf https://github.com/
+        git config --add url.github:.pushInsteadOf git@github.com:
+        git add .
+        git commit -m '$GITHUB_REF branch deleted.' && git push || true
