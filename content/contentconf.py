@@ -47,11 +47,17 @@ CUSTOM_RELATED_ARTICLES_TITLE = "関連記事"
 
 OPEN_GRAPH_IMAGE = 'logo.jpg'
 
+DISPLAY_PAGES_ON_MENU = False
 blog_title = '技術ブログ'
 news_title = 'News'
 ADD_ON_MENU = (
+    ('Python会について', 'index.html'),
+    ('活動内容', 'activities.html'),
+    ('実績', 'achievements.html'),
     (blog_title, 'category/blog.html'),
     (news_title, 'category/news.html'),
+    ('会員募集', 'recruit.html'),
+    ('Contact', 'contact.html'),
 )
 HIDE_ARCHIVES_ON_MENU = True
 SIDEBAR_HIDE_CATEGORIES = True
