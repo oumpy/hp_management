@@ -54,8 +54,8 @@ ADD_ON_MENU = (
     ('Python会について', 'index.html'),
     ('活動内容', 'activities.html'),
     ('実績', 'achievements.html'),
-    (blog_title, 'category/blog.html'),
-    ('お知らせ', 'category/news.html'),
+    (blog_title, 'blog.html'),
+    ('お知らせ', 'news.html'),
     ('会員募集', 'recruit.html'),
     ('Contact', 'contact.html'),
 )
