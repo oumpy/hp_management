@@ -33,11 +33,11 @@ $$
 
 以下ではモデルを図で表す。
 
-![1]({attach}/images/linear_mixed_model_figs/001.JPG)
+![1]({attach}./images/linear_mixed_model_figs/001.JPG)
 
-![2]({attach}/images/linear_mixed_model_figs/002.JPG)
+![2]({attach}./images/linear_mixed_model_figs/002.JPG)
 
-![3]({attach}/images/linear_mixed_model_figs/003.JPG)
+![3]({attach}./images/linear_mixed_model_figs/003.JPG)
 
 
 ## 固定効果とランダム効果
