@@ -151,6 +151,8 @@ HTMLTAGS_IN_SUMMARY = ('a', 'font', 's', 'strong', 'em', 'u', 'b')
 def filter_makesummary(s, n):
     htmltag_regex = r'<[^>]*?>'
     s = re.compile(r'[\s　]+').sub(' ', s)
+    s = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub(' ', s) # for jupyter. in general, probably buggy.
+    s = re.compile(r'([\s　]|&#182;)+').sub(' ', s)
     cur_pos = 0
     length = 0
     max_length = SUMMARY_MAX_LENGTH
