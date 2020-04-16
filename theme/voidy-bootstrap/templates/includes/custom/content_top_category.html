@@ -1,4 +1,15 @@
 {% set cat = category|string %}
+{% if SHOW_CATEGORY_TITLE %}
+  {% if CUSTOM_CATEGORY_TITLES is defined and cat in CUSTOM_CATEGORY_TITLES %}
+<header>
+  <h1 itemprop="name headline">{{ CUSTOM_CATEGORY_TITLES[cat] }}</h1>
+</header>
+  {% else %}
+<header>
+  <h1 itemprop="name headline">{{ cat }}</h1>
+</header>
+  {% endif %}
+{% endif %}
 {% if CATEGORY_CONTENTS is defined and cat in CATEGORY_CONTENTS and output_file == page_name+'.html' %}
 {{ CATEGORY_CONTENTS[cat] }}
 {% endif %}
