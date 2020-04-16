@@ -49,13 +49,13 @@ OPEN_GRAPH_IMAGE = 'logo.jpg'
 
 DISPLAY_PAGES_ON_MENU = False
 blog_title = '技術ブログ'
-news_title = 'News'
+news_title = 'Python会からのお知らせ'
 ADD_ON_MENU = (
     ('Python会について', 'index.html'),
     ('活動内容', 'activities.html'),
     ('実績', 'achievements.html'),
     (blog_title, 'category/blog.html'),
-    (news_title, 'category/news.html'),
+    ('お知らせ', 'category/news.html'),
     ('会員募集', 'recruit.html'),
     ('Contact', 'contact.html'),
 )
