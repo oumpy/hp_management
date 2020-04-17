@@ -148,6 +148,7 @@ def filter_left(s, n):
 JINJA_FILTERS += (('left', filter_left),)
 
 HTMLTAGS_IN_SUMMARY = ('a', 'font', 's', 'strong', 'em', 'u', 'b')
+REPLACETAGS_IN_SUMMARY = dict([('h%d' % i, 'strong') for i in range(1,10)])
 def filter_makesummary(s, n):
     htmltag_regex = r'<[^>]*?>'
     s = re.compile(r'[\s　]+').sub(' ', s)
@@ -170,6 +171,15 @@ def filter_makesummary(s, n):
                 else:
                     tag_stack.append(tag_sp)
                 ret += s[cur_pos: end]
+            elif tag_sp in REPLACETAGS_IN_SUMMARY.keys():
+                tag_sp = REPLACETAGS_IN_SUMMARY[tag_sp]
+                ret += s[cur_pos: start]
+                if tag[1] == '/':
+                    tag_stack.pop()
+                    ret += '</%s>' % tag_sp
+                else:
+                    tag_stack.append(tag_sp)
+                    ret += '<%s>' % tag_sp
             else:
                 ret += s[cur_pos: start]
             length += start - cur_pos
