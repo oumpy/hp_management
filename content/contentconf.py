@@ -64,6 +64,7 @@ ADD_ON_MENU = (
 HIDE_ARCHIVES_ON_MENU = True
 SIDEBAR_HIDE_CATEGORIES = True
 
+SHOW_CATEGORIES_ON_LIST = False
 SHOW_CATEGORY_TITLE = True
 CUSTOM_CATEGORY_TITLES = {'News': 'Python会からのお知らせ'}
 def readfile(filename):
