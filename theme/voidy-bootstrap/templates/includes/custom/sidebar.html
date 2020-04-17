@@ -34,8 +34,9 @@
 {% include "includes/" + mid %}
 {% endfor %}
 
-<div class="sidebar_box">
+{% if not SIDEBAR_HIDE_FEEDS %}
 {% if FEED_ALL_ATOM or FEED_ALL_RSS %}
+<div class="sidebar_box">
 <div class="box-title"><i class="fa fa-rss fa-fw fa-lg"></i> Feeds</div>
 <div class="box-contents">
 <ul class="list-unstyled">
@@ -49,6 +50,7 @@
   {% endif %}
 </ul>
 </div>
+</div>
+{% endif %}
 {% endif %}
 {% include "includes/" + CUSTOM_SIDEBAR_BOTTOM|default("sidebar_bottom.html") ignore missing %}
-</div>
