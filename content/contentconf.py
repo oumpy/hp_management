@@ -47,4 +47,33 @@ CUSTOM_RELATED_ARTICLES_TITLE = "関連記事"
 
 OPEN_GRAPH_IMAGE = 'logo.jpg'
 
+DISPLAY_PAGES_ON_MENU = False
+blog_title = '技術ブログ'
+news_title = 'Python会からのお知らせ'
+ADD_ON_MENU = (
+    ('Python会について', 'index.html'),
+    ('活動内容', 'activities.html'),
+    ('実績', 'achievements.html'),
+    (blog_title, 'blog.html'),
+    ('お知らせ', 'news.html'),
+    ('会員募集', 'recruit.html'),
+    ('Contact', 'contact.html'),
+)
+HIDE_ARCHIVES_ON_MENU = True
+SIDEBAR_HIDE_CATEGORIES = True
+
+SHOW_CATEGORY_TITLE = True
+CUSTOM_CATEGORY_TITLES = {'Blog': blog_title, 'News': news_title}
+def readfile(filename):
+    with open(filename, 'r') as f:
+        content = f.readlines()
+    return ''.join(content)
+PAGE_EXCLUDES = ['pages/includes']
+CATEGORY_CONTENTS = {
+    'Blog' : readfile('content/pages/includes/blog_content.html'),
+    'News' : readfile('content/pages/includes/news_content.html'),
+}
+DEFAULT_PAGINATION = 10
+
+
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'

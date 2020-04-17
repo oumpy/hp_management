@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 import datetime
 import os
+import re
 import sys
 sys.path.append(os.curdir)
 
@@ -33,7 +34,7 @@ this_year = datetime.date.today().year
 ARTICLE_PATHS = [ 'articles/%dsy/' % y for y in range(start_year, this_year+2) ]
 ARTICLE_SAVE_AS = ARTICLE_URL ='{category}/{date:%Y}/{date:%m}/{slug}.html'
 PAGE_SAVE_AS = PAGE_URL ='{slug}.html'
-
+CATEGORY_SAVE_AS = CATEGORY_URL = '{slug}.html'
 INDEX_SAVE_AS = 'articles.html'
 
 # Feed generation is usually not desired when developing
@@ -52,6 +53,8 @@ PAGINATION_PATTERNS = (
     (1, '{url}', '{save_as}',),
     (2, '{base_name}/latests/{number}/', '{base_name}/latests/{number}/index.html'),
 )
+CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 MARKUP = ('md', 'ipynb')
@@ -130,6 +133,59 @@ DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
 
 TWITTER_CARD = True
 OPEN_GRAPH = True
+
+SUMMARY_MAX_LENGTH = 140  # same as Twitter
+
+JINJA_FILTERS = ()
+def filter_removetag(s):
+    return re.compile(r'<[^>]*?>').sub('', s)
+JINJA_FILTERS += (('removetag', filter_removetag),)
+def filter_left(s, n):
+    if len(s) <= n:
+        return s
+    else:
+        return s[:n]
+JINJA_FILTERS += (('left', filter_left),)
+
+HTMLTAGS_IN_SUMMARY = ('a', 'font', 's', 'strong', 'em', 'u', 'b')
+def filter_makesummary(s, n):
+    htmltag_regex = r'<[^>]*?>'
+    s = re.compile(r'[\s　]+').sub(' ', s)
+    s = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub(' ', s) # for jupyter. in general, probably buggy.
+    s = re.compile(r'([\s　]|&#182;)+').sub(' ', s)
+    cur_pos = 0
+    length = 0
+    max_length = SUMMARY_MAX_LENGTH
+    tag_stack = []
+    ret = ''
+    for m in re.finditer(htmltag_regex, s):
+        start = m.start()
+        end = m.end()
+        tag = m.group()
+        if length + (start - cur_pos) < max_length:
+            tag_sp = re.match(r'(</|<)([^\s/>]*)', tag).group(2).lower()
+            if tag_sp in HTMLTAGS_IN_SUMMARY:
+                if tag[1] == '/':
+                    tag_stack.pop()
+                else:
+                    tag_stack.append(tag_sp)
+                ret += s[cur_pos: end]
+            else:
+                ret += s[cur_pos: start]
+            length += start - cur_pos
+            cur_pos = end
+        else:
+            w = max_length - length
+            ret += s[cur_pos: cur_pos + w]
+            for t in tag_stack[::-1]:
+                ret += '</' + t + '>'
+            break
+    else:
+        ret += s[cur_pos: cur_pos + (max_length - length)]
+    ret += '.....'
+    return ret
+JINJA_FILTERS += (('makesummary', filter_makesummary),)
+
 
 # Read user's custom settings.
 from content.contentconf import *
