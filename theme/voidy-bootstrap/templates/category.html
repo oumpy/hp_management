@@ -34,6 +34,9 @@
 {% else %}
     <li class="active"><a href="{{ SITEURL }}/{{ page_name }}.html">{{ category }}</a></li>
 {% endif %}
+{% if articles_paginator is defined and articles_paginator._num_pages > 1 %}
+    <li class="text-muted">{{ articles_page.number }} / {{ articles_paginator._num_pages }} pages</li>
+{% endif %}
 </ol>
 {% endblock content_header %}
 
