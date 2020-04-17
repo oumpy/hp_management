@@ -20,11 +20,13 @@
 {% endif %}
 <ol class="breadcrumb">
     <li><a href="{{ SITEURL }}/" title="Home" rel="home">
-		<i class="fa fa-home fa-fw fa-lg"></i> </a></li>
+        <i class="fa fa-home fa-fw fa-lg"></i> </a></li>
+{% if SHOW_CATEGORIES_ON_LIST|default(true) %}
 {% if CATEGORIES_URL %}
     <li><a href="{{ SITEURL }}/{{ CATEGORIES_URL }}">Categories </a></li>
 {% else %}
     <li>Categories </li>
+{% endif %}
 {% endif %}
 {% set cat = category|string %}
 {% if CUSTOM_CATEGORY_NAMES is defined and cat in CUSTOM_CATEGORY_NAMES %}
