@@ -177,8 +177,8 @@ def filter_makesummary(s, n):
         else:
             w = max_length - length
             ret += s[cur_pos: cur_pos + w]
-            for t in tag_stack[::-1]:
-                ret += '</' + t + '>'
+            for tag_sp in tag_stack[::-1]:
+                ret += '</%s>' % tag_sp
             break
     else:
         ret += s[cur_pos: cur_pos + (max_length - length)]
