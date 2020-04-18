@@ -31,7 +31,7 @@ $$
 Y_{ij}=\beta_1+\beta_2 t_{ij}+b_{1i}+b_{2i}t_{ij}+\epsilon_{ij}\qquad (j=1, 2, \cdots, n_i)
 $$
 
-以下ではモデルを図で表す。
+ただし、$t_{ij}$は$i$番目の被験者の$j$番目の(イベント)時点である。以下ではモデルを図で表す。
 
 ![1]({attach}./images/linear_mixed_model_figs/001.JPG)
 
