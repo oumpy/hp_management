@@ -75,5 +75,10 @@ CATEGORY_CONTENTS = {
 }
 DEFAULT_PAGINATION = 10
 
+TAG_GROUPS = [
+    ('Research tools & techniques', ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition']),
+    ('Programming', ['Python', 'Shell script', 'GitHub', '競技プログラミング']),
+    ('その他', ['論文関連', '検定試験', '海外留学']),
+]
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
