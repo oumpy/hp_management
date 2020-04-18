@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 import datetime
 import os
-import re
 import sys
 sys.path.append(os.curdir)
 
@@ -134,58 +133,7 @@ DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
 TWITTER_CARD = True
 OPEN_GRAPH = True
 
-SUMMARY_MAX_LENGTH = 140  # same as Twitter
-
 JINJA_FILTERS = ()
-def filter_removetag(s):
-    return re.compile(r'<[^>]*?>').sub('', s)
-JINJA_FILTERS += (('removetag', filter_removetag),)
-def filter_left(s, n):
-    if len(s) <= n:
-        return s
-    else:
-        return s[:n]
-JINJA_FILTERS += (('left', filter_left),)
-
-HTMLTAGS_IN_SUMMARY = ('a', 'font', 's', 'strong', 'em', 'u', 'b')
-def filter_makesummary(s, n):
-    htmltag_regex = r'<[^>]*?>'
-    s = re.compile(r'[\s　]+').sub(' ', s)
-    s = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub(' ', s) # for jupyter. in general, probably buggy.
-    s = re.compile(r'([\s　]|&#182;)+').sub(' ', s)
-    cur_pos = 0
-    length = 0
-    max_length = SUMMARY_MAX_LENGTH
-    tag_stack = []
-    ret = ''
-    for m in re.finditer(htmltag_regex, s):
-        start = m.start()
-        end = m.end()
-        tag = m.group()
-        if length + (start - cur_pos) < max_length:
-            tag_sp = re.match(r'(</|<)([^\s/>]*)', tag).group(2).lower()
-            if tag_sp in HTMLTAGS_IN_SUMMARY:
-                if tag[1] == '/':
-                    tag_stack.pop()
-                else:
-                    tag_stack.append(tag_sp)
-                ret += s[cur_pos: end]
-            else:
-                ret += s[cur_pos: start]
-            length += start - cur_pos
-            cur_pos = end
-        else:
-            w = max_length - length
-            ret += s[cur_pos: cur_pos + w]
-            for t in tag_stack[::-1]:
-                ret += '</' + t + '>'
-            break
-    else:
-        ret += s[cur_pos: cur_pos + (max_length - length)]
-    ret += '.....'
-    return ret
-JINJA_FILTERS += (('makesummary', filter_makesummary),)
-
 import jinja2
 def filter_apply_jinja2(content,tags,siteurl):
     template = jinja2.Template(content)
