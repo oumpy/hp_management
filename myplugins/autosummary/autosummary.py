@@ -26,6 +26,54 @@ def initialized(pelican):
                                     '<!-- PELICAN_END_SUMMARY -->')
         pelican.settings.setdefault('SUMMARY_USE_FIRST_PARAGRAPH', False)
 
+
+def filter_makesummary(content, n):
+    htmltag_regex = r'<[^>]*?>'
+    content = re.compile(r'[\s　]+').sub(' ', content)
+    content = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub(' ', content) # for jupyter. in general, probably buggy.
+    content = re.compile(r'([\s　]|&#182;)+').sub(' ', content)
+    cur_pos = 0
+    length = 0
+    max_length = SUMMARY_MAX_LENGTH
+    tag_stack = []
+    summary = ''
+    for m in re.finditer(htmltag_regex, content):
+        start = m.start()
+        end = m.end()
+        tag = m.group()
+        if length + (start - cur_pos) < max_length:
+            tag_sp = re.match(r'(</|<)([^\s/>]*)', tag).group(2).lower()
+            if tag_sp in HTMLTAGS_IN_SUMMARY:
+                if tag[1] == '/':
+                    tag_stack.pop()
+                else:
+                    tag_stack.append(tag_sp)
+                summary += content[cur_pos: end]
+            elif tag_sp in REPLACETAGS_IN_SUMMARY.keys():
+                tag_sp = REPLACETAGS_IN_SUMMARY[tag_sp]
+                summary += content[cur_pos: start]
+                if tag[1] == '/':
+                    tag_stack.pop()
+                    summary += '</%s>' % tag_sp
+                else:
+                    tag_stack.append(tag_sp)
+                    summary += '<%s>' % tag_sp
+            else:
+                summary += content[cur_pos: start]
+            length += start - cur_pos
+            cur_pos = end
+        else:
+            w = max_length - length
+            summary += content[cur_pos: cur_pos + w]
+            for tag_sp in tag_stack[::-1]:
+                summary += '</%s>' % tag_sp
+            break
+    else:
+        summary += content[cur_pos: cur_pos + (max_length - length)]
+    summary += '.....'
+    return summary
+
+
 def extract_summary(instance):
     # if summary is already specified, use it
     # if there is no content, there's nothing to do
