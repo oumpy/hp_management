@@ -137,8 +137,8 @@ OPEN_GRAPH = True
 SUMMARY_MAX_LENGTH = 140  # same as Twitter
 
 JINJA_FILTERS = ()
-def filter_removetag(s):
-    return re.compile(r'<[^>]*?>').sub('', s)
+def filter_removetag(html):
+    return re.compile(r'<[^>]*?>').sub('', html)
 JINJA_FILTERS += (('removetag', filter_removetag),)
 def filter_left(s, n):
     if len(s) <= n:
@@ -148,17 +148,18 @@ def filter_left(s, n):
 JINJA_FILTERS += (('left', filter_left),)
 
 HTMLTAGS_IN_SUMMARY = ('a', 'font', 's', 'strong', 'em', 'u', 'b')
-def filter_makesummary(s, n):
+REPLACETAGS_IN_SUMMARY = dict([('h%d' % i, 'strong') for i in range(1,10)])
+def filter_makesummary(content, n):
     htmltag_regex = r'<[^>]*?>'
-    s = re.compile(r'[\s　]+').sub(' ', s)
-    s = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub(' ', s) # for jupyter. in general, probably buggy.
-    s = re.compile(r'([\s　]|&#182;)+').sub(' ', s)
+    content = re.compile(r'[\s　]+').sub(' ', content)
+    content = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub(' ', content) # for jupyter. in general, probably buggy.
+    content = re.compile(r'([\s　]|&#182;)+').sub(' ', content)
     cur_pos = 0
     length = 0
     max_length = SUMMARY_MAX_LENGTH
     tag_stack = []
-    ret = ''
-    for m in re.finditer(htmltag_regex, s):
+    summary = ''
+    for m in re.finditer(htmltag_regex, content):
         start = m.start()
         end = m.end()
         tag = m.group()
@@ -169,21 +170,30 @@ def filter_makesummary(s, n):
                     tag_stack.pop()
                 else:
                     tag_stack.append(tag_sp)
-                ret += s[cur_pos: end]
+                summary += content[cur_pos: end]
+            elif tag_sp in REPLACETAGS_IN_SUMMARY.keys():
+                tag_sp = REPLACETAGS_IN_SUMMARY[tag_sp]
+                summary += content[cur_pos: start]
+                if tag[1] == '/':
+                    tag_stack.pop()
+                    summary += '</%s>' % tag_sp
+                else:
+                    tag_stack.append(tag_sp)
+                    summary += '<%s>' % tag_sp
             else:
-                ret += s[cur_pos: start]
+                summary += content[cur_pos: start]
             length += start - cur_pos
             cur_pos = end
         else:
             w = max_length - length
-            ret += s[cur_pos: cur_pos + w]
-            for t in tag_stack[::-1]:
-                ret += '</' + t + '>'
+            summary += content[cur_pos: cur_pos + w]
+            for tag_sp in tag_stack[::-1]:
+                summary += '</%s>' % tag_sp
             break
     else:
-        ret += s[cur_pos: cur_pos + (max_length - length)]
-    ret += '.....'
-    return ret
+        summary += content[cur_pos: cur_pos + (max_length - length)]
+    summary += '.....'
+    return summary
 JINJA_FILTERS += (('makesummary', filter_makesummary),)
 
 import jinja2
