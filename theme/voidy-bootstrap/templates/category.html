@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% block title %}Category:{{ category }} - {{ SITENAME }}{% endblock %}
+{% block metadesc %}{{ SITETAGALT }}Posts in category {{ category }}{% endblock %}
+
+{% block    custom_header %}
+{% if CUSTOM_HEADER_CATEGORY %}
+{% include "includes/" + CUSTOM_HEADER_CATEGORY %}
+{% endif %}
+{% endblock custom_header%}
+
+{% block    container_header %}
+{% if CUSTOM_CONTAINER_TOP_CATEGORY %}
+{% include "includes/" + CUSTOM_CONTAINER_TOP_CATEGORY %}
+{% endif %}
+{% endblock container_header %}
+
+{% block    content_header %}
+{% if CUSTOM_CONTENT_TOP_CATEGORY %}
+{% include "includes/" + CUSTOM_CONTENT_TOP_CATEGORY %}
+{% endif %}
+<ol class="breadcrumb">
+    <li><a href="{{ SITEURL }}/" title="Home" rel="home">
+        <i class="fa fa-home fa-fw fa-lg"></i> </a></li>
+{% if SHOW_CATEGORIES_ON_LIST|default(true) %}
+{% if CATEGORIES_URL %}
+    <li><a href="{{ SITEURL }}/{{ CATEGORIES_URL }}">Categories </a></li>
+{% else %}
+    <li>Categories </li>
+{% endif %}
+{% endif %}
+{% set cat = category|string %}
+{% if CUSTOM_CATEGORY_NAMES is defined and cat in CUSTOM_CATEGORY_NAMES %}
+    <li class="active"><a href="{{ SITEURL }}/{{ page_name }}.html">{{ CUSTOM_CATEGORY_NAMES[cat] }}</a></li>
+{% else %}
+    <li class="active"><a href="{{ SITEURL }}/{{ page_name }}.html">{{ category }}</a></li>
+{% endif %}
+{% if articles_paginator is defined and articles_paginator._num_pages > 1 %}
+    <li class="text-muted">{{ articles_page.number }} / {{ articles_paginator._num_pages }} pages</li>
+{% endif %}
+</ol>
+{% endblock content_header %}
+
+{% block article %}
+{% include "includes/index_summaries.html" %}
+{% endblock article %}
+
+{% block    content_footer %}
+{% if CUSTOM_CONTENT_BOTTOM_CATEGORY %}
+{% include "includes/" + CUSTOM_CONTENT_BOTTOM_CATEGORY %}
+{% endif %}
+{% endblock content_footer %}
+
+{% block    container_footer %}
+{% if CUSTOM_CONTAINER_BOTTOM_CATEGORY %}
+{% include "includes/" + CUSTOM_CONTAINER_BOTTOM_CATEGORY %}
+{% endif %}
+{% endblock container_footer %}

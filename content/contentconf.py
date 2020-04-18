@@ -48,22 +48,25 @@ CUSTOM_RELATED_ARTICLES_TITLE = "関連記事"
 OPEN_GRAPH_IMAGE = 'logo.jpg'
 
 DISPLAY_PAGES_ON_MENU = False
-blog_title = '技術ブログ'
-news_title = 'Python会からのお知らせ'
+CUSTOM_CATEGORY_NAMES = {
+    'News': 'お知らせ',
+    'Blog': '技術ブログ',
+}
 ADD_ON_MENU = (
     ('Python会について', 'index.html'),
     ('活動内容', 'activities.html'),
     ('実績', 'achievements.html'),
-    (blog_title, 'blog.html'),
-    ('お知らせ', 'news.html'),
+    (CUSTOM_CATEGORY_NAMES['Blog'], 'blog.html'),
+    (CUSTOM_CATEGORY_NAMES['News'], 'news.html'),
     ('会員募集', 'recruit.html'),
     ('Contact', 'contact.html'),
 )
 HIDE_ARCHIVES_ON_MENU = True
 SIDEBAR_HIDE_CATEGORIES = True
 
+SHOW_CATEGORIES_ON_LIST = False
 SHOW_CATEGORY_TITLE = True
-CUSTOM_CATEGORY_TITLES = {'Blog': blog_title, 'News': news_title}
+CUSTOM_CATEGORY_TITLES = {'News': 'Python会からのお知らせ'}
 def readfile(filename):
     with open(filename, 'r') as f:
         content = f.readlines()
