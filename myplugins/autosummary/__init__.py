@@ -1,1 +1,1 @@
-from .summary import *
+from .autosummary import *
