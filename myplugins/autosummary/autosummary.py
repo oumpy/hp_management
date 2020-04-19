@@ -1,5 +1,5 @@
 """
-Summary
+AutoSummary
 -------
 
 This plugin allows easy, variable length summaries directly embedded into the
