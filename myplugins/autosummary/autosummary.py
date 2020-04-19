@@ -2,8 +2,7 @@
 AutoSummary
 -------
 
-This plugin allows easy, variable length summaries directly embedded into the
-body of your articles.
+This plugin generates summary from article, with customizable tag-selections.
 """
 
 from __future__ import unicode_literals
@@ -14,43 +13,48 @@ import re
 
 def initialized(pelican):
     from pelican.settings import DEFAULT_CONFIG
-    DEFAULT_CONFIG.setdefault('SUMMARY_BEGIN_MARKER',
-                              '<!-- PELICAN_BEGIN_SUMMARY -->')
-    DEFAULT_CONFIG.setdefault('SUMMARY_END_MARKER',
-                              '<!-- PELICAN_END_SUMMARY -->')
-    DEFAULT_CONFIG.setdefault('SUMMARY_USE_FIRST_PARAGRAPH', False)
+    DEFAULT_CONFIG.setdefault('AUTOSUMMARY_KEEP_HTMLTAGS',
+                              ('a', 'font', 's', 'strong', 'em', 'u', 'b'))
+    DEFAULT_CONFIG.setdefault('AUTOSUMMARY_REPLACE_HTMLTAGS',
+                              dict([('h%d' % i, 'strong') for i in range(1,10)]))
+    DEFAULT_CONFIG.setdefault('AUTOSUMMARY_MAX_LENGTH', 140)
+    DEFAULT_CONFIG.setdefault('AUTOSUMMARY_MIN_LENGTH', 1)
     if pelican:
-        pelican.settings.setdefault('SUMMARY_BEGIN_MARKER',
-                                    '<!-- PELICAN_BEGIN_SUMMARY -->')
-        pelican.settings.setdefault('SUMMARY_END_MARKER',
-                                    '<!-- PELICAN_END_SUMMARY -->')
-        pelican.settings.setdefault('SUMMARY_USE_FIRST_PARAGRAPH', False)
+        pelican.settings.setdefault('AUTOSUMMARY_KEEP_HTMLTAGS',
+                                    ('a', 'font', 's', 'strong', 'em', 'u', 'b'))
+        pelican.settings.setdefault('AUTOSUMMARY_REPLACE_HTMLTAGS',
+                                    dict([('h%d' % i, 'strong') for i in range(1,10)]))
+        pelican.settings.setdefault('AUTOSUMMARY_MAX_LENGTH', 140)
+        pelican.settings.setdefault('AUTOSUMMARY_MIN_LENGTH', 1)
 
 
-def filter_makesummary(content, n):
-    htmltag_regex = r'<[^>]*?>'
-    content = re.compile(r'[\s　]+').sub(' ', content)
+def make_autosummary(content, settings):
+    content = str(BeautifulSoup(content, 'html.parser'))
+    content = re.compile(r'([\s　¶]|&#182;)+').sub(' ', content) # &#182; appears in converted jupyter notebooks.
     content = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub(' ', content) # for jupyter. in general, probably buggy.
-    content = re.compile(r'([\s　]|&#182;)+').sub(' ', content)
+    content = re.compile(r'[\s　]+').sub(' ', content)
     cur_pos = 0
     length = 0
-    max_length = SUMMARY_MAX_LENGTH
+    max_length = settings['AUTOSUMMARY_MAX_LENGTH']
+    htmltags = settings['AUTOSUMMARY_KEEP_HTMLTAGS']
+    replacetags = settings['AUTOSUMMARY_REPLACE_HTMLTAGS']
     tag_stack = []
     summary = ''
-    for m in re.finditer(htmltag_regex, content):
+    for m in re.finditer(r'<[^>]*?>', content + '<>'): # HTML tags
         start = m.start()
         end = m.end()
         tag = m.group()
-        if length + (start - cur_pos) < max_length:
+        section_len = start - cur_pos - content.count(' ', cur_pos, start)
+        if length + section_len <= max_length:
             tag_sp = re.match(r'(</|<)([^\s/>]*)', tag).group(2).lower()
-            if tag_sp in HTMLTAGS_IN_SUMMARY:
+            if tag_sp in htmltags:
                 if tag[1] == '/':
                     tag_stack.pop()
                 else:
                     tag_stack.append(tag_sp)
                 summary += content[cur_pos: end]
-            elif tag_sp in REPLACETAGS_IN_SUMMARY.keys():
-                tag_sp = REPLACETAGS_IN_SUMMARY[tag_sp]
+            elif tag_sp in replacetags.keys():
+                tag_sp = replacetags[tag_sp]
                 summary += content[cur_pos: start]
                 if tag[1] == '/':
                     tag_stack.pop()
@@ -60,75 +64,50 @@ def filter_makesummary(content, n):
                     summary += '<%s>' % tag_sp
             else:
                 summary += content[cur_pos: start]
-            length += start - cur_pos
+            length += section_len
             cur_pos = end
         else:
             w = max_length - length
-            summary += content[cur_pos: cur_pos + w]
+            i = 0
+            p = cur_pos
+            while (i < w):
+                if content[p] != ' ':
+                    i += 1
+                p += 1
+            summary += content[cur_pos: p]
             for tag_sp in tag_stack[::-1]:
                 summary += '</%s>' % tag_sp
+            summary += '....'
             break
-    else:
-        summary += content[cur_pos: cur_pos + (max_length - length)]
-    summary += '.....'
     return summary
 
 
+def contentlen(content):
+    content = str(BeautifulSoup(content, 'html.parser'))
+    content = re.compile(r'([\s　¶]|&#182;)+').sub('', content) # &#182; appears in converted jupyter notebooks.
+    content = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub('', content) # for jupyter. in general, probably buggy.
+    return len(re.compile(r'<[^>]*?>').sub('', content))
+
+
 def extract_summary(instance):
+    min_length = instance.settings['AUTOSUMMARY_MIN_LENGTH']
     # if summary is already specified, use it
     # if there is no content, there's nothing to do
-    if hasattr(instance, '_summary') or 'summary' in instance.metadata:
+    if ('summary' in instance.metadata and
+        (contentlen(instance.metadata['summary']) >= min_length or ((not instance._content) and not hasattr(instance, '_summary')))):
         instance.has_summary = True
         return
-
-    if not instance._content:
+    elif hasattr(instance, '_summary') and (contentlen(instance._summary) >= min_length or (not instance._content)):
+        pre_summary = instance._summary
+    elif not instance._content:
         instance.has_summary = False
         return
-
-    begin_marker = instance.settings['SUMMARY_BEGIN_MARKER']
-    end_marker   = instance.settings['SUMMARY_END_MARKER']
-    use_first_paragraph = instance.settings['SUMMARY_USE_FIRST_PARAGRAPH']
-    remove_markers = True
-
-    content = instance._update_content(instance._content, instance.settings['SITEURL'])
-    begin_summary = -1
-    end_summary = -1
-    if begin_marker:
-        begin_summary = content.find(begin_marker)
-    if end_marker:
-        end_summary = content.find(end_marker)
-
-    if begin_summary == -1 and end_summary == -1 and use_first_paragraph:
-        begin_marker, end_marker = '<p>', '</p>'
-        remove_markers = False
-        begin_summary = content.find(begin_marker)
-        end_summary = content.find(end_marker)
-
-    if begin_summary == -1 and end_summary == -1:
-        instance.has_summary = False
-        return
-
-    # skip over the begin marker, if present
-    if begin_summary == -1:
-        begin_summary = 0
     else:
-        begin_summary = begin_summary + len(begin_marker)
+        pre_summary = instance._content
 
-    if end_summary == -1:
-        end_summary = None
+    pre_summary = instance._update_content(pre_summary, instance.settings['SITEURL'])
+    summary = make_autosummary(pre_summary, instance.settings)
 
-    summary = content[begin_summary:end_summary]
-
-    if remove_markers:
-        # remove the markers from the content
-        if begin_summary:
-            content = content.replace(begin_marker, '', 1)
-        if end_summary:
-            content = content.replace(end_marker, '', 1)
-
-    summary = str(BeautifulSoup(summary, 'html.parser'))
-
-    instance._content = content
     # default_status was added to Pelican Content objects after 3.7.1.
     # Its use here is strictly to decide on how to set the summary.
     # There's probably a better way to do this but I couldn't find it.
