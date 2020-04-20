@@ -1,14 +1,14 @@
 {% set cat = category|string %}
 {% if SHOW_CATEGORY_TITLE %}
-<header>
   {% if CUSTOM_CATEGORY_TITLES is defined and cat in CUSTOM_CATEGORY_TITLES %}
+<header>
   <h1 itemprop="name headline">{{ CUSTOM_CATEGORY_TITLES[cat] }}</h1>
-  {% elif CUSTOM_CATEGORY_NAMES is defined and cat in CUSTOM_CATEGORY_NAMES %}
-  <h1 itemprop="name headline">{{ CUSTOM_CATEGORY_NAMES[cat] }}</h1>
-  {% else %}
-  <h1 itemprop="name headline">{{ cat }}</h1>
-  {% endif %}
 </header>
+  {% else %}
+<header>
+  <h1 itemprop="name headline">{{ cat }}</h1>
+</header>
+  {% endif %}
 {% endif %}
 {% if CATEGORY_CONTENTS is defined and cat in CATEGORY_CONTENTS and output_file == page_name+'.html' %}
   {% if FILTER_APPLY_JINJA2|default(false) %}

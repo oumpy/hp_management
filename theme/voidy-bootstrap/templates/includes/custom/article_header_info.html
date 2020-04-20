@@ -10,13 +10,7 @@
     {% endif %}
     in 
     <a href="{{ SITEURL }}/{{ article.category.url }}">
-    {% set cat = article.category|string %}
-    {% if CUSTOM_CATEGORY_NAMES is defined and cat in CUSTOM_CATEGORY_NAMES %}
-      {{ CUSTOM_CATEGORY_NAMES[cat] }}
-    {% else %}
-      {{ cat }}
-    {% endif %}
-    </a>
+      {{ article.category }}</a>
     &nbsp;&nbsp;
     {% if PDF_PROCESSOR %}
     <span class="label">
