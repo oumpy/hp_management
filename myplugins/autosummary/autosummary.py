@@ -16,14 +16,14 @@ def initialized(pelican):
     DEFAULT_CONFIG.setdefault('AUTOSUMMARY_KEEP_HTMLTAGS',
                               ('a', 'font', 's', 'strong', 'em', 'u', 'b'))
     DEFAULT_CONFIG.setdefault('AUTOSUMMARY_REPLACE_HTMLTAGS',
-                              dict([('h%d' % i, 'strong') for i in range(1,10)]))
+                              {'h[1-9]' : 'strong'})
     DEFAULT_CONFIG.setdefault('AUTOSUMMARY_MAX_LENGTH', 140)
     DEFAULT_CONFIG.setdefault('AUTOSUMMARY_MIN_LENGTH', 1)
     if pelican:
         pelican.settings.setdefault('AUTOSUMMARY_KEEP_HTMLTAGS',
                                     ('a', 'font', 's', 'strong', 'em', 'u', 'b'))
         pelican.settings.setdefault('AUTOSUMMARY_REPLACE_HTMLTAGS',
-                                    dict([('h%d' % i, 'strong') for i in range(1,10)]))
+                                    {'h[1-9]' : 'strong'})
         pelican.settings.setdefault('AUTOSUMMARY_MAX_LENGTH', 140)
         pelican.settings.setdefault('AUTOSUMMARY_MIN_LENGTH', 1)
 
@@ -47,23 +47,27 @@ def make_autosummary(content, settings):
         section_len = start - cur_pos - content.count(' ', cur_pos, start)
         if length + section_len <= max_length:
             tag_sp = re.match(r'(</|<)([^\s/>]*)', tag).group(2).lower()
-            if tag_sp in htmltags:
-                if tag[1] == '/':
-                    tag_stack.pop()
-                else:
-                    tag_stack.append(tag_sp)
-                summary += content[cur_pos: end]
-            elif tag_sp in replacetags.keys():
-                tag_sp = replacetags[tag_sp]
-                summary += content[cur_pos: start]
-                if tag[1] == '/':
-                    tag_stack.pop()
-                    summary += '</%s>' % tag_sp
-                else:
-                    tag_stack.append(tag_sp)
-                    summary += '<%s>' % tag_sp
+            for tag_regex in htmltags:
+                if re.fullmatch(tag_regex, tag_sp):
+                    if tag[1] == '/':
+                        tag_stack.pop()
+                    else:
+                        tag_stack.append(tag_sp)
+                    summary += content[cur_pos: end]
+                    break
             else:
-                summary += content[cur_pos: start]
+                for reptag_regex, newtag in replacetags.items():
+                    if re.fullmatch(reptag_regex, tag_sp):
+                        summary += content[cur_pos: start]
+                        if tag[1] == '/':
+                            tag_stack.pop()
+                            summary += '</%s>' % newtag
+                        else:
+                            tag_stack.append(tag_sp)
+                            summary += '<%s>' % newtag
+                        break
+                else:
+                    summary += content[cur_pos: start]
             length += section_len
             cur_pos = end
         else:
