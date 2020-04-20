@@ -1,9 +1,9 @@
-{% set cat = category|string %}
 {% if SHOW_CATEGORY_TITLE %}
 <header>
   <h1 itemprop="name headline">{{ category.name_long|default(category) }}</h1>
 </header>
 {% endif %}
+{% set cat = category.slug %}
 {% if CATEGORY_CONTENTS is defined and cat in CATEGORY_CONTENTS and output_file == page_name+'.html' %}
   {% if FILTER_APPLY_JINJA2|default(false) %}
     {{ CATEGORY_CONTENTS[cat]|apply_jinja2(tags,SITEURL) }}

@@ -72,8 +72,8 @@ def readfile(filename):
     return ''.join(content)
 PAGE_EXCLUDES = ['pages/includes']
 CATEGORY_CONTENTS = {
-    'Blog' : readfile('content/pages/includes/blog_content.html'),
-    'News' : readfile('content/pages/includes/news_content.html'),
+    'blog' : readfile('content/pages/includes/blog_content.html'),
+    'news' : readfile('content/pages/includes/news_content.html'),
 }
 DEFAULT_PAGINATION = 10
 
