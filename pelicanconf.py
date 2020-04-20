@@ -59,13 +59,14 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 #RELATIVE_URLS = True
 MARKUP = ('md', 'ipynb')
 
-PLUGIN_PATHS = ['./plugins']
+PLUGIN_PATHS = ['./plugins', './myplugins']
 PLUGINS = [
     'pelican-ipynb.markup',
     'render_math',
     'liquid_tags.youtube',
     'tag_cloud',
     'related_posts',
+    'category_names',
 ]
 
 RELATED_POSTS_MAX = 3
