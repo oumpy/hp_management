@@ -27,7 +27,7 @@ def rename_category(category, settings):
     attrs = settings['CATEGORYNAMES_ATTRIBUTES']    
     alters = settings['CATEGORYNAMES_ALTERNATIVES']
     cat = str(category)
-    category.slug = cat
+    category.slug = cat.lower()
     if cat in alters.keys():
         new_cats = alters[cat]
         if not isinstance(new_cats,(list,tuple)):
