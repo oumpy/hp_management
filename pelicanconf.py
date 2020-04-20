@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 import datetime
 import os
-import re
 import sys
 sys.path.append(os.curdir)
 
@@ -66,6 +65,7 @@ PLUGINS = [
     'liquid_tags.youtube',
     'tag_cloud',
     'related_posts',
+    'autosummary',
     'category_names',
 ]
 
@@ -135,68 +135,7 @@ DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
 TWITTER_CARD = True
 OPEN_GRAPH = True
 
-SUMMARY_MAX_LENGTH = 140  # same as Twitter
-
 JINJA_FILTERS = ()
-def filter_removetag(html):
-    return re.compile(r'<[^>]*?>').sub('', html)
-JINJA_FILTERS += (('removetag', filter_removetag),)
-def filter_left(s, n):
-    if len(s) <= n:
-        return s
-    else:
-        return s[:n]
-JINJA_FILTERS += (('left', filter_left),)
-
-HTMLTAGS_IN_SUMMARY = ('a', 'font', 's', 'strong', 'em', 'u', 'b')
-REPLACETAGS_IN_SUMMARY = dict([('h%d' % i, 'strong') for i in range(1,10)])
-def filter_makesummary(content, n):
-    htmltag_regex = r'<[^>]*?>'
-    content = re.compile(r'[\s　]+').sub(' ', content)
-    content = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub(' ', content) # for jupyter. in general, probably buggy.
-    content = re.compile(r'([\s　]|&#182;)+').sub(' ', content)
-    cur_pos = 0
-    length = 0
-    max_length = SUMMARY_MAX_LENGTH
-    tag_stack = []
-    summary = ''
-    for m in re.finditer(htmltag_regex, content):
-        start = m.start()
-        end = m.end()
-        tag = m.group()
-        if length + (start - cur_pos) < max_length:
-            tag_sp = re.match(r'(</|<)([^\s/>]*)', tag).group(2).lower()
-            if tag_sp in HTMLTAGS_IN_SUMMARY:
-                if tag[1] == '/':
-                    tag_stack.pop()
-                else:
-                    tag_stack.append(tag_sp)
-                summary += content[cur_pos: end]
-            elif tag_sp in REPLACETAGS_IN_SUMMARY.keys():
-                tag_sp = REPLACETAGS_IN_SUMMARY[tag_sp]
-                summary += content[cur_pos: start]
-                if tag[1] == '/':
-                    tag_stack.pop()
-                    summary += '</%s>' % tag_sp
-                else:
-                    tag_stack.append(tag_sp)
-                    summary += '<%s>' % tag_sp
-            else:
-                summary += content[cur_pos: start]
-            length += start - cur_pos
-            cur_pos = end
-        else:
-            w = max_length - length
-            summary += content[cur_pos: cur_pos + w]
-            for tag_sp in tag_stack[::-1]:
-                summary += '</%s>' % tag_sp
-            break
-    else:
-        summary += content[cur_pos: cur_pos + (max_length - length)]
-    summary += '.....'
-    return summary
-JINJA_FILTERS += (('makesummary', filter_makesummary),)
-
 import jinja2
 def filter_apply_jinja2(content,tags,siteurl):
     template = jinja2.Template(content)
