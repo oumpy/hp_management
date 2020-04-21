@@ -4,7 +4,7 @@
 <div class="box-contents">
 <div class="horizontal-scroll">
 <ul class="list-unstyled recent-posts" id="recentposts">
-  {% for article in articles[:RECENT_POST_COUNT|default(5)] %}
+  {% for article in (all_articles|default(articles))[:RECENT_POST_COUNT|default(5)] %}
     <li><a href="{{ SITEURL }}/{{ article.url }}">({{ article.date.month }}/{{ article.date.day }}) {{ article.title }}</a></li>
   {% endfor %}
 </ul>
