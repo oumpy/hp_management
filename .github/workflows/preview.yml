@@ -111,7 +111,7 @@ jobs:
       run: |
         echo "::add-mask::$FOR_WEBHOOKS_SECRET"
         curl --verbose --fail --show-error --location --request POST \
-        --url "https://api.github.com/repos/$GITHUB_REPOSITORY/dispatches" \
+        "https://api.github.com/repos/$GITHUB_REPOSITORY/dispatches" \
         --header "Authorization: token $FOR_WEBHOOKS_SECRET" \
         --header 'Content-Type: application/json' \
         --header 'Accept: application/vnd.github.everest-preview+json' \
