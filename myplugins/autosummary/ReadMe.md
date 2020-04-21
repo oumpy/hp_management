@@ -23,3 +23,6 @@ This passes the results of Summary to AutoSummary.
 ## Acqknowledgement & License
 This plugin is forked from [Pelican Summary Plugin](https://github.com/getpelican/pelican-plugins/tree/master/summary).
 Along with the upstream, this plugin is distributed under the GNU Affero General Public License v3.0 or later.
+
+## Author
+This plugin was written by AtamaokaC <realatamaokac@gmail.com> & Osaka University Medical School Python Association (OUMPY).
