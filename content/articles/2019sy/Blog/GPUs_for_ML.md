@@ -4,7 +4,6 @@ Modified: 2019.10.07
 Tags: Machine Learning, ハードウェア
 Slug: GPUs_for_ML
 Author: 小川
-Summary: 某所でGPU調達の必要があって、いまどきの事情を調べました。ゲームのことは知りません。
 
 某所でGPU調達の必要があって、いまどきの事情を調べました。
 ゲームのことは知りません。
