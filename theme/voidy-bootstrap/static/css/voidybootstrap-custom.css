@@ -463,3 +463,9 @@ ul#toc {
   display: block;
   margin: auto;
 }
+
+.horizontal-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+  

@@ -1,0 +1,14 @@
+{% if DISPLAY_RECENT_POSTS_ON_SIDEBAR %}
+<div class="sidebar_box">
+<div class="box-title"><i class="fas fa-bell"></i> {{ CUSTOM_RECENTPOSTS_TITLE|default('Recent Posts') }}</div>
+<div class="box-contents">
+<div class="horizontal-scroll">
+<ul class="list-unstyled recent-posts" id="recentposts">
+  {% for article in articles[:RECENT_POST_COUNT|default(5)] %}
+    <li><a href="{{ SITEURL }}/{{ article.url }}">({{ article.date.month }}/{{ article.date.day }}) {{ article.title }}</a></li>
+  {% endfor %}
+</ul>
+</div>
+</div>
+</div>
+{% endif %}
