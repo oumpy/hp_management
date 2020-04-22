@@ -18,10 +18,10 @@ SITETAG = SITENAME
 SOCIAL = (
     # ('facebook', ''),
     # ('技術Blog (はてな)','https://oumedpython.hatenablog.com/'),
-    ('Twitter', 'https://twitter.com/oumed_python'),
-    ('E-mail', 'mailto:handai.python@gmail.com'),
-    ('GitHub', 'https://github.com/oumpy'),
-    ('YouTube', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ'),
+    ('<i class="fab fa-twitter"></i> Twitter', 'https://twitter.com/oumed_python'),
+    ('<i class="far fa-envelope"></i> E-mail', 'mailto:handai.python@gmail.com'),
+    ('<i class="fab fa-github"></i> GitHub', 'https://github.com/oumpy'),
+    ('<i class="fab fa-youtube"></i> YouTube', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ'),
 )
 
 # Blogroll
