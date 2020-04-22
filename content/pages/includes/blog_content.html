@@ -1,15 +1,17 @@
 <div class="content-body" itemprop="text">
 {% for group in TAG_GROUPS %}
   <h2>{{ group.0 }}</h2>
-  {% for tagname in group.1 %}
-    {% for tag in tags %}
+  <div class="blog_box">
+  <ul class="group_taglist">
+  {%- for tagname in group.1 -%}
+    {%- for tag in tags -%}
       {% if tag.0.name == tagname %}
-        <div class="blog_box">
-        <p><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tagname }}</a></p>
-        </div>
+    <li><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tagname }}</a></li>
       {% endif %}
-    {% endfor %}
-  {% endfor %}
+    {%- endfor -%}
+  {%- endfor -%}
+  </ul>
+  </div>
 {% endfor %}
 </div>
 <hr>
