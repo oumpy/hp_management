@@ -10,7 +10,7 @@
 <ul class="list-unstyled social-links">
 {#  {% for name, link, icon in SOCIAL %} #}
   {% for item in SOCIAL %}
-    <li><a href="{{ item[1] }}" target="_blank">&#x2022; {{ item[0] }}</a></li>
+    <li><a href="{{ item[1] }}" target="_blank">{{ item[0] }}</a></li>
   {% endfor %}
 </ul>
 </div>

@@ -17,4 +17,9 @@ from pelicanconf import *
 
 # DELETE_OUTPUT_DIRECTORY = True
 
+# plugins which are applied only on publish
+PLUGINS += [
+    'sitemap',
+]
+
 from content.contentpublishconf import *

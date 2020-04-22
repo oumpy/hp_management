@@ -33,7 +33,7 @@ this_year = datetime.date.today().year
 ARTICLE_PATHS = [ 'articles/%dsy/' % y for y in range(start_year, this_year+2) ]
 ARTICLE_SAVE_AS = ARTICLE_URL ='{category}/{date:%Y}/{date:%m}/{slug}.html'
 PAGE_SAVE_AS = PAGE_URL ='{slug}.html'
-
+CATEGORY_SAVE_AS = CATEGORY_URL = '{slug}.html'
 INDEX_SAVE_AS = 'articles.html'
 
 # Feed generation is usually not desired when developing
@@ -52,17 +52,21 @@ PAGINATION_PATTERNS = (
     (1, '{url}', '{save_as}',),
     (2, '{base_name}/latests/{number}/', '{base_name}/latests/{number}/index.html'),
 )
+CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 MARKUP = ('md', 'ipynb')
 
-PLUGIN_PATHS = ['./plugins']
+PLUGIN_PATHS = ['./plugins', './myplugins']
 PLUGINS = [
     'pelican-ipynb.markup',
     'render_math',
     'liquid_tags.youtube',
     'tag_cloud',
     'related_posts',
+    'autosummary', 'summary', # this order is important!
+    'category_names',
 ]
 
 RELATED_POSTS_MAX = 3
@@ -131,6 +135,22 @@ DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
 
 TWITTER_CARD = True
 OPEN_GRAPH = True
+
+JINJA_FILTERS = ()
+import jinja2
+def filter_apply_jinja2(content,tags,siteurl):
+    template = jinja2.Template(content)
+    variables = dict()
+    variables.update(globals())
+    variables.update(locals())
+    variables.update({
+        'SITEURL' : siteurl,
+        'tags' : tags,
+    })
+    result = template.render(**variables)
+    return result
+JINJA_FILTERS += (('apply_jinja2', filter_apply_jinja2),)
+FILTER_APPLY_JINJA2 = True
 
 # Read user's custom settings.
 from content.contentconf import *

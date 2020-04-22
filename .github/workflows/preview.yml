@@ -69,20 +69,10 @@ jobs:
         ref: master
         submodules: false
 
-    - name: Initialize Output Repository
-      run: |
-        sh tools/init_output.sh
-
     - name: Load Preview Product
       uses: actions/download-artifact@v1
       with:
         name: preview
-
-    - name: Set Preview in the output directory
-      run: |
-        rm -rf ./output/previews/$GITHUB_REF
-        mkdir -p ./output/previews/$GITHUB_REF
-        cp -a preview/* ./output/previews/$GITHUB_REF/
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
@@ -95,6 +85,16 @@ jobs:
             HostName github.com
             User git
             IdentityFile ~/.ssh/identity
+
+    - name: Initialize Output Repository
+      run: |
+        sh tools/init_output.sh
+
+    - name: Set Preview in the output directory
+      run: |
+        rm -rf ./output/previews/$GITHUB_REF
+        mkdir -p ./output/previews/$GITHUB_REF
+        cp -a preview/* ./output/previews/$GITHUB_REF/
 
     - name: Deploy on Site
       run: |
