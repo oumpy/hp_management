@@ -65,7 +65,7 @@ PLUGINS = [
     'liquid_tags.youtube',
     'tag_cloud',
     'related_posts',
-    'autosummary',
+    'autosummary', 'summary', # this order is important!
     'category_names',
 ]
 
