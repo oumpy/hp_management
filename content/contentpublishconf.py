@@ -3,7 +3,7 @@
 SITEREPOSITORY = 'https://github.com/oumpy/oumpy.github.io.git'
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
-SITEURL = 'oumpy.github.io'
+SITEURL = 'https://oumpy.github.io'
 
 # configuration for sitemap plugin
 SITEMAP = {
