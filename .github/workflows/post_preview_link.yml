@@ -6,8 +6,9 @@ name: Post_Preview_Link
 # events but only for the master branch
 on:
   pull_request:
-    types: opened
-
+    # types: opened # temporaly comment cout
+    branches:
+      - master
 jobs:
   post_preview_link:
     # The type of runner that the job will run on
