@@ -28,6 +28,7 @@
 .jumbotron {
 		padding-top: 0px;
 		padding-bottom: 0px;
+    margin-top: -10px;
     margin-bottom: 20px;
     background-color: #0f5889;
 }
