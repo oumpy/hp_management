@@ -117,6 +117,7 @@ CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 SIDEBAR = "custom/sidebar.html"
 CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_tagcloud.html", )
 CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
+SIDEBAR_HIDE_FEEDS = True
 
 TWITTER_TIMELINE_HEIGHT = 600
 SIDEBAR_SIZE = 3
