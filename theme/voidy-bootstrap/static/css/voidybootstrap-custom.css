@@ -463,3 +463,16 @@ ul#toc {
   display: block;
   margin: auto;
 }
+
+ul.group_taglist {
+  list-style:none;
+  padding-left:0;
+}
+ul.group_taglist > li {
+  display:inline;
+  font-size: 18px;
+  font-weight: 500;
+}
+ul.group_taglist > li:not(:nth-child(1)):before {
+  content:" \0a0\0a0 / \0a0\0a0 ";
+}
