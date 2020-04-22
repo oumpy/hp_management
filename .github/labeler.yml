@@ -1,14 +1,14 @@
 article:
-- /content/articles/*/Blog/**/*
+- content/articles/*/Blog/**/*
 page/news:
-- /content/articles/*/News/**/*
-- /content/pages/**/*
+- content/articles/*/News/**/*
+- content/pages/**/*
 theme:
-- /theme/**/*
+- theme/**/*
 system:
-- /.github/**/*
-- /myplugins/**/*
-- /tools/**/*
+- .github/**/*
+- myplugins/**/*
+- tools/**/*
 document:
-- /README.md
-- /content/README.md
+- README.md
+- content/README.md
