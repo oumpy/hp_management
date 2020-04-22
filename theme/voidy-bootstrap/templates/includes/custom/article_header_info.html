@@ -1,7 +1,8 @@
 <div class="article-header-info">
   <p>
+    {% include "includes/article_header_date.html" %}
     {% if article.authors %}
-      Posted by 
+      - Posted by 
       {% for author in article.authors -%}
         <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %}, {% endif %}
       {% endfor %}
