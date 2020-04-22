@@ -66,6 +66,7 @@ PLUGINS = [
     'tag_cloud',
     'related_posts',
     'autosummary', 'summary', # this order is important!
+    'category_names',
 ]
 
 RELATED_POSTS_MAX = 3
