@@ -28,6 +28,7 @@
 .jumbotron {
 		padding-top: 0px;
 		padding-bottom: 0px;
+    margin-top: -10px;
     margin-bottom: 20px;
     background-color: #0f5889;
 }
@@ -462,4 +463,17 @@ ul#toc {
   max-height: calc(90vw * 0.75)!important;
   display: block;
   margin: auto;
+}
+
+ul.group_taglist {
+  list-style:none;
+  padding-left:0;
+}
+ul.group_taglist > li {
+  display:inline;
+  font-size: 18px;
+  font-weight: 500;
+}
+ul.group_taglist > li:not(:nth-child(1)):before {
+  content:" \0a0\0a0 / \0a0\0a0 ";
 }
