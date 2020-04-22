@@ -63,7 +63,7 @@ def make_autosummary(content, settings):
                             tag_stack.pop()
                             summary += '</%s>' % newtag
                         else:
-                            tag_stack.append(tag_sp)
+                            tag_stack.append(newtag)
                             summary += '<%s>' % newtag
                         break
                 else:
