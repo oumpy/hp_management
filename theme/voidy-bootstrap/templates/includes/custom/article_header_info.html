@@ -27,7 +27,12 @@
     {% endif %}
     {% include "includes/translations.html" %}
     {% for tag in article.tags %}
-      <a href="{{ SITEURL }}/{{ tag.url }}"><img class="notebook-badge-image" src="https://img.shields.io/static/v1?label=Tag&message={{ tag }}&labelColor=black&color={{ CUSTOM_TAG_BADGE_COLOR|default('Orange') }}" alt="tag:{{ tag }}"></img></a>
+      {% if CUSTOM_TAG_BADGE_COLORS and tag|string in CUSTOM_TAG_BADGE_COLORS %}
+        {% set color = CUSTOM_TAG_BADGE_COLORS[tag|string] %}
+      {% else %}
+        {% set color = CUSTOM_TAG_BADGE_COLOR|default('orange') %}
+      {% endif %}
+        <a href="{{ SITEURL }}/{{ tag.url }}"><img class="notebook-badge-image" src="https://img.shields.io/static/v1?label=Tag&message={{ tag }}&labelColor=black&color={{ color }}" alt="tag:{{ tag }}"></img></a>
     {% endfor %}
   </p>
 </div> <!-- /.article-header-info -->
