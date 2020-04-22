@@ -1,0 +1,41 @@
+# This is a workflow to preview branches
+
+name: Post_Preview_Link
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  pull_request:
+    types: opened
+    branches:
+      - master
+jobs:
+  post_preview_link:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create the comment
+      env:
+        PREVIEW_ROOT: https://oumpy.github.io/previews
+        BASE_REPO: ${{ github.event.pull_request.base.repo.full_name }}
+        HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+        HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+      run: |
+        if [ ${BASE_REPO} = ${HEAD_REPO} ]; then
+          echo "A preview of the PR branch \`${HEAD_BRANCH}\` is found at:" >> comment
+          echo "${PREVIEW_ROOT}/refs/heads/${HEAD_BRANCH}/" >> comment
+          sed -i -z 's/\n/\\n/g' comment
+        fi
+    
+    - name: Post the comment
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        URL: ${{ github.event.pull_request.comments_url }}
+      run: |
+        if [ -e comment ]; then
+          curl -X POST \
+            -H "Authorization: token ${GITHUB_TOKEN}" \
+            -d "{\"body\": \"$(cat comment)\"}" \
+            ${URL}
+        fi
