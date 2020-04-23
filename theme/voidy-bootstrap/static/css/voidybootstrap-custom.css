@@ -517,6 +517,15 @@ td.recent-posts-date {
   font-weight: bolder;
 }
 
+img.article-header {
+  float: right;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  padding: 0px;
+  /* border: 1px solid gray; */
+}
+
 /* デスクトップ表示ではホバー操作でドロップダウンを表示 */
 @media only screen and (min-width : 768px) {
   .dropdown:hover .dropdown-menu {
