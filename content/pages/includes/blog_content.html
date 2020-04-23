@@ -1,6 +1,8 @@
 <div class="content-body" itemprop="text">
 {% for group in TAG_GROUPS %}
-  <h2>{{ group.0 }}</h2>
+  <h2>{{ group.0 }} &nbsp;&nbsp;
+    <img class="notebook-badge-image" src="https://img.shields.io/static/v1?label=Tags&message={{ URL_ENCODED_GROUPNAMES[group.0] }}&labelColor=black&color={{ group.2 }}" alt="tags:{{ group.0 }}"></img>
+  </h2>
   <div class="blog_box">
   <ul class="group_taglist">
   {%- for tagname in group.1 -%}

@@ -77,10 +77,17 @@ CATEGORY_CONTENTS = {
 }
 DEFAULT_PAGINATION = 10
 
-TAG_GROUPS = [
-    ('Research tools & techniques', ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition']),
-    ('Programming', ['Python', 'Shell script', 'GitHub', '競技プログラミング']),
-    ('その他', ['論文関連', '検定試験', '海外留学']),
+CUSTOM_TAG_BADGE_COLOR = 'blue'
+TAG_GROUPS = [ # (groupname, [articles,...,], badge_color )
+    ('Research tools & techniques', ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition'], 'darkorange'),
+    ('Programming', ['Python', 'Shell script', 'GitHub', '競技プログラミング'], 'darkreen'),
+    ('その他', ['論文関連', '検定試験', '海外留学'], CUSTOM_TAG_BADGE_COLOR),
 ]
+CUSTOM_TAG_BADGE_COLORS = {'News' : 'hotpink'}
+for group in TAG_GROUPS:
+    for tag in group[1]:
+        CUSTOM_TAG_BADGE_COLORS[tag] = group[2]
+import urllib.parse
+URL_ENCODED_GROUPNAMES = dict([ (group[0], urllib.parse.quote(group[0])) for group in TAG_GROUPS ])
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
