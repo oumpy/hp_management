@@ -136,11 +136,23 @@ $ sh tools/updatesite.sh "Yabai update"
 
 このスクリプト `tools/updatesite.sh` は主に自動push用に用意されていますが、動作を理解していれば手動で用いても問題ありません。
 
-## Webhookによる自動更新機構
+## 自動更新 & プレビュー機構
+### GitHub Actions (デフォルト)
+#### 自動更新
+本レポジトリのmasterブランチにプルリクエストがマージされると、GitHubのシステム上でソースが自動的にコンパイルされ、サイトにプッシュされます。
+この指示の実体 (ワークフロー) は `.github/workflow/deploy_on_site.yml` です。
 
-webサーバ上にローカルレポジトリを設置することで、GitHubのwebhook機能を用いてサイトを自動更新する機能を搭載しています。
+#### プレビュー自動作成
+masterブランチ以外のブランチ (仮に `article/sugoikiji` とする) を更新 (プッシュ) すると、やはりGitHubのシステム上でソースが自動的ににコンパイルされて
+https://oumpy.github.io/previews/refs/heads/article/sugoikiji/ にアップされます。
+ブランチを削除するとプレビューも削除されます。
+この指示の実体 (ワークフロー) は `.github/workflow/preview.yml` / `.github/workflow/delete_preview.yml` です。
 
-### 本機能を使用する方法
+### Webhook と外部サーバを用いた機構
+webサーバ上にローカルレポジトリを設置することで、GitHubのwebhook機能を用いてサイトを自動更新/プレビューすることができます。
+ただしプレビューは任意のブランチのプッシュで任意のコードを実行できるので、他用途と兼用しているサーバ上での使用は非推奨です。
+
+#### 本機能を使用する方法
 
 1. webサーバ上の適当なディレクトリ（webからアクセスできないところ）にhp_managementを正しく設置。
 
@@ -162,6 +174,6 @@ secret = b'xyzabc....'
 
 5. GitHubの本レポジトリでwebhookを設定する。
    cgiのURL (http://www.example.io/cgi-bin/deploy.cgi) とsecretを設定し、`content type` に `application/json`、また "Just the push event." を選択。
+   自動更新のみの場合は対象を `master` ブランチ（推奨）、プレビューも使う場合は全てのブランチにする。
 
-以上により、本レポジトリ (hp_management) のmasterブランチ更新を自動検出して`tools/updatesite.sh` が実行されます。
-
+以上により、本レポジトリ (hp_management) のブランチ更新を自動検出して`tools/updatesite.sh` が実行されます。

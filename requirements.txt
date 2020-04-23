@@ -2,3 +2,4 @@ pelican
 Markdown
 nbconvert
 IPython
+beautifulsoup4

@@ -1,0 +1,106 @@
+# This is a workflow to preview branches
+
+name: Preview
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches-ignore:
+      - 'master'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build_preview:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.8' # Semantic version range syntax or exact version of a Python version
+        architecture: 'x64' # Optional - x64 or x86, defaults to x64
+
+    - name: pip update
+      run: |
+        python -m pip install --upgrade pip
+
+    - name: Checkout branch
+      uses: actions/checkout@v2
+      # checkout the branch which trigerred this workflow.
+      with:
+        submodules: true
+
+    - name: Make the Product
+      run: |
+        pip install -r requirements.txt
+        sh tools/init_repository.sh
+        {
+          echo
+          echo "SITEURL += '/previews/$GITHUB_REF'"
+          echo "if 'PREVIEW_SITENAME_APPEND' in globals():"
+          echo "    SITENAME += PREVIEW_SITENAME_APPEND"
+          echo "    SITETAG += PREVIEW_SITENAME_APPEND"
+        } >> ./content/contentconf.py
+        make html
+
+    - name: Save Preview Product
+      uses: actions/upload-artifact@v1
+      with:
+        name: preview
+        path: output
+
+  push_to_site:
+    # The type of runner that the job will run on
+    needs: build_preview
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.8' # Semantic version range syntax or exact version of a Python version
+        architecture: 'x64' # Optional - x64 or x86, defaults to x64
+
+    - name: Checkout master branch
+      uses: actions/checkout@v2
+      with:
+        ref: master
+        submodules: false
+
+    - name: Load Preview Product
+      uses: actions/download-artifact@v1
+      with:
+        name: preview
+
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.bot_identity }}
+        name: identity
+        known_hosts: ${{ secrets.known_hosts }}
+        config: |
+          Host github
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/identity
+
+    - name: Initialize Output Repository
+      run: |
+        sh tools/init_output.sh
+
+    - name: Set Preview in the output directory
+      run: |
+        rm -rf ./output/previews/$GITHUB_REF
+        mkdir -p ./output/previews/$GITHUB_REF
+        cp -a preview/* ./output/previews/$GITHUB_REF/
+
+    - name: Deploy on Site
+      run: |
+        cd output/
+        git config user.name $GITHUB_ACTOR
+        git config --add url.github:.pushInsteadOf https://github.com/
+        git config --add url.github:.pushInsteadOf git@github.com:
+        git add .
+        git commit -m "$GITHUB_REF branch updated." && git push || true
