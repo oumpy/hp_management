@@ -93,17 +93,13 @@ SITEREPOSITORY = 'https://github.com/oumpy/oumpy.github.io.git'
 
 環境：Python 3.6以降
 
-```bash
-$ pip install pelican Markdown nbconvert
-```
-
-または `hp_management/` 直下で
+`hp_management/` 直下で
 
 ```bash
 $ pip install -r requirements.txt
 ```
 
-でインストールできる。
+とすると、pelicanほか必要なパッケージを一括インストールできる。
 
 ### 更新のアップ
 
