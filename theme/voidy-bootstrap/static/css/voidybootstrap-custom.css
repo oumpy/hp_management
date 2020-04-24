@@ -110,20 +110,20 @@ p.standfirst {
 }
 
 .tag-1 {
-	font-size: 14pt;
-}
-.tag-2 {
 	font-size: 12pt;
 }
-.tag-3 {
+.tag-2 {
 	font-size: 10pt;
+}
+.tag-3 {
+	font-size: 9pt;
 }
 .tag-4 {
 	font-size: 8pt;
 }
 
 .tag-cloud {
-    line-height: 16px;
+    line-height: 12px;
 }
 
 .article-tag-list {
