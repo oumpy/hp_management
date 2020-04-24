@@ -62,7 +62,7 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 #RELATIVE_URLS = True
 MARKUP = ['md', 'ipynb']
 
-PLUGIN_PATHS = ['./plugins', './myplugins']
+PLUGIN_PATHS = ['./plugins', './myplugins', './3rdtools/plugins/']
 PLUGINS = [
     'pelican-ipynb.markup',
     'render_math',
@@ -78,6 +78,8 @@ PLUGINS = [
     'pelican-sass',
     'excludes_dirnames',
     'skiptags',
+    'article_image_url',
+    #'m.htmlsanity',
 ]
 
 RELATED_POSTS_MAX = 3

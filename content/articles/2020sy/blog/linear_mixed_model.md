@@ -2,7 +2,7 @@ Title: 線形混合効果モデル
 Date: 2020.04.08
 Tags: Statistics
 Author: 竹内
-Image: blog/2020/04/images/linear_mixed_model_figs/001.JPG
+Image: {attach}./images/linear_mixed_model_figs/001.JPG
 
 ## 経時測定データ解析
 複数の対象者に対して、ある反応変数を時間の経過とともに繰り返し測定したデータを、**経時測定データ**（longitudinal data）という。経済学分野では、パネルデータ解析として知られている。
@@ -32,8 +32,9 @@ $$
 
 ただし、$t_{ij}$は$i$番目の被験者の$j$番目の(イベント)時点である。以下ではモデルを図で表す。
 
-![1]({attach}./images/linear_mixed_model_figs/001.JPG)
+<!--![1]({attach}./images/linear_mixed_model_figs/001.JPG)-->
 
+![2]({attach}./images/linear_mixed_model_figs/002.JPG)
 ![2]({attach}./images/linear_mixed_model_figs/002.JPG)
 
 ![3]({attach}./images/linear_mixed_model_figs/003.JPG)
