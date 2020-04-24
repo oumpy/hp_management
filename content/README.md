@@ -211,7 +211,8 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
   記事タイトルなどをコミットコメントとして書く。
 - ブランチ `sugoikiji` を自分のレポジトリにプッシュする ( ブランチ `hoge/sugoikiji` ができる ) 。
 - webブラウザで自分のレポジトリまたはoumpyの元レポジトリに行き、自分の `sugoikiji` から`oumpy/master` へのプルリクエストを作成。
-必要な説明などを同時にコメントとして書き、`article` ラベルをつける。
+  必要な説明などを同時にコメントとして書く。
+  作成が完了すると、ラベル `article` が自動的に付けられる。
 
 通常は以上でやることは終わりです。
 
@@ -251,7 +252,9 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
   (ここでブランチ名が正しくないと、権限がないと言われてプッシュに失敗します。)
 
 - webブラウザで`https://github.com/oumpy/hp_management/`に行き、 `article/sugoikiji` から`master` へのプルリクエストを作成。
-  必要な説明などを同時にコメントとして書き、`article` ラベルをつける。
+  必要な説明などを同時にコメントとして書く。
+  作成が完了すると、ラベル `article` が自動的に付けられる。
+  またプレビューへのリンクが自動投稿される。
 
 通常は以上でやることは終わりです。
 
@@ -261,6 +264,7 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
 
 この方法2では、プルリクエストの前、ブランチをリモートにプッシュした時点で、そのブランチの内容から、サイトのプレビューが自動的に生成される。
 今の場合であれば、 `https://oumpy.github.io/previews/refs/heads/article/sugoikiji/` にブラウザでアクセスすると、プレビューを見ることができる。
+上記の通り、プルリクエストを作成すると、このリンクは当該プルリクエストのページに自動で投稿される。
 
 ブランチをプッシュしてからプレビューがアップされるまでは通常1分程度 (場合によっては10分かかることなどもある)。
 同じブランチを更新してプッシュするたびにプレビューも更新される。
