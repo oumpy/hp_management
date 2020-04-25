@@ -46,7 +46,7 @@ def article_image_url(article):
         article.metadata[keys[1]] = article.metadata[keys[0]]
     elif (not keys[0] in article.metadata.keys()) and keys[1] in article.metadata.keys():
         article.metadata[keys[0]] = article.metadata[keys[1]]
-    if keys[0] in article.metadata.keys():    
+    if keys[0] in article.metadata.keys():
         logging.error(article.metadata[keys[0]])
 
 def run_plugin(generator, content):
