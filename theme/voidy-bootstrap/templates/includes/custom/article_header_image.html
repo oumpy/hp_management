@@ -1,5 +1,5 @@
 <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-   title="Permalink to {{ article.title|striptags|e }}">
-  <img class="article-header" alt="{{ article.image-alt|default('article header image') }}" itemprop="image"
+   title="Permalink to : {{ article.title|striptags|e }}">
+  <img class="article-header" alt="{{ article.image_alt|default('article header image') }}" itemprop="image"
        src="{{ SITEURL }}/{{ article.image|default('favicon.ico') }}"></img>
 </a>
