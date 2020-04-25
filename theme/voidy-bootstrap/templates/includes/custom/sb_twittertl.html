@@ -1,9 +1,9 @@
 {% if TWITTER_TIMELINE_URL %}
-</div>
 <div class="sidebar_box">
 <div class="box-title"><i class="fab fa-twitter fa-fw fa-lg"></i> {{ CUSTOM_TWITTERTL_TITLE }}</div>
 <div class="box-contents">
     <a class="twitter-timeline" data-height={{ TWITTER_TIMELINE_HEIGHT }} href={{ TWITTER_TIMELINE_URL }}>Tweets by {{ TWITTER_USERNAME }}</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
 </div>
 {% endif %}
