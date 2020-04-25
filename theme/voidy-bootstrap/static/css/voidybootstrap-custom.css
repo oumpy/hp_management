@@ -518,12 +518,8 @@ td.recent-posts-date {
 }
 
 img.article-header {
-  float: right;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  margin-left: 20px;
   padding: 0px;
-  /* border: 1px solid gray; */
+  margin: 0 auto;
 }
 
 /* デスクトップ表示ではホバー操作でドロップダウンを表示 */
