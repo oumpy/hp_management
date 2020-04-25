@@ -1,8 +1,8 @@
 """
-ArticleImageURL Plugin for Pelican
+MetadataLinks Plugin for Pelican
 -------
 
-This plugin applies Pelican URL convention to `image` & `social_image` metadata of articles.
+This plugin applies Pelican link conventions to metadata of articles & pages.
 """
 
 from __future__ import unicode_literals
@@ -13,6 +13,11 @@ import logging
 
 pelican_settings = {}
 def _pelican_configure(pelicanobj):
+    from pelican.settings import DEFAULT_CONFIG
+    DEFAULT_CONFIG.setdefault('METADATALINKS_FIELDS', [])
+    if pelicanobj:
+        pelicanobj.settings.setdefault('METADATALINKS_FIELDS', [])
+
     global pelican_settings
     for key in 'INTRASITE_LINK_REGEX', 'SITEURL':
         pelican_settings[key] = pelicanobj.settings[key]
@@ -28,7 +33,8 @@ def expand_link(link, article):
         lambda m: article._link_replacer(article.get_siteurl(), m),
         link)
 
-def article_image_url(article):
+
+def metadata_links(article):
     keys = ['image', 'social_image']
     for key in keys:
         if key in article.metadata.keys():
@@ -50,12 +56,13 @@ def article_image_url(article):
         logging.error(article.metadata[keys[0]])
 
 def run_plugin(generator, content):
-    article_image_url(content)
+    metadata_links(content)
     # for article in generator.articles:
     #     article_image_url(article)
 
 def register_image_to_context():
     pass
+
 
 def generate_context(static_generator, metadata):
     self.staticfiles = []
