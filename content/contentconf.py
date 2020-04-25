@@ -15,13 +15,13 @@ SITESUBTITLE ='Now is better than never.'
 SITETAG = SITENAME
 
 # Social
-SOCIAL = (
-    # ('facebook', ''),
+SOCIAL = ( # (name, URL, icon, color)
+    # ('facebook', '#3B5998'),
     # ('技術Blog (はてな)','https://oumedpython.hatenablog.com/'),
-    ('<i class="fab fa-twitter"></i> Twitter', 'https://twitter.com/oumed_python'),
-    ('<i class="far fa-envelope"></i> E-mail', 'mailto:handai.python@gmail.com'),
-    ('<i class="fab fa-github"></i> GitHub', 'https://github.com/oumpy'),
-    ('<i class="fab fa-youtube"></i> YouTube', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ'),
+    ('Twitter', 'https://twitter.com/oumed_python', '<i class="fab fa-twitter"></i>', '#1DA1F2'),
+    ('E-mail', 'mailto:handai.python@gmail.com', '<i class="far fa-envelope"></i>', '#0078D4'),
+    ('GitHub', 'https://github.com/oumpy', '<i class="fab fa-github"></i>', '#211F1F'),
+    ('YouTube', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ', '<i class="fab fa-youtube"></i>', '#c4302b'),
 )
 
 # Blogroll

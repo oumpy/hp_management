@@ -8,9 +8,10 @@
 <div class="box-title"><i class="fa fa-comment fa-fw fa-lg"></i> {{ CUSTOM_SOCIAL_TITLE }}</div>
 <div class="box-contents">
 <ul class="list-unstyled social-links">
-{#  {% for name, link, icon in SOCIAL %} #}
-  {% for item in SOCIAL %}
-    <li><a href="{{ item[1] }}" target="_blank">{{ item[0] }}</a></li>
+  {% for name, link, icon, color in SOCIAL %}
+  <li><a href="{{ link }}" target="_blank" title="{{ name }}">
+    <span style="color:{{ color }};">{{ icon }}<span>
+  </a></li>
   {% endfor %}
 </ul>
 </div>
