@@ -517,9 +517,21 @@ td.recent-posts-date {
   font-weight: bolder;
 }
 
+/*
 img.article-header {
+}
+*/
+
+.article-header {
+  display: flex;
+  flex-wrap: wrap;
+}
+.article-header .article-header-iamge img{
   padding: 0px;
   margin: 0 auto;
+  align-self: start;
+  height: 50%;
+  object-fit: cover;
 }
 
 /* デスクトップ表示ではホバー操作でドロップダウンを表示 */
