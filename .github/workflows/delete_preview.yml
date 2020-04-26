@@ -43,9 +43,19 @@ jobs:
       run: |
         sh tools/init_output.sh
 
-    - name: Delete Preview in the output directory
+    - name: Delete Preview & Make Link in the output directory
       run: |
-        rm -rf ./output/previews/$GITHUB_REF
+        PREVIEW_DIR="./output/previews/${GITHUB_REF}"
+        TARGET_PATH="../"
+        if [ -e ${PREVIEW_DIR} ]; then
+          rm -rf "${PREVIEW_DIR}"
+          for s in `echo "${GITHUB_REF}" | fold -w1`; do
+            if [ $s = '/' ]; then
+              TARGET_PATH+="../"
+            fi
+          done
+          ln -s ${TARGET_PATH} "${PREVIEW_DIR}"
+        fi
 
     - name: Deploy on Site
       run: |
