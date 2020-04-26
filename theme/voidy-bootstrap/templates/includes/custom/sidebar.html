@@ -1,3 +1,4 @@
+<div class="row"><div class="col-md-12 col-sm-4 col-xs-12">
 {% include "includes/" + CUSTOM_SIDEBAR_TOP|default("sidebar_top.html") ignore missing %}
 
 {% if CUSTOM_SOCIAL %}
@@ -54,4 +55,7 @@
 </div>
 {% endif %}
 {% endif %}
+</div> <!-- col -->
+<div class="col-md-12 col-sm-8 col-xs-12">
 {% include "includes/" + CUSTOM_SIDEBAR_BOTTOM|default("sidebar_bottom.html") ignore missing %}
+</div></div>  <!-- row, col -->
