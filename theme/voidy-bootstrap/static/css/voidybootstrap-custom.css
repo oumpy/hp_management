@@ -28,6 +28,7 @@
 .jumbotron {
 		padding-top: 0px;
 		padding-bottom: 0px;
+    margin-top: -10px;
     margin-bottom: 20px;
     background-color: #0f5889;
 }
@@ -109,20 +110,20 @@ p.standfirst {
 }
 
 .tag-1 {
-	font-size: 14pt;
-}
-.tag-2 {
 	font-size: 12pt;
 }
-.tag-3 {
+.tag-2 {
 	font-size: 10pt;
+}
+.tag-3 {
+	font-size: 9pt;
 }
 .tag-4 {
 	font-size: 8pt;
 }
 
 .tag-cloud {
-    line-height: 16px;
+    line-height: 12px;
 }
 
 .article-tag-list {
@@ -469,3 +470,24 @@ ul#toc {
   white-space: nowrap;
 }
   
+ul.group_taglist {
+  list-style:none;
+  padding-left:0;
+}
+ul.group_taglist > li {
+  display:inline;
+  font-size: 18px;
+  font-weight: 500;
+}
+ul.group_taglist > li:not(:nth-child(1)):before {
+  content:" \0a0\0a0 / \0a0\0a0 ";
+}
+
+ul.social-links {
+  list-style:none;
+  padding-left:0;
+}
+ul.social-links > li {
+  display:inline;
+  font-size: 1.5em;
+}

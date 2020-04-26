@@ -15,13 +15,15 @@ SITESUBTITLE ='Now is better than never.'
 SITETAG = SITENAME
 
 # Social
-SOCIAL = (
-    # ('facebook', ''),
+SOCIAL = ( # (name, URL, icon, color, size)
+    # ('facebook', '#3B5998'),
     # ('技術Blog (はてな)','https://oumedpython.hatenablog.com/'),
-    ('Twitter', 'https://twitter.com/oumed_python'),
-    ('E-mail', 'mailto:handai.python@gmail.com'),
-    ('GitHub', 'https://github.com/oumpy'),
-    ('YouTube', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ'),
+    ('Twitter', 'https://twitter.com/oumed_python', '<i class="fab fa-twitter"></i>', '#1DA1F2', 'larger'),
+    ('E-mail', 'mailto:handai.python@gmail.com', '<i class="far fa-envelope"></i>', '#0078D4', 'larger'),
+    ('GitHub Organization', 'https://github.com/oumpy', '<i class="fab fa-github"></i>', '#211F1F', 'larger'),
+    ('YouTube Channel', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ', '<i class="fab fa-youtube"></i>', '#c4302b', 'larger'),
+    ('Atom Feed', './feeds/all.atom.xml', '<i class="fa fa-rss fa-fw fa-lg"></i>', '#00008b', 'smaller'),
+    ('RSS Feed', './feeds/all.rss.xml', '<i class="fas fa-rss-square fa-fw fa-lg"></i>', '#f26522', 'normal'),
 )
 
 # Blogroll
@@ -48,40 +50,47 @@ CUSTOM_RELATED_ARTICLES_TITLE = "関連記事"
 OPEN_GRAPH_IMAGE = 'logo.jpg'
 
 DISPLAY_PAGES_ON_MENU = False
-CUSTOM_CATEGORY_NAMES = {
-    'News': 'お知らせ',
-    'Blog': '技術ブログ',
+CATEGORYNAMES_ALTERNATIVES = {
+    'News': ('お知らせ', 'Python会からのお知らせ'),
+    'Blog': ('技術ブログ',),
 }
 ADD_ON_MENU = (
     ('Python会について', 'index.html'),
     ('活動内容', 'activities.html'),
     ('実績', 'achievements.html'),
-    (CUSTOM_CATEGORY_NAMES['Blog'], 'blog.html'),
-    (CUSTOM_CATEGORY_NAMES['News'], 'news.html'),
+    (CATEGORYNAMES_ALTERNATIVES['Blog'][0], 'blog.html'),
+    (CATEGORYNAMES_ALTERNATIVES['News'][0], 'news.html'),
     ('会員募集', 'recruit.html'),
     ('Contact', 'contact.html'),
 )
 HIDE_ARCHIVES_ON_MENU = True
+SHOW_FEED_ATOM_ON_MENU = SHOW_FEED_RSS_ON_MENU = False
 SIDEBAR_HIDE_CATEGORIES = True
 
 SHOW_CATEGORIES_ON_LIST = False
 SHOW_CATEGORY_TITLE = True
-CUSTOM_CATEGORY_TITLES = {'News': 'Python会からのお知らせ'}
 def readfile(filename):
     with open(filename, 'r') as f:
         content = f.readlines()
     return ''.join(content)
 PAGE_EXCLUDES = ['pages/includes']
 CATEGORY_CONTENTS = {
-    'Blog' : readfile('content/pages/includes/blog_content.html'),
-    'News' : readfile('content/pages/includes/news_content.html'),
+    'blog' : readfile('content/pages/includes/blog_content.html'),
+    'news' : readfile('content/pages/includes/news_content.html'),
 }
 DEFAULT_PAGINATION = 10
 
-TAG_GROUPS = [
-    ('Research tools & techniques', ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition']),
-    ('Programming', ['Python', 'Shell script', 'GitHub', '競技プログラミング']),
-    ('その他', ['論文関連', '検定試験', '海外留学']),
+CUSTOM_TAG_BADGE_COLOR = 'blue'
+TAG_GROUPS = [ # (groupname, [articles,...,], badge_color )
+    ('Research tools & techniques', ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition'], 'darkorange'),
+    ('Programming', ['Python', 'Shell script', 'GitHub', '競技プログラミング'], 'green'),
+    ('その他', ['論文関連', '検定試験', '海外留学'], CUSTOM_TAG_BADGE_COLOR),
 ]
+CUSTOM_TAG_BADGE_COLORS = {'News' : 'hotpink'}
+for group in TAG_GROUPS:
+    for tag in group[1]:
+        CUSTOM_TAG_BADGE_COLORS[tag] = group[2]
+import urllib.parse
+URL_ENCODED_GROUPNAMES = dict([ (group[0], urllib.parse.quote(group[0])) for group in TAG_GROUPS ])
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'

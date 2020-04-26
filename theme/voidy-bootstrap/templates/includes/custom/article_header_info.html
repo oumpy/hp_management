@@ -1,7 +1,8 @@
 <div class="article-header-info">
   <p>
+    {% include "includes/article_header_date.html" %}
     {% if article.authors %}
-      Posted by 
+      - Posted by 
       {% for author in article.authors -%}
         <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %}, {% endif %}
       {% endfor %}
@@ -10,13 +11,7 @@
     {% endif %}
     in 
     <a href="{{ SITEURL }}/{{ article.category.url }}">
-    {% set cat = article.category|string %}
-    {% if CUSTOM_CATEGORY_NAMES is defined and cat in CUSTOM_CATEGORY_NAMES %}
-      {{ CUSTOM_CATEGORY_NAMES[cat] }}
-    {% else %}
-      {{ cat }}
-    {% endif %}
-    </a>
+      {{ article.category }}</a>
     &nbsp;&nbsp;
     {% if PDF_PROCESSOR %}
     <span class="label">
@@ -25,5 +20,13 @@
     &nbsp;&nbsp;
     {% endif %}
     {% include "includes/translations.html" %}
+    {% for tag in article.tags %}
+      {% if CUSTOM_TAG_BADGE_COLORS and tag|string in CUSTOM_TAG_BADGE_COLORS %}
+        {% set color = CUSTOM_TAG_BADGE_COLORS[tag|string] %}
+      {% else %}
+        {% set color = CUSTOM_TAG_BADGE_COLOR|default('orange') %}
+      {% endif %}
+        <a href="{{ SITEURL }}/{{ tag.url }}"><img class="notebook-badge-image" src="https://img.shields.io/static/v1?label=Tag&message={{ tag }}&labelColor=black&color={{ color }}" alt="tag:{{ tag }}"></img></a>
+    {% endfor %}
   </p>
 </div> <!-- /.article-header-info -->

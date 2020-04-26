@@ -65,7 +65,8 @@ PLUGINS = [
     'liquid_tags.youtube',
     'tag_cloud',
     'related_posts',
-    'autosummary',
+    'autosummary', 'summary', # this order is important!
+    'category_names',
 ]
 
 RELATED_POSTS_MAX = 3
@@ -120,6 +121,7 @@ CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 SIDEBAR = "custom/sidebar.html"
 CUSTOM_SIDEBAR_MIDDLES = ( "custom/sb_links.html", "custom/sb_recentposts.html", "custom/sb_tagcloud.html", )
 CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
+SIDEBAR_HIDE_FEEDS = True
 
 TWITTER_TIMELINE_HEIGHT = 600
 SIDEBAR_SIZE = 3
