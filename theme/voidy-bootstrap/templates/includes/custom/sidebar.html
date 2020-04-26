@@ -8,9 +8,10 @@
 <div class="box-title"><i class="fa fa-comment fa-fw fa-lg"></i> {{ CUSTOM_SOCIAL_TITLE }}</div>
 <div class="box-contents">
 <ul class="list-unstyled social-links">
-{#  {% for name, link, icon in SOCIAL %} #}
-  {% for item in SOCIAL %}
-    <li><a href="{{ item[1] }}" target="_blank">{{ item[0] }}</a></li>
+  {% for name, link, icon, color, size in SOCIAL %}
+  <li><a href="{{ link }}" target="_blank" title="{{ name }}">
+    <span style="color:{{ color }}; font-size:{{ size }};">{{ icon }}<span>
+  </a></li>
   {% endfor %}
 </ul>
 </div>
@@ -34,8 +35,9 @@
 {% include "includes/" + mid %}
 {% endfor %}
 
-<div class="sidebar_box">
+{% if not SIDEBAR_HIDE_FEEDS %}
 {% if FEED_ALL_ATOM or FEED_ALL_RSS %}
+<div class="sidebar_box">
 <div class="box-title"><i class="fa fa-rss fa-fw fa-lg"></i> Feeds</div>
 <div class="box-contents">
 <ul class="list-unstyled">
@@ -49,6 +51,7 @@
   {% endif %}
 </ul>
 </div>
+</div>
+{% endif %}
 {% endif %}
 {% include "includes/" + CUSTOM_SIDEBAR_BOTTOM|default("sidebar_bottom.html") ignore missing %}
-</div>

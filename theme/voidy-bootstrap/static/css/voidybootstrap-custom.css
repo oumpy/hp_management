@@ -477,3 +477,12 @@ ul.group_taglist > li {
 ul.group_taglist > li:not(:nth-child(1)):before {
   content:" \0a0\0a0 / \0a0\0a0 ";
 }
+
+ul.social-links {
+  list-style:none;
+  padding-left:0;
+}
+ul.social-links > li {
+  display:inline;
+  font-size: 1.5em;
+}

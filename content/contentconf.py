@@ -15,13 +15,15 @@ SITESUBTITLE ='Now is better than never.'
 SITETAG = SITENAME
 
 # Social
-SOCIAL = (
-    # ('facebook', ''),
+SOCIAL = ( # (name, URL, icon, color, size)
+    # ('facebook', '#3B5998'),
     # ('技術Blog (はてな)','https://oumedpython.hatenablog.com/'),
-    ('<i class="fab fa-twitter"></i> Twitter', 'https://twitter.com/oumed_python'),
-    ('<i class="far fa-envelope"></i> E-mail', 'mailto:handai.python@gmail.com'),
-    ('<i class="fab fa-github"></i> GitHub', 'https://github.com/oumpy'),
-    ('<i class="fab fa-youtube"></i> YouTube', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ'),
+    ('Twitter', 'https://twitter.com/oumed_python', '<i class="fab fa-twitter"></i>', '#1DA1F2', 'larger'),
+    ('E-mail', 'mailto:handai.python@gmail.com', '<i class="far fa-envelope"></i>', '#0078D4', 'larger'),
+    ('GitHub Organization', 'https://github.com/oumpy', '<i class="fab fa-github"></i>', '#211F1F', 'larger'),
+    ('YouTube Channel', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ', '<i class="fab fa-youtube"></i>', '#c4302b', 'larger'),
+    ('Atom Feed', './feeds/all.atom.xml', '<i class="fa fa-rss fa-fw fa-lg"></i>', '#00008b', 'smaller'),
+    ('RSS Feed', './feeds/all.rss.xml', '<i class="fas fa-rss-square fa-fw fa-lg"></i>', '#f26522', 'normal'),
 )
 
 # Blogroll
@@ -62,6 +64,7 @@ ADD_ON_MENU = (
     ('Contact', 'contact.html'),
 )
 HIDE_ARCHIVES_ON_MENU = True
+SHOW_FEED_ATOM_ON_MENU = SHOW_FEED_RSS_ON_MENU = False
 SIDEBAR_HIDE_CATEGORIES = True
 
 SHOW_CATEGORIES_ON_LIST = False
