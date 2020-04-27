@@ -12,47 +12,35 @@ $ cd hp_management/content
 
 ### 新しいページ・記事の作り方
 
-`content` ディレクトリに移動し、独自スクリプト `create.sh` で雛形を作ります。
+`content` ディレクトリに移動し、Pythonスクリプト `create.py` で雛形を作ります。
 
 あるいは、 (その方が楽であれば) `content/template.md` を手動でコピーして編集してもかまいません。
 
-#### page (固定ページ) を作成する場合
-
-```bash
-$ cd hp_management/content
-$ sh create.sh (filename)
-```
-
-`(filename)` に生成するファイル名を指定します (内容に応じて適切に)。
-`content/pages/` の下にメタデータ入りのMarkdownファイルが生成されます。
-
-これに内容を追記します。htmlも認識されます。
-
-#### article (ニュースやブログ記事) を作成する場合
-
 ``` bash
 $ cd hp_management/content
-$ sh create.sh (filename) (category) (tags)
+$ python create.py
 ```
 
-Pageの場合と同じコマンド。(category)を指定するとarticleになり、`content/articles/(schoolyear)/(category)/(filename).md`として作成されます。
+質問に従って必要項目を順に入力します。
+ブログ記事の場合、`date` (日付) と `slug` (ファイル名) は入力必須。
+その他は全部デフォルトにして後から書き換えるのでも構いません。
+ファイルは `content/articles/(schoolyear)/(category)/(slug).md` として作成されます。
 
-- (category) はNewsかBlog。
-  (category) にpageまたはpagesを指定するとpageになる。
-- (tags) は省略可能、ただしarticleの場合は編集の際に必ず入れること。
-  (この仕様は変更するかも。)
-- (category) は各ファイルのメタデータには記載されない。
-  mdファイルを入れるディレクトリの名前がカテゴリとして認識される。
-  (記載した場合はそちらが優先されるが、記載しないでください。)
-- 自動作成されたファイルは `Title` と `Author` が空欄なので、埋める。
-- `Author` の下を1行空け、その後にMarkdown原稿を貼り付ける。
+- (category) はデフォルトで Blog。
+  他に News, Page (サイトの固定ページ) を指定できる。
+- (schoolyear) は `date` から自動で計算される。
+  例えば `date` が `2020.03.15` なら (schoolyear) は `2019sy`。
+- 質問に答える代わりに、`--slug`, `--date` などのコマンドラインオプションを使うことも可能。
+  詳細は `$ python create.py --help` とすると出てくる。
+- `Author:` の下を1行空け、その後にMarkdown原稿を貼り付ける。
   タイトル (`#` タグ) は自動生成されるので削り、分節タグは原則全て `##` 以下を使う。
+  原稿ファイルがすでにある場合、`--content` オプションでファイルを渡すこともできる。
 
-##### サマリーについて
+#### サマリーについて
 記事一覧に表示される各記事のサマリーは、記事本文冒頭の140文字まで（タグ・空白・改行など除く）が使用されます。
 ただし、
 
-- 記事原稿ファイルのメタデータに `Summary` を加えると、そちらがサマリーとして優先的に使用されます。
+- 記事原稿ファイルのメタデータに `Summary:` を加えると、そちらがサマリーとして優先的に使用されます。
 - サマリーを本文中の特定範囲 (140文字以内) にしたい場合は、
 ```
 <!-- PELICAN_BEGIN_SUMMARY -->
@@ -74,7 +62,7 @@ Pageの場合と同じコマンド。(category)を指定するとarticleにな�
 のようにすると、サマリーは「今回はすごいことをやってみました。」となります。
 `<!-- ... -->` は本文中ではコメントとして無視されます (表示されません)。
 
-##### Jupyter Notebookの扱い
+#### Jupyter Notebookの扱い
 
 jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb` の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。
 `articles/2018sy/Blog` の `lorentz.ipynb` および `lorentz.nbdata` を参考にしてください。
@@ -211,7 +199,8 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
   記事タイトルなどをコミットコメントとして書く。
 - ブランチ `sugoikiji` を自分のレポジトリにプッシュする ( ブランチ `hoge/sugoikiji` ができる ) 。
 - webブラウザで自分のレポジトリまたはoumpyの元レポジトリに行き、自分の `sugoikiji` から`oumpy/master` へのプルリクエストを作成。
-必要な説明などを同時にコメントとして書き、`article` ラベルをつける。
+  必要な説明などを同時にコメントとして書く。
+  作成が完了すると、ラベル `article` が自動的に付けられる。
 
 通常は以上でやることは終わりです。
 
@@ -251,7 +240,9 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
   (ここでブランチ名が正しくないと、権限がないと言われてプッシュに失敗します。)
 
 - webブラウザで`https://github.com/oumpy/hp_management/`に行き、 `article/sugoikiji` から`master` へのプルリクエストを作成。
-  必要な説明などを同時にコメントとして書き、`article` ラベルをつける。
+  必要な説明などを同時にコメントとして書く。
+  作成が完了すると、ラベル `article` が自動的に付けられる。
+  またプレビューへのリンクが自動投稿される。
 
 通常は以上でやることは終わりです。
 
@@ -261,10 +252,13 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
 
 この方法2では、プルリクエストの前、ブランチをリモートにプッシュした時点で、そのブランチの内容から、サイトのプレビューが自動的に生成される。
 今の場合であれば、 `https://oumpy.github.io/previews/refs/heads/article/sugoikiji/` にブラウザでアクセスすると、プレビューを見ることができる。
+上記の通り、プルリクエストを作成すると、このリンクは当該プルリクエストのページに自動で投稿される。
 
 ブランチをプッシュしてからプレビューがアップされるまでは通常1分程度 (場合によっては10分かかることなどもある)。
 同じブランチを更新してプッシュするたびにプレビューも更新される。
-またリモートブランチを削除するとプレビューも削除される。
+またリモートブランチを削除するとプレビューも削除され、現在のサイトへのリンクで置き換えられる。
+(中身は全く同一だが、URLはリダイレクトされない。
+ プレビューが削除されているかどうかは、サイトのタイトルに「 (テスト用ページ) 」とついているかどうかでわかる。)
 
 ## サイト全体の情報設定
 

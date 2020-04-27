@@ -1,7 +1,7 @@
 Title: 
-Date: $date
-Modified: $date
-Tags: $tags
-Slug: $filename
+Date: 
+Modified: 
+Tags: 
+Slug: 
 Author: 
 
