@@ -510,6 +510,12 @@ table.recent-posts td {
 td.recent-posts-date {
   padding-left: 0px;
 }
+.recent-posts-year {
+  font-style: italic;
+}
 .recent-posts-prefix-category {
   font-size: smaller;
+}
+.recent-posts-title {
+  font-weight: bolder;
 }

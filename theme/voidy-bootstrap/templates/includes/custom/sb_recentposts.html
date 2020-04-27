@@ -8,11 +8,12 @@
   {% for article in (all_articles|default(articles))[:RECENT_POST_COUNT|default(5)] %}
   {% if article.date.year != ns.year %}
   {% set ns.year = article.date.year %}
-  <tr><td colspan="2">{{ ns.year }}</td></tr>
+  <tr><td colspan="2"><span class="recent-posts-year">{{ ns.year }}</span></td></tr>
   {% endif %}
   <tr>
     <td class="recent-posts-date">{{ article.date.month }}/{{ article.date.day }}</td>
-    <td><span class="recent-posts-prefix-category">[<a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category.slug|capitalize }}</a>]</span>&nbsp;&nbsp;<a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></td>
+    <td><span class="recent-posts-prefix-category">[<a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category.slug|capitalize }}</a>]</span>
+      &nbsp;<a href="{{ SITEURL }}/{{ article.url }}"><span class="recent-posts-title">{{ article.title }}</span></a></td>
   </tr>
   {% endfor %}
 </table>
