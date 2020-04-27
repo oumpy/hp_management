@@ -12,8 +12,8 @@
   {% endif %}
   <tr>
     <td class="recent-posts-date">{{ article.date.month }}/{{ article.date.day }}</td>
-    <td><span class="recent-posts-prefix-category">[<a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category.slug|capitalize }}</a>]</span>
-      &nbsp;<a href="{{ SITEURL }}/{{ article.url }}"><span class="recent-posts-title">{{ article.title }}</span></a></td>
+    <td><span class="recent-posts-prefix-category">[<a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category.slug|capitalize }}</a>]</span></td>
+    <td><a href="{{ SITEURL }}/{{ article.url }}"><span class="recent-posts-title">{{ article.title }}</span></a></td>
   </tr>
   {% endfor %}
 </table>
