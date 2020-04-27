@@ -475,7 +475,7 @@ ul.group_taglist > li {
   font-weight: 500;
 }
 ul.group_taglist > li:not(:nth-child(1)):before {
-  content:" \0a0\0a0 / \0a0\0a0 ";
+  content:"\0a0\0a0/\0a0\0a0\0a0";
 }
 
 ul.social-links {
