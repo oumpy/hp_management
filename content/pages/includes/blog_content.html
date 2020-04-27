@@ -8,7 +8,7 @@
   {%- for tagname in group.1 -%}
     {%- for tag in tags -%}
       {% if tag.0.name == tagname %}
-    <li><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tagname|replace(' ','&nbsp;') }}</a>&nbsp;({{ tag.1|length }})</li>
+    <li><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tagname|replace(' ','&nbsp;') }}</a>&nbsp;<span class="article-numbers">({{ tag.1|length }})</span></li>
       {% endif %}
     {%- endfor -%}
   {%- endfor -%}
