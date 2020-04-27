@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*- #
 # site-specific settings
+import datetime
+
 GITHUB_ACCOUNT = 'oumpy'
 SOURCEREPOSITORY_NAME = 'hp_management'
 
@@ -13,6 +15,8 @@ AUTHOR_DESCRIPTION = u'Now is better than never'
 # AUTHOR_WEB = 'https://twitter.com/oumed_python'
 SITESUBTITLE ='Now is better than never.'
 SITETAG = SITENAME
+COPYRIGHT_YEAR = datetime.date.today().year
+COPYRIGHT_AUTHOR = SITENAME
 
 # Social
 SOCIAL = ( # (name, URL, icon, color, size)
