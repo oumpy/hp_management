@@ -1,6 +1,6 @@
 Title: 会員募集
 Date: 2020.03.13
-Modified: 2020.04.05
+Modified: 2020.05.01
 Show_modified: True
 Slug: recruit
 Author: Python会
@@ -11,11 +11,58 @@ Python会は現在、学年学部問わず会員を募集しております。
 Pythonが全てわかる方も、なにもわからない方も、ちょっとできる方も大歓迎です！お気軽にDM等でご連絡ください。
 
 ## 新歓2020年度
-4月中は 本サイトと [YouTube](https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ) によるオンライン新歓イベントを行う予定です。
-詳細は本サイトと [Twitter](https://twitter.com/oumed_python) にて、追ってお知らせします。
+4月中はオンライン新歓イベントとして、
+[YouTube](https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ) でのプレゼンシリーズ動画配信および、
+オンラインハンズオン「COVID-19 のデータを可視化してみよう」(4/18, 4/25) を行いました。
+
+引き続き、新歓に関する情報は本サイトと [Twitter](https://twitter.com/oumed_python) にてお知らせしていきます。
+
+### 新歓プレゼン動画
+Python会メンバーによる、それぞれの研究分野等についてのプレゼン動画です (全8回)。
+
+<div class="row">
+<div class="col-xs-6 col-sm-6 col-md-4">
+[% youtube width=240 height=150 id=0NF6zhajueg %]
+<p style="font-size:smaller;">(1) 4年・山本 「神経生理学の視点で見るニューラルネットワーク入門」(4/13)</p>
+</div> <!-- col -->
+<div class="col-xs-6 col-sm-6 col-md-4">
+[% youtube width=240 height=150 id=aDKNOgjcjWw %]
+<p style="font-size:smaller;">(2) 2年・梅田  「競プロのすすめ」(4/15)</p>
+</div> <!-- col -->
+<div class="col-xs-6 col-sm-6 col-md-4">
+[% youtube width=240 height=150 id=B1jM5zEEyQ8 %]
+<p style="font-size:smaller;">(3) 4年・山崎 「研究とPython」(4/17)</p>
+</div> <!-- col -->
+</div> <!-- raw -->
+
+<div class="row">
+<div class="col-xs-6 col-sm-6 col-md-4">
+[% youtube width=240 height=150 id=TUNeBOxmRvE %]
+<p style="font-size:smaller;">(4) 2年・安部 「深層学習を用いた画像処理」(4/19)</p>
+</div> <!-- col -->
+<div class="col-xs-6 col-sm-6 col-md-4">
+[% youtube width=240 height=150 id=cEaxDBsbOz0 %]
+<p style="font-size:smaller;">(5) 2年・松本 「Python会でできること (bioinformatics, ikra編)」(4/21)</p>
+</div> <!-- col -->
+<div class="col-xs-6 col-sm-6 col-md-4">
+[% youtube width=240 height=150 id=xsszEJcS1sk %]
+<p style="font-size:smaller;">(6) 6年・竹内 「医学統計入門編 生存時間解析」(4/23)</p>
+</div> <!-- col -->
+</div> <!-- raw -->
+
+<div class="row">
+<div class="col-xs-6 col-sm-6 col-md-4">
+[% youtube width=240 height=150 id=wf7Ak9HVKGQ %]
+<p style="font-size:smaller;">(7) 5年・淡田 「プログラミングを使った脳波解析」(4/26)</p>
+</div> <!-- col -->
+<div class="col-xs-6 col-sm-6 col-md-4">
+[% youtube width=240 height=150 id=k9mRSDV5qX4 %]
+<p style="font-size:smaller;">(8) 4年・AtamaokaC 「プログラムの変更管理 〜バージョン管理システムGitを使ってみる〜」(5/1)</p>
+</div> <!-- col -->
+</div> <!-- raw -->
 
 ### 紹介動画
-{% youtube 0u43x51nn-o %}
+[% youtube id=0u43x51nn-o %]
 
 ### 新歓チラシ
 新歓のチラシです。
