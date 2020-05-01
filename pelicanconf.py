@@ -128,7 +128,7 @@ CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
-CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_tagcloud.html", )
+CUSTOM_SIDEBAR_MIDDLES = ( "custom/sb_links.html", "custom/sb_recentposts.html", "custom/sb_tagcloud.html", )
 CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
 SIDEBAR_HIDE_FEEDS = True
 
@@ -141,6 +141,8 @@ SOCIAL_SHARE_BUTTONS = (
     )
 
 DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
+RECENT_POST_COUNT = 5
+CUSTOM_RECENTPOSTS_TITLE = '新着記事'
 
 TWITTER_CARD = True
 OPEN_GRAPH = True
