@@ -62,14 +62,23 @@ PLUGIN_PATHS = ['./plugins', './myplugins']
 PLUGINS = [
     'pelican-ipynb.markup',
     'render_math',
-    'liquid_tags.youtube',
     'tag_cloud',
     'related_posts',
     'autosummary', 'summary', # this order is important!
     'category_names',
+    'shortcodes',
 ]
 
 RELATED_POSTS_MAX = 3
+
+SHORTCODES = {
+    'youtube': '''\
+<p><span class="videobox">
+  <iframe width="{{width|default(640)}}" height="{{height|default(390)}}"
+    src="https://www.youtube.com/embed/{{id}}"
+    frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+  </iframe></span></p>'''
+}
 
 # if you create jupyter files in the content dir, snapshots are saved with the same
 # metadata. These need to be ignored.
