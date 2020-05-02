@@ -57,7 +57,21 @@ jobs:
             User git
             IdentityFile ~/.ssh/identity
 
+    - name: Check Update
+      id: check_update
+      run: |
+        git fetch origin master
+        cur_hash=`git rev-parse master`
+        new_hash=`git rev-parse origin/master`
+        if [ $cur_hash=$new_hash ]; then
+          newest='true'
+        else
+          newest='false'
+        fi
+        echo "::set-output name=NEWEST::$newest"
+
     - name: Deploy on Site
+      if: steps.check_update.outputs.NEWEST=='true'
       run: |
         cd output/
         git config user.name $GITHUB_ACTOR
