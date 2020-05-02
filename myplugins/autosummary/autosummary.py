@@ -31,7 +31,7 @@ def initialized(pelican):
 def make_autosummary(content, settings):
     content = str(BeautifulSoup(content, 'html.parser'))
     content = re.compile(r'([\s　¶]|&#182;)+').sub(' ', content) # &#182; appears in converted jupyter notebooks.
-    content = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub(' ', content) # for jupyter. in general, probably buggy.
+    content = re.compile(r'<(style|STYLE)(|\s+[^<>]*)>.*?</(style|STYLE)>').sub(' ', content) # for jupyter. in general, probably buggy.
     content = re.compile(r'[\s　]+').sub(' ', content)
     cur_pos = 0
     length = 0
@@ -89,7 +89,7 @@ def make_autosummary(content, settings):
 def contentlen(content):
     content = str(BeautifulSoup(content, 'html.parser'))
     content = re.compile(r'([\s　¶]|&#182;)+').sub('', content) # &#182; appears in converted jupyter notebooks.
-    content = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub('', content) # for jupyter. in general, probably buggy.
+    content = re.compile(r'<(style|STYLE)(|\s+[^<>]*)>.*?</(style|STYLE)>').sub('', content) # for jupyter. in general, probably buggy.
     return len(re.compile(r'<[^>]*?>').sub('', content))
 
 
