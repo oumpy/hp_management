@@ -67,6 +67,7 @@ PLUGINS = [
     'autosummary', 'summary', # this order is important!
     'category_names',
     'shortcodes',
+    'filename2slug',
 ]
 
 RELATED_POSTS_MAX = 3
