@@ -1,6 +1,6 @@
 Title:NTT corevoチャレンジ: 話者の性別・年代識別
 Date: 2019.03.29
-Tags: Data Science Competition
+Tags: Machine Learning, Data Science Competition
 Slug: voice_recognition
 Author: 佐藤
 Summary:
