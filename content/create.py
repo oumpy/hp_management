@@ -70,6 +70,7 @@ if __name__ == '__main__':
     else:
         directory = "./articles/{0}sy/{1}".format(schoolyear, values['category'])
     filepath = "{0}/{1}.md".format(directory, values['slug'])
+    imagedirpath = "{0}/images/{1}_figs".format(directory, values['slug'])
 
     # set modified date
     if not values['modified']:
@@ -119,3 +120,11 @@ if __name__ == '__main__':
             print(line, file=tf)
 
     print("ファイル '{}' を作成しました。".format(filepath))
+    try:
+        os.makedirs(imagedirpath)
+        print("画像保存用ディレクトリ'{}'を作成しました。".format(imagedirpath))
+    except FileExistsError:
+        if os.path.isdir(imagedirpath):
+            print("画像保存用ディレクトリ'{}'はすでに存在します。".format(imagedirpath))
+        else:
+            print("画像保存用ディレクトリ'{}'を作成できませんでした。".format(imagedirpath))
