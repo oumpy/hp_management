@@ -38,6 +38,11 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
 # page_url: give the url of the page where this filter is called
 # depath: depth of the menu hierarchy
     ret = []
+    page_depth = page_url.count('/')
+    if page_depth == 0:
+        rooturl = '.'
+    else:
+        rooturl = '../' * (page_depth-1) + '..' 
     FORWARD, BACK = 0, 1
     for obj in add_on_menu:
         pool = [(obj, 0, FORWARD, {'parent':None})]
@@ -75,7 +80,7 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
                     a_format = '<a href="{}">{}{}</a>'
                 else:
                     a_format = '<a href="{}">{}{}</a>'
-                ret.append(a_format.format('./{}'.format(node.url), title, caret))
+                ret.append(a_format.format('{}/{}'.format(rooturl, node.url), title, caret))
 
                 if len(subsections) > 0:
                     ret.append('<ul>')
