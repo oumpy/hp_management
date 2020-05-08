@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*- #
 # site-specific settings
-import datetime
+import sys, os
+sys.path.append(os.curdir + '/..')
+from tools.lib.pelicanns import *
 
 GITHUB_ACCOUNT = 'oumpy'
 SOURCEREPOSITORY_NAME = 'hp_management'

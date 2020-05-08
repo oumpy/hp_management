@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 import datetime
+import copy
 import os
 import sys
 sys.path.append(os.curdir)
@@ -164,6 +165,10 @@ JINJA_FILTERS += (('apply_jinja2', filter_apply_jinja2),)
 FILTER_APPLY_JINJA2 = True
 
 # Read user's custom settings.
+import tools.lib.pelicanns
+globals_copy = copy.copy(globals())
+for k, v in globals_copy.items():
+    setattr(tools.lib.pelicanns, k, v)
 from content.contentconf import *
 
 # Settings for Open Graph Properties
