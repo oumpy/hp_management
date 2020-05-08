@@ -89,7 +89,7 @@
        </div>
 
       <div class="collapse navbar-collapse" id="main-navbar-collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav gnav">
           {% for title, link in MENUITEMS %}
             <li><a href="{{ link }}">{{ title }}</a></li>
           {% endfor %}
@@ -112,7 +112,7 @@
             {% elif article is defined %}
               {% set thispage_url = article.url %}
             {% endif %}
-            {{ ADD_ON_MENU|makemenu(thispage_url, 0) }}
+            {{ ADD_ON_MENU|makemenu(thispage_url, MENU_STEPS|default(1)) }}
           {% endif %}
           {% if not HIDE_ARCHIVES_ON_MENU %}
             <li class="divider"></li>
