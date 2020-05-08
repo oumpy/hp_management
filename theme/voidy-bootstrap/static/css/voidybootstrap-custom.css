@@ -521,3 +521,111 @@ td.recent-posts-date {
 .recent-posts-title {
   font-weight: bolder;
 }
+
+.gnav {
+  display: flex;
+  height: 3rem;
+  margin: 0;
+  padding: 0;
+}
+/*親階層のみ幅を25%にする*/
+.gnav > li {
+  width: 25%;
+}
+/*全てのリスト・リンク共通*/
+.gnav li {
+  list-style: none;
+  position: relative;
+}
+.gnav li a {
+  background: #001b34;
+  border-right: 1px solid #eee;
+  color: #fff;
+  display: block;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+/*子階層以降共通*/
+.gnav li li {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity .5s;
+}
+.gnav li li a {
+  border-top: 1px solid #eee;
+}
+.gnav li:hover > ul > li {
+  height: 2rem;
+  opacity: 1;
+  overflow: visible;
+}
+.gnav li ul li ul {
+  left: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/*一番右のメニュー*/
+/*
+.gnav > li:nth-child(5) ul li ul {
+  left: -100%;
+}
+*/
+/*hover*/  
+.gnav > li:hover > a {/*親階層*/
+  background: #00305c;
+}
+   
+.gnav > li li > a {/*子階層*/
+  background: #00305c;
+}
+.gnav > li li:hover > a {
+  background: #004789;
+}
+
+.gnav li ul li ul li > a {/*孫階層*/
+  background: #004789;
+}
+.gnav li ul li ul li:hover > a {
+  background: #0065c1;
+}
+
+.gnav li ul li ul li ul li > a {/*ひ孫階層*/
+  background: #0065c1;
+}
+.gnav li ul li ul li ul li:hover > a {
+  background: #1e7dd4;
+}
+
+/*リストに「▶︎」を付ける*/
+.gnav > li > ul:before{/*子階層*/
+  border: 5px solid transparent;
+  border-top: 5px solid #fff;
+  content: "";
+  right: 1rem;
+  position: absolute;
+  top: 1rem;
+  transform: translateY(-40%);
+}
+.gnav li ul li ul:before {/*孫階層*/
+  border: 5px solid transparent;
+  border-left: 5px solid #fff;
+  content: "";
+  left: -20px;
+  position: absolute;
+  top: 1em;
+  transform: translateY(-50%);
+}
+/*一番右のメニューの孫階層*/
+/*
+.gnav li:nth-child(5) ul li ul:before {
+  border: 5px solid transparent;
+  border-right: 5px solid #fff;
+  left: auto;
+  right: -20px;
+}
+*/

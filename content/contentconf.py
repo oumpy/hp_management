@@ -79,8 +79,8 @@ CATEGORYNAMES_ALTERNATIVES = {
 
 ADD_ON_MENU = (
     MenuItem('index.html'),
-    MenuItem('activities.html'),
-    MenuItem('achievements.html'),
+    MenuItem('activities.html', subsections=MenuItem.AUTO),
+    MenuItem('achievements.html', subsections=MenuItem.AUTO),
     MenuItem('blog.html', title=CATEGORYNAMES_ALTERNATIVES['blog'][0],
              active_pages=r'(blog/|tag/(?!news).+\.html$|author/(?!pythonhui).+\.html$)'),
     MenuItem('news.html', title=CATEGORYNAMES_ALTERNATIVES['news'][0],
@@ -88,6 +88,7 @@ ADD_ON_MENU = (
     MenuItem('recruit.html'),
     MenuItem('contact.html'),
 )
+MENU_STEPS = 1
 
 HIDE_ARCHIVES_ON_MENU = True
 SHOW_FEED_ATOM_ON_MENU = SHOW_FEED_RSS_ON_MENU = False

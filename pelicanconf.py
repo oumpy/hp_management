@@ -73,6 +73,7 @@ PLUGINS = [
     'shortcodes',
     'apply_jinja2',
     'path2obj',
+    'subsections',
     'makemenu',
     'pelican-sass',
 ]
