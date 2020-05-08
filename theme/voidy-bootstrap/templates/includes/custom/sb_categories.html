@@ -1,0 +1,12 @@
+{% if not SIDEBAR_HIDE_CATEGORIES %}
+<div class="sidebar_box">
+<div class="box-title"><i class="fa fa-folder fa-fw fa-lg"></i> {{ CUSTOM_CATEGORIES_TITLE }}</div>
+<div class="box-contents">
+	<ul class="list-unstyled category-links">
+{% for cat, null in categories %}
+  <li><a href="{{ SITEURL }}/{{ cat.url }}" >&#x2022; {{ cat }}</a></li>
+{% endfor %}
+</ul>
+</div>
+</div>
+{% endif %}
