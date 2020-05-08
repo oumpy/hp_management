@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def filename2slug(obj, settings):
-    if hasattr(obj.metadata, 'slug'):
+    if 'slug' in obj.metadata.keys():
         return
     
     source_path = obj.source_path
