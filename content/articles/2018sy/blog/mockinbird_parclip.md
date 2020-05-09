@@ -1,7 +1,6 @@
 Title:Mockinbirdを用いたPAR-CLIP解析
 Date: 2019.01.18
 Tags: Bioinformatics
-Slug: mockinbird_parclip
 Author: 平岡
 
 今回は **PAR-CLIP** 解析のAll-in-oneパイプラインソフトウェアである、[Mockinbird](http://wwwuser.gwdg.de/~compbiol/mockinbird/doc/intro.html)を紹介します。日本語での情報がほぼなく、説明が長くなってしまいそうなので、２回に分けて書きます。

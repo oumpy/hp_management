@@ -2,7 +2,6 @@ Title: 機械学習のための最新GPU比較
 Date: 2019.10.07
 Modified: 2019.10.07
 Tags: Machine Learning, ハードウェア
-Slug: GPUs_for_ML
 Author: 小川
 
 某所でGPU調達の必要があって、いまどきの事情を調べました。

@@ -1,7 +1,6 @@
 Title: Parameter Tuning
 Date: 2018.09.09
 Tags: Machine Learning
-Slug: parameter_tuning
 Author: 佐藤
 
 機械学習を行う際に大事なのがパラメーターの調整です。

@@ -1,7 +1,6 @@
 Title:クラスター分析
 Date: 2018.09.24
 Tags: Machine Learning
-Slug: cluster_analysis
 Author: 柳澤
 
 現在、クラスター分析の勉強をしています。

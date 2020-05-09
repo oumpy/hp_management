@@ -1,7 +1,6 @@
 Title: シェルコマンドに触れてみよう
 Date: 2020.02.26
 Tags: Shell script
-Slug: shellscript_tutorial
 Author: 山田
 
 ## シェルって？　コマンドってなに？

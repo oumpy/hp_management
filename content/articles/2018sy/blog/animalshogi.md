@@ -1,7 +1,6 @@
 Title:PythonとKerasでどうぶつしょうぎ
 Date: 2018.12.6
 Tags: Machine Learning
-Slug: animalshogi
 Author: 小川
 
 ## はじめに
