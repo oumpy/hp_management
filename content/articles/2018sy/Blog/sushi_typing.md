@@ -5,7 +5,7 @@ Slug: sushi_typing
 Author: 安水
 Summary:
 
-{% youtube SqOO9I1tFjk %}
+[% youtube id=SqOO9I1tFjk %]
 
 寿司打の自動化についてです。上の動画のようになりました。寿司打は結構昔からあるタイピング練習サイトです。寿司打は<a href="http://typing.sakura.ne.jp/sushida/">こちら</a>です。
 1万円コースで1万円超えない人はタイピング遅いので特訓しましょう。
