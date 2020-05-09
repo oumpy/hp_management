@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*- #
 # site-specific settings
-import datetime
+import sys, os
+sys.path.append(os.curdir + '/..')
+from tools.lib.pelicanns import *
 
 GITHUB_ACCOUNT = 'oumpy'
 SOURCEREPOSITORY_NAME = 'hp_management'
@@ -26,6 +28,7 @@ SOCIAL = ( # (name, URL, icon, color, size)
     ('E-mail', 'mailto:handai.python@gmail.com', '<i class="far fa-envelope"></i>', '#0078D4', 'larger'),
     ('GitHub Organization', 'https://github.com/oumpy', '<i class="fab fa-github"></i>', '#211F1F', 'larger'),
     ('YouTube Channel', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ', '<i class="fab fa-youtube"></i>', '#c4302b', 'larger'),
+    ('Connpass', 'https://oum-python.connpass.com', '<img width="35px" src="https://connpass.com/static/img/72_72.png" style="display: inline;"/>', '#000000', 'normal'),
     ('Atom Feed', './feeds/all.atom.xml', '<i class="fa fa-rss fa-fw fa-lg"></i>', '#00008b', 'smaller'),
     ('RSS Feed', './feeds/all.rss.xml', '<i class="fas fa-rss-square fa-fw fa-lg"></i>', '#f26522', 'normal'),
 )
@@ -86,9 +89,9 @@ DEFAULT_PAGINATION = 10
 
 CUSTOM_TAG_BADGE_COLOR = 'blue'
 TAG_GROUPS = [ # (groupname, [articles,...,], badge_color )
-    ('Research tools & techniques', ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition'], 'darkorange'),
+    ('Research tools & techniques', ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition', 'ハードウェア'], 'darkorange'),
     ('Programming', ['Python', 'Shell script', 'GitHub', '競技プログラミング'], 'green'),
-    ('その他', ['論文関連', '検定試験', '海外留学'], CUSTOM_TAG_BADGE_COLOR),
+    ('その他', ['論文まとめ', '論文関連', '検定試験', '海外留学'], CUSTOM_TAG_BADGE_COLOR),
 ]
 CUSTOM_TAG_BADGE_COLORS = {'News' : 'hotpink'}
 for group in TAG_GROUPS:

@@ -465,6 +465,11 @@ ul#toc {
   margin: auto;
 }
 
+.horizontal-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+  
 ul.group_taglist {
   list-style:none;
   padding-left:0;
@@ -488,4 +493,32 @@ ul.social-links {
 ul.social-links > li {
   display:inline;
   font-size: 1.5em;
+}
+
+table.recent-posts {
+  border-style: hidden;
+  margin: 0px;
+  padding: 0px;
+  border-spacing: 0px;
+  font-size: smaller;
+}
+table.recent-posts > tr {
+  padding: 0px;
+  border-style: hidden;
+}
+table.recent-posts td {
+  padding: 1px 3px;
+  border-style: hidden;
+}
+td.recent-posts-date {
+  padding-left: 0px;
+}
+.recent-posts-year {
+  font-style: italic;
+}
+.recent-posts-prefix-category {
+  font-size: smaller;
+}
+.recent-posts-title {
+  font-weight: bolder;
 }

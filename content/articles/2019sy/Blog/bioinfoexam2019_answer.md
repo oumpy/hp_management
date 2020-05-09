@@ -1,7 +1,7 @@
 Title: バイオインフォマティクス技術者認定試験2019 解答速報？
 Date: 2019.12.11
 Modified: 2019.12.23
-Tags: Bioinformatics
+Tags: Bioinformatics, 検定試験
 Slug: bioinfoexam2019_answer
 Author: 小川
 Summary: 先日受験したバイオインフォマティクス認定試験をあらためて復習して、ついでに解答速報（全然速くない）と備忘録程度の解説を書きました。

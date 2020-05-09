@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 import datetime
+import copy
 import os
 import sys
 sys.path.append(os.curdir)
@@ -62,14 +63,24 @@ PLUGIN_PATHS = ['./plugins', './myplugins']
 PLUGINS = [
     'pelican-ipynb.markup',
     'render_math',
-    'liquid_tags.youtube',
     'tag_cloud',
     'related_posts',
     'autosummary', 'summary', # this order is important!
     'category_names',
+    'shortcodes',
+    'filename2slug',
 ]
 
 RELATED_POSTS_MAX = 3
+
+SHORTCODES = {
+    'youtube': '''\
+<p><span class="videobox">
+  <iframe width="{{width|default(640)}}" height="{{height|default(390)}}"
+    src="https://www.youtube.com/embed/{{id}}"
+    frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+  </iframe></span></p>'''
+}
 
 # if you create jupyter files in the content dir, snapshots are saved with the same
 # metadata. These need to be ignored.
@@ -119,7 +130,7 @@ CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
-CUSTOM_SIDEBAR_MIDDLES = ("custom/sb_links.html", "custom/sb_tagcloud.html", )
+CUSTOM_SIDEBAR_MIDDLES = ( "custom/sb_social.html", "custom/sb_recentposts.html", "custom/sb_tagcloud.html", )
 CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
 SIDEBAR_HIDE_FEEDS = True
 
@@ -132,6 +143,8 @@ SOCIAL_SHARE_BUTTONS = (
     )
 
 DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
+RECENT_POST_COUNT = 5
+CUSTOM_RECENTPOSTS_TITLE = '新着記事'
 
 TWITTER_CARD = True
 OPEN_GRAPH = True
@@ -153,6 +166,10 @@ JINJA_FILTERS += (('apply_jinja2', filter_apply_jinja2),)
 FILTER_APPLY_JINJA2 = True
 
 # Read user's custom settings.
+import tools.lib.pelicanns
+globals_copy = copy.copy(globals())
+for k, v in globals_copy.items():
+    setattr(tools.lib.pelicanns, k, v)
 from content.contentconf import *
 
 # Settings for Open Graph Properties
