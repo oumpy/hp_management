@@ -3,7 +3,6 @@ Date: 2018.09.09
 Tags:Python
 Slug: webscraping
 Author: 平岡
-Summary:
 
 安水さんに教えてもらい、先週からpythonで遊んでいます。食べログをweb scrapingして大阪市のラーメン屋さんの評価点数とコメント数の相関係数と離散分布図を作成しました。
 

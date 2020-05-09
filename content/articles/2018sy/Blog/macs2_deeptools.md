@@ -3,7 +3,6 @@ Date: 2018.10.29
 Tags: Bioinformatics
 Slug: macs2_deeptools
 Author: 安水
-Summary:
 
 ## ChIP-seqとは
 

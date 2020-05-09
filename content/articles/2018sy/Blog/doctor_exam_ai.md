@@ -3,7 +3,6 @@ Date: 2018.12.20
 Tags: Machine Learning, 論文まとめ
 Slug: doctor_exam_ai
 Author: 秋山
-Summary:
 
 以下の論文を軽く紹介。
 

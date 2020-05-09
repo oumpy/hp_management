@@ -3,7 +3,6 @@ Date: 2018.09.15
 Tags: Machine Learning
 Slug: umap
 Author: 安水
-Summary:
 
 ## tSNEとUMAP
 世間では、高性能な次元圧縮アルゴリズムとしてtSNEがよく使われています。 tSNEは便利ですが、少し遅いです。（パラメーターも意外に面倒。 tSNEのパラメータについては以下のリンク参照）

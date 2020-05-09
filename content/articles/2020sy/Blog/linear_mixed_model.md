@@ -3,7 +3,6 @@ Date: 2020.04.08
 Tags: Statistics
 Slug: linear_mixed_model
 Author: 竹内
-Summary:
 
 ## 経時測定データ解析
 複数の対象者に対して、ある反応変数を時間の経過とともに繰り返し測定したデータを、**経時測定データ**（longitudinal data）という。経済学分野では、パネルデータ解析として知られている。

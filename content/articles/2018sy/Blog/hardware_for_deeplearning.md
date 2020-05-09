@@ -3,7 +3,6 @@ Date: 2018.09.09
 Tags: Machine Learning, ハードウェア
 Slug: hardware_for_deeplearning
 Author: 安水
-Summary:
 
 ## Rasberry pi
 

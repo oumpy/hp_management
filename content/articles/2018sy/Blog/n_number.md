@@ -3,7 +3,6 @@ Date: 2019.03.22
 Tags: Statistics
 Slug: n_number
 Author: 依藤
-Summary:
 
 ## シングルセル解析での細胞数
 ① **実現可能性**：金銭面、使用機器のスループットを考慮した細胞数  

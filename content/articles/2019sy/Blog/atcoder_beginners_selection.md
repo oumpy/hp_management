@@ -3,7 +3,6 @@ Date: 2019.06.24
 Tags: 競技プログラミング
 Slug: atcoder_beginners_selection
 Author: 加藤
-Summary:
 
 プログラミング初心者の加藤です。勉強会の時に、とりあえずやってみたらいいよと言われたので、よく分からないままやってみました。その概要と雑感です。
 

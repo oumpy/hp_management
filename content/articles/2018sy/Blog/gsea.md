@@ -3,7 +3,6 @@ Date: 2018.11.27
 Tags: Bioinformatics
 Slug: gsea
 Author: 西田
-Summary:
 
 ## GSEAとは
 GSEAは発現差異解析の結果などで得られる遺伝子群がどういった機能のものかを明らかにするために用いられる解析手法です。機能表現として用いられる主なものとしてはKEGGのパスウェイ分類やGene Ontology(GO)があります。
