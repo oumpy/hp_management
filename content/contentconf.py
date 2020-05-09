@@ -74,7 +74,9 @@ CATEGORYNAMES_ALTERNATIVES = {
 }
 
 ADD_ON_MENU = (
-    MenuItem('index.html'),
+    MenuItem('index.html', subsections=[
+        MenuItem('constitution.html', title='Python会規約', subsections=MenuItem.AUTO),
+        ]),
     MenuItem('activities.html', subsections=MenuItem.AUTO),
     MenuItem('achievements.html', subsections=MenuItem.AUTO),
     MenuItem('blog.html', title=CATEGORYNAMES_ALTERNATIVES['blog'][0],
@@ -89,7 +91,7 @@ ADD_ON_MENU = (
     MenuItem('recruit.html'),
     MenuItem('contact.html'),
 )
-MENU_STEPS = 1
+MENU_STEPS = 2
 
 HIDE_ARCHIVES_ON_MENU = True
 SHOW_FEED_ATOM_ON_MENU = SHOW_FEED_RSS_ON_MENU = False
