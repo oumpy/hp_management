@@ -11,6 +11,9 @@ from pelican import signals
 from pelican.generators import ArticlesGenerator, StaticGenerator, PagesGenerator
 import re
 
+import logging
+logger = logging.getLogger(__name__)
+
 def initialized(pelican):
     from pelican.settings import DEFAULT_CONFIG
     DEFAULT_CONFIG.setdefault('AUTOSUMMARY_KEEP_HTMLTAGS',
@@ -99,8 +102,7 @@ def extract_summary(instance):
     # if there is no content, there's nothing to do
     if ('summary' in instance.metadata and
         (contentlen(instance.metadata['summary']) >= min_length or ((not instance._content) and not hasattr(instance, '_summary')))):
-        instance.has_summary = True
-        return
+        pre_summary = instance.metadata['summary']
     elif hasattr(instance, '_summary') and (contentlen(instance._summary) >= min_length or (not instance._content)):
         pre_summary = instance._summary
     elif not instance._content:
