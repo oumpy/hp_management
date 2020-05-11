@@ -98,14 +98,10 @@ def contentlen(content):
 
 def extract_summary(instance):
     min_length = instance.settings['AUTOSUMMARY_MIN_LENGTH']
-    # if summary is already specified, use it
-    # if there is no content, there's nothing to do
-    if ('summary' in instance.metadata and
-        (contentlen(instance.metadata['summary']) >= min_length or ((not instance._content) and not hasattr(instance, '_summary')))):
-        pre_summary = instance.metadata['summary']
-    elif hasattr(instance, '_summary') and (contentlen(instance._summary) >= min_length or (not instance._content)):
+    if hasattr(instance, '_summary') and (contentlen(instance._summary) >= min_length or (not instance._content)):
         pre_summary = instance._summary
     elif not instance._content:
+    # if there is no content, there's nothing to do
         instance.has_summary = False
         return
     else:
