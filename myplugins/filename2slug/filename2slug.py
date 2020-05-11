@@ -8,7 +8,6 @@ This plugin sets the filename of the source (not title) as the default slug for 
 from __future__ import unicode_literals
 from pelican import signals
 import os
-from pelican.generators import ArticlesGenerator, PagesGenerator
 
 import logging
 logger = logging.getLogger(__name__)
