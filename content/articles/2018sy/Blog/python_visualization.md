@@ -3,7 +3,6 @@ Date: 2019.01.18
 Tags: Python
 Slug: python_visualization
 Author: 宮崎
-Summary:
 
 Pythonでいい感じのグラフを書いてみたい！でも面倒！よくわからない！
 

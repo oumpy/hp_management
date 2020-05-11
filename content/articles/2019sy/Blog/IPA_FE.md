@@ -4,7 +4,6 @@ Modified: 2019.11.21
 Tags: 検定試験
 Slug: IPA_FE
 Author: 小川
-Summary: [**基本情報技術者試験**](https://www.jitec.ipa.go.jp/1_11seido/fe.html)を受けてきた話。
 
 IPAの「[**基本情報技術者試験**](https://www.jitec.ipa.go.jp/1_11seido/fe.html)」 (2019年春期) を受験してきました。
 

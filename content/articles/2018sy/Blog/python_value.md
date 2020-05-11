@@ -3,7 +3,6 @@ Date: 2018.12.20
 Tags: Python
 Slug: python_value
 Author:小川
-Summary:
 
 Pythonの変数、ふだん何気なく使っていますが、やっていることは実は結構複雑です。主にC/C++と対比しつつ簡単にまとめてみます。
 

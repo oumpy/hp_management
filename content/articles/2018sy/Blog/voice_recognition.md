@@ -3,7 +3,6 @@ Date: 2019.03.29
 Tags: Machine Learning, Data Science Competition
 Slug: voice_recognition
 Author: 佐藤
-Summary:
 
 [Signate](https://signate.jp)内で開催されていた上記のコンペティションに参加してきました。以下試してみたこと、感想のまとめです。
 

@@ -4,7 +4,6 @@ Modified: 2019.04.29
 Tags: 競技プログラミング
 Slug: competition_input
 Author: 小川
-Summary: AtCoderのABCで、これさえ覚えれば大丈夫！な入力のパターンについて解説します。
 
 ## 入力のパターン
 

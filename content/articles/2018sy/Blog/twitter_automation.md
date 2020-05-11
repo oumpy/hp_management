@@ -3,7 +3,6 @@ Date: 2019.01.18
 Tags: Python
 Slug: twitter_automation
 Author: 川崎
-Summary:
 
 突如TwitterのBotを作ってみたくなり試行錯誤した結果をまとめてみました。
 

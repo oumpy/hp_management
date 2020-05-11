@@ -3,7 +3,6 @@ Date: 2018.11.17
 Tags: Data Science Competition
 Slug: pandas_pivot_table
 Author: 金子
-Summary:
 
 ## 概要
 pandasのpivot_tableは強力な機能で、カテゴリごとの集計や計算を高速に行うことができます。

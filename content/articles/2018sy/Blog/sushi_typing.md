@@ -3,7 +3,6 @@ Date: 2018.09.20
 Tags: Python
 Slug: sushi_typing
 Author: 安水
-Summary:
 
 [% youtube id=SqOO9I1tFjk %]
 

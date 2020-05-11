@@ -3,7 +3,6 @@ Date: 2018-09-09 23:00
 Tags: 論文関連
 Slug: article_reading
 Author: 柳澤
-Summary:
 
 
 ## 論文抄読で便利なサイト

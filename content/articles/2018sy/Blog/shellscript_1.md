@@ -3,7 +3,6 @@ Date: 2018.11.01
 Tags: Shell script
 Slug: shellscript_1
 Author: 水野
-Summary:
 
 python会なのにpythonまだ触ったことありません。勉強せねば。
 
