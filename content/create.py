@@ -82,7 +82,7 @@ if __name__ == '__main__':
         contentfile = values['content']
         if os.path.isfile(contentfile):
             with open(contentfile, 'r') as cf:
-                for line in cf.readlines:
+                for line in cf.readlines():
                     line = line.rstrip('\n')
                     if not values['title']:
                         first, second = line.lstrip()[:2]
