@@ -82,7 +82,7 @@ if __name__ == '__main__':
         contentfile = values['content']
         if os.path.isfile(contentfile):
             with open(contentfile, 'r') as cf:
-                for line in cf.readlines:
+                for line in cf.readlines():
                     line = line.rstrip('\n')
                     if not values['title']:
                         first, second = line.lstrip()[:2]
@@ -106,7 +106,7 @@ if __name__ == '__main__':
             for line in sf.readlines():
                 line = line.rstrip('\n')
                 Field = line.split(':')[0]
-                field = field.lower()
+                field = Field.lower()
                 if field in values.keys() and values[field]:
                     if field in {'author', 'tags'}:
                         values[field] = values[field].strip().strip(',')
