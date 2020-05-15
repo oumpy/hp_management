@@ -6,16 +6,33 @@ This plugin provides a filter to apply jinja2.
 """
 
 from pelican import signals
+from pelican.generators import ArticlesGenerator, PagesGenerator
 import jinja2
+from copy import copy
 
 import logging
 logger = logging.getLogger(__name__)
 
 
 variables = dict()
+metadata_field = 'jinja2'
 def configure(generators):
     for generator in generators:
         variables.update(generator.context)
+        if isinstance(generator, ArticlesGenerator):
+            for article in generator.articles:
+                if metadata_field in article.metadata and bool(article.metadata[metadata_field]):
+                    var = copy(variables)
+                    var.update(article.context)
+                    template = jinja2.Template(article.content)
+                    article.content = template.render(**var)
+        elif isinstance(generator, PagesGenerator):
+            for page in generator.pages:
+                if metadata_field in page.metadata and bool(page.metadata[metadata_field]):
+                    var = copy(variables)
+                    var.update(page.context)
+                    template = jinja2.Template(page.content)
+                    page.content = template.render(**var)
 
 def filter_apply_jinja2(content):
     env = jinja2.Environment(loader=jinja2.DictLoader({'content': content}))
