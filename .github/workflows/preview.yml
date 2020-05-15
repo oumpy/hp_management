@@ -38,7 +38,7 @@ jobs:
         sh tools/init_repository.sh
         {
           echo
-          echo "SITEURL += '/previews/$GITHUB_REF'"
+          echo "SITEURL = './previews/$GITHUB_REF'"
           echo "if 'PREVIEW_SITENAME_APPEND' in globals():"
           echo "    SITENAME += PREVIEW_SITENAME_APPEND"
           echo "    SITETAG += PREVIEW_SITENAME_APPEND"
