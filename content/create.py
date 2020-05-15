@@ -12,7 +12,7 @@ fields = [  # (field, default, comment)
     ('date',      now,                '記事日付。YYYY.mm.DD または YYYY.mm.DD HH.MM 形式'),
     ('modified',  None,               '更新日。None の場合は date と同じ'),
     ('title',     None,               '記事タイトル。content 内に # 要素がある場合は指定しない。'),
-    ('category',  'Blog',             'Blog, News または Page'),
+    ('category',  'blog',             'blog, news または page'),
     ('tags',      None,               'Bioinformatics など、サイト参照。複数の場合カンマ区切り'),
     ('author',    None,               '記事執筆者の名前。姓またはHN、複数の場合カンマ区切り'),
     ('content',   None,               '記事内容ファイル (.md) がすでにある場合はパスを指定'),
