@@ -6,7 +6,7 @@ Author: 秋山
 
 
 > Improving Breast Cancer Detection using Symmetry Information with Deep Learning.
-http://arxiv.org/abs/1808.08273
+<http://arxiv.org/abs/1808.08273>
 
 ## 概要
 - 放射線専門医がするようにマンモグラムの左右差を見て乳がんの判定をするCNNモデルを提案
