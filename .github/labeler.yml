@@ -1,7 +1,7 @@
 article:
-- content/articles/*/Blog/**/*
+- content/articles/*/blog/**/*
 page/news:
-- content/articles/*/News/**/*
+- content/articles/*/news/**/*
 - content/pages/**/*
 theme:
 - theme/**/*

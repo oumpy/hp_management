@@ -4,8 +4,8 @@
 # These owners will be the default owners for everything in the repo.
 *                    @oumpy/hp_maintainers
 /content/            @oumpy/leaders @oumpy/hp_maintainers
-/content/articles/*/Blog/   @oumpy/executives
-/content/articles/*/News/   @oumpy/leaders
+/content/articles/*/blog/   @oumpy/executives
+/content/articles/*/news/   @oumpy/leaders
 /content/pages/      @oumpy/leaders
 /content/pages/recruit.md       @oumpy/leaders @oumpy/staff_recruit
 /content/pages/images/recruit/  @oumpy/leaders @oumpy/staff_recruit

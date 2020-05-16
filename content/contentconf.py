@@ -58,15 +58,15 @@ OPEN_GRAPH_IMAGE = 'logo.jpg'
 
 DISPLAY_PAGES_ON_MENU = False
 CATEGORYNAMES_ALTERNATIVES = {
-    'News': ('お知らせ', 'Python会からのお知らせ'),
-    'Blog': ('技術ブログ',),
+    'news': ('お知らせ', 'Python会からのお知らせ'),
+    'blog': ('技術ブログ',),
 }
 ADD_ON_MENU = (
     ('Python会について', 'index.html'),
     ('活動内容', 'activities.html'),
     ('実績', 'achievements.html'),
-    (CATEGORYNAMES_ALTERNATIVES['Blog'][0], 'blog.html'),
-    (CATEGORYNAMES_ALTERNATIVES['News'][0], 'news.html'),
+    (CATEGORYNAMES_ALTERNATIVES['blog'][0], 'blog.html'),
+    (CATEGORYNAMES_ALTERNATIVES['news'][0], 'news.html'),
     ('会員募集', 'recruit.html'),
     ('Contact', 'contact.html'),
 )

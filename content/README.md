@@ -26,8 +26,8 @@ $ python create.py
 その他は全部デフォルトにして後から書き換えるのでも構いません。
 ファイルは `content/articles/(schoolyear)/(category)/(slug).md` として作成されます。
 
-- (category) はデフォルトで Blog。
-  他に News, Page (サイトの固定ページ) を指定できる。
+- (category) はデフォルトで `blog`。
+  他に `news`, `page` (サイトの固定ページ) を指定できる。
 - (schoolyear) は `date` から自動で計算される。
   例えば `date` が `2020.03.15` なら (schoolyear) は `2019sy`。
 - 質問に答える代わりに、`--slug`, `--date` などのコマンドラインオプションを使うことも可能。
@@ -65,7 +65,7 @@ $ python create.py
 #### Jupyter Notebookの扱い
 
 jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb` の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。
-`articles/2018sy/Blog` の `lorentz.ipynb` および `lorentz.nbdata` を参考にしてください。
+`articles/2018sy/blog` の `lorentz.ipynb` および `lorentz.nbdata` を参考にしてください。
 
 #### タグの付け方
 現在は10タグ設定している。基本的にはこの中から最も当てはまるタグを1つ選ぶ。ただし、新しい分野も歓迎します（相談してください）。また、大文字・小文字等の違いに注意。
@@ -106,13 +106,13 @@ content/articles/(schoolyear)/(category)/images/(filename)_figs/(imagefile)
 例えば、`sugoikiji.md` に画像ファイル `sugoigazou.png` を読み込みたい場合、記事本体が
 
 ```markdown
-content/articles/2020sy/Blog/sugoikiji.md
+content/articles/2020sy/blog/sugoikiji.md
 ```
 
 であれば、画像ファイルは
 
 ```markdown
-content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
+content/articles/2020sy/blog/images/sugoikiji_figs/sugoigazou.png
 ```
 
 のようにします。
@@ -139,14 +139,14 @@ content/articles/2020sy/Blog/images/sugoikiji_figs/sugoigazou.png
 過年度の記事であれば、少しややこしいですが、ディレクトリを辿って
 
 ```markdown
-[以前の記事]({filename}../../2019sy/Blog/old_article.md)
+[以前の記事]({filename}../../2019sy/blog/old_article.md)
 <!-- 相対パス指定 -->
 ```
 
 または
 
 ```markdown
-[以前の記事]({filename}/articles/2019sy/Blog/old_article.md)
+[以前の記事]({filename}/articles/2019sy/blog/old_article.md)
 <!-- content/ をトップとする絶対パス指定 -->
 ```
 
