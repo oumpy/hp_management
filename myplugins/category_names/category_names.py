@@ -5,7 +5,6 @@ CategoryNames Plugin for Pelican
 This plugin replaces or adds alternative names for categories.
 """
 
-from __future__ import unicode_literals
 from pelican import signals
 
 import logging

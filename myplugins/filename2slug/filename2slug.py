@@ -5,7 +5,6 @@ filename2slug Plugin for Pelican
 This plugin sets the filename of the source (not title) as the default slug for articles/pages.
 """
 
-from __future__ import unicode_literals
 from pelican import signals
 import os
 from pelican.generators import ArticlesGenerator, PagesGenerator
