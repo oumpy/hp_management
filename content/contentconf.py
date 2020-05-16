@@ -90,7 +90,7 @@ DEFAULT_PAGINATION = 10
 CUSTOM_TAG_BADGE_COLOR = 'blue'
 TAG_GROUPS = [ # (groupname, [articles,...,], badge_color )
     ('Research tools & techniques', ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition', 'ハードウェア'], 'darkorange'),
-    ('Programming', ['Python', 'Shell script', 'GitHub', '競技プログラミング'], 'green'),
+    ('Programming', ['Python', 'Shell script', '競技プログラミング', 'GitHub', 'Unix'], 'green'),
     ('その他', ['論文まとめ', '論文関連', '検定試験', '海外留学'], CUSTOM_TAG_BADGE_COLOR),
 ]
 CUSTOM_TAG_BADGE_COLORS = {'News' : 'hotpink'}
