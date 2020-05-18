@@ -24,12 +24,12 @@ def configure(generators):
             for article in generator.articles:
                 if metadata_field in article.metadata and bool(article.metadata[metadata_field]):
                     template = jinja2.Template(article.content)
-                    article.content = template.render(**variables)
+                    article._content = template.render(**variables)
         elif isinstance(generator, PagesGenerator):
             for page in generator.pages:
                 if metadata_field in page.metadata and bool(page.metadata[metadata_field]):
                     template = jinja2.Template(page.content)
-                    page.content = template.render(**variables)
+                    page._content = template.render(**variables)
 
 def filter_apply_jinja2(content):
     env = jinja2.Environment(loader=jinja2.DictLoader({'content': content}))
