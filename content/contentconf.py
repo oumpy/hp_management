@@ -43,6 +43,9 @@ LINKS = (
         # ('You can modify those links in your config file', '#'),
         )
 
+# Settings for Google Custom Search
+GOOGLE_CSE_ID = '012109292501676780101:lytlaxeswfy'
+
 # Settings for Twitter Timeline
 TWITTER_TIMELINE_URL = "https://twitter.com/oumed_python?ref_src=twsrc%5Etfw"
 TWITTER_USERNAME = 'oumed_python'
