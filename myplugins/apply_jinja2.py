@@ -8,7 +8,6 @@ This plugin provides a filter to apply jinja2.
 from pelican import signals
 from pelican.generators import ArticlesGenerator, PagesGenerator
 import jinja2
-from copy import copy
 
 import logging
 logger = logging.getLogger(__name__)
