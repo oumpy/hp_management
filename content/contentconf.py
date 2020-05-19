@@ -97,8 +97,6 @@ CUSTOM_TAG_BADGE_COLORS = {'News' : 'hotpink'}
 for group in TAG_GROUPS:
     for tag in group[1]:
         CUSTOM_TAG_BADGE_COLORS[tag] = group[2]
-import urllib.parse
-URL_ENCODED_GROUPNAMES = dict([ (group[0], urllib.parse.quote(group[0])) for group in TAG_GROUPS ])
 TAG_CLOUD_BADGE = True
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'

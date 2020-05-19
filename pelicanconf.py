@@ -70,6 +70,7 @@ PLUGINS = [
     'shortcodes',
     'filename2slug',
     'apply_jinja2',
+    'url_encode',
 ]
 
 RELATED_POSTS_MAX = 3
