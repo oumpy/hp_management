@@ -1,6 +1,5 @@
 {% if GOOGLE_CSE_ID %}
-<form id="cse-search-box" action="https://google.com/cse">
-<input type="hidden" name="cx" value="{{ GOOGLE_CSE_ID }}">
+<form id="cse-search-box" action="{{ SITEURL }}/search.html">
 <input type="hidden" name="ie" value="UTF-8">
 <input type="text" name="q" placeholder="サイト内を検索" style="height: 1.7em; width: 82.5%;">
 <input type="submit" value="&#xf002;" class="fas" style="height: 1.7em; width: 15%;">
