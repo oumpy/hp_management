@@ -18,7 +18,9 @@ def configure(generators):
         variables.update(generator.context)
 
 def filter_apply_jinja2(content):
-    template = jinja2.Template(content)
+    env = jinja2.Environment(loader=jinja2.DictLoader({'content': content}))
+    env.filters.update(variables['JINJA_FILTERS'])
+    template = env.get_template('content')
     result = template.render(**variables)
     return result
 
