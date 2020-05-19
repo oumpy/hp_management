@@ -23,12 +23,16 @@ def configure(generators):
         if isinstance(generator, ArticlesGenerator):
             for article in generator.articles:
                 if metadata_field in article.metadata and bool(article.metadata[metadata_field]):
-                    template = jinja2.Template(article.content)
+                    env = jinja2.Environment(loader=jinja2.DictLoader({'content': article.content}))
+                    env.filters.update(variables['JINJA_FILTERS'])
+                    template = env.get_template('content')
                     article._content = template.render(**variables)
         elif isinstance(generator, PagesGenerator):
             for page in generator.pages:
                 if metadata_field in page.metadata and bool(page.metadata[metadata_field]):
-                    template = jinja2.Template(page.content)
+                    env = jinja2.Environment(loader=jinja2.DictLoader({'content': page.content}))
+                    env.filters.update(variables['JINJA_FILTERS'])
+                    template = env.get_template('content')
                     page._content = template.render(**variables)
 
 def filter_apply_jinja2(content):
