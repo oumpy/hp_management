@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: /previews/
+Disallow: /articles/20*/
