@@ -45,6 +45,7 @@ LINKS = (
 
 # Settings for Google Custom Search
 GOOGLE_CSE_ID = '012109292501676780101:lytlaxeswfy'
+SEARCHBOX_MESSAGE = 'サイト内を検索'
 
 # Settings for Twitter Timeline
 TWITTER_TIMELINE_URL = "https://twitter.com/oumed_python?ref_src=twsrc%5Etfw"
