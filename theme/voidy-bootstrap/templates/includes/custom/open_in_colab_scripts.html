@@ -36,11 +36,13 @@ if (check_ipynb.length > 0) {
 
 $(function() {
   $('a').each(function() {
-    let target = $(this).attr('href');
-    const head = 'oumpy.github.io';
+    const target = $(this).attr('href');
+    const myhost = 'oumpy.github.io';
     const repo = 'oumpy/oumpy.github.io/blob/master';
-    if ($(location).attr('hostname')==head && target.endsWith('.ipynb')) {
-      let root = 'https://colab.research.google.com/github/' + repo + $(location).attr('pathname');
+    if ((target.startsWith('.') || target.startsWith('/')
+          || target.startsWith('https://'+myhost) || target.startsWith(myhost))
+         && target.endsWith('.ipynb')) {
+      const root = 'https://colab.research.google.com/github/' + repo + $(location).attr('pathname');
       let root_split = root.split('/');
       let target_split = target.split('/');
       root_split.pop();
