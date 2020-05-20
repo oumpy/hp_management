@@ -33,4 +33,30 @@ if (check_ipynb.length > 0) {
                +'<a href='+colab_url+'>'+colab_img+'</a>';
     doc0.innerHTML= button;
 }
+
+$(function() {
+  $('a').each(function() {
+    let target = $(this).attr('href');
+    const head = 'oumpy.github.io';
+    const repo = 'oumpy/oumpy.github.io/blob/master';
+    if ($(location).attr('hostname')==head && target.endsWith('.ipynb')) {
+      let root = 'https://colab.research.google.com/github/' + repo + $(location).attr('pathname');
+      let root_split = root.split('/');
+      let target_split = target.split('/');
+      root_split.pop();
+      while (true) {
+        if (target_split[0] == '.') {
+          target_split.shift();
+        } else if (target_split[0] == '..') {
+          target_split.shift();
+          root_split.pop();
+        } else {
+          break;
+        }
+      }
+      colablink = root_split.join('/') + '/' + target_split.join('/');
+      $(this).attr('href', colablink);
+    }
+  });
+});
 </script>
