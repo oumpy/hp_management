@@ -102,3 +102,6 @@ URL_ENCODED_GROUPNAMES = dict([ (group[0], urllib.parse.quote(group[0])) for gro
 TAG_CLOUD_BADGE = True
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
+
+if not 'ARTICLE_EXCLUDES' in globals(): ARTICLE_EXCLUDES = []
+ARTICLE_EXCLUDES += [ 'articles/{}sy/{}/attach'.format(y,cat) for cat in {'blog', 'news'} for y in range(start_year, this_year+2) ]
