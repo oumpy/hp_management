@@ -36,27 +36,33 @@ if (check_ipynb.length > 0) {
 
 $(function() {
   $('a').each(function() {
-    const target = $(this).attr('href');
     const myhost = 'oumpy.github.io';
     const repo = 'oumpy/oumpy.github.io/blob/master';
-    if ((target.startsWith('.') || target.startsWith('/')
-          || target.startsWith('https://'+myhost) || target.startsWith(myhost))
-         && target.endsWith('.ipynb')) {
-      const root = 'https://colab.research.google.com/github/' + repo + $(location).attr('pathname');
-      let root_split = root.split('/');
+    const root = 'https://colab.research.google.com/github/' + repo;
+    const target = $(this).attr('href').replace('https://'+myhost, '');
+    if ((target.startsWith('.') || target.startsWith('/')) && target.endsWith('.ipynb')) {
+      let upper = root + $(location).attr('pathname');
+      let upper_split = upper.split('/');
       let target_split = target.split('/');
-      root_split.pop();
+      upper_split.pop();
+      let head = true;
       while (true) {
-        if (target_split[0] == '.') {
+        if (head && target_split[0] == '') {
           target_split.shift();
+          upper_split = root.split('/');
+          break;
+        } else if (target_split[0] == '.') {
+          target_split.shift();
+          head = false;
         } else if (target_split[0] == '..') {
           target_split.shift();
-          root_split.pop();
+          upper_split.pop();
+          head = false;
         } else {
           break;
         }
       }
-      colablink = root_split.join('/') + '/' + target_split.join('/');
+      colablink = upper_split.join('/') + '/' + target_split.join('/');
       $(this).attr('href', colablink);
     }
   });
