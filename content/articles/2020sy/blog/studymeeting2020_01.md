@@ -6,6 +6,9 @@ Author: 山本
 
 2020.05.19に開催したオンライン勉強会の資料を公開します。
 
+今回のみ、会外部の一般の方々にも参加頂く形で行われました。
+次回からは会内部のみとなりますが、資料は公開してゆく予定です。
+
 ## [スライド]({attach}./attach/studymeeting2020_01_attach/200519_python会入門.pdf)
 [% pdf src="{attach}./attach/studymeeting2020_01_attach/200519_python会入門.pdf" %]
 
