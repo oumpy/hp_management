@@ -79,7 +79,11 @@ SHORTCODES = {
   <iframe width="{{width|default(640)}}" height="{{height|default(390)}}"
     src="https://www.youtube.com/embed/{{id}}"
     frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
-  </iframe></span></p>'''
+  </iframe></span></p>''',
+    'pdf': '''\
+<embed src="{{src}}"
+    type="application/pdf"
+    width={{width|default(640)}}" height="{{height|default(390)}}">''',
 }
 
 # if you create jupyter files in the content dir, snapshots are saved with the same
