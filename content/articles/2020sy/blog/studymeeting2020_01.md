@@ -10,7 +10,7 @@ Author: 山本
 次回からは会内部のみとなりますが、資料は公開してゆく予定です。
 
 ## [スライド]({attach}./attach/studymeeting2020_01_attach/200519_python会入門.pdf)
-[% pdf src="{attach}./attach/studymeeting2020_01_attach/200519_python会入門.pdf" %]
+[% embed src="{attach}./attach/studymeeting2020_01_attach/200519_python会入門.pdf" %]
 
 ## [Python Tutorial]({attach}./attach/studymeeting2020_01_attach/Python_tutorial.ipynb)
 [Jupyter Notebook @Google Colab]({attach}./attach/studymeeting2020_01_attach/Python_tutorial.ipynb)
