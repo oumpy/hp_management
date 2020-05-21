@@ -36,8 +36,9 @@ if (check_ipynb.length > 0) {
 
 $(function() {
   $('a').each(function() {
-    const myhost = 'oumpy.github.io';
-    const repo = 'oumpy/oumpy.github.io/blob/master';
+    const myhost = $(location).attr('hostname'); /* hogehoge.github.io */
+    const account = myhost.split('.')[0]; /* hogehoge */
+    const repo = account + '/' + myhost + '/blob/master';
     const root = 'https://colab.research.google.com/github/' + repo;
     const target = $(this).attr('href').replace('https://'+myhost, '');
     if ((target.startsWith('.') || target.startsWith('/')) && target.endsWith('.ipynb')) {
