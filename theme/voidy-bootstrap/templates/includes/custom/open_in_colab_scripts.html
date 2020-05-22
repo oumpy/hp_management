@@ -37,6 +37,11 @@ if (check_ipynb.length > 0) {
 $(function() {
   $('a').each(function() {
     const myhost = $(location).attr('hostname'); /* hogehoge.github.io */
+    /* in order to work only on github pages, add:
+    if (! myhost.match(/^[^\.]+\.github\.io$/)) {
+      return;
+    }
+    */
     const account = myhost.split('.')[0]; /* hogehoge */
     const repo = account + '/' + myhost + '/blob/master';
     const root = 'https://colab.research.google.com/github/' + repo;
