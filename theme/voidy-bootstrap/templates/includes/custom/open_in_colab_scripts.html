@@ -35,16 +35,16 @@ if (check_ipynb.length > 0) {
 }
 
 $(function() {
+  const myhost = $(location).attr('hostname'); /* hogehoge.github.io */
+  /* in order to work only on github pages, add:
+  if (! myhost.match(/^[^\.]+\.github\.io$/)) {
+    return;
+  }
+  */
+  const account = myhost.split('.')[0]; /* hogehoge */
+  const repo = account + '/' + myhost + '/blob/master';
+  const root = 'https://colab.research.google.com/github/' + repo;
   $('a').each(function() {
-    const myhost = $(location).attr('hostname'); /* hogehoge.github.io */
-    /* in order to work only on github pages, add:
-    if (! myhost.match(/^[^\.]+\.github\.io$/)) {
-      return;
-    }
-    */
-    const account = myhost.split('.')[0]; /* hogehoge */
-    const repo = account + '/' + myhost + '/blob/master';
-    const root = 'https://colab.research.google.com/github/' + repo;
     const target = $(this).attr('href').replace('https://'+myhost, '');
     if ((target.startsWith('.') || target.startsWith('/')) && target.endsWith('.ipynb')) {
       let upper = root + $(location).attr('pathname');
