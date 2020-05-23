@@ -5,7 +5,6 @@ AutoSummary
 This plugin generates summary from article, with customizable tag-selections.
 """
 
-from __future__ import unicode_literals
 from bs4 import BeautifulSoup
 from pelican import signals
 from pelican.generators import ArticlesGenerator, StaticGenerator, PagesGenerator
