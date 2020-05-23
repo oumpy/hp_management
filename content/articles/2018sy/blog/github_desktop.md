@@ -1,7 +1,6 @@
 Title:GitHub desktopアプリの使い方
 Date: 2018.10.28
 Tags: GitHub
-Slug: github_desktop
 Author: 安水
 
 githubとはなにかの説明は省略しています。githubについて知らない人は先にいろいろ調べてみましょう。今回は[github desktop](https://desktop.github.com/)についてです。

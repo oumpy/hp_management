@@ -2,7 +2,6 @@ Title: はじめての競プロ：入力アンチョコメモ
 Date: 2019.04.27
 Modified: 2019.04.29
 Tags: 競技プログラミング
-Slug: competition_input
 Author: 小川
 
 ## 入力のパターン

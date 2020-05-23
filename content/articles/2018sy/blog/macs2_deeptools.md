@@ -1,7 +1,6 @@
 Title:MACS2とdeepToolsのbigwigファイルの比較
 Date: 2018.10.29
 Tags: Bioinformatics
-Slug: macs2_deeptools
 Author: 安水
 
 ## ChIP-seqとは

@@ -1,7 +1,6 @@
 Title:Pythonで可視化入門
 Date: 2019.01.18
 Tags: Python
-Slug: python_visualization
 Author: 宮崎
 
 Pythonでいい感じのグラフを書いてみたい！でも面倒！よくわからない！

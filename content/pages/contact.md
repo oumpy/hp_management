@@ -1,7 +1,6 @@
 Title: Contact
 Date: 2020.03.13
 Modified: 2020.03.17
-Slug: contact
 Author: Python会
 Page_order: 400
 Summary: Python会への連絡用メールフォーム
