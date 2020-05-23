@@ -13,6 +13,7 @@ Author: 山本
 
 ## Pythonの環境構築
 - Pythonの公式サイト(https://www.python.org/)からPythonだけをinstallしても使えるが、パッケージ管理や環境管理のためにAnacondaを使うと便利（ここで不要じゃという声が飛んでくる）。
+- [Pythonの公式サイト](https://www.python.org/)からPythonだけをinstallしても使えるが、パッケージ管理や環境管理のためにAnacondaを使うと便利（ここで不要じゃという声が飛んでくる）。
 - 少なくともWindowsだと使った方が楽
 - Anacondaそのままは全部盛りに近い（＝要らないものなども自動でinstallされる）ので、最小限のパッケージに留めたMinicondaをinstallする方がよい
 - Miniconda入れる前にpyenv入れた方が良いという話もある(MacOS, Linux)
@@ -39,7 +40,7 @@ print('y:', y)
 ```
 
 ### Matplotlibで図を描画する
-Matplotlibは図を描画するためのライブラリ。どんな図が描画できるかは公式ドキュメントのギャラリー(https://matplotlib.org/gallery/index.html)を参照。
+Matplotlibは図を描画するためのライブラリ。どんな図が描画できるかは公式ドキュメントの[ギャラリー](https://matplotlib.org/gallery/index.html)を参照。
 
 ```python
 import numpy as np
@@ -53,7 +54,7 @@ plt.show()
 ```
 
 ### Seabornによる回帰直線の描画
-SeabornはMatplotlibがベースのライブラリ。より綺麗で複雑な図を簡単に描画できる。公式ドキュメントのギャラリー(https://seaborn.pydata.org/examples/index.html )を参照。
+SeabornはMatplotlibがベースのライブラリ。より綺麗で複雑な図を簡単に描画できる。公式ドキュメントの[ギャラリー](https://seaborn.pydata.org/examples/index.html)を参照。
 ```python
 import seaborn as sns
 np.random.seed(0) # 乱数seedの設定
@@ -71,10 +72,10 @@ plt.show() # 画像表示
 
 ### Markdownについて
 Markdownはプレーンテキスト形式で手軽に書いた文書からHTMLを生成するための言語
-- 書き方はMarkdown記法サンプル集(https://qiita.com/tbpgr/items/989c6badefff69377da7)
+- 書き方は[Markdown記法サンプル集](https://qiita.com/tbpgr/items/989c6badefff69377da7)
 等を見るとよい
--  普段から使う場合はTypora(https://typora.io/)を使うのがおススメ。TeX形式の数式も書ける。PandocをインストールすればWordやLaTeXなどに変換可能。
+-  普段から使う場合は[Typora](https://typora.io/)を使うのがおススメ。TeX形式の数式も書ける。PandocをインストールすればWordやLaTeXなどに変換可能。
 
 ### Google Colabについて
-Google Colaboratory (https://colab.research.google.com)はJupyter Notebookを
+[Google Colaboratory] (https://colab.research.google.com)はJupyter Notebookを
 ブラウザ上で使えるようにGoogleが提供しているサービス。Pythonをインストールする必要はありません。また、Python会の一部のブログは記事をそのままGoogle Colabで開くことができます(GitHubにアップロードしたJupyter Notebookファイル(.ipynb)はURLを修正するだけでColabで開くことができます)。
