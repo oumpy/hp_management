@@ -107,6 +107,8 @@ ADD_ON_MENU = [
              self_in_subsections=True,
              active_pages=r'(news/|tag/news\.html$|author/pythonhui\.html$)'),
     MenuItem('recruit.html', self_in_subsections=True, subsections=MenuItem.AUTO),
+    MenuItem('student_server.html',
+             title='学生用計算機'),
     MenuItem('contact.html', self_in_subsections=True),
 ]
 MENU_STEPS = 1
