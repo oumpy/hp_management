@@ -107,3 +107,8 @@ URL_ENCODED_GROUPNAMES = dict([ (group[0], urllib.parse.quote(group[0])) for gro
 TAG_CLOUD_BADGE = True
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
+
+PLUGINS += [
+    'postprocess',
+]
+POSTPROCESS_COMMAND = 'sh content/postprocess.sh'
