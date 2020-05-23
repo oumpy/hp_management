@@ -52,6 +52,7 @@ TWITTER_TIMELINE_URL = "https://twitter.com/oumed_python?ref_src=twsrc%5Etfw"
 TWITTER_USERNAME = 'oumed_python'
 
 CUSTOM_SOCIAL_TITLE = "ソーシャル"
+CUSTOM_RECENTPOSTS_TITLE = '新着記事'
 CUSTOM_CATEGORIES_TITLE = "記事カテゴリ"
 CUSTOM_TAGS_TITLE = "タグ"
 CUSTOM_LINKS_TITLE = "リンク"
