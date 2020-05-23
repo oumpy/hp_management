@@ -12,7 +12,6 @@ Author: 山本
 [% embed src="{attach}./attach/studymeeting2020_01_attach/200519_python会入門.pdf" %]
 
 ## Pythonの環境構築
-- Pythonの公式サイト(https://www.python.org/)からPythonだけをinstallしても使えるが、パッケージ管理や環境管理のためにAnacondaを使うと便利（ここで不要じゃという声が飛んでくる）。
 - [Pythonの公式サイト](https://www.python.org/)からPythonだけをinstallしても使えるが、パッケージ管理や環境管理のためにAnacondaを使うと便利（ここで不要じゃという声が飛んでくる）。
 - 少なくともWindowsだと使った方が楽
 - Anacondaそのままは全部盛りに近い（＝要らないものなども自動でinstallされる）ので、最小限のパッケージに留めたMinicondaをinstallする方がよい
