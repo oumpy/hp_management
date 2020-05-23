@@ -71,10 +71,9 @@ plt.show() # 画像表示
 
 ### Markdownについて
 Markdownはプレーンテキスト形式で手軽に書いた文書からHTMLを生成するための言語
-- 書き方は[Markdown記法サンプル集](https://qiita.com/tbpgr/items/989c6badefff69377da7)
-等を見るとよい
+- 書き方は[Markdown記法サンプル集](https://qiita.com/tbpgr/items/989c6badefff69377da7)等を見るとよい
 -  普段から使う場合は[Typora](https://typora.io/)を使うのがおススメ。TeX形式の数式も書ける。PandocをインストールすればWordやLaTeXなどに変換可能。
 
 ### Google Colabについて
-[Google Colaboratory] (https://colab.research.google.com)はJupyter Notebookを
+[Google Colaboratory](https://colab.research.google.com)はJupyter Notebookを
 ブラウザ上で使えるようにGoogleが提供しているサービス。Pythonをインストールする必要はありません。また、Python会の一部のブログは記事をそのままGoogle Colabで開くことができます(GitHubにアップロードしたJupyter Notebookファイル(.ipynb)はURLを修正するだけでColabで開くことができます)。
