@@ -5,11 +5,13 @@ AutoSummary
 This plugin generates summary from article, with customizable tag-selections.
 """
 
-from __future__ import unicode_literals
 from bs4 import BeautifulSoup
 from pelican import signals
 from pelican.generators import ArticlesGenerator, StaticGenerator, PagesGenerator
 import re
+
+import logging
+logger = logging.getLogger(__name__)
 
 def initialized(pelican):
     from pelican.settings import DEFAULT_CONFIG
@@ -31,7 +33,7 @@ def initialized(pelican):
 def make_autosummary(content, settings):
     content = str(BeautifulSoup(content, 'html.parser'))
     content = re.compile(r'([\s　¶]|&#182;)+').sub(' ', content) # &#182; appears in converted jupyter notebooks.
-    content = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub(' ', content) # for jupyter. in general, probably buggy.
+    content = re.compile(r'<(style|STYLE)(|\s+[^<>]*)>.*?</(style|STYLE)>').sub(' ', content) # for jupyter. in general, probably buggy.
     content = re.compile(r'[\s　]+').sub(' ', content)
     cur_pos = 0
     length = 0
@@ -89,21 +91,16 @@ def make_autosummary(content, settings):
 def contentlen(content):
     content = str(BeautifulSoup(content, 'html.parser'))
     content = re.compile(r'([\s　¶]|&#182;)+').sub('', content) # &#182; appears in converted jupyter notebooks.
-    content = re.compile(r'<(style|STYLE)(|\s+\S+)>.*?</(style|STYLE)>').sub('', content) # for jupyter. in general, probably buggy.
+    content = re.compile(r'<(style|STYLE)(|\s+[^<>]*)>.*?</(style|STYLE)>').sub('', content) # for jupyter. in general, probably buggy.
     return len(re.compile(r'<[^>]*?>').sub('', content))
 
 
 def extract_summary(instance):
     min_length = instance.settings['AUTOSUMMARY_MIN_LENGTH']
-    # if summary is already specified, use it
-    # if there is no content, there's nothing to do
-    if ('summary' in instance.metadata and
-        (contentlen(instance.metadata['summary']) >= min_length or ((not instance._content) and not hasattr(instance, '_summary')))):
-        instance.has_summary = True
-        return
-    elif hasattr(instance, '_summary') and (contentlen(instance._summary) >= min_length or (not instance._content)):
+    if hasattr(instance, '_summary') and (contentlen(instance._summary) >= min_length or (not instance._content)):
         pre_summary = instance._summary
     elif not instance._content:
+    # if there is no content, there's nothing to do
         instance.has_summary = False
         return
     else:

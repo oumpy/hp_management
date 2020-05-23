@@ -3,6 +3,7 @@ from datetime import datetime
 from collections import defaultdict
 import os
 import argparse
+import shutil
 
 template = "./template.md"
 
@@ -12,10 +13,10 @@ fields = [  # (field, default, comment)
     ('date',      now,                '記事日付。YYYY.mm.DD または YYYY.mm.DD HH.MM 形式'),
     ('modified',  None,               '更新日。None の場合は date と同じ'),
     ('title',     None,               '記事タイトル。content 内に # 要素がある場合は指定しない。'),
-    ('category',  'Blog',             'Blog, News または Page'),
+    ('category',  'blog',             'blog, news または page'),
     ('tags',      None,               'Bioinformatics など、サイト参照。複数の場合カンマ区切り'),
     ('author',    None,               '記事執筆者の名前。姓またはHN、複数の場合カンマ区切り'),
-    ('content',   None,               '記事内容ファイル (.md) がすでにある場合はパスを指定'),
+    ('content',   None,               '記事内容ファイル (.md/.ipynb) がすでにある場合はパスを指定'),
 ]
 
 if __name__ == '__main__':
@@ -81,15 +82,28 @@ if __name__ == '__main__':
     if values['content']:
         contentfile = values['content']
         if os.path.isfile(contentfile):
-            with open(contentfile, 'r') as cf:
-                for line in cf.readlines:
-                    line = line.rstrip('\n')
-                    if not values['title']:
-                        first, second = line.lstrip()[:2]
-                        if first == '#' and second != '#':
-                            values['title'] = line.strip()[1:].lstrip()
-                            continue
-                    content.append(line)
+            suffix = contentfile.split('.')[-1]
+            if suffix == 'md':
+                with open(contentfile, 'r') as cf:
+                    for line in cf.readlines():
+                        line = line.rstrip('\n')
+                        if not values['title']:
+                            first, second = line.lstrip()[:2]
+                            if first == '#' and second != '#':
+                                values['title'] = line.strip()[1:].lstrip()
+                                continue
+                        content.append(line)
+            elif suffix == 'ipynb':
+                filepath_body = filepath.rstrip('.md')
+                filepath = filepath_body + '.nbdata'
+                filepath_ipynb = filepath_body + '.ipynb'
+                if os.path.exists(filepath_ipynb):
+                    print("'{}' はすでに存在します。".format(filepath))
+                else:
+                    shutil.copy(contentfile, filepath_ipynb)
+                    print("ファイル '{}' を作成 (コピー) しました。".format(filepath_ipynb))
+            else:
+                print("ファイル '{}' は対応するファイル形式ではありません。指定を無視します。".format(contentfile))
         else:
             print("ファイル '{}' は存在しません。指定を無視します。".format(contentfile))
 
@@ -101,12 +115,13 @@ if __name__ == '__main__':
     # make the file
     if not os.path.exists(directory):
         os.makedirs(directory)
+    suffix = filepath.split('.')[-1]
     with open(filepath, 'w') as tf:
         with open(template, 'r') as sf:
             for line in sf.readlines():
                 line = line.rstrip('\n')
                 Field = line.split(':')[0]
-                field = field.lower()
+                field = Field.lower()
                 if field in values.keys() and values[field]:
                     if field in {'author', 'tags'}:
                         values[field] = values[field].strip().strip(',')
@@ -114,17 +129,18 @@ if __name__ == '__main__':
                         print('{0}s: {1}'.format(Field, values[field]), file=tf)
                     else:
                         print('{0}: {1}'.format(Field, values[field]), file=tf)
-                else:
+                elif suffix == '.md' or line.strip():
                     print(line, file=tf)
         for line in content:
             print(line, file=tf)
 
     print("ファイル '{}' を作成しました。".format(filepath))
-    try:
-        os.makedirs(imagedirpath)
-        print("画像保存用ディレクトリ'{}'を作成しました。".format(imagedirpath))
-    except FileExistsError:
-        if os.path.isdir(imagedirpath):
-            print("画像保存用ディレクトリ'{}'はすでに存在します。".format(imagedirpath))
-        else:
-            print("画像保存用ディレクトリ'{}'を作成できませんでした。".format(imagedirpath))
+    if suffix == '.md':
+        try:
+            os.makedirs(imagedirpath)
+            print("画像保存用ディレクトリ'{}'を作成しました。".format(imagedirpath))
+        except FileExistsError:
+            if os.path.isdir(imagedirpath):
+                print("画像保存用ディレクトリ'{}'はすでに存在します。".format(imagedirpath))
+            else:
+                print("画像保存用ディレクトリ'{}'を作成できませんでした。".format(imagedirpath))
