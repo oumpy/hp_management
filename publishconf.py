@@ -22,4 +22,10 @@ PLUGINS += [
     'sitemap',
 ]
 
+# Add robots.txt
+ROBOTS = 'robots.txt'
+EXTRA_PATH_METADATA.update({
+    'extra/' + ROBOTS: {'path': ROBOTS},
+})
+
 from content.contentpublishconf import *
