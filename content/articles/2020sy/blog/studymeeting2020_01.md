@@ -6,7 +6,8 @@ Author: 山本
 
 2020.05.19に開催したオンライン勉強会の資料を公開します。
 
-今回のみ、会外部の一般の方々にも参加頂く形で行われました。次回からは会内部のみとなりますが、資料は公開してゆく予定です。
+今回のみ、会外部の一般の方々にも参加頂く形で行われました。
+次回からは会内部のみとなりますが、資料は公開してゆく予定です。
 
 ## スライド
 [% embed src="{attach}./attach/studymeeting2020_01_attach/200519_python会入門.pdf" %]
@@ -63,7 +64,7 @@ n_data = 100 # データ数
 x = np.random.randn(n_data)
 y = 2*x + np.random.randn(n_data) + 10
 
-# 回帰直線のplot 
+# 回帰直線のplot
 plt.figure(figsize=(4,4))
 sns.regplot(x, y) # 回帰(regression)の実行
 plt.show() # 画像表示
@@ -72,7 +73,7 @@ plt.show() # 画像表示
 ### Markdownについて
 Markdownはプレーンテキスト形式で手軽に書いた文書からHTMLを生成するための言語
 - 書き方は[Markdown記法サンプル集](https://qiita.com/tbpgr/items/989c6badefff69377da7)等を見るとよい
--  普段から使う場合は[Typora](https://typora.io/)を使うのがおススメ。TeX形式の数式も書ける。PandocをインストールすればWordやLaTeXなどに変換可能。
+- 普段から使う場合は[Typora](https://typora.io/)を使うのがおススメ。TeX形式の数式も書ける。PandocをインストールすればWordやLaTeXなどに変換可能。
 
 ### Google Colabについて
 [Google Colaboratory](https://colab.research.google.com)はJupyter Notebookを
