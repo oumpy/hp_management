@@ -1,7 +1,6 @@
 Title:いまさらGoogle Colaboratory入門
 Date: 2018.10.08
 Tags: Python
-Slug: google_colaboratory
 Author: 宮崎
 
 いまさらGoogle Colaboratory触ってみた感じ、かなり便利なのでまとめておきます。動機は、研究室の環境とは別に、趣味のプログラミングの環境が欲しかったからです。

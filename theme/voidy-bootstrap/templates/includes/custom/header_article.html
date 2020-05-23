@@ -1,5 +1,6 @@
     <meta name="article:slug" property="og:article:slug" content="{{ article.slug }}">
     <meta name="article:category" property="og:article:category" content="{{ article.category }}">
+    <meta name="article:category:slug" property="og:article:category:slug" content="{{ article.category.slug }}">
     <meta name="article:date" property="og:article:date" content="{{ article.date|strftime("%Y-%m-%d") }}">
 {% if article.modified %}
     <meta name="article:modified" property="og:article:modified" content="{{ article.modified|strftime("%Y-%m-%d") }}">

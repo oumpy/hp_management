@@ -1,7 +1,6 @@
 Title:必要n数の決定～研究計画～
 Date: 2019.03.22
 Tags: Statistics
-Slug: n_number
 Author: 依藤
 
 ## シングルセル解析での細胞数

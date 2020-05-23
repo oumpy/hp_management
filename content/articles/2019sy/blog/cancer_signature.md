@@ -1,7 +1,6 @@
 Title: がんゲノム変異シグネチャー解析
 Date: 2019.06.21
 Tags: Bioinformatics
-Slug: cancer_signature
 Author: 山田
 
 がんゲノムの変異シグネチャーの推定にチャレンジしてみました。

@@ -1,7 +1,6 @@
 Title: JuliaとPythonと競技プログラミング
 Date: 2019.03.16
 Tags: 競技プログラミング
-Slug: julia_python_competition
 Author: 小川
 
 最近友人と話していてJulia (<https://julialang.org>)が話題になったことがあったので、少しだけ調べて試してみた話。

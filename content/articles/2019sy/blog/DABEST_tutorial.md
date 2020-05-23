@@ -1,7 +1,6 @@
 Title: Estimation statisticsに基づいたデータの可視化ライブラリ -DABEST-
 Date: 2019.06.23
 Tags: Statistics
-Slug: DABEST_tutorial
 Author: 山本
 
 データを可視化する手法としては、棒グラフ(**Barplot**), 箱ひげ図(**Boxplot**), **Jitter plot**, **Violin plot** などがよく用いられます。しかし、これらの可視化手法は **有意差検定(null hypothesis significance testing; NHST)** の結果を表示するためのものです。有意差検定は様々な分野の研究において広く用いられていますが、統計検定の結果の評価に**p値**を用いることは二分的な評価に繋がっています(例えばp<0.05ならOKでp>0.05ならダメ、という判断)。一方で、**Estimation Statistics**はp値ではなく **効果量(effect size)** に重きを置きます。つまり、効果がある/なしではなく、どのくらい効果があるか、を重視するということです。
