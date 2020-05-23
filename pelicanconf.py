@@ -131,7 +131,12 @@ CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
-CUSTOM_SIDEBAR_MIDDLES = ( "custom/sb_social.html", "custom/sb_recentposts.html", "custom/sb_tagcloud.html", )
+CUSTOM_SIDEBAR_MIDDLES = (
+    "custom/sb_google_cse.html",
+    "custom/sb_social.html",
+    "custom/sb_recentposts.html",
+    "custom/sb_tagcloud.html",
+    )
 CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
 SIDEBAR_HIDE_FEEDS = True
 
