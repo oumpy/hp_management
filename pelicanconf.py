@@ -69,6 +69,7 @@ PLUGINS = [
     'category_names',
     'shortcodes',
     'filename2slug',
+    'apply_jinja2',
 ]
 
 RELATED_POSTS_MAX = 3
@@ -149,21 +150,6 @@ CUSTOM_RECENTPOSTS_TITLE = '新着記事'
 TWITTER_CARD = True
 OPEN_GRAPH = True
 
-JINJA_FILTERS = ()
-import jinja2
-def filter_apply_jinja2(content,tags,siteurl):
-    template = jinja2.Template(content)
-    variables = dict()
-    variables.update(globals())
-    variables.update(locals())
-    variables.update({
-        'SITEURL' : siteurl,
-        'tags' : tags,
-    })
-    result = template.render(**variables)
-    return result
-JINJA_FILTERS += (('apply_jinja2', filter_apply_jinja2),)
-FILTER_APPLY_JINJA2 = True
 
 # Read user's custom settings.
 import tools.lib.pelicanns
