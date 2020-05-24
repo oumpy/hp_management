@@ -7,7 +7,6 @@ INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
-POSTPROCESS=$(BASEDIR)/content/postprocess.sh
 
 GITHUB_PAGES_BRANCH=master
 
@@ -42,8 +41,7 @@ help:
 	@echo '                                                                          '
 
 html:
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS) &&\
-	[ -e $(POSTPROCESS) ] && sh $(POSTPROCESS) $(OUTPUTDIR)
+	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)/*
@@ -74,8 +72,7 @@ else
 endif
 
 publish:
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS) &&\
-	[ -e $(POSTPROCESS) ] && sh $(POSTPROCESS) $(OUTPUTDIR)
+	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
 github: publish
 	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)

@@ -1,7 +1,6 @@
 Title:Particle filter
 Date: 2018.10.05
 Tags: Machine Learning
-Slug: particle_filter
 Author: 柳澤
 
 今回は**パーティクルフィルター**の紹介をしたいと思います。

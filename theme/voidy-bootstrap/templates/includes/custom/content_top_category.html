@@ -6,7 +6,7 @@
 {% set cat = category.slug %}
 {% if CATEGORY_CONTENTS is defined and cat in CATEGORY_CONTENTS and output_file == page_name+'.html' %}
   {% if FILTER_APPLY_JINJA2|default(false) %}
-    {{ CATEGORY_CONTENTS[cat]|apply_jinja2(tags,SITEURL) }}
+    {{ CATEGORY_CONTENTS[cat]|apply_jinja2 }}
   {% else %}
     {{ CATEGORY_CONTENTS[cat] }}
   {% endif %}

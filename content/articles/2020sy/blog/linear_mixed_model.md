@@ -1,7 +1,6 @@
 Title: 線形混合効果モデル
 Date: 2020.04.08
 Tags: Statistics
-Slug: linear_mixed_model
 Author: 竹内
 
 ## 経時測定データ解析

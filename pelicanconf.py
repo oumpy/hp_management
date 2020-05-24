@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
 import datetime
 import copy
 import os
@@ -69,6 +68,7 @@ PLUGINS = [
     'category_names',
     'shortcodes',
     'filename2slug',
+    'apply_jinja2',
 ]
 
 RELATED_POSTS_MAX = 3
@@ -136,7 +136,12 @@ CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
-CUSTOM_SIDEBAR_MIDDLES = ( "custom/sb_social.html", "custom/sb_recentposts.html", "custom/sb_tagcloud.html", )
+CUSTOM_SIDEBAR_MIDDLES = (
+    "custom/sb_google_cse.html",
+    "custom/sb_social.html",
+    "custom/sb_recentposts.html",
+    "custom/sb_tagcloud.html",
+    )
 CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
 SIDEBAR_HIDE_FEEDS = True
 
@@ -150,26 +155,10 @@ SOCIAL_SHARE_BUTTONS = (
 
 DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
 RECENT_POST_COUNT = 5
-CUSTOM_RECENTPOSTS_TITLE = '新着記事'
 
 TWITTER_CARD = True
 OPEN_GRAPH = True
 
-JINJA_FILTERS = ()
-import jinja2
-def filter_apply_jinja2(content,tags,siteurl):
-    template = jinja2.Template(content)
-    variables = dict()
-    variables.update(globals())
-    variables.update(locals())
-    variables.update({
-        'SITEURL' : siteurl,
-        'tags' : tags,
-    })
-    result = template.render(**variables)
-    return result
-JINJA_FILTERS += (('apply_jinja2', filter_apply_jinja2),)
-FILTER_APPLY_JINJA2 = True
 
 # Read user's custom settings.
 import tools.lib.pelicanns

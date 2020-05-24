@@ -11,8 +11,8 @@ SOURCEREPOSITORY_NAME = 'hp_management'
 AUTHOR = 'Python会'
 SITENAME = '大阪大学医学部 Python会'
 SITEURL = ''
-AUTHOR_INTRO = u'大阪大学医学部所属のPython職人集団です'
-AUTHOR_DESCRIPTION = u'Now is better than never'
+AUTHOR_INTRO = '大阪大学医学部所属のPython職人集団です'
+AUTHOR_DESCRIPTION = 'Now is better than never'
 # AUTHOR_AVATAR = '../images/'
 # AUTHOR_WEB = 'https://twitter.com/oumed_python'
 SITESUBTITLE ='Now is better than never.'
@@ -43,11 +43,16 @@ LINKS = (
         # ('You can modify those links in your config file', '#'),
         )
 
+# Settings for Google Custom Search
+GOOGLE_CSE_ID = '012109292501676780101:lytlaxeswfy'
+SEARCHBOX_MESSAGE = 'サイト内を検索'
+
 # Settings for Twitter Timeline
 TWITTER_TIMELINE_URL = "https://twitter.com/oumed_python?ref_src=twsrc%5Etfw"
 TWITTER_USERNAME = 'oumed_python'
 
 CUSTOM_SOCIAL_TITLE = "ソーシャル"
+CUSTOM_RECENTPOSTS_TITLE = '新着記事'
 CUSTOM_CATEGORIES_TITLE = "記事カテゴリ"
 CUSTOM_TAGS_TITLE = "タグ"
 CUSTOM_LINKS_TITLE = "リンク"
@@ -97,11 +102,13 @@ CUSTOM_TAG_BADGE_COLORS = {'News' : 'hotpink'}
 for group in TAG_GROUPS:
     for tag in group[1]:
         CUSTOM_TAG_BADGE_COLORS[tag] = group[2]
-import urllib.parse
-URL_ENCODED_GROUPNAMES = dict([ (group[0], urllib.parse.quote(group[0])) for group in TAG_GROUPS ])
 TAG_CLOUD_BADGE = True
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
 
 if not 'ARTICLE_EXCLUDES' in globals(): ARTICLE_EXCLUDES = []
 ARTICLE_EXCLUDES += [ 'articles/{}sy/{}/attach'.format(y,cat) for cat in {'blog', 'news'} for y in range(start_year, this_year+2) ]
+PLUGINS += [
+    'postprocess',
+]
+POSTPROCESS_COMMAND = 'sh content/postprocess.sh'
