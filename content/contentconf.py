@@ -96,7 +96,7 @@ CUSTOM_TAG_BADGE_COLOR = 'blue'
 TAG_GROUPS = [ # (groupname, [articles,...,], badge_color )
     ('Research tools & techniques', ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition', 'ハードウェア'], 'darkorange'),
     ('Programming', ['Python', 'Shell script', '競技プログラミング', 'GitHub', 'Unix'], 'green'),
-    ('その他', ['論文まとめ', '論文関連', '検定試験', '海外留学'], CUSTOM_TAG_BADGE_COLOR),
+    ('その他', ['論文まとめ', '論文関連', '検定試験', '海外留学', '勉強会'], CUSTOM_TAG_BADGE_COLOR),
 ]
 CUSTOM_TAG_BADGE_COLORS = {'News' : 'hotpink'}
 for group in TAG_GROUPS:
@@ -106,6 +106,8 @@ TAG_CLOUD_BADGE = True
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
 
+if not 'ARTICLE_EXCLUDES' in globals(): ARTICLE_EXCLUDES = []
+ARTICLE_EXCLUDES += [ 'articles/{}sy/{}/attach'.format(y,cat) for cat in {'blog', 'news'} for y in range(start_year, this_year+2) ]
 PLUGINS += [
     'postprocess',
 ]

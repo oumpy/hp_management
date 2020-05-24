@@ -33,4 +33,44 @@ if (check_ipynb.length > 0) {
                +'<a href='+colab_url+'>'+colab_img+'</a>';
     doc0.innerHTML= button;
 }
+
+$(function() {
+  const myhost = $(location).attr('hostname'); /* hogehoge.github.io */
+  /* in order to work only on github pages, add:
+  if (! myhost.match(/^[^\.]+\.github\.io$/)) {
+    return;
+  }
+  */
+  const account = myhost.split('.')[0]; /* hogehoge */
+  const repo = account + '/' + myhost + '/blob/master';
+  const root = 'https://colab.research.google.com/github/' + repo;
+  $('a').each(function() {
+    const target = $(this).attr('href').replace('https://'+myhost, '');
+    if ((target.startsWith('.') || target.startsWith('/')) && target.endsWith('.ipynb')) {
+      let upper = root + $(location).attr('pathname');
+      let upper_split = upper.split('/');
+      let target_split = target.split('/');
+      upper_split.pop();
+      let head = true;
+      while (true) {
+        if (head && target_split[0] == '') {
+          target_split.shift();
+          upper_split = root.split('/');
+          break;
+        } else if (target_split[0] == '.') {
+          target_split.shift();
+          head = false;
+        } else if (target_split[0] == '..') {
+          target_split.shift();
+          upper_split.pop();
+          head = false;
+        } else {
+          break;
+        }
+      }
+      colablink = upper_split.join('/') + '/' + target_split.join('/');
+      $(this).attr('href', colablink);
+    }
+  });
+});
 </script>
