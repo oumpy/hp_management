@@ -36,6 +36,8 @@ PAGE_SAVE_AS = PAGE_URL ='{slug}.html'
 CATEGORY_SAVE_AS = CATEGORY_URL = '{slug}.html'
 INDEX_SAVE_AS = 'articles.html'
 
+SLUGIFY_SOURCE = 'basename'
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
@@ -67,7 +69,6 @@ PLUGINS = [
     'autosummary', 'summary', # this order is important!
     'category_names',
     'shortcodes',
-    'filename2slug',
     'apply_jinja2',
 ]
 
