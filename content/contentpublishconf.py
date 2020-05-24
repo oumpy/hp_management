@@ -10,7 +10,7 @@ SITEMAP = {
     'format': 'xml',
     'priorities': {
         'articles': 0.5,
-        'indexes': 0.5,
+        'indexes': 0.1,
         'pages': 0.5
     },
     'changefreqs': {
