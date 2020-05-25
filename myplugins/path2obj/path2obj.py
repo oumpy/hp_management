@@ -7,7 +7,6 @@ returning the corresponding object to a given path (for articles/pages),
 or category/tag/author name.
 """
 
-from __future__ import unicode_literals
 from pelican import signals
 from pelican.generators import ArticlesGenerator, StaticGenerator, PagesGenerator
 
