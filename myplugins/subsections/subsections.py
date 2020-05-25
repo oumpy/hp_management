@@ -5,7 +5,6 @@ Subections Plugin for Pelican
 This plugin adds `subsections` attribute to article/page.
 """
 
-from __future__ import unicode_literals
 from pelican import signals
 from pelican.generators import ArticlesGenerator, StaticGenerator, PagesGenerator
 import re
