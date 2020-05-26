@@ -10,7 +10,7 @@ Author: 山本
 次回からは会内部のみとなりますが、資料は公開してゆく予定です。
 
 ## スライド
-[% embed src="{attach}./attach/studymeeting2020_01_attach/200519_python会入門.pdf" %]
+[% embed src="{attach}./attach/studymeeting2020_01/200519_python会入門.pdf" %]
 
 ## Pythonの環境構築
 - [Pythonの公式サイト](https://www.python.org/)からPythonだけをinstallしても使えるが、パッケージ管理や環境管理のためにAnacondaを使うと便利（ここで不要じゃという声が飛んでくる）。
@@ -27,7 +27,7 @@ python hoge.py
 IDEでは簡単に実行出来たり、他にはJupyter notebookを用いる手法も。
 
 ## Python Tutorial
-[Jupyter Notebook]({attach}./attach/studymeeting2020_01_attach/Python_tutorial.ipynb)
+[Jupyter Notebook]({attach}./attach/studymeeting2020_01/Python_tutorial.ipynb)
 
 コードのみ以下に掲載します。
 ### NumPyで数値計算
