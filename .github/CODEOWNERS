@@ -9,6 +9,7 @@
 /content/pages/      @oumpy/leaders
 /content/pages/recruit.md       @oumpy/leaders @oumpy/staff_recruit
 /content/pages/images/recruit/  @oumpy/leaders @oumpy/staff_recruit
+/content/pages/attach/recruit/  @oumpy/leaders @oumpy/staff_recruit
 
 # Order is important. The last matching pattern has the most precedence.
 # So if a pull request only touches javascript files, only these owners
