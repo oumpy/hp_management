@@ -82,7 +82,12 @@ ADD_ON_MENU = (
     MenuItem('activities.html', subsections=MenuItem.AUTO),
     MenuItem('achievements.html', subsections=MenuItem.AUTO),
     MenuItem('blog.html', title=CATEGORYNAMES_ALTERNATIVES['blog'][0],
-             active_pages=r'(blog/|tag/(?!news).+\.html$|author/(?!pythonhui).+\.html$)'),
+             active_pages=r'(blog/|tag/(?!news).+\.html$|author/(?!pythonhui).+\.html$)',
+             subsections = [
+                 # MenuItem('tags.html', title='タグ一覧'),
+                 MenuItem('authors.html', title='著者一覧'),
+                 MenuItem('archives.html', title='過去記事一覧'),
+             ]),
     MenuItem('news.html', title=CATEGORYNAMES_ALTERNATIVES['news'][0],
              active_pages=r'(news/|tag/news\.html$|author/pythonhui\.html$)'),
     MenuItem('recruit.html'),
