@@ -1,4 +1,8 @@
 <script>
+const colab_img_url = 'https://colab.research.google.com/assets/colab-badge.svg'
+const github_img_url = 'https://img.shields.io/static/v1?label=&logo=github&message=View%20On%20GitHub&labelColor=black&color=gray'
+const colab_img = '<img class="notebook-badge-image" src="' + colab_img_url + '" alt="Open In Colab" title="Open In Colab" width="119px"></img>';
+const github_img = '<img class="notebook-badge-image" src="' + github_img_url + '" alt="View On GitHub" title="View On GitHub" width="124px"></img>';
 var check_ipynb = document.getElementsByClassName('highlight hl-ipython3');
 if (check_ipynb.length > 0) {
     var doc0 = document.getElementById("colablink");
@@ -25,10 +29,6 @@ if (check_ipynb.length > 0) {
     var colab_url = urlroot_colab + filepath;
     var github_url = urlroot_github + filepath;
     var site_url = document.getElementsByName('siteurl')[0].content;
-    var colab_img_url = 'https://colab.research.google.com/assets/colab-badge.svg'
-    var github_img_url = 'https://img.shields.io/static/v1?label=&logo=github&message=View%20On%20GitHub&labelColor=black&color=gray'
-    var colab_img = '<img class="notebook-badge-image" src="' + colab_img_url + '" alt="Open In Colab" width="119px"></img>';
-    var github_img = '<img class="notebook-badge-image" src="' + github_img_url + '" alt="View On GitHub" width="124px"></img>';
     var button = '<a href='+github_url+'>'+github_img+'</a>'
                +'<a href='+colab_url+'>'+colab_img+'</a>';
     doc0.innerHTML= button;
@@ -69,7 +69,7 @@ $(function() {
         }
       }
       colablink = upper_split.join('/') + '/' + target_split.join('/');
-      $(this).attr('href', colablink);
+      $(this).after(' <a href='+colablink+'>'+colab_img+'</a>');
     }
   });
 });
