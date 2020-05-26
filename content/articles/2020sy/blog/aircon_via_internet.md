@@ -9,10 +9,10 @@ Author: 吉田
 注:この記事は，作成の時間の都合と読みやすさを優先するために論文のフォーマットは採用していません．
 また，新規性に欠けるところはおよそリンクを貼るだけとしております．
 
-## システム概要
-<figure><img src="{attach}./images/aircon_via_internet_figs/fig1-1.png" alt="図1-1 システム概略" /><figcaption>図1-1 システム概略</figcaption></figure>
+## <span id="sec01"></span>システム概要
+<figure id="fig11"><img src="{attach}./images/aircon_via_internet_figs/fig1-1.png" alt="図1-1 システム概略" /><figcaption>図1-1 システム概略</figcaption></figure>
 
-システムの概略を上図1-1に示す．
+システムの概略を上[図1-1](#fig11)に示す．
 スマートフォンやパソコンで，特定のサイトを開くこと，また，google assistantに「OK google,冷房/除湿/暖房をいれて」「OK google，エアコンを止めて」と指示することで，IFTTT，beebotte，rapsberry pi，ESP32を経由し，ESP32が特定の赤外線のシグナルを発信する．
 これによってエアコンを操作するのである．
 なお，ラインへの通知はおよそデバッグ用である．
@@ -24,16 +24,16 @@ Author: 吉田
 それに加え，パスワードも実装してある．
 
 執筆時のブラウザ画面を下図1-2に載せる．
-<figure><img src="{attach}./images/aircon_via_internet_figs/fig1-2.png" alt="図1-2 ブラウザ画面" /><figcaption>図1-2 ブラウザ画面</figcaption></figure>
+<figure id="fig12"><img src="{attach}./images/aircon_via_internet_figs/fig1-2.png" alt="図1-2 ブラウザ画面" /><figcaption>図1-2 ブラウザ画面</figcaption></figure>
 
 ここで，サーバーはXSERVERを利用している．
 これは，オンラインのレンタルサーバであり，無料でPHPサーバを作成できる．
 当初，raspberry piにこのサーバ機能を持たせようと考えたが，ipアドレスの設定に手間がかかることを踏まえ，却下した．
 さて，このサーバにはいくつかのファイルが存在する．
-上図1-2内上のボタンにリンクが紐づけられており，指定したPHPを実行するように設定されている．
+上[図1-2](#fig12)内上のボタンにリンクが紐づけられており，指定したPHPを実行するように設定されている．
 このPHPがwebhookを介し，IFTTTに指示を出す．
-附録1として，PHPからwebhookを介してIFTTTTのトリガーを起動させる最低限のプログラムを載せておく．
-上図1-2において，最後に操作された日時と時間が表示されているのが分かる．
+[附録1](#appendix01)として，PHPからwebhookを介してIFTTTTのトリガーを起動させる最低限のプログラムを載せておく．
+上[図1-2](#fig12)において，最後に操作された日時と時間が表示されているのが分かる．
 ブラウザから操作されたタイミングをテキストファイルで保存しており，その最新の日時を表示させているのである．
 これはrapberry piにサーバを担わせていた仕様の名残でもある．
 この情報を機械学習などを用いて解析することで，エアコンを操作するタイミングの特徴を抽出し，ラインなどに「冷房をつけましょうか」といった通知を送るような機能の実装を計画していた．
@@ -54,7 +54,7 @@ Author: 吉田
  即ち，THIS，THAT両方ともwebhookというアップレットが必要である．
  ここで，実装した機能は，冷房ON，除湿ON，暖房ON，エアコンOFFの4種類である．
  これをブラウザとgoogle assistantからそれぞれ情報を得るため，合計8個のアップレットが必要となるのである．
- IFTTTの設定を下表3-1に示す．
+ IFTTTの設定を下[表3-1](#table31)に示す．
  なお，ラインへの通知はデバッグ用のため省略した．
 
 |      | THIS | THAT |	POSTデータ(JSON)※あくまで一例 |
@@ -68,7 +68,7 @@ Author: 吉田
 | Google assistant⇒暖房ON | Google assistant | webhooks | C |
 | Google assistant⇒エアコンOFF | Google assistant | webhooks | D |
 
-表3-1 IFTTTの設定
+<span id="table31">表3-1</span> IFTTTの設定
 
 ## MQTT及びrapsberry piのプログラムについて
 raspberry piがMQTT通信を用いて，beebotteからの情報を受け取る．
@@ -89,7 +89,7 @@ raspberry piはサーバであり，そこから複数の距離の離れたス�
 これは900円という安さながら，wifi，bluetoothも利用できるマイコンである．
 その中でも扱いやすくなったこのモジュールを利用した．
 bluetoothを利用するにあたって，raspberry piはpythonで，ESP32がarduino IDEというC++様な言語を用いた．
-附録2として，pythonでbluetoothを送信するプログラムを，附録3としてESP32でbluetoothを受信するプログラムを載せる．
+[附録2](#appendix02)として，pythonでbluetoothを送信するプログラムを，[附録3](#appendix03)としてESP32でbluetoothを受信するプログラムを載せる．
 
 ## 赤外線LED及び受信機の回路設計とプログラムについて
 どのような赤外線信号を出せばエアコンが動くかは，その付属のリモコンの信号を解析するのが正確である．
@@ -115,20 +115,20 @@ ESP32で赤外線LEDを利用するためのライブラリであるIRremoteESP8
 
 今，新型コロナウイルスにより加工機械が利用できないため，新しい端末の開発の速度が低迷している．
 
-<figure name="fig71"><img src="{attach}./images/aircon_via_internet_figs/fig7-1.png" alt="図7-1 今後の展望" /><figcaption>図7-1 今後の展望</figcaption></figure>
+<figure id="fig71"><img src="{attach}./images/aircon_via_internet_figs/fig7-1.png" alt="図7-1 今後の展望" /><figcaption>図7-1 今後の展望</figcaption></figure>
 
 ## 附録
-### <span name="appendix01">附録1</span> : PHPからwebhookを介してIFTTTTのトリガーを起動させるプログラム
+### <span id="appendix01">附録1</span> : PHPからwebhookを介してIFTTTTのトリガーを起動させるプログラム
 参考にしたサイト <https://amg-solution.jp/blog/14245>
 
 ＜著作権を鑑み，消去しました＞
 
-### <span name="appendix02">附録2</span> : pythonでbluetoothを用いてテキストデータを送信するプログラム
+### <span id="appendix02">附録2</span> : pythonでbluetoothを用いてテキストデータを送信するプログラム
 参考にしたサイト <https://stackoverrun.com/ja/q/10556918>
 
 ＜著作権を鑑み，消去しました＞
 
-### <span name="appendix03">附録3</span> : arduino IDEでbluetoothを用いてテキストデータを受信するプログラム
+### <span id="appendix03">附録3</span> : arduino IDEでbluetoothを用いてテキストデータを受信するプログラム
 以下はセミコロン(;)までを読み込むプログラムである．
 
 ```C++
