@@ -10,7 +10,10 @@ Author: 吉田
 また，新規性に欠けるところはおよそリンクを貼るだけとしております．
 
 ## <span id="sec01"></span>システム概要
-<figure id="fig11"><img src="{attach}./images/aircon_via_internet_figs/fig1-1.png" alt="図1-1 システム概略" /><figcaption>図1-1 システム概略</figcaption></figure>
+<figure id="fig11">
+  <img src="{attach}./images/aircon_via_internet_figs/fig1-1.png" alt="図1-1 システム概略" />
+  <figcaption>図1-1 システム概略</figcaption>
+</figure>
 
 システムの概略を上[図1-1](#fig11)に示す．
 スマートフォンやパソコンで，特定のサイトを開くこと，また，google assistantに「OK google,冷房/除湿/暖房をいれて」「OK google，エアコンを止めて」と指示することで，IFTTT，beebotte，rapsberry pi，ESP32を経由し，ESP32が特定の赤外線のシグナルを発信する．
@@ -24,7 +27,10 @@ Author: 吉田
 それに加え，パスワードも実装してある．
 
 執筆時のブラウザ画面を下図1-2に載せる．
-<figure id="fig12"><img src="{attach}./images/aircon_via_internet_figs/fig1-2.png" alt="図1-2 ブラウザ画面" /><figcaption>図1-2 ブラウザ画面</figcaption></figure>
+<figure id="fig12">
+  <img src="{attach}./images/aircon_via_internet_figs/fig1-2.png" alt="図1-2 ブラウザ画面" />
+  <figcaption>図1-2 ブラウザ画面</figcaption>
+</figure>
 
 ここで，サーバーはXSERVERを利用している．
 これは，オンラインのレンタルサーバであり，無料でPHPサーバを作成できる．
@@ -57,7 +63,7 @@ Author: 吉田
  IFTTTの設定を下[表3-1](#table31)に示す．
  なお，ラインへの通知はデバッグ用のため省略した．
 
-|      | THIS | THAT |	POSTデータ(JSON)※あくまで一例 |
+|      | THIS | THAT |	POSTデータ(JSON)<br>※あくまで一例 |
 | ---- | ---- | ---- | ---- | 
 | ブラウザ⇒冷房ON | webhooks | webhooks | A |
 | ブラウザ⇒除湿ON | webhooks | webhooks	| B |
@@ -115,7 +121,10 @@ ESP32で赤外線LEDを利用するためのライブラリであるIRremoteESP8
 
 今，新型コロナウイルスにより加工機械が利用できないため，新しい端末の開発の速度が低迷している．
 
-<figure id="fig71"><img src="{attach}./images/aircon_via_internet_figs/fig7-1.png" alt="図7-1 今後の展望" /><figcaption>図7-1 今後の展望</figcaption></figure>
+<figure id="fig71">
+  <img src="{attach}./images/aircon_via_internet_figs/fig7-1.png" alt="図7-1 今後の展望" />
+  <figcaption>図7-1 今後の展望</figcaption>
+</figure>
 
 ## 附録
 ### <span id="appendix01">附録1</span> : PHPからwebhookを介してIFTTTTのトリガーを起動させるプログラム
