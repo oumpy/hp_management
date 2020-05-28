@@ -1,6 +1,6 @@
 Title: 会規約を制定しました
 Date: 2020.04.01
-Modified: 2020.04.01
+Modified: 2020.05.27
 Tags: News
 Author: Python会
 
