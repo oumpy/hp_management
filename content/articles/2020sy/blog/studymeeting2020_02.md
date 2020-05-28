@@ -10,4 +10,4 @@ Author: 富田
 
 
 ## Pythonの基本文法
-[Jupyter Notebook]({attach}./attach/studymeeting2020_02_attach/勉強会_python基本文法.ipynb)
+[Jupyter Notebook]({attach}./attach/studymeeting2020_02/勉強会_python基本文法.ipynb)
