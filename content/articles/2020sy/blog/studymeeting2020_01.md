@@ -1,6 +1,6 @@
 Title: 【勉強会資料 2020 第1回】Python会とは? / Pythonの基礎
 Date: 2020.05.19
-Modified: 2020.05.19
+Modified: 2020.05.23
 Tags: 勉強会, Python
 Author: 山本
 
@@ -27,7 +27,7 @@ python hoge.py
 IDEでは簡単に実行出来たり、他にはJupyter notebookを用いる手法も。
 
 ## Python Tutorial
-[Jupyter Notebook @Google Colab]({attach}./attach/studymeeting2020_01_attach/Python_tutorial.ipynb)
+[Jupyter Notebook]({attach}./attach/studymeeting2020_01_attach/Python_tutorial.ipynb)
 
 コードのみ以下に掲載します。
 ### NumPyで数値計算
