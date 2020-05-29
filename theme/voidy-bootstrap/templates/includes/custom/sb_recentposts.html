@@ -5,7 +5,7 @@
 <div class="horizontal-scroll">
 <table class="recent-posts" id="recentposts">
   {% set ns = namespace(year = 0) %}
-  {% for article in (all_articles|default(articles))[:RECENT_POST_COUNT|default(5)] %}
+  {% for article in (all_articles|default(articles))|recentposts(RECENT_POST_DAYS|default(30), RECENT_POST_COUNT|default(5)) %}
   {% if article.date.year != ns.year %}
   {% set ns.year = article.date.year %}
   <tr><td colspan="3"><span class="recent-posts-year">{{ ns.year }}</span></td></tr>
