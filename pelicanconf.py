@@ -24,7 +24,7 @@ DATE_FORMATS = {
     'ja': '%Y-%m-%d(%a)',
 }
 
-PAGE_ORDER_BY = 'page_order'
+# PAGE_ORDER_BY = 'page_order'
 
 start_year = 2017
 this_year = datetime.date.today().year
