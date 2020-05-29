@@ -3,7 +3,6 @@ Date: 2020.05.29
 Modified: 2020.05.29
 Tags: News
 Author: Python会
-Jinja2: True
 
 本日、大阪大学医学部学生支援委員会より、本会の公認についての審議結果が通知されましたのでご報告します。
 
@@ -21,7 +20,7 @@ Jinja2: True
 「Python会」の名称は結成以来多くの方々に親しんでいただき、ご支援を頂いてきたものでもあることから、名称変更の場合の現名称の扱いにつきましても同時に検討してまいります。
 
 今後、本件に関する経過につきましては主に
-[Twitter](https://twitter.com/{{ TWITTER_USERNAME }})
+[Twitter](https://twitter.com/oumed_python)
 にてお伝えする予定です。
 ご意見ご感想なども歓迎します。
 何卒よろしくお願いいたします。
