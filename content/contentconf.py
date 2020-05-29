@@ -43,6 +43,9 @@ LINKS = (
         # ('You can modify those links in your config file', '#'),
         )
 
+# How many recent posts appear in sidebar?
+RECENT_POST_COUNT = 8
+
 # Settings for Google Custom Search
 GOOGLE_CSE_ID = '012109292501676780101:lytlaxeswfy'
 SEARCHBOX_MESSAGE = 'サイト内を検索'
