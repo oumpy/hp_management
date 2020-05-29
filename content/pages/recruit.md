@@ -1,6 +1,6 @@
 Title: 会員募集
 Date: 2020.03.13
-Modified: 2020.05.01
+Modified: 2020.05.26
 Show_modified: True
 Author: Python会
 Page_order: 350
@@ -56,7 +56,9 @@ Python会メンバーによる、それぞれの研究分野等についての�
 </div> <!-- col -->
 <div class="col-sm-4">
 [% youtube width=240 height=150 id=k9mRSDV5qX4 %]
-<p style="font-size:smaller;">(8) 4年・AtamaokaC 「プログラムの変更管理 〜バージョン管理システムGitを使ってみる〜」(5/1)</p>
+<p style="font-size:smaller;">(8) 4年・AtamaokaC 「プログラムの変更管理 〜バージョン管理システムGitを使ってみる〜」(5/1)
+<a href="{attach}./attach/recruit/recruitpresentation2020-08.pdf">[スライド]</a>
+</p>
 </div> <!-- col -->
 </div> <!-- raw -->
 
