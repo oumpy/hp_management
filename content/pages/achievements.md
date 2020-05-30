@@ -54,7 +54,7 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 
 ### 競技プログラミング
 - [AtCoder日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2019-final)出場 (小川)
-- AtCoderレート 青3名、水色2名など。
+- AtCoderレート 青4名、水色1名など。
 
 ## 研究開発活動
 ### RNA-seq pipeline ikra ver1.0をリリース
