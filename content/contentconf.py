@@ -3,6 +3,9 @@
 import sys, os
 sys.path.append(os.curdir + '/..')
 from tools.lib.pelicanns import *
+for pluginpath in PLUGIN_PATHS:
+    sys.path.append(os.curdir + '/' + pluginpath)
+from makemenu import MenuItem
 
 GITHUB_ACCOUNT = 'oumpy'
 SOURCEREPOSITORY_NAME = 'hp_management'
@@ -69,15 +72,19 @@ CATEGORYNAMES_ALTERNATIVES = {
     'news': ('お知らせ', 'Python会からのお知らせ'),
     'blog': ('技術ブログ',),
 }
+
 ADD_ON_MENU = (
-    ('Python会について', 'index.html'),
-    ('活動内容', 'activities.html'),
-    ('実績', 'achievements.html'),
-    (CATEGORYNAMES_ALTERNATIVES['blog'][0], 'blog.html'),
-    (CATEGORYNAMES_ALTERNATIVES['news'][0], 'news.html'),
-    ('会員募集', 'recruit.html'),
-    ('Contact', 'contact.html'),
+    MenuItem('index.html'),
+    MenuItem('activities.html'),
+    MenuItem('achievements.html'),
+    MenuItem('blog.html', title=CATEGORYNAMES_ALTERNATIVES['blog'][0],
+             active_pages=r'(blog/|tag/(?!news).+\.html$|author/(?!pythonhui).+\.html$)'),
+    MenuItem('news.html', title=CATEGORYNAMES_ALTERNATIVES['news'][0],
+             active_pages=r'(news/|tag/news\.html$|author/pythonhui\.html$)'),
+    MenuItem('recruit.html'),
+    MenuItem('contact.html'),
 )
+
 HIDE_ARCHIVES_ON_MENU = True
 SHOW_FEED_ATOM_ON_MENU = SHOW_FEED_RSS_ON_MENU = False
 SIDEBAR_HIDE_CATEGORIES = True

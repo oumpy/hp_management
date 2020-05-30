@@ -105,15 +105,14 @@
             {% endfor %}
           {% endif %}
           {% if ADD_ON_MENU %}
-            {% for item in ADD_ON_MENU %}
-              {% if ( page_name is defined and page_name+'.html' == item.1 ) or ( page is defined and page.url == item.1 ) %}
-              <li class="active">
-              {% else %}
-              <li>
-              {% endif %}
-                <a href="{{ SITEURL }}/{{ item.1 }}">{{ item.0 }}</a>
-              </li>
-            {% endfor %}
+            {% if page_name is defined %}
+              {% set thispage_url = page_name+'.html' %}
+            {% elif page is defined %}
+              {% set thispage_url = page.url %}
+            {% elif article is defined %}
+              {% set thispage_url = article.url %}
+            {% endif %}
+            {{ ADD_ON_MENU|makemenu(thispage_url, 0) }}
           {% endif %}
           {% if not HIDE_ARCHIVES_ON_MENU %}
             <li class="divider"></li>
@@ -121,7 +120,9 @@
               <a href="{{ SITEURL }}/{{ ARCHIVES_URL|default('archives.html') }}">Archives</a>
             </li>
           {% endif %}
+          {% if (FEED_ALL_ATOM and SHOW_FEED_ATOM_ON_MENU|default(true)) or (FEED_ALL_RSS and SHOW_FEED_RSS_ON_MENU|default(false)) %}
           <li class="divider"></li>
+          {% endif %}
           {% if FEED_ALL_ATOM and SHOW_FEED_ATOM_ON_MENU|default(true) %}
             <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" 
                    type="application/atom+xml" rel="alternate">
