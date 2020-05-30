@@ -70,6 +70,8 @@ PLUGINS = [
     'category_names',
     'shortcodes',
     'apply_jinja2',
+    'path2obj',
+    'makemenu',
 ]
 
 RELATED_POSTS_MAX = 3
