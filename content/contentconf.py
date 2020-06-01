@@ -14,14 +14,15 @@ SOURCEREPOSITORY_NAME = 'hp_management'
 
 # Author
 AUTHOR = 'Python会'
-SITENAME = '大阪大学医学部 Python会'
+FORMALNAME = '阪神タイガース'
+SITENAME = '大阪大学医学部 Python会 <span style="font-size:smaller;">({})</span>'.format(FORMALNAME)
+SITETAG = '大阪大学医学部 Python会 ({})'.format(FORMALNAME) 
 SITEURL = ''
 AUTHOR_INTRO = '大阪大学医学部所属のPython職人集団です'
 AUTHOR_DESCRIPTION = 'Now is better than never'
 # AUTHOR_AVATAR = '../images/'
 # AUTHOR_WEB = 'https://twitter.com/oumed_python'
 SITESUBTITLE ='Now is better than never.'
-SITETAG = SITENAME
 COPYRIGHT_YEAR = datetime.date.today().year
 COPYRIGHT_AUTHOR = SITENAME
 
