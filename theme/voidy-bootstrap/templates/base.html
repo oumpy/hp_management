@@ -26,7 +26,7 @@
       {% endif %}
     {% endblock %}
 
-    <title>{% block title %}{{ SITENAME }}{% if SITETAG %} - {{ SITETAG|escape }}{% endif %}{% endblock %}</title>
+    <title>{% block title %}{{ SITENAME|striptags }}{% if SITETAG %} - {{ SITETAG|escape }}{% endif %}{% endblock %}</title>
 
     {% if not SKIP_DEFAULT_CSS %}   
       {% if BOOTSTRAP_STYLESHEET %} 
@@ -73,10 +73,10 @@
     {% include "includes/" + CUSTOM_HTML_HEAD %}
     {% endif %}
     {% if FEED_ALL_ATOM %}
-        <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+        <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME|striptags }} Atom Feed" />
     {% endif %}
     {% if FEED_ALL_RSS %}
-        <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+        <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME|striptags }} RSS Feed" />
     {% endif %}
     {% include 'includes/analytics.html' %}
   </head>
