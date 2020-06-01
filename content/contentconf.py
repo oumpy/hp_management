@@ -15,7 +15,7 @@ SOURCEREPOSITORY_NAME = 'hp_management'
 # Author
 AUTHOR = 'Python会'
 FORMALNAME = '阪神タイガース'
-SITENAME = '大阪大学医学部 Python会 <span style="font-size:xx-large;">({})</span>'.format(FORMALNAME)
+SITENAME = '大阪大学医学部 Python会 <span style="font-size:smaller;">({})</span>'.format(FORMALNAME)
 SITETAG = '大阪大学医学部 Python会 ({})'.format(FORMALNAME) 
 SITEURL = ''
 AUTHOR_INTRO = '大阪大学医学部所属のPython職人集団です'
