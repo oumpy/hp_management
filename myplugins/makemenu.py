@@ -72,18 +72,18 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
                     subsections = []
 
                 params['li_line'] = len(ret)
-                ret.append('<li>')
+                ret.append('<li class="nav-item">')
                 caret = ''
                 if d == 0:
                     if subsections and CARET:
                         caret = ' <span class="caret"></span>'
-                    a_format = '<a href="{}">{}{}</a>'
+                    a_format = '<a class="nav-link" href="{}">{}{}</a>'
                 else:
-                    a_format = '<a href="{}">{}{}</a>'
+                    a_format = '<a class="nav-link" href="{}">{}{}</a>'
                 ret.append(a_format.format('{}/{}'.format(rooturl, node.url), title, caret))
 
                 if len(subsections) > 0:
-                    ret.append('<ul>')
+                    ret.append('<ul class="navbar-nav mr-auto">')
                     params['/ul'] = True
                     pool.append((node, d, BACK, params))
                     for c in subsections[::-1]:
@@ -100,7 +100,7 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
                     hasattr(node,'active_pages') and node.active_pages and re.match(node.active_pages, page_url)
                 )
                 if active_flag[node.url]:
-                    ret[params['li_line']] = ret[params['li_line']][:-1] + ' class="active">'
+                    ret[params['li_line']] = ret[params['li_line']][:-2] + ' active">'
                     active_flag[params['parent']] = True
 
     return '\n'.join(ret)
