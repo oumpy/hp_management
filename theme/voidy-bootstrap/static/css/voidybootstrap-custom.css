@@ -172,7 +172,7 @@ dt {
 
 header h1{
   font-weight:bold;
-  font-size: 2.75rem;
+  font-size: 1.7rem;
   padding: .5em .75em;
   background-color: #f6f6f6;
   border-bottom: 2px solid #ccc;
@@ -180,7 +180,7 @@ header h1{
 
 article h1{
 	color: #333333;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
 }
 
 article h1 a{
@@ -193,9 +193,9 @@ article h1 a{
 
 .content-body h2{
 	font-weight:bold;
-	font-size: 2.3rem;
+	font-size: 1.6rem;
   padding: 0rem 1rem;
-  margin: 3rem 0 1rem 0;
+  margin: 1.5rem 0 1rem 0;
   text-align: left;
   border-left: 6px solid #126ca7;
   border-bottom: 3px solid #126ca7;
@@ -203,14 +203,14 @@ article h1 a{
 
 .content-body h3{
 	font-weight:bold;
-	font-size: 1.7rem;
+	font-size: 1.4rem;
 	padding: .25em 0 .25em .75em;
   border-left: 6px solid #ccc;
 }
 
 .content-body h4 {
   font-weight: bold;
-  font-size: 1.65rem;
+  font-size: 1.2rem;
 	padding: .25em 0 .25em 1em;
 }
 
