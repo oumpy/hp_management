@@ -114,7 +114,11 @@ FONT_AWESOME_CDN_LINK = {
 }
 
 # Extra stylesheets, for bootstrap overrides or additional styling.
-STYLESHEET_FILES = ("pygment.css", "voidybootstrap.css", "voidybootstrap-custom.css")
+STYLESHEET_FILES = (
+    "pygment.css",
+    # "voidybootstrap.css",
+    "voidybootstrap-custom.css",
+    )
 CUSTOM_FOOTER = "custom/footer.html"
 SKIP_COLOPHON = True
 
