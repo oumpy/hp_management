@@ -26,18 +26,23 @@
 }
 
 .jumbotron {
-		padding-top: 0px;
-		padding-bottom: 0px;
-    margin-top: -10px;
-    margin-bottom: 20px;
+    padding-top: 1.25rem;
+    padding-bottom: 0.1rem;
+    margin-top: 0rem;
+    margin-bottom: 1.25rem;
     background-color: #0f5889;
+    border-radius: 0rem;
 }
 
 .jumbotron a {
 	 color: #fff;
 	 text-decoration: none!important;
 	 font-weight: bolder;
-	 font-size: 70%;
+	 /*font-size: 70%;*/
+}
+
+.jumbotron h1 {
+  font-size: 3.0rem;
 }
 
 p.lead{
