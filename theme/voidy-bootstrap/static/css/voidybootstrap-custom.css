@@ -3,7 +3,7 @@
 	border-radius: 0px!important;
 }
 
-.navbar-default {
+.navbar {
   background-color: #1d2113;
 	border-color: #1d2113;
 	z-index: 999;
@@ -11,16 +11,16 @@
   position: sticky;
 }
 
-.navbar-default .navbar-nav>li>a {
+.navbar .navbar-nav>li>a {
     color: #fff;
 }
 
-.navbar-default .navbar-nav>li>a:hover {
+.navbar .navbar-nav>li>a:hover {
     color: #999;
     background: #072A24;
 }
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+.navbar .navbar-nav>.active>a, .navbar .navbar-nav>.active>a:focus, .navbar .navbar-nav>.active>a:hover {
     color: #1d2113;
     background-color: #e7e7e7;
 }
