@@ -120,6 +120,7 @@ FONT_AWESOME_CDN_LINK = {
 STYLESHEET_FILES = (
     "pygment.css",
     # "voidybootstrap.css",
+    "theme.css",
     "voidybootstrap-custom.css",
     )
 CUSTOM_FOOTER = "custom/footer.html"
