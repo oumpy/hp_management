@@ -18,16 +18,18 @@
 {% if CUSTOM_CONTENT_TOP_AUTHOR %}
 {% include "includes/" + CUSTOM_CONTENT_TOP_AUTHOR %}
 {% endif %}
+<nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-    <li><a href="{{ SITEURL }}/" title="Home" rel="home">
+    <li class="breadcrumb-item"><a href="{{ SITEURL }}/" title="Home" rel="home">
 		<i class="fa fa-home fa-fw fa-lg"></i> </a></li>
 {% if AUTHORS_URL %}
-    <li><a href="{{ SITEURL }}/{{ AUTHORS_URL }}">Authors </a></li>
+    <li class="breadcrumb-item"><a href="{{ SITEURL }}/{{ AUTHORS_URL }}">Authors</a></li>
 {% else %}
-    <li>Authors </li>
+    <li class="breadcrumb-item">Authors</li>
 {% endif %}
-    <li class="active">{{ author }}</li>
+    <li class="breadcrumb-item active">{{ author }}</li>
 </ol>
+</nav>
 {% endblock content_header %}
 
 {% block article %}

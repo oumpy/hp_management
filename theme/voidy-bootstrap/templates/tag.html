@@ -18,16 +18,18 @@
 {% if CUSTOM_CONTENT_TOP_TAG %}
 {% include "includes/" + CUSTOM_CONTENT_TOP_TAG %}
 {% endif %}
+<nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-    <li><a href="{{ SITEURL }}/" title="Home" rel="home">
+    <li class="breadcrumb-item"><a href="{{ SITEURL }}/" title="Home" rel="home">
 		<i class="fa fa-home fa-fw fa-lg"></i> </a></li>
 {% if TAGS_URL %}
-    <li><a href="{{ SITEURL }}/{{ TAGS_URL }}">Tags </a></li>
+    <li class="breadcrumb-item"><a href="{{ SITEURL }}/{{ TAGS_URL }}">Tags</a></li>
 {% else %}
-    <li>Tags </li>
+    <li class="breadcrumb-item">Tags</li>
 {% endif %}
-    <li class="active">{{ tag }}</li>
+    <li class="breadcrumb-item active">{{ tag }}</li>
 </ol>
+</nav>
 {% endblock content_header %}
 
 {% block article %}
