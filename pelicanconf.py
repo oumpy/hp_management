@@ -6,6 +6,8 @@ import os
 import sys
 sys.path.append(os.curdir)
 
+BOOTSTRAP_VERSION = '4.5.0'
+
 LOAD_CONTENT_CACHE = False
 
 PATH = 'content'
@@ -72,6 +74,7 @@ PLUGINS = [
     'apply_jinja2',
     'path2obj',
     'makemenu',
+    'pelican-sass',
 ]
 
 RELATED_POSTS_MAX = 3
