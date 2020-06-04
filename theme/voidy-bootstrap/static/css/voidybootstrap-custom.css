@@ -1,13 +1,6 @@
 .navbar {
-	margin-bottom: 0px;
-	border-radius: 0px!important;
-}
-
-.navbar {
   background-color: #1d2113;
 	border-color: #1d2113;
-	z-index: 999;
-  top: 0;
   position: sticky;
 }
 
