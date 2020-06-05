@@ -11,4 +11,4 @@ AtCoder Beginner ContestでA,B問題が解ける程度のレベルを目標と�
 
 
 ## 紹介スライド
-[競プロの基礎.pdf]({attach}./attach/studymeeting2020_03/第3回勉強会_競プロの基礎.pdf)
+[% embed src="{attach}./attach/studymeeting2020_03/第3回勉強会_競プロの基礎.pdf" %]
