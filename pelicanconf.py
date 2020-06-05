@@ -97,10 +97,9 @@ SHORTCODES = {
 # metadata. These need to be ignored.
 IGNORE_FILES = [".ipynb_checkpoints", '._*']
 
-IPYNB_USE_METACELL = True
-DISPLAY_PAGES_ON_MENU = True
-
-USE_FOLDER_AS_CATEGORY = True
+# IPYNB_USE_METACELL = True
+# DISPLAY_PAGES_ON_MENU = True
+# USE_FOLDER_AS_CATEGORY = True
 
 # Theme
 THEME = './theme/voidy-bootstrap'
