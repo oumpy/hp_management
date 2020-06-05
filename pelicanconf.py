@@ -30,9 +30,7 @@ DATE_FORMATS = {
 
 start_year = 2017
 this_year = datetime.date.today().year
-
-# ARTICLE_PATHS = ['articles']
-ARTICLE_PATHS = [ 'articles/%dsy/' % y for y in range(start_year, this_year+2) ]
+ARTICLE_PATHS = ['articles']
 ARTICLE_SAVE_AS = ARTICLE_URL ='{category}/{date:%Y}/{date:%m}/{slug}.html'
 PAGE_SAVE_AS = PAGE_URL ='{slug}.html'
 CATEGORY_SAVE_AS = CATEGORY_URL = '{slug}.html'
