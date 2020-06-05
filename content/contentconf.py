@@ -119,7 +119,6 @@ CATEGORY_CONTENTS = {
     'blog' : readfile('content/pages/includes/blog_content.html'),
     'news' : readfile('content/pages/includes/news_content.html'),
 }
-DEFAULT_PAGINATION = 10
 
 CUSTOM_TAG_BADGE_COLOR = 'blue'
 TAG_GROUPS = [ # (groupname, [articles,...,], badge_color )

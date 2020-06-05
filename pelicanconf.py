@@ -49,7 +49,7 @@ FEED_ALL_RSS = 'feeds/all.rss.xml'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 RELATIVE_URLS = True
 
-DEFAULT_PAGINATION = 5
+DEFAULT_PAGINATION = 10
 PAGINATION_PATTERNS = (
     (1, '{url}', '{save_as}',),
     (2, '{base_name}/latests/{number}/', '{base_name}/latests/{number}/index.html'),
