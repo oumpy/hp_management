@@ -7,4 +7,4 @@ Author: 梅田
 2020.06.03に行われた第3回勉強会では、プログラミングを書く練習の手段としての競技プログラミング紹介と、その基礎の内容を扱いました。
 AtCoder Beginner ContestでA,B問題が解ける程度のレベルを目標としています。
 ## 使用したNotebook
-[Jupyter Notebook]({attach}./attach/studymeeting2020_03_勉強会第3回.ipynb)
+[Jupyter Notebook]({attach}./attach/studymeeting2020_03勉強会第3回.ipynb)
