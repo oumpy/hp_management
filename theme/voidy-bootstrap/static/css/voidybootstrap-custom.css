@@ -266,7 +266,7 @@ article h1 a{
     margin: 1em 0;
     background: #fff;
     border: 3px solid #126ca7;
-
+    border-radius: 0.5rem;
 }
 .sidebar_box .box-title {
     font-size: 1.2em;
