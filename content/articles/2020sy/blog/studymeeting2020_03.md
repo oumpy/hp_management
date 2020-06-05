@@ -9,5 +9,6 @@ AtCoder Beginner ContestでA,B問題が解ける程度のレベルを目標と�
 ## 使用したNotebook
 [Jupyter Notebook]({attach}./attach/studymeeting2020_03/勉強会第3回.ipynb)
 
+
 ##紹介スライド
 [競プロの基礎.pdf]({attach}./attach/studymeeting2020_03/第3回勉強会_競プロの基礎.pdf)
