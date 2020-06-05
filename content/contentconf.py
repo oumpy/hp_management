@@ -25,6 +25,10 @@ SITETAG = SITENAME
 COPYRIGHT_YEAR = datetime.date.today().year
 COPYRIGHT_AUTHOR = SITENAME
 
+LOGOIMG = 'images/logo.jpg'
+TOP_LOGO_IMAGE = LOGOIMG
+OPEN_GRAPH_IMAGE = LOGOIMG
+
 # Social
 SOCIAL = ( # (name, URL, icon, color, size)
     # ('facebook', '#3B5998'),
@@ -66,8 +70,6 @@ CUSTOM_TAGS_TITLE = "タグ"
 CUSTOM_LINKS_TITLE = "リンク"
 CUSTOM_TWITTERTL_TITLE = "Timeline"
 CUSTOM_RELATED_ARTICLES_TITLE = "関連記事"
-
-OPEN_GRAPH_IMAGE = 'images/logo.jpg'
 
 DISPLAY_PAGES_ON_MENU = False
 CATEGORYNAMES_ALTERNATIVES = {
