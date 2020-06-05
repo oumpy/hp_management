@@ -110,9 +110,9 @@ THEME = './theme/voidy-bootstrap'
 ### theme-specific settings
 ###
 
-FONT_AWESOME_CDN_LINK = {
-    'href': 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
-    'integrity': 'sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp',
+FONT_AWESOME_LINK = {
+    'href': 'https://use.fontawesome.com/releases/v5.13.0/css/all.css',
+    'integrity': 'sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V',
     'crossorigin': 'anonymous'
 }
 

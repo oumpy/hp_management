@@ -37,10 +37,17 @@
               integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
               crossorigin="anonymous">
       {% endif %}
+      {% if FONT_AWESOME_LINK %}
       <link rel="stylesheet"
+            href="{{ FONT_AWESOME_LINK.href }}"
+            integrity="{{ FONT_AWESOME_LINK.integrity }}"
+            crossorigin="{{ FONT_AWESOME_LINK.crossorigin }}">
+      {% else %}
+      <link rel="stylesheet"            
             href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
             crossorigin="anonymous">
+      {% endif %}
     {% endif %}
 
     {% for url in STYLESHEET_URLS %}
