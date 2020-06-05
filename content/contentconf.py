@@ -30,7 +30,7 @@ LOGOIMG = 'images/logo.jpg'
 OPEN_GRAPH_IMAGE = LOGOIMG
 
 # Social
-SOCIAL = ( # (name, URL, icon, color, size)
+SOCIAL = [ # (name, URL, icon, color, size)
     # ('facebook', '#3B5998'),
     # ('技術Blog (はてな)','https://oumedpython.hatenablog.com/'),
     ('Twitter', 'https://twitter.com/oumed_python', '<i class="fab fa-twitter"></i>', '#1DA1F2', 'larger'),
@@ -40,17 +40,17 @@ SOCIAL = ( # (name, URL, icon, color, size)
     ('Connpass', 'https://oum-python.connpass.com', '<img width="35px" src="https://connpass.com/static/img/72_72.png" style="display: inline;"/>', '#000000', 'normal'),
     ('Atom Feed', './feeds/all.atom.xml', '<i class="fa fa-rss fa-fw fa-lg"></i>', '#00008b', 'smaller'),
     ('RSS Feed', './feeds/all.rss.xml', '<i class="fas fa-rss-square fa-fw fa-lg"></i>', '#f26522', 'normal'),
-)
+]
 
 # Blogroll
-LINKS = (
+LINKS = [
         # ('Python会ブログ','https://oumedpython.hatenablog.com/'),
         #('大阪大学医学部', 'http://www.med.osaka-u.ac.jp/'),
         #('Python.org', 'http://python.org/'),
         #('Pelican（本サイトで使用）', 'http://getpelican.com/'),
         # ('Jinja2', 'http://jinja.pocoo.org/'),
         # ('You can modify those links in your config file', '#'),
-        )
+]
 
 # How many recent posts appear in sidebar?
 RECENT_POST_COUNT = 8
@@ -80,7 +80,7 @@ CATEGORYNAMES_ALTERNATIVES = {
     'blog': ('技術ブログ',),
 }
 
-ADD_ON_MENU = (
+ADD_ON_MENU = [
     MenuItem('index.html',
              self_in_subsections=True,
              subsections=[
@@ -101,7 +101,7 @@ ADD_ON_MENU = (
              active_pages=r'(news/|tag/news\.html$|author/pythonhui\.html$)'),
     MenuItem('recruit.html', self_in_subsections=True, subsections=MenuItem.AUTO),
     MenuItem('contact.html', self_in_subsections=True),
-)
+]
 MENU_STEPS = 1
 
 HIDE_ARCHIVES_ON_MENU = True
