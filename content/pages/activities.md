@@ -1,6 +1,6 @@
 Title: 活動内容
 Date: 2020.03.15
-Modified: 2020.03.22
+Modified: 2020.05.13
 Show_modified: True
 Summary: Python会の活動内容紹介
 
