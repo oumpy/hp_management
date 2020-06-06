@@ -95,7 +95,7 @@ ADD_ON_MENU = (
     MenuItem('recruit.html'),
     MenuItem('contact.html'),
 )
-MENU_STEPS = 2
+MENU_STEPS = 1
 
 HIDE_ARCHIVES_ON_MENU = True
 SHOW_FEED_ATOM_ON_MENU = SHOW_FEED_RSS_ON_MENU = False
