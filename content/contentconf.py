@@ -78,12 +78,15 @@ CATEGORYNAMES_ALTERNATIVES = {
 }
 
 ADD_ON_MENU = (
-    MenuItem('index.html', subsections=[
-        MenuItem('constitution.html', title='Python会規約', subsections=MenuItem.AUTO),
-        ]),
-    MenuItem('activities.html', subsections=MenuItem.AUTO),
-    MenuItem('achievements.html', subsections=MenuItem.AUTO),
+    MenuItem('index.html',
+             self_in_subsections=True,
+             subsections=[
+                 MenuItem('constitution.html', title='Python会規約', subsections=MenuItem.AUTO),
+             ]),
+    MenuItem('activities.html', self_in_subsections=True, subsections=MenuItem.AUTO),
+    MenuItem('achievements.html', self_in_subsections=True, subsections=MenuItem.AUTO),
     MenuItem('blog.html', title=CATEGORYNAMES_ALTERNATIVES['blog'][0],
+             self_in_subsections=True,
              active_pages=r'(blog/|tag/(?!news).+\.html$|author/(?!pythonhui).+\.html$)',
              subsections = [
                  # MenuItem('tags.html', title='タグ一覧'),
@@ -91,9 +94,10 @@ ADD_ON_MENU = (
                  MenuItem('archives.html', title='過去記事一覧'),
              ]),
     MenuItem('news.html', title=CATEGORYNAMES_ALTERNATIVES['news'][0],
+             self_in_subsections=True,
              active_pages=r'(news/|tag/news\.html$|author/pythonhui\.html$)'),
-    MenuItem('recruit.html'),
-    MenuItem('contact.html'),
+    MenuItem('recruit.html', self_in_subsections=True),
+    MenuItem('contact.html', self_in_subsections=True),
 )
 MENU_STEPS = 1
 
