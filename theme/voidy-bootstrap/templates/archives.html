@@ -29,7 +29,6 @@
 {% endblock content_header %}
 
 {% block content_body %}
-<h1>Archives</h1>
 <div id="archives-body">
 {% for year, year_dates in dates|groupby( 'date.year' )|reverse %}
   <h2>{{ year }}</h2>
