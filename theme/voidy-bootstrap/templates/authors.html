@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Authors - {{ SITENAME }}{% endblock %}
+{% block content_body %}
+<header>
+  <h1 itemprop="name headline">{{ CUSTOM_AUTHORS_TITLE|default("Authors") }}</h1>
+</header>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ SITEURL }}/" title="Home">
+      <i class="fa fa-home fa-fw fa-lg"></i> </a></li>
+    <li class="breadcrumb-item active">Authors</li>
+  </ol>
+</nav>  
+<ul class="direct-list authors-author-list">
+{% for author, articles in authors|sort %}
+<li>
+  <a href="{{ SITEURL }}/{{ author.url }}">
+	<i class="fa fa-user fa-fw fa-lg"></i>{{ author }} 
+  </a> ({{ articles|count }})
+</li>
+{% endfor %}
+</ul>
+{% endblock %}
