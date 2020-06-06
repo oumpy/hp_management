@@ -96,7 +96,7 @@ ADD_ON_MENU = (
     MenuItem('news.html', title=CATEGORYNAMES_ALTERNATIVES['news'][0],
              self_in_subsections=True,
              active_pages=r'(news/|tag/news\.html$|author/pythonhui\.html$)'),
-    MenuItem('recruit.html', self_in_subsections=True),
+    MenuItem('recruit.html', self_in_subsections=True, subsections=MenuItem.AUTO),
     MenuItem('contact.html', self_in_subsections=True),
 )
 MENU_STEPS = 1
