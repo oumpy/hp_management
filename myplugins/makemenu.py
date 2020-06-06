@@ -44,6 +44,7 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
     else:
         rooturl = '../' * (page_depth-1) + '..' 
     FORWARD, BACK = 0, 1
+    dropdown_num = 0
     for obj in add_on_menu:
         pool = [(obj, 0, FORWARD, {'parent':None})]
         active_flag = defaultdict(bool)
@@ -71,36 +72,46 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
                 if d >= depth:
                     subsections = []
 
-                params['li_line'] = len(ret)
-                ret.append('<li class="nav-item">')
+                params['forward_line'] = len(ret)
                 caret = ''
+                params['/div'] = 0
                 if d == 0:
-                    if subsections and CARET:
-                        caret = ' <span class="caret"></span>'
-                    a_format = '<a class="nav-link" href="{}">{}{}</a>'
+                    if subsections:
+                        ret.append('<li class="nav-item dropdown dropdown-hover">')
+                        if subsections and CARET:
+                            caret = ' <span class="caret"></span>'
+                        a_format = '<a class="nav-link dropdown-toggle" id="dropdown{}" href="{}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{}{}</a>'
+                    else:
+                        ret.append('<li class="nav-item">')
+                        a_format = '<a class="nav-link" href="{1}">{2}{3}</a>'
                 else:
-                    a_format = '<a class="nav-link" href="{}">{}{}</a>'
-                ret.append(a_format.format('{}/{}'.format(rooturl, node.url), title, caret))
+                    if subsections:
+                        ret.append('<div class="dropdown dropright">')
+                        params['/div'] += 1
+                        a_format = '<a class="dropdown-item dropdown-toggle" id="dropdown{}" href="{}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{}{}</a>'
+                    else:
+                        a_format = '<a class="dropdown-item" href="{1}">{2}{3}</a>'
+                dropdown_num += 1
+                ret.append(a_format.format(dropdown_num, '{}/{}'.format(rooturl, node.url), title, caret))
 
                 if len(subsections) > 0:
-                    ret.append('<ul class="navbar-nav mr-auto">')
-                    params['/ul'] = True
+                    ret.append('<div class="dropdown-menu" aria-labelledby="dropdown{}">'.format(dropdown_num))
+                    params['/div'] += 1
                     pool.append((node, d, BACK, params))
                     for c in subsections[::-1]:
                         pool.append((c, d+1, FORWARD, {'parent':node.url}))
                 else:
-                    params['/ul'] = False
                     pool.append((node, d, BACK, params))
             else: # s==BACK
-                if params['/ul']:
-                    ret.append('</ul></li>')
-                else:
+                if params['/div'] > 0:
+                    ret.append('</div>' * params['/div'])
+                if d == 0:
                     ret.append('</li>')
                 active_flag[node.url] |= bool(
                     hasattr(node,'active_pages') and node.active_pages and re.match(node.active_pages, page_url)
                 )
                 if active_flag[node.url]:
-                    ret[params['li_line']] = ret[params['li_line']][:-2] + ' active">'
+                    ret[params['forward_line']] = re.sub(r'(class="[^"]*)',r'\1 active', ret[params['forward_line']])
                     active_flag[params['parent']] = True
 
     return '\n'.join(ret)
