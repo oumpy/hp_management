@@ -25,13 +25,17 @@ def initialize(pelicanobj):
 
 
 class MenuItem():
-    def __init__(self, url, title=None, subsections=[], active_pages=None):
-        self.url, self.title, self.active_pages = url, title, active_pages
+    def __init__(self, url, title=None, subsections=[], active_pages=None, self_in_subsections=False):
+        self.url = url
+        self.title = title
+        self.active_pages = active_pages
+        self.self_in_subsections = self_in_subsections
         if subsections == []:
             self.subsections = []
         else:
             self.subsections = subsections
     AUTO = None
+    DIVIDER = None
 
 def makemenu(add_on_menu, page_url, depth=1, CARET=False):
 # add_on_menu : list or tuple of MenuItem objects
@@ -63,7 +67,7 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
                     subsections = []
             else:
                 subsections = node.subsections
-            if node.title is None and filter_url2obj:
+            if node.title is None and node.url is not None and filter_url2obj:
                 title = filter_url2obj(node.url).title
             else:
                 title = node.title
@@ -75,7 +79,10 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
                 params['forward_line'] = len(ret)
                 caret = ''
                 params['/div'] = 0
-                if d == 0:
+                if node.url is None:
+                    ret.append('<div class="dropdown-divider"></div>')
+                    continue
+                elif d == 0:
                     if subsections:
                         ret.append('<li class="nav-item dropdown dropdown-hover">')
                         if subsections and CARET:
@@ -100,6 +107,13 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
                     pool.append((node, d, BACK, params))
                     for c in subsections[::-1]:
                         pool.append((c, d+1, FORWARD, {'parent':node.url}))
+                    if node.self_in_subsections:
+                        pool.append((MenuItem(MenuItem.DIVIDER), d+1, FORWARD, {'parent':node.url}))
+                        pool.append((MenuItem(node.url,
+                                              title=node.title,
+                                              active_pages=node.active_pages,
+                                              ),
+                                     d+1, FORWARD, {'parent':node.url}))
                 else:
                     pool.append((node, d, BACK, params))
             else: # s==BACK
