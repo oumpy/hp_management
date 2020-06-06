@@ -43,6 +43,8 @@
             integrity="{{ FONT_AWESOME_LINK.integrity }}"
             crossorigin="{{ FONT_AWESOME_LINK.crossorigin }}">
       {% else %}
+      <link rel="stylesheet"
+            href="https://raw.githubusercontent.com/dallaslu/bootstrap-4-multi-level-dropdown/master/bootstrap4-dropdown-ml-hack-hover.css">
       <link rel="stylesheet"            
             href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
@@ -225,6 +227,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
+    <!-- https://github.com/dallaslu/bootstrap-4-multi-level-dropdown -->
+    <script src="https://raw.githubusercontent.com/dallaslu/bootstrap-4-multi-level-dropdown/master/bootstrap4-dropdown-ml-hack-hover.js"></script>
     {% endif %}
 
     {% for url in JAVASCRIPT_URLS %}
