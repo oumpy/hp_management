@@ -23,9 +23,10 @@ PLUGINS += [
 ]
 
 # Add robots.txt
+STATIC_PATHS += ['publish']
 ROBOTS = 'robots.txt'
 EXTRA_PATH_METADATA.update({
-    'extra/' + ROBOTS: {'path': ROBOTS},
+    'publish/' + ROBOTS: {'path': ROBOTS},
 })
 
 from content.contentpublishconf import *
