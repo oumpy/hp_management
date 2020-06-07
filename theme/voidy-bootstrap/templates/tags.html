@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Tags - {{ SITENAME }}{% endblock %}
+{% block content_body %}
+<header>
+  <h1 itemprop="name headline">{{ CUSTOM_TAGS_TITLE|default("Tags") }}</h1>
+</header>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ SITEURL }}/" title="Home">
+      <i class="fa fa-home fa-fw fa-lg"></i> </a></li>
+    <li class="breadcrumb-item active">Tags</li>
+  </ol>
+</nav>  
+<ul class="direct-list tags-tag-cloud">
+{% for tag in tag_cloud %}
+<li class="tag-{{ tag.1 }}">
+  <a href="{{ SITEURL }}/{{ tag.0.url }}">
+	<i class="fa fa-tag fa-fw fa-lg"></i>{{ tag.0 }}
+  </a>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}
