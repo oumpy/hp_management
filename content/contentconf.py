@@ -7,6 +7,8 @@ for pluginpath in PLUGIN_PATHS:
     sys.path.append(os.curdir + '/' + pluginpath)
 from makemenu import MenuItem
 
+LANG = 'ja'
+
 GITHUB_ACCOUNT = 'oumpy'
 SOURCEREPOSITORY_NAME = 'hp_management'
 
@@ -22,6 +24,10 @@ SITESUBTITLE ='Now is better than never.'
 SITETAG = SITENAME
 COPYRIGHT_YEAR = datetime.date.today().year
 COPYRIGHT_AUTHOR = SITENAME
+
+LOGOIMG = 'images/logo.jpg'
+# TOP_LOGO_IMAGE = LOGOIMG
+OPEN_GRAPH_IMAGE = LOGOIMG
 
 # Social
 SOCIAL = ( # (name, URL, icon, color, size)
@@ -64,8 +70,6 @@ CUSTOM_TAGS_TITLE = "タグ"
 CUSTOM_LINKS_TITLE = "リンク"
 CUSTOM_TWITTERTL_TITLE = "Timeline"
 CUSTOM_RELATED_ARTICLES_TITLE = "関連記事"
-
-OPEN_GRAPH_IMAGE = 'logo.jpg'
 
 DISPLAY_PAGES_ON_MENU = False
 CATEGORYNAMES_ALTERNATIVES = {

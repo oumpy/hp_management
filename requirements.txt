@@ -3,3 +3,5 @@ Markdown
 nbconvert
 IPython
 beautifulsoup4
+requests
+libsass

@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% block title %}Tag:{{ tag }} - {{ SITENAME }}{% endblock %}
+{% block metadesc %}{{ SITETAGALT }} Posts tagged with {{ tag }}{% endblock %}
+
+{% block    custom_header %}
+{% if CUSTOM_HEADER_TAG %}
+{% include "includes/" + CUSTOM_HEADER_TAG %}
+{% endif %}
+{% endblock custom_header%}
+
+{% block    container_header %}
+{% if CUSTOM_CONTAINER_TOP_TAG %}
+{% include "includes/" + CUSTOM_CONTAINER_TOP_TAG %}
+{% endif %}
+{% endblock container_header %}
+
+{% block content_header %}
+{% if CUSTOM_CONTENT_TOP_TAG %}
+{% include "includes/" + CUSTOM_CONTENT_TOP_TAG %}
+{% endif %}
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ SITEURL }}/" title="Home" rel="home">
+		<i class="fa fa-home fa-fw fa-lg"></i> </a></li>
+{% if TAGS_URL %}
+    <li class="breadcrumb-item"><a href="{{ SITEURL }}/{{ TAGS_URL }}">Tags</a></li>
+{% else %}
+    <li class="breadcrumb-item">Tags</li>
+{% endif %}
+    <li class="breadcrumb-item active">{{ tag }}</li>
+</ol>
+</nav>
+{% endblock content_header %}
+
+{% block article %}
+{% include "includes/index_summaries.html" %}
+{% endblock article %}
+
+{% block    content_footer %}
+{% if CUSTOM_CONTENT_BOTTOM_TAG %}
+{% include "includes/" + CUSTOM_CONTENT_BOTTOM_TAG %}
+{% endif %}
+{% endblock content_footer %}
+
+{% block    container_footer %}
+{% if CUSTOM_CONTAINER_BOTTOM_TAG %}
+{% include "includes/" + CUSTOM_CONTAINER_BOTTOM_TAG %}
+{% endif %}
+{% endblock container_footer %}

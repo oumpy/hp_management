@@ -18,21 +18,23 @@
 {% if CUSTOM_CONTENT_TOP_CATEGORY %}
 {% include "includes/" + CUSTOM_CONTENT_TOP_CATEGORY %}
 {% endif %}
+<nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-    <li><a href="{{ SITEURL }}/" title="Home" rel="home">
+    <li class="breadcrumb-item"><a href="{{ SITEURL }}/" title="Home" rel="home">
         <i class="fa fa-home fa-fw fa-lg"></i> </a></li>
 {% if SHOW_CATEGORIES_ON_LIST|default(true) %}
 {% if CATEGORIES_URL %}
-    <li><a href="{{ SITEURL }}/{{ CATEGORIES_URL }}">Categories </a></li>
+    <li class="breadcrumb-item"><a href="{{ SITEURL }}/{{ CATEGORIES_URL }}">Categories</a></li>
 {% else %}
-    <li>Categories </li>
+    <li class="breadcrumb-item">Categories</li>
 {% endif %}
 {% endif %}
-<li class="active"><a href="{{ SITEURL }}/{{ page_name }}.html">{{ category }}</a></li>
+<li class="breadcrumb-item active"><a href="{{ SITEURL }}/{{ page_name }}.html">{{ category }}</a></li>
 {% if articles_paginator is defined and articles_paginator._num_pages > 1 %}
-    <li class="text-muted">{{ articles_page.number }} / {{ articles_paginator._num_pages }} pages</li>
+    <li class="breadcrumb-item text-muted">{{ articles_page.number }} / {{ articles_paginator._num_pages }} pages</li>
 {% endif %}
 </ol>
+</nav>
 {% endblock content_header %}
 
 {% block article %}

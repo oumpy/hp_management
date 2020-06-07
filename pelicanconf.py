@@ -6,6 +6,8 @@ import os
 import sys
 sys.path.append(os.curdir)
 
+BOOTSTRAP_VERSION = '4.5.0'
+
 LOAD_CONTENT_CACHE = False
 
 PATH = 'content'
@@ -72,6 +74,7 @@ PLUGINS = [
     'apply_jinja2',
     'path2obj',
     'makemenu',
+    'pelican-sass',
 ]
 
 RELATED_POSTS_MAX = 3
@@ -107,14 +110,19 @@ THEME = './theme/voidy-bootstrap'
 ### theme-specific settings
 ###
 
-FONT_AWESOME_CDN_LINK = {
-    'href': 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
-    'integrity': 'sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp',
+FONT_AWESOME_LINK = {
+    'href': 'https://use.fontawesome.com/releases/v5.13.0/css/all.css',
+    'integrity': 'sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V',
     'crossorigin': 'anonymous'
 }
 
 # Extra stylesheets, for bootstrap overrides or additional styling.
-STYLESHEET_FILES = ("pygment.css", "voidybootstrap.css", "voidybootstrap-custom.css")
+STYLESHEET_FILES = (
+    "pygment.css",
+    # "voidybootstrap.css",
+    "theme.css",
+    "voidybootstrap-custom.css",
+    )
 CUSTOM_FOOTER = "custom/footer.html"
 SKIP_COLOPHON = True
 
