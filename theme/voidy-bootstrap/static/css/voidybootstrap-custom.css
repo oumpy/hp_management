@@ -521,3 +521,10 @@ td.recent-posts-date {
 .recent-posts-title {
   font-weight: bolder;
 }
+
+/* デスクトップ表示ではホバー操作でドロップダウンを表示 */
+@media only screen and (min-width : 768px) {
+  .dropdown:hover .dropdown-menu {
+      display: block;
+  }
+}
