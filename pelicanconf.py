@@ -30,9 +30,7 @@ DATE_FORMATS = {
 
 start_year = 2017
 this_year = datetime.date.today().year
-
-# ARTICLE_PATHS = ['articles']
-ARTICLE_PATHS = [ 'articles/%dsy/' % y for y in range(start_year, this_year+2) ]
+ARTICLE_PATHS = ['articles']
 ARTICLE_SAVE_AS = ARTICLE_URL ='{category}/{date:%Y}/{date:%m}/{slug}.html'
 PAGE_SAVE_AS = PAGE_URL ='{slug}.html'
 CATEGORY_SAVE_AS = CATEGORY_URL = '{slug}.html'
@@ -51,7 +49,7 @@ FEED_ALL_RSS = 'feeds/all.rss.xml'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 RELATIVE_URLS = True
 
-DEFAULT_PAGINATION = 5
+DEFAULT_PAGINATION = 10
 PAGINATION_PATTERNS = (
     (1, '{url}', '{save_as}',),
     (2, '{base_name}/latests/{number}/', '{base_name}/latests/{number}/index.html'),
@@ -60,7 +58,7 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
-MARKUP = ('md', 'ipynb')
+MARKUP = ['md', 'ipynb']
 
 PLUGIN_PATHS = ['./plugins', './myplugins']
 PLUGINS = [
@@ -99,10 +97,9 @@ SHORTCODES = {
 # metadata. These need to be ignored.
 IGNORE_FILES = [".ipynb_checkpoints", '._*']
 
-IPYNB_USE_METACELL = True
-DISPLAY_PAGES_ON_MENU = True
-
-USE_FOLDER_AS_CATEGORY = True
+# IPYNB_USE_METACELL = True
+# DISPLAY_PAGES_ON_MENU = True
+# USE_FOLDER_AS_CATEGORY = True
 
 # Theme
 THEME = './theme/voidy-bootstrap'
@@ -118,28 +115,34 @@ FONT_AWESOME_LINK = {
 }
 
 # Extra stylesheets, for bootstrap overrides or additional styling.
-STYLESHEET_FILES = (
+STYLESHEET_FILES = [
     "pygment.css",
     # "voidybootstrap.css",
     "theme.css",
     "voidybootstrap-custom.css",
-    )
+]
 CUSTOM_FOOTER = "custom/footer.html"
 SKIP_COLOPHON = True
 
 CUSTOM_HTML_HEAD = "custom/html_head.html"
 CUSTOM_HEADER_PAGE = "custom/header_page.html"
 CUSTOM_HEADER_ARTICLE = "custom/header_article.html"
-CUSTOM_ARTICLE_HEADERS = ("custom/article_header.html", "custom/open_in_colab_header.html",
-                          "custom/toc_header.html", )
-CUSTOM_INDEX_ARTICLE_HEADERS = ("custom/article_header.html",)
+CUSTOM_ARTICLE_HEADERS = [
+    "custom/article_header.html",
+    "custom/open_in_colab_header.html",
+    "custom/toc_header.html",
+]
+CUSTOM_INDEX_ARTICLE_HEADERS = [
+    "custom/article_header.html",
+]
 
 # Put taglist at end of articles, and use the default sharing button implementation.
-CUSTOM_ARTICLE_FOOTERS = (
-    "taglist.html", "sharing.html",
+CUSTOM_ARTICLE_FOOTERS = [
+    "taglist.html",
+    "sharing.html",
     "custom/utterances.html",
     "custom/related_posts.html",
-)
+]
 
 CUSTOM_SCRIPTS_BASE = "custom/scripts_base.html"
 CUSTOM_SCRIPTS_PAGE = "custom/page_showmodified_scripts.html"
@@ -148,12 +151,12 @@ CUSTOM_SCRIPTS_ARTICLE = "custom/scripts_article.html"
 
 # Default sidebar template. Omit this setting for single column mode without sidebar.
 SIDEBAR = "custom/sidebar.html"
-CUSTOM_SIDEBAR_MIDDLES = (
+CUSTOM_SIDEBAR_MIDDLES = [
     "custom/sb_google_cse.html",
     "custom/sb_social.html",
     "custom/sb_recentposts.html",
     "custom/sb_tagcloud.html",
-    )
+]
 CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
 SIDEBAR_HIDE_FEEDS = True
 
@@ -162,10 +165,10 @@ CUSTOM_CONTENT_TOP_ARCHIVES = "custom/content_top_archives.html"
 TWITTER_TIMELINE_HEIGHT = 600
 SIDEBAR_SIZE = 3
 
-SOCIAL_SHARE_BUTTONS = (
+SOCIAL_SHARE_BUTTONS = [
     'twitter',
     'facebook',
-    )
+]
 
 DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
 
