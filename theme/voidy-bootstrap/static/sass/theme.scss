@@ -11,3 +11,7 @@ $theme-colors: (
     border: solid 0.25rem gray;
     border-radius: 0rem 0.5rem 0.5rem 0.5rem;
 };
+.dropdown-item:hover {
+    background-color: $info;
+    color: $white;
+};
