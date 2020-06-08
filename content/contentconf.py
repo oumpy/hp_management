@@ -84,7 +84,7 @@ ADD_ON_MENU = [
     MenuItem('index.html',
              self_in_subsections=True,
              subsections=[
-                 MenuItem('constitution.html', title='Python会規約', subsections=MenuItem.AUTO),
+                 MenuItem('constitution.html', title='会規約', subsections=MenuItem.AUTO),
              ]),
     MenuItem('activities.html', self_in_subsections=True, subsections=MenuItem.AUTO),
     MenuItem('achievements.html', self_in_subsections=True, subsections=MenuItem.AUTO),
