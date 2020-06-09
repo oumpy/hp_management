@@ -120,14 +120,7 @@
             {% endfor %}
           {% endif %}
           {% if ADD_ON_MENU %}
-            {% if page_name is defined %}
-              {% set thispage_url = page_name+'.html' %}
-            {% elif page is defined %}
-              {% set thispage_url = page.url %}
-            {% elif article is defined %}
-              {% set thispage_url = article.url %}
-            {% endif %}
-            {{ ADD_ON_MENU|makemenu(thispage_url, MENU_STEPS|default(1)) }}
+            {{ ADD_ON_MENU|makemenu(output_file, MENU_STEPS|default(1)) }}
           {% endif %}
           {% if not HIDE_ARCHIVES_ON_MENU %}
             <li class="divider"></li>
