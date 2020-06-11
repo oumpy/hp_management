@@ -1,6 +1,6 @@
 Title: {{ PRIMARYNAME }}について
 Date: 2020.03.13
-Modified: 2020.03.24
+Modified: 2020.06.25
 Slug: index
 Summary: Python会の紹介ページです。
 Jinja2: True
