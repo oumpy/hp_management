@@ -5,7 +5,7 @@ Slug: index
 Summary: Python会の紹介ページです。
 Jinja2: True
 
-{{ PRIMARYNAME }}（{{ SECONDARYNAME_CLASS }}：大阪大学医学部 {{ SECONDARYNAME }}）とは、大阪大学医学部の学生が中心となり、プログラミング言語Pythonを軸に、医療分野と絡めて個人の研究・趣味に取り組む会です。
+大阪大学医学部{{ PRIMARYNAME }}（{{ SECONDARYNAME_CLASS }}：{{ SECONDARYNAME }}）とは、大阪大学医学部の学生が中心となり、プログラミング言語Pythonを軸に、医療分野と絡めて個人の研究・趣味に取り組む会です。
 
 RNA発現データ、がんゲノムの遺伝子変異、患者の画像データなど、医療データはこれまでの常識では考えられないスピードで増加しています。
 bioinformatics、脳科学、医療情報学や画像解析など様々な分野において、メンバーそれぞれが日々研鑽しています。
