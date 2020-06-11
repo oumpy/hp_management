@@ -13,10 +13,14 @@ GITHUB_ACCOUNT = 'oumpy'
 SOURCEREPOSITORY_NAME = 'hp_management'
 
 # Author
-AUTHOR = 'Python会'
 FORMALNAME = '阪神タイガース'
-SITENAME = '大阪大学医学部 Python会 <span style="font-size:smaller;">({})</span>'.format(FORMALNAME)
-SITETAG = '大阪大学医学部 Python会 ({})'.format(FORMALNAME) 
+COMMONNAME = 'Python会'
+PRIMARYNAME = COMMONNAME
+SECONDARYNAME = FORMALNAME
+SECONDARYNAME_CLASS = '正式名'
+AUTHOR = PRIMARYNAME
+SITENAME = '大阪大学医学部 {} <span style="font-size:smaller;">({})</span>'.format(PRIMARYNAME, SECONDARYNAME)
+SITETAG = '大阪大学医学部 {} ({})'.format(PRIMARYNAME, SECONDARYNAME)
 SITEURL = ''
 AUTHOR_INTRO = '大阪大学医学部所属のPython職人集団です'
 AUTHOR_DESCRIPTION = 'Now is better than never'
@@ -77,12 +81,13 @@ CUSTOM_TAGS_TITLE = "タグ一覧"
 
 DISPLAY_PAGES_ON_MENU = False
 CATEGORYNAMES_ALTERNATIVES = {
-    'news': ('お知らせ', 'Python会からのお知らせ'),
+    'news': ('お知らせ', '{}からのお知らせ'.format(PRIMARYNAME)),
     'blog': ('技術ブログ',),
 }
 
 ADD_ON_MENU = [
     MenuItem('index.html',
+             title = '{}について'.format(PRIMARYNAME),
              self_in_subsections=True,
              subsections=[
                  MenuItem('constitution.html', title='会規約', subsections=MenuItem.AUTO),
