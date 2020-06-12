@@ -16,4 +16,4 @@ Author: 山崎
 [Jupyter Notebook]({attach}./attach/studymeeting2020_04/勉強会第4回.ipynb)
 
 ## 紹介スライド
-[% embed src="{attach}./attach/studymeeting2020_04/第4回勉強会_ライブラリを用いたデータ処理.pdf" %]
+[% embed src="{attach}./attach/studymeeting2020_04/第4回勉強会_ライブラリを用いたデータ処理.pdf" height="500" %]
