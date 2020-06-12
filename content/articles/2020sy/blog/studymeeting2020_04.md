@@ -1,14 +1,19 @@
-Title: 【勉強会資料 2020 第3回】 競プロの基礎
-Date: 2020.06.03
-Modified: 2020.06.05
-Tags: 競技プログラミング, 勉強会
-Author: 梅田
+Title: 【勉強会資料 2020 第4回】 ライブラリを用いたデータ処理
+Date: 2020.06.10
+Modified: 2020.06.12
+Tags: 勉強会, Python
+Author: 山崎
 
-2020.06.03に行われた第3回勉強会では、プログラミングを書く練習の手段としての競技プログラミング紹介と、その基礎の内容を扱いました。
-AtCoder Beginner ContestでA,B問題が解ける程度のレベルを目標としています。
+2020.06.10に行われた第4回勉強会のオンライン勉強会の資料を公開します。
+ライブラリを用いたデータ処理を主題とし、以下のようなことを行いました。
+
+1. `def` による関数の定義
+2. Numpy：`array`を使ってみよう
+3. Pandasによるデータ処理とその可視化
+4. 演習問題
+
 ## 使用したNotebook
-[Jupyter Notebook]({attach}./attach/studymeeting2020_03/勉強会第3回.ipynb)
-
+[Jupyter Notebook]({attach}./attach/studymeeting2020_04/勉強会第4回.ipynb)
 
 ## 紹介スライド
-[% embed src="{attach}./attach/studymeeting2020_03/第3回勉強会_競プロの基礎.pdf" %]
+[% embed src="{attach}./attach/studymeeting2020_04/第4回勉強会_ライブラリを用いたデータ処理.pdf" %]
