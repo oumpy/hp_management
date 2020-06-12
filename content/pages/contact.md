@@ -1,7 +1,6 @@
 Title: Contact
 Date: 2020.03.13
 Modified: 2020.03.17
-Author: Python会
 Summary: Python会への連絡用メールフォーム
 
 <!-- ![]({attach}images/computer-1209641_960_7201.jpg) -->
