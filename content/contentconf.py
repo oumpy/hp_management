@@ -6,6 +6,8 @@ from tools.lib.pelicanns import *
 for pluginpath in PLUGIN_PATHS:
     sys.path.append(os.curdir + '/' + pluginpath)
 from makemenu import MenuItem
+import re
+striptags = lambda html: re.compile(r'<[^>]*?>').sub('', html)
 
 LANG = 'ja'
 
@@ -20,7 +22,7 @@ SECONDARYNAME = FORMALNAME
 SECONDARYNAME_CLASS = '正式名'
 AUTHOR = PRIMARYNAME
 SITENAME = '大阪大学医学部 {} <span style="font-size:smaller;">({})</span>'.format(PRIMARYNAME, SECONDARYNAME)
-SITETAG = '大阪大学医学部 {} ({})'.format(PRIMARYNAME, SECONDARYNAME)
+SITETAG = striptags(SITENAME)
 SITEURL = ''
 AUTHOR_INTRO = '大阪大学医学部所属のPython職人集団です'
 AUTHOR_DESCRIPTION = 'Now is better than never'
