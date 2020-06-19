@@ -136,11 +136,15 @@ TAG_CLOUD_BADGE = True
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
 
 Exclude_DirNames = ['attach']
-if not 'PATH' in globals(): PATH = ['content']
-if not 'ARTICLE_PATHS' in globals(): ARTICLE_PATHS = ['articles']
-if not 'PAGE_PATHS' in globals(): PAGE_PATHS = ['pages']
-if not 'ARTICLE_EXCLUDES' in globals(): ARTICLE_EXCLUDES = []
-if not 'PAGE_EXCLUDES' in globals(): PAGE_EXCLUDES = []
+defaults = {
+    'PATH' : ['content'],
+    'ARTICLE_PATHS' : ['articles'],
+    'PAGE_PATHS' : ['pages'],
+    'ARTICLE_EXCLUDES' : [],
+    'PAGE_EXCLUDES' : [],
+}
+for variable, value in defaults.items():
+    if not variable in globals(): globals()[variable] = value
 for excludes, paths in [(ARTICLE_EXCLUDES, ARTICLE_PATHS), (PAGE_EXCLUDES, PAGE_PATHS)]:
     excludes += [
         os.path.relpath(dir, PATH)
