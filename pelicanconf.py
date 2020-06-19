@@ -28,8 +28,6 @@ DATE_FORMATS = {
 
 # PAGE_ORDER_BY = 'page_order'
 
-start_year = 2017
-this_year = datetime.date.today().year
 ARTICLE_PATHS = ['articles']
 ARTICLE_SAVE_AS = ARTICLE_URL ='{category}/{date:%Y}/{date:%m}/{slug}.html'
 PAGE_SAVE_AS = PAGE_URL ='{slug}.html'
