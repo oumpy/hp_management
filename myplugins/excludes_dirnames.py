@@ -26,7 +26,7 @@ def defaultsettings(pelicanobj):
 def run_plugin(pelicanobj):
     defaultsettings(pelicanobj)
     settings = pelicanobj.settings
-    PATH = settings['PATH']
+    PATH = settings['PATH'] if 'PATH' in settings else './'
     variable_sets = [
         ('ARTICLE_EXCLUDES', 'ARTICLE_PATHS', 'ARTICLE_EXCLUDES_DIRNAMES'), 
         ('PAGE_EXCLUDES', 'PAGE_PATHS', 'PAGE_EXCLUDES_DIRNAMES'),
