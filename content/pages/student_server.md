@@ -2,7 +2,6 @@ Title: 医学科学生用計算機 (GPU計算サーバ)
 Date: 2020.06.01
 Modified: 2020.06.01
 Show_modified: True
-Author: Python会
 
 2019年度後期に新たに、学生用のGPU計算マシンが医学科に導入されました。
 管理運用は当初からPython会が担当しています。
