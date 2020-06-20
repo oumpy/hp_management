@@ -134,8 +134,6 @@ TAG_CLOUD_BADGE = True
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
 
-if not 'ARTICLE_EXCLUDES' in globals(): ARTICLE_EXCLUDES = []
-ARTICLE_EXCLUDES += [ 'articles/{}sy/{}/attach'.format(y,cat) for cat in {'blog', 'news'} for y in range(start_year, this_year+2) ]
 PLUGINS += [
     'postprocess',
 ]
