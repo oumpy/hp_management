@@ -48,6 +48,9 @@ FEED_ALL_RSS = 'feeds/all.rss.xml'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 RELATIVE_URLS = True
 
+TAGS_URL = TAGS_SAVE_AS = 'tags.html'
+AUTHORS_URL = AUTHORS_SAVE_AS = 'authors.html'
+
 DEFAULT_PAGINATION = 10
 PAGINATION_PATTERNS = (
     (1, '{url}', '{save_as}',),
