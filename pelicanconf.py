@@ -32,6 +32,7 @@ ARTICLE_PATHS = ['articles']
 ARTICLE_SAVE_AS = ARTICLE_URL ='{category}/{date:%Y}/{date:%m}/{slug}.html'
 PAGE_SAVE_AS = PAGE_URL ='{slug}.html'
 CATEGORY_SAVE_AS = CATEGORY_URL = '{slug}.html'
+ARTICLE_EXCLUDES_DIRNAMES = PAGE_EXCLUDES_DIRNAMES = ['attach', 'images']
 INDEX_SAVE_AS = 'articles.html'
 
 SLUGIFY_SOURCE = 'basename'
@@ -72,6 +73,7 @@ PLUGINS = [
     'subsections',
     'makemenu',
     'pelican-sass',
+    'excludes_dirnames',
 ]
 
 RELATED_POSTS_MAX = 3

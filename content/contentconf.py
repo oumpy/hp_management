@@ -6,7 +6,6 @@ from tools.lib.pelicanns import *
 for pluginpath in PLUGIN_PATHS:
     sys.path.append(os.curdir + '/' + pluginpath)
 from makemenu import MenuItem
-import pathlib
 
 LANG = 'ja'
 
@@ -135,24 +134,6 @@ TAG_CLOUD_BADGE = True
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
 
-Exclude_DirNames = ['attach']
-defaults = {
-    'PATH' : ['content'],
-    'ARTICLE_PATHS' : ['articles'],
-    'PAGE_PATHS' : ['pages'],
-    'ARTICLE_EXCLUDES' : [],
-    'PAGE_EXCLUDES' : [],
-}
-for variable, value in defaults.items():
-    if not variable in globals(): globals()[variable] = value
-for excludes, paths in [(ARTICLE_EXCLUDES, ARTICLE_PATHS), (PAGE_EXCLUDES, PAGE_PATHS)]:
-    excludes += [
-        os.path.relpath(dir, PATH)
-        for root in paths
-            for dirname in Exclude_DirNames
-                for dir in pathlib.Path(PATH).glob(os.path.join(root, '**/{}'.format(dirname)))
-                    if dir.is_dir()
-    ]
 PLUGINS += [
     'postprocess',
 ]
