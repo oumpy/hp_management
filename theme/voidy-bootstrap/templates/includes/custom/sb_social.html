@@ -7,7 +7,11 @@
 <div class="box-contents">
 <ul class="list-unstyled social-links">
   {% for name, link, icon, color, size in SOCIAL %}
+    {% if link[:2] == './' %}
+  <li><a href="{{ SITEURL }}/{{ link[2:] }}" target="_blank" title="{{ name }}">
+    {% else %}
   <li><a href="{{ link }}" target="_blank" title="{{ name }}">
+    {% endif %}
     <span style="color:{{ color }}; font-size:{{ size }};">{{ icon }}<span>
   </a></li>
   {% endfor %}
