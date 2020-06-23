@@ -25,7 +25,7 @@ AUTHOR_DESCRIPTION = 'Now is better than never'
 # AUTHOR_WEB = 'https://twitter.com/oumed_python'
 SITESUBTITLE ='Now is better than never.'
 COPYRIGHT_YEAR = datetime.date.today().year
-COPYRIGHT_AUTHOR = '大阪大学医学部 情報医科学研究会'
+COPYRIGHT_AUTHOR = '大阪大学医学部 情報医科学研究会 (Python会)'
 
 LOGOIMG = 'images/logo.jpg'
 # TOP_LOGO_IMAGE = LOGOIMG
