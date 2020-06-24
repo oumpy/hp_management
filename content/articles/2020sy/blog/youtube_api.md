@@ -6,6 +6,9 @@ Author: 川崎
 
 [前回]({filename}../../2018sy/blog/twitter_automation.md)は Twitter API を取得して定期ツイートする方法について書きましたが、今回の記事では **YouTube API** を試してみたいと思います。
 
+
+## APIとは？
+
 APIとは何かざっくり説明いたしますと、  
 あるアプリケーションにまつわる操作を、  
 プログラミングを通じて自動化やらなんやら、といったものです。  
@@ -15,6 +18,9 @@ APIとは何かざっくり説明いたしますと、
 
 Youtube にまつわるAPIは様々ありますが今回は **YouTube Data API v3** を使っていきます。
 YouTube Data API v3 は、動画、プレイリスト、チャンネルなどのYouTubeデータへのアクセスを提供するAPIです。
+
+
+## 準備
 
 まずは
 [Google](https://www.google.com)
@@ -39,6 +45,9 @@ Google Cloud Platform (<https://console.cloud.google.com>)
 `!pip list` を実行して確認できます。
 
 ![image6]({attach}./images/youtube_api_figs/image6.jpg)
+
+
+## 実際に動かしてみる
 
 早速YouTube APIで動画の情報を収集してみましょう。
 例えば、ある投稿者の最新の動画を調べたい場合にも、APIを使って検索が可能です。
@@ -78,6 +87,9 @@ titles
 HIKAKINさんの新着動画のタイトルが取得出来ています。
 
 このようにYouTubeのサイトに直接アクセスしなくても、APIを叩くだけでちょっとした調べものが出来てしまいます。
+
+
+## 自動化とOAuth2.0認証の実装
 
 さらにAPIはプログラミング言語で動かすことが出来るという特性上、一連の操作をすべて自動でできるという利点があります。
 例えば **自分が登録しているチャンネルを全て取得して、そのどれかが新しく動画をアップロードし、それが特定のワードを含む場合にメールでお知らせしてくれるようなシステム** を作りたいとします。
@@ -129,6 +141,9 @@ CLIENT_SECRETS_FILE = "client_secrets.json"
 
 ![image11]({attach}./images/youtube_api_figs/image11.png)
 *↑ 未知のモノを実装するにはその構造を理解する必要がある*
+
+
+## まとめ
 
 残念ながら今回はYouTube APIを使いこなすことが出来ませんでした。
 
