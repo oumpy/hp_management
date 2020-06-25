@@ -6,6 +6,8 @@ from tools.lib.pelicanns import *
 for pluginpath in PLUGIN_PATHS:
     sys.path.append(os.curdir + '/' + pluginpath)
 from makemenu import MenuItem
+import re
+striptags = lambda html: re.compile(r'<[^>]*?>').sub('', html)
 
 LANG = 'ja'
 
@@ -14,16 +16,16 @@ SOURCEREPOSITORY_NAME = 'hp_management'
 
 # Author
 AUTHOR = 'Python会'
-SITENAME = '大阪大学医学部 Python会'
+SITENAME = '大阪大学医学部 Python会 <span style="font-size:smaller;">(情報医科学研究会)</span>'
+SITETAG = striptags(SITENAME)
 SITEURL = ''
 AUTHOR_INTRO = '大阪大学医学部所属のPython職人集団です'
 AUTHOR_DESCRIPTION = 'Now is better than never'
 # AUTHOR_AVATAR = '../images/'
 # AUTHOR_WEB = 'https://twitter.com/oumed_python'
 SITESUBTITLE ='Now is better than never.'
-SITETAG = SITENAME
 COPYRIGHT_YEAR = datetime.date.today().year
-COPYRIGHT_AUTHOR = SITENAME
+COPYRIGHT_AUTHOR = '大阪大学医学部 情報医科学研究会 (Python会)'
 
 LOGOIMG = 'images/logo.jpg'
 # TOP_LOGO_IMAGE = LOGOIMG
@@ -84,7 +86,7 @@ ADD_ON_MENU = [
     MenuItem('index.html',
              self_in_subsections=True,
              subsections=[
-                 MenuItem('constitution.html', title='Python会規約', subsections=MenuItem.AUTO),
+                 MenuItem('constitution.html', title='会規約', subsections=MenuItem.AUTO),
              ]),
     MenuItem('activities.html', self_in_subsections=True, subsections=MenuItem.AUTO),
     MenuItem('achievements.html', self_in_subsections=True, subsections=MenuItem.AUTO),
