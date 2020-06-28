@@ -19,10 +19,6 @@ AUTHOR = 'Python会'
 SITENAME = '大阪大学医学部 Python会 <span style="font-size:smaller;">(情報医科学研究会)</span>'
 SITETAG = striptags(SITENAME)
 SITEURL = ''
-AUTHOR_INTRO = '大阪大学医学部所属のPython職人集団です'
-AUTHOR_DESCRIPTION = 'Now is better than never'
-# AUTHOR_AVATAR = '../images/'
-# AUTHOR_WEB = 'https://twitter.com/oumed_python'
 SITESUBTITLE ='Now is better than never.'
 COPYRIGHT_YEAR = datetime.date.today().year
 COPYRIGHT_AUTHOR = '大阪大学医学部 情報医科学研究会 (Python会)'
