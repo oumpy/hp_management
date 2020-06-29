@@ -1,4 +1,4 @@
-Title: PythonとPython会とPython会で使われているPython
+Title: Python会とPythonとPython会で使われているPython
 Date: 2020.07.03
 Modified: 2020.07.03
 Tags: Python
