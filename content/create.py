@@ -7,10 +7,10 @@ import shutil
 
 template = "./template.md"
 
-now = datetime.now().strftime("%Y.%m.%d %H:00")
+today = datetime.now().strftime("%Y.%m.%d")
 fields = [  # (field, default, comment)
     ('slug',      'my_new_article',   'ファイル名。英数字、拡張子なし'),
-    ('date',      now,                '記事日付。YYYY.mm.DD または YYYY.mm.DD HH.MM 形式'),
+    ('date',      today,              '記事日付。YYYY.mm.DD または YYYY.mm.DD HH.MM 形式'),
     ('modified',  None,               '更新日。None の場合は date と同じ'),
     ('title',     None,               '記事タイトル。content 内に # 要素がある場合は指定しない。'),
     ('category',  'blog',             'blog, news または page'),
