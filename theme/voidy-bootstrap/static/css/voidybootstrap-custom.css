@@ -468,7 +468,7 @@ ul#toc {
   overflow-x: auto;
   white-space: nowrap;
 }
-  
+
 ul.group_taglist {
   list-style:none;
   padding-left:0;
@@ -527,4 +527,39 @@ td.recent-posts-date {
   .dropdown:hover .dropdown-menu {
       display: block;
   }
+}
+
+/*blockquote*/
+blockquote {
+    position: relative;
+    padding: 10px 15px 10px 50px;
+    box-sizing: border-box;
+    font-style: italic;
+    background: #efefef;
+    color: #555;
+}
+
+blockquote:before{
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: -3px;
+    content: "“";
+    font-family: arial;
+    color: #cfcfcf;
+    font-size: 90px;
+    line-height: 1;
+}
+
+blockquote p {
+    padding: 0;
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+blockquote cite {
+    display: block;
+    text-align: right;
+    color: #888888;
+    font-size: 0.9em;
 }
