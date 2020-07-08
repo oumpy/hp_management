@@ -9,7 +9,7 @@ Pythonが全てわかる方も、なにもわからない方も、ちょっと�
 
 ## 新歓2020年度
 4月中はオンライン新歓イベントとして、
-[YouTube](https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ) でのプレゼンシリーズ動画配信および、
+[YouTube](https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ) での[プレゼンシリーズ動画](#recruit-presentations2020)配信および、
 オンラインハンズオン「COVID-19 のデータを可視化してみよう」(4/18, 4/25) を行いました。
 
 引き続き、新歓に関する情報は本サイトと [Twitter](https://twitter.com/oumed_python) にてお知らせしていきます。
@@ -17,7 +17,7 @@ Pythonが全てわかる方も、なにもわからない方も、ちょっと�
 ### 紹介動画 [2020.07更新]
 [% youtube id=cTyk4FAl-iw %]
 
-### 新歓プレゼン動画
+### 新歓プレゼン動画<span id="recruit-presentations2020"></span>
 Python会メンバーによる、それぞれの研究分野等についてのプレゼン動画です (全8回)。
 
 <div class="row">
