@@ -67,7 +67,7 @@ Python会は内部に限った勉強会だけではなく、外部の方々も�
 ![Bono読書会写真]({attach}images/activities/191020.jpg)
 
 ### 2019/09/22 技術書典7
-池袋サンシャインシティにて行われた[技術書典7](https://techbookfest.org/event/tbf07)にAIMSと合同でサークル参加しました。6年の秋山が『病気から観る映画評』、3年の山本が『ゼロから作るSpiking Neural Networks』をそれぞれ執筆し、頒布しました。
+池袋サンシャインシティにて行われた[技術書典7](https://techbookfest.org/event/tbf07)にAIMSと合同でサークル参加しました。6年の[秋山]({author}秋山)が『病気から観る映画評』、3年の[山本]({author}山本)が『ゼロから作るSpiking Neural Networks』をそれぞれ執筆し、頒布しました。
 
 ![技術書展7写真]({attach}images/activities/190922.jpg)
 
@@ -83,12 +83,12 @@ Python会は内部に限った勉強会だけではなく、外部の方々も�
 ![実験医学2019年3月号表紙]({attach}images/activities/190225.jpg)
 
 ### 2018/12/26 第1回バイオインフォマティクス可視化セミナー
-東京理研AIPで開かれた[第1回バイオインフォマティクス可視化セミナー](https://bioinfo.connpass.com/event/113579/)にて6年の安水がpython 会の活動報告報告を行いました。
+東京理研AIPで開かれた[第1回バイオインフォマティクス可視化セミナー](https://bioinfo.connpass.com/event/113579/)にて6年の[安水]({author}安水)がpython 会の活動報告報告を行いました。
 
 ![バイオインフォ可視化セミナー写真]({attach}images/activities/181226.jpg)
 
 ### 2018/12/19 signate&マイナビstudentcupアフターイベント
-東京の新宿ミライナタワーでマイナビコンペのアフターイベントが行われました。その中で、メンバーの金子さんが1位となり解法の発表を行いました。他のメンバーも数人参加しており、とても勉強になりました。
+東京の新宿ミライナタワーでマイナビコンペのアフターイベントが行われました。その中で、メンバーの[金子]({author}金子)さんが1位となり解法の発表を行いました。他のメンバーも数人参加しており、とても勉強になりました。
 
 ![signate studentcup写真]({attach}images/activities/181219.jpg)
 
