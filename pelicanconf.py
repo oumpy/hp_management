@@ -159,7 +159,7 @@ CUSTOM_SIDEBAR_MIDDLES = [
     "custom/sb_social.html",
     "custom/sb_recentposts.html",
     "custom/sb_tagcloud.html",
-    "custom/sb_donate.html"
+    "custom/sb_support.html"
 ]
 CUSTOM_SIDEBAR_BOTTOM = "custom/sb_twittertl.html"
 SIDEBAR_HIDE_FEEDS = True

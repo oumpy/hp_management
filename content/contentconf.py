@@ -71,10 +71,12 @@ CUSTOM_RELATED_ARTICLES_TITLE = "関連記事"
 CUSTOM_ARCHIVES_TITLE = "過去記事一覧"
 CUSTOM_AUTHORS_TITLE = "著者一覧"
 CUSTOM_TAGS_TITLE = "タグ一覧"
-CUSTOM_DONATE_TITLE = "会へのご支援"
+CUSTOM_SIDEBAR_SUPPORT_TITLE = "会へのご支援"
 
-SIDEBAR_DONATELINK_LIST = [
-    ('https://paypal.me/oumpy/', '<span style="font-size:larger;"><span class="text-primary" style="margin-right:5px;"><i class="fab fa-paypal"></i></span><font color="#003087">Pay</font><font color="#009cde">Pal</font><font color="#012169">.Me</font></span>'),
+SIDEBAR_SUPPORTLINK_LIST = [
+    ('https://paypal.me/oumpy/',
+     '<span style="font-size:larger;"><span class="text-primary" style="margin-right:5px;"><i class="fab fa-paypal"></i></span><font color="#003087">Pay</font><font color="#009cde">Pal</font><font color="#012169">.Me</font></span>',
+    ),
     # '<img src="https://www.paypalobjects.com/webstatic/paypalme/images/social/pplogo384.png"/>'
 ]
 
