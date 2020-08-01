@@ -563,3 +563,12 @@ blockquote cite {
     color: #888888;
     font-size: 0.9em;
 }
+
+/* Reduce spaces for articles converted from jupyter notebook*/
+div.prompt.input_prompt{
+	padding: 0!important;
+}
+
+div.text_cell_render{
+	padding: 0em 0.5em 0em 0.4em!important;
+}
