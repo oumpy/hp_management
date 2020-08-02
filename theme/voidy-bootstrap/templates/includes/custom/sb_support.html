@@ -1,0 +1,21 @@
+<div class="sidebar_box">
+<div class="box-title"><i class="fas fa-hand-holding-heart"></i> {{ CUSTOM_SIDEBAR_SUPPORT_TITLE|default('Donation') }}</div>
+<div class="box-contents">
+<div style="display:flex; justify-content:center;">
+<ul style="list-style:none; padding-left:0;">
+{% for item in SIDEBAR_SUPPORTLINK_LIST %}
+  {% set url = item.0 | apply_jinja2 %}
+  {% set body = item.1 | apply_jinja2 %}
+  {% if item|length >= 3 %}
+    {% set suppli = item.2 | apply_jinja2 %}
+  {% else %}
+    {% set suppli = "" %}
+  {% endif %}
+  <li>
+    <a href="{{ url }}">{{ body }}</a>{{ suppli }}
+  </li>
+{% endfor %}
+</ul>
+</div>
+</div>
+</div>
