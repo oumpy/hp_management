@@ -22,6 +22,6 @@ Show_modified: True
 - CPU: Core i9-9900X (3.5 GHz, 10 cores, hyperthreading enabled)
 - GPU: GeForce RTX 2080Ti (VRAM: 11GB) x2
 - Main Memory: 128GB
-- Storage: 1TB SSD (system, btrfs) + 2TB HDD x3 (home, zfs) + 8TB HDD x2 (data, ext3)
-- OS: Ubuntu 18.04 LTS Server
+- Storage: 1TB SSD (system, cache) + 8TB HDD x2 (home) + 2TB HDD x3 (backup)
+- OS: Ubuntu 20.04 LTS Server
 - 設置場所: 最先端医療イノベーションセンター棟2F 医学科全学年自習室
