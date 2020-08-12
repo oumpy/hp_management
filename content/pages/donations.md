@@ -12,3 +12,4 @@ Author: Python会
 
 ## 2020年度 ご寄付者様方 御芳名
 
+- <span class="donator-E4">吉原​ 正仁 様</span>
