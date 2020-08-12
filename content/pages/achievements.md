@@ -62,7 +62,7 @@ RNAseqに係る様々なツールを検証し、その中で最良のツール�
 [**Hiraoka, Yu**]({author}平岡), [**Yamada, Kohki**]({author}山田), Kawasaki, Yusuke, Hirose, Haruka, Matsumoto, Yasunari, Ishikawa, Kaito, & [**Yasumizu, Yoshiaki**]({author}安水). (2019, July 27). ikra : RNAseq pipeline centered on Salmon. (Version v1.2.1). Zenodo. [doi:10.5281/zenodo.3352573](http://doi.org/10.5281/zenodo.3352573)
 
 ### VIRTUS ver1.0をリリース
-ウィルス転写産物の検出・定量ツールである、VIRTUS(<https://github.com/yyoshiaki/VIRTUS>)をリリースしました。
+ウィルス転写産物の検出・定量ツールである、VIRTUS (<https://github.com/yyoshiaki/VIRTUS>)をリリースしました。
 
 ### 外部との共同研究
 Twitterや実験医学誌面の反響から、様々な共同研究が始まっています。
@@ -77,15 +77,15 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 ## 所属メンバー論文
 ### 2020
 - [**Yasumizu, Y.**]({author}安水), Sakaue, S., Konuma, T., Suzuki, K., Matsuda, K., Murakami, Y., … Okada, Y. Genome-Wide Natural Selection Signatures Are Linked to Genetic Risk of Modern Phenotypes in the Japanese Population. Molecular Biology and Evolution. *Mol Biol Evol*. 2020;msaa005. [doi:10.1093/molbev/msaa005](https://doi.org/10.1093/molbev/msaa005). [(プレスリリース)](http://www.med.osaka-u.ac.jp/activities/results/2020year/okada2020-01)
-- Ohkura, N., [**Yasumizu, Y.**]({author}安水), Kitagawa, Y., … Okada, Y., Sakaguchi, Y. Regulatory T Cell-Specific Epigenomic Region Variants Are a Key Determinant of Susceptibility to Common Autoimmune Diseases. *Immunity*. VOLUME 52, ISSUE 6, P1119-1132.E4, JUNE 16, 2020. [doi:10.1016/j.immuni.2020.04.006](https://doi.org/10.1016/j.immuni.2020.04.006)
+- Ohkura, N., [**Yasumizu, Y.**]({author}安水), Kitagawa, Y., … Okada, Y., Sakaguchi, Y. Regulatory T Cell-Specific Epigenomic Region Variants Are a Key Determinant of Susceptibility to Common Autoimmune Diseases. *Immunity*. VOLUME 52, ISSUE 6, P1119-1132.E4, JUNE 16, 2020. [doi:10.1016/j.immuni.2020.04.006](https://doi.org/10.1016/j.immuni.2020.04.006).
 
 ### 2019
 - Matsumoto, T., Niioka, H., Kumamoto, Y., [**Sato, J.**]({author}佐藤), et al. Deep-UV excitation fluorescence microscopy for detection of lymph node metastasis using deep neural network. *Sci Rep*. 2019;9(1):16912. [doi:10.1038/s41598-019-53405-w](https://www.nature.com/articles/s41598-019-53405-w).
 - [**Takeuchi, T.**]({author}竹内), Kitamura, Y., Sado, J., et al. Mortality of Japanese Olympic athletes: 1952–2017 cohort study. *BMJ Open SEM*. 2019;5:e000653. [doi: 10.1136/bmjsem-2019-000653](https://bmjopensem.bmj.com/content/5/1/e000653).
-- Sekido, Y., [**Yasumizu, Y.**]({author}安水), … Mizushima, T. Innate Myeloid Cell Subset-Specific Gene Expression Patterns in the Human Colon are Altered in Crohn’s Disease Patients. *Digestion*. 2019;99:194–204. [doi:10.1159/000490890](https://doi.org/10.1159/000490890)
+- Sekido, Y., [**Yasumizu, Y.**]({author}安水), … Mizushima, T. Innate Myeloid Cell Subset-Specific Gene Expression Patterns in the Human Colon are Altered in Crohn’s Disease Patients. *Digestion*. 2019;99:194–204. [doi:10.1159/000490890](https://doi.org/10.1159/000490890).
 
 ### 2018
-- [**Miyazaki, Y.**]({author}宮崎), Tabuchi, T. Educational gradients in the use of electronic cigarettes and heat-not-burn tobacco products in Japan. *PLoS One*. 2018;13(1):e0191008. [doi:10.1371/journal.pone.0191008](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0191008)
+- [**Miyazaki, Y.**]({author}宮崎), Tabuchi, T. Educational gradients in the use of electronic cigarettes and heat-not-burn tobacco products in Japan. *PLoS One*. 2018;13(1):e0191008. [doi:10.1371/journal.pone.0191008](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0191008).
 
 ## 出版記事等
 ### 2020
