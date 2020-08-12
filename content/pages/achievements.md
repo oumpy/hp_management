@@ -59,6 +59,7 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 bioinformatics勉強会の成果として、RNA-seqのパイプラインである、ikra (<https://github.com/yyoshiaki/ikra>) をリリースしました。
 RNAseqに係る様々なツールを検証し、その中で最良のツールをパイプラインとして自動化することに成功。
 専門学術論文にも引用されています (2020年3月現在) 。
+
 [**Hiraoka, Yu**]({author}平岡), [**Yamada, Kohki**]({author}山田), Kawasaki, Yusuke, Hirose, Haruka, Matsumoto, Yasunari, Ishikawa, Kaito, & [**Yasumizu, Yoshiaki**]({author}安水). (2019, July 27). ikra : RNAseq pipeline centered on Salmon. (Version v1.2.1). Zenodo. [doi:10.5281/zenodo.3352573](http://doi.org/10.5281/zenodo.3352573)
 
 ### VIRTUS ver1.0をリリース
