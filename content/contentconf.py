@@ -76,6 +76,7 @@ CUSTOM_SIDEBAR_SUPPORT_TITLE = "会へのご支援"
 SIDEBAR_SUPPORTLINK_LIST = [
     ('https://paypal.me/oumpy/',
      '<span style="font-size:larger;"><span class="text-primary" style="margin-right:5px;"><i class="fab fa-paypal"></i></span><font color="#003087">Pay</font><font color="#009cde">Pal</font><font color="#012169">.Me</font></span>',
+     '<br><span style="font-size:smaller; margin-left:0px;">(<a href="{{ SITEURL }}/donations.html">ご寄付を頂いた方々</a>)</span>',
     ),
     # '<img src="https://www.paypalobjects.com/webstatic/paypalme/images/social/pplogo384.png"/>'
 ]
