@@ -83,7 +83,7 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 
 ## 出版記事等
 ### 2020
-- [**山崎 隆一郎**]({author}山崎) ほか 「脳波の時間周波数分析による強い痛みの判別」([麻酔 Vol. 69 No. 8](http://www.kokuseido.co.jp/book/no-36908/)), 克誠堂出版, (2020).
+- [**山崎 隆一郎**]({author}山崎) ほか 「脳波の時間周波数分析による強い痛みの判別」[麻酔 Vol. 69 No. 8](http://www.kokuseido.co.jp/book/no-36908/), 克誠堂出版, (2020).
 ### 2019
 - [**安水 良明**]({author}安水) 「Pythonで医学に貢献を」 実験医学 Vol. 37 No. 4 (2019).  ([実験医学online](https://www.yodosha.co.jp/jikkenigaku/opinion/vol37n4.html))
 - (Python会メンバーの[**宮崎 友希**]({author}宮崎)が寄稿). 荘子 万能, 小泉 俊三, Choosing Wisely Japan Student Committee. 『私にとっての“Choosing Wisely” 医学生・研修医・若手医師の“モヤモヤ”から』 金芳堂, (2019).
