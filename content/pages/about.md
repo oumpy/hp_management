@@ -15,4 +15,4 @@ Python会に興味のある方はぜひ、[Contact]({filename}./contact.md)の�
 
 ―Pythonで医学に貢献を―
 
-<img src="{filename}/images/logo.jpg" width="300px">
+<img src="{static}/images/logo.jpg" width="300px">

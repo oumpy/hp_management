@@ -77,6 +77,7 @@ PLUGINS = [
     'makemenu',
     'pelican-sass',
     'excludes_dirnames',
+    'skiptags',
 ]
 
 RELATED_POSTS_MAX = 3

@@ -564,6 +564,15 @@ blockquote cite {
     font-size: 0.9em;
 }
 
+/* Reduce spaces for articles converted from jupyter notebook*/
+div.prompt.input_prompt{
+	padding: 0!important;
+}
+
+div.text_cell_render{
+	padding: 0em 0.5em 0em 0.4em!important;
+}
+
 /* font-size for donators : fs = 1.0 + (log10(x)-1)^3 / 50 */
 .donator-E2 {
   font-size: 1.02rem;
