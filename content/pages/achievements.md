@@ -59,6 +59,10 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 bioinformatics勉強会の成果として、RNA-seqのパイプラインである、ikra (<https://github.com/yyoshiaki/ikra>) をリリースしました。
 RNAseqに係る様々なツールを検証し、その中で最良のツールをパイプラインとして自動化することに成功。
 専門学術論文にも引用されています (2020年3月現在) 。
+[**Hiraoka, Yu**]({author}平岡), [**Yamada, Kohki**]({author}山田), Kawasaki, Yusuke, Hirose, Haruka, Matsumoto, Yasunari, Ishikawa, Kaito, & [**Yasumizu, Yoshiaki**]({author}安水). (2019, July 27). ikra : RNAseq pipeline centered on Salmon. (Version v1.2.1). Zenodo. [doi:10.5281/zenodo.3352573](http://doi.org/10.5281/zenodo.3352573)
+
+### VIRTUS ver1.0をリリース
+ウィルス転写産物の検出・定量ツールである、VIRTUS(<https://github.com/yyoshiaki/VIRTUS>)をリリースしました。
 
 ### 外部との共同研究
 Twitterや実験医学誌面の反響から、様々な共同研究が始まっています。
@@ -73,19 +77,26 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 ## 所属メンバー論文
 ### 2020
 - [**Yasumizu, Y.**]({author}安水), Sakaue, S., Konuma, T., Suzuki, K., Matsuda, K., Murakami, Y., … Okada, Y. Genome-Wide Natural Selection Signatures Are Linked to Genetic Risk of Modern Phenotypes in the Japanese Population. Molecular Biology and Evolution. *Mol Biol Evol*. 2020;msaa005. [doi:10.1093/molbev/msaa005](https://doi.org/10.1093/molbev/msaa005). [(プレスリリース)](http://www.med.osaka-u.ac.jp/activities/results/2020year/okada2020-01)
+- Ohkura, N., [**Yasumizu, Y.**]({author}安水), Kitagawa, Y., … Okada, Y., Sakaguchi, Y. Regulatory T Cell-Specific Epigenomic Region Variants Are a Key Determinant of Susceptibility to Common Autoimmune Diseases. *Immunity*. VOLUME 52, ISSUE 6, P1119-1132.E4, JUNE 16, 2020. [doi:10.1016/j.immuni.2020.04.006](https://doi.org/10.1016/j.immuni.2020.04.006)
 
 ### 2019
 - Matsumoto, T., Niioka, H., Kumamoto, Y., [**Sato, J.**]({author}佐藤), et al. Deep-UV excitation fluorescence microscopy for detection of lymph node metastasis using deep neural network. *Sci Rep*. 2019;9(1):16912. [doi:10.1038/s41598-019-53405-w](https://www.nature.com/articles/s41598-019-53405-w).
 - [**Takeuchi, T.**]({author}竹内), Kitamura, Y., Sado, J., et al. Mortality of Japanese Olympic athletes: 1952–2017 cohort study. *BMJ Open SEM*. 2019;5:e000653. [doi: 10.1136/bmjsem-2019-000653](https://bmjopensem.bmj.com/content/5/1/e000653).
+- Sekido, Y., [**Yasumizu, Y.**]({author}安水), … Mizushima, T. Innate Myeloid Cell Subset-Specific Gene Expression Patterns in the Human Colon are Altered in Crohn’s Disease Patients. *Digestion*. 2019;99:194–204. [doi:10.1159/000490890](https://doi.org/10.1159/000490890)
 
 ### 2018
 - [**Miyazaki, Y.**]({author}宮崎), Tabuchi, T. Educational gradients in the use of electronic cigarettes and heat-not-burn tobacco products in Japan. *PLoS One*. 2018;13(1):e0191008. [doi:10.1371/journal.pone.0191008](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0191008)
 
 ## 出版記事等
 ### 2020
-- [**山崎 隆一郎**]({author}山崎) ほか 「脳波の時間周波数分析による強い痛みの判別」[麻酔 Vol. 69 No. 8](http://www.kokuseido.co.jp/book/no-36908/), 克誠堂出版, (2020).
+- [**山崎 隆一郎**]({author}山崎) ほか 「脳波の時間周波数分析による強い痛みの判別」麻酔 Vol. 69 No. 8, 克誠堂出版, (2020). ([link](http://www.kokuseido.co.jp/book/no-36908/))
 ### 2019
 - [**安水 良明**]({author}安水) 「Pythonで医学に貢献を」 実験医学 Vol. 37 No. 4 (2019).  ([実験医学online](https://www.yodosha.co.jp/jikkenigaku/opinion/vol37n4.html))
-- (Python会メンバーの[**宮崎 友希**]({author}宮崎)が寄稿). 荘子 万能, 小泉 俊三, Choosing Wisely Japan Student Committee. 『私にとっての“Choosing Wisely” 医学生・研修医・若手医師の“モヤモヤ”から』 金芳堂, (2019).
+- [**安水 良明**]({author}安水), 岡田随象 「大規模ヒトゲノム解析による日本人集団の適応進化の解明」 腎臓内科・泌尿器科 Vol.10 No.6 p566-571 (2019).
+- 大田達郎, 石井学, 末竹裕貴, 丹生智也, [**山田航輝**]({author}山田), [**安水 良明**]({author}安水) 「CWL（Common Workflow Language）があれば, DRY解析はもう怖くない」 次世代シーケンサー DRY解析教本 改訂第2版 p331-338 (2019).
+- [**安水 良明**]({author}安水), 中村やまみ, 大倉永也 「T細胞におけるシングルセル解析」 実験医学増刊 「シングルセルゲノミクス」 Vol.37 No.20 p3421-3427 (2019).
+- [**安水 良明**]({author}安水) 「Chapter 1　まずはこれだけ! 解析環境を整える～Mac+Biocondaを中心に」 実験医学別冊 RNA-Seqデータ解析 WETラボのための鉄板レシピ p10-27 (2019). ([link](https://www.yodosha.co.jp/yodobook/book/9784758122436/))
+- 大倉永也、[**安水 良明**]({author}安水) 「Treg分化におけるエピゲノムの役割」 医学のあゆみ Vol. 268 No. 13 p1030-1035 (2019).
+- [**宮崎 友希**]({author}宮崎)「ESSAY 20 初めての患者さんを通して考えたこと」　荘子 万能, 小泉 俊三, Choosing Wisely Japan Student Committee. 『私にとっての“Choosing Wisely” 医学生・研修医・若手医師の“モヤモヤ”から』 金芳堂, (2019). ([link](https://www.kinpodo-pub.co.jp/book/1796-2/))
 - [**秋山 理 (OsciiArt)**]({author}秋山). 『病気から観る映画評』　技術書典7 (AIMS/阪医Python会), (2019).
 - [**山本 拓都**]({author}山本). 『ゼロから作る Spiking Neural Networks』 技術書典7 (AIMS/阪医Python会), (2019).
