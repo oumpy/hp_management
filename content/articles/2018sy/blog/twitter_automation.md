@@ -1,6 +1,6 @@
 Title:Twitter自動投稿あれこれ
 Date: 2019.01.18
-Tags: Python
+Tags: 自動化
 Author: 川崎
 
 突如TwitterのBotを作ってみたくなり試行錯誤した結果をまとめてみました。

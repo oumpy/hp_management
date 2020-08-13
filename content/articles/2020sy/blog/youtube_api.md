@@ -1,7 +1,7 @@
 Title: やさしいYouTube APIのはなし
 Date: 2020.06.24
 Modified: 2020.06.24
-Tags: Python
+Tags: 自動化
 Author: 川崎
 
 [前回]({filename}../../2018sy/blog/twitter_automation.md)は Twitter API を取得して定期ツイートする方法について書きましたが、今回の記事では **YouTube API** を試してみたいと思います。

@@ -1,6 +1,6 @@
 Title:寿司打タイピング自動化
 Date: 2018.09.20
-Tags: Python
+Tags: 自動化
 Author: 安水
 
 [% youtube id=SqOO9I1tFjk %]

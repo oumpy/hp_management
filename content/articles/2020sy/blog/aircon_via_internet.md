@@ -1,7 +1,7 @@
 Title: 赤外線対応エアコンをインターネットを用いて操作する方法
 Date: 2020.05.18
 Modified: 2020.05.23
-Tags: Python
+Tags: 自動化
 Author: 吉田
 
 著者Twitter：<https://twitter.com/y7tsy>
