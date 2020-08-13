@@ -11,7 +11,7 @@ SITEMAP = {
     'priorities': {
         'articles': 0.5,
         'indexes': 0.1,
-        'pages': 0.5
+        'pages': 1.0,
     },
     'changefreqs': {
         'articles': 'weekly',
