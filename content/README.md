@@ -70,8 +70,11 @@ $ python create.py
 
 #### Jupyter Notebookの扱い
 
-jupyter notebookに関しては他の記事（mdファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb` の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。
-`articles/2018sy/blog` の `lorentz.ipynb` および `lorentz.nbdata` を参考にしてください。
+Jupyter Notebookに関しては他の記事（`.md`ファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb` の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。
+既存の記事がいくつもあるので、参考にしてください。
+
+変換されたhtmlが記事本文となるほか、元のNotebookをGoogle Colabで開けるリンクも付加されます。
+`.ipynb`ファイル内の記事タイトル (`#`タグ) は変換時に無視されるので、予め削除するなどの細工は必要ありません (Notebookとしての質を優先しましょう)。
 
 #### タグの付け方
 現在は10タグ設定している。基本的にはこの中から最も当てはまるタグを1つ選ぶ。ただし、新しい分野も歓迎します（相談してください）。また、大文字・小文字等の違いに注意。
