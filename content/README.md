@@ -108,6 +108,7 @@ Jupyter Notebookに関しては他の記事（`.md`ファイル）と同じ場�
 - その後、リンクの頭に「おまじない」を入れる。
   - 画像など、「その記事に付随して初めてアップするファイル」は`{attach}`
   - すでに存在している他記事などの場合は`{filename}`
+  - すでに存在しているファイルで、画像など変換されないものは`{static}`
 
 という順序になります。
 以下、具体例です。
@@ -167,6 +168,14 @@ content/articles/2020sy/blog/images/sugoikiji_figs/sugoigazou.png
 ```markdown
 [以前の記事]({filename}/articles/2019sy/blog/old_article.md)
 <!-- content/ をトップとする絶対パス指定 -->
+```
+
+のようにします。
+
+また、例えば前の記事で使った画像を今回の記事にも貼りたい場合は
+
+```markdown
+![前回の画像]({static}./images/my_previous_article_figs/sugoigazou.png)
 ```
 
 のようにします。
