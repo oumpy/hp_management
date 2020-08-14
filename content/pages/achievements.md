@@ -98,6 +98,6 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 - [**安水 良明**]({author}安水), [**中村やまみ**]({author}中村), 大倉永也 「T細胞におけるシングルセル解析」 実験医学増刊 「シングルセルゲノミクス」 Vol.37 No.20 p3421-3427 (2019).
 - [**安水 良明**]({author}安水) 「Chapter 1　まずはこれだけ! 解析環境を整える～Mac+Biocondaを中心に」 実験医学別冊 RNA-Seqデータ解析 WETラボのための鉄板レシピ p10-27 (2019). ([link](https://www.yodosha.co.jp/yodobook/book/9784758122436/))
 - 大倉永也、[**安水 良明**]({author}安水) 「Treg分化におけるエピゲノムの役割」 医学のあゆみ Vol. 268 No. 13 p1030-1035 (2019).
-- [**宮崎 友希**]({author}宮崎)「ESSAY 20 初めての患者さんを通して考えたこと」　[**荘子 万能**], 小泉 俊三, Choosing Wisely Japan Student Committee. 『私にとっての“Choosing Wisely” 医学生・研修医・若手医師の“モヤモヤ”から』 金芳堂, (2019). ([link](https://www.kinpodo-pub.co.jp/book/1796-2/))
+- [**宮崎 友希**]({author}宮崎)「ESSAY 20 初めての患者さんを通して考えたこと」　**荘子 万能**, 小泉 俊三, Choosing Wisely Japan Student Committee. 『私にとっての“Choosing Wisely” 医学生・研修医・若手医師の“モヤモヤ”から』 金芳堂, (2019). ([link](https://www.kinpodo-pub.co.jp/book/1796-2/))
 - [**秋山 理 (OsciiArt)**]({author}秋山). 『病気から観る映画評』　技術書典7 (AIMS/阪医Python会), (2019).
 - [**山本 拓都**]({author}山本). 『ゼロから作る Spiking Neural Networks』 技術書典7 (AIMS/阪医Python会), (2019).
