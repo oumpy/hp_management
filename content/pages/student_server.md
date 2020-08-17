@@ -32,3 +32,5 @@ Show_modified: True
 - OS: Ubuntu 20.04 LTS Server
 - ホスト名: Alice
 - 設置場所: 医学科全学年自習室 (最先端医療イノベーションセンター棟2F)
+
+![alice_photo]({attach}./attach/student_server/alice_photo.jpeg "Alice本体写真")
