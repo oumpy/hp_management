@@ -1,4 +1,4 @@
-Title: 【勉強会資料 2020 第8回】 機械学習とCNN入門
+Title: 【勉強会資料 2020 第8回】 視覚とSparse coding
 Date: 2020.08.21
 Tags: 勉強会, Neuroscience
 Author: 山本
