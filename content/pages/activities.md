@@ -1,6 +1,6 @@
 Title: 活動内容
 Date: 2020.03.15
-Modified: 2020.03.22
+Modified: 2020.05.13
 Show_modified: True
 Summary: Python会の活動内容紹介
 
@@ -43,7 +43,7 @@ Python会ではプログラミングスキルの向上と趣味を兼ねて、�
 Python会は内部に限った勉強会だけではなく、外部の方々も参加していただけるワークショップ等の勉強会・交流会の開催も行っています。開催をする上では[Connpass](https://oum-python.connpass.com/)を活用し、参加や資料の共有を円滑に行えるようにしています。
 
 ## 医学科学生用計算サーバの管理運用
-2019年度後期より新たに大阪大学医学部医学科に導入された学生用計算機
+2019年度後期より新たに大阪大学医学部医学科に導入された[学生用計算機]({filename}./student_server.md)
 (Core i9-9900X, GeForce RTX 2080Ti x2, RAM 128GB, storage 22TB)
 の管理運用を、管理委員会を組織して担当しています。
 
