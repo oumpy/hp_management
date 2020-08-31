@@ -18,18 +18,17 @@ def initialize(pelicanobj):
     if pelicanobj:
         pelicanobj.settings.setdefault('SKIPTAGS', ['h1',])
 
-def run(generators):
-    for generator in generators:
-        if isinstance(generator, ArticlesGenerator) or isinstance(generator, PagesGenerator):
-            reglist = [re.compile('<{0}.*?>(.*?)</{0}>'.format(tag)) for tag in generator.settings['SKIPTAGS']]
-            if isinstance(generator, ArticlesGenerator):
-                attr = 'articles'
-            else:
-                attr = 'pages'
-            for obj in getattr(generator, attr):
-                for reg in reglist:
-                    obj._content = re.sub(reg, '', obj.content)
+def run(generator):
+    reglist = [re.compile('<{0}.*?>(.*?)</{0}>'.format(tag)) for tag in generator.settings['SKIPTAGS']]
+    if isinstance(generator, ArticlesGenerator):
+        attr = 'articles'
+    else:
+        attr = 'pages'
+    for obj in getattr(generator, attr):
+        for reg in reglist:
+            obj._content = re.sub(reg, '', obj.content)
 
 def register():
     signals.initialized.connect(initialize)
-    signals.all_generators_finalized.connect(run)
+    signals.page_generator_finalized.connect(run)
+    signals.article_generator_finalized.connect(run)
