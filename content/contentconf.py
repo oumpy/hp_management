@@ -132,7 +132,7 @@ CATEGORY_CONTENTS = {
 
 CUSTOM_TAG_BADGE_COLOR = 'blue'
 TAG_GROUPS = [ # (groupname, [articles,...,], badge_color )
-    ('Research tools & techniques',
+    ('Research tools & topics',
      ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition', 'ハードウェア',
       'Simulation', 'Neuroscience'],
      'darkorange'),
