@@ -63,8 +63,9 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 MARKUP = ['md', 'ipynb']
 
 PLUGIN_PATHS = ['./plugins', './myplugins']
+from pelican_jupyter import markup as nb_markup
 PLUGINS = [
-    'pelican-ipynb.markup',
+    nb_markup,
     'render_math',
     'tag_cloud',
     'related_posts',
@@ -79,6 +80,7 @@ PLUGINS = [
     'excludes_dirnames',
     'skiptags',
 ]
+IGNORE_FILES = [".ipynb_checkpoints"]
 
 RELATED_POSTS_MAX = 3
 
