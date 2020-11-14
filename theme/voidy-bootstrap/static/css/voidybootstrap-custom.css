@@ -331,8 +331,8 @@ div.output_subarea {
 }
 
 #content pre {
-	background-color: #364549;
-	color: #dddddd;
+  background-color: #364549;
+  color: #dddddd;
   border-left: none;
   overflow-x: auto;
   padding-left: 0px;
