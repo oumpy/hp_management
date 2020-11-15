@@ -14,17 +14,23 @@ Pythonが全てわかる方も、なにもわからない方も、ちょっと�
 なお、大学学部等によってはお近くのサークルを紹介できる場合もあるのでご相談ください。
 </small>
 
-## 新歓2020年度
-4月中はオンライン新歓イベントとして、
-[YouTube](https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ) での[プレゼンシリーズ動画](#recruit-presentations2020)配信および、
-オンラインハンズオン「COVID-19 のデータを可視化してみよう」(4/18, 4/25) を行いました。
-
-引き続き、新歓に関する情報は本サイトと [Twitter](https://twitter.com/oumed_python) にてお知らせしていきます。
-
-### 紹介動画 [2020.07更新]
+### Python会紹介動画 <small>[2020.07更新]</small>
 [% youtube id=cTyk4FAl-iw %]
 
-### 新歓プレゼン動画<span id="recruit-presentations2020"></span>
+<!--
+## 新歓2021年度
+引き続き、新歓に関する情報は本サイトと [Twitter](https://twitter.com/oumed_python) にてお知らせしていきます。
+-->
+
+## 新歓2020年度
+2020年度は以下の新歓イベントを行いました。
+
+- [YouTube](https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ) での[プレゼンシリーズ動画](#recruit-presentations2020)配信
+- オンラインハンズオン「COVID-19 のデータを可視化してみよう」(4/18, 4/25)
+- 学内オンライン説明会 (9/8, 9/11)
+- オフライン実習イベント「Pythonでドローン」(9/25, 9/29 @吹田キャンパス)
+
+### 2020新歓プレゼン動画<span id="recruit-presentations2020"></span>
 Python会メンバーによる、それぞれの研究分野等についてのプレゼン動画です (全8回)。
 
 <div class="row">
@@ -70,12 +76,11 @@ Python会メンバーによる、それぞれの研究分野等についての�
 </div> <!-- col -->
 </div> <!-- raw -->
 
-### 新歓チラシ
+### 新歓チラシ (2020年4月)
 新歓のチラシです。
 0からできるPythonの勉強や先輩達の学生生活を知ることができるチャンスです。
 PCがなくても大歓迎なので、知識とお腹を満たしにぜひいらしてください。
 
-(※ 新型コロナウイルス対策のため、4月中のオフラインイベントは中止となりました。
-5月以降については決まり次第お知らせします。)
+(※ 新型コロナウイルス対策のため、4月中のオフラインイベントは中止となりました。)
 
 ![2020新歓チラシ]({attach}images/recruit/shinkan2020.jpg)
