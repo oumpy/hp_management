@@ -18,14 +18,16 @@ def initialized(pelican):
     DEFAULT_CONFIG.setdefault('AUTOSUMMARY_KEEP_HTMLTAGS',
                               ('a', 'font', 's', 'strong', 'em', 'u', 'b'))
     DEFAULT_CONFIG.setdefault('AUTOSUMMARY_REPLACE_HTMLTAGS',
-                              {'h[1-9]' : 'strong'})
+                              {'h[2-9]' : 'strong'})
+    DEFAULT_CONFIG.setdefault('AUTOSUMMARY_DELETE_HTMLTAGS', ['h1'])
     DEFAULT_CONFIG.setdefault('AUTOSUMMARY_MAX_LENGTH', 140)
     DEFAULT_CONFIG.setdefault('AUTOSUMMARY_MIN_LENGTH', 1)
     if pelican:
         pelican.settings.setdefault('AUTOSUMMARY_KEEP_HTMLTAGS',
                                     ('a', 'font', 's', 'strong', 'em', 'u', 'b'))
         pelican.settings.setdefault('AUTOSUMMARY_REPLACE_HTMLTAGS',
-                                    {'h[1-9]' : 'strong'})
+                                    {'h[2-9]' : 'strong'})
+        pelican.settings.setdefault('AUTOSUMMARY_DELETE_HTMLTAGS', ['h1'])
         pelican.settings.setdefault('AUTOSUMMARY_MAX_LENGTH', 140)
         pelican.settings.setdefault('AUTOSUMMARY_MIN_LENGTH', 1)
 
@@ -40,37 +42,55 @@ def make_autosummary(content, settings):
     max_length = settings['AUTOSUMMARY_MAX_LENGTH']
     htmltags = settings['AUTOSUMMARY_KEEP_HTMLTAGS']
     replacetags = settings['AUTOSUMMARY_REPLACE_HTMLTAGS']
+    deletetags = settings['AUTOSUMMARY_DELETE_HTMLTAGS']
     tag_stack = []
     summary = ''
+    comment_level = 0
     for m in re.finditer(r'<[^>]*?>', content + '<>'): # HTML tags
         start = m.start()
         end = m.end()
         tag = m.group()
         section_len = start - cur_pos - content.count(' ', cur_pos, start)
-        if length + section_len <= max_length:
+        if comment_level > 0 or length + section_len <= max_length:
             tag_sp = re.match(r'(</|<)([^\s/>]*)', tag).group(2).lower()
+            if not comment_level:
+                length += section_len
             for tag_regex in htmltags:
                 if re.fullmatch(tag_regex, tag_sp):
                     if tag[1] == '/':
                         tag_stack.pop()
                     else:
                         tag_stack.append(tag_sp)
-                    summary += content[cur_pos: end]
+                    if not comment_level:
+                        summary += content[cur_pos: end]
                     break
             else:
                 for reptag_regex, newtag in replacetags.items():
                     if re.fullmatch(reptag_regex, tag_sp):
-                        summary += content[cur_pos: start]
+                        if not comment_level:
+                            summary += content[cur_pos: start]
                         if tag[1] == '/':
                             tag_stack.pop()
-                            summary += '</%s>' % newtag
+                            if not comment_level:
+                                summary += '</%s>' % newtag
                         else:
                             tag_stack.append(newtag)
-                            summary += '<%s>' % newtag
+                            if not comment_level:
+                                summary += '<%s>' % newtag
                         break
                 else:
-                    summary += content[cur_pos: start]
-            length += section_len
+                    for deltag_regex in deletetags:
+                        if re.fullmatch(deltag_regex, tag_sp):
+                            if tag[1] == '/':
+                                tag_stack.pop()
+                                comment_level -= 1
+                            else:
+                                tag_stack.append(tag_sp)
+                                comment_level += 1
+                            break
+                    else:
+                        if not comment_level:
+                            summary += content[cur_pos: start]
             cur_pos = end
         else:
             w = max_length - length
@@ -82,7 +102,13 @@ def make_autosummary(content, settings):
                 p += 1
             summary += content[cur_pos: p]
             for tag_sp in tag_stack[::-1]:
-                summary += '</%s>' % tag_sp
+                for deltag_regex in deletetags:
+                    if re.fullmatch(deltag_regex, tag_sp):
+                        comment_level -= 1
+                        break
+                else:
+                    if not comment_level:
+                        summary += '</%s>' % tag_sp
             summary += '....'
             break
     return summary
