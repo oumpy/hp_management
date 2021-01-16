@@ -62,6 +62,13 @@ RNAseqに係る様々なツールを検証し、その中で最良のツール�
 
 [**Hiraoka, Yu**]({author}平岡), [**Yamada, Kohki**]({author}山田), [**Kawasaki, Yusuke**]({author}川崎), [**Hirose, Haruka**]({author}廣瀬), **Matsumoto, Yasunari**, **Ishikawa, Kaito**, & [**Yasumizu, Yoshiaki**]({author}安水). (2019, July 27). ikra : RNAseq pipeline centered on Salmon. (Version v1.2.1). Zenodo. [doi:10.5281/zenodo.3352573](http://doi.org/10.5281/zenodo.3352573)
 
+#### 学部学生による自主研究奨励事業2019年度優秀賞
+2019年度[学部学生による自主研究奨励事業](https://www.osaka-u.ac.jp/ja/education/ug_jishuken)の[全学選抜自主研究成果発表会](https://www.osaka-u.ac.jp/ja/education/ug_jishuken/copy_of_presentations)において優秀賞を受賞しました。
+
+[**山田航暉**]({author}山田), 石川海斗, **松本康成**, 鈴木顕 (アドバイザー教員).
+RNAseq解析パイプライン「ikra」の開発及び、「ikra」を用いたRNAseqメタ解析手法の確立.
+[[報告書]]({attach}./attach/achievements/07_igakubu.pdf)
+
 ### VIRTUS ver1.0をリリース
 ウィルス転写産物の検出・定量ツールである、VIRTUS (<https://github.com/yyoshiaki/VIRTUS>)をリリースしました。
 
