@@ -1,10 +1,10 @@
 Title: 会員募集
 Date: 2020.03.13
-Modified: 2020.11.15
+Modified: 2021.01.28
 Show_modified: True
 Summary: Python会は学年学部問わず会員を募集しています。
 
-Python会は現在、学年学部問わず会員を募集しております (※)。
+Python会は現在、学年を問わず会員を大募集中です (※)。
 Pythonが全てわかる方も、なにもわからない方も、ちょっとできる方も大歓迎です！お気軽にDM等でご連絡ください。
 
 <small>
