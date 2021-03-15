@@ -36,6 +36,9 @@ jobs:
       run: |
         xargs sudo apt install -y < apt_packages.txt
 
+    - name: relax PDF security of ImageMagick
+      run: |
+        sudo sed -i '/^[ \f\n\r\t]*<policy[ \f\n\r\t]\+domain\=\"coder\"[ \f\n\r\t]\+rights=\"none\"[ \f\n\r\t]\+pattern\=\"[^\"]*PDF[^\"]*\".*/d' /etc/ImageMagick-6/policy.xml
     - name: Make the Product
       run: |
         pip install -r requirements.txt
