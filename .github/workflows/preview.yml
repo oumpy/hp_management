@@ -32,6 +32,10 @@ jobs:
       with:
         submodules: true
 
+    - name: apt install
+      run: |
+        xargs sudo apt install -y < apt_packages.txt
+
     - name: Make the Product
       run: |
         pip install -r requirements.txt
