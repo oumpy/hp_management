@@ -53,11 +53,11 @@ def process_content(article):
         else:
             # relative to the source path of this content
             src = article.get_relative_source_path(os.path.join(article.relative_dir, src))
-        if src not in article._context['filenames']:
+        if src not in article._context['static_content']:
             unquoted_path = src.replace('%20', ' ')
-            if unquoted_path in article._context['filenames']:
+            if unquoted_path in article._context['static_content']:
                 src = unquoted_path
-        linked_content = article._context['filenames'].get(src)
+        linked_content = article._context['static_content'].get(src)
         if not linked_content:
             continue
         link = img.wrap(soup.new_tag("a"))
