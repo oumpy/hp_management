@@ -78,6 +78,7 @@ PLUGINS = [
     'pelican-sass',
     'excludes_dirnames',
     'skiptags',
+    'pdf-img_fixed',
 ]
 
 RELATED_POSTS_MAX = 3
