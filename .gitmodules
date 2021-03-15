@@ -1,9 +1,12 @@
 [submodule "themes"]
 	path = themes
 	url = git@github.com:getpelican/pelican-themes.git
+	ignore = all
 [submodule "plugins"]
 	path = plugins
 	url = https://github.com/getpelican/pelican-plugins
+	ignore = all
 [submodule "3rdtools/misc-tools"]
 	path = 3rdtools/misc-tools
 	url = https://github.com/ShellShoccar-jpn/misc-tools.git
+	ignore = all
