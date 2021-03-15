@@ -324,8 +324,8 @@ class GNN4(GNN3):
 とにかくAdamの性能が圧倒的にいいですね。
 このグラフは1-shotだけど、反復しても傾向は同じ。
 
-<img src="{attach}./images/GNNfrom0_figs/task4a_plot03.pdf">
-<img src="{attach}./images/GNNfrom0_figs/task4a_plot03a.pdf">
+<a href="{attach}./images/GNNfrom0_figs/task4a_plot03.pdf"><img src="{attach}./images/GNNfrom0_figs/task4a_plot03.png"></a>
+<a href="{attach}./images/GNNfrom0_figs/task4a_plot03a.pdf"><img src="{attach}./images/GNNfrom0_figs/task4a_plot03a.png"></a>
 
 ### 多層化GNNの性能評価
 - 単層`GNN3`と`Nw=2`の`GNN4`で比較（Adamを使用）。
@@ -333,8 +333,8 @@ class GNN4(GNN3):
 どちらも正答率(vacc)は60%程度。
 （図のaccはvaccの意味。）
 
-<img src="{attach}./images/GNNfrom0_figs/task4b_plot04.pdf">
-<img src="{attach}./images/GNNfrom0_figs/task4b_plot04a.pdf">
+<a href="{attach}./images/GNNfrom0_figs/task4b_plot04.pdf"><img src="{attach}./images/GNNfrom0_figs/task4b_plot04.png"></a>
+<a href="{attach}./images/GNNfrom0_figs/task4b_plot04a.pdf"><img src="{attach}./images/GNNfrom0_figs/task4b_plot04a.png"></a>
 
 - 補足と反省
 	- 後で試したところ、実は `Nw=6` くらいまで深層化すると **vacc>=0.65** くらいにはなることがわかった。
