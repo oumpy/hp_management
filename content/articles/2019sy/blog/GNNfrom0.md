@@ -1,6 +1,6 @@
 Title: Graph Neural Network (GNN)をゼロから実装した話
 Date: 2019.05.13
-Modified: 2021.03.15
+Modified: 2021.03.16
 Tags: Machine Learning
 Author: 小川
 
