@@ -1,6 +1,6 @@
 Title: IPA「基本情報技術者試験」受験録
 Date: 2019.05.12
-Modified: 2019.11.21
+Modified: 2019.12.23
 Tags: 検定試験
 Author: 小川
 
@@ -60,7 +60,7 @@ C、COBOL、Java、アセンブラ、表計算。…あれ？？**Pythonどこ�
 しかしそれを差し引いても、少なくともボーダー60%の試験としては、**難度がきわめて低い**と言わざるをえません。  
 
 ですので、情報処理技術者試験に興味があっても、能力証明という意味では**レベル2の本試験は会員の皆さんにお勧めしません**。
-レベル3の[**応用情報技術者試験**](https://www.jitec.ipa.go.jp/1_11seido/ap.html)を検討してみてください。
+レベル3の[**応用情報技術者試験**](https://www.jitec.ipa.go.jp/1_11seido/ap.html)を検討してみてください [[注4](#note4)]。
 尤も、午前試験の超高得点はそんなに簡単じゃないと思うので、勉強してみるのは悪くないかも。
 そのあたりは[統計検定準1級](http://www.toukei-kentei.jp/about/grade1semi/)などと似ていると思います。
 
@@ -78,3 +78,7 @@ HEMS = Home Energy Management System.
 ### <span id="note3"></span>注3 : Python導入 (2019.11)
 2020年春期試験から、COBOLが廃止されPythonがめでたく導入されることになりました。  
 <https://www.jitec.ipa.go.jp/1_00topic/topic_20191028.html>
+
+### <span id="note4"></span>注4 : 応用情報技術者試験 (2019.12)
+その後、秋試験で受験しました。
+[こちらの記事]({filename}./IPA_AP.md)にて。
