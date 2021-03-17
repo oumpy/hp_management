@@ -129,7 +129,7 @@ if __name__ == '__main__':
                         print('{0}s: {1}'.format(Field, values[field]), file=tf)
                     else:
                         print('{0}: {1}'.format(Field, values[field]), file=tf)
-                elif suffix == '.md' or line.strip():
+                elif suffix == 'md' or line.strip():
                     print(line, file=tf)
         for line in content:
             print(line, file=tf)
