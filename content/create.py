@@ -80,7 +80,7 @@ if __name__ == '__main__':
     # read content
     content = []
     if values['content']:
-        contentfile = values['content']
+        contentfile = os.path.expanduser(values['content'])
         if os.path.isfile(contentfile):
             suffix = contentfile.split('.')[-1]
             if suffix == 'md':
