@@ -88,9 +88,8 @@ if __name__ == '__main__':
                     for line in cf.readlines():
                         line = line.rstrip('\n')
                         if not values['title']:
-                            first, second = line.lstrip()[:2]
-                            if first == '#' and second != '#':
-                                values['title'] = line.strip()[1:].lstrip()
+                            if line and line[0]=='#':
+                                values['title'] = line.lstrip('#').strip()
                                 continue
                         content.append(line)
             elif suffix == 'ipynb':
