@@ -1,7 +1,7 @@
 Title: Graph Neural Network (GNN)をゼロから実装した話
 Date: 2019.05.13
 Modified: 2021.03.16
-Tags: Machine Learning
+Tags: Machine Learning, 企業インターン
 Author: 小川
 
 医学科3年の小川です。
@@ -364,3 +364,4 @@ GNNを一通り、少なくとも明白なバグなく、ミニバッチ学習�
 後日談となりますが、面接を経て採用して頂きました。
 
 インターン期間は8-9月で、医学科の夏休みは8月だけなのですが、ちょうど[基礎配属](http://www.edu.med.osaka-u.ac.jp/assignment/)期間の一部を利用してフル参加することができた、という事情もあったりします。
+詳しくは[こちらの記事]({filename}./kisohai-intern.md)にて。
