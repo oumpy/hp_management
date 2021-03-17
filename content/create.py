@@ -48,7 +48,7 @@ if __name__ == '__main__':
         Field = field.capitalize()
         if args.default or getattr(args, field):
             print('{0}: {1}'.format(Field, getattr(args, field) or fields[field][1]))
-            values[field] = args[field]
+            values[field] = getattr(args, field)
         else:
             print('{0} ({2}) [ {1} ]: '.format(Field, default, comment), end='')
             given = input().strip()
