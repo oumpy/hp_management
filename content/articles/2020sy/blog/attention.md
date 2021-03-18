@@ -1,6 +1,6 @@
-Title: attent勉強
+Title: attention勉強会2
 Date: 2021.03.14
-Modified: 2021.03.14
+Modified: 2021.03.19
 Tags: Machine Learning,勉強会,論文まとめ
 Author: 安部
 
@@ -9,6 +9,9 @@ Author: 安部
 
 ## スライド
 [% embed src="{attach}./attach/studymeeting2021_03/transformer勉強会2.pdf" %]
+
+## maskについての訂正
+- softmax(QK)についてではなく、QKにmaskをかけます。
 
 ## Linformer
 - D(Q,K,V)=softmax(QK)VのQKが低ランク
