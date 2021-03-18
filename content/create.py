@@ -48,7 +48,7 @@ if __name__ == '__main__':
         Field = field.capitalize()
         if args.default or getattr(args, field):
             print('{0}: {1}'.format(Field, getattr(args, field) or fields[field][1]))
-            values[field] = args[field]
+            values[field] = getattr(args, field)
         else:
             print('{0} ({2}) [ {1} ]: '.format(Field, default, comment), end='')
             given = input().strip()
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     # read content
     content = []
     if values['content']:
-        contentfile = values['content']
+        contentfile = os.path.expanduser(values['content'])
         if os.path.isfile(contentfile):
             suffix = contentfile.split('.')[-1]
             if suffix == 'md':
@@ -88,9 +88,8 @@ if __name__ == '__main__':
                     for line in cf.readlines():
                         line = line.rstrip('\n')
                         if not values['title']:
-                            first, second = line.lstrip()[:2]
-                            if first == '#' and second != '#':
-                                values['title'] = line.strip()[1:].lstrip()
+                            if line and line[0]=='#':
+                                values['title'] = line.lstrip('#').strip()
                                 continue
                         content.append(line)
             elif suffix == 'ipynb':
@@ -129,7 +128,7 @@ if __name__ == '__main__':
                         print('{0}s: {1}'.format(Field, values[field]), file=tf)
                     else:
                         print('{0}: {1}'.format(Field, values[field]), file=tf)
-                elif suffix == '.md' or line.strip():
+                elif suffix == 'md' or line.strip():
                     print(line, file=tf)
         for line in content:
             print(line, file=tf)
