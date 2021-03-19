@@ -66,11 +66,13 @@ PLUGIN_PATHS = ['./plugins', './myplugins']
 from pelican_jupyter import markup as nb_markup
 from pelican.plugins import render_math, tag_cloud, related_posts
 from pelican.plugins import simple_footnotes
+from minchin.pelican.plugins import nojekyll
 PLUGINS = [
     nb_markup,
     render_math,
     tag_cloud,
     related_posts,
+    nojekyll,
     'autosummary', 'summary', # this order is important!
     'category_names',
     'shortcodes',

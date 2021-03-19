@@ -11,3 +11,4 @@ pelican-render-math
 pelican-tag-cloud
 pelican-related-posts
 pelican-simple-footnotes
+minchin.pelican.plugins.nojekyll
