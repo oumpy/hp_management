@@ -134,6 +134,7 @@ CUSTOM_HEADER_ARTICLE = "custom/header_article.html"
 CUSTOM_ARTICLE_HEADERS = [
     "custom/article_header.html",
     "custom/open_in_colab_header.html",
+    "custom/article_modified_header.html",
     "custom/toc_header.html",
 ]
 CUSTOM_INDEX_ARTICLE_HEADERS = [
