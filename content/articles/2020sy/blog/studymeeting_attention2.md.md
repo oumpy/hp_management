@@ -8,7 +8,7 @@ Author: 安部
 最近attentionの流行を肌で感じだし、焦って勉強しています。
 
 ## スライド
-[% embed src="{attach}./attach/studymeeting2021_03/transformer勉強会2.pdf" %]
+[% embed src="{attach}./attach/studymeeting_attention2/transformer勉強会2.pdf" %]
 
 ## maskについての訂正
 - softmax(QK)についてではなく、QKにmaskをかけます。
