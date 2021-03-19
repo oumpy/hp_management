@@ -1,6 +1,7 @@
 Title: IPA「基本情報技術者試験」受験録
 Date: 2019.05.12
 Modified: 2019.12.23
+Show_modified: True
 Tags: 検定試験
 Author: 小川
 

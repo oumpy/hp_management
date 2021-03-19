@@ -1,6 +1,7 @@
 Title: Graph Neural Network (GNN)をゼロから実装した話
 Date: 2019.05.13
 Modified: 2021.03.16
+Show_modified: True
 Tags: Machine Learning, 企業インターン
 Author: 小川
 
