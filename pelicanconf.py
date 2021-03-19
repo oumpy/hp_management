@@ -64,11 +64,12 @@ MARKUP = ['md', 'ipynb']
 
 PLUGIN_PATHS = ['./plugins', './myplugins']
 from pelican_jupyter import markup as nb_markup
+from pelican.plugins import render_math, tag_cloud, related_posts
 PLUGINS = [
     nb_markup,
-    'render_math',
-    'tag_cloud',
-    'related_posts',
+    render_math,
+    tag_cloud,
+    related_posts,
     'autosummary', 'summary', # this order is important!
     'category_names',
     'shortcodes',

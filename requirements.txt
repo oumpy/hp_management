@@ -6,3 +6,7 @@ beautifulsoup4
 requests
 libsass
 pelican-jupyter
+pelican-sitemap
+pelican-render-math
+pelican-tag-cloud
+pelican-related-posts
