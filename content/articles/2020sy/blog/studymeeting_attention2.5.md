@@ -7,7 +7,7 @@ Author: 安部
 2021/03/21開催の勉強会の資料です。
 
 ## スライド
-[% embed src="{attach}./attach/studymeeting_attention2.5/transformer勉強会2.5.pptx" %]
+[% embed src="{attach}./attach/studymeeting_attention2.5/transformer勉強会2.5.pdf" %]
 
 atma6,10にこっそり参加していました。
 6はがちで何もわからず10はattentionが散ったので悲しみは深いですが、大変勉強になったので感謝しております。n番煎じですが軽くまとめてみました。
