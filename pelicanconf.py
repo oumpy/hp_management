@@ -78,7 +78,7 @@ PLUGINS = [
     'path2obj',
     'subsections',
     'makemenu',
-    'pelican-sass',
+    'pelican_sass',
     'excludes_dirnames',
     'skiptags',
     simple_footnotes,
