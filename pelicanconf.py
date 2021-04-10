@@ -66,21 +66,27 @@ PLUGIN_PATHS = ['./plugins', './myplugins']
 from pelican_jupyter import markup as nb_markup
 from pelican.plugins import render_math, tag_cloud, related_posts
 from pelican.plugins import simple_footnotes
+from plugins import summary, shortcodes
+from myplugins import (
+    autosummary, category_names, apply_jinja2, path2obj,
+    subsections, makemenu, excludes_dirnames, pelican_sass,
+    skiptags,
+)
 PLUGINS = [
     nb_markup,
     render_math,
     tag_cloud,
     related_posts,
-    'autosummary', 'summary', # this order is important!
-    'category_names',
-    'shortcodes',
-    'apply_jinja2',
-    'path2obj',
-    'subsections',
-    'makemenu',
-    'pelican_sass',
-    'excludes_dirnames',
-    'skiptags',
+    autosummary, summary, # need to resolve coexistence.
+    category_names,
+    shortcodes,
+    apply_jinja2,
+    path2obj,
+    subsections,
+    makemenu,
+    pelican_sass,
+    excludes_dirnames,
+    skiptags,
     simple_footnotes,
 ]
 IGNORE_FILES = [".ipynb_checkpoints"]
