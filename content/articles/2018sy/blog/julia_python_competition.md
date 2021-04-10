@@ -1,5 +1,6 @@
 Title: JuliaとPythonと競技プログラミング
 Date: 2019.03.16
+Modified: 2019.03.21
 Tags: 競技プログラミング, その他言語
 Author: 小川
 
