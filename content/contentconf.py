@@ -136,7 +136,7 @@ TAG_GROUPS = [ # (groupname, [articles,...,], badge_color )
      ['Bioinformatics', 'Machine Learning', 'Statistics', 'Data Science Competition', 'ハードウェア',
       'Simulation', 'Neuroscience'],
      'darkorange'),
-    ('Programming', ['Python', 'Shell script', '競技プログラミング', 'GitHub', 'Unix', '自動化'], 'green'),
+    ('Programming', ['Python', 'Shell script', '競技プログラミング', 'GitHub', 'Unix', '自動化', 'その他言語'], 'green'),
     ('その他', ['論文まとめ', '論文関連', '検定試験', '海外留学', '勉強会', '勉学支援', '企業インターン'], CUSTOM_TAG_BADGE_COLOR),
 ]
 CUSTOM_TAG_BADGE_COLORS = {'News' : 'hotpink'}
