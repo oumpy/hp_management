@@ -1,0 +1,18 @@
+<ul>
+    {% if article.prev_article_in_category %}
+        <li>
+            {{ CUSTOM_PREVIOUS_ARTICLE_TITLE|default("Previous Article") }} :
+            <a href="{{ SITEURL }}/{{ article.prev_article_in_category.url}}">
+                {{ article.prev_article_in_category.title }}
+            </a>
+        </li>
+    {% endif %}
+    {% if article.next_article_in_category %}
+        <li>
+            {{ CUSTOM_NEXT_ARTICLE_TITLE|default("Next Article") }} :
+            <a href="{{ SITEURL }}/{{ article.next_article_in_category.url}}">
+                {{ article.next_article_in_category.title }}
+            </a>
+        </li>
+    {% endif %}
+</ul>
