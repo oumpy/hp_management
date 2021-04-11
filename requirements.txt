@@ -12,3 +12,4 @@ pelican-tag-cloud
 pelican-related-posts
 pelican-simple-footnotes
 pelican-neighbors
+minchin.pelican.plugins.nojekyll
