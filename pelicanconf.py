@@ -66,6 +66,7 @@ PLUGIN_PATHS = ['./plugins', './myplugins']
 from pelican_jupyter import markup as nb_markup
 from pelican.plugins import render_math, tag_cloud, related_posts
 from pelican.plugins import simple_footnotes
+from minchin.pelican.plugins import nojekyll
 from plugins import summary, shortcodes
 from myplugins import (
     autosummary, category_names, apply_jinja2, path2obj,
@@ -77,6 +78,7 @@ PLUGINS = [
     render_math,
     tag_cloud,
     related_posts,
+    nojekyll,
     autosummary, summary, # need to resolve coexistence.
     category_names,
     shortcodes,
