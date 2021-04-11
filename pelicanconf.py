@@ -65,6 +65,7 @@ MARKUP = ['md', 'ipynb']
 PLUGIN_PATHS = ['./plugins', './myplugins']
 from pelican_jupyter import markup as nb_markup
 from pelican.plugins import render_math, tag_cloud, related_posts
+from pelican.plugins import simple_footnotes
 PLUGINS = [
     nb_markup,
     render_math,
@@ -80,6 +81,7 @@ PLUGINS = [
     'pelican-sass',
     'excludes_dirnames',
     'skiptags',
+    simple_footnotes,
 ]
 IGNORE_FILES = [".ipynb_checkpoints"]
 
