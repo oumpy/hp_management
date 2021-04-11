@@ -63,12 +63,14 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 MARKUP = ['md', 'ipynb']
 
 PLUGIN_PATHS = ['./plugins', './myplugins']
+from pelican_jupyter import markup as nb_markup
+from pelican.plugins import render_math, tag_cloud, related_posts
 from pelican.plugins import simple_footnotes
 PLUGINS = [
-    'pelican-ipynb.markup',
-    'render_math',
-    'tag_cloud',
-    'related_posts',
+    nb_markup,
+    render_math,
+    tag_cloud,
+    related_posts,
     'autosummary', 'summary', # this order is important!
     'category_names',
     'shortcodes',
@@ -81,6 +83,7 @@ PLUGINS = [
     'skiptags',
     simple_footnotes,
 ]
+IGNORE_FILES = [".ipynb_checkpoints"]
 
 RELATED_POSTS_MAX = 3
 
