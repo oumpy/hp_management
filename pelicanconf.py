@@ -63,6 +63,7 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 MARKUP = ['md', 'ipynb']
 
 PLUGIN_PATHS = ['./plugins', './myplugins']
+from pelican.plugins import simple_footnotes
 PLUGINS = [
     'pelican-ipynb.markup',
     'render_math',
@@ -78,6 +79,7 @@ PLUGINS = [
     'pelican-sass',
     'excludes_dirnames',
     'skiptags',
+    simple_footnotes,
 ]
 
 RELATED_POSTS_MAX = 3

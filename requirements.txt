@@ -5,3 +5,4 @@ IPython
 beautifulsoup4
 requests
 libsass
+pelican-simple-footnotes
