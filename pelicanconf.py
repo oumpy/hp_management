@@ -151,10 +151,9 @@ CUSTOM_INDEX_ARTICLE_HEADERS = [
 CUSTOM_ARTICLE_FOOTERS = [
     "taglist.html",
     "custom/hr.html",
-    "custom/neighbors.html",
+    "custom/related_posts.html",
     "sharing.html",
     "custom/utterances.html",
-    "custom/related_posts.html",
 ]
 
 CUSTOM_SCRIPTS_BASE = "custom/scripts_base.html"
