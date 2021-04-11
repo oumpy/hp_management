@@ -150,6 +150,8 @@ CUSTOM_INDEX_ARTICLE_HEADERS = [
 # Put taglist at end of articles, and use the default sharing button implementation.
 CUSTOM_ARTICLE_FOOTERS = [
     "taglist.html",
+    "custom/hr.html",
+    "custom/neighbors.html",
     "sharing.html",
     "custom/utterances.html",
     "custom/related_posts.html",
