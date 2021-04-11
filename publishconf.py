@@ -18,8 +18,9 @@ from pelicanconf import *
 # DELETE_OUTPUT_DIRECTORY = True
 
 # plugins which are applied only on publish
+from pelican.plugins import sitemap
 PLUGINS += [
-    'sitemap',
+    sitemap,
 ]
 
 # Add robots.txt
