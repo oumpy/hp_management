@@ -1,6 +1,6 @@
 Title: 会員募集
 Date: 2020.03.13
-Modified: 2021.01.28
+Modified: 2021.04.12
 Show_modified: True
 Summary: Python会は学年学部問わず会員を募集しています。
 
@@ -17,10 +17,12 @@ Pythonが全てわかる方も、なにもわからない方も、ちょっと�
 ## Python会紹介動画 <!-- <small>[2020.07更新]</small> -->
 [% youtube id=cTyk4FAl-iw %]
 
-<!--
 ## 新歓2021年度
-引き続き、新歓に関する情報は本サイトと [Twitter](https://twitter.com/oumed_python) にてお知らせしていきます。
--->
+2021年度新歓を現在実施中です！
+
+新歓情報は [Twitter](https://twitter.com/oumed_python) にて随時お知らせします。
+
+(大学・学部の感染症対策等の関係上、予定の変更などにご注意ください。)
 
 ## 新歓2020年度
 2020年度は以下の新歓イベントを行いました。
