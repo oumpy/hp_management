@@ -1,10 +1,28 @@
-{% if article.related_posts %}
-<div class="related-posts">
-    <h2>{{ CUSTOM_RELATED_ARTICLES_TITLE|default("Related Articles") }}</h2>
-    <ul>
-    {% for related_post in article.related_posts %}
-        <li><a href="{{ SITEURL }}/{{ related_post.url }}">{{ related_post.title }}</a></li>
-    {% endfor %}
-    </ul>
-</div>
-{% endif %}
+<ul>
+    {% if article.prev_article_in_category %}
+        <li>
+            {{ CUSTOM_PREVIOUS_ARTICLE_TITLE|default("Previous Article") }} :
+            <a href="{{ SITEURL }}/{{ article.prev_article_in_category.url}}">
+                {{ article.prev_article_in_category.title }}
+            </a>
+        </li>
+    {% endif %}
+    {% if article.next_article_in_category %}
+        <li>
+            {{ CUSTOM_NEXT_ARTICLE_TITLE|default("Next Article") }} :
+            <a href="{{ SITEURL }}/{{ article.next_article_in_category.url}}">
+                {{ article.next_article_in_category.title }}
+            </a>
+        </li>
+    {% endif %}
+    {% if article.related_posts %}
+        <li>    
+            {{ CUSTOM_RELATED_ARTICLES_TITLE|default("Related Articles") }} :
+            <ul>
+            {% for related_post in article.related_posts %}
+                <li><a href="{{ SITEURL }}/{{ related_post.url }}">{{ related_post.title }}</a></li>
+            {% endfor %}
+            </ul>
+        </li>
+    {% endif %}
+</ul>

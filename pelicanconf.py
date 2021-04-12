@@ -66,6 +66,7 @@ PLUGIN_PATHS = ['./plugins', './myplugins']
 from pelican_jupyter import markup as nb_markup
 from pelican.plugins import render_math, tag_cloud, related_posts
 from pelican.plugins import simple_footnotes
+from pelican.plugins import neighbors
 from minchin.pelican.plugins import nojekyll
 from plugins import summary, shortcodes
 from myplugins import (
@@ -90,6 +91,7 @@ PLUGINS = [
     excludes_dirnames,
     skiptags,
     simple_footnotes,
+    neighbors,
 ]
 IGNORE_FILES = [".ipynb_checkpoints"]
 
@@ -156,9 +158,10 @@ CUSTOM_INDEX_ARTICLE_HEADERS = [
 # Put taglist at end of articles, and use the default sharing button implementation.
 CUSTOM_ARTICLE_FOOTERS = [
     "taglist.html",
+    "custom/hr.html",
+    "custom/related_posts.html",
     "sharing.html",
     "custom/utterances.html",
-    "custom/related_posts.html",
 ]
 
 CUSTOM_SCRIPTS_BASE = "custom/scripts_base.html"
