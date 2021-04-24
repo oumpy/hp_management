@@ -1,7 +1,7 @@
 # [阪医Python会HP](https://oumpy.github.io/)
 
 原作：平岡悠  
-メンテナ (HP係)：AtamaokaC、takyamamoto
+メンテナ (HP係)：ldwic03、takyamamoto
 
 ## 全体の仕組み
 
