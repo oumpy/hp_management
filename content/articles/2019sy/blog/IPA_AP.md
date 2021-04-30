@@ -1,6 +1,7 @@
 Title: 水色コーダー vs 応用情報技術者試験
 Date: 2019.10.21
 Modified: 2019.12.23
+Show_modified: True
 Tags: 検定試験
 Author: 小川
 
