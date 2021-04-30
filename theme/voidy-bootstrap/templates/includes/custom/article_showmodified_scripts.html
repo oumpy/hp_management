@@ -1,0 +1,10 @@
+{% if article.show_modified %}
+<script type="text/javascript">
+    (function() {
+        var modified = document.getElementsByName('article:modified')[0].content;
+        $('#modified-date-here').after(
+            '<p class="modified-date">( ' + modified + ' 最終更新 )</p>'
+        );
+    })();
+</script>
+{% endif %}
