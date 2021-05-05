@@ -7,9 +7,9 @@ Author: 山本
 
 > Caron, Mathilde, Hugo Touvron, Ishan Misra, Hervé Jégou, Julien Mairal, Piotr Bojanowski, and Armand Joulin. 2021. “Emerging Properties in Self-Supervised Vision Transformers.” arXiv [cs.CV].  [http://arxiv.org/abs/2104.14294](http://arxiv.org/abs/2104.14294).
 
-(cf.) [Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training), [GitHub](https://github.com/facebookresearch/dino), [Yannic Kilcherの解説動画](https://www.youtube.com/watch?v=h3ij3F3cPIk)
+(cf.) [Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training), [GitHub](https://github.com/facebookresearch/dino), [Yannic Kilcher氏の解説動画](https://www.youtube.com/watch?v=h3ij3F3cPIk)
 
-**要点**：画像モデル (e.g. ResNet, Vision transformers)における，ラベル無しの自己教師あり学習の新しい手法DINOを考案したよ．ImageNetの画像をDINOで学習されたモデルを用いて特徴空間に埋め込むと，物体の種類ごとにクラスターが生まれ，線形変換あるいはkNNを適応するだけで教師あり学習に匹敵する精度の物体認識ができたよ．特に画像モデルにVision Transformersを用いたとき，そのAttention mapは物体を識別し，segmentationのようなことができていたよ．
+**要点**：画像モデル (e.g. ResNet, Vision transformers)における，ラベル無しの自己教師あり学習の新しい手法DINOを考案したよ．ImageNetの画像をDINOで学習されたモデルを用いて特徴空間に埋め込むと，物体の種類ごとにクラスターが生まれ，線形回帰あるいはkNNを適応するだけで教師あり学習に匹敵する精度の物体認識ができたよ．特に画像モデルにVision Transformersを用いたとき，そのAttention mapは物体を識別し，segmentationのようなことができていたよ （下図参照: Caron et al., 2021; Fig.1）．
 
 ![fig1]({attach}./images/dino_figs/fig1_dino.jpg)
 
@@ -27,7 +27,7 @@ Author: 山本
 1. BYOLとは異なる類似度損失を用いている．
 2. 2つのネットワークが同じモデル構造をしている．
 3. 手法をVision Transformerにも適応している．
-  
+
 ### Vision Transformers
 **Vision Transformer (ViT）** は言語モデルにおいてRNNを置き換えるモジュールとして考案されたTransformerを画像モデルに適応したモデルのことです ([Dosovitskiy et al., ICLR. 2021](https://openreview.net/forum?id=YicbFdNTTy))．ViTはビタミンの略称でないことに注意しましょう．
 
@@ -39,7 +39,6 @@ ViTでは，入力画像をパッチに分割（基本的に16×16のような�
 
 - [Transformer メタサーベイ - Slideshare](https://www.slideshare.net/cvpaperchallenge/transformer-247407256) 
 - [画像認識の大革命。AI界で話題爆発中の「Vision Transformer」を解説！ - Qiita](https://qiita.com/omiita/items/0049ade809c4817670d7)
-  
 ## DINO : self-*di*stillation with *no* labels
 ### モデル構造
 Caronらが提案するDINO (self-**di**stillation with **no** labels) とは「**ラベル無しでの自己蒸留**」を意味します．ここでの**蒸留 (distillation) **とは，枝刈り (pruning) や量子化 (quantization)に並ぶニューラルネットワークのモデル圧縮手法です．通常の蒸留では，ラベル付きデータセットとパラメータ数が多いモデル（**教師モデル; teacher model**）を用意し，ラベルと教師モデルの出力を教師信号 (hard & soft target) としてパラメータ数が少ないモデル（**生徒モデル; student model**）を訓練します ([Hinton, Vinyals & Dean, NIPS, 2014](https://arxiv.org/abs/1503.02531))．データセットだけでscratchから生徒モデルを訓練するより，教師モデルを用いた方が生徒モデルの性能は高くなるということが知られています．
@@ -73,7 +72,7 @@ def H(t, s):
     t = softmax((t - C) / tpt, dim=1) # center + sharpen
     return - (t * log(s)).sum(dim=1).mean()
 ```
-  
+
 ### Augmentation
 各モデルに対して$\mathbf{x}$はそのまま入力せず，画像 $\mathbf{x}$ を切り出す(crop)ようなaugmentationした画像を入力します．切り出し方は，入力画像 $\mathbf{x}$から2つのglobal 画像 $x_1^g, x_2^g$，および複数のlocal画像 $x_j^\ell\ (\ell = 1, 2, \ldots)$を生成するようにします．Global画像とlocal画像は切り出す範囲（解像度）が異なり，例えばglobal画像は元画像の50%以上，local画像は元画像の50%未満などとします．さらに切り出した画像全ての集合を $V = \left\{x_1^g, x_2^g, x_j^\ell\right\} \ (\ell = 1, 2, \ldots)$とします．ここで，生徒モデルには集合 $V$の全ての要素，すなわちglobal画像とlocal画像の両方を入力しますが，教師モデルにはglobal画像 $x_1^g, x_2^g$ のみを入力します．こうすることで，localからglobal (local-to-global)への対応関係が生み出されると，Caronらは述べています．
 
@@ -85,12 +84,11 @@ for x in loader: # load a minibatch x with n samples
     s1, s2 = gs(x1), gs(x2) # student output n-by-K
     t1, t2 = gt(x1), gt(x2) # teacher output n-by-K
 ```
-  
+
 ### Sharpeningとcentering
-モデルの崩壊（e.g. 出力が一様分布化）を避けるためにモデルの出力に**sharpening**と**centering**の2つの操作を行うことが提案されています．生徒モデルにはsharpeningのみ，教師モデルには両方の操作を適応します．
+モデルの出力には**sharpening**と**centering**の2つの操作を行います．生徒モデルにはsharpeningのみ，教師モデルには両方の操作を適応します．2つの操作はモデルの崩壊を避けるため，特にsharpeningは出力の一様分布化，centeringは出力が1つだけ高い値を取り続けるといった状況を避けるために適応されます．
 
 まず，sharpeningは通常使われるSoftmax関数を修正することで実装されます．
-
 $$
 P(x)^{(i)}=\frac{\exp \left(g_{\theta}(x)^{(i)} / \tau\right)}{\sum_{k=1}^{K} \exp \left(g_{\theta}(x)^{(k)} / \tau \right)}
 $$
@@ -107,7 +105,6 @@ $$
 
 ```python
 C = m*C + (1-m)*cat([t1, t2]).mean(dim=0)
-
 s = softmax(s / tps, dim=1)
 t = softmax((t - C) / tpt, dim=1) # center + sharpen
 ```
@@ -136,7 +133,7 @@ plt.subplot(1,4,3); plt.bar(pos, softmax(x/tau)); plt.title("Sharpening: softmax
 plt.subplot(1,4,4); plt.bar(pos, softmax(x-C)); plt.title("Centering: softmax"+r"$(x-C)$")
 plt.tight_layout()
 ```
-  
+
 ### 損失関数とパラメータの更新
 以下は損失関数の計算とパラメータの更新の概略図です（[Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training)より引用および改変）．
 
@@ -147,7 +144,6 @@ plt.tight_layout()
 $$
 \min _{\theta_{s}} \sum_{x \in\left\{x_{1}^{g}, x_{2}^{g}\right\}} \sum_{x^{\prime} \in V \atop x^{\prime} \neq x} H\left(P_{t}(x), P_{s}\left(x^{\prime}\right)\right)
 $$
-
 
 一方，教師モデルのパラメータ $\theta_t$ は$\theta_s$ を**指数移動平均 (exponential moving average; EMA)** することにより生成されます．
 
@@ -163,11 +159,34 @@ loss.backward() # back-propagate
 update(gs) # SGD
 gt.params = l*gt.params + (1-l)*gs.params
 ```
-  
+
 ### 学習後のDINOモデルの特徴
 学習後のDINOモデルの特徴としては，次の2点があります．
 
 1. ImageNetの画像をDINOで学習されたモデルを用いて特徴空間に埋め込むと，物体の種類ごとにクラスターが生まれ，線形変換あるいはkNNを適応するだけで教師あり学習に匹敵する精度の物体認識ができた．
 2. 画像モデルにViTを用いたとき，そのAttention mapは物体を識別し，segmentationのようなことができた．
 
+1番目の特徴ですが，ImageNetの画像を特徴空間に埋め込んだときの結果は次図のようになります（[Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training)より引用）．
+
 ![output_clusters]({attach}./images/dino_figs/output_clusters.jpg)
+
+生物種ごとにクラスター化していることがわかります．この結果を線形回帰 (linear regression)あるいはkNNで分類すると，全てのパラメータを教師あり学習で最適化したモデルに匹敵する分類精度が得られました（論文中Table2参照）．
+
+2番目の特徴ですが，画像モデルにViTを用いた場合，画像中最も注目される物体（視覚系の用語で言うところの**core object**）上にAttentionがかかっており，segmentationのようなことができていたということです（本記事最上部の画像参照）．特に，教師あり学習を行ったViTモデルのattention mapと比較すると，DINOで学習したモデルの方がより物体を捉えることができていました（下図参照: Caron et al., 2021; Fig.4）．
+
+![fig4_dino]({attach}./images/dino_figs/fig4_dino.jpg)
+  
+### DINOが学習可能である理由についての仮説
+DINOを含め，自己教師あり表現学習が可能である理由について，[Yannic Kilcher氏の解説動画](https://www.youtube.com/watch?v=h3ij3F3cPIk)中で「AugmentationとDatasetが帰納バイアスになっている」という仮説が述べられていました．
+
+- Augmentationについては：色調や明度，切り出す位置のズレなどは物体を認識する際に影響しないという情報を与えている．
+- Datasetについて：写真を取るときは，自分が注目する物体を視野の中に入れる．道路の脇に草が少し生えているような画像はインターネット上に普通アップロードしない．特にImageNetはインターネット上から画像を集めているため，こうした写真で学習をさせることには暗に画像内に物体があるという情報を与えているといえる．
+
+また，本会のOB会員である秋山さん ([@osciiart](https://twitter.com/osciiart)) がツイッター上で以下のような指摘をされていました．
+
+<blockquote class="twitter-tweet" data-theme="light"><p lang="ja" dir="ltr">no labelで学習しましたっていうけどよ…ImageNetはlabelを使わなかったとしても暗にcategoricalなcluster構造をもったdatasetじゃねえのかよ。</p>&mdash; OsciiArt◆SPNEXTcRxQ (@osciiart) <a href="https://twitter.com/osciiart/status/1389128939193335813?ref_src=twsrc%5Etfw">May 3, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+これに関して否定はできず，例えばヘッドマウントカメラを付けて日常生活を送らせた動画フレームで学習すると，どのような結果になるのかというのは気になるところです．ただし，SAYCam ([Sullivan et al., 2020](https://psyarxiv.com/fy8zx/)) という生後6～32か月の乳児にヘッドマウントカメラを装着させた動画データセットに対し，自己教師あり学習を適応したという研究 ([Orhan et al., NeurIPS. 2020](https://arxiv.org/abs/2007.16189)) の結果を踏まえると，膨大な視覚入力を受けていればImageNetのような高品質なデータセットで学習しなくてもよいと考えられます．
+
+### 将来の自己教師あり学習の展望
+この記事を書く上で自己教師あり学習の論文を複数読み，手法がよりシンプルかつ効果的なものになってきていることが分かりました．手法がシンプルというのにはメモリを節約できるなどの計算上の利点も多くあります．一方で，([Zhuang et al., PNAS. 2021](https://www.pnas.org/content/118/3/e2014196118.long)) のように，自分は計算論的神経科学における視覚モデルという観点で自己教師あり学習に注目しています．このため，今後よりシンプルで生物学的妥当性の高い自己教師あり学習モデルが考案されるのではないかと期待をしています．ちなみに視覚の自己教師あり学習モデルで共同研究したいのですが，興味ある方は[@tak_yamm](https://twitter.com/tak_yamm)にDMをいただければ幸いです．
