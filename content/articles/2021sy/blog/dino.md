@@ -57,7 +57,7 @@ DINOは教師モデルと生徒モデルを用いるところは通常の蒸留�
 
 ![model2]({attach}./images/dino_figs/model2.jpg)
 
-生徒モデルの出力 $p_s$と教師モデルの出力 $p_t$を用い，$H(p_s, p_t):=-p_t\log p_s$を最小化するように生徒モデルのパラメータ $\theta_s$ をbackpropで更新します．一方，教師モデルのパラメータ $\theta_t$ は$\theta_s$ を**指数移動平均 (exponential moving average; EMA)** することにより生成されます．
+生徒モデルの出力 $P_s$と教師モデルの出力 $P_t$を用い，$H(P_s, P_t):=-P_t\log P_s$を最小化するように生徒モデルのパラメータ $\theta_s$ をbackpropで更新します．一方，教師モデルのパラメータ $\theta_t$ は$\theta_s$ を**指数移動平均 (exponential moving average; EMA)** することにより生成されます．
 $$
 \theta_t \leftarrow \lambda \theta_t + (1-\lambda) \theta_s
 $$
