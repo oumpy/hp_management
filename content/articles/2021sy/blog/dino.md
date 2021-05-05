@@ -27,7 +27,7 @@ Author: 山本
 1. BYOLとは異なる類似度損失を用いている．
 2. 2つのネットワークが同じモデル構造をしている．
 3. 手法をVision Transformerにも適応している．
-
+  
 ### Vision Transformers
 **Vision Transformer (ViT）** は言語モデルにおいてRNNを置き換えるモジュールとして考案されたTransformerを画像モデルに適応したモデルのことです ([Dosovitskiy et al., ICLR. 2021](https://openreview.net/forum?id=YicbFdNTTy))．ViTはビタミンの略称でないことに注意しましょう．
 
@@ -170,4 +170,4 @@ gt.params = l*gt.params + (1-l)*gs.params
 1. ImageNetの画像をDINOで学習されたモデルを用いて特徴空間に埋め込むと，物体の種類ごとにクラスターが生まれ，線形変換あるいはkNNを適応するだけで教師あり学習に匹敵する精度の物体認識ができた．
 2. 画像モデルにViTを用いたとき，そのAttention mapは物体を識別し，segmentationのようなことができた．
 
-![model2]({attach}./images/dino_figs/model2.jpg)
+![output_clusters]({attach}./images/dino_figs/output_clusters.jpg)
