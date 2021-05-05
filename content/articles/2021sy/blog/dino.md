@@ -11,7 +11,7 @@ Author: 山本
 
 **要点**：画像モデル (e.g. ResNet, Vision transformers)における，ラベル無しの自己教師あり学習の新しい手法DINOを考案したよ．画像モデルの最終層の出力は物体の種類ごとにクラスター化し，線形変換あるいはkNNを適応するだけで教師あり学習に匹敵する精度の物体認識ができたよ．特に画像モデルにVision Transformersを用いたとき，そのAttention mapは物体を識別し，segmentationのようなことができていたよ．
 
-![fig1]({attach}./images/dino_figs/fig1.jpg)
+![fig1]({attach}./images/dino_figs/fig1_dino.jpg)
 
 
 ## 背景
