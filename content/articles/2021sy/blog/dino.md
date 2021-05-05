@@ -44,22 +44,20 @@ ViTでは，入力画像をパッチに分割（基本的に16×16のような�
 ### モデル構造
 Caronらが提案するDINO (self-**di**stillation with **no** labels) とは「**ラベル無しでの自己蒸留**」を意味します．ここでの**蒸留 (distillation) **とは，枝刈り (pruning) や量子化 (quantization)に並ぶニューラルネットワークのモデル圧縮手法です．通常の蒸留では，ラベル付きデータセットとパラメータ数が多いモデル（**教師モデル; teacher model**）を用意し，ラベルと教師モデルの出力を教師信号 (hard & soft target) としてパラメータ数が少ないモデル（**生徒モデル; student model**）を訓練します ([Hinton, Vinyals & Dean, NIPS, 2014](https://arxiv.org/abs/1503.02531))．データセットだけでscratchから生徒モデルを訓練するより，教師モデルを用いた方が生徒モデルの性能は高くなるということが知られています．
 
-DINOは教師モデルと生徒モデルを用いるところは通常の蒸留と同じですが，ラベル付きデータは用いず，**教師モデルは生徒モデルから**作られるという違いがあります．このことを念頭に置いて，モデルの構造を見てみましょう．
+DINOは教師モデルと生徒モデルを用いるところは通常の蒸留と同じですが，ラベル付きデータは用いず，**教師モデルは生徒モデルから**作られるという違いがあります．このことを念頭に置いて，モデルの構造を見てみましょう．以下はモデルの概略図です（[Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training)より引用）．
+
+![model1]({attach}./images/dino_figs/model1.jpg)
 
 生徒モデルを$g _ {\theta s}$，教師モデルを $g _ {\theta t}$とします．入力画像を $\mathbf{x}$，画像 $\mathbf{x}$ を切り出す(crop)ようなaugmentationをした画像を$\mathbf{x}_1, \mathbf{x}_2$とします．globalな画像 (e.g. 元画像の50%以上)とlocalな画像 (e.g. 元画像の50%未満)を生成します．生徒モデルにはglobalとlocalの両方を入力するが，教師モデルにはglobalのみを入力します．こうすることで，“local-to-global”の対応が生成されます．
 
+モデルの崩壊を避けるために教師モデルの出力にcenteringとsharpenの2つの操作を行います．
 
-![model1]({attach}./images/dino_figs/model1.png)
+### 損失関数とパラメータの更新
+以下は損失関数の計算とパラメータの更新の概略図です（[Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training)より引用）．
 
+![model2]({attach}./images/dino_figs/model2.jpg)
 
-モデルの崩壊を避けるために、モメンタムティーチャーの出力のセンタリングとシャープ化のみでも動作します。セクション5.3で実験的に示されているように、センタリングは1つの次元が支配的になるのを防ぎますが、一様分布への崩壊を促進します。両方の操作を適用することで、その効果がバランスされ、モメンタムティーチャーがある場合の崩壊を回避するのに十分な効果が得られます。崩壊を避けるためにこの方法を選択することは、安定性とバッチへの依存度の低さを交換することになります。センタリング操作は、1次のバッチ統計にのみ依存し、教師にバイアス項cを追加すると解釈できます：gt(x)←gt(x)+c。センタリングcは指数移動平均で更新され、
-
-
-### パラメータの更新
-![model2]({attach}./images/dino_figs/model2.png)
-
-
-一方，教師モデルのパラメータ $\theta_t$ は生徒モデルのパラメータ $\theta_s$ を**指数移動平均 (exponential moving average; EMA)** することにより生成されます．
+生徒モデルの出力 $p_s$と教師モデルの出力 $p_t$を用い，$H(p_s, p_t):=-p_t\log p_s$を最小化するように生徒モデルのパラメータ $\theta_s$ をbackpropで更新します．一方，教師モデルのパラメータ $\theta_t$ は$\theta_s$ を**指数移動平均 (exponential moving average; EMA)** することにより生成されます．
 $$
 \theta_t \leftarrow \lambda \theta_t + (1-\lambda) \theta_s
 $$
