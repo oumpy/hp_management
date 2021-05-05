@@ -1,5 +1,5 @@
 Title: 【論文まとめ】DINO: Emerging Properties in Self-Supervised Vision Transformers
-Date: 2021.05.06
+Date: 2021.05.07
 Tags: Machine Learning, 論文まとめ
 Author: 山本
 
@@ -36,6 +36,7 @@ ViTでは，入力画像をパッチに分割（基本的に16×16のような�
 ![vit]({attach}./images/dino_figs/vit.jpg)
 
 この記事ではViTに関して詳しい解説はしませんが，以下の資料が参考になります．
+
 - [Transformer メタサーベイ - Slideshare](https://www.slideshare.net/cvpaperchallenge/transformer-247407256) 
 - [画像認識の大革命。AI界で話題爆発中の「Vision Transformer」を解説！ - Qiita](https://qiita.com/omiita/items/0049ade809c4817670d7)
 
@@ -44,27 +45,11 @@ ViTでは，入力画像をパッチに分割（基本的に16×16のような�
 ### モデル構造
 Caronらが提案するDINO (self-**di**stillation with **no** labels) とは「**ラベル無しでの自己蒸留**」を意味します．ここでの**蒸留 (distillation) **とは，枝刈り (pruning) や量子化 (quantization)に並ぶニューラルネットワークのモデル圧縮手法です．通常の蒸留では，ラベル付きデータセットとパラメータ数が多いモデル（**教師モデル; teacher model**）を用意し，ラベルと教師モデルの出力を教師信号 (hard & soft target) としてパラメータ数が少ないモデル（**生徒モデル; student model**）を訓練します ([Hinton, Vinyals & Dean, NIPS, 2014](https://arxiv.org/abs/1503.02531))．データセットだけでscratchから生徒モデルを訓練するより，教師モデルを用いた方が生徒モデルの性能は高くなるということが知られています．
 
-DINOは教師モデルと生徒モデルを用いるところは通常の蒸留と同じですが，ラベル付きデータは用いず，**教師モデルは生徒モデルから**作られるという違いがあります．このことを念頭に置いて，モデルの構造を見てみましょう．以下はモデルの概略図です（[Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training)より引用）．
+DINOは教師モデルと生徒モデルを用いるところは通常の蒸留と同じですが，ラベル付きデータは用いず，**教師モデルは生徒モデルから**作られるという違いがあります．このことを念頭に置いて，モデルの構造を見てみましょう．以下はモデルの概略図です（[Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training)より引用および改変）．生徒モデルを$g _ {\theta s}$，教師モデルを $g _ {\theta t}$とし，入力画像を $\mathbf{x}$とします．
 
 ![model1]({attach}./images/dino_figs/model1.jpg)
 
-生徒モデルを$g _ {\theta s}$，教師モデルを $g _ {\theta t}$とします．入力画像を $\mathbf{x}$，画像 $\mathbf{x}$ を切り出す(crop)ようなaugmentationをした画像を$\mathbf{x}_1, \mathbf{x}_2$とします．globalな画像 (e.g. 元画像の50%以上)とlocalな画像 (e.g. 元画像の50%未満)を生成します．生徒モデルにはglobalとlocalの両方を入力するが，教師モデルにはglobalのみを入力します．こうすることで，“local-to-global”の対応が生成されます．
-
-モデルの崩壊を避けるために教師モデルの出力にcenteringとsharpenの2つの操作を行います．
-
-### 損失関数とパラメータの更新
-以下は損失関数の計算とパラメータの更新の概略図です（[Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training)より引用）．
-
-![model2]({attach}./images/dino_figs/model2.jpg)
-
-生徒モデルの出力 $P_s$と教師モデルの出力 $P_t$を用い，$H(P_s, P_t):=-P_t\log P_s$を最小化するように生徒モデルのパラメータ $\theta_s$ をbackpropで更新します．一方，教師モデルのパラメータ $\theta_t$ は$\theta_s$ を**指数移動平均 (exponential moving average; EMA)** することにより生成されます．
-$$
-\theta_t \leftarrow \lambda \theta_t + (1-\lambda) \theta_s
-$$
-
-### 実装
-
-Pytorch-likeな擬似コードが掲載されています (Caron et al., 2021; Algorithm 1)．
+論文中には次のようなPytorch-likeな擬似コードが掲載されています (Caron et al., 2021; Algorithm 1)．以下ではこの擬似コードを用いながら解説を行います．
 
 ```python
 # gs, gt: student and teacher networks
@@ -89,4 +74,85 @@ def H(t, s):
     t = softmax((t - C) / tpt, dim=1) # center + sharpen
     return - (t * log(s)).sum(dim=1).mean()
 ```
+
+### Augmentation
+各モデルに対して$\mathbf{x}$はそのまま入力せず，画像 $\mathbf{x}$ を切り出す(crop)ようなaugmentationした画像を入力します．切り出し方は，入力画像 $\mathbf{x}$から2つのglobal 画像 $x_1^g, x_2^g$，および複数のlocal画像 $x_j^\ell\ (\ell = 1, 2, \ldots)$を生成するようにします．Global画像とlocal画像は切り出す範囲（解像度）が異なり，例えばglobal画像は元画像の50%以上，local画像は元画像の50%未満などとします．さらに切り出した画像全ての集合を $V = \left\{x_1^g, x_2^g, x_j^\ell\right\} \ (\ell = 1, 2, \ldots)$とします．ここで，生徒モデルには集合 $V$の全ての要素，すなわちglobal画像とlocal画像の両方を入力しますが，教師モデルにはglobal画像 $x_1^g, x_2^g$ のみを入力します．こうすることで，localからglobal (local-to-global)への対応関係が生み出されると，Caronらは述べています．
+
+擬似コードで対応する部分は以下のようになっています．この擬似コードでは両方のモデルに`x1, x2`を入力しているので，`x1, x2`はglobal画像であると思われます（誤解している可能性があります）．
+
+```python
+for x in loader: # load a minibatch x with n samples
+    x1, x2 = augment(x), augment(x) # random views
+    s1, s2 = gs(x1), gs(x2) # student output n-by-K
+    t1, t2 = gt(x1), gt(x2) # teacher output n-by-K
+```
+
+### sharpeningとcentering
+モデルの崩壊（e.g. 出力が一様分布化）を避けるためにモデルの出力に**sharpening**と**centering**の2つの操作を行うことが提案されています．生徒モデルにはsharpeningのみ，教師モデルには両方の操作を適応します．
+
+まず，sharpeningは通常使われるSoftmax関数を修正することで実装されます．
+
+$$
+P(x)^{(i)}=\frac{\exp \left(g_{\theta}(x)^{(i)} / \tau\right)}{\sum_{k=1}^{K} \exp \left(g_{\theta}(x)^{(k)} / \tau \right)}
+$$
+
+ここで$\tau$は温度のパラメータ（Softmaxの元となったカノニカル分布に由来する名称）であり，分布の鋭さ (sharpness)に影響します．DINOでは生徒，教師モデルで異なる温度パラメータ $\tau_{s}, \tau_{t}$をそれぞれ用います．なお，$\tau>1$の場合，分布はむしろ緩やかになるので，$0<\tau<1$の値が用いられます．
+
+次に，centeringは教師モデルの出力から$C$を除算することで出力の分布を平均に近づける操作です．ここで$C$はスカラーではなく，出力と同じサイズのベクトルであることに注意してください（softmaxの入力からスカラーを除算しても同じ値しか出力されません）．$C$はゼロベクトルで初期化され，次のように$g_{\theta_{t}}$の出力の指数移動平均で更新されます．
+
+$$
+c \leftarrow m c+(1-m) \frac{1}{B} \sum_{i=1}^{B} g_{\theta_{t}}\left(x_{i}\right)
+$$
+
+なお，$B$はバッチサイズです．擬似コードでは次のように実装されます．
+
+```python
+C = m*C + (1-m)*cat([t1, t2]).mean(dim=0)
+
+s = softmax(s / tps, dim=1)
+t = softmax((t - C) / tpt, dim=1) # center + sharpen
+```
+
+それぞれの効果をnumpyで見ると次のようになります．
+
+![sharpening_centering]({attach}./images/dino_figs/sharpening_centering.png)
+
+コードは以下の通りです．
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def softmax(x):
+    ex = np.exp(x - np.max(x))
+    return ex / np.sum(ex)
+
+K, tau = 10, 0.07
+x, C = np.random.rand(K), np.random.rand(K)
+pos = range(K) # for bar plot
+plt.figure(figsize=(12, 3), dpi=100)
+plt.subplot(1,4,1); plt.bar(pos, x); plt.title(r"$x  \in \mathbb{R}^K$")
+plt.subplot(1,4,2); plt.bar(pos, softmax(x)); plt.title("softmax"+r"$(x)$")
+plt.subplot(1,4,3); plt.bar(pos, softmax(x/tau)); plt.title("sharpen: softmax"+r"$(x/\tau)$")
+plt.subplot(1,4,4); plt.bar(pos, softmax(x-C)); plt.title("centering: softmax"+r"$(x-C)$")
+plt.tight_layout()
+```
+
+### 損失関数とパラメータの更新
+以下は損失関数の計算とパラメータの更新の概略図です（[Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training)より引用および改変）．
+
+![model2]({attach}./images/dino_figs/model2.jpg)
+
+生徒モデルの出力 $P_s$と教師モデルの出力 $P_t$を用い，$H(P_s, P_t):=-P_t\log P_s$を最小化するように生徒モデルのパラメータ $\theta_s$ をbackpropで更新します．
+
+$$
+\min _{\theta_{s}} \sum_{x \in\left\{x_{1}^{g}, x_{2}^{g}\right\}} \sum_{x^{\prime} \in V \atop x^{\prime} \neq x} H\left(P_{t}(x), P_{s}\left(x^{\prime}\right)\right)
+$$
+
+
+一方，教師モデルのパラメータ $\theta_t$ は$\theta_s$ を**指数移動平均 (exponential moving average; EMA)** することにより生成されます．
+
+$$
+\theta_t \leftarrow \lambda \theta_t + (1-\lambda) \theta_s
+$$
 
