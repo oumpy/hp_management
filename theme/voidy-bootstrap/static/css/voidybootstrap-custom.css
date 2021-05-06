@@ -326,6 +326,10 @@ div.input_area {
     background: #364549!important;
 }
 
+div.input_area > div.highlight {
+    margin: 0px!important;
+}
+
 div.output_subarea {
     max-width: 100%!important;
 }
@@ -335,7 +339,8 @@ div.output_subarea {
   color: #dddddd;
   border-left: none;
   overflow-x: auto;
-  padding-left: 0px;
+	border-radius: 2px;
+  padding: 6px;
   word-break: normal;
   word-wrap: normal;
   white-space: pre;
