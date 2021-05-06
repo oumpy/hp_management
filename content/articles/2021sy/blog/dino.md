@@ -9,7 +9,7 @@ Author: 山本
 
 (cf.) [Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training), [GitHub](https://github.com/facebookresearch/dino), [Yannic Kilcher氏の解説動画](https://www.youtube.com/watch?v=h3ij3F3cPIk)
 
-**要点**：画像モデル (e.g. ResNet, Vision transformers)における，ラベル無しの自己教師あり学習の新しい手法DINOを考案したよ．ImageNetの画像をDINOで学習されたモデルを用いて特徴空間に埋め込むと，物体の種類ごとにクラスターが生まれ，線形回帰あるいはkNNを適応するだけで教師あり学習に匹敵する精度の物体認識ができたよ．特に画像モデルにVision Transformersを用いたとき，そのAttention mapは物体を識別し，segmentationのようなことができていたよ （下図参照: Caron et al., 2021; Fig.1）．
+**要点**：画像モデル (e.g. ResNet, Vision transformers)における，ラベル無しの自己教師あり学習の新しい手法DINOを考案したよ．ImageNetの画像をDINOで学習されたモデルを用いて特徴空間に埋め込むと，物体の種類ごとにクラスターが生まれ，線形回帰あるいはkNNを適応するだけで教師あり学習に匹敵する精度の物体認識ができたよ．特に画像モデルにVision Transformersを用いたとき，各headのself-attention mapは物体を識別し，segmentationのようなことができていたよ （下図参照: Caron et al., 2021; Fig.1）．
 
 ![fig1]({attach}./images/dino_figs/fig1_dino.jpg)
 
@@ -165,17 +165,24 @@ gt.params = l*gt.params + (1-l)*gs.params
 学習後のDINOモデルの特徴としては，次の2点があります．
 
 1. ImageNetの画像をDINOで学習されたモデルを用いて特徴空間に埋め込むと，物体の種類ごとにクラスターが生まれ，線形変換あるいはkNNを適応するだけで教師あり学習に匹敵する精度の物体認識ができた．
-2. 画像モデルにViTを用いたとき，そのAttention mapは物体を識別し，segmentationのようなことができた．
+2. 画像モデルにViTを用いたとき，各headのself-attention mapは物体を識別し，segmentationのようなことができた．
 
 1番目の特徴ですが，ImageNetの画像を特徴空間に埋め込んだときの結果は次図のようになります（[Facebook ブログ](https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training)より引用）．
 
 ![output_clusters]({attach}./images/dino_figs/output_clusters.jpg)
 
-生物種ごとにクラスター化していることがわかります．この結果を線形回帰 (linear regression)あるいはkNNで分類すると，全てのパラメータを教師あり学習で最適化したモデルに匹敵する分類精度が得られました（論文中Table2参照）．
+物体の種類ごとにクラスター化していることがわかります．この結果を線形回帰 (linear regression)あるいはkNNで分類すると，全てのパラメータを教師あり学習で最適化したモデルに匹敵する分類精度が得られました（論文中Table2参照）．
 
-2番目の特徴ですが，画像モデルにViTを用いた場合，画像中最も注目される物体（視覚系の用語で言うところの**core object**）上にAttentionがかかっており，segmentationのようなことができていたということです（本記事最上部の画像参照）．特に，教師あり学習を行ったViTモデルのattention mapと比較すると，DINOで学習したモデルの方がより物体を捉えることができていました（下図参照: Caron et al., 2021; Fig.4）．
+2番目の特徴ですが，画像モデルにViTを用いた場合，画像中最も注目される物体（視覚系の用語で言うところの**core object**）上にself-attentionがかかっており，segmentationのようなことができていたということです（本記事最上部の画像参照）．特に，教師あり学習を行ったViTモデルのself-attention mapと比較すると，DINOで学習したモデルの方がより物体を捉えることができていました（下図参照: Caron et al., 2021; Fig.4）．
 
 ![fig4_dino]({attach}./images/dino_figs/fig4_dino.jpg)
+
+### Self-attentionを可視化するColab notebook
+今回，[DINOのGitHubリポジトリ](https://github.com/facebookresearch/dino)の`/visualize_attention.py`コードを元に，Self-attentionを可視化するnotebookを作成しました．実行結果は次図のようになります．
+
+![notebook]({attach}./images/dino_figs/notebook.png)
+
+一番左が入力画像（よく見ると中央に鳥がいます），中央が各headのself-attention map，一番右がself-attention mapの平均値となっています．
 
 ### DINOが学習可能である理由についての仮説
 DINOを含め，自己教師あり表現学習が可能である理由について，[Yannic Kilcher氏の解説動画](https://www.youtube.com/watch?v=h3ij3F3cPIk)中で「AugmentationとDatasetが帰納バイアスになっている」という仮説が述べられていました．
@@ -190,4 +197,4 @@ DINOを含め，自己教師あり表現学習が可能である理由につい�
 これに関して否定はできず，例えばヘッドマウントカメラを付けて日常生活を送らせた動画フレームで学習すると，どのような結果になるのかというのは気になるところです．ただし，SAYCam ([Sullivan et al., 2020](https://psyarxiv.com/fy8zx/)) という生後6～32か月の乳児にヘッドマウントカメラを装着させた動画データセットに対し，自己教師あり学習を適応したという研究 ([Orhan et al., NeurIPS. 2020](https://arxiv.org/abs/2007.16189)) の結果を踏まえると，膨大な視覚入力を受けていればImageNetのような高品質なデータセットで学習しなくてもよいと考えられます．
 
 ### 将来の自己教師あり学習の展望
-この記事を書く上で自己教師あり学習の論文を複数読み，手法がよりシンプルかつ効果的なものになってきていることが分かりました．手法がシンプルというのにはメモリを節約できるなどの計算上の利点も多くあります．一方で，([Zhuang et al., PNAS. 2021](https://www.pnas.org/content/118/3/e2014196118.long)) のように，自分は計算論的神経科学における視覚モデルという観点で自己教師あり学習に注目しています．このため，今後よりシンプルで生物学的妥当性の高い自己教師あり学習モデルが考案されるのではないかと期待をしています．ちなみに視覚の自己教師あり学習モデルで共同研究したいのですが，興味ある方は[@tak_yamm](https://twitter.com/tak_yamm)にDMをいただければ幸いです．
+この記事を書く上で自己教師あり学習の論文を複数読み，手法がよりシンプルかつ効果的なものになってきていることが分かりました．手法がシンプルというのにはメモリを節約できるなどの計算上の利点も多くあります．一方で，([Zhuang et al., PNAS. 2021](https://www.pnas.org/content/118/3/e2014196118.long)) のように，自分は計算論的神経科学における視覚モデルという観点で自己教師あり学習に注目しています．このため，今後よりシンプルで生物学的妥当性の高い自己教師あり学習モデルが考案されるのではないかと期待をしています．
