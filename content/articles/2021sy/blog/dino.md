@@ -178,11 +178,13 @@ gt.params = l*gt.params + (1-l)*gs.params
 ![fig4_dino]({attach}./images/dino_figs/fig4_dino.jpg)
 
 ### Self-attentionを可視化するColab notebook
-今回，[DINOのGitHubリポジトリ](https://github.com/facebookresearch/dino)の`/visualize_attention.py`コードを元に，Self-attentionを可視化するnotebookを作成しました．実行結果は次図のようになります．
+今回，[DINOのGitHubリポジトリ](https://github.com/facebookresearch/dino)の`/visualize_attention.py`コードを元に，**Self-attentionを可視化するnotebookを作成**しました：[**Colab notebook link**](https://colab.research.google.com/github/oumpy/hp_management/blob/master/content/articles/2021sy/blog/attach/dino/dino_visualize_attention.ipynb)
+
+実行結果は次図のようになります．
 
 ![notebook]({attach}./images/dino_figs/notebook.png)
 
-一番左が入力画像（よく見ると中央に鳥がいます），中央が各headのself-attention map，一番右がself-attention mapの平均値となっています．
+一番左が入力画像（よく見ると中央に鳥がいます），中央が各headのself-attention map，一番右がself-attention mapの平均値となっています．ヒト（少なくとも私）でも鳥がいるか見分けづらいにも関わらず，その形状を捉えられていることが分かります．
 
 ### DINOが学習可能である理由についての仮説
 DINOを含め，自己教師あり表現学習が可能である理由について，[Yannic Kilcher氏の解説動画](https://www.youtube.com/watch?v=h3ij3F3cPIk)中で「AugmentationとDatasetが帰納バイアスになっている」という仮説が述べられていました．
