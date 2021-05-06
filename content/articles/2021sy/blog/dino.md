@@ -178,7 +178,7 @@ gt.params = l*gt.params + (1-l)*gs.params
 ![fig4_dino]({attach}./images/dino_figs/fig4_dino.jpg)
 
 ### Self-attentionを可視化するColab notebook
-今回，[DINOのGitHubリポジトリ](https://github.com/facebookresearch/dino)の`/visualize_attention.py`コードを元に，**Self-attentionを可視化するnotebookを作成**しました：[**Colab notebook link**](https://colab.research.google.com/github/oumpy/hp_management/blob/master/content/articles/2021sy/blog/attach/dino/dino_visualize_attention.ipynb)
+今回，[DINOのGitHubリポジトリ](https://github.com/facebookresearch/dino)の`visualize_attention.py`コードを元に，**Self-attentionを可視化するnotebookを作成**しました：[**Colab notebook link**](https://colab.research.google.com/github/oumpy/hp_management/blob/master/content/articles/2021sy/blog/attach/dino/dino_visualize_attention.ipynb)
 
 実行結果は次図のようになります．
 
