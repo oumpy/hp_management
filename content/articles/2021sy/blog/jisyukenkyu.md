@@ -10,7 +10,7 @@ Authors: 安部,梅田,富田
 ![写真]({attach}./images/jisyukenkyu_figs/8519.jog)
 テーマは「眼底画像から緑内障か否か判断する深層学習モデル開発」でした。
 アドバイザー教員の三木 篤也先生をはじめ、様々な方にご支援いただきましたことを心から感謝申し上げます。
-計算機として、[医学科学生用計算機](https://oumpy.github.io/previews/refs/heads/donation/activities.html#pelican-subsections-5)を活用しました。
+計算機として、[医学科学生用計算機]({filename}/pages/student_server.md)を活用しました。
 
 詳細は[こちら](https://ir.library.osaka-u.ac.jp/repo/ouka/all/search/200220010496/?lang=0&cate_schema=3000&mode=0&cflg=1&codeno=journal)となります。
 
