@@ -12,8 +12,9 @@ Author: Python会
 
 ## 2020年度 ご寄付者様方 御芳名
 
-- <span class="donator-E4">吉原 正仁 様</span>
-- <span class="donator-E4">田中 聡司 様</span>
 - <span class="donator-E4">安水 良明 様</span>
 - <span class="donator-E4">宮崎 友希 様</span>
+- <span class="donator-E4">田中 聡司 様</span>
+- <span class="donator-E4">吉原 正仁 様</span>
 - <span class="donator-E4">佐藤 淳哉 様</span>
+
