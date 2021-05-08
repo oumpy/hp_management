@@ -11,12 +11,13 @@ Authors: 安部,梅田,富田
 テーマは『**眼底画像から緑内障か否か判断する深層学習モデル開発**』でした。
 アドバイザー教員の三木 篤也先生をはじめ、様々な方にご支援いただきましたことを心から感謝申し上げます。計算機として、[医学科学生用計算機]({filename}/pages/student_server.md)を活用しました。
 
-詳細は[こちら](http://hdl.handle.net/11094/80643)となります。モデルの訓練に用いたコードは、[こちら](https://github.com/abebe9849/glaucoma_cls/tree/main)にあります。
+## 研究内容について
+研究の詳細は[こちら](http://hdl.handle.net/11094/80643)を参照してください。モデルの訓練に用いたコードは[こちら](https://github.com/abebe9849/glaucoma_cls/tree/main)で公開しています。
 
-### 画像中の血管を消去する前処理例
-左：元画像，右：前処理後
+### 前処理の一部
+モフォロジー変換などで血管を消去する前処理を行った（左：元画像，右：前処理後）。
 
-![preprocessing]({attach}./images/jisyukenkyu_figs/preprocessing.jpg)
+<img src="{attach}./images/jisyukenkyu_figs/preprocessing.jpg" alt="preprocessing" width="５00px">
 
 ### 各実験の条件とその結果
 
