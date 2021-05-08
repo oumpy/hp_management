@@ -17,7 +17,7 @@ Authors: 安部,梅田,富田
 ### 前処理の一部
 モルフォロジー変換などで血管を消去する前処理について、元画像（左）と前処理後（右）の画像。
 
-<img src="{attach}./images/jisyukenkyu_figs/preprocessing.jpg" alt="preprocessing" width="５00px">
+<img src="{attach}./images/jisyukenkyu_figs/preprocessing.jpg" alt="preprocessing" width="500px">
 
 ### 各実験の条件とその結果
 
