@@ -15,7 +15,7 @@ Authors: 安部,梅田,富田
 研究の詳細は[こちら](http://hdl.handle.net/11094/80643)を参照してください。モデルの訓練に用いたコードは[こちら](https://github.com/abebe9849/glaucoma_cls/tree/main)で公開しています。
 
 ### 前処理の一部
-モフォロジー変換などで血管を消去する前処理を行った（左：元画像，右：前処理後）。
+モルフォロジー変換などで血管を消去する前処理について、元画像（左）と前処理後（右）の画像。
 
 <img src="{attach}./images/jisyukenkyu_figs/preprocessing.jpg" alt="preprocessing" width="５00px">
 
