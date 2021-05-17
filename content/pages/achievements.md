@@ -1,6 +1,6 @@
 Title: 実績
 Date: 2020.03.13
-Modified: 2020.03.24
+Modified: 2021.05.17
 Show_modified: True
 Summary: Python会の実績紹介
 
