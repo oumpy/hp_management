@@ -1,6 +1,6 @@
 Title: 行列演算の初歩の初歩とNumPy
 Date: 2019.05.16
-Modified: 2020.05.16
+Modified: 2021.08.28
 Tags: Python
 Author: 小川
 
