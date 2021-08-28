@@ -138,14 +138,14 @@ $E\times D$ と $D\times F$ を掛けると真ん中の $D$ が潰れて $E\time
 
 ## NumPyによる行列演算
 Python の NumPy パッケージは強力な行列演算機能を備えています。
-行列の定義は `np.array()`、掛け算は `np.dot()` で行えます。
+行列の定義は `np.array()`、掛け算は `np.dot()` または `@`演算子 (Python3.5以降) で行えます。
 
 ```python
 import numpy as np
 
 A = np.array([[1,2,3],[4,5,6]]) # 2行3列(2x3)行列
 x = np.array([[1],[2],[3]])     # 3次元列ベクトル
-print(np.dot(A,x))
+print(A @ x)
 ```
 これで、
 
