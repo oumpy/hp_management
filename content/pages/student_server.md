@@ -38,3 +38,17 @@ GPUを用いた機械学習、バイオインフォマティクス、各種統�
 - 設置場所 : 医学科全学年自習室 (最先端医療イノベーションセンター棟2F)
 
 ![alice_photo]({attach}./attach/student_server/alice_photo.jpeg "Alice本体写真")
+
+## 利用状況
+- バイオインフォマティックス用ツール　ikra　のアップデート
+[ikra v2.0]({filename}/articles/2021sy/blog/ikra_v2.md)
+- RStudioServer上でのsingle-cell解析ツールSeuratの使用
+- コマンドラインを用いたバイオインフォマティクス解析
+- scanpyの試用
+- 自主研究症例事業での緑内障判別モデルの開発
+[緑内障AI]({filename}/articles/2021sy/blog/jisyukenkyu.md)
+- RNA配列解析ツールのデバッグ・移植に関する実験的計算
+- 細胞培養実験データ解析に関する計算
+- jetson を用いたマウス姿勢推定実験系の開発
+- RStudioServer上でバイオインフォマティックス解析
+- slack用botの運用
