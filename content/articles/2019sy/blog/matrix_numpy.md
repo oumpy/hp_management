@@ -1,6 +1,6 @@
 Title: 行列演算の初歩の初歩とNumPy
 Date: 2019.05.16
-Modified: 2020.05.16
+Modified: 2021.08.28
 Tags: Python
 Author: 小川
 
@@ -28,7 +28,7 @@ y_1 \\
 y_{D-1} \\
 \end{array}\right)
 \quad\Rightarrow\quad
-x\cdot y = x_0y_0+x_1y_1+\cdot+x_{D-1}y_{D-1}
+x\cdot y = x_0y_0+x_1y_1+\dots+x_{D-1}y_{D-1}
 $$
 高校で学ぶベクトルの内積と基本的に同じですが、**行ベクトル (横ベクトル) と列ベクトル (縦ベクトル) を区別**するのが大事なところです。
 掛け算は、同じ次元の**「行ベクトル $\times$ 列ベクトル」の順序**でしか行えません。  
@@ -138,14 +138,14 @@ $E\times D$ と $D\times F$ を掛けると真ん中の $D$ が潰れて $E\time
 
 ## NumPyによる行列演算
 Python の NumPy パッケージは強力な行列演算機能を備えています。
-行列の定義は `np.array()`、掛け算は `np.dot()` で行えます。
+行列の定義は `np.array()`、掛け算は `np.dot()` または `@`演算子 (Python3.5以降) で行えます。
 
 ```python
 import numpy as np
 
 A = np.array([[1,2,3],[4,5,6]]) # 2行3列(2x3)行列
 x = np.array([[1],[2],[3]])     # 3次元列ベクトル
-print(np.dot(A,x))
+print(A @ x)
 ```
 これで、
 
