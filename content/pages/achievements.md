@@ -1,6 +1,6 @@
 Title: 実績
 Date: 2020.03.13
-Modified: 2021.05.17
+Modified: 2021.08.29
 Show_modified: True
 Summary: Python会の実績紹介
 
@@ -35,6 +35,9 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 ### 機械学習コンペティション
 - Kaggle Master：
 [秋山理]({author}秋山) ([OsciiArt](https://www.kaggle.com/osciiart)), [佐藤淳哉]({author}佐藤) ([Jsato](https://www.kaggle.com/junyasato))
+
+#### 2021
+- [SETI Breakthrough Listen - E.T. Signal Research](https://www.kaggle.com/c/seti-breakthrough-listen) (安部、チーム参加)([patriot](https://www.kaggle.com/abebe9849)) 7位/768チーム：スペクトログラム上の異常信号の検出
 
 #### 2019
 - [Kaggle Freesound Audio Tagging 2019](https://www.kaggle.com/c/freesound-audio-tagging-2019) (佐藤、秋山) 4/880位：
