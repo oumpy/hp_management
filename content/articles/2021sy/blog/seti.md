@@ -1,8 +1,8 @@
 Title: 宇宙人コンペ
 Date: 2021.08.28
-Modified: 2021.08.28
+Modified: 2021.08.30
 Tags: Machine Learning,Data Science Competition
-Author: 安部政俊
+Author: 安部
 
 2021/05/10~2021/08/18(UTC)にkaggleで開催された [SETI Breakthrough Listen - E.T. Signal Search](https://www.kaggle.com/c/seti-breakthrough-listen)　にて自分が所属しているチームが768チーム中7位となり金メダルを獲得しました。
 
@@ -22,9 +22,9 @@ Author: 安部政俊
 
 ## 教訓
 
-domain shiftが激しかったこのコンペでの教訓は２つです。
-1:データやをよく見る。(gradCAM,直接)
-2:過去の類似コンペでの上位解法を読んで、**すべて**試す。
+domain shiftが激しかったこのコンペでの教訓は２つです。<br>
+1:データやをよく見る。(gradCAM,直接)<br>
+2:過去の類似コンペでの上位解法を読んで、**すべて**試す。<br>
 
 この２つはわかったつもりになっていてもなかなか実行できずコンペが終了してしまいました。
 次回は息をするようにこの２つを実行したいです。
