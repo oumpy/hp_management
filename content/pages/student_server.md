@@ -37,7 +37,7 @@ GPUを用いた機械学習、バイオインフォマティクス、各種統�
     - 作業領域 : NVMe SSD 4TB
     - ユーザーデータ領域 : HDD 30TB (RAID5, SSDキャッシュ 960GB)
     - バックアップ領域 : HDD 2TB (RAID1)
-- OS : Ubuntu 20.04 LTS Server
+- OS : Ubuntu 20.04 LTS
 - ホスト名 : Alice
 - 設置場所 : 医学科全学年自習室 (最先端医療イノベーションセンター棟2F)
 
