@@ -27,13 +27,17 @@ GPUを用いた機械学習、バイオインフォマティクス、各種統�
 接続方法ほか、利用に関する具体的な案内はそちらで行います。
 
 ## 計算機スペックなど
-(2021年7月現在。2021年度予算で増強予定)
+(2021年9月アップグレード後)
 
 - CPU : Core i9-9900X (3.5 GHz, 10 cores, 20 threads)
-- GPU : GeForce RTX 2080Ti (VRAM: 11GB) x2
+- GPU : NVIDIA RTX A6000 (VRAM: 48GB) x2 / GeForce RTX 2080Ti (VRAM: 11GB) x1
 - Main Memory : 128GB
-- ユーザデータ保存領域 : 15TB
-- OS : Ubuntu 20.04 LTS Server
+- ストレージ
+    - システム領域 : NVMe SSD 2TB
+    - 作業領域 : NVMe SSD 4TB
+    - ユーザーデータ領域 : HDD 30TB (RAID5, SSDキャッシュ 960GB)
+    - バックアップ領域 : HDD 2TB (RAID1)
+- OS : Ubuntu 20.04 LTS
 - ホスト名 : Alice
 - 設置場所 : 医学科全学年自習室 (最先端医療イノベーションセンター棟2F)
 
