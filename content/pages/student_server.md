@@ -1,6 +1,6 @@
 Title: 医学科学生用計算機 (計算サーバ)
 Date: 2020.08.21
-Modified: 2021.07.07
+Modified: 2021.09.25
 Show_modified: True
 
 大阪大学医学部医学科には学生専用の計算サーバがあり、管理運用をPython会が担当しています
