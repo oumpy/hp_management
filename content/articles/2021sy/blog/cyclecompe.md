@@ -19,10 +19,10 @@ Author: 梅津
 ## したこと
 今回は単独での参加だったのでEDAからモデリングまで自分でやりました。
 
-1. feature engineering
+1. feature engineering  
 平日、祝日、休日や春夏秋冬の季節を作成しました。
 
-2. train&validation
+2. train & validation  
 予測する日以前のデータの全てをtrainにまわしました。欠損したところはその直前の予測日以前のデータでtrainしたモデルでの予測値を代入し、pseudo labelingをしました。
 1つ目のlgbmでoptunaを使いハイパーパラメータを最適化し、他にも流用しました。
 120個のlgbmをtrainすることになりましたが、結局は月毎で12個つくった方が精度が出るみたいです。
