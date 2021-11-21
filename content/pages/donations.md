@@ -18,3 +18,6 @@ Author: Python会
 - <span class="donator-E4">吉原 正仁 様</span>
 - <span class="donator-E4">佐藤 淳哉 様</span>
 
+## 2021年度 ご寄付者様方 御芳名
+
+- <span class="donator-E4">平岡 悠 様</span>
