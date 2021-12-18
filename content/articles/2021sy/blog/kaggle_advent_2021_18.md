@@ -24,7 +24,7 @@ Author: 安部
 ### 追試に用いたデータ
 
 kaggleの過去コンペ&csv提出ができる&自分のドメインに近い、という理由で[VinBig](https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/overview) を追試の対象としました。<br>
-アノテーションはdiscussionに多く挙げられていた「複数のあのテーターのbboxはナイーブにWBFで統合する」という方法で前処理し、single foldで学習、subをしています。手元のmAP0.5とprivateでのスコアを確認していきます。(スコアの確認が歯切れの悪い形になっています。ご了承ください)<br>以下全てのsubに[2cls fillter](https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/210351) をつけています。コンペ特有の課題(複数のアノテーターへの対処)は本記事では扱いません。推論のコードは[これ](https://www.kaggle.com/kc3222/mmdet-pytorch-framework-infer-vfnet)を参考にしました。
+アノテーションはdiscussionに多く挙げられていた「複数のアノテーターのbboxはナイーブにWBFで統合する」という方法で前処理し、single foldで学習、subをしています。手元のmAP0.5とprivateでのスコアを確認していきます。(スコアの確認が歯切れの悪い形になっています。ご了承ください)<br>以下全てのsubに[2cls fillter](https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/210351) をつけています。コンペ特有の課題(複数のアノテーターへの対処)は本記事では扱いません。推論のコードは[これ](https://www.kaggle.com/kc3222/mmdet-pytorch-framework-infer-vfnet)を参考にしました。
 
 
 ### 実験
