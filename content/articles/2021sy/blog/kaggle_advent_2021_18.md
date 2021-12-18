@@ -7,6 +7,8 @@ Author: 安部
 
 ## なんの記事か
 
+[Kaggle Advent Calendar 2021](https://qiita.com/advent-calendar/2021/kaggle)の2枚目の18日目の記事です。
+
 最近流行りのSwinTransformerを使って物体検出を触ってみます。[SIIM2021 3rd解法](https://www.kaggle.com/c/siim-covid19-detection/discussion/263654)では Swin Transformer with RepPoints(mmdetection)がアンサンブルの種として使用されています。自分で手を動かせばわかることがあるかもしれないと思い過去コンペで追試をしてみます。
 
 行った追試は以下の通りです。
