@@ -45,7 +45,10 @@ jobs:
 
     - name: Delete Preview in the output directory
       run: |
-        rm -rf ./output/previews/$GITHUB_REF
+        rm -rf ./output/previews/$REF
+      env:
+        REF: refs/heads/${{ github.event.ref }}
+      if: github.event.ref_type == 'branch'
 
     - name: Deploy on Site
       run: |
