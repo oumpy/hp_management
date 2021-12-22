@@ -44,6 +44,7 @@ jobs:
           echo "    SITETAG += PREVIEW_SITENAME_APPEND"
         } >> ./content/contentconf.py
         make html
+        git rev-parse HEAD > ./git_head_hash
 
     - name: Save Preview Product
       uses: actions/upload-artifact@v1
@@ -63,16 +64,28 @@ jobs:
         python-version: '3.8' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
 
-    - name: Checkout master branch
+    - name: Load Preview Product
+      uses: actions/download-artifact@v1
+      with:
+        name: preview
+
+    - name: Get preview hash
+      id: get_preview_hash
+      run: |
+        hash_file="./preview/git_head_hash"
+        cur_hash=${<$hash_file}
+        rm hash_file
+        echo "::set-output name=cur_hash::$cur_hash"
+ 
+     - name: Checkout master branch
       uses: actions/checkout@v2
       with:
         ref: master
         submodules: false
 
-    - name: Load Preview Product
-      uses: actions/download-artifact@v1
-      with:
-        name: preview
+    - name: Initialize Output Repository
+      run: |
+        sh tools/init_output.sh
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
@@ -86,21 +99,36 @@ jobs:
             User git
             IdentityFile ~/.ssh/identity
 
-    - name: Initialize Output Repository
+    - name: Check update of original branch
+      id: check_update
+      env:
+        cur_hash: ${{ steps.get_preview_hash.outputs.cur_hash }}
       run: |
-        sh tools/init_output.sh
+        branch=${GITHUB_REF#refs/heads/}
+        git fetch origin "$branch"
+        new_hash=`git rev-parse --verify --quiet "origin/$branch"`
+        if [ $cur_hash=$new_hash ]; then
+          newest='true'
+        else
+          newest='false'
+        fi
+        echo "::set-output name=newest::$newest"
 
     - name: Set Preview in the output directory
+      if: steps.check_update.outputs.newest=='true'
       run: |
-        rm -rf ./output/previews/$GITHUB_REF
-        mkdir -p ./output/previews/$GITHUB_REF
-        cp -a preview/* ./output/previews/$GITHUB_REF/
+        cd ./output
+        git pull
+        mkdir -p ./previews/$GITHUB_REF
+        rm -rf ./previews/$GITHUB_REF
+        mv ../preview ./previews/$GITHUB_REF
 
     - name: Deploy on Site
+      if: steps.check_update.outputs.newest=='true'
       run: |
         cd output/
         git config user.name $GITHUB_ACTOR
         git config --add url.github:.pushInsteadOf https://github.com/
         git config --add url.github:.pushInsteadOf git@github.com:
         git add .
-        git commit -m "$GITHUB_REF branch updated." && git push || true
+        git commit -m "${GITHUB_REF#refs/heads/} branch updated." && git push || true
