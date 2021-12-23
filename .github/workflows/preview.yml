@@ -73,7 +73,7 @@ jobs:
       id: get_preview_hash
       run: |
         hash_file="./preview/git_head_hash"
-        cur_hash=${<$hash_file}
+        cur_hash=$(<$hash_file)
         rm hash_file
         echo "::set-output name=cur_hash::$cur_hash"
  
