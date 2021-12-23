@@ -121,6 +121,11 @@ jobs:
         git pull
         mkdir -p ./previews/$GITHUB_REF
         rm -rf ./previews/$GITHUB_REF
+        pwd
+        ls ./
+        ls ../
+        ls ../../
+        ls ../../../
         mv ../../preview ./previews/$GITHUB_REF
 
     - name: Deploy on Site
