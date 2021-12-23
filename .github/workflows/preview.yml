@@ -64,6 +64,16 @@ jobs:
         python-version: '3.8' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
 
+    - name: Checkout master branch
+      uses: actions/checkout@v2
+      with:
+        ref: master
+        submodules: false
+
+    - name: Initialize Output Repository
+      run: |
+        sh tools/init_output.sh
+
     - name: Load Preview Product
       uses: actions/download-artifact@v1
       with:
@@ -77,16 +87,6 @@ jobs:
         rm "$hash_file"
         echo "::set-output name=cur_hash::$cur_hash"
  
-    - name: Checkout master branch
-      uses: actions/checkout@v2
-      with:
-        ref: master
-        submodules: false
-
-    - name: Initialize Output Repository
-      run: |
-        sh tools/init_output.sh
-
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
       with:
@@ -119,14 +119,10 @@ jobs:
       run: |
         cd ./output
         git pull
-        mkdir -p ./previews/$GITHUB_REF
-        rm -rf ./previews/$GITHUB_REF
-        pwd
-        ls ./
-        ls ../
-        ls ../../
-        ls ../../../
-        mv ../../preview ./previews/$GITHUB_REF
+        cd ../
+        mkdir -p ./output/previews/$GITHUB_REF
+        rm -rf ./output/previews/$GITHUB_REF
+        mv ./preview ./output/previews/$GITHUB_REF
 
     - name: Deploy on Site
       if: steps.check_update.outputs.newest=='true'
