@@ -120,6 +120,7 @@ jobs:
         cd ./output
         git pull
         cd ../
+        ls
         mkdir -p ./output/previews/$GITHUB_REF
         rm -rf ./output/previews/$GITHUB_REF
         mv ./preview ./output/previews/$GITHUB_REF
