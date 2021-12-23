@@ -44,7 +44,7 @@ jobs:
           echo "    SITETAG += PREVIEW_SITENAME_APPEND"
         } >> ./content/contentconf.py
         make html
-        git rev-parse HEAD > ./git_head_hash
+        git rev-parse HEAD > ./output/git_head_hash
 
     - name: Save Preview Product
       uses: actions/upload-artifact@v1
