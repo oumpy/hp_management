@@ -119,11 +119,9 @@ jobs:
       run: |
         cd ./output
         git pull
-        cd ../
-        ls
-        mkdir -p ./output/previews/$GITHUB_REF
-        rm -rf ./output/previews/$GITHUB_REF
-        mv ./preview ./output/previews/$GITHUB_REF
+        mkdir -p ./previews/$GITHUB_REF
+        rm -rf ./previews/$GITHUB_REF
+        mv ../../preview ./previews/$GITHUB_REF
 
     - name: Deploy on Site
       if: steps.check_update.outputs.newest=='true'
