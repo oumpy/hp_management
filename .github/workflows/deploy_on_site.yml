@@ -82,4 +82,4 @@ jobs:
         git config --add url.github:.pushInsteadOf https://github.com/
         git config --add url.github:.pushInsteadOf git@github.com:
         git add .
-        git commit -m 'master branch updated.' && git push -f || true
+        git commit -m 'master branch updated.' && git push || true
