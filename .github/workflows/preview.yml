@@ -77,7 +77,7 @@ jobs:
         rm hash_file
         echo "::set-output name=cur_hash::$cur_hash"
  
-     - name: Checkout master branch
+    - name: Checkout master branch
       uses: actions/checkout@v2
       with:
         ref: master
