@@ -41,7 +41,7 @@ jobs:
       run: |
         rm -rf output.new
         mkdir output.new
-        make publish -o output.new || true
+        make publish output=output.new || true
         cd output
         git pull
         cd ..
