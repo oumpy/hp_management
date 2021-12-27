@@ -39,11 +39,15 @@ jobs:
 
     - name: Make the Product
       run: |
-        rm -rf previews
-        mkdir -p output/previews
-        mv output/previews ./
-        make clean && make publish || true
-        mv ./previews output/
+        rm -rf output.new
+        mkdir output.new
+        make publish output=output.new || true
+        cd output
+        git pull
+        cd ..
+        mv output/.git output/previews output.new/
+        rm -rf output
+        mv output.new output
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
@@ -78,4 +82,4 @@ jobs:
         git config --add url.github:.pushInsteadOf https://github.com/
         git config --add url.github:.pushInsteadOf git@github.com:
         git add .
-        git commit -m 'master branch updated.' && git push -f || true
+        git commit -m 'master branch updated.' && git push || true
