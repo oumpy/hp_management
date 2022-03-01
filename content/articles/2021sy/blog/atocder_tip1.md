@@ -1,6 +1,6 @@
 Title: 競プロ備忘録1
 Date: 2022.2.27
-Modified: 22022.2.27
+Modified: 2022.2.27
 Tags: 競技プログラミング
 Author: 富本
 
