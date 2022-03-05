@@ -1,6 +1,6 @@
 Title: 実績
 Date: 2020.03.13
-Modified: 2021.08.29
+Modified: 2022.03.05
 Show_modified: True
 Summary: Python会の実績紹介
 
@@ -72,6 +72,10 @@ RNAseqに係る様々なツールを検証し、その中で最良のツール�
 RNAseq解析パイプライン「ikra」の開発及び、「ikra」を用いたRNAseqメタ解析手法の確立.
 [[報告書]]({attach}./attach/achievements/07_igakubu.pdf)
 
+#### 学部学生による自主研究奨励事業2020年度優秀賞
+2020年度,学部学生による自主研究奨励事業の全学選抜自主研究成果発表会において優秀賞を受賞しました。
+テーマ：眼底画像から緑内障か否か判断する深層学習モデル開発,詳細は[こちらの記事]({filename}/articles/2021sy/blog/jisyukenkyu.md)
+
 ### VIRTUS ver1.0をリリース
 ウィルス転写産物の検出・定量ツールである、VIRTUS (<https://github.com/yyoshiaki/VIRTUS>)をリリースしました。
 
@@ -88,10 +92,17 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 ### 企業インターンシップ参加
 - [(株) Preferred Networks](https://preferred.jp) 夏季インターン  
 機械学習の医療応用に関する研究開発。 (2018 [秋山]({author}秋山)、2019 [小川]({author}小川))
+- [(株)エクサウィザーズ](https://exawizards.com) サマーインターン
+2021 [安部]({author}安部)、[インターンの内容](https://note.exawizards.com/n/n1463d917e202?gs=76bb4e741265)
+- [(株)MICIN](https://micin.jp) 短期インターン
+医療AIの市場調査と実用例の論文サーベイ　2021/12~2022/02 [安部]({author}安部)
 
 ## 所属メンバー論文
 ### 2021
 - Inoue, M., Nakahama, T., [**Yamasaki, R.**]({author}山崎), Shibuya, T., … Morii, E., Kawahara, Y. An Aicardi-Goutières Syndrome–Causative Point Mutation in Adar1 Gene Invokes Multiorgan Inflammation and Late-Onset Encephalopathy in Mice. *J Immunol*. December 15, 2021, 207 (12) 3016-3027; [DOI:10.4049/jimmunol.2100526](https://doi.org/10.4049/jimmunol.2100526)
+- 新岡 宏彦, 廣川 満良, 鈴木 彩菜,[**安部 政俊**]({author}安部), 新井 悠介, 式見 彰浩, 長原 一, 宮内 昭
+“深層学習を用いた甲状腺細胞診自動診断システム (AI differential diagnosis for cytology of the thyroid:ADDICT)の開発とその現状”
+PHARM TECH JAPAN, Vol. 38, No. 2, pp. 87 - 94.
 ### 2020
 - [**Yasumizu, Y.**]({author}安水), Sakaue, S., Konuma, T., Suzuki, K., Matsuda, K., Murakami, Y., … Okada, Y. Genome-Wide Natural Selection Signatures Are Linked to Genetic Risk of Modern Phenotypes in the Japanese Population. Molecular Biology and Evolution. *Mol Biol Evol*. 2020;msaa005. [doi:10.1093/molbev/msaa005](https://doi.org/10.1093/molbev/msaa005). [(プレスリリース)](http://www.med.osaka-u.ac.jp/activities/results/2020year/okada2020-01)
 - Ohkura, N., [**Yasumizu, Y.**]({author}安水), Kitagawa, Y., … Okada, Y., Sakaguchi, Y. Regulatory T Cell-Specific Epigenomic Region Variants Are a Key Determinant of Susceptibility to Common Autoimmune Diseases. *Immunity*. VOLUME 52, ISSUE 6, P1119-1132.E4, JUNE 16, 2020. [doi:10.1016/j.immuni.2020.04.006](https://doi.org/10.1016/j.immuni.2020.04.006).
