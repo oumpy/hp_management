@@ -1,5 +1,6 @@
 Title: 甲状腺細胞診分類モデル＠日本臨床細胞学会
 Date: 2021.06.24
+Modified: 2022.03.05
 Tags: Machine Learning
 Author: 安部
 
@@ -20,3 +21,11 @@ Author: 安部
 
 
 <img src="{attach}./images/cytology_figs/cytology_photo.jpg" alt="cytology_img" width="400px">
+
+## 追記(2022/03/05)
+
+この研究が以下の雑誌に掲載されました！
+
+新岡 宏彦, 廣川 満良, 鈴木 彩菜,[**安部 政俊**]({author}安部), 新井 悠介, 式見 彰浩, 長原 一, 宮内 昭
+“深層学習を用いた甲状腺細胞診自動診断システム (AI differential diagnosis for cytology of the thyroid:ADDICT)の開発とその現状”
+PHARM TECH JAPAN, Vol. 38, No. 2, pp. 87 - 94.
