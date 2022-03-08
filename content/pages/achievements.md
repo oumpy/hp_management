@@ -1,6 +1,6 @@
 Title: 実績
 Date: 2020.03.13
-Modified: 2022.03.05
+Modified: 2022.03.06
 Show_modified: True
 Summary: Python会の実績紹介
 
@@ -65,6 +65,10 @@ RNAseqに係る様々なツールを検証し、その中で最良のツール�
 
 [**Hiraoka, Yu**]({author}平岡), [**Yamada, Kohki**]({author}山田), [**Kawasaki, Yusuke**]({author}川崎), [**Hirose, Haruka**]({author}廣瀬), **Matsumoto, Yasunari**, **Ishikawa, Kaito**, & [**Yasumizu, Yoshiaki**]({author}安水). (2019, July 27). ikra : RNAseq pipeline centered on Salmon. (Version v1.2.1). Zenodo. [doi:10.5281/zenodo.3352573](http://doi.org/10.5281/zenodo.3352573)
 
+### RNA-seq pipeline ikra v2.0 リリース
+ikraの実行に用いるツール群をアップデートし、新しいものに入れ替え,いくつかのoptionを追加しました。
+詳細は[こちらの記事]({filename}/articles/2021sy/blog/ikra_v2.md)
+
 #### 学部学生による自主研究奨励事業2019年度優秀賞
 2019年度[学部学生による自主研究奨励事業](https://www.osaka-u.ac.jp/ja/education/ug_jishuken)の[全学選抜自主研究成果発表会](https://www.osaka-u.ac.jp/ja/education/ug_jishuken/copy_of_presentations)において優秀賞を受賞しました。
 
@@ -73,7 +77,7 @@ RNAseq解析パイプライン「ikra」の開発及び、「ikra」を用いた
 [[報告書]]({attach}./attach/achievements/07_igakubu.pdf)
 
 #### 学部学生による自主研究奨励事業2020年度優秀賞
-2020年度,学部学生による自主研究奨励事業の全学選抜自主研究成果発表会において優秀賞を受賞しました。
+2020年度,学部学生による自主研究奨励事業の全学選抜自主研究成果発表会において優秀賞を受賞しました。<br>
 テーマ：眼底画像から緑内障か否か判断する深層学習モデル開発,詳細は[こちらの記事]({filename}/articles/2021sy/blog/jisyukenkyu.md)
 
 ### VIRTUS ver1.0をリリース
