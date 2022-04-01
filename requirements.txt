@@ -15,4 +15,4 @@ pelican-neighbors
 minchin.pelican.plugins.nojekyll
 ipython_genutils
 pelican-jinja2content
-jinja2
+jinja2==3.0.3
