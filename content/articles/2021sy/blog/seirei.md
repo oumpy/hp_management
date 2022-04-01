@@ -1,4 +1,4 @@
-Title: 清麗戦の研究：早く負ける方が得か？
+Title: 清麗戦の研究：早く負けるが得か？
 Date: 2022.03.31
 Modified: 2022.03.31
 Tags: Simulation, Python
