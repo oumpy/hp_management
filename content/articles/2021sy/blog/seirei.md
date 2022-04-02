@@ -401,7 +401,7 @@ def seed_bracket(players: list, rates: dict) -> list:
 第1期白玲戦挑決では里見香奈四冠にここ一番で勝ち、久々にタイトル戦登場（7番勝負は渡部0-4西山）。
 ぜひまたタイトルに返り咲いてほしいです。
 
-### <span id="note04">注4</span> : 上田初美女流五段
+### <span id="note04">注4</span> : 上田初美女流四段
 著者は気が強い子は嫌いじゃないです。
 
 ### <span id="note05">注5</span> : AtCoder水色
