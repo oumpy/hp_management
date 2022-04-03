@@ -27,14 +27,27 @@ WSIの前処理はkaggleの[PANDAコンペ](https://www.kaggle.com/competitions/
 
 そこで、一旦元画像上で組織部分だけ2値化→組織以外の部分は白に塗り直す、という処理をあらかじめ行うことにより色の濃いノイズに対応しました。組織のpatch作成は[PANDAコンペで紹介されていた組織部分をより効率的に除く処理](https://www.kaggle.com/code/rftexas/better-image-tiles-removing-white-spaces)を参考にしました。
 
+
+<img src="{attach}./images/Crohn_figs/pathology_fig1.jpg" alt="pathology_figs_1" width="400px">
+
 ###　モデル作成
 
 取得したpatchを入力としてWSIについていた再発するかどうかの2値のラベルを予測するモデルを学習させました。モデルはお馴染みの"tf_efficientnet_b5_ns"を使っています。<br>
 augmentationには[ベンガルコンペ](https://www.kaggle.com/competitions/bengaliai-cv19?rvi=1)で紹介されていた[augmix](https://www.kaggle.com/code/haqishen/augmix-based-on-albumentations)と[gridmask](https://www.kaggle.com/code/haqishen/gridmask)を使用しました。手元の実験ではcutmixも有効でした。GeM poolingは若干良い程度でavg poolingで十分だった気もします。細胞診の分類でもcutmixが有効だったのでpatch分割とcutmixは相性が良いのではないかと個人的に考えています。
 
+モデルの
+
+
+
 ### 予測の解析
 
-予測値が両極に近いpatchを見てみると漿膜下脂肪組織に差があるのではないかという仮説が生まれました。そこで脂肪細胞数/細胞の面積/細胞間距離/細胞の丸み(楕円fittingしたときの長軸)/短軸の割合/間質の面積を計測しました。この作業にはインスタンスセグメンテーションが必要だったのですが自分でmaskを作成してモデルを構築だけのパワーがなかったので深層学習は使用せずに[opencv](http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_imgproc/py_watershed/py_watershed.html)などでなんとかしました。<br>
+予測値が両極に近いpatchを見てみると漿膜下脂肪組織に差があるのではないかという仮説が生まれました。
+<img src="{attach}./images/Crohn_figs/pathology_fig3.jpg" alt="pathology_figs_3" width="400px">
+
+そこで脂肪細胞数/細胞の面積/細胞間距離/細胞の丸み(楕円fittingしたときの長軸)/短軸の割合/間質の面積を計測しました。この作業にはインスタンスセグメンテーションが必要だったのですが自分でmaskを作成してモデルを構築だけのパワーがなかったので深層学習は使用せずに[opencv](http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_imgproc/py_watershed/py_watershed.html)などを駆使しました。<br>
+
+以下が脂肪細胞の解析結果です。
+<img src="{attach}./images/Crohn_figs/pathology_fig5.jpg" alt="pathology_figs5" width="400px">
 
 結果として『**脂肪細胞の収縮が、疾患の再発に関係する**』ことが示唆されました。
 
@@ -43,6 +56,8 @@ augmentationには[ベンガルコンペ](https://www.kaggle.com/competitions/be
 
 解析実際にやっていたのは2020年冬~2021年春でまだkaggleは"見る専"だった頃のものですが見よう見真似でkaggle上から引っ張ってきたアイデアが効いたり、自分なりに前処理を変更したりと楽しかった記憶があります。
 
+### 引用
+この記事の画像が全て[元の論文](https://doi.org/10.1016/j.ajpath.2022.03.006)から引用されました。
 
 ### 謝辞
 
