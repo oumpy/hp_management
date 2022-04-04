@@ -35,7 +35,6 @@ WSIの前処理はkaggleの[PANDAコンペ](https://www.kaggle.com/competitions/
 取得したpatchを入力としてWSIについていた再発するかどうかの2値のラベルを予測するモデルを学習させました。モデルはお馴染みの"tf_efficientnet_b5_ns"を使っています。<br>
 augmentationには[ベンガルコンペ](https://www.kaggle.com/competitions/bengaliai-cv19?rvi=1)で紹介されていた[augmix](https://www.kaggle.com/code/haqishen/augmix-based-on-albumentations)と[gridmask](https://www.kaggle.com/code/haqishen/gridmask)を使用しました。手元の実験ではcutmixも有効でした。GeM poolingは若干良い程度でavg poolingで十分だった気もします。細胞診の分類でもcutmixが有効だったのでpatch分割とcutmixは相性が良いのではないかと個人的に考えています。
 
-モデルの
 
 
 
