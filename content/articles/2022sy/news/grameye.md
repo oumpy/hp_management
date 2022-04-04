@@ -1,4 +1,4 @@
-Title: 
+Title: 株式会社GramEyeが資金調達を実施
 Date: 2022.04.04
 Tags: News
 Author: Python会
