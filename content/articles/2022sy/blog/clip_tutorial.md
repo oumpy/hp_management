@@ -89,7 +89,7 @@ class TransformerEncoder(nn.Module):
         layers: int,
         heads: int,
         attn_mask: torch.Tensor=None
-    ) -> None:
+        ) -> None:
         super().__init__()
         self.token_embedding = nn.Embedding(vocab_size, width)
         self.positional_embedding = nn.Parameter(torch.randn(context_length, width))
@@ -102,7 +102,7 @@ class TransformerEncoder(nn.Module):
     def forward(
         self,
         x: torch.Tensor
-    ) -> torch.Tensor:
+        ) -> torch.Tensor:
         x = self.token_embedding(x)  # 1. トークン化された文章をベクトル表現に変換
         x = x + self.positional_embedding  # 2. Positional Encodingにより位置情報を付与
         x = x.permute(1, 0, 2)
@@ -138,7 +138,7 @@ class VisionTransformer(nn.Module):
         layers: int,
         heads: int,
         output_dim: int
-    ) -> None:
+        ) -> None:
         super().__init__()
         image_height, image_width = image_size, image_size
         patch_height, patch_width = patch_size, patch_size
@@ -161,10 +161,10 @@ class VisionTransformer(nn.Module):
     def __image_to_patch(
         self,
         x: torch.Tensor
-    ) -> torch.Tensor:
-        ```
+        ) -> torch.Tensor:
+        """
             入力画像をパッチに変換する。
-        ```
+        """
         x = self.conv1(x)
         x = x.reshape(x.shape[0], x.shape[1], -1)
         x = x.permute(0, 2, 1)
@@ -173,7 +173,7 @@ class VisionTransformer(nn.Module):
     def forward(
         self,
         x: torch.Tensor
-    ) -> torch.Tensor:
+        ) -> torch.Tensor:
         x = self.__image_to_patch(x)  # 1. 画像をパッチに変換しEmbeddingする
         x = torch.cat([self.class_embedding.expand(x.shape[0], -1, -1), x], dim=1)  # 2. class tokenのembeddingをパッチの先頭に追加
         x = x + self.positional_embedding.expand(x.shape[0], -1, -1)  # 3. positional encodingで位置情報を追加
