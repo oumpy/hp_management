@@ -22,7 +22,7 @@ CLIPは大きく画像をEmbeddingするImage Encoderと、文章をEmbeddingす
 Embeddingとは、自然言語を計算が可能な形、すなわちベクトル表現に変換することを言います。CLIPのImage EncoderやText Encoderでは、1つの画像や文章をそれぞれ512次元のベクトルに変換しています。
 Embeddingの詳しい説明に関しては[こちら](https://qiita.com/sakabe/items/5f14999ded1de087c9b5)を参考にしてください。
 
-![](https://github.com/openai/CLIP/raw/main/CLIP.png)
+![](https://raw.githubusercontent.com/openai/CLIP/main/CLIP.png)
 
 ### 2. Text Encoder
 CLIPのTextEncoderとしては、TransformerのEncoderが用いられています。  
@@ -40,7 +40,8 @@ TransformerのEncoderでは、次のように入力テキストの処理が行�
 
 TransformerのEncoderBlockの実装は次のようになります。  
 ただし、CLIP内のTransformerのEncoderBlockでは、元のTransformerのものと異なり、LayerNormalizationをMultiHeadAttentionやFeedForwardNetwork層の後(=Post-Norm)ではなく前(=Pre-Norm)で行っています。  (参考：[Pre-Normを採用する理由](https://twitter.com/hillbig/status/1182438709095854080?s=19))
-```
+
+```python
 class TransformerEncoderBlock(nn.Module):
     def __init__(
         self,
@@ -76,7 +77,8 @@ class TransformerEncoderBlock(nn.Module):
 ```
 
 TransformerのEncoderは、上で定義した`TransformerEncoderBlock`を用いて以下のように実装できます。ただし、オリジナルのTransformerでは、Positional Encodingはsin関数やcos関数を用いていますが、実装では0~1の一様分布からランダムに選択した値を持つ学習可能なパラメータとなっています。
-```
+
+```python
 class TransformerEncoder(nn.Module):
 
     def __init__(
@@ -125,7 +127,8 @@ VisionTransformerでは以下のような順番で画像の処理が行われま
 ![](https://storage.googleapis.com/zenn-user-upload/aa5ae6bcb822784d6021ea6a.png)
 
 Image Encoderでは、画像1枚1枚に対して通常のVisionTransformerと同様に1~4の処理を行います。具体的な実装は以下の通りです。
-```
+
+```python
 class VisionTransformer(nn.Module):
     def __init__(
         self,
@@ -185,7 +188,8 @@ class VisionTransformer(nn.Module):
 ### 4. CLIPの実装
 次に、上の1,2で実装した`TransformerEncoder`や`VisionTransformer`を用いて、CLIPを実装していきます。  
 CLIPの実装は以下のようになります。
-```
+
+```python
 class CLIP(nn.Module):
     def __init__(
         self,
@@ -285,6 +289,8 @@ class CLIP(nn.Module):
 
         return logits_per_image, logits_per_text
 ```
+
+
 `encode_image`では、`VisionTransformer`の`TransformerEncoder`の最終出力のうち、class_token、すなわち`index==0`の位置にあるEmbeddingを取り出します。その後、`image_projection`により512次元のベクトルに変換し、最終的なCLIPの画像特徴量とします。  
 また、`encode_text`では、`TransformerEncoder`の最終出力のうち、EOT(End Of Text)、すなわち最も大きいtokenの値を持つindexにあるEmbeddingを取り出します。その後、`text_projection`により512次元のベクトルに変換し、最終的なCLIPの文章特徴量とします。  
 `forward`では、与えられた画像とテキストの入力をエンコードし、logitsを計算します。具体的には以下のような順番で処理を行っています。
@@ -300,7 +306,8 @@ CLIPでは対照学習を行っています。具体的には、1バッチ内の
 ![](https://data-analytics.fun/wp-content/uploads/2021/01/image-58.png)
 
 また、この疑似コードを元にSymmetric Lossの実装を行ってみました。
-```
+
+```python
 class SymmetricLoss(nn.Module):
     def __init__(self):
         super().__init__()
