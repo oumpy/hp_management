@@ -1,22 +1,22 @@
 Title: CLIPを実装し理解する
-Date: 2022.04.20
+Date: 2022.05.24
 Modified: None
 Tags: Machine Learning
 Author: 池側
 
-# 目的
+## 目的
 - CLIPを理解するため、[公式実装](https://github.com/openai)や他の記事を参考にしながらCLIPを自分で実装してみました。
 - 公式実装では他に様々な工夫がなされていますが、今回は最低限のコードでCLIPを分かり易く実装することを目的にしているため、性能については保証できません。
 - 本記事はCLIPの実装と解説を主な目的としているため、論文の詳しい解説に関しては他の記事を参照してください。
 - 自身で実装したモデルについて、学習は行っておりません。
 
-# CLIPとは
+## CLIPとは
 CLIP(Contrastive Language-Image Pre-Training)は、[Learning Transferable Visual Models From Natural Language Supervision](https://arxiv.org/abs/2103.00020)においてOpenAIが発表した画像分類モデルの事前学習手法です。
 CLIPでは、従来のようなラベル付き画像データセットを用いた教師あり学習ではなく、大量の画像とテキストのペアデータセットを用いて画像分類器を学習させています。この学習方法では、従来とは異なりデータセットに含まれるラベルの種類が限定されないため、幅広い種類の画像に対しての分類能力を得ることができます。その結果、初めて見るデータセットに関しても高い分類性能を示し、zero-shot性能が非常に高いモデルを作成することができます。
 
 
-# 実装解説
-## 1. CLIPの全体的なアーキテクチャについて
+## 実装解説
+### 1. CLIPの全体的なアーキテクチャについて
 CLIPのアーキテクチャは以下の通りです。
 CLIPは大きく画像をEmbeddingするImage Encoderと、文章をEmbeddingするText Encoderから構成されています。  
 Embeddingとは、自然言語を計算が可能な形、すなわちベクトル表現に変換することを言います。CLIPのImage EncoderやText Encoderでは、1つの画像や文章をそれぞれ512次元のベクトルに変換しています。
@@ -24,7 +24,7 @@ Embeddingの詳しい説明に関しては[こちら](https://qiita.com/sakabe/i
 
 ![](https://github.com/openai/CLIP/raw/main/CLIP.png)
 
-## 2. Text Encoder
+### 2. Text Encoder
 CLIPのTextEncoderとしては、TransformerのEncoderが用いられています。  
 Transformerは自然言語処理では必須のモデルで、全体として以下のようなアーキテクチャを持つモデルです。
 TransformerのEncoderでは、次のように入力テキストの処理が行われます。
@@ -109,7 +109,7 @@ class TransformerEncoder(nn.Module):
         return x
 ```
 
-## 3. Image Encoderの実装
+### 3. Image Encoderの実装
 CLIPのImage EncoderとしてはResNetやVisionTransformerが用いられています。今回はVisionTransformerを用いて実装を行っていきます。
 VisionTransformerは上で実装したTransformer Encoderを、自然言語処理ではなく画像分類に適用するためのモデルです。
 VisionTransformerでは以下のような順番で画像の処理が行われます。
@@ -182,7 +182,7 @@ class VisionTransformer(nn.Module):
         return x
 ```
 
-## 4. CLIPの実装
+### 4. CLIPの実装
 次に、上の1,2で実装した`TransformerEncoder`や`VisionTransformer`を用いて、CLIPを実装していきます。  
 CLIPの実装は以下のようになります。
 ```
@@ -293,7 +293,7 @@ class CLIP(nn.Module):
     - L2正規化については[こちらの記事](https://qiita.com/panda531/items/4ca6f7e078b749cf75e8)を参照
 3. 画像とテキストのCLIP特徴量の行列積を計算することで、画像/テキスト毎のlogitsを取得
 
-## 4. Symmetric Lossの実装
+### 4. Symmetric Lossの実装
 CLIPでは対照学習を行っています。具体的には、1バッチ内の画像とテキストについて、元々のペアを正例、それ以外のペアを負例とすると、学習時には正例との類似度が高く、負例との類似度が低くなるように学習を行います。
 論文中では以下のような疑似コードが掲載されていました。この疑似コードに関しては[こちらの記事](https://data-analytics.fun/2021/03/24/understanding-openai-clip/)で詳しく解説されています。
 
@@ -315,11 +315,11 @@ class SymmetricLoss(nn.Module):
         return loss
 ```
 
-# 感想
+## 感想
 初めての記事執筆でした。読みにくい箇所もあるかと思いますがご容赦下さい。  
 普段からCLIPに関してはOpenAIが提供している事前学習済みモデルを使用しているのですが、自分で実装しながら記事を書いてみると、TransformerやViT、CLIPへの理解がより深まりました。
 
-# 参考文献
+## 参考文献
 1. [話題のOpenAIの新たな画像分類モデルCLIPを論文から徹底解説！](https://deepsquare.jp/2021/01/clip-openai/)  
 2. [【論文解説】自然言語処理と画像処理の融合 – OpenAI 『CLIP』を理解する(1)](https://data-analytics.fun/2021/03/24/understanding-openai-clip/#toc3)  
 3. [Python(PyTorch)で自作して理解するTransformer](https://zenn.dev/yukiyada/articles/59f3b820c52571#3.6-encoder)  
