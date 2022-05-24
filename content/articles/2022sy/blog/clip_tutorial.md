@@ -1,8 +1,8 @@
 Title: CLIPを実装し理解する
 Date: 2022.05.24
-Modified: None
 Tags: Machine Learning
 Author: 池側
+
 
 ## 目的
 - CLIPを理解するため、[公式実装](https://github.com/openai)や他の記事を参考にしながらCLIPを自分で実装してみました。
