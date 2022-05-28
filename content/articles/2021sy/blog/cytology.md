@@ -29,3 +29,7 @@ Author: 安部
 新岡 宏彦, 廣川 満良, 鈴木 彩菜,[**安部 政俊**]({author}安部), 新井 悠介, 式見 彰浩, 長原 一, 宮内 昭
 “深層学習を用いた甲状腺細胞診自動診断システム (AI differential diagnosis for cytology of the thyroid:ADDICT)の開発とその現状”
 PHARM TECH JAPAN, Vol. 38, No. 2, pp. 87 - 94.
+
+廣川満良, 新岡宏彦, 鈴木彩菜, [**安部 政俊**]({author}安部), 式見彰浩, 長原一, 宮内昭
+AIを用いた甲状腺細胞診支援システム(AI differential diagnosis for cytology of the thyroid:ADDICT)の開発と利用 
+Journal of the Japanese Society of Clinical Cytology 61(3) 200-207 2022年6月

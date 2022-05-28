@@ -1,6 +1,6 @@
 Title: 実績
 Date: 2020.03.13
-Modified: 2022.03.06
+Modified: 2022.05.24
 Show_modified: True
 Summary: Python会の実績紹介
 
@@ -104,9 +104,13 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 ## 所属メンバー論文
 ### 2021
 - Inoue, M., Nakahama, T., [**Yamasaki, R.**]({author}山崎), Shibuya, T., … Morii, E., Kawahara, Y. An Aicardi-Goutières Syndrome–Causative Point Mutation in Adar1 Gene Invokes Multiorgan Inflammation and Late-Onset Encephalopathy in Mice. *J Immunol*. December 15, 2021, 207 (12) 3016-3027; [DOI:10.4049/jimmunol.2100526](https://doi.org/10.4049/jimmunol.2100526)
-- 新岡 宏彦, 廣川 満良, 鈴木 彩菜,[**安部 政俊**]({author}安部), 新井 悠介, 式見 彰浩, 長原 一, 宮内 昭
-“深層学習を用いた甲状腺細胞診自動診断システム (AI differential diagnosis for cytology of the thyroid:ADDICT)の開発とその現状”
-PHARM TECH JAPAN, Vol. 38, No. 2, pp. 87 - 94.
+
+- 廣川満良, 新岡宏彦, 鈴木彩菜, [**安部 政俊**]({author}安部), 式見彰浩, 長原一, 宮内昭
+AIを用いた甲状腺細胞診支援システム(AI differential diagnosis for cytology of the thyroid:ADDICT)の開発と利用 
+Journal of the Japanese Society of Clinical Cytology 61(3) 200-207 2022年6月
+
+>"Deep learning analysis of histologic images from intestinal specimen reveal "adipocyte shrinkage" and mast cell infiltration to predict post-operative Crohn's disease."　Hiroki Kiyokawa, [**Masatoshi Abe**]({author}安部), Takahiro Matsui, Masako Kurashige, Kenji Ohshima, Shinichiro Tahara, Satoshi Nojima, Takayuki Ogino, Yuki Sekido, Tsunekazu Mizushima, Eiichi Morii(https://doi.org/10.1016/j.ajpath.2022.03.006).
+
 ### 2020
 - [**Yasumizu, Y.**]({author}安水), Sakaue, S., Konuma, T., Suzuki, K., Matsuda, K., Murakami, Y., … Okada, Y. Genome-Wide Natural Selection Signatures Are Linked to Genetic Risk of Modern Phenotypes in the Japanese Population. Molecular Biology and Evolution. *Mol Biol Evol*. 2020;msaa005. [doi:10.1093/molbev/msaa005](https://doi.org/10.1093/molbev/msaa005). [(プレスリリース)](http://www.med.osaka-u.ac.jp/activities/results/2020year/okada2020-01)
 - Ohkura, N., [**Yasumizu, Y.**]({author}安水), Kitagawa, Y., … Okada, Y., Sakaguchi, Y. Regulatory T Cell-Specific Epigenomic Region Variants Are a Key Determinant of Susceptibility to Common Autoimmune Diseases. *Immunity*. VOLUME 52, ISSUE 6, P1119-1132.E4, JUNE 16, 2020. [doi:10.1016/j.immuni.2020.04.006](https://doi.org/10.1016/j.immuni.2020.04.006).
