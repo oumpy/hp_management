@@ -1,6 +1,6 @@
 Title: 英語のカルテデータのコンペに参加してみた(際の失敗と反省)
 Date: 2022.05.24
-Modified: 2022.05.24
+Modified: 2022.06.03
 Tags: Data Science Competition
 Author: Masayuki Sugihara
 Content:
