@@ -3,7 +3,6 @@ Date: 2022.05.24
 Modified: 2022.06.08
 Tags: Data Science Competition
 Author: Masayuki Sugihara
-Content:
 
 ## この記事の趣旨
 医学生かつ技術がある程度わかる人としてkaggleに関わる機会を得た。
@@ -16,7 +15,7 @@ Content:
 
 ## やったことと考えたこと
 1. 教師データと現状のモデルでの出力結果を眺める
-![fig1]({attach}./images/sugihara_figs/sugiharacompe_fig1.png)
+![fig1]({attach}images/sugihara_figs/sugiharacompe_fig1.png)
 上記のデータは上が教師データ、下が[uth-bert](https://github.com/noroka/uth_bert)を元に学習させて出力したデータになる。
 そもそも教師データ自体に何の法則性もなく年齢が含まれていたり性別が含まれていなかったりした。
 あまりにもランダムだと感じられたので、次の手に移行。
