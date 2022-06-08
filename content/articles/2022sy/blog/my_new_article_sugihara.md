@@ -15,7 +15,8 @@ Author: Masayuki Sugihara
 
 ## やったことと考えたこと
 1. 教師データと現状のモデルでの出力結果を眺める
-![fig1]({attach}images/sugihara_figs/sugiharacompe_fig1.png)
+![fig1](https://github.com/oumpy/hp_management/blob/article/my_new_article_sugihara/content/articles/2022sy/blog/images/sugihara_figs/sugiharacompe_fig1.png)
+![fig1]({attach}./images/sugihara_figs/sugiharacompe_fig1.png)
 上記のデータは上が教師データ、下が[uth-bert](https://github.com/noroka/uth_bert)を元に学習させて出力したデータになる。
 そもそも教師データ自体に何の法則性もなく年齢が含まれていたり性別が含まれていなかったりした。
 あまりにもランダムだと感じられたので、次の手に移行。
