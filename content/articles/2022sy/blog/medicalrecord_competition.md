@@ -2,7 +2,7 @@ Title: 英語のカルテデータのコンペに参加してみた(際の失敗
 Date: 2022.05.24
 Modified: 2022.06.08
 Tags: Data Science Competition
-Author: Masayuki Sugihara
+Author: 杉原
 
 ## この記事の趣旨
 医学生かつ技術がある程度わかる人としてkaggleに関わる機会を得た。
