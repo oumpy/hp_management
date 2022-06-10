@@ -15,7 +15,7 @@ Author: Masayuki Sugihara
 
 ## やったことと考えたこと
 1. 教師データと現状のモデルでの出力結果を眺める
-![fig1]({attach}./images/sugihara_figs/sugiharacompe_fig1.png)
+![fig1]({attach}./images/medicalrecord_competition_figs/sugiharacompe_fig1.png)
 上記のデータは上が教師データ、下が[uth-bert](https://github.com/noroka/uth_bert)を元に学習させて出力したデータになる。
 そもそも教師データ自体に何の法則性もなく、年齢が含まれていたり性別が含まれていなかったりした。
 あまりにもランダムだと感じられたので、次の手に移行。
@@ -25,20 +25,20 @@ Author: Masayuki Sugihara
 ここで取り入れた評価軸は２つ。
 患者が男性or女性
 患者の想定される疾患「1.循環器,2.消化器,3.婦人科,4.精神科,5.循環器と消化器,6.その他」
-![fig2]({attach}./images/sugihara_figs/sugiharacompe_fig2.png)
+![fig2]({attach}./images/medicalrecord_competition_figs/sugiharacompe_fig2.png)
 上記のように頻出単語にマークし、それを主訴により5種類の疾患分野に分類した。
 
 3. 教師データとテストデータを均等化した学習結果
 〜1.循環器,2.消化器,3.婦人科,4.精神科,5.循環器と消化器,6.その他が教師データとテストデータに占める割合を調整してみた〜
 
 分け方1:何も分けない(下記)
-![分け方1]({attach}./images/sugihara_figs/sugiharacompe_fig3.png)
+![分け方1]({attach}./images/medicalrecord_competition_figs/sugiharacompe_fig3.png)
 分け方2:男性or女性で分ける,疾患で分けない(下記)
-![分け方2]({attach}./images/sugihara_figs/sugiharacompe_fig4.png)
+![分け方2]({attach}./images/medicalrecord_competition_figs/sugiharacompe_fig4.png)
 分け方3:男性or女性で分けない,疾患で分ける(下記)
-![分け方3]({attach}./images/sugihara_figs/sugiharacompe_fig5.png)
+![分け方3]({attach}./images/medicalrecord_competition_figs/sugiharacompe_fig5.png)
 分け方4:男性or女性で分ける,疾患で分ける(下記)
-![分け方4]({attach}./images/sugihara_figs/sugiharacompe_fig6.png)
+![分け方4]({attach}./images/medicalrecord_competition_figs/sugiharacompe_fig6.png)
 →分け方4はf1値が最高！分けてよかったね。(めっちゃ微差だけど)
 
 4. 顛末
