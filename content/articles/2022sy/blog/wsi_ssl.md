@@ -54,7 +54,7 @@ WSIの扱いとして定番な「patch分割→patchの情報を集約」の手�
 #### 結果
 対照学習を使用しない従来手法より性能が向上した。
 
-<img src="{attach}./images/wsi_ssl_figs/histcode_fig1.png" alt="histcode_fig1" width="400px">
+<img src="{attach}./images/wsi_ssl_figs/histcode_fig1.png" alt="histcode_fig1" width="600px">
 attentionを可視化すると病理医と類似した領域に注目していることが確認された。
 
 <img src="{attach}./images/wsi_ssl_figs/histcode_fig2.png" alt="histcode_fig2" width="400px">
@@ -73,7 +73,7 @@ attentionをみることによりどこの組織に何の遺伝子が発現し�
 
 「patch分割→patchの情報を集約」において従来手法ではpatchの埋め込み作成だけに自己教師あり学習を使用していたが、埋め込みの集約の部分にも自己教師あり学習を使用した。自己教師あり学習の手法としてDINOを使用。
 
-<img src="{attach}./images/wsi_ssl_figs/ireko_wsi_fig1.png" alt="ireko_wsi_fig1" width="400px">
+<img src="{attach}./images/wsi_ssl_figs/ireko_wsi_fig1.png" alt="ireko_wsi_fig1" width="600px">
 
 ViTのpatch埋め込みにresnet50を使用したハイブリットversionよろしく上層のViTのpatch埋め込みに下層のViTを使用する。下層からDINOを学習していく。
 
@@ -84,9 +84,9 @@ ViTのpatch埋め込みにresnet50を使用したハイブリットversionよろ
 
 少アノテーションにて従来手法よりも高い性能を得た。
 
-<img src="{attach}./images/wsi_ssl_figs/ireko_wsi_fig2.png" alt="ireko_wsi_fig2" width="400px">
-<img src="{attach}./images/wsi_ssl_figs/ireko_wsi_fig3.png" alt="ireko_wsi_fig3" width="400px">
-最小patch単位のattentionではheadごと正常細胞、異型細胞、リンパ球、余白(内腔スペース、脂肪領域、エアポケット)といったミクロな特徴を捉えることができていた。また、集約層のattentionを見ると腫瘍の成長パターン、脂肪や間質領域への腫瘍浸潤、その他の組織-組織間の関係性を捉えることに成功していた。
+<img src="{attach}./images/wsi_ssl_figs/ireko_wsi_fig2.png" alt="ireko_wsi_fig2" width="600px">
+<img src="{attach}./images/wsi_ssl_figs/ireko_wsi_fig3.png" alt="ireko_wsi_fig3" width="600px">
+最小patch単位のattentionではheadごと正常細胞、異型細胞、リンパ球、余白(内腔スペース、脂肪領域、エアポケット)といったミクロな特徴を捉えることができていた。また、集約層のattentionを見ると腫瘍の成長パターン、脂肪や間質領域への腫瘍浸潤、その他の組織-組織間の関係性を捉えることに成功していた。<br>
 
 制約として、最後の集約層はスライド単位の学習をしているので十分なデータを集めるのは困難である点や、事前学習を入れ子で行うにはマシンパワーが必要な点が挙げられる。
 
