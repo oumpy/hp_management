@@ -12,9 +12,9 @@ Author: Python会
 
 ## 2022年度 ご寄付者様方 御芳名
 
-- <span class="donator-E4">清川 博貴様</span>
-- <span class="donator-E4">金子 剛士様</span>
-- <span class="donator-E4">淡田 公久様</span>
+- <span class="donator-E4">清川 博貴 様</span>
+- <span class="donator-E4">金子 剛士 様</span>
+- <span class="donator-E4">淡田 公久 様</span>
 - <span class="donator-E4">多田 智 様</span>
 - <span class="donator-E4">佐藤 淳哉 様</span>
 - <span class="donator-E4">安水 良明 様</span>
