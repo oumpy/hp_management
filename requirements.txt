@@ -5,7 +5,7 @@ IPython
 beautifulsoup4
 requests
 libsass
-pelican-jupyter
+pelican-liquid-tags
 pelican-sitemap
 pelican-render-math
 pelican-tag-cloud
