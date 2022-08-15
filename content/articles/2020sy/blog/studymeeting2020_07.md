@@ -4,3 +4,5 @@ Modified: 2020.07.02
 Tags: 勉強会, Machine Learning
 Author: 小川
 Subcells: [1, None]
+
+{% notebook studymeeting2020_07.ipynb %}
