@@ -60,10 +60,10 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
-MARKUP = ['md', 'ipynb']
+MARKUP = ('md',)
 
 PLUGIN_PATHS = ['./plugins', './myplugins']
-from pelican_jupyter import markup as nb_markup
+from pelican.plugins import liquid_tags
 from pelican.plugins import render_math, tag_cloud, related_posts
 from pelican.plugins import simple_footnotes
 from pelican.plugins import neighbors
@@ -75,7 +75,7 @@ from myplugins import (
     skiptags,
 )
 PLUGINS = [
-    nb_markup,
+    liquid_tags,
     render_math,
     tag_cloud,
     related_posts,
@@ -94,6 +94,10 @@ PLUGINS = [
     neighbors,
 ]
 IGNORE_FILES = [".ipynb_checkpoints"]
+LIQUID_TAGS = ["notebook"]
+LIQUID_CONFIGS = (("IPYNB_FIX_CSS", "False", ""), 
+                  ("IPYNB_SKIP_CSS", "False", ""), 
+                  ("IPYNB_EXPORT_TEMPLATE", "base", ""),)
 
 RELATED_POSTS_MAX = 3
 
