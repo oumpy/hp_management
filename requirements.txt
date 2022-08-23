@@ -1,6 +1,6 @@
 pelican
 Markdown
-nbconvert==5.6.1
+nbconvert==6.5.1
 IPython
 beautifulsoup4
 requests
