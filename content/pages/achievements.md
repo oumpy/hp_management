@@ -1,8 +1,8 @@
 Title: 実績
 Date: 2020.03.13
-Modified: 2022.05.24
+Modified: 2022.09.08
 Show_modified: True
-Summary: Python会の実績紹介
+Summary: 情報医科学研究会の実績紹介
 
 ## 勉強会・成果発表活動
 ### 会内勉強会
@@ -35,6 +35,13 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 ### 機械学習コンペティション
 - Kaggle Master：
 [秋山理]({author}秋山) ([OsciiArt](https://www.kaggle.com/osciiart)), [佐藤淳哉]({author}佐藤) ([Jsato](https://www.kaggle.com/junyasato))
+- Kaggle Master：
+
+[安部政俊]({author}安部) ([patriot](https://www.kaggle.com/abebe9849))
+
+#### 2022
+- [Feedback Prize - Evaluating Student Writing](https://www.kaggle.com/competitions/feedback-prize-2021) (安部、チーム参加)([patriot](https://www.kaggle.com/abebe9849)) 22位/2058チーム：米国の学生のレポートに対して単語ごとに主張/根拠/反論/結論といったタグつけを行う
+
 
 #### 2021
 - [SETI Breakthrough Listen - E.T. Signal Research](https://www.kaggle.com/c/seti-breakthrough-listen) (安部、チーム参加)([patriot](https://www.kaggle.com/abebe9849)) 7位/768チーム：スペクトログラム上の異常信号の検出
