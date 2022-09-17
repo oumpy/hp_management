@@ -1,6 +1,6 @@
 Title: Python会にご寄付を頂いた方々
 Date: 2020.07.28
-Modified: 2021.05.06
+Modified: 2022.06.28
 Author: Python会
 
 各ページ右下「会へのご支援」を通じて、次に掲げる方々（正会員除く）より、貴重なご寄付を頂きました。
@@ -12,7 +12,13 @@ Author: Python会
 
 ## 2022年度 ご寄付者様方 御芳名
 
+- <span class="donator-E4">西森 誠 様</span>
+- <span class="donator-E4">清川 博貴 様</span>
+- <span class="donator-E4">金子 剛士 様</span>
+- <span class="donator-E4">淡田 公久 様</span>
 - <span class="donator-E4">多田 智 様</span>
+- <span class="donator-E4">佐藤 淳哉 様</span>
+- <span class="donator-E4">安水 良明 様</span>
 
 ## 2021年度 ご寄付者様方 御芳名
 
