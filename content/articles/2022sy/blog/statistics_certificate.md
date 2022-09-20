@@ -1,6 +1,5 @@
 Title: 統計検定準1級 合格体験記
 Date: 2022.09.17
-Modified: None
 Tags: 検定試験
 Author: 池側
 
