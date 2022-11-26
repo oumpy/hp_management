@@ -1,12 +1,12 @@
 Title: 実績
-Date: 2020.03.13
-Modified: 2022.09.08
+Date: 2022.11.26
+Modified: 2022.11.26
 Show_modified: True
 Summary: 情報医科学研究会の実績紹介
 
 ## 勉強会・成果発表活動
 ### 会内勉強会
-定期的な機械学習、統計学、生物学、bioinformaticsの勉強を週1回程度開催。半年に一度程度は各自の研究の発表会も自主的に開催し、研究室を超えた意見交換を行っています。
+定期的な機械学習、統計学、生物学、bioinformaticsの勉強を不定期で開催。半年に一度程度は各自の研究の発表会も自主的に開催し、研究室を超えた意見交換を行っています。
 
 #### バイオインフォマティクス技術者認定試験
 - 2019年度 首席合格 ([菅波]({author}菅波))、次席合格 ([小川]({author}小川))
@@ -23,6 +23,8 @@ Summary: 情報医科学研究会の実績紹介
 DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方々とも交流しました([平岡]({author}平岡)・[安水]({author}安水))。
 次年度も数人で一週間の遺伝研合宿を行う予定です。
 ### ワークショップ等の企画
+- 2022.03.19-21 全国医療AIコンテスト（OCUMIT(大阪公立大学)との[共催](https://medical-ai-contest.org/)）
+- 2021.03.26-27 全国医療AIコンテスト（東京医科歯科大学 医療IT数学同好会 T/Tとの[共催](https://zenn.dev/tpt_ochanomizu/articles/dad722d9410f0a)）
 - 2019.12.20-21 奈良県立医科大学
 - 2019.10.20 「生命科学者のためのDr.Bonoデータ解析実践道場」読書会
 - 2019.09.28 全国医療AIコンテスト（AIMSとの共催）
@@ -34,12 +36,11 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 個人またはPython会内のチームで各種コンペティションに参加、数々の入賞実績。
 ### 機械学習コンペティション
 - Kaggle Master：
-[秋山理]({author}秋山) ([OsciiArt](https://www.kaggle.com/osciiart)), [佐藤淳哉]({author}佐藤) ([Jsato](https://www.kaggle.com/junyasato))
-- Kaggle Master：
-
-[安部政俊]({author}安部) ([patriot](https://www.kaggle.com/abebe9849))
+[秋山理]({author}秋山) ([OsciiArt](https://www.kaggle.com/osciiart)), [佐藤淳哉]({author}佐藤) ([Jsato](https://www.kaggle.com/junyasato)), [安部政俊]({author}安部) ([patriot](https://www.kaggle.com/abebe9849))
 
 #### 2022
+- [RSNA 2022 Cervical Spine Fracture Detection](https://www.kaggle.com/competitions/rsna-2022-cervical-spine-fracture-detection) (安部、チーム参加)([patriot](https://www.kaggle.com/abebe9849)) 30位/883チーム：頚部CTに対して各頚椎での骨折の有無と患者として頚椎骨折患者かを当てるマルチラベル分類
+
 - [Feedback Prize - Evaluating Student Writing](https://www.kaggle.com/competitions/feedback-prize-2021) (安部、チーム参加)([patriot](https://www.kaggle.com/abebe9849)) 22位/2058チーム：米国の学生のレポートに対して単語ごとに主張/根拠/反論/結論といったタグつけを行う
 
 
@@ -62,7 +63,8 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 
 ### 競技プログラミング
 - [AtCoder第1回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2019-final)出場 ([小川]({author}小川))
-- AtCoderランク 黄1名、青4名、水色2名など。
+- [AtCoder第3回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2022-final)出場 ([富本]({author}富本))
+- AtCoderランク 橙1名、青4名、水色2名など。
 
 ## 研究開発活動
 ### RNA-seq pipeline ikra ver1.0をリリース
@@ -108,8 +110,16 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 - [(株)MICIN](https://micin.jp) 短期インターン
 医療AIの市場調査と実用例の論文サーベイ　2021/12~2022/02 [安部]({author}安部)
 
+
 ## 所属メンバー論文
+
+### 2022
+
+- Nakano, T., & [**Yamamoto, T.**]({author}山本) (2022). You trust a face like yours. Philippine Social Sciences and Humanities Review. 
+- Kurebayashi, W., [**Yamamoto, T.**]({author}山本), Shirasaka, S., & Nakao, H. (2022). Phase reduction of strongly coupled limit-cycle oscillators. Phys. Rev. Research.
+
 ### 2021
+- #Kim JI, #Nakahama T, [**Yamasaki R**]({author}山崎), Costa Cruz PH, Vongpipatana T, Inoue M, Kanou N, Xing Y, Todo H, Shibuya T, Kato Y, Kawahara Y. RNA editing at a limited number of sites is sufficient to prevent MDA5 activation in the mouse brain. PLOS Genetics, 17(5): e1009516, 2021. (#Co-first authors)
 - Inoue, M., Nakahama, T., [**Yamasaki, R.**]({author}山崎), Shibuya, T., … Morii, E., Kawahara, Y. An Aicardi-Goutières Syndrome–Causative Point Mutation in Adar1 Gene Invokes Multiorgan Inflammation and Late-Onset Encephalopathy in Mice. *J Immunol*. December 15, 2021, 207 (12) 3016-3027; [DOI:10.4049/jimmunol.2100526](https://doi.org/10.4049/jimmunol.2100526)
 
 - 廣川満良, 新岡宏彦, 鈴木彩菜, [**安部 政俊**]({author}安部), 式見彰浩, 長原一, 宮内昭
