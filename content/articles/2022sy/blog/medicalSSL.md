@@ -4,8 +4,7 @@ Tags: Machine Learning,論文まとめ
 Author: 安部
 
 
-
-[% embed src="{attach}./attach/medicalSSL/medicalSSSL202301.pdf" %]
+[% embed src="{attach}./attach/medicalSSL/medicalSSL202301.pdf" %]
 
 休み中に読んだ自己教師あり学習の医療画像への応用について３つまとめました。<br>
 APTOS2019で検証するときはkaggle上でsubmitしてスコアを出してほしいなと個人的には思いました。<br>
