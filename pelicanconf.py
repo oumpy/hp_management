@@ -98,6 +98,7 @@ LIQUID_TAGS = ["notebook"]
 LIQUID_CONFIGS = (("IPYNB_FIX_CSS", "False", ""), 
                   ("IPYNB_SKIP_CSS", "False", ""), 
                   ("IPYNB_EXPORT_TEMPLATE", "base", ""),)
+NOTEBOOK_DIR = './'
 
 RELATED_POSTS_MAX = 3
 
