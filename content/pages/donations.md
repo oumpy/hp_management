@@ -23,7 +23,6 @@ Author: Python会
 - <span class="donator-E4">新井 悠介 様</span>
 - <span class="donator-E4">田中 聡司 様</span>
 - <span class="donator-E4">菅波 修司 様</span> 
-- <span class="donator-E4">小川 軌明 様</span> 
 - <span class="donator-E4">廣瀬 遙香 様</span> 
 
 ## 2021年度 ご寄付者様方 御芳名
