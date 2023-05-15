@@ -18,7 +18,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.x' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
@@ -28,7 +28,7 @@ jobs:
         python -m pip install --upgrade pip
 
     - name: Checkout master branch
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         submodules: true
 
