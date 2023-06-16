@@ -1,6 +1,6 @@
 Title: 医学部公認団体として正式承認されました
 Date: 2020.07.06
-Modified: 2020.07.08
+Modified: 2023.06.16
 Tags: News
 Author: 情報医科学研究会
 

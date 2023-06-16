@@ -1,6 +1,6 @@
 Title: 医学部公認団体申請を行いました
 Date: 2020.05.15
-Modified: 2020.05.15
+Modified: 2023.06.16
 Tags: News
 Author: 情報医科学研究会
 

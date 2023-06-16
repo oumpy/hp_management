@@ -1,5 +1,6 @@
 Title: 株式会社GramEyeが資金調達を実施
 Date: 2022.04.04
+Modified: 2023.06.16
 Tags: News
 Author: 情報医科学研究会
 

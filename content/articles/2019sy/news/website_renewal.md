@@ -1,6 +1,6 @@
 Title: Webサイトをリニューアルしました！
 Date: 2020.03.24
-Modified: 2020.03.29
+Modified: 2023.06.16
 Tags: News
 Author: 情報医科学研究会
 

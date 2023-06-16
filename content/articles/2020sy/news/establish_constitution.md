@@ -1,6 +1,6 @@
 Title: 会規約を制定しました
 Date: 2020.04.01
-Modified: 2020.05.27
+Modified: 2023.06.16
 Tags: News
 Author: 情報医科学研究会
 

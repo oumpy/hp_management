@@ -1,6 +1,6 @@
 Title: 医学科学生用計算機の管理委員長変更
 Date: 2021.09.22
-Modified: 2021.09.22
+Modified: 2023.06.16
 Tags: News
 Author: 情報医科学研究会
 

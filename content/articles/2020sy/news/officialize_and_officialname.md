@@ -1,6 +1,6 @@
 Title: 医学部公認と正式名称の検討について
 Date: 2020.05.29
-Modified: 2020.05.30
+Modified: 2023.06.16
 Tags: News
 Author: 情報医科学研究会
 

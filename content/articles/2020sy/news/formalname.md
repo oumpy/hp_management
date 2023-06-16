@@ -1,6 +1,6 @@
 Title: 会正式名称の制定等について
 Date: 2020.06.25
-Modified: 2020.06.25
+Modified: 2023.06.16
 Tags: News
 Author: 情報医科学研究会
 
