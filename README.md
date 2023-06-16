@@ -1,6 +1,6 @@
 # [阪医Python会HP](https://oumpy.github.io/)
 
-メンテナ (HP係) : ldwic03、vwxyz
+メンテナ (HP係) : 名倉、島田
 システム作成 : 平岡悠、AtamaokaC、takyamamoto
 
 ## 全体の仕組み
