@@ -2,7 +2,7 @@ Title: 会規約を制定しました
 Date: 2020.04.01
 Modified: 2020.05.27
 Tags: News
-Author: Python会
+Author: 情報医科学研究会
 
 このたび本会は、
 [大阪大学医学部Python会規約]({filename}/pages/constitution.md)
