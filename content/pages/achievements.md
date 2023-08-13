@@ -2,7 +2,7 @@ Title: 実績
 Date: 2022.11.26
 Modified: 2022.11.26
 Show_modified: True
-Summary: 情報医科学研究会の実績紹介
+Summary: 実績紹介
 
 ## 勉強会・成果発表活動
 ### 会内勉強会
