@@ -24,8 +24,6 @@ Author: 情報医科学研究会
 - <span class="donator-E4">田中 聡司 様</span>
 - <span class="donator-E4">菅波 修司 様</span> 
 - <span class="donator-E4">廣瀬 遙香 様</span> 
-- <span class="donator-E4">宮崎 友希 様</span>
-- <span class="donator-E4">安部 政俊 様</span> 
 
 ## 2021年度 ご寄付者様方 御芳名
 
