@@ -1,8 +1,8 @@
 Title: 実績
 Date: 2022.11.26
-Modified: 2023.06.16
+Modified: 2022.11.26
 Show_modified: True
-Summary: 大阪大学医学部情報医科学研究会（通称：Python会）の実績紹介
+Summary: 情報医科学研究会の実績紹介
 
 ## 勉強会・成果発表活動
 ### 会内勉強会
@@ -33,7 +33,7 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 - 2019.06.14 微生物研究所 病原体同定研究グループ（中村研）と共同ワークショップを開催。 (<https://connpass.com/event/124354/>)
 
 ## コンペティション実績
-個人または会内のチームで各種コンペティションに参加、数々の入賞実績。
+個人またはPython会内のチームで各種コンペティションに参加、数々の入賞実績。
 ### 機械学習コンペティション
 - Kaggle Master：
 [秋山理]({author}秋山) ([OsciiArt](https://www.kaggle.com/osciiart)), [佐藤淳哉]({author}佐藤) ([Jsato](https://www.kaggle.com/junyasato)), [安部政俊]({author}安部) ([patriot](https://www.kaggle.com/abebe9849))
@@ -94,7 +94,7 @@ RNAseq解析パイプライン「ikra」の開発及び、「ikra」を用いた
 
 ### GramEye：AIによるグラム染色顕微鏡画像解析を自動化
 [株式会社GramEye](https://grameye.com/) はディープラーニングでグラム染色を自動化する医療機器の研究・開発を主とする企業であり、「AIを使い“薬剤耐性菌”に取り組む」ことをミッションに掲げています。
-代表取締役社長を務める[**平岡悠**]({author}平岡)は本会員として大阪大学医学部在学中に株式会社GramEyeを起業しました。
+代表取締役社長を務める[**平岡悠**]({author}平岡)は本会正会員として大阪大学医学部在学中に株式会社GramEyeを起業しました。
 
 ### 外部との共同研究
 Twitterや実験医学誌面の反響から、様々な共同研究が始まっています。

@@ -1,8 +1,8 @@
 Title: 医学科学生用計算機の管理委員長変更
 Date: 2021.09.22
-Modified: 2023.06.16
+Modified: 2021.09.22
 Tags: News
-Author: 情報医科学研究会
+Author: Python会
 
 このたび、[医学科学生用計算機]({filename}/pages/student_server.md)の管理委員長が以下のとおり変更となりましたのでお知らせいたします。
 

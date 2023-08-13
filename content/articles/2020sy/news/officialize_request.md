@@ -1,8 +1,8 @@
 Title: 医学部公認団体申請を行いました
 Date: 2020.05.15
-Modified: 2023.06.16
+Modified: 2020.05.15
 Tags: News
-Author: 情報医科学研究会
+Author: Python会
 
 大阪大学医学部に、学部公認学生団体となるための申請書類を提出しました。
 
