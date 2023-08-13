@@ -16,12 +16,12 @@ SOURCEREPOSITORY_NAME = 'hp_management'
 
 # Author
 AUTHOR = 'Python会'
-SITENAME = '大阪大学医学部 Python会 <span style="font-size:smaller;">(情報医科学研究会)</span>'
+SITENAME = '大阪大学医学部 Python会'
 SITETAG = striptags(SITENAME)
 SITEURL = ''
 SITESUBTITLE ='Now is better than never.'
 COPYRIGHT_YEAR = datetime.date.today().year
-COPYRIGHT_AUTHOR = '大阪大学医学部 情報医科学研究会 (Python会)'
+COPYRIGHT_AUTHOR = '大阪大学医学部Python会'
 
 LOGOIMG = 'images/logo.jpg'
 # TOP_LOGO_IMAGE = LOGOIMG
