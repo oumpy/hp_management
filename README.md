@@ -1,4 +1,4 @@
-# [阪医情報医科学研究会(通称:python会)HP](https://oumpy.github.io/)
+# [阪医Python会HP](https://oumpy.github.io/)
 
 メンテナ (HP係) : 名倉、島田
 システム作成 : 平岡悠、AtamaokaC、takyamamoto
