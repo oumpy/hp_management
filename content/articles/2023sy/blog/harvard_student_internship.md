@@ -15,11 +15,11 @@ Author: 池側佑哉
 
 ラボはこんな感じの建物でした。Hyman研に所属する研究グループがこの建物の1階分を丸々使用しており、研究室の規模の大きさは規格外でした。
 
-<img src="{attach}.images/harvard_student_intern/lab_building.JPG" alt="lab building" width="600px">
+<img src="{attach}./images/harvard_student_internship_figs/lab_building.jpeg" alt="lab building" width="600">
 
 ボストンは世界でも有名な大学が多数集まっている学術都市です。ハーバード大学以外にも、MITやタフツ大学など有名大学が集まっています。Charles riverという巨大な川が街のそばを流れていたり、Boston commonという大きな公園があったりと非常に自然豊かな街でもあります。アメリカ独立戦争の舞台となったこともあり、歴史的な建造物や街並みが残る街でもありました。ただ、留学した時期が2月ということで非常に寒かったです。 
 
-<img src="{attach}.images/harvard_student_intern/charles_river.jpg" alt="charles_river" width="600px">
+<img src="{attach}./images/harvard_student_internship_figs/charles_river.jpeg" alt="charles_river" width="600">
 
 ### 研究生活について
 平日は毎日9:00~17:00で研究を行っていました。コアタイムは特になかったので、比較的自由に過ごしていました。  
@@ -39,11 +39,11 @@ Author: 池側佑哉
 土日は研究室が休みだったので、観光したりラボで知り合った人とご飯を食べたりしていました。  
 ボストンは東海岸に面しており、港があります。休みの日にはクルーズツアーに参加しました。また、海が近いということもあり、食べ物としてはロブスターやクラムチャウダーも有名です。研究室で知り合った先生にロブスターのレストランに連れて行ってもらったりしました。
 
-<img src="{attach}.images/harvard_student_intern/robstar.jpg" alt="robstar" width="600px">
+<img src="{attach}./images/harvard_student_internship_figs/robster.jpeg" alt="robster" width="600">
 
 ニューヨークにも遊びに行きました。ボストンとニューヨークは非常に近く、amtrak（日本の新幹線のようなもの）を使えば4時間ぐらいで行くことが出来ます。ニューヨークと言えばブロードウェイ！ということで、アラジンを見ました。初めてみましたが、とにかく迫力がすごかったです。日本でもブロードウェイミュージカルが公演されているそうですが、劇への没入感や観客との一体感は本場ならではだと思います。 
 
-<img src="{attach}.images/harvard_student_intern/broadway.JPG" alt="broadway" width="600px">
+<img src="{attach}./images/harvard_student_internship_figs/broadway.jpeg" alt="broadway" width="600">
 
 ## 留学してよかったこと
 
