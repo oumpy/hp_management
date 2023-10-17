@@ -162,15 +162,15 @@ VISA取得の面接費用として約2万円、SEVIS登録費用で約3万円か
 自分もその1人だったので、留学に向けて給付型奨学金に応募しました。  
 私は運よく以下の2つの学内奨学金に採択してもらうことが出来ました。
 
-1. 岸本基金奨学助成金（https://www.ichou.or.jp/kishimoto/01/）  
+1. 岸本基金奨学助成金（<https://www.ichou.or.jp/kishimoto/01/>）  
 1年で120万円を支給してもらえました。
 各学年で2名程度しか採択されないため競争率は高いですが、ダメ元でも応募してみる価値はあると思います。
-2. 岸本国際交流奨学金（https://www.med.osaka-u.ac.jp/education/students/format/assist-2）  
+2. 岸本国際交流奨学金（<https://www.med.osaka-u.ac.jp/education/students/format/assist-2>）  
 留学に際して最大20万円支給してもらえる奨学金。
 家賃のみ自己負担だったので15万円支給してもらえました。
 
 私は上の2つの奨学金で留学費用を工面できそうだったので申し込みませんでしたが、その他にも奨学生を募集している民間団体もたくさんあるので、調べてみるといいと思います。  
-参考サイト：https://tobitate-mext.jasso.go.jp/scholarshipsearch/
+参考サイト：<https://tobitate-mext.jasso.go.jp/scholarshipsearch/>
 
 
 ### VISA取得について
