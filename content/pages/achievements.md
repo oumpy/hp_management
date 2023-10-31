@@ -62,8 +62,9 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 
 
 ### 競技プログラミング
-- [AtCoder第1回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2019-final)出場 ([小川]({author}小川))
+- [AtCoder第4回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2022-final) 全国6位 ([富本]({author}富本))
 - [AtCoder第3回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2022-final)出場 ([富本]({author}富本))
+- [AtCoder第1回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2019-final)出場 ([小川]({author}小川))
 - AtCoderランク 橙1名、青4名、水色2名など。
 
 ## 研究開発活動
