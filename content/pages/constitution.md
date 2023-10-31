@@ -1,6 +1,6 @@
 Title: 大阪大学医学部Python会規約 
 Date: 2020.04.01
-Modified: 2020.04.01
+Modified: 2023.11.01
 Summary: 会規約の全文 (第1条〜第11条)
 
 ## 第1条（名称）<span id="article-1"></span>
