@@ -1,6 +1,6 @@
 Title: 実績
 Date: 2022.11.26
-Modified: 2022.11.26
+Modified: 2023.11.10
 Show_modified: True
 Summary: 情報医科学研究会の実績紹介
 
@@ -105,10 +105,7 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 ### 企業インターンシップ参加
 - [(株) Preferred Networks](https://preferred.jp) 夏季インターン  
 機械学習の医療応用に関する研究開発。 (2018 [秋山]({author}秋山)、2019 [小川]({author}小川))
-- [(株)エクサウィザーズ](https://exawizards.com) サマーインターン
-2021 [安部]({author}安部)、[インターンの内容](https://note.exawizards.com/n/n1463d917e202?gs=76bb4e741265)
-- [(株)MICIN](https://micin.jp) 短期インターン
-医療AIの市場調査と実用例の論文サーベイ　2021/12~2022/02 [安部]({author}安部)
+
 
 
 ## 所属メンバー論文
@@ -122,11 +119,6 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 - #Kim JI, #Nakahama T, [**Yamasaki R**]({author}山崎), Costa Cruz PH, Vongpipatana T, Inoue M, Kanou N, Xing Y, Todo H, Shibuya T, Kato Y, Kawahara Y. RNA editing at a limited number of sites is sufficient to prevent MDA5 activation in the mouse brain. PLOS Genetics, 17(5): e1009516, 2021. (#Co-first authors)
 - Inoue, M., Nakahama, T., [**Yamasaki, R.**]({author}山崎), Shibuya, T., … Morii, E., Kawahara, Y. An Aicardi-Goutières Syndrome–Causative Point Mutation in Adar1 Gene Invokes Multiorgan Inflammation and Late-Onset Encephalopathy in Mice. *J Immunol*. December 15, 2021, 207 (12) 3016-3027; [DOI:10.4049/jimmunol.2100526](https://doi.org/10.4049/jimmunol.2100526)
 
-- 廣川満良, 新岡宏彦, 鈴木彩菜, [**安部 政俊**]({author}安部), 式見彰浩, 長原一, 宮内昭
-AIを用いた甲状腺細胞診支援システム(AI differential diagnosis for cytology of the thyroid:ADDICT)の開発と利用 
-Journal of the Japanese Society of Clinical Cytology 61(3) 200-207 2022年6月
-
->"Deep learning analysis of histologic images from intestinal specimen reveal "adipocyte shrinkage" and mast cell infiltration to predict post-operative Crohn's disease."　Hiroki Kiyokawa, [**Masatoshi Abe**]({author}安部), Takahiro Matsui, Masako Kurashige, Kenji Ohshima, Shinichiro Tahara, Satoshi Nojima, Takayuki Ogino, Yuki Sekido, Tsunekazu Mizushima, Eiichi Morii(https://doi.org/10.1016/j.ajpath.2022.03.006).
 
 ### 2020
 - [**Yasumizu, Y.**]({author}安水), Sakaue, S., Konuma, T., Suzuki, K., Matsuda, K., Murakami, Y., … Okada, Y. Genome-Wide Natural Selection Signatures Are Linked to Genetic Risk of Modern Phenotypes in the Japanese Population. Molecular Biology and Evolution. *Mol Biol Evol*. 2020;msaa005. [doi:10.1093/molbev/msaa005](https://doi.org/10.1093/molbev/msaa005). [(プレスリリース)](http://www.med.osaka-u.ac.jp/activities/results/2020year/okada2020-01)

@@ -1,6 +1,6 @@
 Title: 医学科学生用計算機 (計算サーバ)
 Date: 2020.08.21
-Modified: 2022.09.08
+Modified: 2023.11.10
 Show_modified: True
 
 大阪大学医学部医学科には学生専用の計算サーバがあり、管理運用を情報医科学研究会の一部会員が担当しています
@@ -49,11 +49,7 @@ google docsまたはword　と　pdfや紙、写真など編集不可能な媒�
 - RStudioServer上でのsingle-cell解析ツールSeuratの使用
 - コマンドラインを用いたバイオインフォマティクス解析
 - scanpyの試用
-- 自主研究症例事業での緑内障判別モデルの開発
-[緑内障AI]({filename}/articles/2021sy/blog/jisyukenkyu.md)
 - RNA配列解析ツールのデバッグ・移植に関する実験的計算
 - 細胞培養実験データ解析に関する計算
-- jetson を用いたマウス姿勢推定実験系の開発
 - RStudioServer上でバイオインフォマティックス解析
 - slack用botの運用
-- 甲状腺細胞診画像に対する自己教師あり学習DINOの適応
