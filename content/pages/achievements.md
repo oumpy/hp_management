@@ -1,6 +1,6 @@
 Title: 実績
 Date: 2022.11.26
-Modified: 2022.11.26
+Modified: 2023.11.10
 Show_modified: True
 Summary: 実績紹介
 
@@ -127,10 +127,6 @@ AIを用いた甲状腺細胞診支援システム(AI differential diagnosis for
 Journal of the Japanese Society of Clinical Cytology 61(3) 200-207 2022年6月
 
 >"Deep learning analysis of histologic images from intestinal specimen reveal "adipocyte shrinkage" and mast cell infiltration to predict post-operative Crohn's disease."　Hiroki Kiyokawa, [**Masatoshi Abe**]({author}安部), Takahiro Matsui, Masako Kurashige, Kenji Ohshima, Shinichiro Tahara, Satoshi Nojima, Takayuki Ogino, Yuki Sekido, Tsunekazu Mizushima, Eiichi Morii(https://doi.org/10.1016/j.ajpath.2022.03.006).
-
-### 2020
-- [**Yasumizu, Y.**]({author}安水), Sakaue, S., Konuma, T., Suzuki, K., Matsuda, K., Murakami, Y., … Okada, Y. Genome-Wide Natural Selection Signatures Are Linked to Genetic Risk of Modern Phenotypes in the Japanese Population. Molecular Biology and Evolution. *Mol Biol Evol*. 2020;msaa005. [doi:10.1093/molbev/msaa005](https://doi.org/10.1093/molbev/msaa005). [(プレスリリース)](http://www.med.osaka-u.ac.jp/activities/results/2020year/okada2020-01)
-- Ohkura, N., [**Yasumizu, Y.**]({author}安水), Kitagawa, Y., … Okada, Y., Sakaguchi, Y. Regulatory T Cell-Specific Epigenomic Region Variants Are a Key Determinant of Susceptibility to Common Autoimmune Diseases. *Immunity*. VOLUME 52, ISSUE 6, P1119-1132.E4, JUNE 16, 2020. [doi:10.1016/j.immuni.2020.04.006](https://doi.org/10.1016/j.immuni.2020.04.006).
 
 ### 2019
 - Matsumoto, T., Niioka, H., Kumamoto, Y., [**Sato, J.**]({author}佐藤), et al. Deep-UV excitation fluorescence microscopy for detection of lymph node metastasis using deep neural network. *Sci Rep*. 2019;9(1):16912. [doi:10.1038/s41598-019-53405-w](https://www.nature.com/articles/s41598-019-53405-w).
