@@ -1,6 +1,6 @@
 Title: 実績
 Date: 2022.11.26
-Modified: 2023.11.10
+Modified: 2023.11.14
 Show_modified: True
 Summary: 実績紹介
 
@@ -113,8 +113,13 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 
 ## 所属メンバー論文
 
-### 2022
+### 2023
+- <span id="paper-2023-ogawa-1"></span>Umeki, Y., [**Ogawa, N.**]({author}小川), Uegaki, Y., Saga, K., Kaneda, Y., & Nimura, K. (2023).
+DNA barcoding and gene expression recording reveal the presence of cancer cells with unique properties during tumor progression.
+*Cellular and Molecular Life Sciences*, 80(1), 17.
+([DOI: 10.1007/s00018-022-04640-4](https://doi.org/10.1007/s00018-022-04640-4))
 
+### 2022
 - Nakano, T., & [**Yamamoto, T.**]({author}山本) (2022). You trust a face like yours. Philippine Social Sciences and Humanities Review. 
 - Kurebayashi, W., [**Yamamoto, T.**]({author}山本), Shirasaka, S., & Nakao, H. (2022). Phase reduction of strongly coupled limit-cycle oscillators. Phys. Rev. Research.
 
