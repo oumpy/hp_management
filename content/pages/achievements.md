@@ -119,7 +119,7 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 - Kurebayashi, W., [**Yamamoto, T.**]({author}山本), Shirasaka, S., & Nakao, H. (2022). Phase reduction of strongly coupled limit-cycle oscillators. Phys. Rev. Research.
 
 ### 2021
-- #Kim JI, #Nakahama T, [**Yamasaki R**]({author}山崎), Costa Cruz PH, Vongpipatana T, Inoue M, Kanou N, Xing Y, Todo H, Shibuya T, Kato Y, Kawahara Y. RNA editing at a limited number of sites is sufficient to prevent MDA5 activation in the mouse brain. PLOS Genetics, 17(5): e1009516, 2021. (#Co-first authors)
+- \#Kim JI, \#Nakahama T, [**Yamasaki R**]({author}山崎), Costa Cruz PH, Vongpipatana T, Inoue M, Kanou N, Xing Y, Todo H, Shibuya T, Kato Y, Kawahara Y. RNA editing at a limited number of sites is sufficient to prevent MDA5 activation in the mouse brain. PLOS Genetics, 17(5): e1009516, 2021. (\#Co-first authors)
 - Inoue, M., Nakahama, T., [**Yamasaki, R.**]({author}山崎), Shibuya, T., … Morii, E., Kawahara, Y. An Aicardi-Goutières Syndrome–Causative Point Mutation in Adar1 Gene Invokes Multiorgan Inflammation and Late-Onset Encephalopathy in Mice. *J Immunol*. December 15, 2021, 207 (12) 3016-3027; [DOI:10.4049/jimmunol.2100526](https://doi.org/10.4049/jimmunol.2100526)
 
 - 廣川満良, 新岡宏彦, 鈴木彩菜, [**安部 政俊**]({author}安部), 式見彰浩, 長原一, 宮内昭
