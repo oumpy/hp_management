@@ -1,9 +1,10 @@
 Title: 医学科学生用計算機 (計算サーバ)
 Date: 2020.08.21
-Modified: 2023.11.01
+Modified: 2023.11.14
 Show_modified: True
 
 ## 過去の利用状況
+- [癌細胞の遺伝子発現履歴実験データの解析]({filename}/pages/achievements.md#paper-2023-ogawa-1)
 - バイオインフォマティックス用ツール　ikra　のアップデート
 [ikra v2.0]({filename}/articles/2021sy/blog/ikra_v2.md)
 - RStudioServer上でのsingle-cell解析ツールSeuratの使用
