@@ -15,13 +15,13 @@ GITHUB_ACCOUNT = 'oumpy'
 SOURCEREPOSITORY_NAME = 'hp_management'
 
 # Author
-AUTHOR = '情報医科学研究会'
-SITENAME = '大阪大学医学部 情報医科学研究会 <span style="font-size:smaller;">（通称：Python会）</span>'
+AUTHOR = 'Python会'
+SITENAME = '大阪大学医学部 Python会'
 SITETAG = striptags(SITENAME)
 SITEURL = ''
 SITESUBTITLE ='Now is better than never.'
 COPYRIGHT_YEAR = datetime.date.today().year
-COPYRIGHT_AUTHOR = '大阪大学医学部 情報医科学研究会 （通称：Python会）'
+COPYRIGHT_AUTHOR = '大阪大学医学部Python会'
 
 LOGOIMG = 'images/logo.jpg'
 # TOP_LOGO_IMAGE = LOGOIMG
@@ -85,7 +85,7 @@ SIDEBAR_SUPPORTLINK_LIST = [
 
 DISPLAY_PAGES_ON_MENU = False
 CATEGORYNAMES_ALTERNATIVES = {
-    'news': ('お知らせ', '本会からのお知らせ'),
+    'news': ('お知らせ', 'Python会からのお知らせ'),
     'blog': ('技術ブログ',),
 }
 

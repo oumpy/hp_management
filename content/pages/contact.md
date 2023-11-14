@@ -1,11 +1,11 @@
 Title: Contact
 Date: 2020.03.13
-Modified: 2023.06.16
-Summary: 大阪大学医学部情報医科学研究会（通称：Python会）への連絡用メールフォーム
+Modified: 2020.03.17
+Summary: Python会への連絡用メールフォーム
 
 <!-- ![]({attach}images/computer-1209641_960_7201.jpg) -->
 
-本会に興味のある方、解析依頼、コンペ出場依頼などありましたら、E-mail, Twitter等にてお気軽にご連絡ください。
+Python会に興味のある方、解析依頼、コンペ出場依頼などありましたら、E-mail, Twitter等にてお気軽にご連絡ください。
 
 <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/xzbvrlev" method="post">
   <fieldset id="fs-frm-inputs">

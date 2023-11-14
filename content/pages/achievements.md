@@ -1,8 +1,8 @@
 Title: 実績
 Date: 2022.11.26
-Modified: 2023.06.16
+Modified: 2023.11.10
 Show_modified: True
-Summary: 大阪大学医学部情報医科学研究会（通称：Python会）の実績紹介
+Summary: 実績紹介
 
 ## 勉強会・成果発表活動
 ### 会内勉強会
@@ -33,7 +33,7 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 - 2019.06.14 微生物研究所 病原体同定研究グループ（中村研）と共同ワークショップを開催。 (<https://connpass.com/event/124354/>)
 
 ## コンペティション実績
-個人または会内のチームで各種コンペティションに参加、数々の入賞実績。
+個人またはPython会内のチームで各種コンペティションに参加、数々の入賞実績。
 ### 機械学習コンペティション
 - Kaggle Master：
 [秋山理]({author}秋山) ([OsciiArt](https://www.kaggle.com/osciiart)), [佐藤淳哉]({author}佐藤) ([Jsato](https://www.kaggle.com/junyasato)), [安部政俊]({author}安部) ([patriot](https://www.kaggle.com/abebe9849))
@@ -94,7 +94,7 @@ RNAseq解析パイプライン「ikra」の開発及び、「ikra」を用いた
 
 ### GramEye：AIによるグラム染色顕微鏡画像解析を自動化
 [株式会社GramEye](https://grameye.com/) はディープラーニングでグラム染色を自動化する医療機器の研究・開発を主とする企業であり、「AIを使い“薬剤耐性菌”に取り組む」ことをミッションに掲げています。
-代表取締役社長を務める[**平岡悠**]({author}平岡)は本会員として大阪大学医学部在学中に株式会社GramEyeを起業しました。
+代表取締役社長を務める[**平岡悠**]({author}平岡)は本会正会員として大阪大学医学部在学中に株式会社GramEyeを起業しました。
 
 ### 外部との共同研究
 Twitterや実験医学誌面の反響から、様々な共同研究が始まっています。
@@ -127,10 +127,6 @@ AIを用いた甲状腺細胞診支援システム(AI differential diagnosis for
 Journal of the Japanese Society of Clinical Cytology 61(3) 200-207 2022年6月
 
 >"Deep learning analysis of histologic images from intestinal specimen reveal "adipocyte shrinkage" and mast cell infiltration to predict post-operative Crohn's disease."　Hiroki Kiyokawa, [**Masatoshi Abe**]({author}安部), Takahiro Matsui, Masako Kurashige, Kenji Ohshima, Shinichiro Tahara, Satoshi Nojima, Takayuki Ogino, Yuki Sekido, Tsunekazu Mizushima, Eiichi Morii(https://doi.org/10.1016/j.ajpath.2022.03.006).
-
-### 2020
-- [**Yasumizu, Y.**]({author}安水), Sakaue, S., Konuma, T., Suzuki, K., Matsuda, K., Murakami, Y., … Okada, Y. Genome-Wide Natural Selection Signatures Are Linked to Genetic Risk of Modern Phenotypes in the Japanese Population. Molecular Biology and Evolution. *Mol Biol Evol*. 2020;msaa005. [doi:10.1093/molbev/msaa005](https://doi.org/10.1093/molbev/msaa005). [(プレスリリース)](http://www.med.osaka-u.ac.jp/activities/results/2020year/okada2020-01)
-- Ohkura, N., [**Yasumizu, Y.**]({author}安水), Kitagawa, Y., … Okada, Y., Sakaguchi, Y. Regulatory T Cell-Specific Epigenomic Region Variants Are a Key Determinant of Susceptibility to Common Autoimmune Diseases. *Immunity*. VOLUME 52, ISSUE 6, P1119-1132.E4, JUNE 16, 2020. [doi:10.1016/j.immuni.2020.04.006](https://doi.org/10.1016/j.immuni.2020.04.006).
 
 ### 2019
 - Matsumoto, T., Niioka, H., Kumamoto, Y., [**Sato, J.**]({author}佐藤), et al. Deep-UV excitation fluorescence microscopy for detection of lymph node metastasis using deep neural network. *Sci Rep*. 2019;9(1):16912. [doi:10.1038/s41598-019-53405-w](https://www.nature.com/articles/s41598-019-53405-w).
