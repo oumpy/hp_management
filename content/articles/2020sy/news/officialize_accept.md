@@ -16,7 +16,7 @@ Author: Python会
 
 ## 規約の修正
 公認審査の過程で、[先に改定]({filename}./formalname.md)した規約の一部に再度指摘を受け、修正を行うことになりました。
-一部を再改定した[規約の全文]({filename}/pages/constitution.md)は、改定予定日付である7/11頃より掲載いたします。
+[一部を再改定した規約の全文]({attach}./attach/officialize_accept/constitution_20200711.pdf)は、改定予定日付である7/11頃より掲載いたします。
 修正はいずれも公認に伴う技術的なもので、実際の会運営・会活動等への影響はありません。
 
 ## 御礼
