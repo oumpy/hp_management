@@ -10,6 +10,18 @@ Author: Python会
 
 今後ともご支援・ご声援のほど、何卒よろしくお願い申し上げます。
 
+## 2023年度 ご寄付者様方 御芳名
+
+- <span class="donator-E4">味岡雄大 様</span>
+- <span class="donator-E4">山崎隆一郎 様</span>
+- <span class="donator-E4">金子 剛士 様</span>
+- <span class="donator-E4">山本拓都 様</span>
+- <span class="donator-E4">多田 智 様</span>
+- <span class="donator-E4">田中聡司 様</span>
+- <span class="donator-E4">鎌倉 悠宇 様</span>
+- <span class="donator-E4">廣瀬 遙香 様</span>
+
+
 ## 2022年度 ご寄付者様方 御芳名
 
 - <span class="donator-E4">西森 誠 様</span>
