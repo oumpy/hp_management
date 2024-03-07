@@ -78,6 +78,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: preview
+        path: preview
 
     - name: Get preview hash
       id: get_preview_hash
