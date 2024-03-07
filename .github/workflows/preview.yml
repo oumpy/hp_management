@@ -17,7 +17,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
@@ -27,7 +27,7 @@ jobs:
         python -m pip install --upgrade pip
 
     - name: Checkout branch
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       # checkout the branch which trigerred this workflow.
       with:
         submodules: true
@@ -59,13 +59,13 @@ jobs:
 
     steps:
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
 
     - name: Checkout master branch
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: master
         submodules: false
@@ -75,7 +75,7 @@ jobs:
         sh tools/init_output.sh
 
     - name: Load Preview Product
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v4
       with:
         name: preview
 
