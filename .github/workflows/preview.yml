@@ -47,7 +47,7 @@ jobs:
         git rev-parse HEAD > ./output/git_head_hash
 
     - name: Save Preview Product
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: preview
         path: output
