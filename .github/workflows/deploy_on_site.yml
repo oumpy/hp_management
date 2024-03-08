@@ -18,7 +18,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
@@ -28,7 +28,7 @@ jobs:
         python -m pip install --upgrade pip
 
     - name: Checkout master branch
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: true
 
@@ -72,7 +72,7 @@ jobs:
         else
           newest='false'
         fi
-        echo "::set-output name=NEWEST::$newest"
+        echo "{NEWEST}={$newest}" >> $GITHUB_OUTPUT
 
     - name: Deploy on Site
       if: steps.check_update.outputs.NEWEST=='true'

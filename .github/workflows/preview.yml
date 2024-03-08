@@ -17,7 +17,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
@@ -27,7 +27,7 @@ jobs:
         python -m pip install --upgrade pip
 
     - name: Checkout branch
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       # checkout the branch which trigerred this workflow.
       with:
         submodules: true
@@ -47,7 +47,7 @@ jobs:
         git rev-parse HEAD > ./output/git_head_hash
 
     - name: Save Preview Product
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: preview
         path: output
@@ -59,13 +59,13 @@ jobs:
 
     steps:
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
 
     - name: Checkout master branch
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: master
         submodules: false
@@ -75,9 +75,10 @@ jobs:
         sh tools/init_output.sh
 
     - name: Load Preview Product
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v4
       with:
         name: preview
+        path: preview
 
     - name: Get preview hash
       id: get_preview_hash
@@ -85,8 +86,8 @@ jobs:
         hash_file="./preview/git_head_hash"
         cur_hash=$(<$hash_file)
         rm "$hash_file"
-        echo "::set-output name=cur_hash::$cur_hash"
- 
+        echo "{cur_hash}={$cur_hash}" >> $GITHUB_OUTPUT
+
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
       with:
@@ -112,7 +113,7 @@ jobs:
         else
           newest='false'
         fi
-        echo "::set-output name=newest::$newest"
+        echo "{newest}={$newest}" >> $GITHUB_OUTPUT
 
     - name: Set Preview in the output directory
       if: steps.check_update.outputs.newest=='true'
