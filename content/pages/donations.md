@@ -12,6 +12,8 @@ Author: Python会
 
 ## 2023年度 ご寄付者様方 御芳名
 
+- <span class="donator-E4">新井 悠介 様</span>
+- <span class="donator-E4">平岡 悠 様</span>
 - <span class="donator-E4">味岡雄大 様</span>
 - <span class="donator-E4">山崎隆一郎 様</span>
 - <span class="donator-E4">金子 剛士 様</span>
@@ -20,7 +22,6 @@ Author: Python会
 - <span class="donator-E4">田中聡司 様</span>
 - <span class="donator-E4">鎌倉 悠宇 様</span>
 - <span class="donator-E4">廣瀬 遙香 様</span>
-
 
 ## 2022年度 ご寄付者様方 御芳名
 
@@ -37,7 +38,6 @@ Author: Python会
 - <span class="donator-E4">菅波 修司 様</span> 
 - <span class="donator-E4">廣瀬 遙香 様</span> 
 - <span class="donator-E4">宮崎 友希 様</span>
-- <span class="donator-E4">安部 政俊 様</span> 
 
 ## 2021年度 ご寄付者様方 御芳名
 
