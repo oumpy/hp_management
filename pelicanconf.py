@@ -96,6 +96,7 @@ PLUGINS = [
 IGNORE_FILES = [".ipynb_checkpoints"]
 
 RELATED_POSTS_MAX = 3
+TAG_CLOUD_SORTING = "size"
 
 SHORTCODES = {
     'youtube': '''\
