@@ -72,7 +72,7 @@ jobs:
         else
           newest='false'
         fi
-        echo "{NEWEST}={$newest}" >> $GITHUB_OUTPUT
+        echo "NEWEST=$newest" >> $GITHUB_OUTPUT
 
     - name: Deploy on Site
       if: steps.check_update.outputs.NEWEST=='true'
