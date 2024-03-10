@@ -7,7 +7,7 @@ Author: 豊田
 
 ### 目的
 - scanpyでsingle cellの解析を行う際、遺伝子の発現量を見るとき、sc.pl.stacked_violinを用いて、以下の画像のように細胞タイプごとのさまざまな遺伝子の発現量の比較が可能です。
- ![alt text](https://scanpy-tutorials.readthedocs.io/en/latest/_images/pbmc3k_104_0.png)
+ ![scanpy_image](https://scanpy-tutorials.readthedocs.io/en/latest/_images/pbmc3k_104_0.png)
 - 普段、研究室に所属して研究に協力させていただいてるのですが、研究室で「**特定の遺伝子について臓器間でセルタイプごとに発現量が異なるかを可視化する方法はないか**」と質問されて、調べてみたものの既存の関数では対応できず困っていました。
 - 実際、異なる遺伝子間の発現量の比較を行うために、**複数の遺伝子を引数にとることができる関数**（sc.pl.stacked_violin）は存在しますが、一つの遺伝子に着目して色々な角度から発現量を可視化したい場合、**複数のobsを引数にとる関数**が用意されていないため、実装してみました。
 - 本コードを使うことで、例えば、臓器によって、それぞれの細胞タイプでの、ある遺伝子(GAPDHなど)の発現量がどのように変わるかを可視化することが可能となり、複数の軸から発現量を見える化できます。
@@ -25,7 +25,7 @@ Author: 豊田
 ``` python
 $ sc.pl.stacked_violin(adata,['GAPDH','CD3E','CD14'],groupby='cell_type',swap_axes=True)
 ```
-![alt text](image.png)
+<img src="{attach}./images/custom_violin_plot/image.png" alt="violin_plot" width="600">
 
 ### 作成コード
 #### 条件
@@ -184,13 +184,13 @@ def custom_stacked_violin(adata: AnnData, gene: str, obs1: str, obs2: str):
 $ custom_stacked_violin(adata, gene = 'CD3E', obs1 = 'cell_type', obs2 = 'region')
 
 ```
-![alt text](image-2.png)
+<img src="{attach}./images/custom_violin_plot/image-2.png" alt="organ_violin" width="600">
 
 ##### 臓器間でのドナーごとの発現量の違い
 ``` python
 $ custom_stacked_violin(adata, gene = 'CD3E', obs1 = 'donor', obs2 = 'region')
 ```
-![alt text](image-5.png)
+<img src="{attach}./images/custom_violin_plot/image-5.png" alt="donor_violin" width="600">
 
 ### まとめ
 - 解析を進める中で、着目した遺伝子の発現量を、疾患の有無、臓器別でみたい場面は多々あったので、今後解析ツールとして使っていきたいです。
