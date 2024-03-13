@@ -199,7 +199,7 @@ custom_stacked_violin(adata, gene = 'CD3E', obs1 = 'donor', obs2 = 'region')
 - 本コードは自己責任で自由に使っていただいて問題ありません。データによってはうまく動かない場合などあると思いますが、ご容赦ください。
 - 本コードはpython会内のプラットフォームで質問をして、岸くんがアイディアをくれたところから作成することとなりました。python会では、定期的に勉強会をするなど、バイオインフォマティクスについても積極的に活動しております。
 
-### 参考文献
+## 参考文献
 - James, K.R., Gomes, T., Elmentaite, R. et al. Distinct microbial and immune niches of the human colon. Nat Immunol 21, 343–353 (2020). [https://doi.org/10.1038/s41590-020-0602-z](https://doi.org/10.1038/s41590-020-0602-z)
 - [stacked_violin_plot](https://scanpy.readthedocs.io/en/stable/generated/scanpy.pl.stacked_violin.html)
 - [Preprocessing and clustering 3k PBMCs](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html)
