@@ -7,6 +7,7 @@ Author: 豊田
 
 ### 目的
 - scanpyでsingle cellの解析を行う際、遺伝子の発現量を見るとき、sc.pl.stacked_violinを用いて、以下の画像のように細胞タイプごとのさまざまな遺伝子の発現量の比較が可能です。
+
 <img src="{attach}./images/custom_violin_plot/scanpy_image.png" alt="scanpy_image.png" width="600">
 
 - 普段、研究室に所属して研究に協力させていただいてるのですが、研究室で「**特定の遺伝子について臓器間でセルタイプごとに発現量が異なるかを可視化する方法はないか**」と質問されて、調べてみたものの既存の関数では対応できず困っていました。
@@ -179,7 +180,7 @@ def custom_stacked_violin(adata: AnnData, gene: str, obs1: str, obs2: str):
 ```
 
 #### 使用例
-- geneに着目したい遺伝子、obs1に横軸に設定したいクラスター、obs2に縦軸に設定したいクラスターを設定します。
+- "gene"に着目したい遺伝子、"obs1"に横軸に設定したいクラスター、"obs2"に縦軸に設定したいクラスターを設定します。
 
 ##### 臓器間での細胞タイプごとの発現量の違い
 ``` python
