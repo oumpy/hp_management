@@ -7,11 +7,11 @@ Author: 豊田
 
 ### 目的
 - scanpyでsingle cellの解析を行う際、遺伝子の発現量を見るとき、sc.pl.stacked_violinを用いて、以下の画像のように細胞タイプごとのさまざまな遺伝子の発現量の比較が可能です。
- ![scanpy_image](https://scanpy-tutorials.readthedocs.io/en/latest/_images/pbmc3k_104_0.png)
+<img src="{attach}./images/custom_violin_plot/scanpy_image.png" alt="scanpy_image.png" width="600">
 - 普段、研究室に所属して研究に協力させていただいてるのですが、研究室で「**特定の遺伝子について臓器間でセルタイプごとに発現量が異なるかを可視化する方法はないか**」と質問されて、調べてみたものの既存の関数では対応できず困っていました。
 - 実際、異なる遺伝子間の発現量の比較を行うために、**複数の遺伝子を引数にとることができる関数**（sc.pl.stacked_violin）は存在しますが、一つの遺伝子に着目して色々な角度から発現量を可視化したい場合、**複数のobsを引数にとる関数**が用意されていないため、実装してみました。
 - 本コードを使うことで、例えば、臓器によって、それぞれの細胞タイプでの、ある遺伝子(GAPDHなど)の発現量がどのように変わるかを可視化することが可能となり、複数の軸から発現量を見える化できます。
-- 具体的に解析対象として、こちら（https://www.gutcellatlas.org/ ）の「Colon Immune Atlas」の腸管免疫細胞のデータを用いて、実装してみました。
+- 具体的に解析対象として、[Colon Immune Atlas](https://www.gutcellatlas.org/)の腸管免疫細胞のデータを用いて、実装してみました。
 
 ### データの概要
 - データセット : 5人のdonorからの大腸免疫細胞（41,650細胞）
@@ -23,13 +23,13 @@ Author: 豊田
 
 ##### 細胞タイプごとの様々な遺伝子の発現量の違い
 ``` python
-$ sc.pl.stacked_violin(adata,['GAPDH','CD3E','CD14'],groupby='cell_type',swap_axes=True)
+sc.pl.stacked_violin(adata,['GAPDH','CD3E','CD14'],groupby='cell_type',swap_axes=True)
 ```
 <img src="{attach}./images/custom_violin_plot/image.png" alt="violin_plot" width="600">
 
 ### 作成コード
 #### 条件
-関数を作成するに当たって、主に公式のコードに従って、以下のように設定しています。
+- 関数を作成するに当たって、主に公式のコードに従って、以下のように設定しています。
 - カラーバーは発現量は、バイオリンの中央値のデータを参照して、発現量の中央値の大きさによって色づける。
 - データがない場合や発現量が負の場合は、発現量が0として可視化する。
 - 図のサイズは、x軸、y軸のサイズに従って大きさが変更するように設定する。
@@ -181,14 +181,14 @@ def custom_stacked_violin(adata: AnnData, gene: str, obs1: str, obs2: str):
 
 ##### 臓器間での細胞タイプごとの発現量の違い
 ``` python
-$ custom_stacked_violin(adata, gene = 'CD3E', obs1 = 'cell_type', obs2 = 'region')
+custom_stacked_violin(adata, gene = 'CD3E', obs1 = 'cell_type', obs2 = 'region')
 
 ```
 <img src="{attach}./images/custom_violin_plot/image-2.png" alt="organ_violin" width="600">
 
 ##### 臓器間でのドナーごとの発現量の違い
 ``` python
-$ custom_stacked_violin(adata, gene = 'CD3E', obs1 = 'donor', obs2 = 'region')
+custom_stacked_violin(adata, gene = 'CD3E', obs1 = 'donor', obs2 = 'region')
 ```
 <img src="{attach}./images/custom_violin_plot/image-5.png" alt="donor_violin" width="600">
 
@@ -199,6 +199,6 @@ $ custom_stacked_violin(adata, gene = 'CD3E', obs1 = 'donor', obs2 = 'region')
 - 本コードはpython会内のプラットフォームで質問をして、岸くんがアイディアをくれたところから作成することとなりました。python会では、定期的に勉強会をするなど、バイオインフォマティクスについても積極的に活動しております。
 
 ### 参考文献
-- James, K.R., Gomes, T., Elmentaite, R. et al. Distinct microbial and immune niches of the human colon. Nat Immunol 21, 343–353 (2020). https://doi.org/10.1038/s41590-020-0602-z
-- stacked_violin_plot(https://scanpy.readthedocs.io/en/stable/generated/scanpy.pl.stacked_violin.html)
-- Preprocessing and clustering 3k PBMCs (https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html)
+- James, K.R., Gomes, T., Elmentaite, R. et al. Distinct microbial and immune niches of the human colon. Nat Immunol 21, 343–353 (2020). [https://doi.org/10.1038/s41590-020-0602-z](https://doi.org/10.1038/s41590-020-0602-z)
+- [stacked_violin_plot](https://scanpy.readthedocs.io/en/stable/generated/scanpy.pl.stacked_violin.html)
+- [Preprocessing and clustering 3k PBMCs](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html)
