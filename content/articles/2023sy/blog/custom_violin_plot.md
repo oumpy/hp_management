@@ -1,6 +1,6 @@
 Title: single cell解析における遺伝子発現量の可視化
 Date: 2024.3.4
-Tags: bioinfomatics
+Tags: Bioinfomatics
 Author: 豊田
 
 ## 目的
