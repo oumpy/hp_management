@@ -133,6 +133,10 @@ class CustomStackedViolin:
             ax.spines['right'].set_visible(False)
             ax.spines['top'].set_visible(False)
             ax.spines['bottom'].set_visible(False)
+            if isinstance(self.categories, pd.Categorical):
+                categ = list(self.categories.categories)
+            else:
+                categ = list(self.categories)
             if i == len(self.genes) - 1:
                 ax.set_xticks(np.arange(len(self.categories)))
                 ax.set_xticklabels(self.categories, rotation=90)
@@ -185,7 +189,7 @@ def custom_stacked_violin(adata: AnnData, gene: str, obs1: str, obs2: str):
 custom_stacked_violin(adata, gene = 'CD3E', obs1 = 'cell_type', obs2 = 'region')
 
 ```
-<img src="{attach}./images/custom_violin_plot/image-2.png" alt="organ_violin" width="600">
+<img src="{attach}./images/custom_violin_plot/image-1.png" alt="organ_violin" width="600">
 
 #### 臓器間でのドナーごとの発現量の違い
 ``` python
