@@ -133,6 +133,10 @@ class CustomStackedViolin:
             ax.spines['right'].set_visible(False)
             ax.spines['top'].set_visible(False)
             ax.spines['bottom'].set_visible(False)
+            if isinstance(self.categories, pd.Categorical):
+                categ = list(self.categories.categories)
+            else:
+                categ = list(self.categories)
             if i == len(self.genes) - 1:
                 ax.set_xticks(np.arange(len(self.categories)))
                 ax.set_xticklabels(self.categories, rotation=90)
