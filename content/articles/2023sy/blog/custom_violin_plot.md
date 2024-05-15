@@ -138,8 +138,8 @@ class CustomStackedViolin:
             else:
                 categ = list(self.categories)
             if i == len(self.genes) - 1:
-                ax.set_xticks(np.arange(len(self.categories)))
-                ax.set_xticklabels(self.categories, rotation=90)
+                ax.set_xticks(np.arange(len(categ)))
+                ax.set_xticklabels(categ, rotation=90)
                 ax.spines['bottom'].set_visible(True)
 
         # Add a colorbar to the plot
