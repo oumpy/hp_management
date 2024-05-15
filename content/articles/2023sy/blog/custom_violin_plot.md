@@ -189,7 +189,7 @@ def custom_stacked_violin(adata: AnnData, gene: str, obs1: str, obs2: str):
 custom_stacked_violin(adata, gene = 'CD3E', obs1 = 'cell_type', obs2 = 'region')
 
 ```
-<img src="{attach}./images/custom_violin_plot/image-1.png" alt="organ_violin" width="600">
+<img src="{attach}./images/custom_violin_plot/image-3.png" alt="organ_violin" width="600">
 
 #### 臓器間でのドナーごとの発現量の違い
 ``` python
