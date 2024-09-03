@@ -18,6 +18,7 @@ Author: Python会
 - <span class="donator-E4">小川 軌明 様</span>
 - <span class="donator-E4">多田 智 様</span>
 - <span class="donator-E4">新井 悠介 様</span>
+- <span class="donator-E4">清川 博貴 様</span>
 
 ## 2023年度 ご寄付者様方 御芳名
 
