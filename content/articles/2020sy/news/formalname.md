@@ -18,7 +18,7 @@ Author: Python会
 本会は今後も引き続き、「大阪大学医学部Python会」を通称とし、日常活動での主たる名称として使用します。
 また必要に応じ、「Python会 (情報医科学研究会) 」等の表記を用いてまいります。
 
-このため、正式名称変更に伴い部分改定した[会規約]({filename}/pages/constitution.md)第1条に新たな項を設け、
+このため、正式名称変更に伴い[部分改定した会規約]({attach}./attach/formalname/constitution_20200625.pdf)第1条に新たな項を設け、
 ```text
 本会は「大阪大学医学部Python会」を通称とする。
 ```
