@@ -1,6 +1,6 @@
 Title: 実績
 Date: 2022.11.26
-Modified: 2023.11.14
+Modified: 2024.10.11
 Show_modified: True
 Summary: 実績紹介
 
@@ -38,6 +38,17 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 - Kaggle Master：
 [秋山理]({author}秋山) ([OsciiArt](https://www.kaggle.com/osciiart)), [佐藤淳哉]({author}佐藤) ([Jsato](https://www.kaggle.com/junyasato)), [安部政俊]({author}安部) ([patriot](https://www.kaggle.com/abebe9849))
 
+#### 2024
+- [RSNA 2024 Lumbar Spine Degenerative Classification
+](https://www.kaggle.com/competitions/rsna-2024-lumbar-spine-degenerative-classification) (安部、チーム参加)([patriot](https://www.kaggle.com/abebe9849)) 7位/1874チーム：multi viewのMRI画像から腰部脊柱管狭窄症の重症度判定を椎体levelごとに行う
+
+- [SPR Head CT Age Prediction Challenge
+](https://www.kaggle.com/competitions/spr-head-ct-age-prediction-challenge) (安部、ソロ参加)([patriot](https://www.kaggle.com/abebe9849)) 2位/15チーム：頭部CTから年齢推定
+
+- [第6回全国医療AIコンテスト
+](https://www.kaggle.com/competitions/medical-ai-contest2024) (安部、チーム参加)([patriot](https://www.kaggle.com/abebe9849)) 1位/39チーム：腹部CTから腫瘍臓器のsegmentation
+
+
 #### 2022
 - [RSNA 2022 Cervical Spine Fracture Detection](https://www.kaggle.com/competitions/rsna-2022-cervical-spine-fracture-detection) (安部、チーム参加)([patriot](https://www.kaggle.com/abebe9849)) 30位/883チーム：頚部CTに対して各頚椎での骨折の有無と患者として頚椎骨折患者かを当てるマルチラベル分類
 
@@ -62,6 +73,7 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 
 
 ### 競技プログラミング
+- [ICPC アスタナ世界大会 2024]([https://atcoder.jp/contests/jsc2022-final](https://worldfinals.icpc.global/)) 出場(阪大として8年ぶり　医学部としては初) ([富本]({author}富本))
 - [AtCoder第4回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2022-final) 全国6位 ([富本]({author}富本))
 - [AtCoder第3回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2022-final)出場 ([富本]({author}富本))
 - [AtCoder第1回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2019-final)出場 ([小川]({author}小川))
