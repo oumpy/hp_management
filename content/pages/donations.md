@@ -12,6 +12,8 @@ Author: Python会
 
 ## 2024年度 ご寄付者様方 御芳名
 
+- <span class="donator-E4">安水良明 様</span>
+- <span class="donator-E4">新岡 宏彦 様</span>
 - <span class="donator-E4">山崎隆一郎 様</span>
 - <span class="donator-E4">多田 智 様</span>
 - <span class="donator-E4">清川 博貴 様</span>
