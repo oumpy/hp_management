@@ -12,7 +12,7 @@ Author: Python会
 
 ## 2024年度 ご寄付者様方 御芳名
 
-- <span class="donator-E4">小川軌明 様</span>
+- <span class="donator-E4">小川 軌明 様</span>
 - <span class="donator-E4">安水 良明 様</span>
 - <span class="donator-E4">新岡 宏彦 様</span>
 - <span class="donator-E4">山崎 隆一郎 様</span>
