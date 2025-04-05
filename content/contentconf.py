@@ -20,7 +20,9 @@ SITENAME = '大阪大学医学部 Python会'
 SITETAG = striptags(SITENAME)
 SITEURL = ''
 SITESUBTITLE ='Now is better than never.'
-COPYRIGHT_YEAR = datetime.date.today().year
+COPYRIGHT_YEAR_SINCE = 2018
+COPYRIGHT_YEAR_UNTIL = datetime.date.today().year
+COPYRIGHT_YEAR = '{}-{}'.format(COPYRIGHT_YEAR_SINCE, COPYRIGHT_YEAR_UNTIL)
 COPYRIGHT_AUTHOR = '大阪大学医学部Python会'
 
 LOGOIMG = 'images/logo.jpg'
