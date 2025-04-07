@@ -126,6 +126,10 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 
 ## 所属メンバー論文
 
+### 2024
+
+- [**Abe, Masatoshi**]({author}安部)1; Niioka, Hirohiko2; Matsumoto, Ayumi1; Katsuma, Yusuke1; Imai, Atsuhiro1; Okushima, Hiroki1; Ozaki, Shingo3; Fujii, Naohiko3; Oka, Kazumasa4; Sakaguchi, Yusuke1; Inoue, Kazunori1; Isaka, Yoshitaka1; Matsui, Isao1,5. Self-Supervised Learning for Feature Extraction from Glomerular Images and Disease Classification with Minimal Annotations. Journal of the American Society of Nephrology 36(3):p 471-486, March 2025. | ([DOI: 10.1681/ASN.0000000514](https://journals.lww.com/jasn/abstract/2025/03000/self_supervised_learning_for_feature_extraction.17.aspx))
+
 ### 2023
 - <span id="paper-2023-ogawa-1"></span>Umeki, Y., [**Ogawa, N.**]({author}小川), Uegaki, Y., Saga, K., Kaneda, Y., & Nimura, K. (2023).
 DNA barcoding and gene expression recording reveal the presence of cancer cells with unique properties during tumor progression.
