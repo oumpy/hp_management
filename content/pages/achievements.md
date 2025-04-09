@@ -1,6 +1,6 @@
 Title: 実績
 Date: 2022.11.26
-Modified: 2024.10.11
+Modified: 2025.04.07
 Show_modified: True
 Summary: 実績紹介
 
@@ -127,36 +127,54 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 ## 所属メンバー論文
 
 ### 2024
-
-- [**Abe, Masatoshi**]({author}安部)1; Niioka, Hirohiko2; Matsumoto, Ayumi1; Katsuma, Yusuke1; Imai, Atsuhiro1; Okushima, Hiroki1; Ozaki, Shingo3; Fujii, Naohiko3; Oka, Kazumasa4; Sakaguchi, Yusuke1; Inoue, Kazunori1; Isaka, Yoshitaka1; Matsui, Isao1,5. Self-Supervised Learning for Feature Extraction from Glomerular Images and Disease Classification with Minimal Annotations. Journal of the American Society of Nephrology 36(3):p 471-486, March 2025. | ([DOI: 10.1681/ASN.0000000514](https://journals.lww.com/jasn/abstract/2025/03000/self_supervised_learning_for_feature_extraction.17.aspx))
+- [**Abe, Masatoshi**]({author}安部); Niioka, Hirohiko; Matsumoto, Ayumi; Katsuma, Yusuke; Imai, Atsuhiro; Okushima, Hiroki; Ozaki, Shingo; Fujii, Naohiko; Oka, Kazumasa; Sakaguchi, Yusuke; Inoue, Kazunori; Isaka, Yoshitaka; Matsui, Isao.
+*Self-Supervised Learning for Feature Extraction from Glomerular Images and Disease Classification with Minimal Annotations.*
+**Journal of the American Society of Nephrology** 36(3): 471-486, March 2025. ([DOI: 10.1681/ASN.0000000514](https://journals.lww.com/jasn/abstract/2025/03000/self_supervised_learning_for_feature_extraction.17.aspx))
 
 ### 2023
 - <span id="paper-2023-ogawa-1"></span>Umeki, Y., [**Ogawa, N.**]({author}小川), Uegaki, Y., Saga, K., Kaneda, Y., & Nimura, K. (2023).
-DNA barcoding and gene expression recording reveal the presence of cancer cells with unique properties during tumor progression.
-*Cellular and Molecular Life Sciences*, 80(1), 17.
+*DNA barcoding and gene expression recording reveal the presence of cancer cells with unique properties during tumor progression.*
+**Cellular and Molecular Life Sciences**, 80(1), 17.
 ([DOI: 10.1007/s00018-022-04640-4](https://doi.org/10.1007/s00018-022-04640-4))
 
 ### 2022
-- Nakano, T., & [**Yamamoto, T.**]({author}山本) (2022). You trust a face like yours. Philippine Social Sciences and Humanities Review. 
-- Kurebayashi, W., [**Yamamoto, T.**]({author}山本), Shirasaka, S., & Nakao, H. (2022). Phase reduction of strongly coupled limit-cycle oscillators. Phys. Rev. Research.
+- Nakano, T., & [**Yamamoto, T.**]({author}山本) (2022).
+*You trust a face like yours.*
+**Philippine Social Sciences and Humanities Review**. 
+- Kurebayashi, W., [**Yamamoto, T.**]({author}山本), Shirasaka, S., & Nakao, H. (2022). 
+*Phase reduction of strongly coupled limit-cycle oscillators.*
+ **Phys. Rev. Research**.
 
 ### 2021
-- \#Kim JI, \#Nakahama T, [**Yamasaki R**]({author}山崎), Costa Cruz PH, Vongpipatana T, Inoue M, Kanou N, Xing Y, Todo H, Shibuya T, Kato Y, Kawahara Y. RNA editing at a limited number of sites is sufficient to prevent MDA5 activation in the mouse brain. PLOS Genetics, 17(5): e1009516, 2021. (\#Co-first authors)
-- Inoue, M., Nakahama, T., [**Yamasaki, R.**]({author}山崎), Shibuya, T., … Morii, E., Kawahara, Y. An Aicardi-Goutières Syndrome–Causative Point Mutation in Adar1 Gene Invokes Multiorgan Inflammation and Late-Onset Encephalopathy in Mice. *J Immunol*. December 15, 2021, 207 (12) 3016-3027; [DOI:10.4049/jimmunol.2100526](https://doi.org/10.4049/jimmunol.2100526)
+- \#Kim JI, \#Nakahama T, [**Yamasaki R**]({author}山崎), Costa Cruz PH, Vongpipatana T, Inoue M, Kanou N, Xing Y, Todo H, Shibuya T, Kato Y, Kawahara Y. 
+*RNA editing at a limited number of sites is sufficient to prevent MDA5 activation in the mouse brain.*
+**PLOS Genetics**, 17(5): e1009516, 2021. (\#Co-first authors)
+- Inoue, M., Nakahama, T., [**Yamasaki, R.**]({author}山崎), Shibuya, T., … Morii, E., Kawahara, Y. 
+*An Aicardi-Goutières Syndrome–Causative Point Mutation in Adar1 Gene Invokes Multiorgan Inflammation and Late-Onset Encephalopathy in Mice.*
+**J Immunol**, December 15, 2021, 207 (12) 3016-3027; [DOI:10.4049/jimmunol.2100526](https://doi.org/10.4049/jimmunol.2100526)
 
 - 廣川満良, 新岡宏彦, 鈴木彩菜, [**安部 政俊**]({author}安部), 式見彰浩, 長原一, 宮内昭
-AIを用いた甲状腺細胞診支援システム(AI differential diagnosis for cytology of the thyroid:ADDICT)の開発と利用 
-Journal of the Japanese Society of Clinical Cytology 61(3) 200-207 2022年6月
+「AIを用いた甲状腺細胞診支援システム(AI differential diagnosis for cytology of the thyroid:ADDICT)の開発と利用」
+**Journal of the Japanese Society of Clinical Cytology** 61(3) 200-207 2022年6月
 
->"Deep learning analysis of histologic images from intestinal specimen reveal "adipocyte shrinkage" and mast cell infiltration to predict post-operative Crohn's disease."　Hiroki Kiyokawa, [**Masatoshi Abe**]({author}安部), Takahiro Matsui, Masako Kurashige, Kenji Ohshima, Shinichiro Tahara, Satoshi Nojima, Takayuki Ogino, Yuki Sekido, Tsunekazu Mizushima, Eiichi Morii(https://doi.org/10.1016/j.ajpath.2022.03.006).
+- Hiroki Kiyokawa, [**Masatoshi Abe**]({author}安部), Takahiro Matsui, Masako Kurashige, Kenji Ohshima, Shinichiro Tahara, Satoshi Nojima, Takayuki Ogino, Yuki Sekido, Tsunekazu Mizushima, Eiichi Morii.
+*Deep learning analysis of histologic images from intestinal specimen reveal "adipocyte shrinkage" and mast cell infiltration to predict post-operative Crohn's disease.*
+**The American Journal of Pathology**, Volume 192, Issue 6, 904-916
+<https://doi.org/10.1016/j.ajpath.2022.03.006>.
 
 ### 2019
-- Matsumoto, T., Niioka, H., Kumamoto, Y., [**Sato, J.**]({author}佐藤), et al. Deep-UV excitation fluorescence microscopy for detection of lymph node metastasis using deep neural network. *Sci Rep*. 2019;9(1):16912. [doi:10.1038/s41598-019-53405-w](https://www.nature.com/articles/s41598-019-53405-w).
-- [**Takeuchi, T.**]({author}竹内), Kitamura, Y., Sado, J., et al. Mortality of Japanese Olympic athletes: 1952–2017 cohort study. *BMJ Open SEM*. 2019;5:e000653. [doi: 10.1136/bmjsem-2019-000653](https://bmjopensem.bmj.com/content/5/1/e000653).
-- Sekido, Y., [**Yasumizu, Y.**]({author}安水), … Mizushima, T. Innate Myeloid Cell Subset-Specific Gene Expression Patterns in the Human Colon are Altered in Crohn’s Disease Patients. *Digestion*. 2019;99:194–204. [doi:10.1159/000490890](https://doi.org/10.1159/000490890).
+- Matsumoto, T., Niioka, H., Kumamoto, Y., [**Sato, J.**]({author}佐藤), et al. 
+*Deep-UV excitation fluorescence microscopy for detection of lymph node metastasis using deep neural network.*
+ **Sci Rep**, 2019;9(1):16912. [doi:10.1038/s41598-019-53405-w](https://www.nature.com/articles/s41598-019-53405-w).
+- [**Takeuchi, T.**]({author}竹内), Kitamura, Y., Sado, J., et al. *Mortality of Japanese Olympic athletes: 1952–2017 cohort study.*
+**BMJ Open SEM**. 2019;5:e000653. [doi: 10.1136/bmjsem-2019-000653](https://bmjopensem.bmj.com/content/5/1/e000653).
+- Sekido, Y., [**Yasumizu, Y.**]({author}安水), … Mizushima, T. Innate,
+*Myeloid Cell Subset-Specific Gene Expression Patterns in the Human Colon are Altered in Crohn’s Disease Patients.* **Digestion**. 2019;99:194–204. [doi:10.1159/000490890](https://doi.org/10.1159/000490890).
 
 ### 2018
-- [**Miyazaki, Y.**]({author}宮崎), Tabuchi, T. Educational gradients in the use of electronic cigarettes and heat-not-burn tobacco products in Japan. *PLoS One*. 2018;13(1):e0191008. [doi:10.1371/journal.pone.0191008](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0191008).
+- [**Miyazaki, Y.**]({author}宮崎), Tabuchi, T. 
+*Educational gradients in the use of electronic cigarettes and heat-not-burn tobacco products in Japan.*
+**PLoS One**. 2018;13(1):e0191008. [doi:10.1371/journal.pone.0191008](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0191008).
 
 ## 出版記事等
 ### 2020
