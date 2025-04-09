@@ -1,6 +1,6 @@
 Title: 会員募集
 Date: 2020.03.13
-Modified: 2021.09.25
+Modified: 2025.04.09
 Show_modified: True
 Summary: Python会は学年学部問わず会員を募集しています。
 
