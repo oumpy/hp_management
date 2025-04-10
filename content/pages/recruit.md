@@ -1,6 +1,6 @@
 Title: 会員募集
 Date: 2020.03.13
-Modified: 2025.04.09
+Modified: 2025.04.10
 Show_modified: True
 Summary: Python会は学年学部問わず会員を募集しています。
 
@@ -20,7 +20,7 @@ Pythonが全てわかる方も、なにもわからない方も、ちょっと�
 ## 新歓2025年度
 2025年度新歓は**現在開催中**です。以下の公式LINEやXで新歓企画の情報を随時更新していきますので、ご興味ある方は是非DMしてください！
 
-![2025新歓チラシ]({attach}images/recruit/shinkan2025.jpg)
+![2025新歓チラシ]({attach}images/recruit/shinkan2025_new.jpg)
 
 ## 新歓2021年度
 2021年度は以下の新歓イベントを行いました。
