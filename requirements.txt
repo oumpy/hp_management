@@ -1,3 +1,4 @@
+setuptools
 pelican
 Markdown
 nbconvert < 6
