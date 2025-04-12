@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11' # Semantic version range syntax or exact version of a Python version
+        python-version: '3.13' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
 
     - name: pip update
@@ -61,7 +61,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.x' # Semantic version range syntax or exact version of a Python version
+        python-version: '3.13' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
 
     - name: Checkout master branch
