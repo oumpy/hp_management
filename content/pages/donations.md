@@ -1,6 +1,6 @@
 Title: Python会にご寄付を頂いた方々
 Date: 2020.07.28
-Modified: 2025.03.01
+Modified: 2025.04.26
 Author: Python会
 
 各ページ右下「会へのご支援」を通じて、次に掲げる方々（正会員除く）より、貴重なご寄付を頂きました。
@@ -9,6 +9,16 @@ Author: Python会
 頂いたご寄付は、人材育成を通じて医学と社会への貢献を目指す本会の活動のため、大切に活用させて頂きます。
 
 今後ともご支援・ご声援のほど、何卒よろしくお願い申し上げます。
+
+## 2025年度 ご寄付者様方 御芳名
+
+- <span class="donator-E4">小川 軌明 様</span>
+- <span class="donator-E4">淡田 公久 様</span>
+- <span class="donator-E4">安水 良明 様</span>
+- <span class="donator-E4">佐藤 淳哉 様</span>
+- <span class="donator-E4">西森 誠 様</span>
+- <span class="donator-E4">安部 政俊 様</span>
+- <span class="donator-E4">梅田 健太郎 様</span>
 
 ## 2024年度 ご寄付者様方 御芳名
 
