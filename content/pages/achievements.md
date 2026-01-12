@@ -23,6 +23,9 @@ Summary: 実績紹介
 DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方々とも交流しました([平岡]({author}平岡)・[安水]({author}安水))。
 次年度も数人で一週間の遺伝研合宿を行う予定です。
 ### ワークショップ等の企画
+- 2025.04.13 関西プログラミング交流会（KUMEC(京大)、システム医学研究会(神大)との三大学交流会）
+- 2025.01.15-29 西日本医学科プログラミング大会（KUMEC(京大)、システム医学研究会(神大)との競プロコンテスト）
+- 2024.09.7 関西プログラミング交流会（KUMEC(京大)、システム医学研究会(神大)との三大学交流会）
 - 2022.03.19-21 全国医療AIコンテスト（OCUMIT(大阪公立大学)との[共催](https://medical-ai-contest.org/)）
 - 2021.03.26-27 全国医療AIコンテスト（東京医科歯科大学 医療IT数学同好会 T/Tとの[共催](https://zenn.dev/tpt_ochanomizu/articles/dad722d9410f0a)）
 - 2019.12.20-21 奈良県立医科大学
@@ -73,8 +76,10 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 
 
 ### 競技プログラミング
+- [AtCoder第6回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2025-final)出場 ([富本]({author}富本))
+- [CodeQUEEN2025決勝](https://atcoder.jp/contests/codequeen2025-final-Public) 3位 ([岡崎]({author}岡崎))
 - [ICPC アスタナ世界大会 2024]([https://atcoder.jp/contests/jsc2022-final](https://worldfinals.icpc.global/)) 出場(阪大として8年ぶり　医学部としては初) ([富本]({author}富本))
-- [AtCoder第4回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2022-final) 全国6位 ([富本]({author}富本))
+- [AtCoder第4回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2023-final) 全国6位 ([富本]({author}富本))
 - [AtCoder第3回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2022-final)出場 ([富本]({author}富本))
 - [AtCoder第1回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2019-final)出場 ([小川]({author}小川))
 - AtCoderランク 橙1名、青4名、水色2名など。
@@ -125,8 +130,21 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 
 
 ## 所属メンバー論文
+### 2025
+- [**Yosuke Kishi**]({author}岸), Yu-Chen Liu, Masakazu Ishikawa, Maika Yamashita, Hisatake Matsumoto, Hiroshi Ogura, Shuhei Sakakibara & Daisuke Okuzaki.
+*Mapping NK cell diversity in response to COVID-19 and mRNA vaccination.*
+**Scientific Reports**, (2025) 15:37577. [doi: 10.1038/s41598-025-11575-w](https://doi.org/10.1038/s41598-025-11575-w)
+- Eduardo M. J. M. Farina, Felipe A. Matsuoka, Gustavo Corradi, Yosuke Yamagishi, [**Masatoshi Abe**]({author}安部), Maximilian Pfeiffer, Andrea S. Souza, Raquel Moreno, Ivanei Bramati, Fernanda Moll, Almir Bitencourt, Carlos Sacomani, Soraia Quaranta Damião, Rubens Chojniak, Nitamar Abdala, Rodrigo Ragazzini, Henrique Carrete Jr., Paulo E. A. Kuriki, Marcelo Straus Takahashi, Nelson Caserta, Cesar H. Nomura & Felipe C. Kitamura.
+*Pixel Tampering: Does Face Redaction Harm Medical AI Performance?*
+**J Digit Imaging. Inform. med.** (2025). [doi: 10.1007/s10278-025-01776-0](https://doi.org/10.1007/s10278-025-01776-0)
 
 ### 2024
+- Oguro-Igashira E, Murakami M, Mori R, Kuwahara R, Kihara T, Kohara M, Fujiwara M, Motooka D, Okuzaki D, Arase M, [**Toyota H**]({author}豊田), Peng S, Ogino T, Kitabatake Y, Morii E, Hirota S, Ikeuchi H, Umemoto E, Kumanogoh A, Takeda K. 
+*The pyruvate-GPR31 axis promotes transepithelial dendrite formation in human intestinal dendritic cells.*
+**Proc Natl Acad Sci U S A.** 2024 Oct 29;121(44):e2318767121. [doi: 10.1073/pnas.2318767121](https://www.pnas.org/doi/10.1073/pnas.2318767121). Epub 2024 Oct 21. PMID: 39432783; PMCID: PMC11536072.
+- Asano, T., Suga, H., Niioka, H., Yukawa, H., Sakakibara, M., Taga, S., Soen, M., Miwata, T., Sasaki, H., Seki, T., Hasegawa, S., Murakami, S., [**Abe, M.**]({author}安部), Yasuda, Y., Miyata, T., Kobayashi, T., Sugiyama, M., Onoue, T., Hagiwara, D., ... Arima, H. (2024). 
+*A deep learning approach to predict differentiation outcomes in hypothalamic-pituitary organoids.*
+**Communications Biology**, 7(1), 1468. [doi: 10.1038/s42003-024-07109-1](https://doi.org/10.1038/s42003-024-07109-1)
 - [**Abe, Masatoshi**]({author}安部); Niioka, Hirohiko; Matsumoto, Ayumi; Katsuma, Yusuke; Imai, Atsuhiro; Okushima, Hiroki; Ozaki, Shingo; Fujii, Naohiko; Oka, Kazumasa; Sakaguchi, Yusuke; Inoue, Kazunori; Isaka, Yoshitaka; Matsui, Isao.
 *Self-Supervised Learning for Feature Extraction from Glomerular Images and Disease Classification with Minimal Annotations.*
 **Journal of the American Society of Nephrology** 36(3): 471-486, March 2025. ([DOI: 10.1681/ASN.0000000514](https://journals.lww.com/jasn/abstract/2025/03000/self_supervised_learning_for_feature_extraction.17.aspx))
