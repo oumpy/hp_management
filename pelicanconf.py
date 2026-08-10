@@ -63,19 +63,19 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 MARKUP = ['md', 'ipynb']
 
 PLUGIN_PATHS = ['./myplugins']
-from pelican_jupyter import markup as nb_markup
 from pelican.plugins import render_math, tag_cloud, related_posts
 from pelican.plugins import simple_footnotes
 from pelican.plugins import neighbors
 from minchin.pelican.plugins import nojekyll
 from myplugins import (
+    ipynb_reader,
     autosummary, summary, shortcodes,
     category_names, apply_jinja2, path2obj,
     subsections, makemenu, excludes_dirnames, pelican_sass,
     skiptags,
 )
 PLUGINS = [
-    nb_markup,
+    ipynb_reader,
     render_math,
     tag_cloud,
     related_posts,
@@ -117,7 +117,6 @@ SHORTCODES = {
 # metadata. These need to be ignored.
 IGNORE_FILES = [".ipynb_checkpoints", '._*']
 
-# IPYNB_USE_METACELL = True
 # DISPLAY_PAGES_ON_MENU = True
 # USE_FOLDER_AS_CATEGORY = True
 
