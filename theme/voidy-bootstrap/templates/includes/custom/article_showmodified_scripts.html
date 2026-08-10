@@ -1,10 +1,13 @@
 {% if article.show_modified %}
-<script type="text/javascript">
+<script>
     (function() {
-        var modified = document.getElementsByName('article:modified')[0].content;
-        $('#modified-date-here').after(
-            '<p class="modified-date">( ' + modified + ' 最終更新 )</p>'
-        );
+        var meta = document.getElementsByName('article:modified')[0];
+        var anchor = document.getElementById('modified-date-here');
+        if (!meta || !anchor) { return; }
+        var p = document.createElement('p');
+        p.className = 'modified-date';
+        p.textContent = '( ' + meta.content + ' 最終更新 )';
+        anchor.after(p);
     })();
 </script>
 {% endif %}
