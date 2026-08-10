@@ -26,24 +26,27 @@
 
 ### Pluginの導入
 
-プラグイン[pelican-plugins](https://github.com/getpelican/pelican-plugins)および[pelican-ipynb](https://github.com/danielfrg/pelican-ipynb)を導入。
-pelicanconf.pyには以下の記述を追加。
-
-```python
-MARKUP = ('md', 'ipynb')
-PLUGIN_PATHS = ['./plugins']
-PLUGINS = ['pelican-ipynb.markup', 'render_math']
-```
+- 汎用プラグインはPyPIのnamespace plugin (`pelican-render-math`, `pelican-tag-cloud` など、`requirements.txt` 参照) を使用。
+- サイト独自のプラグインは `myplugins/` に置いている。
+  かつて使用していたアーカイブ済みモノレポ [pelican-plugins](https://github.com/getpelican/pelican-plugins) 由来の `summary`, `shortcodes` も `myplugins/` にvendorしてある。
+- Jupyter notebookファイル (.ipynb) の記事は自作の `myplugins/ipynb_reader` で処理する
+  (開発停止した pelican-jupyter / nbconvert<6 依存を2026年に解消)。
+  記事メタデータは従来通り同名の `.nbdata` ファイルに書く。
 
 これでjupyter notebookファイル(.ipynb)とLaTeX数式の使用がそれぞれ可能になる。
 
 ### Themeの導入
 
-[voidy-bootstrap](https://github.com/robulouski/voidy-bootstrap)というテーマを導入した。
+[voidy-bootstrap](https://github.com/robulouski/voidy-bootstrap)というテーマを導入した
+(現在は全ファイルを `theme/voidy-bootstrap/` にvendor済み。サブモジュールは不要)。
 pelicanconf.pyの書き換えを行った。
 Twitterアカウントへのリンク設定などもpelicanconf.pyからできる。
 
 さらにテーマ改変・ファイル追加によりLook & Feelの変更と機能追加を行っている。
+2026年のシステム更新でBootstrap 5.3ベースに移行し、jQuery依存を廃止、
+モバイル用ハンバーガーメニュー/多階層ドロップダウン (`static/js/voidy-menu.js`) を整備した。
+Bootstrapおよび Font Awesome はjsDelivr CDNから読み込み、
+配色などのカスタマイズは `static/css/theme-overrides.css` で行う (SASSコンパイルは廃止)。
 
 ### トップページの変更
 
@@ -72,7 +75,7 @@ Slug: index
 
 ### 導入
 
-#### レポジトリのクローンとテーマファイル(voidy-bootstrap)のコピー
+#### レポジトリのクローン
 
 ```bash
 $ cd anywhere_you_like
@@ -80,6 +83,8 @@ $ git clone https://github.com/oumpy/hp_management.git
 $ cd hp_management
 $ sh tools/init.sh
 ```
+(テーマとプラグインはレポジトリ内に含まれるため、init.shの主な仕事は
+出力用レポジトリのcloneのみ。)
 (GitHub Pages のレポジトリは、 `content/contentpublishconf.py` の中で
 ```python
 SITEREPOSITORY = 'https://github.com/oumpy/oumpy.github.io.git'
@@ -87,11 +92,9 @@ SITEREPOSITORY = 'https://github.com/oumpy/oumpy.github.io.git'
 により定義。
 `init.sh` の中で自動的に読み込まれる。）
 
-テーマのファイルのみコピーし直したい場合も `sh init.sh` でOK。
-
 #### Pythonパッケージのインストール
 
-環境：Python 3.6以降
+環境：Python 3.9以降 (CIはPython 3.13を使用)
 
 `hp_management/` 直下で
 
