@@ -33,7 +33,7 @@ OPEN_GRAPH_IMAGE = LOGOIMG
 SOCIAL = [ # (name, URL, icon, color, size)
     # ('facebook', '#3B5998'),
     # ('技術Blog (はてな)','https://oumedpython.hatenablog.com/'),
-    ('Twitter', 'https://twitter.com/oumed_python', '<i class="fab fa-twitter"></i>', '#1DA1F2', 'larger'),
+    ('X (Twitter)', 'https://x.com/oumed_python', '<i class="fab fa-x-twitter"></i>', '#000000', 'larger'),
     ('E-mail', 'mailto:handai.python@gmail.com', '<i class="far fa-envelope"></i>', '#0078D4', 'larger'),
     ('GitHub Organization', 'https://github.com/oumpy', '<i class="fab fa-github"></i>', '#211F1F', 'larger'),
     ('YouTube Channel', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ', '<i class="fab fa-youtube"></i>', '#c4302b', 'larger'),
