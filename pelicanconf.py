@@ -62,15 +62,15 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 #RELATIVE_URLS = True
 MARKUP = ['md', 'ipynb']
 
-PLUGIN_PATHS = ['./plugins', './myplugins']
+PLUGIN_PATHS = ['./myplugins']
 from pelican_jupyter import markup as nb_markup
 from pelican.plugins import render_math, tag_cloud, related_posts
 from pelican.plugins import simple_footnotes
 from pelican.plugins import neighbors
 from minchin.pelican.plugins import nojekyll
-from plugins import summary, shortcodes
 from myplugins import (
-    autosummary, category_names, apply_jinja2, path2obj,
+    autosummary, summary, shortcodes,
+    category_names, apply_jinja2, path2obj,
     subsections, makemenu, excludes_dirnames, pelican_sass,
     skiptags,
 )
