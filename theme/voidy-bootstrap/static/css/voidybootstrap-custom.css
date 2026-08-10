@@ -637,3 +637,35 @@ div.text_cell_render{
 .donator-E6 {
   font-size: 3.5rem;
 }
+
+/* Jupyter notebook cell layout for the in-house ipynb reader
+   (replacement of the CSS that nbconvert used to inject) */
+.jupyter-notebook .cell {
+  margin-bottom: 0.5em;
+}
+.jupyter-notebook .prompt {
+  font-family: monospace;
+  font-size: 90%;
+  padding: 0.4em 0.2em;
+}
+.jupyter-notebook .input_prompt { color: #307fc1; }
+.jupyter-notebook .output_prompt { color: #bf5b3d; }
+.jupyter-notebook .inner_cell,
+.jupyter-notebook .output_subarea {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+@media (min-width: 768px) {
+  .jupyter-notebook .input,
+  .jupyter-notebook .output_area {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .jupyter-notebook .prompt {
+    flex: 0 0 auto;
+    min-width: 10ex;
+  }
+}
