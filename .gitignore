@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+/output/
+/output.new/
+/preview/
+.DS_Store
+.ipynb_checkpoints/
+# artifacts of the pre-2026 sass/bootstrap build pipeline
+/theme/voidy-bootstrap/bootstrap/
+/theme/voidy-bootstrap/static/css/theme.css

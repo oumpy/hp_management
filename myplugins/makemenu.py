@@ -87,15 +87,15 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
                         ret.append('<li class="nav-item dropdown dropdown-hover">')
                         if subsections and CARET:
                             caret = ' <span class="caret"></span>'
-                        a_format = '<a class="nav-link dropdown-toggle" id="dropdown{}" href="{}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{}{}</a>'
+                        a_format = '<a class="nav-link dropdown-toggle" id="dropdown{}" href="{}" aria-haspopup="true" aria-expanded="false">{}{}</a>'
                     else:
                         ret.append('<li class="nav-item">')
                         a_format = '<a class="nav-link" href="{1}">{2}{3}</a>'
                 else:
                     if subsections:
-                        ret.append('<div class="dropdown dropright">')
+                        ret.append('<div class="dropdown dropend">')
                         params['/div'] += 1
-                        a_format = '<a class="dropdown-item dropdown-toggle" id="dropdown{}" href="{}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{}{}</a>'
+                        a_format = '<a class="dropdown-item dropdown-toggle" id="dropdown{}" href="{}" aria-haspopup="true" aria-expanded="false">{}{}</a>'
                     else:
                         a_format = '<a class="dropdown-item" href="{1}">{2}{3}</a>'
                 dropdown_num += 1

@@ -6,8 +6,6 @@ import os
 import sys
 sys.path.append(os.curdir)
 
-BOOTSTRAP_VERSION = '4.5.0'
-
 LOAD_CONTENT_CACHE = False
 
 PATH = 'content'
@@ -71,7 +69,7 @@ from myplugins import (
     ipynb_reader,
     autosummary, summary, shortcodes,
     category_names, apply_jinja2, path2obj,
-    subsections, makemenu, excludes_dirnames, pelican_sass,
+    subsections, makemenu, excludes_dirnames,
     skiptags,
 )
 PLUGINS = [
@@ -87,7 +85,6 @@ PLUGINS = [
     path2obj,
     subsections,
     makemenu,
-    pelican_sass,
     excludes_dirnames,
     skiptags,
     simple_footnotes,
@@ -128,16 +125,15 @@ THEME = './theme/voidy-bootstrap'
 ###
 
 FONT_AWESOME_LINK = {
-    'href': 'https://use.fontawesome.com/releases/v5.13.0/css/all.css',
-    'integrity': 'sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V',
-    'crossorigin': 'anonymous'
+    'href': 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css',
+    'crossorigin': 'anonymous',
 }
 
 # Extra stylesheets, for bootstrap overrides or additional styling.
 STYLESHEET_FILES = [
     "pygment.css",
     # "voidybootstrap.css",
-    "theme.css",
+    "theme-overrides.css",
     "voidybootstrap-custom.css",
 ]
 CUSTOM_FOOTER = "custom/footer.html"

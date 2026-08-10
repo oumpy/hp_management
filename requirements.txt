@@ -1,8 +1,6 @@
 pelican[markdown] >= 4.11
 Markdown >= 3.6
 beautifulsoup4
-libsass
-requests
 pelican-sitemap
 pelican-render-math
 pelican-tag-cloud
