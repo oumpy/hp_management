@@ -3,6 +3,8 @@
 メンテナ (HP係) : 名倉、島田
 システム作成 : 平岡悠、AtamaokaC、takyamamoto
 
+システムの詳細な技術仕様は [`docs/SYSTEM.md`](docs/SYSTEM.md) を参照。
+
 ## 全体の仕組み
 
 - 管理ツールおよびサイト原稿 (主にMarkdownファイル) が入った [ブログ管理用のレポジトリ](https://github.com/oumpy/hp_management)と、`output/`ディレクトリ (主にHTMLファイル) が入った、[webサイト本体のレポジトリ (出力用レポジトリ)](https://github.com/oumpy/oumpy.github.io) がある。
