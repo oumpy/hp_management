@@ -150,9 +150,3 @@ for group in TAG_GROUPS:
 TAG_CLOUD_BADGE = True
 
 PREVIEW_SITENAME_APPEND = ' (テスト用ページ)'
-
-from myplugins import postprocess
-PLUGINS += [
-    postprocess,
-]
-POSTPROCESS_COMMAND = 'sh content/postprocess.sh'

@@ -58,8 +58,7 @@ hp_management/
 │   ├── contentpublishconf.py #   本番のみの設定 (SITEURL, SITEREPOSITORY)
 │   ├── articles/<年度>sy/{blog,news}/   # 記事 (.md / .ipynb + .nbdata)
 │   ├── pages/                #   固定ページ
-│   ├── create.py             #   記事スケルトン生成スクリプト
-│   └── postprocess.sh        #   ビルド後処理 (§5.4)
+│   └── create.py             #   記事スケルトン生成スクリプト
 ├── myplugins/                # ★自作/vendor プラグイン (§6)
 ├── theme/voidy-bootstrap/    # ★テーマ一式 (完全 vendor 済み, §7)
 ├── tools/                    # 初期化・デプロイスクリプト (§9, §10)
@@ -145,8 +144,6 @@ minchin.pelican.plugins.nojekyll    # .nojekyll 生成
 1. Pelican が `content/` を走査。リーダーで `.md` (標準) / `.ipynb` (自作) を HTML 化
 2. 各プラグイン (§6) が signal 経由で内容を加工
 3. テーマ (§7) の Jinja2 テンプレートでページ生成
-4. `POSTPROCESS_COMMAND = 'sh content/postprocess.sh'` が最後に実行される
-   (自作プラグイン postprocess 経由)
 
 ### 5.3 数式 (MathJax) の扱い
 
@@ -157,10 +154,9 @@ minchin.pelican.plugins.nojekyll    # .nojekyll 生成
   変換されるため、同一の機構で数式が処理される。
 - 注入スクリプトは `id` ガード付きのため重複実行はされない。
 
-### 5.4 postprocess.sh
-
-`output/articles/` 内に `../blog/*` への シンボリックリンクを張り、旧 URL
-(`/articles/<年>/...`) からのアクセス互換を保つ。`ln -sfn` により再実行冪等。
+(かつて存在した `content/postprocess.sh` による旧 URL 互換シンボリックリンク
+生成は 2026-08 に廃止。汎用の `postprocess` プラグインも使用箇所がなくなった
+ため撤去した。必要なら git 履歴から復元できる。)
 
 ---
 
@@ -233,7 +229,6 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
 | `makemenu` | 多階層ナビゲーションメニュー HTML の生成 (§7.3) |
 | `excludes_dirnames` | `*_EXCLUDES_DIRNAMES` 設定でディレクトリ名単位の除外 |
 | `skiptags` | 特定タグの除外処理 |
-| `postprocess` | ビルド完了後に `POSTPROCESS_COMMAND` を実行 |
 
 vendor プラグイン (`summary`, `shortcodes`) の由来はアーカイブ済み
 [pelican-plugins](https://github.com/getpelican/pelican-plugins) commit `18a59c3`。
@@ -355,7 +350,6 @@ URL と SRI ハッシュを両方更新すること。
 - 固定ページ: `/{slug}.html`。トップは `about.md` (Slug: index) → `/index.html`
 - カテゴリ: `/{slug}.html` (blog.html, news.html) — 固定ページと同じ階層に置く設計
 - 記事インデックス: `/articles.html`、ページネーション `/articles/latests/N/`
-- 旧互換: `/articles/<年>/...` → postprocess.sh のシンボリックリンク
 - タグ: `/tag/<tag>.html`、著者: `/author/<name>.html`
 - フィード: `/feeds/all.atom.xml`, `/feeds/all.rss.xml`
 
