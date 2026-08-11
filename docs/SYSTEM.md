@@ -223,7 +223,7 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
 | `summary` (vendor) | `<!-- PELICAN_BEGIN_SUMMARY -->` マーカーによる要約。旧 pelican-plugins 由来 |
 | `shortcodes` (vendor) | `SHORTCODES` 設定によるショートコード展開。`youtube`, `embed` を定義済み |
 | `category_names` | カテゴリ表示名の差し替え (`CATEGORYNAMES_ALTERNATIVES`: blog→技術ブログ 等) |
-| `apply_jinja2` | 文字列を Jinja2 として評価するフィルタ (サイドバーの支援リンクで使用) |
+| `apply_jinja2` | 文字列を Jinja2 評価する `apply_jinja2` フィルタ。また `Jinja2: True` メタデータを持つ記事/ページの本文・タイトルを Jinja2 として描画 (例: `search.md` が `GOOGLE_CSE_ID` を埋め込むのに使用) |
 | `path2obj` | URL からページ/記事オブジェクトを引く `url2obj` フィルタ |
 | `subsections` | ページ階層 (サブセクション) 情報を構築。メニュー AUTO 展開に使用 |
 | `makemenu` | 多階層ナビゲーションメニュー HTML の生成 (§7.3) |
@@ -340,7 +340,7 @@ URL と SRI ハッシュを両方更新すること。
 |---|---|---|
 | jsDelivr | Bootstrap / Font Awesome 配信 | base.html, `FONT_AWESOME_LINK` |
 | cdnjs | MathJax 2.7.3 | render-math が注入 |
-| Google CSE | サイト内検索 (`GOOGLE_CSE_ID`) | `sb_google_cse.html`, `search.md` |
+| Google PSE | サイト内検索 (`GOOGLE_CSE_ID`)。検索窓はサイドバーのフォームが `/search.html?q=...` へ送信し、`search.md` (Jinja2: True) の `gcse-searchresults-only` 要素が現行の cse.js 埋め込みで結果を表示 | `sb_google_cse.html`, `search.md` |
 | utteranc.es | 記事コメント欄 (GitHub Issues 連携) | `utterances.html` |
 | shields.io | タグ/GitHub バッジ画像 | `article_header_info.html` ほか |
 | platform.twitter.com | X タイムライン・共有ボタン | §7.5, `sharing_scripts.html` |
@@ -447,7 +447,6 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
   キーを足せば有効化される)
 - MathJax が 2.7.3 (render-math プラグイン依存)。MathJax 3/4 への移行は
   render-math の対応待ちか自前注入への切り替えが必要
-- Google CSE の検索結果ページ (`search.md`) は旧式タグのまま
 - レガシー webhook 機構 (§10) の撤去判断
 
 ---
