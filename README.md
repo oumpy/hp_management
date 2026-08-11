@@ -1,6 +1,5 @@
 # [阪医Python会HP](https://oumpy.github.io/)
 
-メンテナ (HP係) : 名倉、島田
 システム作成 : 平岡悠、AtamaokaC、takyamamoto
 
 システムの詳細な技術仕様は [`docs/SYSTEM.md`](docs/SYSTEM.md) を参照。
@@ -53,20 +52,20 @@ Bootstrapおよび Font Awesome はjsDelivr CDNから読み込み、
 ### トップページの変更
 
 デフォルトではarticlesのインデックスがトップページになる。
-これを変更する正式な方法が何かはよくわからないが、ひとまず `pelicanconf.py`中で
+まず `pelicanconf.py`中で
 
 ```python
 INDEX_SAVE_AS = 'articles.html'
 ```
 
-としてarticleのインデックスURLを`index.html`から`articles.html`に変更、次いで、pagesのうちの一つのメタデータで
+とするとarticleのインデックスURLが`index.html`から`articles.html`に変更される。
+次いで、pagesのうちの一つ (`about.md`) のメタデータで
 
 ```
 Slug: index
 ```
 
-と設定すると、このページがトップになる。
-この方法で `about.md` をトップに設定した。
+と設定すると、そのページが `index.html` となりトップページになる。
 
 ### その他
 
