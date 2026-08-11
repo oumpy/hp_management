@@ -1,14 +1,26 @@
+# Configuration for actions/labeler (v5+ format)
 article:
-- content/articles/*/blog/**/*
+- changed-files:
+  - any-glob-to-any-file:
+    - content/articles/*/blog/**
 page/news:
-- content/articles/*/news/**/*
-- content/pages/**/*
+- changed-files:
+  - any-glob-to-any-file:
+    - content/articles/*/news/**
+    - content/pages/**
 theme:
-- theme/**/*
+- changed-files:
+  - any-glob-to-any-file:
+    - theme/**
 system:
-- .github/**/*
-- myplugins/**/*
-- tools/**/*
+- changed-files:
+  - any-glob-to-any-file:
+    - .github/**
+    - myplugins/**
+    - tools/**
 document:
-- README.md
-- content/README.md
+- changed-files:
+  - any-glob-to-any-file:
+    - README.md
+    - content/README.md
+    - docs/**

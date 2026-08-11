@@ -17,13 +17,13 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Checkout branch
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       # checkout the branch which triggered this workflow.
       with:
         submodules: true
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: '3.13'
         cache: 'pip'
@@ -47,7 +47,7 @@ jobs:
         git rev-parse HEAD > ./output/git_head_hash
 
     - name: Save Preview Product
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: preview
         path: output
@@ -59,7 +59,7 @@ jobs:
 
     steps:
     - name: Checkout master branch
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         ref: master
         submodules: false
@@ -69,7 +69,7 @@ jobs:
         sh tools/init_output.sh
 
     - name: Load Preview Product
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: preview
         path: preview
