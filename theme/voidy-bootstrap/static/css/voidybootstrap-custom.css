@@ -556,22 +556,9 @@ td.recent-posts-date {
   font-weight: bolder;
 }
 
-/* デスクトップ表示ではホバー操作でドロップダウンを表示 */
-@media only screen and (min-width: 992px) {
-  #main-navbar .dropdown > .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 0;
-  }
-  #main-navbar .dropdown.dropend > .dropdown-menu {
-    top: 0;
-    left: 100%;
-  }
-  #main-navbar .dropdown:hover > .dropdown-menu {
-    display: block;
-  }
-}
+/* ドロップダウンの開閉・配置は Bootstrap 5 標準の Dropdown
+   (data-bs-toggle="dropdown") に任せる。navbar 内では BS5 が
+   デスクトップ=absolute / 折り畳み時=static を自動で切り替える。 */
 
 /* モバイル(折り畳みメニュー)ではサブメニューをインライン展開 */
 @media only screen and (max-width: 991.98px) {

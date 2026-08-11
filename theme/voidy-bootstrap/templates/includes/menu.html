@@ -9,18 +9,19 @@
   {url, title, active, divider, children}.  Links are prefixed with
   SITEURL, which Pelican relativizes per page when RELATIVE_URLS is on.
 
-  Submenu open/close behavior is provided by static/js/voidy-menu.js and
-  the theme CSS: hover fly-out on desktop, inline unfolding in the
-  collapsed navbar on mobile.  Nested levels (depth >= 2) are rendered as
-  Bootstrap "dropend" blocks, handled by the same CSS/JS.
+  Submenu open/close behavior is the standard Bootstrap 5 Dropdown
+  (data-bs-toggle): click/tap to open on all devices; navigation to the
+  parent page itself goes through the first submenu entry provided by
+  self_in_subsections.  Nested levels (depth >= 2) are not supported by
+  the standard Dropdown (resolve_menu warns if configured).
 #}
 {% macro render(nodes) %}
 {%- for node in nodes %}
 {%- if node.children %}
 <li class="nav-item dropdown{{ ' active' if node.active }}">
   <a class="nav-link dropdown-toggle" id="navdd{{ loop.index }}"
-     href="{{ SITEURL }}/{{ node.url }}"
-     aria-haspopup="true" aria-expanded="false">{{ node.title }}</a>
+     href="{{ SITEURL }}/{{ node.url }}" role="button"
+     data-bs-toggle="dropdown" aria-expanded="false">{{ node.title }}</a>
   <div class="dropdown-menu" aria-labelledby="navdd{{ loop.index }}">
     {{- subitems(node.children) }}
   </div>

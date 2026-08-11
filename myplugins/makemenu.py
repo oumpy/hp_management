@@ -29,6 +29,11 @@ Notes:
 - `active` is true for the page itself, for nodes whose `active_pages`
   regex matches the current page URL, and propagates from children to
   their ancestors.
+- Standard Bootstrap 5 dropdowns do not support nested submenus, so
+  menus deeper than one level (`MENU_STEPS >= 2`) are not supported;
+  a warning is emitted if requested.  (A custom hover/accordion
+  implementation supporting deeper nesting exists in git history:
+  voidy-menu.js.)
 """
 
 from __future__ import unicode_literals
@@ -73,8 +78,12 @@ def resolve_menu(add_on_menu, page_url, depth=1):
 
     add_on_menu : list/tuple of MenuItem objects (or URL strings)
     page_url    : URL of the page being rendered (for active detection)
-    depth       : menu hierarchy depth (MENU_STEPS)
+    depth       : menu hierarchy depth (MENU_STEPS); only 1 is supported
     """
+    if depth > 1:
+        logger.warning('MENU_STEPS >= 2 is not supported by the standard '
+                       'Bootstrap 5 dropdown; submenus deeper than one level '
+                       'will not open.')
     roots = []
     FORWARD, BACK = 0, 1
     for obj in add_on_menu:

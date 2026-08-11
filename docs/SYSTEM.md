@@ -303,18 +303,19 @@ URL と SRI ハッシュを両方更新すること。
    トラバーサルは原実装のスタイルを保った非再帰 DFS (明示スタック +
    FORWARD/BACK の2フェーズ訪問)。
    マークアップはテーマ側の再帰マクロ `templates/includes/menu.html` が担当
-   (トップ階層: `nav-item dropdown`, 下位階層: `dropdown dropend`。
-   `data-bs-toggle` は**付けない** — Bootstrap の Dropdown JS を意図的に使わない)。
+   (トップ階層: `nav-item dropdown dropdown-toggle` + `data-bs-toggle="dropdown"`)。
    相対 URL は Pelican が per-page に相対化する `{{ SITEURL }}` に任せる
    (かつての rooturl 自前計算は廃止)。
-3. **`static/js/voidy-menu.js` + CSS** — 動作定義:
-   - デスクトップ (>=992px): CSS `:hover` でサブメニュー表示
-     (`#main-navbar .dropdown:hover > .dropdown-menu`)。親クリックはリンク遷移。
-   - モバイル (<992px): ハンバーガー (BS5 collapse) 内で、親タップは遷移せず
-     サブメニューをインライン展開 (`.show` 切替、aria-expanded 更新)。
-     ページ遷移はサブメニュー内の親自身項目から。
-   - ブレークポイント 992px は `navbar-expand-lg` と一致させてある。変更時は
-     CSS メディアクエリと voidy-menu.js の `DESKTOP` 定数を両方変更のこと。
+3. **動作は Bootstrap 5 標準の Dropdown コンポーネント任せ** (カスタム JS なし):
+   - 親項目のクリック/タップでサブメニュー開閉 (デスクトップ・モバイル共通)。
+     キーボード操作 (Tab/Enter/Esc)・外側クリックで閉じる、も BS 標準で動作。
+   - 親ページ自身へは、サブメニュー先頭の自分自身項目
+     (`self_in_subsections`) から遷移する。
+   - navbar 内の配置 (デスクトップ=absolute / 折り畳み時=static インライン展開)
+     も BS5 が自動処理。
+   - **制約**: 標準 Dropdown はネストをサポートしないため、`MENU_STEPS >= 2` は
+     非対応 (resolve_menu が警告を出す)。必要になった場合は git 履歴の
+     voidy-menu.js 実装 (ホバー+アコーディオン方式) を参照。
 
 ### 7.4 Colab / GitHub バッジ
 
