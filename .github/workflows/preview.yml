@@ -43,7 +43,7 @@ jobs:
           echo "    SITENAME += PREVIEW_SITENAME_APPEND"
           echo "    SITETAG += PREVIEW_SITENAME_APPEND"
         } >> ./content/contentconf.py
-        make html
+        pelican
         git rev-parse HEAD > ./output/git_head_hash
 
     - name: Save Preview Product

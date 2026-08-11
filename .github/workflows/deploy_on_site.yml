@@ -41,7 +41,7 @@ jobs:
       run: |
         rm -rf output.new
         mkdir output.new
-        make publish OUTPUTDIR=output.new
+        pelican -s publishconf.py -o output.new
         cd output
         git pull
         cd ..

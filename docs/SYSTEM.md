@@ -50,8 +50,6 @@ hp_management/
 ├── pelicanconf.py            # メイン設定 (開発ビルド用)
 ├── publishconf.py            # 本番ビルド用設定 (pelicanconf を継承)
 ├── requirements.txt          # Python 依存パッケージ
-├── Makefile                  # make html / make publish 等
-├── tasks.py                  # invoke 用タスク (Makefile と同等機能)
 ├── .github/workflows/        # CI/CD (§9)
 ├── content/                  # ★サイトの内容 (原稿・コンテンツ側設定)
 │   ├── contentconf.py        #   サイト固有設定 (メニュー・SNS・文言など)
@@ -78,7 +76,7 @@ hp_management/
 ```
 pelicanconf.py                     (システム側・開発ビルド)
   └─ from content.contentconf import *      (コンテンツ側)
-publishconf.py                     (本番ビルド; make publish で使用)
+publishconf.py                     (本番ビルド; pelican -s publishconf.py で使用)
   ├─ from pelicanconf import *
   ├─ PLUGINS += [sitemap]; robots.txt 追加
   └─ from content.contentpublishconf import *
@@ -134,10 +132,13 @@ minchin.pelican.plugins.nojekyll    # .nojekyll 生成
 
 | 操作 | コマンド |
 |---|---|
-| 開発ビルド | `make html` (= `pelican content -o output -s pelicanconf.py`) |
-| ローカルサーバ | `make serve [PORT=8000]` / `make devserver` |
-| 本番ビルド | `make publish` (= publishconf.py 使用) |
-| 出力先変更 | `make html OUTPUTDIR=output.new` |
+| 開発ビルド | `pelican` (pelicanconf.py を自動読込) |
+| ローカルサーバ | `pelican -l [-p 8000]`、自動再生成付きは `pelican -r -l` |
+| 本番ビルド | `pelican -s publishconf.py` |
+| 出力先変更 | `pelican -o output.new` |
+
+Makefile / tasks.py は 2026-08 に廃止し、Pelican 公式 CLI を直接使う
+(現行 Pelican の標準的な使い方。旧 `make html`/`make publish` 相当は上表)。
 
 ### 5.2 処理の流れ
 
@@ -371,7 +372,7 @@ Secrets: `bot_identity` (デプロイ用 SSH 秘密鍵), `known_hosts`。
 - トリガ: `master` への push
 - 手順: checkout (submodules 含む) → Python 3.13 + pip cache →
   `pip install -r requirements.txt` → `tools/init.sh` →
-  `make publish OUTPUTDIR=output.new` → 旧 output の `.git` と `previews/` を
+  `pelican -s publishconf.py -o output.new` → 旧 output の `.git` と `previews/` を
   output.new に移植 → 鮮度チェック (master が最新か) → commit & push
 - ビルド失敗はワークフロー失敗になる (`|| true` は 2026-08 に除去)
 
@@ -379,7 +380,7 @@ Secrets: `bot_identity` (デプロイ用 SSH 秘密鍵), `known_hosts`。
 
 - トリガ: master 以外のブランチ push
 - build job: `contentconf.py` 末尾に `SITEURL = '/previews/refs/heads/<branch>'`
-  等を追記してから `make html`。成果物を artifact として保存
+  等を追記してから `pelican` を実行。成果物を artifact として保存
 - push job: 出力レポジトリを clone し、`previews/refs/heads/<branch>/` に配置して
   push。プレビュー URL: `https://oumpy.github.io/previews/refs/heads/<branch>/`
 - 鮮度チェック: ビルドしたコミットがまだブランチ先端のときのみ push
@@ -459,22 +460,22 @@ cd hp_management
 python3 -m venv .venv && source .venv/bin/activate   # 任意
 pip install -r requirements.txt
 sh tools/init.sh          # 出力レポジトリの clone (push 権限がなければ省略可)
-make html                 # → output/
-make serve                # http://localhost:8000
+pelican                   # → output/
+pelican -l                # http://localhost:8000 (自動再生成付きは pelican -r -l)
 ```
 
 - Python 3.9 以降。OS 依存なし (シェルスクリプトは POSIX sh)。
-- 本番相当を確認したいときは `make publish` (sitemap / robots.txt 付き)。
+- 本番相当を確認したいときは `pelican -s publishconf.py` (sitemap / robots.txt 付き)。
 
 ---
 
 ## 13. 変更時のチェックリスト
 
-- [ ] `make html` が警告 ({attach} 関連の既知警告を除き) なしで通るか
+- [ ] `pelican` によるビルドが警告 ({attach} 関連の既知警告を除き) なしで通るか
 - [ ] ipynb 記事 1 本 (例: `/blog/2018/10/bayesian_ttest.html`) の表示・数式・
       Colab バッジ
 - [ ] デスクトップ: メニューのホバー展開・クリック遷移・active 表示
 - [ ] モバイル幅 (<992px): ハンバーガー開閉・サブメニューのタップ展開
 - [ ] サイドバー各 box (検索・SNS・新着・タグ・支援・X timeline フォールバック)
-- [ ] `make publish` で sitemap.xml / robots.txt / .nojekyll が生成されるか
+- [ ] `pelican -s publishconf.py` で sitemap.xml / robots.txt / .nojekyll が生成されるか
 - [ ] CDN の URL と SRI ハッシュの対応 (Bootstrap 更新時)
