@@ -500,6 +500,33 @@ ul.social-links > li {
   display:inline;
   font-size: 1.5em;
 }
+/* かつてアイコン間隔を作っていたリンク内の空白文字 (BS5では下線が
+   「_」として見えるため除去済み) の分の間隔を margin で確保する */
+ul.social-links > li:not(:last-child) {
+  margin-right: 0.35em;
+}
+/* Bootstrap 5 はリンクを常時下線表示にするが、アイコンリンクでは
+   下線 (空白部分が「_」に見える) を出さない */
+ul.social-links a,
+.sidebar_box .box-contents a {
+  text-decoration: none;
+}
+.sidebar_box .box-contents a:hover {
+  text-decoration: underline;
+}
+ul.social-links a:hover {
+  text-decoration: none;
+}
+/* 画像ロゴをフォントアイコンとサイズを揃えてインライン表示
+   (グローバルの img ルールを打ち消す) */
+img.social-logo-image {
+  display: inline;
+  height: 1.15em;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  vertical-align: -0.15em;
+}
 
 table.recent-posts {
   border-style: hidden;

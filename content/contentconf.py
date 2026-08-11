@@ -37,7 +37,11 @@ SOCIAL = [ # (name, URL, icon, color, size)
     ('E-mail', 'mailto:handai.python@gmail.com', '<i class="far fa-envelope"></i>', '#0078D4', 'larger'),
     ('GitHub Organization', 'https://github.com/oumpy', '<i class="fab fa-github"></i>', '#211F1F', 'larger'),
     ('YouTube Channel', 'https://www.youtube.com/channel/UCh1eAeDCpsZeOh0Z9paNfHQ', '<i class="fab fa-youtube"></i>', '#c4302b', 'larger'),
-    ('Connpass', 'https://oum-python.connpass.com', '<img width="35px" src="https://connpass.com/static/img/72_72.png" style="display: inline;"/>', '#000000', 'normal'),
+    # connpass公式ロゴ。配布元: https://help.connpass.com/faq/others.html
+    # (「ロゴ画像を使いたい」節。リサイズ以外の加工は不可)
+    # 旧URL (connpass.com/static/img/72_72.png) はサイトリニューアルで消滅した。
+    # 画像が読めない場合は alt テキストが表示される。ロゴ変種は _1〜_4。
+    ('Connpass', 'https://oum-python.connpass.com', '<img class="social-logo-image" src="https://help.connpass.com/_images/connpass_logo_3.png" alt="connpass"/>', '#E9463F', 'normal'),
     ('Atom Feed', './feeds/all.atom.xml', '<i class="fa fa-rss fa-fw fa-lg"></i>', '#00008b', 'smaller'),
     ('RSS Feed', './feeds/all.rss.xml', '<i class="fas fa-rss-square fa-fw fa-lg"></i>', '#f26522', 'normal'),
 ]
