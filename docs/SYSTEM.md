@@ -137,7 +137,7 @@ minchin.pelican.plugins.nojekyll    # .nojekyll 生成
 | 開発ビルド | `make html` (= `pelican content -o output -s pelicanconf.py`) |
 | ローカルサーバ | `make serve [PORT=8000]` / `make devserver` |
 | 本番ビルド | `make publish` (= publishconf.py 使用) |
-| 出力先変更 | `make html output=output.new` |
+| 出力先変更 | `make html OUTPUTDIR=output.new` |
 
 ### 5.2 処理の流れ
 
@@ -371,7 +371,7 @@ Secrets: `bot_identity` (デプロイ用 SSH 秘密鍵), `known_hosts`。
 - トリガ: `master` への push
 - 手順: checkout (submodules 含む) → Python 3.13 + pip cache →
   `pip install -r requirements.txt` → `tools/init.sh` →
-  `make publish output=output.new` → 旧 output の `.git` と `previews/` を
+  `make publish OUTPUTDIR=output.new` → 旧 output の `.git` と `previews/` を
   output.new に移植 → 鮮度チェック (master が最新か) → commit & push
 - ビルド失敗はワークフロー失敗になる (`|| true` は 2026-08 に除去)
 
