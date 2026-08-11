@@ -2,7 +2,6 @@ pelican[markdown] >= 4.11
 Markdown >= 3.6
 beautifulsoup4
 pelican-sitemap
-pelican-render-math
 pelican-tag-cloud
 pelican-related-posts
 pelican-simple-footnotes

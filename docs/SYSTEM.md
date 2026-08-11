@@ -38,7 +38,7 @@
 | ipynb 変換 | 自作 `myplugins/ipynb_reader` | nbconvert 等の Jupyter スタックに **非依存** |
 | CSS フレームワーク | Bootstrap | 5.3.7 (jsDelivr CDN, SRI付き) |
 | アイコン | Font Awesome | 6.7.2 (jsDelivr CDN) |
-| 数式 | MathJax | 2.7.3 (pelican-render-math が注入) |
+| 数式 | MathJax | 4 系 (自作 `myplugins/mathjax` が注入) |
 | JS | Vanilla JS + Bootstrap bundle | **jQuery 非依存** |
 
 ---
@@ -112,7 +112,6 @@ pelican[markdown] >= 4.11
 Markdown >= 3.6
 beautifulsoup4                      # autosummary が使用
 pelican-sitemap                     # 本番のみ有効
-pelican-render-math                 # 数式 (MathJax)
 pelican-tag-cloud
 pelican-related-posts
 pelican-simple-footnotes
@@ -148,12 +147,17 @@ Makefile / tasks.py は 2026-08 に廃止し、Pelican 公式 CLI を直接使�
 
 ### 5.3 数式 (MathJax) の扱い
 
-- pelican-render-math が Markdown 拡張として `$...$` / `$$...$$` を保護し
-  `<span class="math">\(...\)</span>` に変換、数式を含むページに MathJax 2.7.3
-  (cdnjs) のローダスクリプトを注入する。
+- 自作プラグイン `myplugins/mathjax` (2026-08 に pelican-render-math を置換) が
+  Markdown 拡張として `$...$` / `$$...$$` を保護し
+  `<span class="math">\(...\)</span>` 等に変換、数式を含むページに
+  **MathJax v4** (jsDelivr, `mathjax@4/tex-chtml.js`) のローダを注入する。
+  Markdown 拡張部は render-math から vendor (AGPL)、ローダは v4 の
+  コンポーネント方式 (`window.MathJax` 設定) で書き直したもの。
 - ipynb 記事の Markdown セルも同じ Markdown 設定 (`MARKDOWN` セッティング) で
   変換されるため、同一の機構で数式が処理される。
-- 注入スクリプトは `id` ガード付きのため重複実行はされない。
+- ローダは `window` フラグでガードされ冪等 (セル単位で複数回挿入されても
+  読み込みは1回)。数式を含む summary (一覧ページ) にもローダが付く。
+- 読み込み元は `MATHJAX_SOURCE` 設定で変更可能。
 
 (かつて存在した `content/postprocess.sh` による旧 URL 互換シンボリックリンク
 生成は 2026-08 に廃止。汎用の `postprocess` プラグインも使用箇所がなくなった
@@ -220,6 +224,7 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
 
 | プラグイン | 機能 |
 |---|---|
+| `mathjax` | 数式サポート (§5.3)。render-math 由来の Markdown 拡張 + MathJax v4 ローダ |
 | `autosummary` | 記事冒頭から自動で要約生成 (bs4 使用)。`summary` と併存中 (要整理) |
 | `summary` (vendor) | `<!-- PELICAN_BEGIN_SUMMARY -->` マーカーによる要約。旧 pelican-plugins 由来 |
 | `shortcodes` (vendor) | `SHORTCODES` 設定によるショートコード展開。`youtube`, `embed` を定義済み |
@@ -340,7 +345,7 @@ URL と SRI ハッシュを両方更新すること。
 | サービス | 用途 | 場所 |
 |---|---|---|
 | jsDelivr | Bootstrap / Font Awesome 配信 | base.html, `FONT_AWESOME_LINK` |
-| cdnjs | MathJax 2.7.3 | render-math が注入 |
+| jsDelivr | MathJax 4 (tex-chtml) | myplugins/mathjax が注入 |
 | Google PSE | サイト内検索 (`GOOGLE_CSE_ID`)。検索窓はサイドバーのフォームが `/search.html?q=...` へ送信し、`search.md` (Jinja2: True) の `gcse-searchresults-only` 要素が現行の cse.js 埋め込みで結果を表示 | `sb_google_cse.html`, `search.md` |
 | utteranc.es | 記事コメント欄 (GitHub Issues 連携) | `utterances.html` |
 | shields.io | タグ/GitHub バッジ画像 | `article_header_info.html` ほか |
@@ -446,8 +451,6 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
 - `autosummary` と `summary` の併存 (`pelicanconf.py` にもコメントあり)
 - Font Awesome の `<link>` に SRI 未設定 (`FONT_AWESOME_LINK` に `integrity`
   キーを足せば有効化される)
-- MathJax が 2.7.3 (render-math プラグイン依存)。MathJax 3/4 への移行は
-  render-math の対応待ちか自前注入への切り替えが必要
 - レガシー webhook 機構 (§10) の撤去判断
 
 ---
