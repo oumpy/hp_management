@@ -445,6 +445,30 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
    `|| true` によるビルド失敗の握り潰し除去、pip キャッシュ有効化。
 8. **Bootstrap 5.3.7 の採用理由** — 更新時点の最新は 5.3.8 だが、公式ドキュメント
    で SRI ハッシュを検証できた 5.3.7 を採用 (差分は軽微)。更新する場合は §7.1。
+9. **旧 URL 互換シンボリックリンク廃止** — `/articles/<年>/...` 形式の旧 URL を
+   支えていた postprocess.sh のシンボリックリンク生成を、不要と判断して撤去。
+   使用箇所がなくなった汎用 postprocess プラグインも同時に撤去 (§5.4 参照)。
+10. **GitHub Actions の Node 24 対応** — Node 20 ランタイム廃止予定に伴い
+    checkout v6 / setup-python v6 / upload-artifact v7 + download-artifact v8
+    (対で使用) / labeler v6 へ更新。labeler は v5 で設定形式が非互換になった
+    ため `.github/labeler.yml` を changed-files 形式へ移行。
+11. **メニュー生成のリファクタリング** — makemenu.py の HTML 文字列生成をやめ、
+    「Python はデータ (`resolve_menu` の dict 木) だけを返し、マークアップは
+    テーマ側 Jinja2 マクロ (`includes/menu.html`) が描画する」構成へ。
+    相対 URL の自前計算 (rooturl) は Pelican が per-page に相対化する
+    `SITEURL` に置き換えて廃止。**挙動・出力は不変** (正規化 diff で検証)。
+    なお BS5 標準 Dropdown (クリック開閉) への UX 変更案は、レビュー用の
+    子ブランチ `system/menu-bs5-standard` に単独コミットとして保留中。
+12. **ビルドコマンドの標準化** — quickstart 由来の Makefile / tasks.py を廃止し、
+    現行 Pelican の標準である `pelican` CLI 直接使用に統一 (§5.1)。quickstart
+    残骸の `make github` は生成 HTML をソースレポジトリの master に push して
+    しまう危険なターゲットだったため、これを機に除去。`output/.git` を保持する
+    clean 挙動は唯一の利用者だった tools/pushsite.sh 内の関数に移した。
+13. **MathJax 2.7.3 → v4** — render-math は MathJax.Hub.Config (v2) 方式の
+    ローダを持ち URL 差し替えでは更新不能。価値の中核である Markdown 拡張
+    (数式保護) を `myplugins/mathjax` に vendor し、ローダのみ v4 の
+    コンポーネント方式で書き直した (§5.3)。fork 維持より保守が軽く、
+    本家が v4 対応すれば PyPI 版へ戻すのも容易。
 
 ### 既知の残課題
 
