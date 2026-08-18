@@ -290,12 +290,17 @@ URL と SRI ハッシュを両方更新すること。
    - `self_in_subsections=True` → サブメニュー先頭に親ページ自身+区切り線を挿入
      (モバイルで親ページへ到達するための導線。**重要**)
    - `active_pages` — 正規表現。現在ページがマッチしたら親項目を active 表示
-2. **`makemenu` プラグイン** — 上記を受け取り Jinja2 フィルタ
-   `{{ ADD_ON_MENU|makemenu(output_file, MENU_STEPS) }}` として BS5 マークアップを
-   生成。トップ階層: `<li class="nav-item dropdown"><a class="nav-link
-   dropdown-toggle">`, 下位階層: `<div class="dropdown dropend"><a class=
-   "dropdown-item dropdown-toggle">`。`data-bs-toggle` は**付けない**
-   (Bootstrap の Dropdown JS を意図的に使わない)。
+2. **`makemenu` プラグイン** — `resolve_menu` Jinja2 フィルタを提供。
+   `ADD_ON_MENU` を `{url, title, active, divider, children}` の素朴な dict 木に
+   解決するだけで、**HTML は一切生成しない**。active 判定 (URL 一致 /
+   `active_pages` 正規表現 / 子の active の伝播) もここで行う。
+   トラバーサルは原実装のスタイルを保った非再帰 DFS (明示スタック +
+   FORWARD/BACK の2フェーズ訪問)。
+   マークアップはテーマ側の再帰マクロ `templates/includes/menu.html` が担当
+   (トップ階層: `nav-item dropdown`, 下位階層: `dropdown dropend`。
+   `data-bs-toggle` は**付けない** — Bootstrap の Dropdown JS を意図的に使わない)。
+   相対 URL は Pelican が per-page に相対化する `{{ SITEURL }}` に任せる
+   (かつての rooturl 自前計算は廃止)。
 3. **`static/js/voidy-menu.js` + CSS** — 動作定義:
    - デスクトップ (>=992px): CSS `:hover` でサブメニュー表示
      (`#main-navbar .dropdown:hover > .dropdown-menu`)。親クリックはリンク遷移。

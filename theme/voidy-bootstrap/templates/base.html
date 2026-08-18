@@ -99,7 +99,8 @@
             {% endfor %}
           {% endif %}
           {% if ADD_ON_MENU %}
-            {{ ADD_ON_MENU|makemenu(output_file, MENU_STEPS|default(1)) }}
+            {% import 'includes/menu.html' as menu with context %}
+            {{ menu.render(ADD_ON_MENU|resolve_menu(output_file, MENU_STEPS|default(1))) }}
           {% endif %}
           {% if not HIDE_ARCHIVES_ON_MENU %}
             <li class="nav-item {% block archive_active %}{% endblock %}">
