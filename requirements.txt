@@ -1,18 +1,9 @@
-setuptools
-pelican
-Markdown
-nbconvert < 6
-IPython
+pelican[markdown] >= 4.11
+Markdown >= 3.6
 beautifulsoup4
-requests
-libsass
-pelican-jupyter
 pelican-sitemap
-pelican-render-math
 pelican-tag-cloud
 pelican-related-posts
 pelican-simple-footnotes
 pelican-neighbors
 minchin.pelican.plugins.nojekyll
-ipython_genutils
-jinja2 < 3.1

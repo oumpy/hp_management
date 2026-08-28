@@ -1,9 +1,30 @@
 {% if TWITTER_TIMELINE_URL %}
 <div class="sidebar_box">
-<div class="box-title"><i class="fab fa-twitter fa-fw fa-lg"></i> {{ CUSTOM_TWITTERTL_TITLE }}</div>
-<div class="box-contents">
-    <a class="twitter-timeline" data-height={{ TWITTER_TIMELINE_HEIGHT }} href={{ TWITTER_TIMELINE_URL }}>Tweets by {{ TWITTER_USERNAME }}</a>
+<div class="box-title"><i class="fab fa-x-twitter fa-fw fa-lg"></i> {{ CUSTOM_TWITTERTL_TITLE }}</div>
+<div class="box-contents" id="twitter-timeline-box">
+    <a class="twitter-timeline" data-height="{{ TWITTER_TIMELINE_HEIGHT|default(600) }}" data-dnt="true"
+       data-chrome="noheader nofooter noborders"
+       href="{{ TWITTER_TIMELINE_URL }}">@{{ TWITTER_USERNAME }} のポスト</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
+<script>
+/* X (Twitter) timeline embeds have become unreliable since 2023 and often
+   render nothing for logged-out visitors.  If the widget iframe has not
+   appeared after a few seconds, fall back to a simple link button. */
+(function () {
+  setTimeout(function () {
+    var box = document.getElementById('twitter-timeline-box');
+    if (!box) { return; }
+    var iframe = box.querySelector('iframe');
+    if (iframe && iframe.offsetHeight > 0) { return; }
+    box.innerHTML =
+      '<p style="text-align:center;">' +
+      '<a class="btn btn-primary" target="_blank" rel="noopener" ' +
+      'href="{{ TWITTER_TIMELINE_URL }}">' +
+      '<i class="fab fa-x-twitter"></i> @{{ TWITTER_USERNAME }} をフォロー' +
+      '</a></p>';
+  }, 6000);
+})();
+</script>
 </div>
 {% endif %}

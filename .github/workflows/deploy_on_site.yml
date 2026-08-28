@@ -17,20 +17,20 @@ jobs:
 
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Set up Python
-      uses: actions/setup-python@v5
+    - name: Checkout master branch
+      uses: actions/checkout@v6
       with:
-        python-version: '3.13' # Semantic version range syntax or exact version of a Python version
-        architecture: 'x64' # Optional - x64 or x86, defaults to x64
+        submodules: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13'
+        cache: 'pip'
 
     - name: pip update
       run: |
         python -m pip install --upgrade pip
-
-    - name: Checkout master branch
-      uses: actions/checkout@v4
-      with:
-        submodules: true
 
     - name: Initialize Repository
       run: |
@@ -41,7 +41,7 @@ jobs:
       run: |
         rm -rf output.new
         mkdir output.new
-        make publish output=output.new || true
+        pelican -s publishconf.py -o output.new
         cd output
         git pull
         cd ..
@@ -67,7 +67,7 @@ jobs:
         git fetch origin master
         cur_hash=`git rev-parse master`
         new_hash=`git rev-parse origin/master`
-        if [ $cur_hash=$new_hash ]; then
+        if [ "$cur_hash" = "$new_hash" ]; then
           newest='true'
         else
           newest='false'

@@ -1,0 +1,47 @@
+/*
+ * theme-overrides.css
+ *
+ * Site-wide Bootstrap 5 customization, replacing the former SASS pipeline
+ * (theme.scss) that recompiled the whole Bootstrap from source with
+ * $theme-colors["primary"] = #0f5889.  With Bootstrap 5 the same look is
+ * achieved with plain CSS custom properties and a few overrides, so no
+ * sass compiler nor a Bootstrap source download is needed at build time.
+ */
+
+:root {
+  --bs-primary: #0f5889;
+  --bs-primary-rgb: 15, 88, 137;
+  --bs-link-color: #0f5889;
+  --bs-link-color-rgb: 15, 88, 137;
+  --bs-link-hover-color: #0a3c5e;
+  --bs-link-hover-color-rgb: 10, 60, 94;
+}
+
+.btn-primary {
+  --bs-btn-bg: #0f5889;
+  --bs-btn-border-color: #0f5889;
+  --bs-btn-hover-bg: #0a3c5e;
+  --bs-btn-hover-border-color: #0a3c5e;
+  --bs-btn-active-bg: #0a3c5e;
+  --bs-btn-active-border-color: #09344f;
+  --bs-btn-disabled-bg: #0f5889;
+  --bs-btn-disabled-border-color: #0f5889;
+}
+
+.badge.text-bg-primary,
+.badge.bg-primary {
+  background-color: #0f5889 !important;
+}
+
+/* Former theme.scss rules */
+.nav-link:hover {
+  color: black !important;
+  background-color: gray !important;
+}
+
+.dropdown-menu {
+  --bs-dropdown-link-hover-bg: #0dcaf0;   /* $info */
+  --bs-dropdown-link-hover-color: #fff;
+  border: solid 0.25rem gray;
+  border-radius: 0rem 0.5rem 0.5rem 0.5rem;
+}

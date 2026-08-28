@@ -1,15 +1,15 @@
 <script>
 const colab_img_url = 'https://colab.research.google.com/assets/colab-badge.svg'
 const github_img_url = 'https://img.shields.io/static/v1?label=&logo=github&message=View%20On%20GitHub&labelColor=black&color=gray'
-const colab_img = '<img class="notebook-badge-image" src="' + colab_img_url + '" alt="Open In Colab" title="Open In Colab" width="119px"></img>';
-const github_img = '<img class="notebook-badge-image" src="' + github_img_url + '" alt="View On GitHub" title="View On GitHub" width="124px"></img>';
+const colab_img = '<img class="notebook-badge-image" src="' + colab_img_url + '" alt="Open In Colab" title="Open In Colab" width="119px">';
+const github_img = '<img class="notebook-badge-image" src="' + github_img_url + '" alt="View On GitHub" title="View On GitHub" width="124px">';
 var check_ipynb = document.getElementsByClassName('highlight hl-ipython3');
 if (check_ipynb.length > 0) {
     var doc0 = document.getElementById("colablink");
     var article_date = document.getElementsByName('article:date')[0].content;
     var article_year = article_date.slice(0, 4);
     var article_month = article_date.slice(5, 7);
-    var article_category = document.getElementsByName('article:category:slug')[0].content; 
+    var article_category = document.getElementsByName('article:category:slug')[0].content;
     if (parseInt(article_month) <= 3) {
       article_year = article_year - 1;
     }
@@ -17,7 +17,7 @@ if (check_ipynb.length > 0) {
     var source_url = document.getElementsByName('source-repository')[0].content;
     if (source_url.endsWith('.git')) {
       source_url = source_url.slice(0, -4);
-    } else if (url_base.endsWith('/')) {
+    } else if (source_url.endsWith('/')) {
       source_url = source_url.slice(0, -1);
     }
     var source_url_hierarchies = source_url.split('/');
@@ -28,39 +28,34 @@ if (check_ipynb.length > 0) {
     var filepath = article_year+"sy/"+article_category+"/"+article_name+".ipynb"
     var colab_url = urlroot_colab + filepath;
     var github_url = urlroot_github + filepath;
-    var site_url = document.getElementsByName('siteurl')[0].content;
     var button = '<a href='+github_url+'>'+github_img+'</a>'
                +'<a href='+colab_url+'>'+colab_img+'</a>';
     doc0.innerHTML= button;
 }
 
-$(function() {
-  const myhost = $(location).attr('hostname'); /* hogehoge.github.io */
-  /* in order to work only on github pages, add:
-  if (! myhost.match(/^[^\.]+\.github\.io$/)) {
-    return;
-  }
-  */
-  const account = myhost.split('.')[0]; /* hogehoge */
-  const repo = account + '/' + myhost + '/blob/master';
-  const root = 'https://colab.research.google.com/github/' + repo;
-  $('a').each(function() {
-    const target = $(this).attr('href').replace('https://'+myhost, '');
+/* Add an "Open in Colab" badge after any local link to a .ipynb file. */
+(function () {
+  var myhost = window.location.hostname; /* hogehoge.github.io */
+  var account = myhost.split('.')[0]; /* hogehoge */
+  var repo = account + '/' + myhost + '/blob/master';
+  var root = 'https://colab.research.google.com/github/' + repo;
+  document.querySelectorAll('a[href]').forEach(function (link) {
+    var target = link.getAttribute('href').replace('https://' + myhost, '');
     if ((target.startsWith('.') || target.startsWith('/')) && target.endsWith('.ipynb')) {
-      let upper = root + $(location).attr('pathname');
-      let upper_split = upper.split('/');
-      let target_split = target.split('/');
+      var upper = root + window.location.pathname;
+      var upper_split = upper.split('/');
+      var target_split = target.split('/');
       upper_split.pop();
-      let head = true;
+      var head = true;
       while (true) {
-        if (head && target_split[0] == '') {
+        if (head && target_split[0] === '') {
           target_split.shift();
           upper_split = root.split('/');
           break;
-        } else if (target_split[0] == '.') {
+        } else if (target_split[0] === '.') {
           target_split.shift();
           head = false;
-        } else if (target_split[0] == '..') {
+        } else if (target_split[0] === '..') {
           target_split.shift();
           upper_split.pop();
           head = false;
@@ -68,9 +63,9 @@ $(function() {
           break;
         }
       }
-      colablink = upper_split.join('/') + '/' + target_split.join('/');
-      $(this).after(' <a href='+colablink+'>'+colab_img+'</a>');
+      var colablink = upper_split.join('/') + '/' + target_split.join('/');
+      link.insertAdjacentHTML('afterend', ' <a href=' + colablink + '>' + colab_img + '</a>');
     }
   });
-});
+})();
 </script>

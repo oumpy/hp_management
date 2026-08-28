@@ -2,14 +2,39 @@
 MakeMenu Plugin for Pelican
 -------
 
-This plugin provides a filter to generate submenus list.
+This plugin provides the `resolve_menu` Jinja2 filter, which resolves the
+site's `ADD_ON_MENU` declaration (a tree of `MenuItem` objects, page/article
+objects, or URL strings) into a plain tree of dicts:
+
+    {'url': ..., 'title': ..., 'active': bool, 'divider': bool,
+     'children': [...]}
+
+The HTML markup itself is rendered by the theme's Jinja2 macros
+(`templates/includes/menu.html`); this module contains no HTML.
+Relative URL handling is left to Pelican: templates simply prefix
+`{{ SITEURL }}`, which Pelican relativizes per page when
+`RELATIVE_URLS = True`.
+
+The traversal is an iterative depth-first search with an explicit stack
+and FORWARD/BACK phases, preserved from the original implementation:
+each node is visited twice, FORWARD to construct its entry (and push its
+subsections), BACK to settle its `active` state after all descendants
+have been processed, propagating activity to the parent via
+`active_flag`.
+
+Notes:
+- `subsections=MenuItem.AUTO` (None) expands the subsections attached by
+  the `subsections` plugin, looked up via the `url2obj` filter provided by
+  the `path2obj` plugin.
+- `active` is true for the page itself, for nodes whose `active_pages`
+  regex matches the current page URL, and propagates from children to
+  their ancestors.
 """
 
 from __future__ import unicode_literals
 from pelican import signals
 from collections import defaultdict
 import re
-import sys, os
 
 import logging
 logger = logging.getLogger(__name__)
@@ -21,7 +46,7 @@ def initialize(pelicanobj):
     settings = pelicanobj.settings
     if 'url2obj' in settings['JINJA_FILTERS'].keys():
         filter_url2obj = settings['JINJA_FILTERS']['url2obj']
-    settings['JINJA_FILTERS']['makemenu'] = makemenu
+    settings['JINJA_FILTERS']['resolve_menu'] = resolve_menu
 
 
 class MenuItem():
@@ -37,20 +62,23 @@ class MenuItem():
     AUTO = None
     DIVIDER = None
 
-def makemenu(add_on_menu, page_url, depth=1, CARET=False):
-# add_on_menu : list or tuple of MenuItem objects
-# page_url: give the url of the page where this filter is called
-# depath: depth of the menu hierarchy
-    ret = []
-    page_depth = page_url.count('/')
-    if page_depth == 0:
-        rooturl = '.'
-    else:
-        rooturl = '../' * (page_depth-1) + '..' 
+
+def _divider():
+    return {'url': None, 'title': None, 'active': False,
+            'divider': True, 'children': []}
+
+
+def resolve_menu(add_on_menu, page_url, depth=1):
+    """Resolve ADD_ON_MENU into a plain tree of dicts for the template.
+
+    add_on_menu : list/tuple of MenuItem objects (or URL strings)
+    page_url    : URL of the page being rendered (for active detection)
+    depth       : menu hierarchy depth (MENU_STEPS)
+    """
+    roots = []
     FORWARD, BACK = 0, 1
-    dropdown_num = 0
     for obj in add_on_menu:
-        pool = [(obj, 0, FORWARD, {'parent':None})]
+        pool = [(obj, 0, FORWARD, {'parent': None, 'siblings': roots})]
         active_flag = defaultdict(bool)
         active_flag[page_url] = True
         while pool:
@@ -60,6 +88,7 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
                     node = filter_url2obj(node)
                 else:
                     logger.error('You need path2obj for \'{}\' in submenu.'.format(node))
+                    continue
             if not hasattr(node, 'subsections') or node.subsections is None:
                 if filter_url2obj:
                     subsections = filter_url2obj(node.url).subsections
@@ -73,62 +102,43 @@ def makemenu(add_on_menu, page_url, depth=1, CARET=False):
                 title = node.title
 
             if s == FORWARD:
+                if node.url is None:
+                    params['siblings'].append(_divider())
+                    continue
                 if d >= depth:
                     subsections = []
 
-                params['forward_line'] = len(ret)
-                caret = ''
-                params['/div'] = 0
-                if node.url is None:
-                    ret.append('<div class="dropdown-divider"></div>')
-                    continue
-                elif d == 0:
-                    if subsections:
-                        ret.append('<li class="nav-item dropdown dropdown-hover">')
-                        if subsections and CARET:
-                            caret = ' <span class="caret"></span>'
-                        a_format = '<a class="nav-link dropdown-toggle" id="dropdown{}" href="{}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{}{}</a>'
-                    else:
-                        ret.append('<li class="nav-item">')
-                        a_format = '<a class="nav-link" href="{1}">{2}{3}</a>'
-                else:
-                    if subsections:
-                        ret.append('<div class="dropdown dropright">')
-                        params['/div'] += 1
-                        a_format = '<a class="dropdown-item dropdown-toggle" id="dropdown{}" href="{}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{}{}</a>'
-                    else:
-                        a_format = '<a class="dropdown-item" href="{1}">{2}{3}</a>'
-                dropdown_num += 1
-                ret.append(a_format.format(dropdown_num, '{}/{}'.format(rooturl, node.url), title, caret))
+                item = {'url': node.url, 'title': title, 'active': False,
+                        'divider': False, 'children': []}
+                params['siblings'].append(item)
+                params['item'] = item
+                pool.append((node, d, BACK, params))
 
                 if len(subsections) > 0:
-                    ret.append('<div class="dropdown-menu" aria-labelledby="dropdown{}">'.format(dropdown_num))
-                    params['/div'] += 1
-                    pool.append((node, d, BACK, params))
                     for c in subsections[::-1]:
-                        pool.append((c, d+1, FORWARD, {'parent':node.url}))
+                        pool.append((c, d + 1, FORWARD,
+                                     {'parent': node.url,
+                                      'siblings': item['children']}))
                     if node.self_in_subsections:
-                        pool.append((MenuItem(MenuItem.DIVIDER), d+1, FORWARD, {'parent':node.url}))
+                        pool.append((MenuItem(MenuItem.DIVIDER), d + 1, FORWARD,
+                                     {'parent': node.url,
+                                      'siblings': item['children']}))
                         pool.append((MenuItem(node.url,
                                               title=node.title,
                                               active_pages=node.active_pages,
                                               ),
-                                     d+1, FORWARD, {'parent':node.url}))
-                else:
-                    pool.append((node, d, BACK, params))
-            else: # s==BACK
-                if params['/div'] > 0:
-                    ret.append('</div>' * params['/div'])
-                if d == 0:
-                    ret.append('</li>')
+                                     d + 1, FORWARD,
+                                     {'parent': node.url,
+                                      'siblings': item['children']}))
+            else:  # s == BACK
                 active_flag[node.url] |= bool(
-                    hasattr(node,'active_pages') and node.active_pages and re.match(node.active_pages, page_url)
+                    hasattr(node, 'active_pages') and node.active_pages and re.match(node.active_pages, page_url)
                 )
                 if active_flag[node.url]:
-                    ret[params['forward_line']] = re.sub(r'(class="[^"]*)',r'\1 active', ret[params['forward_line']])
+                    params['item']['active'] = True
                     active_flag[params['parent']] = True
 
-    return '\n'.join(ret)
+    return roots
 
 
 def register():

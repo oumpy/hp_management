@@ -1,0 +1,54 @@
+{#
+  Navigation menu renderer.
+
+  Usage in base.html:
+    {% import 'includes/menu.html' as menu with context %}
+    {{ menu.render(ADD_ON_MENU|resolve_menu(output_file, MENU_STEPS|default(1))) }}
+
+  `resolve_menu` (myplugins/makemenu.py) supplies a tree of plain dicts:
+  {url, title, active, divider, children}.  Links are prefixed with
+  SITEURL, which Pelican relativizes per page when RELATIVE_URLS is on.
+
+  Submenu open/close behavior is provided by static/js/voidy-menu.js and
+  the theme CSS: hover fly-out on desktop, inline unfolding in the
+  collapsed navbar on mobile.  Nested levels (depth >= 2) are rendered as
+  Bootstrap "dropend" blocks, handled by the same CSS/JS.
+#}
+{% macro render(nodes) %}
+{%- for node in nodes %}
+{%- if node.children %}
+<li class="nav-item dropdown{{ ' active' if node.active }}">
+  <a class="nav-link dropdown-toggle" id="navdd{{ loop.index }}"
+     href="{{ SITEURL }}/{{ node.url }}"
+     aria-haspopup="true" aria-expanded="false">{{ node.title }}</a>
+  <div class="dropdown-menu" aria-labelledby="navdd{{ loop.index }}">
+    {{- subitems(node.children) }}
+  </div>
+</li>
+{%- else %}
+<li class="nav-item{{ ' active' if node.active }}">
+  <a class="nav-link" href="{{ SITEURL }}/{{ node.url }}">{{ node.title }}</a>
+</li>
+{%- endif %}
+{%- endfor %}
+{%- endmacro %}
+
+{% macro subitems(nodes) %}
+{%- for node in nodes %}
+{%- if node.divider %}
+  <div class="dropdown-divider"></div>
+{%- elif node.children %}
+  <div class="dropdown dropend{{ ' active' if node.active }}">
+    <a class="dropdown-item dropdown-toggle"
+       href="{{ SITEURL }}/{{ node.url }}"
+       aria-haspopup="true" aria-expanded="false">{{ node.title }}</a>
+    <div class="dropdown-menu">
+      {{- subitems(node.children) }}
+    </div>
+  </div>
+{%- else %}
+  <a class="dropdown-item{{ ' active' if node.active }}"
+     href="{{ SITEURL }}/{{ node.url }}">{{ node.title }}</a>
+{%- endif %}
+{%- endfor %}
+{%- endmacro %}

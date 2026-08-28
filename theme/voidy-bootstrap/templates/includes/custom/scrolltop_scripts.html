@@ -1,17 +1,13 @@
-<p class="pagetop" id="pagetop"><a href="#wrap"></a></p>
+<p class="pagetop" id="pagetop"><a href="#" aria-label="ページ先頭へ戻る"></a></p>
 <script>
-$(document).ready(function() {
-    var pagetop = $('#pagetop');
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 600) {
-            pagetop.fadeIn();
-        } else {
-            pagetop.fadeOut();
-            }
-        });
-        pagetop.click(function () {
-            $('body, html').animate({ scrollTop: 0 }, 500);
-                return false;
-    });
-});
+(function () {
+  var pagetop = document.getElementById('pagetop');
+  window.addEventListener('scroll', function () {
+    pagetop.style.display = (window.scrollY > 600) ? 'block' : 'none';
+  }, { passive: true });
+  pagetop.addEventListener('click', function (event) {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
 </script>

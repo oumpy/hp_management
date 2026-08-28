@@ -1,24 +1,42 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-!function(t){"use strict";var n=function(n){return this.each(function(){var e,i,a=t(this),o=a.data(),c=[a],r=this.tagName,d=0;e=t.extend({content:"body",headings:"h1,h2,h3"},{content:o.toc||void 0,headings:o.tocHeadings||void 0},n),i=e.headings.split(","),t(e.content).find(e.headings).attr("id",function(n,e){return e||function(t){0===t.length&&(t="?");for(var n=t.replace(/\s+/g,"_"),e="",i=1;null!==document.getElementById(n+e);)e="_"+i++;return n+e}(t(this).text())}).each(function(){var n=t(this),e=t.map(i,function(t,e){return n.is(t)?e:void 0})[0];if(e>d){var a=c[0].children("li:last")[0];a&&c.unshift(t("<"+r+"/>").appendTo(a))}else c.splice(0,Math.min(d-e,Math.max(c.length-1,0)));var o=n.text();o=o.replace("¶",""),t("<li/>").appendTo(c[0]).append(t("<a/>").text(o).attr("href","#"+n.attr("id"))),d=e})})},e=t.fn.toc;t.fn.toc=n,t.fn.toc.noConflict=function(){return t.fn.toc=e,this},t(function(){n.call(t("[data-toc]"))})}(window.jQuery);
-</script>
-<script>
-$(function(){
-  $('a[href*="#"]').on('click',function() {
-    var container = $('.container');
-    var add_move = container.height() + 50
-    var speed = 400;
-    var href= $(this).attr("href");
-    var target = $(href == "#" || href == "" ? 'html' : href);
-    var position = target.offset().top - add_move;
-    $('body,html').animate({scrollTop:position}, speed, 'swing');
-    return false;
-  });
-});
-</script>
-<script type="text/javascript">
-    $("#toc").toc({headings: "h2,h3"});
-    if( $('#toc').is(':empty') ) {
-      $('.toc_box').remove();
+/* Build a table of contents from h2/h3 headings inside the article body.
+   (Vanilla JS replacement of the old jQuery toc plugin.) */
+(function () {
+  var toc = document.getElementById('toc');
+  if (!toc) { return; }
+  var content = document.querySelector('.content-body') || document.body;
+  var headings = content.querySelectorAll('h2, h3');
+  var stack = [toc];
+  var lastLevel = 2;
+  headings.forEach(function (heading, i) {
+    var level = parseInt(heading.tagName.charAt(1), 10);
+    if (!heading.id) {
+      var base = (heading.textContent || 'section').trim().replace(/\s+/g, '_'),
+          id = base, n = 1;
+      while (document.getElementById(id)) { id = base + '_' + n++; }
+      heading.id = id;
     }
+    if (level > lastLevel) {
+      var lastItem = stack[0].lastElementChild;
+      if (lastItem) {
+        var sub = document.createElement('ul');
+        lastItem.appendChild(sub);
+        stack.unshift(sub);
+      }
+    } else if (level < lastLevel) {
+      while (stack.length > 1) { stack.shift(); break; }
+    }
+    lastLevel = level;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + heading.id;
+    a.textContent = (heading.textContent || '').replace('¶', '');
+    li.appendChild(a);
+    stack[0].appendChild(li);
+  });
+  if (!toc.hasChildNodes()) {
+    var box = toc.closest('.toc_box');
+    if (box) { box.remove(); }
+  }
+})();
 </script>

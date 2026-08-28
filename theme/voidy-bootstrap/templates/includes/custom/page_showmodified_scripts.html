@@ -1,12 +1,13 @@
 {% if page.show_modified %}
-<script type="text/javascript">
+<script>
     (function() {
-        var modified = document.getElementsByName('page:modified')[0].content;
-        //document.querySelector('[itemprop="name headline"]').
-        $('header').after(
-//            '<p class="modified-date", style="text-align: right">( ' + modified + ' 最終更新 )</p>'
-            '<p class="modified-date">( ' + modified + ' 最終更新 )</p>'
-        );
+        var meta = document.getElementsByName('page:modified')[0];
+        var header = document.querySelector('header');
+        if (!meta || !header) { return; }
+        var p = document.createElement('p');
+        p.className = 'modified-date';
+        p.textContent = '( ' + meta.content + ' 最終更新 )';
+        header.after(p);
     })();
 </script>
 {% endif %}

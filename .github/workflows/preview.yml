@@ -16,21 +16,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Set up Python
-      uses: actions/setup-python@v5
+    - name: Checkout branch
+      uses: actions/checkout@v6
+      # checkout the branch which triggered this workflow.
       with:
-        python-version: '3.13' # Semantic version range syntax or exact version of a Python version
-        architecture: 'x64' # Optional - x64 or x86, defaults to x64
+        submodules: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13'
+        cache: 'pip'
 
     - name: pip update
       run: |
         python -m pip install --upgrade pip
-
-    - name: Checkout branch
-      uses: actions/checkout@v4
-      # checkout the branch which trigerred this workflow.
-      with:
-        submodules: true
 
     - name: Make the Product
       run: |
@@ -43,11 +43,11 @@ jobs:
           echo "    SITENAME += PREVIEW_SITENAME_APPEND"
           echo "    SITETAG += PREVIEW_SITENAME_APPEND"
         } >> ./content/contentconf.py
-        make html
+        pelican
         git rev-parse HEAD > ./output/git_head_hash
 
     - name: Save Preview Product
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: preview
         path: output
@@ -58,14 +58,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.13' # Semantic version range syntax or exact version of a Python version
-        architecture: 'x64' # Optional - x64 or x86, defaults to x64
-
     - name: Checkout master branch
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         ref: master
         submodules: false
@@ -75,7 +69,7 @@ jobs:
         sh tools/init_output.sh
 
     - name: Load Preview Product
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: preview
         path: preview
@@ -108,7 +102,7 @@ jobs:
         branch=${GITHUB_REF#refs/heads/}
         git fetch origin "$branch"
         new_hash=`git rev-parse --verify --quiet "origin/$branch"`
-        if [ $cur_hash=$new_hash ]; then
+        if [ "$cur_hash" = "$new_hash" ]; then
           newest='true'
         else
           newest='false'

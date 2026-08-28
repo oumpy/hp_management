@@ -6,8 +6,6 @@ import os
 import sys
 sys.path.append(os.curdir)
 
-BOOTSTRAP_VERSION = '4.5.0'
-
 LOAD_CONTENT_CACHE = False
 
 PATH = 'content'
@@ -62,21 +60,21 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 #RELATIVE_URLS = True
 MARKUP = ['md', 'ipynb']
 
-PLUGIN_PATHS = ['./plugins', './myplugins']
-from pelican_jupyter import markup as nb_markup
-from pelican.plugins import render_math, tag_cloud, related_posts
+PLUGIN_PATHS = ['./myplugins']
+from pelican.plugins import tag_cloud, related_posts
 from pelican.plugins import simple_footnotes
 from pelican.plugins import neighbors
 from minchin.pelican.plugins import nojekyll
-from plugins import summary, shortcodes
 from myplugins import (
-    autosummary, category_names, apply_jinja2, path2obj,
-    subsections, makemenu, excludes_dirnames, pelican_sass,
+    ipynb_reader, mathjax,
+    autosummary, summary, shortcodes,
+    category_names, apply_jinja2, path2obj,
+    subsections, makemenu, excludes_dirnames,
     skiptags,
 )
 PLUGINS = [
-    nb_markup,
-    render_math,
+    ipynb_reader,
+    mathjax,
     tag_cloud,
     related_posts,
     nojekyll,
@@ -87,7 +85,6 @@ PLUGINS = [
     path2obj,
     subsections,
     makemenu,
-    pelican_sass,
     excludes_dirnames,
     skiptags,
     simple_footnotes,
@@ -117,7 +114,6 @@ SHORTCODES = {
 # metadata. These need to be ignored.
 IGNORE_FILES = [".ipynb_checkpoints", '._*']
 
-# IPYNB_USE_METACELL = True
 # DISPLAY_PAGES_ON_MENU = True
 # USE_FOLDER_AS_CATEGORY = True
 
@@ -129,16 +125,15 @@ THEME = './theme/voidy-bootstrap'
 ###
 
 FONT_AWESOME_LINK = {
-    'href': 'https://use.fontawesome.com/releases/v5.13.0/css/all.css',
-    'integrity': 'sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V',
-    'crossorigin': 'anonymous'
+    'href': 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css',
+    'crossorigin': 'anonymous',
 }
 
 # Extra stylesheets, for bootstrap overrides or additional styling.
 STYLESHEET_FILES = [
     "pygment.css",
     # "voidybootstrap.css",
-    "theme.css",
+    "theme-overrides.css",
     "voidybootstrap-custom.css",
 ]
 CUSTOM_FOOTER = "custom/footer.html"

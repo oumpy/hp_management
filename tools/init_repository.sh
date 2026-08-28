@@ -1,12 +1,6 @@
 #!/bin/sh
-git submodule update -i
-cd plugins
-git submodule update --init pelican-ipynb
-cd ..
-
-themename="voidy-bootstrap"
-cd themes
-git submodule update --init "$themename"
-cd ..
-mkdir -p "theme/$themename"
-cp -an "themes/$themename"/* "theme/$themename/"
+# Initialize submodules required for site management.
+# (The theme and all pelican plugins are now vendored in the repository;
+#  only 3rdtools/misc-tools, used by legacy webhook deployment scripts,
+#  remains as a submodule.)
+git submodule update --init 3rdtools/misc-tools

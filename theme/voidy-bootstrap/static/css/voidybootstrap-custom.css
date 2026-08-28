@@ -1,7 +1,12 @@
 .navbar {
+  --bs-navbar-color: #fff;
+  --bs-navbar-hover-color: #999;
+  --bs-navbar-brand-color: #adb5bd;
+  --bs-navbar-brand-hover-color: #fff;
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.25);
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   background-color: #1d2113;
-	border-color: #1d2113;
-  position: sticky;
+  border-color: #1d2113;
 }
 
 .navbar .navbar-nav>li>a {
@@ -235,7 +240,7 @@ article h1 a{
 }
 
 .pagetop a::before{
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free';
   font-weight: 900;
   content: '\f102';
   font-size: 25px;
@@ -495,6 +500,33 @@ ul.social-links > li {
   display:inline;
   font-size: 1.5em;
 }
+/* かつてアイコン間隔を作っていたリンク内の空白文字 (BS5では下線が
+   「_」として見えるため除去済み) の分の間隔を margin で確保する */
+ul.social-links > li:not(:last-child) {
+  margin-right: 0.35em;
+}
+/* Bootstrap 5 はリンクを常時下線表示にするが、アイコンリンクでは
+   下線 (空白部分が「_」に見える) を出さない */
+ul.social-links a,
+.sidebar_box .box-contents a {
+  text-decoration: none;
+}
+.sidebar_box .box-contents a:hover {
+  text-decoration: underline;
+}
+ul.social-links a:hover {
+  text-decoration: none;
+}
+/* 画像ロゴをフォントアイコンとサイズを揃えてインライン表示
+   (グローバルの img ルールを打ち消す) */
+img.social-logo-image {
+  display: inline;
+  height: 1.15em;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  vertical-align: -0.15em;
+}
 
 table.recent-posts {
   border-style: hidden;
@@ -525,10 +557,50 @@ td.recent-posts-date {
 }
 
 /* デスクトップ表示ではホバー操作でドロップダウンを表示 */
-@media only screen and (min-width : 768px) {
-  .dropdown:hover .dropdown-menu {
-      display: block;
+@media only screen and (min-width: 992px) {
+  #main-navbar .dropdown > .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0;
   }
+  #main-navbar .dropdown.dropend > .dropdown-menu {
+    top: 0;
+    left: 100%;
+  }
+  #main-navbar .dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+}
+
+/* モバイル(折り畳みメニュー)ではサブメニューをインライン展開 */
+@media only screen and (max-width: 991.98px) {
+  #main-navbar .dropdown-menu {
+    position: static;
+    border-width: 0 0 0 0.25rem;
+    border-radius: 0;
+    margin-left: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: transparent;
+  }
+  #main-navbar .dropdown-menu .dropdown-item {
+    color: #fff;
+  }
+  #main-navbar .dropdown-menu .dropdown-item:hover {
+    color: #1d2113;
+  }
+  #main-navbar .dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* 固定ナビゲーションバー分のアンカーオフセット */
+h1[id], h2[id], h3[id], h4[id], [id] {
+  scroll-margin-top: 70px;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 /*blockquote*/
@@ -591,4 +663,36 @@ div.text_cell_render{
 }
 .donator-E6 {
   font-size: 3.5rem;
+}
+
+/* Jupyter notebook cell layout for the in-house ipynb reader
+   (replacement of the CSS that nbconvert used to inject) */
+.jupyter-notebook .cell {
+  margin-bottom: 0.5em;
+}
+.jupyter-notebook .prompt {
+  font-family: monospace;
+  font-size: 90%;
+  padding: 0.4em 0.2em;
+}
+.jupyter-notebook .input_prompt { color: #307fc1; }
+.jupyter-notebook .output_prompt { color: #bf5b3d; }
+.jupyter-notebook .inner_cell,
+.jupyter-notebook .output_subarea {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+@media (min-width: 768px) {
+  .jupyter-notebook .input,
+  .jupyter-notebook .output_area {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .jupyter-notebook .prompt {
+    flex: 0 0 auto;
+    min-width: 10ex;
+  }
 }
