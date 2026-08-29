@@ -113,7 +113,7 @@ jobs:
       if: steps.check_update.outputs.newest=='true'
       run: |
         cd ./output
-        git pull
+        git -c maintenance.autoDetach=false -c gc.autoDetach=false pull
         cd ../
         mkdir -p ./output/previews/$GITHUB_REF
         rm -rf ./output/previews/$GITHUB_REF

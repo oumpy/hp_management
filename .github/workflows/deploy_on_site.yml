@@ -40,14 +40,18 @@ jobs:
     - name: Make the Product
       run: |
         rm -rf output.new
-        mkdir output.new
         pelican -s publishconf.py -o output.new
         cd output
-        git pull
+        # Disable git's detached background maintenance: it re-creates
+        # .git paths asynchronously and races with the sync below.
+        git -c maintenance.autoDetach=false -c gc.autoDetach=false pull
+        # Replace the site content in place, keeping .git and previews/.
+        # (The former mv/rm directory shuffle raced with git background
+        # processes: "rm -rf output" failed with ENOTEMPTY.)
+        find . -mindepth 1 -maxdepth 1 ! -name .git ! -name previews -exec rm -rf {} +
+        cp -a ../output.new/. .
         cd ..
-        mv output/.git output/previews output.new/
-        rm -rf output
-        mv output.new output
+        rm -rf output.new
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
