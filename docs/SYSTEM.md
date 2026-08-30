@@ -113,7 +113,6 @@ Markdown >= 3.6
 beautifulsoup4                      # autosummary が使用
 pelican-sitemap                     # 本番のみ有効
 pelican-tag-cloud
-pelican-related-posts
 pelican-simple-footnotes
 pelican-neighbors
 minchin.pelican.plugins.nojekyll    # .nojekyll 生成
@@ -225,6 +224,7 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
 | プラグイン | 機能 |
 |---|---|
 | `mathjax` | 数式サポート (§5.3)。render-math 由来の Markdown 拡張 + MathJax v4 ローダ |
+| `similar_posts` | 関連記事の選定 (2026-08 に pelican-related-posts を置換。混同を避けるため別名。属性 `article.related_posts` と `RELATED_*` 設定名はテンプレート互換のため維持)。本文の文字 n-gram TF-IDF コサイン類似度 + タグ IDF ボーナスで `article.related_posts` を設定。スコアが `RELATED_MIN_SCORE` 未満の記事は載せない (リストは最大数未満・空になり得る)。純 Python・追加依存なし。設定: `RELATED_POSTS_MAX` / `RELATED_MIN_SCORE` / `RELATED_NGRAM_SIZES` / `RELATED_TAG_WEIGHT` / `RELATED_TEXT_LIMIT` |
 | `autosummary` | 記事冒頭から自動で要約生成 (bs4 使用)。`summary` と併存中 (要整理) |
 | `summary` (vendor) | `<!-- PELICAN_BEGIN_SUMMARY -->` マーカーによる要約。旧 pelican-plugins 由来 |
 | `shortcodes` (vendor) | `SHORTCODES` 設定によるショートコード展開。`youtube`, `embed` を定義済み |
@@ -469,6 +469,18 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
     (数式保護) を `myplugins/mathjax` に vendor し、ローダのみ v4 の
     コンポーネント方式で書き直した (§5.3)。fork 維持より保守が軽く、
     本家が v4 対応すれば PyPI 版へ戻すのも容易。
+14. **関連記事の本文ベース化** — 旧 pelican-related-posts はタグ共通数のみで
+    選定しており、タグが少数の大きなバケツに集中する本サイトでは識別力が
+    ほぼなかった。形態素解析器なしで日本語/英語混在文に効く文字 n-gram
+    TF-IDF + コサイン類似度 (タグは IDF 重み付きボーナスとして併用) の
+    自作プラグイン `similar_posts` に置換 (旧プラグインとの混同を避ける
+    ための別名。`article.related_posts` 属性は互換のため維持)。
+    ラベル付きサンプルでの評価に基づき、低品質な穴埋め候補を排除する
+    足切り閾値 `RELATED_MIN_SCORE` を導入 (関連記事欄は空になり得る。
+    テンプレートは空リストを自然に非表示化)。n-gram を 4 以上へ拡張する
+    案も同評価で検証したが、改善が僅少なためデフォルトは n=2,3 を維持
+    (`RELATED_NGRAM_SIZES` で変更可。変更するとスコア分布が動くため
+    `RELATED_MIN_SCORE` の再調整が必要)。
 
 ### 既知の残課題
 
