@@ -61,12 +61,12 @@ CUSTOM_CONTENT_TOP_CATEGORY = "custom/content_top_category.html"
 MARKUP = ['md', 'ipynb']
 
 PLUGIN_PATHS = ['./myplugins']
-from pelican.plugins import tag_cloud, related_posts
+from pelican.plugins import tag_cloud
 from pelican.plugins import simple_footnotes
 from pelican.plugins import neighbors
 from minchin.pelican.plugins import nojekyll
 from myplugins import (
-    ipynb_reader, mathjax,
+    ipynb_reader, mathjax, similar_posts,
     autosummary, summary, shortcodes,
     category_names, apply_jinja2, path2obj,
     subsections, makemenu, excludes_dirnames,
@@ -76,7 +76,7 @@ PLUGINS = [
     ipynb_reader,
     mathjax,
     tag_cloud,
-    related_posts,
+    similar_posts,
     nojekyll,
     autosummary, summary, # need to resolve coexistence.
     category_names,
@@ -93,6 +93,7 @@ PLUGINS = [
 IGNORE_FILES = [".ipynb_checkpoints"]
 
 RELATED_POSTS_MAX = 3
+RELATED_MIN_SCORE = 0.18
 TAG_CLOUD_SORTING = "size"
 
 SHORTCODES = {
