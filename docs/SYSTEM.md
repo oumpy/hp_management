@@ -28,7 +28,7 @@
   URL は `content/contentpublishconf.py` の `SITEREPOSITORY` で定義。
 - master へのマージ → GitHub Actions が自動ビルド → 出力レポジトリへ push、が基本経路 (§9)。
 
-### 使用技術スタック (2026-08 現在)
+### 使用技術スタック (2026-09 現在)
 
 | 層 | 技術 | バージョン方針 |
 |---|---|---|
@@ -40,6 +40,7 @@
 | アイコン | Font Awesome | 6.7.2 (jsDelivr CDN) |
 | 数式 | MathJax | 4 系 (自作 `myplugins/mathjax` が注入) |
 | JS | Vanilla JS + Bootstrap bundle | **jQuery 非依存** |
+| 画像処理 | Pillow | 記事一覧サムネイルの縮小生成 (自作 `myplugins/thumbnails`) |
 
 ---
 
@@ -88,7 +89,12 @@ publishconf.py                     (本番ビルド; pelican -s publishconf.py �
   `from tools.lib.pelicanns import *` でシステム側の定義 (`datetime`,
   `PLUGIN_PATHS` 等) を参照する。**削除してはならない。**
 - コンテンツ側 (`contentconf.py`) にはメニュー定義 `ADD_ON_MENU`、SNS リンク
-  `SOCIAL`、Google CSE ID、タググループ、サイドバー文言などを置く。
+  `SOCIAL`、Google CSE ID、タググループ、サイドバー文言、ロゴ/既定サムネイル
+  (`LOGOIMG`, `OPEN_GRAPH_IMAGE`, `THUMBNAIL_DEFAULT`) などを置く。
+- `SITEURL_ABSOLUTE` は SITEURL 確定後のコピー (pelicanconf.py と、本番値を
+  読み込んだ後の publishconf.py の末尾で代入)。テンプレート変数 `SITEURL` は
+  `RELATIVE_URLS` によりページごとに相対化されるため、絶対 URL が必須の
+  Open Graph 等 (§7.6) はこちらを使う。
 - プレビュービルドでは CI が `contentconf.py` の末尾に `SITEURL` 等を追記する (§9.2)。
 
 ### 主要な Pelican 設定 (pelicanconf.py)
@@ -226,7 +232,7 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
 |---|---|
 | `mathjax` | 数式サポート (§5.3)。render-math 由来の Markdown 拡張 + MathJax v4 ローダ |
 | `similar_posts` | 関連記事の選定 (2026-08 に pelican-related-posts を置換。混同を避けるため別名。属性 `article.related_posts` と `RELATED_*` 設定名はテンプレート互換のため維持)。本文の文字 n-gram TF-IDF コサイン類似度 + タグ IDF ボーナスで `article.related_posts` を設定。スコアが `RELATED_MIN_SCORE` 未満の記事は載せない (リストは最大数未満・空になり得る)。純 Python・追加依存なし。設定: `RELATED_POSTS_MAX` / `RELATED_MIN_SCORE` / `RELATED_NGRAM_SIZES` / `RELATED_TAG_WEIGHT` / `RELATED_TEXT_LIMIT` |
-| `thumbnails` | 記事一覧用サムネイル (2026-09 追加)。優先順: メタデータ `thumbnail` (本文の画像リンクと同じ `{attach}` 等の記法・外部URL可) → 本文最初の `<img>` (バッジ画像は除外) → `THUMBNAIL_DEFAULT`。ローカル画像と data URI (Notebook 出力) は Pillow で `THUMBNAIL_SIZE` に縮小し `output/<THUMBNAIL_PATH>/<内容ハッシュ>.jpg|png` に書き出す (同一画像は共有、Pillow 不在時は原寸のまま使用)。結果は `article.thumbnail` (サイト相対パスまたは絶対URL) に格納し、`includes/index_summary.html` が表示。2段階動作: `article_generator_finalized` でメタデータ指定ファイルを `static_links` に登録 (StaticGenerator にコピーさせる) → `all_generators_finalized` で解決・生成。設定: `THUMBNAIL_DEFAULT` / `THUMBNAIL_SIZE` / `THUMBNAIL_PATH` / `THUMBNAIL_QUALITY` / `THUMBNAIL_EXCLUDE_PATTERN` |
+| `thumbnails` | 記事一覧用サムネイル (2026-09 追加)。優先順: メタデータ `thumbnail` (本文の画像リンクと同じ `{attach}` 等の記法・外部URL可) → 本文最初の `<img>` (バッジ画像は除外) → `THUMBNAIL_DEFAULT`。ローカル画像と data URI (Notebook 出力) は Pillow で `THUMBNAIL_SIZE` に縮小し `output/<THUMBNAIL_PATH>/<内容ハッシュ>.jpg|png` に書き出す (同一画像は共有、Pillow 不在時は原寸のまま使用)。結果は `article.thumbnail` (サイト相対パスまたは絶対URL) に格納し、`includes/index_summary.html` が表示。補助属性: `thumbnail_full` (縮小前の原寸ファイルの URL。OG 用 §7.6)、`thumbnail_kind` (`metadata`/`body`/`default`。既定画像だけ表示を変えるのに使用)、`thumbnail_source` (メタデータの生の値)。2段階動作: `article_generator_finalized` でメタデータ指定ファイルを `static_links` に登録 (StaticGenerator にコピーさせる) → `all_generators_finalized` で解決・生成。設定: `THUMBNAIL_DEFAULT` / `THUMBNAIL_SIZE` / `THUMBNAIL_PATH` / `THUMBNAIL_QUALITY` / `THUMBNAIL_EXCLUDE_PATTERN` |
 | `autosummary` | 記事冒頭から自動で要約生成 (bs4 使用)。`summary` と併存中 (要整理) |
 | `summary` (vendor) | `<!-- PELICAN_BEGIN_SUMMARY -->` マーカーによる要約。旧 pelican-plugins 由来 |
 | `shortcodes` (vendor) | `SHORTCODES` 設定によるショートコード展開。`youtube`, `embed` を定義済み |
@@ -234,7 +240,7 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
 | `apply_jinja2` | 文字列を Jinja2 評価する `apply_jinja2` フィルタ。また `Jinja2: True` メタデータを持つ記事/ページの本文・タイトルを Jinja2 として描画 (例: `search.md` が `GOOGLE_CSE_ID` を埋め込むのに使用) |
 | `path2obj` | URL からページ/記事オブジェクトを引く `url2obj` フィルタ |
 | `subsections` | ページ階層 (サブセクション) 情報を構築。メニュー AUTO 展開に使用 |
-| `makemenu` | 多階層ナビゲーションメニュー HTML の生成 (§7.3) |
+| `makemenu` | 多階層ナビゲーションメニューの解決 (`resolve_menu` フィルタ。HTML はテーマ側マクロ `includes/menu.html` が描画, §7.3) |
 | `excludes_dirnames` | `*_EXCLUDES_DIRNAMES` 設定でディレクトリ名単位の除外 |
 | `skiptags` | 特定タグの除外処理 |
 
@@ -281,6 +287,7 @@ URL と SRI ハッシュを両方更新すること。
 | `toc_scripts.html` | h2/h3 から目次を生成 (vanilla JS) |
 | `scrolltop_scripts.html` | ページトップへ戻るボタン |
 | `article_header_info.html` | 記事ヘッダ (日付・著者・タグバッジ shields.io) |
+| `../index_summary.html` (includes 直下) | 記事一覧の 1 項目: サムネイル (`article.thumbnail`, §6.2) + 要約 + Read more。index / category / tag / author の各一覧で共用 |
 | `*_showmodified_scripts.html` | `Modified:` メタデータの表示 |
 | `utterances.html` | コメント欄 (utteranc.es, issue-term: title) |
 | `footer.html` | 著作権表示フッタ |
@@ -387,6 +394,8 @@ URL と SRI ハッシュを両方更新すること。
 - 記事インデックス: `/articles.html`、ページネーション `/articles/latests/N/`
 - タグ: `/tag/<tag>.html`、著者: `/author/<name>.html`
 - フィード: `/feeds/all.atom.xml`, `/feeds/all.rss.xml`
+- 生成サムネイル: `/thumbnails/<内容ハッシュ16桁>.jpg|png` (`THUMBNAIL_PATH`、
+  thumbnails プラグインがビルド時に生成。ソース管理外)
 
 ---
 
@@ -440,9 +449,9 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
 
 ---
 
-## 11. 2026-08 近代化アップデートの設計判断
+## 11. 2026-08 近代化アップデート以降の設計判断
 
-背景と決定の記録 (2026-08 の一連のシステム更新コミット群)。
+背景と決定の記録 (2026-08 の一連のシステム更新コミット群と、その後の改善)。
 
 1. **サブモジュール廃止 / vendor 化** — pelican-themes / pelican-plugins は
    どちらもアーカイブ済み巨大モノレポで、クローンコストと供給リスクが大きい。
@@ -517,11 +526,11 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
     の base64 埋め込み画像 (最大数百 KB) を一覧に載せると重いため、全ての
     ローカル画像を Pillow で縮小してファイル化 (要件に Pillow を追加)。
     透明度を実際に使っていない RGBA 画像は JPEG に変換する。表示は
-    枠なし 160×120 (狭い画面では 120×90) の `object-fit: cover`。ただし
-    既定画像 (`article.thumbnail_kind == 'default'`) はロゴが切れないよう
-    `contain` とし、画像自体もロゴの余白を詰めた `images/logo_thumbnail.jpg`
-    を用いる。狭い画面 (<576px) では 120×90 に縮小し、特に狭い画面 (<480px)
-    では float にして要約文がサムネイルの右から下へ回り込む (縦積みにはしない)。
+    枠なし 160×120 の `object-fit: cover` で要約の左に置く。ただし既定画像
+    (`article.thumbnail_kind == 'default'`) はロゴが切れないよう `contain`
+    とし、画像自体もロゴの余白を詰めた `images/logo_thumbnail.jpg` を用いる。
+    狭い画面 (<576px) では 120×90 に縮小し、特に狭い画面 (<480px) では
+    float にして要約文がサムネイルの右から下へ回り込む (縦積みにはしない)。
 16. **Open Graph 画像の修正** — 記事ページの `og:image` が `images/images/logo.jpg`
     という存在しない URL で、かつ相対 URL だったため SNS カードに画像が出て
     いなかった。サイト内リンクは相対 URL のまま維持する方針とし (`RELATIVE_URLS`
@@ -562,5 +571,8 @@ pelican -l                # http://localhost:8000 (自動再生成付きは peli
 - [ ] デスクトップ: メニューのホバー展開・クリック遷移・active 表示
 - [ ] モバイル幅 (<992px): ハンバーガー開閉・サブメニューのタップ展開
 - [ ] サイドバー各 box (検索・SNS・新着・タグ・支援・X timeline フォールバック)
+- [ ] 記事一覧のサムネイル: 本文画像・Notebook 出力・外部 URL・既定ロゴの
+      各ケースが表示され、`output/thumbnails/` が生成されているか
 - [ ] `pelican -s publishconf.py` で sitemap.xml / robots.txt / .nojekyll が生成されるか
+- [ ] 本番ビルドの記事ページで `og:url` / `og:image` が `https://` の絶対 URL か
 - [ ] CDN の URL と SRI ハッシュの対応 (Bootstrap 更新時)
