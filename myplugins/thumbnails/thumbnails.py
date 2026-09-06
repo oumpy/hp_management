@@ -23,8 +23,12 @@ Identical sources yield one shared file (content-hashed names).
 
 The result is stored on ``article.thumbnail`` as either a site-relative
 path (to be prefixed with ``SITEURL`` by the template) or an absolute
-URL; templates can tell them apart by the presence of ``//``.  The raw
-metadata value, if any, is preserved as ``article.thumbnail_source``.
+URL; templates can tell them apart by the presence of ``//``.
+``article.thumbnail_full`` addresses the same image at its original
+size where one exists as a file (for Open Graph / social cards, which
+prefer large images); for embedded images it equals the thumbnail.
+The raw metadata value, if any, is preserved as
+``article.thumbnail_source``.
 
 Settings:
 
@@ -289,6 +293,7 @@ def add_thumbnails(generators):
         spec = getattr(article, 'thumbnail', None)
         article.thumbnail_source = spec if isinstance(spec, str) else None
         article.thumbnail = None
+        article.thumbnail_full = None
 
         candidates = []
         if article.thumbnail_source:
@@ -306,6 +311,7 @@ def add_thumbnails(generators):
             url = maker.make(source)
             if url:
                 article.thumbnail = url
+                article.thumbnail_full = source.url or url
                 break
 
 

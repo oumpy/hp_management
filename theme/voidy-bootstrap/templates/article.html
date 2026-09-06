@@ -2,10 +2,19 @@
 {% block title %}{{ article.title|striptags|e }} - {{ SITENAME }}{% endblock %}
 {% block metadesc %}{{ article.description|e }}{% endblock %}
 {% block open_graph %}
+{#- Open Graph / Twitter cards require absolute URLs, so SITEURL_ABSOLUTE
+    (never relativized, unlike SITEURL under RELATIVE_URLS) is used here.
+    The image is the article thumbnail at full size (thumbnails plugin),
+    falling back to DEFAULT_SOCIAL_IMAGE (a site-relative path). -#}
+{% set social_url = SITEURL_ABSOLUTE|default(SITEURL) %}
+{% set social_image = article.thumbnail_full or article.thumbnail or DEFAULT_SOCIAL_IMAGE %}
+{% if social_image and '//' not in social_image %}
+  {% set social_image = social_url ~ '/' ~ social_image %}
+{% endif %}
 {% if OPEN_GRAPH %}
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{ article.title|striptags|e }}"/>
-    <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}"/>
+    <meta property="og:url" content="{{ social_url }}/{{ article.url }}"/>
     {% if article.description %}
       <meta property="og:description" content="{{ article.description|striptags|e }}"/>
     {% endif %}
@@ -21,31 +30,19 @@
       <meta property="article:author"
             content="{{ OPEN_GRAPH_ARTICLE_AUTHOR }}"/>
     {% endif %}
-    {% if article.social_image %}
-      <meta property="og:image"
-            content="{{ SITEURL }}/images/{{ article.social_image }}"/>
-    {% else %}
-      {% if DEFAULT_SOCIAL_IMAGE %}
-        <meta property="og:image"
-              content="{{ SITEURL }}/images/{{ DEFAULT_SOCIAL_IMAGE }}"/>
-      {% endif %}
+    {% if social_image %}
+      <meta property="og:image" content="{{ social_image }}"/>
     {% endif %}
 {% endif %}
 {% if TWITTER_CARD and TWITTER_USERNAME %}
-    <meta name="twitter:card" content="summary"> 
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{ article.title|striptags|e }}">
     <meta name="twitter:description" content="{{ article.description|striptags|e }}">
     <meta name="twitter:site" content="@{{ TWITTER_USERNAME }}">
     <meta name="twitter:creator" content="@{{ TWITTER_USERNAME }}">
-    <meta name="twitter:domain" content="{{ SITEURL }}">
-    {% if article.social_image %}
-      <meta property="twitter:image"
-            content="{{ SITEURL }}/images/{{ article.social_image }}"/>
-    {% else %}
-      {% if DEFAULT_SOCIAL_IMAGE %}
-        <meta property="twitter:image"
-              content="{{ SITEURL }}/images/{{ DEFAULT_SOCIAL_IMAGE }}"/>
-      {% endif %}
+    <meta name="twitter:domain" content="{{ social_url }}">
+    {% if social_image %}
+      <meta property="twitter:image" content="{{ social_image }}"/>
     {% endif %}
 {% endif %}
 {% endblock %}

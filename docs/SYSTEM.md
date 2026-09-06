@@ -342,7 +342,29 @@ URL と SRI ハッシュを両方更新すること。
 - 設定: `TWITTER_TIMELINE_URL`, `TWITTER_USERNAME`, `TWITTER_TIMELINE_HEIGHT`,
   `CUSTOM_TWITTERTL_TITLE` (contentconf.py / pelicanconf.py)。
 
-### 7.6 外部サービス一覧
+### 7.6 Open Graph / Twitter カード
+
+`base.html` (サイト), `article.html` (記事), `page.html` (固定ページ) の
+`open_graph` ブロックで出力。SNS クローラは絶対 URL を要求するため、
+`RELATIVE_URLS` 下でページごとに相対化される `SITEURL` ではなく
+**`SITEURL_ABSOLUTE`** (pelicanconf.py / publishconf.py が SITEURL 確定後に
+コピーする、相対化されない値) を `og:url` / `og:image` / `twitter:image` /
+`twitter:domain` に用いる。開発ビルドでは `''` なのでパス絶対 (`/blog/...`) になる。
+
+画像の選択:
+
+- 記事: `article.thumbnail_full` (thumbnails プラグイン §6.2 が選んだ画像の
+  原寸ファイル。Notebook 埋め込み画像は縮小版) → `DEFAULT_SOCIAL_IMAGE`
+- 固定ページ: `page.social_image` メタデータ → `DEFAULT_SOCIAL_IMAGE`
+- サイト: `OPEN_GRAPH_IMAGE`
+
+`OPEN_GRAPH_IMAGE` / `DEFAULT_SOCIAL_IMAGE` / `social_image` は**サイト相対パス**
+(`images/logo.jpg` のようにディレクトリを含む) または絶対 URL。
+(2026-09 以前のテンプレートは `/images/` を自動付加していたため、設定値
+`images/logo.jpg` と合わさって `images/images/logo.jpg` という壊れた URL を
+出力していた。)
+
+### 7.7 外部サービス一覧
 
 | サービス | 用途 | 場所 |
 |---|---|---|
@@ -497,6 +519,11 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
     透明度を実際に使っていない RGBA 画像は JPEG に変換する。表示は
     枠なし 160×120 (狭い画面では 96×72) の `object-fit: cover`。
     狭い画面でも要約の左に並べる (縦積みにしない)。
+16. **Open Graph 画像の修正** — 記事ページの `og:image` が `images/images/logo.jpg`
+    という存在しない URL で、かつ相対 URL だったため SNS カードに画像が出て
+    いなかった。サイト内リンクは相対 URL のまま維持する方針とし (`RELATIVE_URLS`
+    は変更しない)、OG/Twitter メタタグだけ `SITEURL_ABSOLUTE` で絶対化。
+    画像には記事サムネイル (原寸) を使う (§7.6)。
 
 ### 既知の残課題
 

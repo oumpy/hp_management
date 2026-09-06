@@ -203,6 +203,12 @@ for k, v in globals_copy.items():
     setattr(tools.lib.pelicanns, k, v)
 from content.contentconf import *
 
+# Un-relativized site URL for templates.  With RELATIVE_URLS the template
+# variable SITEURL is rewritten per page to a relative path, which is
+# unusable where absolute URLs are mandatory (Open Graph, Twitter cards).
+# publishconf.py re-assigns this after loading the production SITEURL.
+SITEURL_ABSOLUTE = SITEURL
+
 # Settings for Open Graph Properties
 if not 'OPEN_GRAPH_ARTICLE_AUTHOR' in globals() and 'AUTHOR' in globals():
     OPEN_GRAPH_ARTICLE_AUTHOR = AUTHOR

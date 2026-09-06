@@ -2,21 +2,20 @@
 {% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
 {% block metadesc %}{% if page.description %}{{ page.description|e }}{% else %}{{ SITETAG }}: {{ page.title }}{% endif %}{% endblock %}
 {% block open_graph %}
+{% set social_url = SITEURL_ABSOLUTE|default(SITEURL) %}
+{% set social_image = page.social_image or DEFAULT_SOCIAL_IMAGE %}
+{% if social_image and '//' not in social_image %}
+  {% set social_image = social_url ~ '/' ~ social_image %}
+{% endif %}
 {% if OPEN_GRAPH %}
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{ page.title|striptags|e }}"/>
-    <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}"/>
+    <meta property="og:url" content="{{ social_url }}/{{ page.url }}"/>
     {% if page.description %}
       <meta property="og:description" content="{{ page.description|striptags|e }}"/>
     {% endif %}
-    {% if page.social_image %}
-      <meta property="og:image"
-            content="{{ SITEURL }}/images/{{ page.social_image }}"/>
-    {% else %}
-      {% if DEFAULT_SOCIAL_IMAGE %}
-        <meta property="og:image"
-              content="{{ SITEURL }}/images/{{ DEFAULT_SOCIAL_IMAGE }}"/>
-      {% endif %}
+    {% if social_image %}
+      <meta property="og:image" content="{{ social_image }}"/>
     {% endif %}
 {% endif %}
 {% endblock %}
