@@ -116,8 +116,18 @@ p.standfirst {
     object-fit: contain;
 }
 @media (max-width: 575.98px) {
-    /* Narrow screens: float the (smaller) thumbnail so that the summary
-       text flows beside it and then wraps underneath. */
+    /* Narrow screens: smaller thumbnail. */
+    .index-summary {
+        gap: .75rem;
+    }
+    .index-thumbnail {
+        width: 120px;
+        height: 90px;
+    }
+}
+@media (max-width: 479.98px) {
+    /* Very narrow screens: float the thumbnail so that the summary text
+       flows beside it and then wraps underneath. */
     .index-summary {
         display: block;
     }
@@ -128,8 +138,6 @@ p.standfirst {
     }
     .index-thumbnail {
         float: left;
-        width: 120px;
-        height: 90px;
         margin: .25rem .75rem .25rem 0;
     }
 }

@@ -520,8 +520,8 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
     枠なし 160×120 (狭い画面では 120×90) の `object-fit: cover`。ただし
     既定画像 (`article.thumbnail_kind == 'default'`) はロゴが切れないよう
     `contain` とし、画像自体もロゴの余白を詰めた `images/logo_thumbnail.jpg`
-    を用いる。狭い画面では縦積みにせず、float で要約文がサムネイルの右から
-    下へ回り込む。
+    を用いる。狭い画面 (<576px) では 120×90 に縮小し、特に狭い画面 (<480px)
+    では float にして要約文がサムネイルの右から下へ回り込む (縦積みにはしない)。
 16. **Open Graph 画像の修正** — 記事ページの `og:image` が `images/images/logo.jpg`
     という存在しない URL で、かつ相対 URL だったため SNS カードに画像が出て
     いなかった。サイト内リンクは相対 URL のまま維持する方針とし (`RELATIVE_URLS`
