@@ -74,11 +74,11 @@ from myplugins import (
 )
 PLUGINS = [
     ipynb_reader,
-    mathjax,
     tag_cloud,
     similar_posts,
     nojekyll,
-    autosummary, summary, # need to resolve coexistence.
+    summary, autosummary, # explicit markers/metadata first, automatic summary as fallback
+    mathjax,              # after the summary plugins: adds the MathJax loader to summaries
     category_names,
     shortcodes,
     apply_jinja2,
