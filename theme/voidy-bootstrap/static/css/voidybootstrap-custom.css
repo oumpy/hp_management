@@ -116,13 +116,21 @@ p.standfirst {
     object-fit: contain;
 }
 @media (max-width: 575.98px) {
-    /* Narrow screens: keep the thumbnail beside the text, just smaller. */
+    /* Narrow screens: float the (smaller) thumbnail so that the summary
+       text flows beside it and then wraps underneath. */
     .index-summary {
-        gap: .75rem;
+        display: block;
+    }
+    .index-summary::after {
+        content: "";
+        display: block;
+        clear: both;
     }
     .index-thumbnail {
+        float: left;
         width: 120px;
         height: 90px;
+        margin: .25rem .75rem .25rem 0;
     }
 }
 
