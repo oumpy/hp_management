@@ -1,9 +1,17 @@
-      <div class="summary">
+      <div class="summary index-summary">
+        {% if article.thumbnail %}
+        <a class="index-thumbnail" href="{{ SITEURL }}/{{ article.url }}" tabindex="-1" aria-hidden="true">
+          <img src="{% if '//' in article.thumbnail %}{{ article.thumbnail }}{% else %}{{ SITEURL }}/{{ article.thumbnail }}{% endif %}"
+               alt="" loading="lazy">
+        </a>
+        {% endif %}
+        <div class="index-summary-body">
         {% if article.standfirst %}
           <p class="standfirst">{{ article.standfirst|e }}</p>
         {% endif %}
 		{{ article.summary }}
 		<p class="content-emphasis"><a href="{{ SITEURL }}/{{ article.url }}">
-			Read more... <i class="fa fa-arrow-circle-right fa-fw fa-lg"></i> 
+			Read more... <i class="fa fa-arrow-circle-right fa-fw fa-lg"></i>
 		</a></p>
+        </div>
       </div>
