@@ -28,7 +28,7 @@ COPYRIGHT_AUTHOR = '大阪大学医学部Python会'
 LOGOIMG = 'images/logo.jpg'
 # TOP_LOGO_IMAGE = LOGOIMG
 OPEN_GRAPH_IMAGE = LOGOIMG
-THUMBNAIL_DEFAULT = LOGOIMG   # 記事一覧のサムネイル (記事に画像がない場合)
+THUMBNAIL_DEFAULT = 'images/logo_thumbnail.jpg'   # 記事一覧のサムネイル (記事に画像がない場合)。ロゴの余白を詰めた版
 
 # Social
 SOCIAL = [ # (name, URL, icon, color, size)

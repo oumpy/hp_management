@@ -517,8 +517,10 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
     の base64 埋め込み画像 (最大数百 KB) を一覧に載せると重いため、全ての
     ローカル画像を Pillow で縮小してファイル化 (要件に Pillow を追加)。
     透明度を実際に使っていない RGBA 画像は JPEG に変換する。表示は
-    枠なし 160×120 (狭い画面では 96×72) の `object-fit: cover`。
-    狭い画面でも要約の左に並べる (縦積みにしない)。
+    枠なし 160×120 (狭い画面では 96×72) の `object-fit: cover`。ただし
+    既定画像 (`article.thumbnail_kind == 'default'`) はロゴが切れないよう
+    `contain` とし、画像自体もロゴの余白を詰めた `images/logo_thumbnail.jpg`
+    を用いる。狭い画面でも要約の左に並べる (縦積みにしない)。
 16. **Open Graph 画像の修正** — 記事ページの `og:image` が `images/images/logo.jpg`
     という存在しない URL で、かつ相対 URL だったため SNS カードに画像が出て
     いなかった。サイト内リンクは相対 URL のまま維持する方針とし (`RELATIVE_URLS`

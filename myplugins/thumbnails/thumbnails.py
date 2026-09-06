@@ -27,6 +27,9 @@ URL; templates can tell them apart by the presence of ``//``.
 ``article.thumbnail_full`` addresses the same image at its original
 size where one exists as a file (for Open Graph / social cards, which
 prefer large images); for embedded images it equals the thumbnail.
+``article.thumbnail_kind`` records where the image came from
+(``'metadata'``, ``'body'`` or ``'default'``) so that templates can
+style the site-wide placeholder differently from real article images.
 The raw metadata value, if any, is preserved as
 ``article.thumbnail_source``.
 
@@ -295,16 +298,18 @@ def add_thumbnails(generators):
         article.thumbnail = None
         article.thumbnail_full = None
 
+        article.thumbnail_kind = None
+
         candidates = []
         if article.thumbnail_source:
-            candidates.append(article.thumbnail_source)
+            candidates.append(('metadata', article.thumbnail_source))
         body = _first_body_image(article, exclude_re)
         if body:
-            candidates.append(body)
+            candidates.append(('body', body))
         if default:
-            candidates.append(default)
+            candidates.append(('default', default))
 
-        for spec in candidates:
+        for kind, spec in candidates:
             source = _resolve(spec, article, context)
             if source is None:
                 continue
@@ -312,6 +317,7 @@ def add_thumbnails(generators):
             if url:
                 article.thumbnail = url
                 article.thumbnail_full = source.url or url
+                article.thumbnail_kind = kind
                 break
 
 

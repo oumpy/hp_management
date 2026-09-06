@@ -111,6 +111,10 @@ p.standfirst {
     height: 100%;
     object-fit: cover;
 }
+/* The site-wide placeholder (logo) must never be cropped. */
+.index-thumbnail-default img {
+    object-fit: contain;
+}
 @media (max-width: 575.98px) {
     /* Narrow screens: keep the thumbnail beside the text, just smaller. */
     .index-summary {

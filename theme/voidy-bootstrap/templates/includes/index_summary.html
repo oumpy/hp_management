@@ -1,6 +1,6 @@
       <div class="summary index-summary">
         {% if article.thumbnail %}
-        <a class="index-thumbnail" href="{{ SITEURL }}/{{ article.url }}" tabindex="-1" aria-hidden="true">
+        <a class="index-thumbnail{% if article.thumbnail_kind == 'default' %} index-thumbnail-default{% endif %}" href="{{ SITEURL }}/{{ article.url }}" tabindex="-1" aria-hidden="true">
           <img src="{% if '//' in article.thumbnail %}{{ article.thumbnail }}{% else %}{{ SITEURL }}/{{ article.thumbnail }}{% endif %}"
                alt="" loading="lazy">
         </a>
