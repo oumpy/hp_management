@@ -225,12 +225,12 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
 |---|---|
 | `mathjax` | 数式サポート (§5.3)。render-math 由来の Markdown 拡張 + MathJax v4 ローダ |
 | `similar_posts` | 関連記事の選定 (2026-08 に pelican-related-posts を置換。混同を避けるため別名。属性 `article.related_posts` と `RELATED_*` 設定名はテンプレート互換のため維持)。本文の文字 n-gram TF-IDF コサイン類似度 + タグ IDF ボーナスで `article.related_posts` を設定。スコアが `RELATED_MIN_SCORE` 未満の記事は載せない (リストは最大数未満・空になり得る)。純 Python・追加依存なし。設定: `RELATED_POSTS_MAX` / `RELATED_MIN_SCORE` / `RELATED_NGRAM_SIZES` / `RELATED_TAG_WEIGHT` / `RELATED_TEXT_LIMIT` |
-| `autosummary` | 記事冒頭から自動で要約生成 (bs4 使用)。`summary` と併存中 (要整理) |
-| `summary` (vendor) | `<!-- PELICAN_BEGIN_SUMMARY -->` マーカーによる要約。旧 pelican-plugins 由来 |
+| `autosummary` | 記事冒頭から自動で要約生成 (bs4 使用)。`Summary:` メタデータや `summary` プラグインが要約を与えていればそれを優先 (Pelican 4 では `metadata['summary']` にある) |
+| `summary` (vendor) | `<!-- PELICAN_BEGIN_SUMMARY -->` マーカーによる要約。旧 pelican-plugins 由来。PLUGINS では `autosummary` より前に置く (マーカー → 自動要約の順で適用)。原版がリンク解決済みの本文を `_content` に書き戻していた副作用は除去済み |
 | `shortcodes` (vendor) | `SHORTCODES` 設定によるショートコード展開。`youtube`, `embed` を定義済み |
 | `category_names` | カテゴリ表示名の差し替え (`CATEGORYNAMES_ALTERNATIVES`: blog→技術ブログ 等) |
 | `apply_jinja2` | 文字列を Jinja2 評価する `apply_jinja2` フィルタ。また `Jinja2: True` メタデータを持つ記事/ページの本文・タイトルを Jinja2 として描画 (例: `search.md` が `GOOGLE_CSE_ID` を埋め込むのに使用) |
-| `path2obj` | URL からページ/記事オブジェクトを引く `url2obj` フィルタ |
+| `path2obj` | URL からページ/記事オブジェクトを引く `url2obj` フィルタ。静的ファイルは索引しない (`Static.url` を読むと出力位置が固定され `{attach}` の移動が拒否されるため) |
 | `subsections` | ページ階層 (サブセクション) 情報を構築。メニュー AUTO 展開に使用 |
 | `makemenu` | 多階層ナビゲーションメニュー HTML の生成 (§7.3) |
 | `excludes_dirnames` | `*_EXCLUDES_DIRNAMES` 設定でディレクトリ名単位の除外 |
@@ -482,9 +482,24 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
     (`RELATED_NGRAM_SIZES` で変更可。変更するとスコア分布が動くため
     `RELATED_MIN_SCORE` の再調整が必要)。
 
+15. **プラグインの副作用の整理** — 自作/vendor プラグインを Pelican の内部動作
+    (リンク解決のタイミング、`Static.url` 参照による出力位置の固定) に照らして
+    点検し、以下を修正: (a) `skiptags` / `summary` / `apply_jinja2` が解決済み
+    本文を `_content` に書き戻していたため `{filename}`/`{author}` リンクが
+    ページごとの相対化を経ずに SITEURL 絶対で焼き付き、開発ビルドで壊れ、
+    毎ビルド「Unable to find」警告が出ていた → 生の `_content` を扱う。
+    (b) `path2obj` が全静的ファイルの `url` を読んで出力位置を固定していた
+    (autosummary が先に全リンクを解決していたため偶然動いていた) → 静的
+    ファイルを索引しない。(c) `autosummary` が Pelican 4 の
+    `metadata['summary']` を見ておらず `Summary:` メタデータとマーカー
+    (`summary` プラグイン) が無効だった → 明示的な要約を優先し、プラグイン順を
+    summary → autosummary に。(d) 一覧ページの要約に含まれる数式が生 TeX の
+    まま表示されていた → `mathjax` を要約処理の後に置き、区切り文字の有無で
+    ローダを付与。(e) `excludes_dirnames` が DEFAULT_CONFIG と共有するリストを
+    `+=` で伸ばしていた (`pelican -r` で重複蓄積) → 新しいリストを作る。
+
 ### 既知の残課題
 
-- `autosummary` と `summary` の併存 (`pelicanconf.py` にもコメントあり)
 - Font Awesome の `<link>` に SRI 未設定 (`FONT_AWESOME_LINK` に `integrity`
   キーを足せば有効化される)
 - レガシー webhook 機構 (§10) の撤去判断
