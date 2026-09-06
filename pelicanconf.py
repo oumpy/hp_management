@@ -66,7 +66,7 @@ from pelican.plugins import simple_footnotes
 from pelican.plugins import neighbors
 from minchin.pelican.plugins import nojekyll
 from myplugins import (
-    ipynb_reader, mathjax, similar_posts,
+    ipynb_reader, mathjax, similar_posts, thumbnails,
     autosummary, summary, shortcodes,
     category_names, apply_jinja2, path2obj,
     subsections, makemenu, excludes_dirnames,
@@ -77,6 +77,7 @@ PLUGINS = [
     mathjax,
     tag_cloud,
     similar_posts,
+    thumbnails,
     nojekyll,
     autosummary, summary, # need to resolve coexistence.
     category_names,

@@ -4,7 +4,7 @@
 (レポジトリ [`oumpy/hp_management`](https://github.com/oumpy/hp_management)) の技術仕様。
 
 - 対象読者: HP係・システムメンテナ・将来の開発者
-- 最終更新: 2026-08-11 (システム近代化アップデート時)
+- 最終更新: 2026-09-06 (記事一覧サムネイル追加時)
 - 記事投稿の手順は `content/README.md` を、運用手順の概要はトップの `README.md` を参照。
   本書は「システムがどう作られているか」を記述する。
 
@@ -116,6 +116,7 @@ pelican-tag-cloud
 pelican-simple-footnotes
 pelican-neighbors
 minchin.pelican.plugins.nojekyll    # .nojekyll 生成
+Pillow                              # thumbnails (サムネイル縮小) が使用
 ```
 
 すべて PyPI の現行 namespace plugin。バージョン上限固定なし
@@ -225,6 +226,7 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
 |---|---|
 | `mathjax` | 数式サポート (§5.3)。render-math 由来の Markdown 拡張 + MathJax v4 ローダ |
 | `similar_posts` | 関連記事の選定 (2026-08 に pelican-related-posts を置換。混同を避けるため別名。属性 `article.related_posts` と `RELATED_*` 設定名はテンプレート互換のため維持)。本文の文字 n-gram TF-IDF コサイン類似度 + タグ IDF ボーナスで `article.related_posts` を設定。スコアが `RELATED_MIN_SCORE` 未満の記事は載せない (リストは最大数未満・空になり得る)。純 Python・追加依存なし。設定: `RELATED_POSTS_MAX` / `RELATED_MIN_SCORE` / `RELATED_NGRAM_SIZES` / `RELATED_TAG_WEIGHT` / `RELATED_TEXT_LIMIT` |
+| `thumbnails` | 記事一覧用サムネイル (2026-09 追加)。優先順: メタデータ `thumbnail` (本文の画像リンクと同じ `{attach}` 等の記法・外部URL可) → 本文最初の `<img>` (バッジ画像は除外) → `THUMBNAIL_DEFAULT`。ローカル画像と data URI (Notebook 出力) は Pillow で `THUMBNAIL_SIZE` に縮小し `output/<THUMBNAIL_PATH>/<内容ハッシュ>.jpg|png` に書き出す (同一画像は共有、Pillow 不在時は原寸のまま使用)。結果は `article.thumbnail` (サイト相対パスまたは絶対URL) に格納し、`includes/index_summary.html` が表示。2段階動作: `article_generator_finalized` でメタデータ指定ファイルを `static_links` に登録 (StaticGenerator にコピーさせる) → `all_generators_finalized` で解決・生成。設定: `THUMBNAIL_DEFAULT` / `THUMBNAIL_SIZE` / `THUMBNAIL_PATH` / `THUMBNAIL_QUALITY` / `THUMBNAIL_EXCLUDE_PATTERN` |
 | `autosummary` | 記事冒頭から自動で要約生成 (bs4 使用)。`summary` と併存中 (要整理) |
 | `summary` (vendor) | `<!-- PELICAN_BEGIN_SUMMARY -->` マーカーによる要約。旧 pelican-plugins 由来 |
 | `shortcodes` (vendor) | `SHORTCODES` 設定によるショートコード展開。`youtube`, `embed` を定義済み |
@@ -481,6 +483,20 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
     案も同評価で検証したが、改善が僅少なためデフォルトは n=2,3 を維持
     (`RELATED_NGRAM_SIZES` で変更可。変更するとスコア分布が動くため
     `RELATED_MIN_SCORE` の再調整が必要)。
+
+15. **記事一覧のサムネイル** — WordPress のアイキャッチ画像に相当する機能を
+    自作プラグイン `thumbnails` で追加 (§6.2)。実装上の要点: (a) Pelican の
+    `Static.url`/`save_as` は参照した時点で出力位置が固定され、以後の
+    `{attach}` による移動が拒否されるため、プラグインからは静的ファイルの
+    URL を不用意に読まない (既定画像はソースパス = URL となる
+    `STATIC_PATHS` 配下のファイルを前提にソースパスで引く)。(b) メタデータ
+    のみで参照される画像は本文リンクと違って Pelican が拾わないので、
+    `static_links` へ登録して StaticGenerator にコピーさせる。(c) Notebook
+    の base64 埋め込み画像 (最大数百 KB) を一覧に載せると重いため、全ての
+    ローカル画像を Pillow で縮小してファイル化 (要件に Pillow を追加)。
+    透明度を実際に使っていない RGBA 画像は JPEG に変換する。表示は
+    `object-fit: contain` (図表が多いので切り抜かない方針)。
+    狭い画面でも要約の左に小さく表示する (縦積みにしない)。
 
 ### 既知の残課題
 

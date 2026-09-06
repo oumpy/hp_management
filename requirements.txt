@@ -6,3 +6,4 @@ pelican-tag-cloud
 pelican-simple-footnotes
 pelican-neighbors
 minchin.pelican.plugins.nojekyll
+Pillow
