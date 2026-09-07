@@ -123,8 +123,12 @@ def contentlen(content):
 
 def extract_summary(instance):
     min_length = instance.settings['AUTOSUMMARY_MIN_LENGTH']
-    if hasattr(instance, '_summary') and (contentlen(instance._summary) >= min_length or (not instance._content)):
-        pre_summary = instance._summary
+    # An explicit summary (Summary: metadata, or one extracted from
+    # markers by the summary plugin) lives in metadata['summary'] in
+    # Pelican 4 (older versions used _summary); use it when long enough.
+    explicit = instance.metadata.get('summary', getattr(instance, '_summary', None))
+    if explicit and (contentlen(explicit) >= min_length or (not instance._content)):
+        pre_summary = explicit
     elif not instance._content:
     # if there is no content, there's nothing to do
         instance.has_summary = False
