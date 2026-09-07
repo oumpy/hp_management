@@ -97,18 +97,20 @@ RELATED_MIN_SCORE = 0.18
 TAG_CLOUD_SORTING = "size"
 
 SHORTCODES = {
+    # No <p> wrapper: shortcodes are expanded after Markdown, which has
+    # already wrapped the line in a paragraph (a <p> here would nest).
     'youtube': '''\
-<p><span class="videobox">
+<span class="videobox">
   <iframe width="{{width|default(640)}}" height="{{height|default(390)}}"
     src="https://www.youtube.com/embed/{{id}}"
     frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
-  </iframe></span></p>''',
+  </iframe></span>''',
     'embed': '''\
-<p><span class="videobox">
-  <iframe width={{width|default(640)}}" height="{{height|default(390)}}"
+<span class="videobox">
+  <iframe width="{{width|default(640)}}" height="{{height|default(390)}}"
     src="{{src}}"
     frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
-  </iframe></span></p>''',
+  </iframe></span>''',
 }
 
 # if you create jupyter files in the content dir, snapshots are saved with the same
