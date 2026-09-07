@@ -66,7 +66,7 @@ from pelican.plugins import simple_footnotes
 from pelican.plugins import neighbors
 from minchin.pelican.plugins import nojekyll
 from myplugins import (
-    ipynb_reader, mathjax, similar_posts,
+    ipynb_reader, mathjax, similar_posts, thumbnails,
     autosummary, summary, shortcodes,
     category_names, apply_jinja2, path2obj,
     subsections, makemenu, excludes_dirnames,
@@ -77,6 +77,7 @@ PLUGINS = [
     mathjax,
     tag_cloud,
     similar_posts,
+    thumbnails,
     nojekyll,
     autosummary, summary, # need to resolve coexistence.
     category_names,
@@ -201,6 +202,12 @@ globals_copy = copy.copy(globals())
 for k, v in globals_copy.items():
     setattr(tools.lib.pelicanns, k, v)
 from content.contentconf import *
+
+# Un-relativized site URL for templates.  With RELATIVE_URLS the template
+# variable SITEURL is rewritten per page to a relative path, which is
+# unusable where absolute URLs are mandatory (Open Graph, Twitter cards).
+# publishconf.py re-assigns this after loading the production SITEURL.
+SITEURL_ABSOLUTE = SITEURL
 
 # Settings for Open Graph Properties
 if not 'OPEN_GRAPH_ARTICLE_AUTHOR' in globals() and 'AUTHOR' in globals():

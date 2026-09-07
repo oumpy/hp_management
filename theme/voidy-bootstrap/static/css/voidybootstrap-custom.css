@@ -87,6 +87,61 @@ p.standfirst {
     font-weight: 700;
 }
 
+/* Article lists: thumbnail at the left of the summary text. */
+.index-summary {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+.index-summary-body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.index-thumbnail {
+    flex: 0 0 auto;
+    display: block;
+    width: 160px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: .375rem;
+}
+.index-thumbnail img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* The site-wide placeholder (logo) must never be cropped. */
+.index-thumbnail-default img {
+    object-fit: contain;
+}
+@media (max-width: 575.98px) {
+    /* Narrow screens: smaller thumbnail. */
+    .index-summary {
+        gap: .75rem;
+    }
+    .index-thumbnail {
+        width: 120px;
+        height: 90px;
+    }
+}
+@media (max-width: 479.98px) {
+    /* Very narrow screens: float the thumbnail so that the summary text
+       flows beside it and then wraps underneath. */
+    .index-summary {
+        display: block;
+    }
+    .index-summary::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .index-thumbnail {
+        float: left;
+        margin: .25rem .75rem .25rem 0;
+    }
+}
+
 #site-colophon {
     font-size: 12px;
     margin-bottom: 0px;
