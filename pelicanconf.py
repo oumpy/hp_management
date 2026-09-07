@@ -44,6 +44,9 @@ AUTHOR_FEED_RSS = None
 
 FEED_ALL_RSS = 'feeds/all.rss.xml'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
+# The Atom feed carries full article bodies (notebook articles embed their
+# figures as base64), so keep it to recent items.  RSS is summary-only.
+FEED_MAX_ITEMS = 20
 RELATIVE_URLS = True
 
 TAGS_URL = TAGS_SAVE_AS = 'tags.html'
