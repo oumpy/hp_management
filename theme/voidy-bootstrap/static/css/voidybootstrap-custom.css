@@ -63,6 +63,11 @@ img{
 	display: block;
 	margin: auto;
 }
+/* Images carrying intrinsic width/height attributes (embedded_images
+   plugin) must keep their aspect ratio when max-width shrinks them. */
+img[width][height] {
+	height: auto;
+}
 
 img.notebook-badge-image {
 	margin-right: 10px!important;
