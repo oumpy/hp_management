@@ -6,8 +6,9 @@
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{ page.title|striptags|e }}"/>
     <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}"/>
-    {% if page.description %}
-      <meta property="og:description" content="{{ page.description|striptags|e }}"/>
+    {% set social_description = (page.description or page.summary)|meta_description %}
+    {% if social_description %}
+      <meta property="og:description" content="{{ social_description|e }}"/>
     {% endif %}
     {% if page.social_image %}
       <meta property="og:image"
