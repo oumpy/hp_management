@@ -189,7 +189,7 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
   `text/html > image/svg+xml > image/png > image/jpeg > text/latex > text/markdown > text/plain`。
   - stream → `<pre>` (`output_stdout` / `output_stderr`)、ANSI エスケープは除去
   - error → traceback を `<pre class="... output_error">`
-  - 画像 → base64 data URI の `<img>`
+  - 画像 → base64 data URI の `<img>` (その後 `embedded_images` プラグインがファイル化, §6.2)
   - text/latex → `<div class="... output_latex math">` (MathJax に委ねる)
 - **生成 HTML 構造**: 旧 nbconvert 5 "basic" テンプレート互換のクラス名を維持:
 
@@ -225,6 +225,7 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
 |---|---|
 | `mathjax` | 数式サポート (§5.3)。render-math 由来の Markdown 拡張 + MathJax v4 ローダ |
 | `similar_posts` | 関連記事の選定 (2026-08 に pelican-related-posts を置換。混同を避けるため別名。属性 `article.related_posts` と `RELATED_*` 設定名はテンプレート互換のため維持)。本文の文字 n-gram TF-IDF コサイン類似度 + タグ IDF ボーナスで `article.related_posts` を設定。スコアが `RELATED_MIN_SCORE` 未満の記事は載せない (リストは最大数未満・空になり得る)。純 Python・追加依存なし。設定: `RELATED_POSTS_MAX` / `RELATED_MIN_SCORE` / `RELATED_NGRAM_SIZES` / `RELATED_TAG_WEIGHT` / `RELATED_TEXT_LIMIT` |
+| `embedded_images` | 本文中の `data:` URI 画像 (Notebook の出力図・添付など) をファイル化 (2026-09 追加)。`content_object_init` でデコードして `output/<EMBEDDED_IMAGES_PATH>/<内容ハッシュ>.png|jpg` に直接書き出し、`src` を `{static}/...` に書き換え、`url`/`save_as` だけを持つ代理オブジェクトを `context['static_content']` に登録して Pelican 標準のリンク解決 (相対化・フィードでの絶対化) に乗せる。一時ファイルは作らない (バイト列はメモリ保持、他プラグイン向けに `data` 属性で公開)。StaticGenerator が content 側にファイルを探しに行かないよう `page_generator_finalized` で `static_links` から除外。Pillow があれば `width`/`height` 属性、`loading="lazy"` を付与。設定: `EMBEDDED_IMAGES_PATH` |
 | `autosummary` | 記事冒頭から自動で要約生成 (bs4 使用)。`summary` と併存中 (要整理) |
 | `summary` (vendor) | `<!-- PELICAN_BEGIN_SUMMARY -->` マーカーによる要約。旧 pelican-plugins 由来 |
 | `shortcodes` (vendor) | `SHORTCODES` 設定によるショートコード展開。`youtube`, `embed` を定義済み |
@@ -363,6 +364,8 @@ URL と SRI ハッシュを両方更新すること。
 - 記事インデックス: `/articles.html`、ページネーション `/articles/latests/N/`
 - タグ: `/tag/<tag>.html`、著者: `/author/<name>.html`
 - フィード: `/feeds/all.atom.xml`, `/feeds/all.rss.xml`
+- 埋め込み画像のファイル化先: `/embedded_images/<内容ハッシュ16桁>.png|jpg`
+  (`EMBEDDED_IMAGES_PATH`、embedded_images プラグインがビルド時に生成。ソース管理外)
 
 ---
 
@@ -481,6 +484,16 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
     案も同評価で検証したが、改善が僅少なためデフォルトは n=2,3 を維持
     (`RELATED_NGRAM_SIZES` で変更可。変更するとスコア分布が動くため
     `RELATED_MIN_SCORE` の再調整が必要)。
+
+15. **埋め込み画像のファイル化** — Notebook 出力図などの base64 画像 (17記事・
+    84枚・4.2 MB) が HTML に直接入っていたため、記事ページが最大 955 KB、
+    Atom フィードの大半が base64 という状態だった。`embedded_images` プラグイン
+    (§6.2) でビルド時にファイル化。設計上の要点は「一時ファイルを作らない」こと:
+    Pelican の `{static}` 解決が必要とするのは `static_content` 上のオブジェクトの
+    `url` だけなので、実ファイルの複製は Pelican に任せず自前で出力先へ書き、
+    代理オブジェクトを登録するだけで標準のリンク解決 (ページごとの相対化・
+    プレビュー接頭辞・フィードでの絶対 URL) に乗る。tensorpac 記事は
+    955 KB → 82 KB。
 
 ### 既知の残課題
 
