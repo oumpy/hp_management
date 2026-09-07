@@ -194,6 +194,26 @@ DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
 TWITTER_CARD = True
 OPEN_GRAPH = True
 
+# Plain-text description for <meta name="description"> / og:description:
+# an article's summary with markup, scripts (e.g. the MathJax loader that
+# may be appended to summaries) and excess whitespace removed, cut at a
+# sensible length for search snippets and social cards.
+import re as _re
+import html as _html
+def meta_description(text, length=160):
+    if not text:
+        return ''
+    text = _re.sub(r'<(script|style)\b.*?</\1>', ' ', str(text), flags=_re.S | _re.I)
+    # block boundaries become a space, inline tags (links, emphasis) vanish
+    text = _re.sub(r'</?(p|div|li|ul|ol|h[1-6]|br|blockquote|table|tr|td|th|pre)\b[^>]*>', ' ', text, flags=_re.I)
+    text = _html.unescape(_re.sub(r'<[^>]+>', '', text))
+    text = _re.sub(r'\s+', ' ', text).strip()
+    text = _re.sub(r'\.{4,}$', '', text).strip()   # autosummary's trailing "...."
+    if len(text) > length:
+        text = text[:length - 1].rstrip() + '…'
+    return text
+JINJA_FILTERS = {'meta_description': meta_description}
+
 
 # Read user's custom settings.
 import tools.lib.pelicanns
