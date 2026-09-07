@@ -3,7 +3,7 @@ Date: 2018.10.16
 Tags: Bioinformatics
 Author: 平岡
 
-今回はKallistoを用いたRNA-seq解析パイプラインを紹介します。[LinuxでのBioinformatics環境構築](https://oumpy.github.io/articles/2018/10/environment_bioinformatics.html)でこの記事への準備はすべて終了している流れになります。<a href="https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%AA%E3%82%B9%E3%83%88_(%E5%B0%8F%E6%83%91%E6%98%9F)">Kallisto</a>は小惑星の名前のようです。つっこみどころありましたら、コメントいただけると嬉しいです！それではいきましょう！
+今回はKallistoを用いたRNA-seq解析パイプラインを紹介します。[LinuxでのBioinformatics環境構築]({filename}./environment_bioinformatics.md)でこの記事への準備はすべて終了している流れになります。<a href="https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%AA%E3%82%B9%E3%83%88_(%E5%B0%8F%E6%83%91%E6%98%9F)">Kallisto</a>は小惑星の名前のようです。つっこみどころありましたら、コメントいただけると嬉しいです！それではいきましょう！
 
 ## リファレンスのダウンロード
 kallistoでは、transcriptにシュードアラインメントするので、リファレンスにはcDNAを用います。今回は<a href="https://www.gencodegenes.org/">GenCodeGenes</a>のヒトtranscript sequencesのデータを用いました。
