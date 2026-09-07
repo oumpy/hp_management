@@ -95,13 +95,15 @@ p.standfirst {
     text-align: center;
 }
 
+/* Secondary text on white: #6c757d gives a 4.7:1 contrast ratio (WCAG AA);
+   the former #999 was 2.8:1. */
 .article-header-date, .article-header-info {
-	color: #999;
+	color: #6c757d;
 }
 
 .modified-date, .page-header-info {
   text-align: right;
-  color: #999;
+  color: #6c757d;
 }
 
 .social-links {
