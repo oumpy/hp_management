@@ -163,9 +163,19 @@ def _resolve(spec, article, context):
             return None
         if what == 'attach':
             obj.attach_to(article)
-        return _Source(url=obj.url, path=getattr(obj, 'source_path', None))
+        # Generated files (embedded_images plugin) have no source file on
+        # disk but expose their bytes as ``data``.
+        return _Source(url=obj.url, path=getattr(obj, 'source_path', None),
+                       data=getattr(obj, 'data', None),
+                       ext=os.path.splitext(obj.url)[1].lower() or None)
 
-    if _is_absolute_url(spec):
+    # An absolute URL pointing into this very site (e.g. an intrasite link
+    # some plugin already resolved with SITEURL) is treated as the
+    # site-relative path it denotes, so that the local file can be found.
+    siteurl = (context.get('SITEURL') or '').rstrip('/')
+    if siteurl and spec.startswith(siteurl + '/'):
+        spec = spec[len(siteurl) + 1:]
+    elif _is_absolute_url(spec):
         return _Source(url=spec)
 
     # A plain site-relative output URL.  For files copied verbatim from
@@ -175,7 +185,9 @@ def _resolve(spec, article, context):
     # location and break later {attach} relocation by Pelican.
     url = spec.lstrip('/')
     obj = (context.get('static_content') or {}).get(url)
-    return _Source(url=url, path=getattr(obj, 'source_path', None))
+    return _Source(url=url, path=getattr(obj, 'source_path', None),
+                   data=getattr(obj, 'data', None),
+                   ext=os.path.splitext(url)[1].lower() or None)
 
 
 def _first_body_image(article, exclude_re):
@@ -211,7 +223,7 @@ class _Maker:
                 return source.url
             ext = os.path.splitext(source.path)[1].lower() or '.bin'
         elif source.data is not None:
-            data, ext = source.data, source.ext
+            data, ext = source.data, source.ext or ".bin"
         else:
             return source.url
 
