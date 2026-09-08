@@ -84,6 +84,18 @@ jobs:
         rm -rf ./output/previews/$GITHUB_REF
         mv ./output.new ./output/previews/$GITHUB_REF
 
+    - name: Prune stale previews
+      # Orphans (deleted branches) always; the repository variable
+      # PREVIEW_MAX, when set, caps the number of previews kept.  The
+      # deletions go into the same commit as the preview below, so they
+      # cost no extra GitHub Pages build.
+      if: steps.check_update.outputs.newest=='true'
+      env:
+        PRUNE_MODE: orphans
+        PRUNE_KEEP: ${{ vars.PREVIEW_MAX }}
+      run: |
+        sh tools/prune_previews.sh
+
     - name: Deploy on Site
       if: steps.check_update.outputs.newest=='true'
       run: |

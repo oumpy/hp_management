@@ -408,7 +408,29 @@ push 権限を与えるメンバーの管理で担保する方針としている
 - ブランチ削除時に対応するプレビューを削除
 - PR 作成時にプレビュー URL をコメントとして自動投稿 (同一レポジトリの PR のみ)
 
-### 9.4 label.yml
+### 9.4 プレビューの掃除 (prune_previews.yml / tools/prune_previews.sh)
+
+プレビューは 1 つがサイト 1 式 (約 100 MB) なので、溜まると GitHub Pages の
+公開サイト上限 (1 GB) に達してビルドが失敗し、本番サイトが更新されなくなる。
+また出力レポジトリへの commit 1 回ごとに Pages のビルドが走るため、短時間に
+多数のブランチを push すると Pages のビルド回数制限 (毎時 10 回程度) にも
+かかる。対策:
+
+- **自動**: preview.yml / deploy_on_site.yml が毎回、ソースレポジトリに存在
+  しないブランチのプレビュー (孤児) を削除する。削除は同じ commit に含める
+  (Pages ビルドを増やさない)。レポジトリ変数 `PREVIEW_MAX` を設定すると、
+  更新の新しい順にその個数だけを残す。
+- **手動**: Actions タブの "Prune_Previews" → Run workflow。mode = orphans
+  (孤児) / branches (指定ブランチ) / all (全部) / none (一覧のみ)、keep (残す
+  個数)、dry_run (削除せず一覧だけ)。実行結果 (全プレビューのサイズ・最終
+  更新日・live/orphan・削除の有無) はワークフローの Summary に表示される。
+
+実体は `tools/prune_previews.sh` (POSIX sh)。プレビューの判定は
+`previews/refs/heads/<branch>/articles.html` の存在、生存判定は
+`git ls-remote --heads` による。削除は `./output` に stage するだけで、
+commit/push は呼び出し側が行う。
+
+### 9.5 label.yml
 
 `.github/labeler.yml` に基づく PR 自動ラベル付け。
 
