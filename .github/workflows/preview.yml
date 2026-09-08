@@ -1,24 +1,26 @@
-# This is a workflow to preview branches
+# Build a preview of every branch except master and publish it under
+# previews/refs/heads/<branch>/ on the site.
+#
+# Single job: the site is built and pushed on the same runner.  (The former
+# build/push job pair exchanged the built site as a ~100 MB workflow
+# artifact, which added a couple of minutes and failed sporadically on
+# artifact download.  The split had been meant to keep the deploy key away
+# from branch-controlled code, but since a push-triggered workflow always
+# runs the pushed branch's own workflow file, it never actually did.)
 
 name: Preview
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches-ignore:
       - 'master'
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build_preview:
-    # The type of runner that the job will run on
+  build_and_push:
     runs-on: ubuntu-latest
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Checkout branch
       uses: actions/checkout@v6
-      # checkout the branch which triggered this workflow.
       with:
         submodules: true
 
@@ -28,14 +30,14 @@ jobs:
         python-version: '3.13'
         cache: 'pip'
 
-    - name: pip update
+    - name: Initialize Repository
       run: |
         python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        sh tools/init.sh
 
     - name: Make the Product
       run: |
-        pip install -r requirements.txt
-        sh tools/init_repository.sh
         {
           echo
           echo "SITEURL = '/previews/$GITHUB_REF'"
@@ -43,44 +45,8 @@ jobs:
           echo "    SITENAME += PREVIEW_SITENAME_APPEND"
           echo "    SITETAG += PREVIEW_SITENAME_APPEND"
         } >> ./content/contentconf.py
-        pelican
-        git rev-parse HEAD > ./output/git_head_hash
-
-    - name: Save Preview Product
-      uses: actions/upload-artifact@v7
-      with:
-        name: preview
-        path: output
-
-  push_to_site:
-    # The type of runner that the job will run on
-    needs: build_preview
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout master branch
-      uses: actions/checkout@v6
-      with:
-        ref: master
-        submodules: false
-
-    - name: Initialize Output Repository
-      run: |
-        sh tools/init_output.sh
-
-    - name: Load Preview Product
-      uses: actions/download-artifact@v8
-      with:
-        name: preview
-        path: preview
-
-    - name: Get preview hash
-      id: get_preview_hash
-      run: |
-        hash_file="./preview/git_head_hash"
-        cur_hash=$(<$hash_file)
-        rm "$hash_file"
-        echo "cur_hash=$cur_hash" >> $GITHUB_OUTPUT
+        rm -rf output.new
+        pelican -o output.new
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
@@ -94,18 +60,17 @@ jobs:
             User git
             IdentityFile ~/.ssh/identity
 
-    - name: Check update of original branch
+    - name: Check update of the branch
+      # Skip publishing when the branch has moved on while we were building:
+      # the run for the newer commit will publish instead.
       id: check_update
-      env:
-        cur_hash: ${{ steps.get_preview_hash.outputs.cur_hash }}
       run: |
-        branch=${GITHUB_REF#refs/heads/}
-        git fetch origin "$branch"
-        new_hash=`git rev-parse --verify --quiet "origin/$branch"`
-        if [ "$cur_hash" = "$new_hash" ]; then
+        new_hash=$(git ls-remote --heads origin "${GITHUB_REF#refs/heads/}" | cut -f1)
+        if [ "$GITHUB_SHA" = "$new_hash" ]; then
           newest='true'
         else
           newest='false'
+          echo "Branch has moved on ($new_hash); not publishing $GITHUB_SHA."
         fi
         echo "newest=$newest" >> $GITHUB_OUTPUT
 
@@ -117,7 +82,7 @@ jobs:
         cd ../
         mkdir -p ./output/previews/$GITHUB_REF
         rm -rf ./output/previews/$GITHUB_REF
-        mv ./preview ./output/previews/$GITHUB_REF
+        mv ./output.new ./output/previews/$GITHUB_REF
 
     - name: Deploy on Site
       if: steps.check_update.outputs.newest=='true'
