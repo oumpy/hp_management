@@ -372,6 +372,14 @@ Secrets: `bot_identity` (デプロイ用 SSH 秘密鍵), `known_hosts`。
 出力レポジトリへの push は SSH config の `Host github` + `url.github:.insteadOf`
 書き換えで行う。
 
+**権限モデルの注記**: リポジトリ secret は同一リポジトリ内のどのブランチの
+ワークフローからも参照でき、push 起動のワークフローはそのブランチの定義で
+動く。したがって本レポジトリにブランチを push できる人は、実質的に
+出力レポジトリ (`oumpy.github.io`) への書き込み権限を持つ。これを技術的に
+分離するには `workflow_run` + master 限定 Environment + プレビュー用
+別レポジトリなどが必要になるが、複雑さに見合わないと判断し、ブランチ
+push 権限を与えるメンバーの管理で担保する方針としている。
+
 ### 9.1 deploy_on_site.yml — 本番デプロイ
 
 - トリガ: `master` への push
@@ -384,18 +392,45 @@ Secrets: `bot_identity` (デプロイ用 SSH 秘密鍵), `known_hosts`。
 ### 9.2 preview.yml — ブランチプレビュー
 
 - トリガ: master 以外のブランチ push
-- build job: `contentconf.py` 末尾に `SITEURL = '/previews/refs/heads/<branch>'`
-  等を追記してから `pelican` を実行。成果物を artifact として保存
-- push job: 出力レポジトリを clone し、`previews/refs/heads/<branch>/` に配置して
+- 単一 job (2026-09 に統合): 出力レポジトリを clone (`tools/init.sh`) →
+  `contentconf.py` 末尾に `SITEURL = '/previews/refs/heads/<branch>'` 等を
+  追記 → `pelican -o output.new` → `previews/refs/heads/<branch>/` に配置して
   push。プレビュー URL: `https://oumpy.github.io/previews/refs/heads/<branch>/`
-- 鮮度チェック: ビルドしたコミットがまだブランチ先端のときのみ push
+- 鮮度チェック: ビルドしたコミット (`GITHUB_SHA`) がまだブランチ先端のときのみ push
+- 以前は build job と push job に分かれ、約 100 MB のサイト一式を artifact で
+  受け渡していた (数分の追加時間と、散発的な artifact ダウンロード失敗の原因)。
+  分割の意図は「ブランチ側のコードにデプロイ鍵を触らせない」ことだったが、
+  push 起動のワークフローは push されたブランチ自身の定義で動くため、実際には
+  分離になっていなかった (§9 冒頭の注記参照)。
 
 ### 9.3 delete_preview.yml / post_preview_link.yml
 
 - ブランチ削除時に対応するプレビューを削除
 - PR 作成時にプレビュー URL をコメントとして自動投稿 (同一レポジトリの PR のみ)
 
-### 9.4 label.yml
+### 9.4 プレビューの掃除 (prune_previews.yml / tools/prune_previews.sh)
+
+プレビューは 1 つがサイト 1 式 (約 100 MB) なので、溜まると GitHub Pages の
+公開サイト上限 (1 GB) に達してビルドが失敗し、本番サイトが更新されなくなる。
+また出力レポジトリへの commit 1 回ごとに Pages のビルドが走るため、短時間に
+多数のブランチを push すると Pages のビルド回数制限 (毎時 10 回程度) にも
+かかる。対策:
+
+- **自動**: preview.yml / deploy_on_site.yml が毎回、ソースレポジトリに存在
+  しないブランチのプレビュー (孤児) を削除する。削除は同じ commit に含める
+  (Pages ビルドを増やさない)。レポジトリ変数 `PREVIEW_MAX` を設定すると、
+  更新の新しい順にその個数だけを残す。
+- **手動**: Actions タブの "Prune_Previews" → Run workflow。mode = orphans
+  (孤児) / branches (指定ブランチ) / all (全部) / none (一覧のみ)、keep (残す
+  個数)、dry_run (削除せず一覧だけ)。実行結果 (全プレビューのサイズ・最終
+  更新日・live/orphan・削除の有無) はワークフローの Summary に表示される。
+
+実体は `tools/prune_previews.sh` (POSIX sh)。プレビューの判定は
+`previews/refs/heads/<branch>/articles.html` の存在、生存判定は
+`git ls-remote --heads` による。削除は `./output` に stage するだけで、
+commit/push は呼び出し側が行う。
+
+### 9.5 label.yml
 
 `.github/labeler.yml` に基づく PR 自動ラベル付け。
 
