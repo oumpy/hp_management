@@ -8,7 +8,7 @@ or category/tag/author name.
 """
 
 from pelican import signals
-from pelican.generators import ArticlesGenerator, StaticGenerator, PagesGenerator
+from pelican.generators import ArticlesGenerator, PagesGenerator
 
 import logging
 logger = logging.getLogger(__name__)
@@ -36,10 +36,10 @@ def run_plugin(generators):
             for page in generator.pages:
                 source2obj[page.relative_source_path] = page
                 url2obj[page.url] = page
-        elif isinstance(generator, StaticGenerator):
-            for file_ in generator.staticfiles:
-                source2obj[file_.relative_source_path] = file_
-                url2obj[file_.url] = file_
+        # Static files are deliberately not indexed: reading Static.url
+        # marks the file's output location as referenced, after which
+        # Pelican refuses to relocate it next to the article that links it
+        # with {attach}.  Nothing on the site looks static files up here.
 
 def filter_source2obj(x):
     return source2obj[x]
