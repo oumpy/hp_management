@@ -53,6 +53,15 @@ jobs:
         cd ..
         rm -rf output.new
 
+    - name: Prune stale previews
+      # Same as in preview.yml: drop previews of deleted branches (and
+      # enforce PREVIEW_MAX if set) within this deploy commit.
+      env:
+        PRUNE_MODE: orphans
+        PRUNE_KEEP: ${{ vars.PREVIEW_MAX }}
+      run: |
+        sh tools/prune_previews.sh
+
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
       with:
