@@ -433,9 +433,28 @@ push 権限を与えるメンバーの管理で担保する方針としている
 `git ls-remote --heads` による。削除は `./output` に stage するだけで、
 commit/push は呼び出し側が行う。
 
-### 9.5 label.yml
+### 9.5 label.yml — PR 自動ラベル付け
 
-`.github/labeler.yml` に基づく PR 自動ラベル付け。
+`actions/labeler` を 1 ステップ呼ぶだけのワークフロー。checkout もしない。
+
+- トリガ: `pull_request` (既定の opened / synchronize / reopened)
+- 設定: `.github/labeler.yml`。ラベル名をキーに、PR の変更ファイル (base との
+  差分全体) が一致すべきグロブを列挙する。`any-glob-to-any-file` は「変更
+  ファイルのどれかがいずれかのグロブに一致すれば付与」。複数ラベルが付くのは
+  正常。現在の対応: `article` (blog 記事), `page/news` (news 記事・固定ページ),
+  `theme`, `system` (`.github/`, `myplugins/`, `tools/`), `document`
+  (README 類・`docs/`)
+- 参照される ref: ワークフローファイルも `labeler.yml` も、`pull_request`
+  イベントの仮想マージコミット (`refs/pull/N/merge`) から読まれる。つまり実質
+  **PR ブランチ側の内容** で動く (設定を変えたブランチはその PR から新設定が効く)
+- トークン: `repo-token` に渡す `GITHUB_TOKEN` は run ごとに自動発行されるもの
+  (Secrets には登録されていない)。ワークフローに `permissions:` 指定がないため、
+  権限は Settings → Actions → General → Workflow permissions の既定に依存する。
+  read-only になっているとラベル付与が 403 で失敗する。フォークからの PR では
+  常に read-only なのでラベルは付かない (同一レポジトリのブランチ運用では問題
+  なし)
+- 存在しないラベルは自動作成される。`sync-labels` は既定 `false` なので、
+  一度付いたラベルは変更ファイルが減っても外れず、手動で付けたラベルも残る
 
 ---
 
