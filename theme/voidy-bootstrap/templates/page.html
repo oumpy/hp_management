@@ -11,8 +11,9 @@
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{ page.title|striptags|e }}"/>
     <meta property="og:url" content="{{ social_url }}/{{ page.url }}"/>
-    {% if page.description %}
-      <meta property="og:description" content="{{ page.description|striptags|e }}"/>
+    {% set social_description = (page.description or page.summary)|meta_description %}
+    {% if social_description %}
+      <meta property="og:description" content="{{ social_description|e }}"/>
     {% endif %}
     {% if social_image %}
       <meta property="og:image" content="{{ social_image }}"/>

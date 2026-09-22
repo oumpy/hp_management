@@ -196,7 +196,7 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
   `text/html > image/svg+xml > image/png > image/jpeg > text/latex > text/markdown > text/plain`。
   - stream → `<pre>` (`output_stdout` / `output_stderr`)、ANSI エスケープは除去
   - error → traceback を `<pre class="... output_error">`
-  - 画像 → base64 data URI の `<img>`
+  - 画像 → base64 data URI の `<img>` (その後 `embedded_images` プラグインがファイル化, §6.2)
   - text/latex → `<div class="... output_latex math">` (MathJax に委ねる)
 - **生成 HTML 構造**: 旧 nbconvert 5 "basic" テンプレート互換のクラス名を維持:
 
@@ -232,13 +232,14 @@ Jupyter notebook 記事のリーダー。**依存は markdown + pygments のみ*
 |---|---|
 | `mathjax` | 数式サポート (§5.3)。render-math 由来の Markdown 拡張 + MathJax v4 ローダ |
 | `similar_posts` | 関連記事の選定 (2026-08 に pelican-related-posts を置換。混同を避けるため別名。属性 `article.related_posts` と `RELATED_*` 設定名はテンプレート互換のため維持)。本文の文字 n-gram TF-IDF コサイン類似度 + タグ IDF ボーナスで `article.related_posts` を設定。スコアが `RELATED_MIN_SCORE` 未満の記事は載せない (リストは最大数未満・空になり得る)。純 Python・追加依存なし。設定: `RELATED_POSTS_MAX` / `RELATED_MIN_SCORE` / `RELATED_NGRAM_SIZES` / `RELATED_TAG_WEIGHT` / `RELATED_TEXT_LIMIT` |
+| `embedded_images` | 本文中の `data:` URI 画像 (Notebook の出力図・添付など) をファイル化 (2026-09 追加)。`content_object_init` でデコードして `output/<EMBEDDED_IMAGES_PATH>/<内容ハッシュ>.png|jpg` に直接書き出し、`src` を `{static}/...` に書き換え、`url`/`save_as` だけを持つ代理オブジェクトを `context['static_content']` に登録して Pelican 標準のリンク解決 (相対化・フィードでの絶対化) に乗せる。一時ファイルは作らない (バイト列はメモリ保持、他プラグイン向けに `data` 属性で公開)。StaticGenerator が content 側にファイルを探しに行かないよう `page_generator_finalized` で `static_links` から除外。Pillow があれば `width`/`height` 属性、`loading="lazy"` を付与。設定: `EMBEDDED_IMAGES_PATH` |
 | `thumbnails` | 記事一覧用サムネイル (2026-09 追加)。優先順: メタデータ `thumbnail` (本文の画像リンクと同じ `{attach}` 等の記法・外部URL可) → 本文最初の `<img>` (バッジ画像は除外) → `THUMBNAIL_DEFAULT`。ローカル画像と data URI (Notebook 出力) は Pillow で `THUMBNAIL_SIZE` に縮小し `output/<THUMBNAIL_PATH>/<内容ハッシュ>.jpg|png` に書き出す (同一画像は共有、Pillow 不在時は原寸のまま使用)。結果は `article.thumbnail` (サイト相対パスまたは絶対URL) に格納し、`includes/index_summary.html` が表示。補助属性: `thumbnail_full` (縮小前の原寸ファイルの URL。OG 用 §7.6)、`thumbnail_kind` (`metadata`/`body`/`default`。既定画像だけ表示を変えるのに使用)、`thumbnail_source` (メタデータの生の値)。2段階動作: `article_generator_finalized` でメタデータ指定ファイルを `static_links` に登録 (StaticGenerator にコピーさせる) → `all_generators_finalized` で解決・生成。設定: `THUMBNAIL_DEFAULT` / `THUMBNAIL_SIZE` / `THUMBNAIL_PATH` / `THUMBNAIL_QUALITY` / `THUMBNAIL_EXCLUDE_PATTERN` |
-| `autosummary` | 記事冒頭から自動で要約生成 (bs4 使用)。`summary` と併存中 (要整理) |
-| `summary` (vendor) | `<!-- PELICAN_BEGIN_SUMMARY -->` マーカーによる要約。旧 pelican-plugins 由来 |
+| `autosummary` | 記事冒頭から自動で要約生成 (bs4 使用)。`Summary:` メタデータや `summary` プラグインが要約を与えていればそれを優先 (Pelican 4 では `metadata['summary']` にある) |
+| `summary` (vendor) | `<!-- PELICAN_BEGIN_SUMMARY -->` マーカーによる要約。旧 pelican-plugins 由来。PLUGINS では `autosummary` より前に置く (マーカー → 自動要約の順で適用)。原版がリンク解決済みの本文を `_content` に書き戻していた副作用は除去済み |
 | `shortcodes` (vendor) | `SHORTCODES` 設定によるショートコード展開。`youtube`, `embed` を定義済み |
 | `category_names` | カテゴリ表示名の差し替え (`CATEGORYNAMES_ALTERNATIVES`: blog→技術ブログ 等) |
 | `apply_jinja2` | 文字列を Jinja2 評価する `apply_jinja2` フィルタ。また `Jinja2: True` メタデータを持つ記事/ページの本文・タイトルを Jinja2 として描画 (例: `search.md` が `GOOGLE_CSE_ID` を埋め込むのに使用) |
-| `path2obj` | URL からページ/記事オブジェクトを引く `url2obj` フィルタ |
+| `path2obj` | URL からページ/記事オブジェクトを引く `url2obj` フィルタ。静的ファイルは索引しない (`Static.url` を読むと出力位置が固定され `{attach}` の移動が拒否されるため) |
 | `subsections` | ページ階層 (サブセクション) 情報を構築。メニュー AUTO 展開に使用 |
 | `makemenu` | 多階層ナビゲーションメニューの解決 (`resolve_menu` フィルタ。HTML はテーマ側マクロ `includes/menu.html` が描画, §7.3) |
 | `excludes_dirnames` | `*_EXCLUDES_DIRNAMES` 設定でディレクトリ名単位の除外 |
@@ -358,6 +359,11 @@ URL と SRI ハッシュを両方更新すること。
 コピーする、相対化されない値) を `og:url` / `og:image` / `twitter:image` /
 `twitter:domain` に用いる。開発ビルドでは `''` なのでパス絶対 (`/blog/...`) になる。
 
+説明文 (`<meta name="description">` / `og:description` / `twitter:description`):
+`description` メタデータがあればそれ、なければ要約を `meta_description` フィルタ
+(pelicanconf.py) でプレーンテキスト化 (タグ・MathJax ローダ除去、160 文字) した
+もの。一覧・タグ・カテゴリ等のページは `DEFAULT_METADESC` (contentconf.py)。
+
 画像の選択:
 
 - 記事: `article.thumbnail_full` (thumbnails プラグイン §6.2 が選んだ画像の
@@ -394,6 +400,8 @@ URL と SRI ハッシュを両方更新すること。
 - 記事インデックス: `/articles.html`、ページネーション `/articles/latests/N/`
 - タグ: `/tag/<tag>.html`、著者: `/author/<name>.html`
 - フィード: `/feeds/all.atom.xml`, `/feeds/all.rss.xml`
+- 埋め込み画像のファイル化先: `/embedded_images/<内容ハッシュ16桁>.png|jpg`
+  (`EMBEDDED_IMAGES_PATH`、embedded_images プラグインがビルド時に生成。ソース管理外)
 - 生成サムネイル: `/thumbnails/<内容ハッシュ16桁>.jpg|png` (`THUMBNAIL_PATH`、
   thumbnails プラグインがビルド時に生成。ソース管理外)
 
@@ -404,6 +412,14 @@ URL と SRI ハッシュを両方更新すること。
 Secrets: `bot_identity` (デプロイ用 SSH 秘密鍵), `known_hosts`。
 出力レポジトリへの push は SSH config の `Host github` + `url.github:.insteadOf`
 書き換えで行う。
+
+**権限モデルの注記**: リポジトリ secret は同一リポジトリ内のどのブランチの
+ワークフローからも参照でき、push 起動のワークフローはそのブランチの定義で
+動く。したがって本レポジトリにブランチを push できる人は、実質的に
+出力レポジトリ (`oumpy.github.io`) への書き込み権限を持つ。これを技術的に
+分離するには `workflow_run` + master 限定 Environment + プレビュー用
+別レポジトリなどが必要になるが、複雑さに見合わないと判断し、ブランチ
+push 権限を与えるメンバーの管理で担保する方針としている。
 
 ### 9.1 deploy_on_site.yml — 本番デプロイ
 
@@ -417,20 +433,66 @@ Secrets: `bot_identity` (デプロイ用 SSH 秘密鍵), `known_hosts`。
 ### 9.2 preview.yml — ブランチプレビュー
 
 - トリガ: master 以外のブランチ push
-- build job: `contentconf.py` 末尾に `SITEURL = '/previews/refs/heads/<branch>'`
-  等を追記してから `pelican` を実行。成果物を artifact として保存
-- push job: 出力レポジトリを clone し、`previews/refs/heads/<branch>/` に配置して
+- 単一 job (2026-09 に統合): 出力レポジトリを clone (`tools/init.sh`) →
+  `contentconf.py` 末尾に `SITEURL = '/previews/refs/heads/<branch>'` 等を
+  追記 → `pelican -o output.new` → `previews/refs/heads/<branch>/` に配置して
   push。プレビュー URL: `https://oumpy.github.io/previews/refs/heads/<branch>/`
-- 鮮度チェック: ビルドしたコミットがまだブランチ先端のときのみ push
+- 鮮度チェック: ビルドしたコミット (`GITHUB_SHA`) がまだブランチ先端のときのみ push
+- 以前は build job と push job に分かれ、約 100 MB のサイト一式を artifact で
+  受け渡していた (数分の追加時間と、散発的な artifact ダウンロード失敗の原因)。
+  分割の意図は「ブランチ側のコードにデプロイ鍵を触らせない」ことだったが、
+  push 起動のワークフローは push されたブランチ自身の定義で動くため、実際には
+  分離になっていなかった (§9 冒頭の注記参照)。
 
 ### 9.3 delete_preview.yml / post_preview_link.yml
 
 - ブランチ削除時に対応するプレビューを削除
 - PR 作成時にプレビュー URL をコメントとして自動投稿 (同一レポジトリの PR のみ)
 
-### 9.4 label.yml
+### 9.4 プレビューの掃除 (prune_previews.yml / tools/prune_previews.sh)
 
-`.github/labeler.yml` に基づく PR 自動ラベル付け。
+プレビューは 1 つがサイト 1 式 (約 100 MB) なので、溜まると GitHub Pages の
+公開サイト上限 (1 GB) に達してビルドが失敗し、本番サイトが更新されなくなる。
+また出力レポジトリへの commit 1 回ごとに Pages のビルドが走るため、短時間に
+多数のブランチを push すると Pages のビルド回数制限 (毎時 10 回程度) にも
+かかる。対策:
+
+- **自動**: preview.yml / deploy_on_site.yml が毎回、ソースレポジトリに存在
+  しないブランチのプレビュー (孤児) を削除する。削除は同じ commit に含める
+  (Pages ビルドを増やさない)。レポジトリ変数 `PREVIEW_MAX` を設定すると、
+  更新の新しい順にその個数だけを残す。
+- **手動**: Actions タブの "Prune_Previews" → Run workflow。mode = orphans
+  (孤児) / branches (指定ブランチ) / all (全部) / none (一覧のみ)、keep (残す
+  個数)、dry_run (削除せず一覧だけ)。実行結果 (全プレビューのサイズ・最終
+  更新日・live/orphan・削除の有無) はワークフローの Summary に表示される。
+
+実体は `tools/prune_previews.sh` (POSIX sh)。プレビューの判定は
+`previews/refs/heads/<branch>/articles.html` の存在、生存判定は
+`git ls-remote --heads` による。削除は `./output` に stage するだけで、
+commit/push は呼び出し側が行う。
+
+### 9.5 label.yml — PR 自動ラベル付け
+
+`actions/labeler` を 1 ステップ呼ぶだけのワークフロー。checkout もしない。
+
+- トリガ: `pull_request` (既定の opened / synchronize / reopened)
+- 設定: `.github/labeler.yml`。ラベル名をキーに、PR の変更ファイル (base との
+  差分全体) が一致すべきグロブを列挙する。`any-glob-to-any-file` は「変更
+  ファイルのどれかがいずれかのグロブに一致すれば付与」。複数ラベルが付くのは
+  正常。現在の対応: `article` (blog 記事), `page/news` (news 記事・固定ページ),
+  `theme`, `system` (`.github/`, `myplugins/`, `tools/`), `document`
+  (README 類・`docs/`)
+- 参照される ref: ワークフローファイルも `labeler.yml` も、`pull_request`
+  イベントの仮想マージコミット (`refs/pull/N/merge`) から読まれる。つまり実質
+  **PR ブランチ側の内容** で動く (設定を変えたブランチはその PR から新設定が効く)
+- トークン: `repo-token` に渡す `GITHUB_TOKEN` は run ごとに自動発行されるもの
+  (Secrets には登録されていない)。ワークフローに `permissions:` 指定がないため、
+  権限は Settings → Actions → General → Workflow permissions の既定に依存する。
+  read-only になっているとラベル付与が 403 で失敗する。フォークからの PR では
+  常に read-only なのでラベルは付かない (同一レポジトリのブランチ運用では問題
+  なし)
+- 存在しないラベルは自動作成される。`sync-labels` は既定 `false` なので、
+  一度付いたラベルは変更ファイルが減っても外れず、手動で付けたラベルも残る
 
 ---
 
@@ -515,7 +577,33 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
     (`RELATED_NGRAM_SIZES` で変更可。変更するとスコア分布が動くため
     `RELATED_MIN_SCORE` の再調整が必要)。
 
-15. **記事一覧のサムネイル** — WordPress のアイキャッチ画像に相当する機能を
+15. **プラグインの副作用の整理** — 自作/vendor プラグインを Pelican の内部動作
+    (リンク解決のタイミング、`Static.url` 参照による出力位置の固定) に照らして
+    点検し、以下を修正: (a) `skiptags` / `summary` / `apply_jinja2` が解決済み
+    本文を `_content` に書き戻していたため `{filename}`/`{author}` リンクが
+    ページごとの相対化を経ずに SITEURL 絶対で焼き付き、開発ビルドで壊れ、
+    毎ビルド「Unable to find」警告が出ていた → 生の `_content` を扱う。
+    (b) `path2obj` が全静的ファイルの `url` を読んで出力位置を固定していた
+    (autosummary が先に全リンクを解決していたため偶然動いていた) → 静的
+    ファイルを索引しない。(c) `autosummary` が Pelican 4 の
+    `metadata['summary']` を見ておらず `Summary:` メタデータとマーカー
+    (`summary` プラグイン) が無効だった → 明示的な要約を優先し、プラグイン順を
+    summary → autosummary に。(d) 一覧ページの要約に含まれる数式が生 TeX の
+    まま表示されていた → `mathjax` を要約処理の後に置き、区切り文字の有無で
+    ローダを付与。(e) `excludes_dirnames` が DEFAULT_CONFIG と共有するリストを
+    `+=` で伸ばしていた (`pelican -r` で重複蓄積) → 新しいリストを作る。
+
+16. **埋め込み画像のファイル化** — Notebook 出力図などの base64 画像 (17記事・
+    84枚・4.2 MB) が HTML に直接入っていたため、記事ページが最大 955 KB、
+    Atom フィードの大半が base64 という状態だった。`embedded_images` プラグイン
+    (§6.2) でビルド時にファイル化。設計上の要点は「一時ファイルを作らない」こと:
+    Pelican の `{static}` 解決が必要とするのは `static_content` 上のオブジェクトの
+    `url` だけなので、実ファイルの複製は Pelican に任せず自前で出力先へ書き、
+    代理オブジェクトを登録するだけで標準のリンク解決 (ページごとの相対化・
+    プレビュー接頭辞・フィードでの絶対 URL) に乗る。tensorpac 記事は
+    955 KB → 82 KB。
+
+17. **記事一覧のサムネイル** — WordPress のアイキャッチ画像に相当する機能を
     自作プラグイン `thumbnails` で追加 (§6.2)。実装上の要点: (a) Pelican の
     `Static.url`/`save_as` は参照した時点で出力位置が固定され、以後の
     `{attach}` による移動が拒否されるため、プラグインからは静的ファイルの
@@ -531,7 +619,7 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
     とし、画像自体もロゴの余白を詰めた `images/logo_thumbnail.jpg` を用いる。
     狭い画面 (<576px) では 120×90 に縮小し、特に狭い画面 (<480px) では
     float にして要約文がサムネイルの右から下へ回り込む (縦積みにはしない)。
-16. **Open Graph 画像の修正** — 記事ページの `og:image` が `images/images/logo.jpg`
+18. **Open Graph 画像の修正** — 記事ページの `og:image` が `images/images/logo.jpg`
     という存在しない URL で、かつ相対 URL だったため SNS カードに画像が出て
     いなかった。サイト内リンクは相対 URL のまま維持する方針とし (`RELATIVE_URLS`
     は変更しない)、OG/Twitter メタタグだけ `SITEURL_ABSOLUTE` で絶対化。
@@ -539,7 +627,6 @@ GitHub Actions 導入以前の自前サーバ用機構。現在は未使用だ�
 
 ### 既知の残課題
 
-- `autosummary` と `summary` の併存 (`pelicanconf.py` にもコメントあり)
 - Font Awesome の `<link>` に SRI 未設定 (`FONT_AWESOME_LINK` に `integrity`
   キーを足せば有効化される)
 - レガシー webhook 機構 (§10) の撤去判断

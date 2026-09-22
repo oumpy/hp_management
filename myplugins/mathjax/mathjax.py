@@ -86,23 +86,33 @@ def pelican_init(pelicanobj):
         PelicanMathJaxExtension(config))
 
 
+_MATH_DELIMITERS = ('\\(', '\\[', '$$')
+
+
 def process_summary(article):
     """Complete a truncated last formula and add the MathJax loader
-    to summaries containing math (for index/listing pages)."""
+    to summaries containing math (for index/listing pages).
+
+    Must run after any plugin that rewrites the summary (autosummary):
+    that one strips the ``<span class="math">`` wrappers but leaves the
+    TeX delimiters in the text, which MathJax typesets on its own as
+    long as the loader is present."""
     summary = article.summary
     if not summary:
         return
     summary_parsed = BeautifulSoup(summary, 'html.parser')
     math = summary_parsed.find_all(class_='math')
-    if not math:
+    if not math and not any(d in summary_parsed.get_text()
+                            for d in _MATH_DELIMITERS):
         return
 
-    last_math_text = math[-1].get_text()
-    if len(last_math_text) > 3 and last_math_text[-3:] == '...':
-        content_parsed = BeautifulSoup(article._content, 'html.parser')
-        full_text = content_parsed.find_all(class_='math')[len(math) - 1].get_text()
-        math[-1].string = '%s ...' % full_text
-        summary = summary_parsed.decode()
+    if math:
+        last_math_text = math[-1].get_text()
+        if len(last_math_text) > 3 and last_math_text[-3:] == '...':
+            content_parsed = BeautifulSoup(article._content, 'html.parser')
+            full_text = content_parsed.find_all(class_='math')[len(math) - 1].get_text()
+            math[-1].string = '%s ...' % full_text
+            summary = summary_parsed.decode()
 
     # clear memoization cache
     if isinstance(article.get_summary, functools.partial):

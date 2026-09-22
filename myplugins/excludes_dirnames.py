@@ -34,7 +34,10 @@ def run_plugin(pelicanobj):
     ]
 
     for excludes, paths, dirnames in variable_sets:
-        settings[excludes] += [
+        # Build a new list: the default one is shared with DEFAULT_CONFIG, so
+        # extending it in place would accumulate entries across settings
+        # reloads (pelican -r).
+        settings[excludes] = list(settings[excludes]) + [
             os.path.relpath(dir, PATH)
             for root in settings[paths]
                 for dirname in settings[dirnames]

@@ -78,7 +78,7 @@ DBCLS坊農先生のもとで一週間bioinformaticsを学び、遺伝研の方�
 ### 競技プログラミング
 - [AtCoder第6回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2025-final)出場 ([富本]({author}富本))
 - [CodeQUEEN2025決勝](https://atcoder.jp/contests/codequeen2025-final-Public) 3位 ([岡崎]({author}岡崎))
-- [ICPC アスタナ世界大会 2024]([https://atcoder.jp/contests/jsc2022-final](https://worldfinals.icpc.global/)) 出場(阪大として8年ぶり　医学部としては初) ([富本]({author}富本))
+- [ICPC アスタナ世界大会 2024](https://worldfinals.icpc.global/) 出場(阪大として8年ぶり　医学部としては初) ([富本]({author}富本))
 - [AtCoder第4回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2023-final) 全国6位 ([富本]({author}富本))
 - [AtCoder第3回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2022-final)出場 ([富本]({author}富本))
 - [AtCoder第1回日本最強プログラマー学生選手権決勝](https://atcoder.jp/contests/jsc2019-final)出場 ([小川]({author}小川))
@@ -131,7 +131,7 @@ Twitterや実験医学誌面の反響から、様々な共同研究が始まっ�
 
 ## 所属メンバー論文
 ### 2025
-- [**Yosuke Kishi**]({author}岸), Yu-Chen Liu, Masakazu Ishikawa, Maika Yamashita, Hisatake Matsumoto, Hiroshi Ogura, Shuhei Sakakibara & Daisuke Okuzaki.
+- **Yosuke Kishi**, Yu-Chen Liu, Masakazu Ishikawa, Maika Yamashita, Hisatake Matsumoto, Hiroshi Ogura, Shuhei Sakakibara & Daisuke Okuzaki.
 *Mapping NK cell diversity in response to COVID-19 and mRNA vaccination.*
 **Scientific Reports**, (2025) 15:37577. [doi: 10.1038/s41598-025-11575-w](https://doi.org/10.1038/s41598-025-11575-w)
 - Eduardo M. J. M. Farina, Felipe A. Matsuoka, Gustavo Corradi, Yosuke Yamagishi, [**Masatoshi Abe**]({author}安部), Maximilian Pfeiffer, Andrea S. Souza, Raquel Moreno, Ivanei Bramati, Fernanda Moll, Almir Bitencourt, Carlos Sacomani, Soraia Quaranta Damião, Rubens Chojniak, Nitamar Abdala, Rodrigo Ragazzini, Henrique Carrete Jr., Paulo E. A. Kuriki, Marcelo Straus Takahashi, Nelson Caserta, Cesar H. Nomura & Felipe C. Kitamura.

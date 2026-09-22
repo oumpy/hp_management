@@ -42,7 +42,12 @@ def extract_summary(instance):
     use_first_paragraph = instance.settings['SUMMARY_USE_FIRST_PARAGRAPH']
     remove_markers = True
 
-    content = instance._update_content(instance._content, instance.settings['SITEURL'])
+    # Work on the raw HTML.  Resolving links here (the vendored version
+    # called _update_content with SITEURL and stored the result back into
+    # _content) would bake site-wide absolute links into the article and
+    # defeat Pelican's per-page relativization; Pelican resolves the links
+    # of the summary itself when it refreshes metadata.
+    content = instance._content
     begin_summary = -1
     end_summary = -1
     if begin_marker:

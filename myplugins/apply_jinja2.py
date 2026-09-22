@@ -16,20 +16,23 @@ logger = logging.getLogger(__name__)
 variables = dict()
 metadata_field = 'jinja2'
 def configure(generators):
+    # Render from the raw HTML (_content): the `content` property would
+    # resolve intrasite links with the site-wide SITEURL at this stage and
+    # writing that back would bypass Pelican's per-page relativization.
     for generator in generators:
         variables.update(generator.context)
     for generator in generators:
         if isinstance(generator, ArticlesGenerator):
             for article in generator.articles:
                 if metadata_field in article.metadata and bool(article.metadata[metadata_field]):
-                    env = jinja2.Environment(loader=jinja2.DictLoader({'content': article.content, 'title': article.title}))
+                    env = jinja2.Environment(loader=jinja2.DictLoader({'content': article._content, 'title': article.title}))
                     env.filters.update(variables['JINJA_FILTERS'])
                     article._content = env.get_template('content').render(**variables)
                     article.title = env.get_template('title').render(**variables)
         elif isinstance(generator, PagesGenerator):
             for page in generator.pages:
                 if metadata_field in page.metadata and bool(page.metadata[metadata_field]):
-                    env = jinja2.Environment(loader=jinja2.DictLoader({'content': page.content, 'title':page.title}))
+                    env = jinja2.Environment(loader=jinja2.DictLoader({'content': page._content, 'title':page.title}))
                     env.filters.update(variables['JINJA_FILTERS'])
                     page._content = env.get_template('content').render(**variables)
                     page.title = env.get_template('title').render(**variables)
