@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block title %}{{ article.title|striptags|e }} - {{ SITENAME }}{% endblock %}
-{% block metadesc %}{{ article.description|e }}{% endblock %}
+{% block metadesc %}{{ (article.description or article.summary)|meta_description|e }}{% endblock %}
 {% block open_graph %}
+{% set social_description = (article.description or article.summary)|meta_description %}
 {% if OPEN_GRAPH %}
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{ article.title|striptags|e }}"/>
     <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}"/>
-    {% if article.description %}
-      <meta property="og:description" content="{{ article.description|striptags|e }}"/>
+    {% if social_description %}
+      <meta property="og:description" content="{{ social_description|e }}"/>
     {% endif %}
     {% if article.category %}
       <meta property="article:section" content="{{ article.category }}"/>
@@ -34,7 +35,7 @@
 {% if TWITTER_CARD and TWITTER_USERNAME %}
     <meta name="twitter:card" content="summary"> 
     <meta name="twitter:title" content="{{ article.title|striptags|e }}">
-    <meta name="twitter:description" content="{{ article.description|striptags|e }}">
+    <meta name="twitter:description" content="{{ social_description|e }}">
     <meta name="twitter:site" content="@{{ TWITTER_USERNAME }}">
     <meta name="twitter:creator" content="@{{ TWITTER_USERNAME }}">
     <meta name="twitter:domain" content="{{ SITEURL }}">

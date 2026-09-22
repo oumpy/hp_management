@@ -1,0 +1,77 @@
+# Delete branch previews from the published site.
+#
+# Run it from the Actions tab ("Run workflow").  Previews live in the output
+# repository under previews/refs/heads/<branch>/ and are otherwise only
+# removed when a branch is deleted (delete_preview.yml); the preview and
+# deploy workflows also prune orphans automatically on every run.
+
+name: Prune_Previews
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'What to delete'
+        type: choice
+        default: orphans
+        options:
+          - orphans     # previews whose branch no longer exists
+          - branches    # the previews listed below
+          - all         # every preview
+          - none        # delete nothing, only list (combine with "keep")
+      branches:
+        description: 'Branch names for mode "branches" (space-separated)'
+        type: string
+        default: ''
+      keep:
+        description: 'Additionally keep only the N most recently updated previews (empty = no limit)'
+        type: string
+        default: ''
+      dry_run:
+        description: 'Only report what would be deleted'
+        type: boolean
+        default: false
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout master branch
+      uses: actions/checkout@v6
+      with:
+        ref: master
+        submodules: false
+
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.bot_identity }}
+        name: identity
+        known_hosts: ${{ secrets.known_hosts }}
+        config: |
+          Host github
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/identity
+
+    - name: Initialize Output Repository
+      run: |
+        sh tools/init_output.sh
+
+    - name: Prune previews
+      env:
+        PRUNE_MODE: ${{ inputs.mode }}
+        PRUNE_BRANCHES: ${{ inputs.branches }}
+        PRUNE_KEEP: ${{ inputs.keep }}
+        PRUNE_DRY_RUN: ${{ inputs.dry_run }}
+      run: |
+        sh tools/prune_previews.sh
+
+    - name: Deploy on Site
+      if: ${{ !inputs.dry_run }}
+      run: |
+        cd output/
+        git config user.name $GITHUB_ACTOR
+        git config --add url.github:.pushInsteadOf https://github.com/
+        git config --add url.github:.pushInsteadOf git@github.com:
+        git commit -m "Previews pruned (${{ inputs.mode }})." && git push || true

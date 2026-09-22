@@ -201,7 +201,7 @@ class IPynbHtmlBuilder(object):
             elif mime in ('image/png', 'image/jpeg'):
                 b64 = content.replace('\n', '')
                 return ('<div class="output_subarea output_png">'
-                        '<img src="data:{};base64,{}"/></div>'.format(mime, b64))
+                        '<img src="data:{};base64,{}" alt=""/></div>'.format(mime, b64))
             elif mime == 'text/latex':
                 # Left as-is for MathJax to typeset.
                 return ('<div class="output_subarea output_latex math">'

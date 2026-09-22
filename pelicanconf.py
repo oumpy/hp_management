@@ -44,6 +44,9 @@ AUTHOR_FEED_RSS = None
 
 FEED_ALL_RSS = 'feeds/all.rss.xml'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
+# The Atom feed carries full article bodies (notebook articles embed their
+# figures as base64), so keep it to recent items.  RSS is summary-only.
+FEED_MAX_ITEMS = 20
 RELATIVE_URLS = True
 
 TAGS_URL = TAGS_SAVE_AS = 'tags.html'
@@ -66,7 +69,7 @@ from pelican.plugins import simple_footnotes
 from pelican.plugins import neighbors
 from minchin.pelican.plugins import nojekyll
 from myplugins import (
-    ipynb_reader, mathjax, similar_posts,
+    ipynb_reader, embedded_images, mathjax, similar_posts,
     autosummary, summary, shortcodes,
     category_names, apply_jinja2, path2obj,
     subsections, makemenu, excludes_dirnames,
@@ -74,11 +77,12 @@ from myplugins import (
 )
 PLUGINS = [
     ipynb_reader,
-    mathjax,
+    embedded_images,      # right after the reader: data: URIs -> files before anything else sees the body
     tag_cloud,
     similar_posts,
     nojekyll,
-    autosummary, summary, # need to resolve coexistence.
+    summary, autosummary, # explicit markers/metadata first, automatic summary as fallback
+    mathjax,              # after the summary plugins: adds the MathJax loader to summaries
     category_names,
     shortcodes,
     apply_jinja2,
@@ -97,18 +101,20 @@ RELATED_MIN_SCORE = 0.18
 TAG_CLOUD_SORTING = "size"
 
 SHORTCODES = {
+    # No <p> wrapper: shortcodes are expanded after Markdown, which has
+    # already wrapped the line in a paragraph (a <p> here would nest).
     'youtube': '''\
-<p><span class="videobox">
+<span class="videobox">
   <iframe width="{{width|default(640)}}" height="{{height|default(390)}}"
     src="https://www.youtube.com/embed/{{id}}"
     frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
-  </iframe></span></p>''',
+  </iframe></span>''',
     'embed': '''\
-<p><span class="videobox">
-  <iframe width={{width|default(640)}}" height="{{height|default(390)}}"
+<span class="videobox">
+  <iframe width="{{width|default(640)}}" height="{{height|default(390)}}"
     src="{{src}}"
     frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
-  </iframe></span></p>''',
+  </iframe></span>''',
 }
 
 # if you create jupyter files in the content dir, snapshots are saved with the same
@@ -193,6 +199,26 @@ DISPLAY_RECENT_POSTS_ON_SIDEBAR=True
 
 TWITTER_CARD = True
 OPEN_GRAPH = True
+
+# Plain-text description for <meta name="description"> / og:description:
+# an article's summary with markup, scripts (e.g. the MathJax loader that
+# may be appended to summaries) and excess whitespace removed, cut at a
+# sensible length for search snippets and social cards.
+import re as _re
+import html as _html
+def meta_description(text, length=160):
+    if not text:
+        return ''
+    text = _re.sub(r'<(script|style)\b.*?</\1>', ' ', str(text), flags=_re.S | _re.I)
+    # block boundaries become a space, inline tags (links, emphasis) vanish
+    text = _re.sub(r'</?(p|div|li|ul|ol|h[1-6]|br|blockquote|table|tr|td|th|pre)\b[^>]*>', ' ', text, flags=_re.I)
+    text = _html.unescape(_re.sub(r'<[^>]+>', '', text))
+    text = _re.sub(r'\s+', ' ', text).strip()
+    text = _re.sub(r'\.{4,}$', '', text).strip()   # autosummary's trailing "...."
+    if len(text) > length:
+        text = text[:length - 1].rstrip() + '…'
+    return text
+JINJA_FILTERS = {'meta_description': meta_description}
 
 
 # Read user's custom settings.

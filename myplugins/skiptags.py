@@ -25,8 +25,13 @@ def run(generator):
     else:
         attr = 'pages'
     for obj in getattr(generator, attr):
+        # Work on the raw HTML (_content), not on the `content` property:
+        # the latter resolves intrasite links ({filename}, {author}, ...)
+        # with the site-wide SITEURL at this early stage, and writing it
+        # back would bake those absolute links into the article, bypassing
+        # the per-page relativization Pelican performs when writing.
         for reg in reglist:
-            obj._content = re.sub(reg, '', obj.content)
+            obj._content = re.sub(reg, '', obj._content)
 
 def register():
     signals.initialized.connect(initialize)
