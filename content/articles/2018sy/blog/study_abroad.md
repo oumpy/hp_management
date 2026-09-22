@@ -9,7 +9,7 @@ Authors: 佐藤, 宮崎
 
 僕の実習内容についてはまだまとまっていないので、去年行った宮崎先輩の資料をもらいました。
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/f3e0fxEFp9OQAq" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px">
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/f3e0fxEFp9OQAq" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
 海外での生活は旅行も含めて初めてだったので本当に不安でしたが、寮の友達が親切に接してくれて本当に助かりました。ここでその暮らしぶりを少し書かせてもらおうと思います。
 
