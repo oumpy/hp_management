@@ -10,16 +10,22 @@ images".  The image is chosen, in order of preference, from:
 1. the article's ``thumbnail`` metadata, written exactly like an image
    link in the body (``{attach}images/foo.png``, ``{static}/images/x.jpg``,
    an absolute URL, ...);
-2. the first ``<img>`` in the rendered body (badge images, see
+2. the first local ``<img>`` in the rendered body (a file of the site or
+   an embedded ``data:`` image; badge images, see
    ``THUMBNAIL_EXCLUDE_PATTERN``, are skipped);
-3. the site-wide default ``THUMBNAIL_DEFAULT``.
+3. the first body image hosted elsewhere (absolute URL), if
+   ``THUMBNAIL_BODY_EXTERNAL`` allows it.  Such images come after local
+   ones because they cannot be downscaled and may be arbitrarily large
+   (a multi-megabyte animated GIF, say);
+4. the site-wide default ``THUMBNAIL_DEFAULT``.
 
 Local images (and images embedded as ``data:`` URIs, as produced by
 notebooks) are downscaled with Pillow into ``THUMBNAIL_PATH`` under the
 output directory so that list pages stay light; if Pillow is not
 installed the original image is used unchanged (a ``data:`` image is
-then written out as a file as-is).  External URLs are used verbatim.
-Identical sources yield one shared file (content-hashed names).
+then written out as a file as-is).  External URLs (from metadata, or
+from the body when allowed) are used verbatim.  Identical sources
+yield one shared file (content-hashed names).
 
 The result is stored on ``article.thumbnail`` as either a site-relative
 path (to be prefixed with ``SITEURL`` by the template) or an absolute
@@ -48,6 +54,8 @@ Settings:
   (default 85).
 - ``THUMBNAIL_EXCLUDE_PATTERN`` : regex; body images whose ``src``
   matches are never used (default ``r'shields\\.io'``, i.e. badges).
+- ``THUMBNAIL_BODY_EXTERNAL`` : whether body images with absolute URLs
+  may serve as thumbnails, after local ones (default ``True``).
 """
 
 import base64
@@ -190,14 +198,20 @@ def _resolve(spec, article, context):
                    ext=os.path.splitext(url)[1].lower() or None)
 
 
-def _first_body_image(article, exclude_re):
+def _body_images(article, exclude_re, allow_external, siteurl):
+    """The ``src`` of the body images usable as thumbnails: local ones in
+    document order, then (if allowed) external ones."""
     content = getattr(article, '_content', None) or ''
+    local, external = [], []
     for m in _IMG_RE.finditer(content):
         src = m.group(2).strip()
         if not src or (exclude_re and exclude_re.search(src)):
             continue
-        return src
-    return None
+        if _is_absolute_url(src) and not (siteurl and src.startswith(siteurl + '/')):
+            external.append(src)
+        else:
+            local.append(src)
+    return local + (external if allow_external else [])
 
 
 class _Maker:
@@ -302,6 +316,8 @@ def add_thumbnails(generators):
     default = settings.get('THUMBNAIL_DEFAULT')
     pattern = settings.get('THUMBNAIL_EXCLUDE_PATTERN', r'shields\.io')
     exclude_re = re.compile(pattern) if pattern else None
+    allow_external = bool(settings.get('THUMBNAIL_BODY_EXTERNAL', True))
+    siteurl = (context.get('SITEURL') or '').rstrip('/')
     maker = _Maker(settings)
 
     for article in articles:
@@ -315,9 +331,9 @@ def add_thumbnails(generators):
         candidates = []
         if article.thumbnail_source:
             candidates.append(('metadata', article.thumbnail_source))
-        body = _first_body_image(article, exclude_re)
-        if body:
-            candidates.append(('body', body))
+        candidates.extend(
+            ('body', src)
+            for src in _body_images(article, exclude_re, allow_external, siteurl))
         if default:
             candidates.append(('default', default))
 

@@ -71,7 +71,9 @@ $ python create.py
 1. 記事メタデータの `Thumbnail:` で指定した画像。本文中の画像と同じ書き方で、
    例えば `Thumbnail: {attach}images/myarticle_figs/fig1.png` のように書きます
    (外部URLも可)。
-2. 指定がなければ、本文中の最初の画像 (Notebookの出力画像も含む)。
+2. 指定がなければ、本文中の最初の画像 (Notebookの出力画像も含む)。ただし
+   外部サイトの画像 (`https://...`) は縮小できないため、サイト内の画像が
+   ひとつもない場合にだけ使われます。
 3. それもなければ、サイト共通の既定画像 (`contentconf.py` の `THUMBNAIL_DEFAULT`)。
 
 画像は自動的に縮小されるので、大きな画像をそのまま指定して構いません。
