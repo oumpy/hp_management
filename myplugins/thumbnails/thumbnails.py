@@ -27,6 +27,12 @@ then written out as a file as-is).  External URLs (from metadata, or
 from the body when allowed) are used verbatim.  Identical sources
 yield one shared file (content-hashed names).
 
+A body image may also be addressed by the published URL of a file the
+article ``{attach}``es (``SITEURL/<where the file will land>``), the
+idiom for notebooks that must stay viewable in Colab or on GitHub, where
+Pelican link syntax means nothing; the local file is found and resized
+in that case too.
+
 The result is stored on ``article.thumbnail`` as either a site-relative
 path (to be prefixed with ``SITEURL`` by the template) or an absolute
 URL; templates can tell them apart by the presence of ``//``.
@@ -68,6 +74,7 @@ from urllib.parse import unquote, urlparse
 
 from pelican import signals
 from pelican.generators import ArticlesGenerator
+from pelican.utils import path_to_url
 
 import logging
 logger = logging.getLogger(__name__)
@@ -142,7 +149,32 @@ def _lookup_intrasite(article, what, value, context):
     return None
 
 
-def _resolve(spec, article, context):
+def _attached_files(article, context):
+    """Map the output URL each file ``{attach}``ed by ``article`` will get
+    to its Static object, computed the way ``Static.attach_to`` does it
+    but without touching the object's ``url``/``save_as`` (reading those
+    would freeze its location before Pelican relocates it)."""
+    result = {}
+    store = context.get('static_content') or {}
+    content = getattr(article, '_content', None) or ''
+    for m in re.finditer(r'\{attach\}([^"\'\s>)]+)', content):
+        obj = None
+        for candidate in (m.group(1), unquote(m.group(1))):
+            obj = store.get(_intrasite_source_path(article, candidate))
+            if obj is not None:
+                break
+        if obj is None or not getattr(obj, 'source_path', None):
+            continue
+        linking_dir = os.path.dirname(article.source_path)
+        tail = os.path.relpath(obj.source_path, linking_dir)
+        if tail.startswith(os.pardir + os.sep):
+            tail = os.path.basename(tail)
+        save_as = os.path.join(os.path.dirname(article.save_as), tail)
+        result[path_to_url(save_as)] = obj
+    return result
+
+
+def _resolve(spec, article, context, attached=None):
     """Turn an image reference into a ``_Source`` (or None)."""
     spec = spec.strip()
     if not spec:
@@ -190,27 +222,34 @@ def _resolve(spec, article, context):
     # STATIC_PATHS the URL equals the content-relative source path, so the
     # source file can be found (and resized) without touching the static
     # object's url/save_as -- reading those would freeze its output
-    # location and break later {attach} relocation by Pelican.
+    # location and break later {attach} relocation by Pelican.  Files the
+    # article attaches are known by the URL they will be published at.
     url = spec.lstrip('/')
     obj = (context.get('static_content') or {}).get(url)
+    if obj is None and attached:
+        obj = attached.get(url)
     return _Source(url=url, path=getattr(obj, 'source_path', None),
                    data=getattr(obj, 'data', None),
                    ext=os.path.splitext(url)[1].lower() or None)
 
 
-def _body_images(article, exclude_re, allow_external, siteurl):
-    """The ``src`` of the body images usable as thumbnails: local ones in
-    document order, then (if allowed) external ones."""
+def _body_images(article, context, exclude_re, allow_external, attached):
+    """``(src, _Source)`` for the body images usable as thumbnails: those
+    backed by a local file or embedded data first, in document order, then
+    (if allowed) those only reachable by URL."""
     content = getattr(article, '_content', None) or ''
     local, external = [], []
     for m in _IMG_RE.finditer(content):
         src = m.group(2).strip()
         if not src or (exclude_re and exclude_re.search(src)):
             continue
-        if _is_absolute_url(src) and not (siteurl and src.startswith(siteurl + '/')):
-            external.append(src)
+        source = _resolve(src, article, context, attached)
+        if source is None:
+            continue
+        if source.path is not None or source.data is not None:
+            local.append((src, source))
         else:
-            local.append(src)
+            external.append((src, source))
     return local + (external if allow_external else [])
 
 
@@ -317,7 +356,6 @@ def add_thumbnails(generators):
     pattern = settings.get('THUMBNAIL_EXCLUDE_PATTERN', r'shields\.io')
     exclude_re = re.compile(pattern) if pattern else None
     allow_external = bool(settings.get('THUMBNAIL_BODY_EXTERNAL', True))
-    siteurl = (context.get('SITEURL') or '').rstrip('/')
     maker = _Maker(settings)
 
     for article in articles:
@@ -328,17 +366,20 @@ def add_thumbnails(generators):
 
         article.thumbnail_kind = None
 
+        attached = _attached_files(article, context)
         candidates = []
         if article.thumbnail_source:
-            candidates.append(('metadata', article.thumbnail_source))
+            candidates.append(('metadata', article.thumbnail_source, None))
         candidates.extend(
-            ('body', src)
-            for src in _body_images(article, exclude_re, allow_external, siteurl))
+            ('body', src, source)
+            for src, source in _body_images(article, context, exclude_re,
+                                            allow_external, attached))
         if default:
-            candidates.append(('default', default))
+            candidates.append(('default', default, None))
 
-        for kind, spec in candidates:
-            source = _resolve(spec, article, context)
+        for kind, spec, source in candidates:
+            if source is None:
+                source = _resolve(spec, article, context, attached)
             if source is None:
                 continue
             url = maker.make(source)
