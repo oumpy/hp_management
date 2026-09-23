@@ -65,6 +65,25 @@ $ python create.py
 のようにすると、サマリーは「今回はすごいことをやってみました。」となります。
 `<!-- ... -->` は本文中ではコメントとして無視されます (表示されません)。
 
+#### サムネイル画像について
+記事一覧には各記事のサムネイル画像が表示されます。画像は次の優先順で選ばれます。
+
+1. 記事メタデータの `Thumbnail:` で指定した画像。本文中の画像と同じ書き方で、
+   例えば `Thumbnail: {attach}images/myarticle_figs/fig1.png` のように書きます
+   (外部URLも可)。
+2. 指定がなければ、本文中の最初の画像 (Notebookの出力画像も含む)。ただし
+   外部サイトの画像 (`https://...`) は縮小できないため、サイト内の画像が
+   ひとつもない場合にだけ使われます。
+3. それもなければ、サイト共通の既定画像 (`contentconf.py` の `THUMBNAIL_DEFAULT`)。
+
+画像は自動的に縮小されるので、大きな画像をそのまま指定して構いません。
+
+Notebook を Colab や GitHub でも正しく表示したい場合、`{attach}` などの
+Pelican 記法はそこでは通用しないため、画像を `{attach}` した上でその公開 URL
+(`https://oumpy.github.io/blog/<年>/<月>/images/...`) を `src` にする書き方が
+使えます (例: `[![図](https://oumpy.github.io/.../fig.gif)]({attach}images/.../fig.gif)`)。
+この形でもサムネイルはサイト内のファイルから作られます。
+
 #### Jupyter Notebookの扱い
 
 Jupyter Notebookに関しては他の記事（`.md`ファイル）と同じ場所に入れ、さらに同じ場所にメタデータファイル（`myarticle.ipynb` の場合は`myarticle.nbdata`）を置いてmdファイルと同様のメタデータを書きます。

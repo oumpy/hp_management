@@ -31,3 +31,5 @@ EXTRA_PATH_METADATA.update({
 })
 
 from content.contentpublishconf import *
+
+SITEURL_ABSOLUTE = SITEURL   # see pelicanconf.py
